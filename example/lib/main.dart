@@ -9,10 +9,15 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(window.physicalSize);
-    return const Material(
-      child: VelocityZeroListSkeleton(
-        isDark: false,
-      ),
+    return Material(
+      child: Container(
+        height: 100,
+        width: 100,
+        child: const Text(
+          "Hi",
+          style: TextStyle(fontSize: 20),
+        ).textTeal800(),
+      ).bgYellow300().p32().centered(),
     );
   }
 }
