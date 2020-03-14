@@ -66,6 +66,16 @@ extension NumExtension on num {
 
   /// Returns if the number is negative
   bool get isNegative => this < 0;
+
+  ///Widgets
+  Widget wBox({Key key}) => SizedBox(
+        key: key,
+        width: toDouble(),
+      );
+  Widget hBox({Key key}) => SizedBox(
+        key: key,
+        height: toDouble(),
+      );
 }
 
 extension ContextExtensions on BuildContext {

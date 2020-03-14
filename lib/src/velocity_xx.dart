@@ -25,6 +25,7 @@ mixin VelocityX {
   static const double pixel8 = 8.0;
   static const double pixel10 = 10.0;
   static const double pixel12 = 12.0;
+  static const double pixel14 = 14.0;
   static const double pixel16 = 16.0;
   static const double pixel20 = 20.0;
   static const double pixel24 = 24.0;
@@ -147,6 +148,31 @@ mixin VelocityX {
   static const String pink700 = "#B83280";
   static const String pink800 = "#97266D";
   static const String pink900 = "#702459";
+
+  /// All Fixed EdgeInsets
+  static EdgeInsets edp4 = const EdgeInsets.all(pixel4);
+  static EdgeInsets edp8 = const EdgeInsets.all(pixel8);
+  static EdgeInsets edp12 = const EdgeInsets.all(pixel12);
+  static EdgeInsets edp16 = const EdgeInsets.all(pixel16);
+  static EdgeInsets edp20 = const EdgeInsets.all(pixel20);
+  static EdgeInsets edp24 = const EdgeInsets.all(pixel24);
+  static EdgeInsets edp32 = const EdgeInsets.all(pixel32);
+
+  /// Symmetric Fixed EdgeInsets
+  static const edpVertical4 = EdgeInsets.symmetric(vertical: pixel4);
+  static const edpHorizontal4 = EdgeInsets.symmetric(horizontal: pixel4);
+  static const edpVertical8 = EdgeInsets.symmetric(vertical: pixel8);
+  static const edpHorizontal8 = EdgeInsets.symmetric(horizontal: pixel8);
+  static const edpHorizontal12 = EdgeInsets.symmetric(horizontal: pixel12);
+  static const edpVertical12 = EdgeInsets.symmetric(vertical: pixel12);
+  static const edpVertical16 = EdgeInsets.symmetric(vertical: pixel16);
+  static const edpHorizontal16 = EdgeInsets.symmetric(horizontal: pixel16);
+  static const edpVertical20 = EdgeInsets.symmetric(vertical: pixel20);
+  static const edpHorizontal20 = EdgeInsets.symmetric(horizontal: pixel20);
+  static const edpVertical24 = EdgeInsets.symmetric(vertical: pixel24);
+  static const edpHorizontal24 = EdgeInsets.symmetric(horizontal: pixel24);
+  static const edpVertical32 = EdgeInsets.symmetric(vertical: pixel24);
+  static const edpHorizontal32 = EdgeInsets.symmetric(horizontal: pixel32);
 
   /// Get color from the hex value
   static Color hexToColor(String code) {

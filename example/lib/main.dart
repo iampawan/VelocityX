@@ -10,14 +10,26 @@ class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
     print(window.physicalSize);
     return Material(
-      child: Container(
-        height: 100,
-        width: 100,
-        child: const Text(
-          "Hi",
-          style: TextStyle(fontSize: 20),
-        ).textTeal800(),
-      ).bgYellow300().p32().centered(),
-    );
+        color: VelocityX.hexToColor("#f7fafc"),
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: const Text(
+                "Hi",
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ).textTeal800().fontExtraBold().text6XL(),
+            ).bgRed500().shadow().wh20(context: context).p4().opacity25(),
+            10.hBox(),
+            Container(
+              child: const Text(
+                "Hi",
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ).textTeal800().fontExtraBold().text6XL(),
+            )
+                .rounded(backgroundColor: Colors.white)
+                .shadowLG()
+                .whOneForth(context: context)
+          ],
+        ));
   }
 }

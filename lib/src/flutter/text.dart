@@ -232,4 +232,152 @@ extension TextExtensions on Text {
       textWidthBasis: child?.textWidthBasis,
     );
   }
+
+  ///Font Weights
+
+  Text fontHairLine({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w100);
+
+  Text fontThin({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w200);
+
+  Text fontLight({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w300);
+
+  Text fontNormal({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w400);
+
+  Text fontMedium({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w500);
+
+  Text fontSemiBold({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w600);
+
+  Text fontBold({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w700);
+
+  Text fontExtraBold({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w800);
+
+  Text fontBlack({Key key}) =>
+      _fontWeightedText(key: key, child: this, weight: FontWeight.w900);
+
+  Text _fontWeightedText(
+      {Key key, @required FontWeight weight, @required Text child}) {
+    return Text(
+      child.data,
+      key: key,
+      style: child.style != null
+          ? TextStyle(
+              background: child.style?.background,
+              backgroundColor: child.style?.backgroundColor,
+              color: child.style?.color,
+              debugLabel: child.style?.debugLabel,
+              decoration: child.style?.decoration,
+              decorationColor: child.style?.decorationColor,
+              decorationStyle: child.style?.decorationStyle,
+              decorationThickness: child.style?.decorationThickness,
+              fontFamily: child.style?.fontFamily,
+              fontFamilyFallback: child.style?.fontFamilyFallback,
+              fontFeatures: child.style?.fontFeatures,
+              fontSize: child.style?.fontSize,
+              fontStyle: child.style?.fontStyle,
+              fontWeight: weight,
+              foreground: child.style?.foreground,
+              height: child.style?.height,
+              inherit: child.style?.inherit,
+              letterSpacing: child.style?.letterSpacing,
+              locale: child.style?.locale,
+              shadows: child.style?.shadows,
+              textBaseline: child.style?.textBaseline,
+              wordSpacing: child.style?.wordSpacing)
+          : TextStyle(fontWeight: weight),
+      locale: child?.locale,
+      maxLines: child?.maxLines,
+      overflow: child?.overflow,
+      semanticsLabel: child?.semanticsLabel,
+      softWrap: child?.softWrap,
+      strutStyle: child?.strutStyle,
+      textAlign: child?.textAlign,
+      textDirection: child?.textDirection,
+      textHeightBehavior: child?.textHeightBehavior,
+      textScaleFactor: child?.textScaleFactor,
+      textWidthBasis: child?.textWidthBasis,
+    );
+  }
+
+  Text textXS({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 0.75);
+
+  Text textSM({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 0.875);
+
+  Text textBase({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 1);
+
+  Text textLG({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 1.125);
+
+  Text textXL({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 1.25);
+
+  Text text2XL({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 1.5);
+
+  Text text3XL({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 1.875);
+
+  Text text4XL({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 2.25);
+
+  Text text5XL({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 3);
+
+  Text text6XL({Key key}) =>
+      _fontSizedText(key: key, child: this, scaleFactor: 4);
+
+  Text _fontSizedText(
+      {Key key, @required Text child, @required double scaleFactor}) {
+    return Text(
+      child.data,
+      key: key,
+      style: child.style != null
+          ? TextStyle(
+              background: child.style?.background,
+              backgroundColor: child.style?.backgroundColor,
+              color: child.style?.color,
+              debugLabel: child.style?.debugLabel,
+              decoration: child.style?.decoration,
+              decorationColor: child.style?.decorationColor,
+              decorationStyle: child.style?.decorationStyle,
+              decorationThickness: child.style?.decorationThickness,
+              fontFamily: child.style?.fontFamily,
+              fontFamilyFallback: child.style?.fontFamilyFallback,
+              fontFeatures: child.style?.fontFeatures,
+              fontSize:
+                  (child.style.fontSize ?? VelocityX.pixel14) * scaleFactor,
+              fontStyle: child.style?.fontStyle,
+              fontWeight: child.style?.fontWeight,
+              foreground: child.style?.foreground,
+              height: child.style?.height,
+              inherit: child.style?.inherit,
+              letterSpacing: child.style?.letterSpacing,
+              locale: child.style?.locale,
+              shadows: child.style?.shadows,
+              textBaseline: child.style?.textBaseline,
+              wordSpacing: child.style?.wordSpacing)
+          : TextStyle(fontSize: VelocityX.pixel14 * scaleFactor),
+      locale: child?.locale,
+      maxLines: child?.maxLines,
+      overflow: child?.overflow,
+      semanticsLabel: child?.semanticsLabel,
+      softWrap: child?.softWrap,
+      strutStyle: child?.strutStyle,
+      textAlign: child?.textAlign,
+      textDirection: child?.textDirection,
+      textHeightBehavior: child?.textHeightBehavior,
+      textScaleFactor: child?.textScaleFactor,
+      textWidthBasis: child?.textWidthBasis,
+    );
+  }
 }

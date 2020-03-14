@@ -16,13 +16,13 @@ import 'package:velocity_x/velocity_x.dart';
 extension ContainerExtensions on Container {
   ///  Add round corners to a Container
   ///  if the Container already has a color use [backgroundColor] instead and remove the
-  ///  [Color] from the Container it self
-  Container rounded(
-          {Key key, @required Color backgroundColor, double value = 15.0}) =>
+  ///  [Color] from the Container it self.
+  ///  If backgroundColor is null then canvasColor will be applied
+  Container rounded({Key key, Color backgroundColor, double value = 15.0}) =>
       Container(
         key: key,
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: backgroundColor ?? ThemeData().canvasColor,
           borderRadius: BorderRadius.all(
             Radius.circular(value),
           ),
@@ -30,24 +30,212 @@ extension ContainerExtensions on Container {
         child: this,
       );
 
+  Container roundedNone({Key key, Color backgroundColor}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(0.0),
+          ),
+        ),
+        child: this,
+      );
+
+  Container roundedSM({Key key, Color backgroundColor}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(7.5),
+          ),
+        ),
+        child: this,
+      );
+  Container roundedLG({Key key, Color backgroundColor}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(30.0),
+          ),
+        ),
+        child: this,
+      );
+
+  Container roundedFull({Key key, Color backgroundColor}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          shape: BoxShape.circle,
+        ),
+        child: this,
+      );
+
   /// A shadowed container
   ///
   /// [shadowColor]
-  Container withShadow(
-          {Key key,
-          Color shadowColor = Colors.grey,
-          double blurRadius = 20.0,
-          double spreadRadius = 1.0,
-          Offset offset = const Offset(10.0, 10.0)}) =>
+  Container shadow({
+    Key key,
+  }) =>
       Container(
         key: key,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(
-                color: shadowColor,
-                blurRadius: blurRadius,
-                spreadRadius: spreadRadius,
-                offset: offset),
+              color: Color.fromRGBO(0, 0, 0, 0.1),
+              blurRadius: 3.0,
+              spreadRadius: 1.0,
+              offset: Offset(0.0, 1.0),
+            ),
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.06),
+              blurRadius: 2.0,
+              spreadRadius: 1.0,
+              offset: Offset(0.0, 1.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+
+  Container shadowXS({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.05),
+              blurRadius: 0.0,
+              spreadRadius: 1.0,
+              offset: Offset(0.0, 0.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+
+  Container shadowSM({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.05),
+              blurRadius: 2.0,
+              spreadRadius: 0.0,
+              offset: Offset(0.0, 1.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+
+  Container shadowMD({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.1),
+              blurRadius: 6.0,
+              spreadRadius: -1.0,
+              offset: Offset(0.0, 4.0),
+            ),
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.06),
+              blurRadius: 4.0,
+              spreadRadius: -1.0,
+              offset: Offset(0.0, 2.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+  Container shadowLG({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.1),
+              blurRadius: 15.0,
+              spreadRadius: -3.0,
+              offset: Offset(0.0, 10.0),
+            ),
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.05),
+              blurRadius: 6.0,
+              spreadRadius: -2.0,
+              offset: Offset(0.0, 4.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+
+  Container shadowXL({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.1),
+              blurRadius: 25.0,
+              spreadRadius: -5.0,
+              offset: Offset(0.0, 20.0),
+            ),
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.04),
+              blurRadius: 10.0,
+              spreadRadius: -5.0,
+              offset: Offset(0.0, 10.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+
+  Container shadow2XL({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.25),
+              blurRadius: 50.0,
+              spreadRadius: -12.0,
+              offset: Offset(0.0, 25.0),
+            ),
+          ],
+        ),
+        child: this,
+      );
+
+  Container shadowOutline({
+    Key key,
+  }) =>
+      Container(
+        key: key,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(66, 153, 225, 0.5),
+              blurRadius: 0.0,
+              spreadRadius: 3.0,
+              offset: Offset(0.0, 0.0),
+            ),
           ],
         ),
         child: this,
@@ -249,15 +437,25 @@ extension ContainerExtensions on Container {
       _coloredContainer(key: key, child: this, color: VelocityX.pink800);
   Container bgPink900({Key key}) =>
       _coloredContainer(key: key, child: this, color: VelocityX.pink900);
-}
 
-Container _coloredContainer(
-    {Key key, @required String color, @required Container child}) {
-  return Container(
-    key: key,
-    decoration: BoxDecoration(
-      color: VelocityX.hexToColor(color),
-    ),
-    child: child,
-  );
+  Container bgTransparent({Key key}) {
+    return Container(
+      key: key,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+      ),
+      child: child,
+    );
+  }
+
+  Container _coloredContainer(
+      {Key key, @required String color, @required Container child}) {
+    return Container(
+      key: key,
+      decoration: BoxDecoration(
+        color: VelocityX.hexToColor(color),
+      ),
+      child: child,
+    );
+  }
 }
