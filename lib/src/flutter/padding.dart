@@ -96,6 +96,14 @@ extension PaddingExtensions on Widget {
     );
   }
 
+  Padding p64({Key key}) {
+    return Padding(
+      key: key,
+      padding: const EdgeInsets.all(VelocityX.pixel64),
+      child: this,
+    );
+  }
+
   Padding py0({Key key}) {
     return Padding(
       key: key,
@@ -176,6 +184,14 @@ extension PaddingExtensions on Widget {
     );
   }
 
+  Padding py64({Key key}) {
+    return Padding(
+      key: key,
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel64),
+      child: this,
+    );
+  }
+
   Padding px0({Key key}) {
     return Padding(
       key: key,
@@ -252,6 +268,14 @@ extension PaddingExtensions on Widget {
     return Padding(
       key: key,
       padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel32),
+      child: this,
+    );
+  }
+
+  Padding px64({Key key}) {
+    return Padding(
+      key: key,
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel64),
       child: this,
     );
   }

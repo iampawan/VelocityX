@@ -241,6 +241,32 @@ extension ContainerExtensions on Container {
         child: this,
       );
 
+  Container lGradient({Key key, @required List<Color> colors}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          colors: colors,
+        )),
+        child: this,
+      );
+  Container rGradient({Key key, @required List<Color> colors}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+            gradient: RadialGradient(
+          colors: colors,
+        )),
+        child: this,
+      );
+
+  Container sGradient({Key key, @required List<Color> colors}) => Container(
+        key: key,
+        decoration: BoxDecoration(
+            gradient: SweepGradient(
+          colors: colors,
+        )),
+        child: this,
+      );
+
   /// Colors
 
   Container bgWhite({Key key}) =>

@@ -12,6 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/velocity_x_extensions.dart';
 
 class TwoTile extends StatelessWidget {
   final String title;
@@ -88,9 +89,7 @@ class TwoTileColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         top,
-        const SizedBox(
-          height: 10,
-        ),
+        10.hBox(),
         bottom,
       ],
     );
@@ -111,9 +110,7 @@ class TwoTileRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         left,
-        const SizedBox(
-          width: 10,
-        ),
+        10.wBox(),
         right,
       ],
     );
@@ -135,15 +132,11 @@ class TwoTileIconColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         top,
-        const SizedBox(
-          height: 10,
-        ),
+        10.hBox(),
         Row(
           children: <Widget>[
             icon,
-            const SizedBox(
-              width: 10,
-            ),
+            10.wBox(),
             bottom,
           ],
         ),

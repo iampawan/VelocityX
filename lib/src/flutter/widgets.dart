@@ -34,4 +34,71 @@ extension WidgetsExtension on Widget {
         margin: margin,
         child: this,
       );
+
+  ///Hide a widget
+  Widget hide({Key key, bool isVisible = false}) => Visibility(
+        child: this,
+        visible: isVisible,
+      );
+
+  Widget hideButOccupy({Key key, bool isVisible = false}) => Visibility(
+        child: this,
+        visible: isVisible,
+        maintainAnimation: true,
+        maintainState: true,
+        maintainSize: true,
+      );
+
+  Widget rounded({Key key, Color backgroundColor, double value = 15.0}) =>
+      Container(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(value),
+          ),
+        ),
+        child: this,
+      );
+
+  Widget roundedNone({Key key, Color backgroundColor}) => DecoratedBox(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(0.0),
+          ),
+        ),
+        child: this,
+      );
+
+  Widget roundedSM({Key key, Color backgroundColor}) => DecoratedBox(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(7.5),
+          ),
+        ),
+        child: this,
+      );
+  Widget roundedLG({Key key, Color backgroundColor}) => DecoratedBox(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(30.0),
+          ),
+        ),
+        child: this,
+      );
+
+  Widget roundedFull({Key key, Color backgroundColor}) => DecoratedBox(
+        key: key,
+        decoration: BoxDecoration(
+          color: backgroundColor ?? ThemeData().canvasColor,
+          shape: BoxShape.circle,
+        ),
+        child: this,
+      );
 }

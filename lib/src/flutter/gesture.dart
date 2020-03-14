@@ -15,17 +15,35 @@
 import 'package:flutter/material.dart';
 
 extension GestureExtensions on Widget {
-  Widget onDoubleTap(Function function) => GestureDetector(
+  Widget doubleClick(Function function) => GestureDetector(
         onDoubleTap: function,
         child: this,
       );
 
-  Widget onTap(Function function) => GestureDetector(
+  Widget click(Function function) => GestureDetector(
         onTap: function,
         child: this,
       );
 
-  Widget onLongPress(Function function) => GestureDetector(
+  Widget longClick(Function function) => GestureDetector(
+        onLongPress: function,
+        child: this,
+      );
+
+  Widget mdDoubleClick(Function function, {Color splashColor}) => InkWell(
+        splashColor: splashColor,
+        onDoubleTap: function,
+        child: this,
+      );
+
+  Widget mdClick(Function function, {Color splashColor}) => InkWell(
+        splashColor: splashColor,
+        onTap: function,
+        child: this,
+      );
+
+  Widget mdLongClick(Function function, {Color splashColor}) => InkWell(
+        splashColor: splashColor,
         onLongPress: function,
         child: this,
       );

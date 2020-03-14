@@ -50,6 +50,16 @@ mixin VelocityX {
   static const String gray800 = "#2D3748";
   static const String gray900 = "#1A202C";
 
+  static Color grayColor100 = hexToColor(gray100);
+  static Color grayColor200 = hexToColor(gray200);
+  static Color grayColor300 = hexToColor(gray300);
+  static Color grayColor400 = hexToColor(gray400);
+  static Color grayColor500 = hexToColor(gray500);
+  static Color grayColor600 = hexToColor(gray600);
+  static Color grayColor700 = hexToColor(gray700);
+  static Color grayColor800 = hexToColor(gray800);
+  static Color grayColor900 = hexToColor(gray900);
+
   ///Red Colors
   static const String red100 = "#FFF5F5";
   static const String red200 = "#FED7D7";
@@ -60,6 +70,16 @@ mixin VelocityX {
   static const String red700 = "#C53030";
   static const String red800 = "#9B2C2C";
   static const String red900 = "#742A2A";
+
+  static Color redColor100 = hexToColor(red100);
+  static Color redColor200 = hexToColor(red200);
+  static Color redColor300 = hexToColor(red300);
+  static Color redColor400 = hexToColor(red400);
+  static Color redColor500 = hexToColor(red500);
+  static Color redColor600 = hexToColor(red600);
+  static Color redColor700 = hexToColor(red700);
+  static Color redColor800 = hexToColor(red800);
+  static Color redColor900 = hexToColor(red900);
 
   ///Orange Colors
   static const String orange100 = "#FFFAF0";
@@ -72,6 +92,16 @@ mixin VelocityX {
   static const String orange800 = "#9C4221";
   static const String orange900 = "#7B341E";
 
+  static Color orangeColor100 = hexToColor(orange100);
+  static Color orangeColor200 = hexToColor(orange200);
+  static Color orangeColor300 = hexToColor(orange300);
+  static Color orangeColor400 = hexToColor(orange400);
+  static Color orangeColor500 = hexToColor(orange500);
+  static Color orangeColor600 = hexToColor(orange600);
+  static Color orangeColor700 = hexToColor(orange700);
+  static Color orangeColor800 = hexToColor(orange800);
+  static Color orangeColor900 = hexToColor(orange900);
+
   ///Yellow Colors
   static const String yellow100 = "#FFFFF0";
   static const String yellow200 = "#FEFCBF";
@@ -82,6 +112,16 @@ mixin VelocityX {
   static const String yellow700 = "#B7791F";
   static const String yellow800 = "#975A16";
   static const String yellow900 = "#744210";
+
+  static Color yellowColor100 = hexToColor(yellow100);
+  static Color yellowColor200 = hexToColor(yellow200);
+  static Color yellowColor300 = hexToColor(yellow300);
+  static Color yellowColor400 = hexToColor(yellow400);
+  static Color yellowColor500 = hexToColor(yellow500);
+  static Color yellowColor600 = hexToColor(yellow600);
+  static Color yellowColor700 = hexToColor(yellow700);
+  static Color yellowColor800 = hexToColor(yellow800);
+  static Color yellowColor900 = hexToColor(yellow900);
 
   ///Green Colors
   static const String green100 = "#F0FFF4";
@@ -94,6 +134,16 @@ mixin VelocityX {
   static const String green800 = "#276749";
   static const String green900 = "#22543D";
 
+  static Color greenColor100 = hexToColor(green100);
+  static Color greenColor200 = hexToColor(green200);
+  static Color greenColor300 = hexToColor(green300);
+  static Color greenColor400 = hexToColor(green400);
+  static Color greenColor500 = hexToColor(green500);
+  static Color greenColor600 = hexToColor(green600);
+  static Color greenColor700 = hexToColor(green700);
+  static Color greenColor800 = hexToColor(green800);
+  static Color greenColor900 = hexToColor(green900);
+
   ///Teal Colors
   static const String teal100 = "#E6FFFA";
   static const String teal200 = "#B2F5EA";
@@ -104,6 +154,16 @@ mixin VelocityX {
   static const String teal700 = "#2C7A7B";
   static const String teal800 = "#285E61";
   static const String teal900 = "#234E52";
+
+  static Color tealColor100 = hexToColor(teal100);
+  static Color tealColor200 = hexToColor(teal200);
+  static Color tealColor300 = hexToColor(teal300);
+  static Color tealColor400 = hexToColor(teal400);
+  static Color tealColor500 = hexToColor(teal500);
+  static Color tealColor600 = hexToColor(teal600);
+  static Color tealColor700 = hexToColor(teal700);
+  static Color tealColor800 = hexToColor(teal800);
+  static Color tealColor900 = hexToColor(teal900);
 
   ///Blue Colors
   static const String blue100 = "#EBF8FF";
@@ -116,6 +176,16 @@ mixin VelocityX {
   static const String blue800 = "#2C5282";
   static const String blue900 = "#2A4365";
 
+  static Color blueColor100 = hexToColor(blue100);
+  static Color blueColor200 = hexToColor(blue200);
+  static Color blueColor300 = hexToColor(blue300);
+  static Color blueColor400 = hexToColor(blue400);
+  static Color blueColor500 = hexToColor(blue500);
+  static Color blueColor600 = hexToColor(blue600);
+  static Color blueColor700 = hexToColor(blue700);
+  static Color blueColor800 = hexToColor(blue800);
+  static Color blueColor900 = hexToColor(blue900);
+
   ///Indigo Colors
   static const String indigo100 = "#EBF4FF";
   static const String indigo200 = "#C3DAFE";
@@ -126,6 +196,16 @@ mixin VelocityX {
   static const String indigo700 = "#4C51BF";
   static const String indigo800 = "#434190";
   static const String indigo900 = "#3C366B";
+
+  static Color indigoColor100 = hexToColor(indigo100);
+  static Color indigoColor200 = hexToColor(indigo200);
+  static Color indigoColor300 = hexToColor(indigo300);
+  static Color indigoColor400 = hexToColor(indigo400);
+  static Color indigoColor500 = hexToColor(indigo500);
+  static Color indigoColor600 = hexToColor(indigo600);
+  static Color indigoColor700 = hexToColor(indigo700);
+  static Color indigoColor800 = hexToColor(indigo800);
+  static Color indigoColor900 = hexToColor(indigo900);
 
   ///Purple Colors
   static const String purple100 = "#FAF5FF";
@@ -138,6 +218,16 @@ mixin VelocityX {
   static const String purple800 = "#553C9A";
   static const String purple900 = "#44337A";
 
+  static Color purpleColor100 = hexToColor(purple100);
+  static Color purpleColor200 = hexToColor(purple200);
+  static Color purpleColor300 = hexToColor(purple300);
+  static Color purpleColor400 = hexToColor(purple400);
+  static Color purpleColor500 = hexToColor(purple500);
+  static Color purpleColor600 = hexToColor(purple600);
+  static Color purpleColor700 = hexToColor(purple700);
+  static Color purpleColor800 = hexToColor(purple800);
+  static Color purpleColor900 = hexToColor(purple900);
+
   ///Pink Colors
   static const String pink100 = "#FFF5F7";
   static const String pink200 = "#FED7E2";
@@ -148,6 +238,16 @@ mixin VelocityX {
   static const String pink700 = "#B83280";
   static const String pink800 = "#97266D";
   static const String pink900 = "#702459";
+
+  static Color pinkColor100 = hexToColor(pink100);
+  static Color pinkColor200 = hexToColor(pink200);
+  static Color pinkColor300 = hexToColor(pink300);
+  static Color pinkColor400 = hexToColor(pink400);
+  static Color pinkColor500 = hexToColor(pink500);
+  static Color pinkColor600 = hexToColor(pink600);
+  static Color pinkColor700 = hexToColor(pink700);
+  static Color pinkColor800 = hexToColor(pink800);
+  static Color pinkColor900 = hexToColor(pink900);
 
   /// All Fixed EdgeInsets
   static EdgeInsets edp4 = const EdgeInsets.all(pixel4);
