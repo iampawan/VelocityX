@@ -24,6 +24,7 @@ class TwoTile extends StatelessWidget {
   final double subtitleFontSize;
   final Color subtitleColor;
   final bool isSubtitleBold;
+  final bool isHorizontal;
   final CrossAxisAlignment crossAxisAlignment;
 
   const TwoTile({
@@ -37,42 +38,51 @@ class TwoTile extends StatelessWidget {
     this.subtitleFontSize = 16.0,
     this.subtitleColor,
     this.isSubtitleBold = false,
+    this.isHorizontal = false,
     this.crossAxisAlignment = CrossAxisAlignment.start,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: crossAxisAlignment,
-      mainAxisSize: MainAxisSize.min,
-      textBaseline: TextBaseline.alphabetic,
-      children: <Widget>[
-        Text(
-          title,
-          style: TextStyle(fontSize: titleFontSize, color: titleColor),
+    final list = [
+      Text(
+        title,
+        style: TextStyle(fontSize: titleFontSize, color: titleColor),
+      ),
+      8.hBox(),
+      Text.rich(
+        TextSpan(
+          text: subtitle,
+          children: [
+            subtitle2 ?? const TextSpan(),
+            subtitle3 ?? const TextSpan(),
+          ],
         ),
-        const SizedBox(
-          height: 8,
+        maxLines: 1,
+        textAlign: TextAlign.justify,
+        softWrap: true,
+        style: TextStyle(
+          fontWeight: isSubtitleBold ? FontWeight.bold : FontWeight.normal,
+          fontSize: subtitleFontSize,
+          textBaseline: TextBaseline.alphabetic,
+          color: subtitleColor,
         ),
-        Text.rich(
-          TextSpan(
-            text: subtitle,
-            children: [
-              subtitle2 ?? const TextSpan(),
-              subtitle3 ?? const TextSpan(),
-            ],
-          ),
-          maxLines: 1,
-          textAlign: TextAlign.justify,
-          softWrap: true,
-          style: TextStyle(
-            fontWeight: isSubtitleBold ? FontWeight.bold : FontWeight.normal,
-            fontSize: subtitleFontSize,
-            textBaseline: TextBaseline.alphabetic,
-            color: subtitleColor,
-          ),
-        )
-      ],
-    );
+      )
+    ];
+    if (isHorizontal) {
+      return Column(
+        crossAxisAlignment: crossAxisAlignment,
+        mainAxisSize: MainAxisSize.min,
+        textBaseline: TextBaseline.alphabetic,
+        children: list,
+      );
+    } else {
+      return Row(
+        crossAxisAlignment: crossAxisAlignment,
+        mainAxisSize: MainAxisSize.min,
+        textBaseline: TextBaseline.alphabetic,
+        children: list,
+      );
+    }
   }
 }
 
