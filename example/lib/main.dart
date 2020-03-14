@@ -11,12 +11,17 @@ class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: const Text("Hello World")
-          .textRed500()
+          .textBlack()
           .text4XL()
           .fontExtraBold()
           .p16()
-          .circularCard(color: VelocityX.blueColor100)
-          .alignAtCenterLeft(),
+          .lGradient(
+            colors: [VelocityX.blueColor200, VelocityX.blueColor500],
+            rs: RoundedShape.SM,
+          )
+          // .roundedSM(backgroundColor: VelocityX.blueColor500)
+          .shadow2XL()
+          .centered(),
     );
   }
 }

@@ -39,6 +39,9 @@ mixin VelocityX {
   static const String black = "#000000";
   static const String white = "#FFFFFF";
 
+  static Color blackColor = hexToColor(black);
+  static Color whiteColor = hexToColor(white);
+
   ///Gray Colors
   static const String gray100 = "#F7FAFC";
   static const String gray200 = "#EDF2F7";

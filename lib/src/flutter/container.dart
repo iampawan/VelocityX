@@ -225,16 +225,18 @@ extension ContainerExtensions on Container {
 
   Container shadowOutline({
     Key key,
+    Color outlineColor,
   }) =>
       Container(
         key: key,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Color.fromRGBO(66, 153, 225, 0.5),
+              color: outlineColor?.withOpacity(0.5) ??
+                  const Color.fromRGBO(66, 153, 225, 0.5),
               blurRadius: 0.0,
               spreadRadius: 3.0,
-              offset: Offset(0.0, 0.0),
+              offset: const Offset(0.0, 0.0),
             ),
           ],
         ),
