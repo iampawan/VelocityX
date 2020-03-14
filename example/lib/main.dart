@@ -10,11 +10,14 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child:Column(
-        children: <Widget>[
-          TwoTile(title: null, subtitle: null)
-        ],
-      )
-    );
+        child: Column(
+      children: <Widget>[
+        const VelocityTwo(
+          title: "Hi",
+          subtitle: "Welcome",
+          isHorizontal: true,
+        ),
+      ],
+    ));
   }
 }

@@ -14,7 +14,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/velocity_x_extensions.dart';
 
-class TwoTile extends StatelessWidget {
+class VelocityTwo extends StatelessWidget {
   final String title;
   final double titleFontSize;
   final Color titleColor;
@@ -26,20 +26,22 @@ class TwoTile extends StatelessWidget {
   final bool isSubtitleBold;
   final bool isHorizontal;
   final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
 
-  const TwoTile({
+  const VelocityTwo({
     Key key,
     @required this.title,
-    this.titleFontSize = 14.0,
-    this.titleColor = Colors.grey,
+    this.titleFontSize = 16.0,
+    this.titleColor = Colors.black,
     @required this.subtitle,
     this.subtitle2,
     this.subtitle3,
-    this.subtitleFontSize = 16.0,
+    this.subtitleFontSize = 14.0,
     this.subtitleColor,
     this.isSubtitleBold = false,
     this.isHorizontal = false,
     this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.start,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class TwoTile extends StatelessWidget {
         title,
         style: TextStyle(fontSize: titleFontSize, color: titleColor),
       ),
-      8.hBox(),
+      if (isHorizontal) 8.wBox() else 8.hBox(),
       Text.rich(
         TextSpan(
           text: subtitle,
@@ -69,28 +71,26 @@ class TwoTile extends StatelessWidget {
       )
     ];
     if (isHorizontal) {
-      return Column(
+      return Row(
+        mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: MainAxisSize.min,
-        textBaseline: TextBaseline.alphabetic,
         children: list,
       );
     } else {
-      return Row(
+      return Column(
+        mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: MainAxisSize.min,
-        textBaseline: TextBaseline.alphabetic,
         children: list,
       );
     }
   }
 }
 
-class TwoTileColumn extends StatelessWidget {
+class VelocityTwoColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
 
-  const TwoTileColumn({Key key, @required this.top, @required this.bottom})
+  const VelocityTwoColumn({Key key, @required this.top, @required this.bottom})
       : super(key: key);
 
   @override
@@ -106,11 +106,11 @@ class TwoTileColumn extends StatelessWidget {
   }
 }
 
-class TwoTileRow extends StatelessWidget {
+class VelocityTwoRow extends StatelessWidget {
   final Widget left;
   final Widget right;
 
-  const TwoTileRow({Key key, @required this.left, @required this.right})
+  const VelocityTwoRow({Key key, @required this.left, @required this.right})
       : super(key: key);
 
   @override
@@ -127,12 +127,12 @@ class TwoTileRow extends StatelessWidget {
   }
 }
 
-class TwoTileIconColumn extends StatelessWidget {
+class VelocityTwoIconColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
   final Widget icon;
 
-  const TwoTileIconColumn(
+  const VelocityTwoIconColumn(
       {Key key, @required this.top, @required this.bottom, @required this.icon})
       : super(key: key);
 
