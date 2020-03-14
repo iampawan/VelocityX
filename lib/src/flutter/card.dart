@@ -30,6 +30,14 @@ extension CardExtension on Widget {
         elevation: elevation ?? 1.0,
       );
 
+  Widget circularCardZero({Key key, Color color}) => Card(
+        child: this,
+        shape: const CircleBorder(),
+        color: color ?? ThemeData().cardColor,
+        clipBehavior: Clip.antiAlias,
+        elevation: 0.0,
+      );
+
   ///Card with no elevation
   Widget cardZero({Key key, Color color}) => Card(
         child: this,

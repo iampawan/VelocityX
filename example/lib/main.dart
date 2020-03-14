@@ -10,16 +10,13 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Row(
-        children: <Widget>[
-          const Text("Velocity X")
-              .textRed400()
-              .p8()
-              .whHalf(context: context)
-              .rounded(backgroundColor: VelocityX.tealColor800)
-              .h48(context: context)
-        ],
-      ).px32(),
+      child: const Text("Hello World")
+          .textRed500()
+          .text4XL()
+          .fontExtraBold()
+          .p16()
+          .circularCard(color: VelocityX.blueColor100)
+          .alignAtCenterLeft(),
     );
   }
 }
