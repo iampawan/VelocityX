@@ -16,6 +16,8 @@ import 'package:velocity_x/src/responsive_ui.dart';
 
 class VelocityXExtensions {}
 
+/// Extension Methods & Widgets for the strings
+
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
   String firstLetterUpperCase() => length > 1
@@ -44,8 +46,15 @@ extension StringExtension on String {
 
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
   bool get isNotBlank => this != null && trim().isNotEmpty;
+
+  ///Widgets
+  Text text({Key key}) => Text(
+        this,
+        key: key,
+      );
 }
 
+/// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
   String toDoubleStringAsFixed({int digit = 2}) =>
       toStringAsFixed(truncateToDouble() == this ? 0 : digit);

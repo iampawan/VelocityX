@@ -354,8 +354,7 @@ extension TextExtensions on Text {
               fontFamily: child.style?.fontFamily,
               fontFamilyFallback: child.style?.fontFamilyFallback,
               fontFeatures: child.style?.fontFeatures,
-              fontSize:
-                  (child.style.fontSize ?? VelocityX.pixel14) * scaleFactor,
+              fontSize: (child.style.fontSize ?? VelocityX.dp14) * scaleFactor,
               fontStyle: child.style?.fontStyle,
               fontWeight: child.style?.fontWeight,
               foreground: child.style?.foreground,
@@ -366,7 +365,7 @@ extension TextExtensions on Text {
               shadows: child.style?.shadows,
               textBaseline: child.style?.textBaseline,
               wordSpacing: child.style?.wordSpacing)
-          : TextStyle(fontSize: VelocityX.pixel14 * scaleFactor),
+          : TextStyle(fontSize: VelocityX.dp14 * scaleFactor),
       locale: child?.locale,
       maxLines: child?.maxLines,
       overflow: child?.overflow,

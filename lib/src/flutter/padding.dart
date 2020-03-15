@@ -19,7 +19,7 @@ extension PaddingExtensions on Widget {
   Padding p0({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel0),
+      padding: const EdgeInsets.all(VelocityX.dp0),
       child: this,
     );
   }
@@ -27,7 +27,7 @@ extension PaddingExtensions on Widget {
   Padding p1({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel1),
+      padding: const EdgeInsets.all(VelocityX.dp1),
       child: this,
     );
   }
@@ -35,7 +35,7 @@ extension PaddingExtensions on Widget {
   Padding p2({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel2),
+      padding: const EdgeInsets.all(VelocityX.dp2),
       child: this,
     );
   }
@@ -43,7 +43,7 @@ extension PaddingExtensions on Widget {
   Padding p4({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel4),
+      padding: const EdgeInsets.all(VelocityX.dp4),
       child: this,
     );
   }
@@ -51,7 +51,7 @@ extension PaddingExtensions on Widget {
   Padding p8({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel8),
+      padding: const EdgeInsets.all(VelocityX.dp8),
       child: this,
     );
   }
@@ -59,7 +59,7 @@ extension PaddingExtensions on Widget {
   Padding p12({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel12),
+      padding: const EdgeInsets.all(VelocityX.dp12),
       child: this,
     );
   }
@@ -67,7 +67,7 @@ extension PaddingExtensions on Widget {
   Padding p16({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel16),
+      padding: const EdgeInsets.all(VelocityX.dp16),
       child: this,
     );
   }
@@ -75,7 +75,7 @@ extension PaddingExtensions on Widget {
   Padding p20({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel20),
+      padding: const EdgeInsets.all(VelocityX.dp20),
       child: this,
     );
   }
@@ -83,7 +83,7 @@ extension PaddingExtensions on Widget {
   Padding p24({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel24),
+      padding: const EdgeInsets.all(VelocityX.dp24),
       child: this,
     );
   }
@@ -91,7 +91,7 @@ extension PaddingExtensions on Widget {
   Padding p32({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel32),
+      padding: const EdgeInsets.all(VelocityX.dp32),
       child: this,
     );
   }
@@ -99,7 +99,7 @@ extension PaddingExtensions on Widget {
   Padding p64({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.all(VelocityX.pixel64),
+      padding: const EdgeInsets.all(VelocityX.dp64),
       child: this,
     );
   }
@@ -107,7 +107,7 @@ extension PaddingExtensions on Widget {
   Padding py0({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel0),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp0),
       child: this,
     );
   }
@@ -115,7 +115,7 @@ extension PaddingExtensions on Widget {
   Padding py1({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel1),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp1),
       child: this,
     );
   }
@@ -123,7 +123,7 @@ extension PaddingExtensions on Widget {
   Padding py2({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel2),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp2),
       child: this,
     );
   }
@@ -131,7 +131,7 @@ extension PaddingExtensions on Widget {
   Padding py4({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel4),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp4),
       child: this,
     );
   }
@@ -139,7 +139,7 @@ extension PaddingExtensions on Widget {
   Padding py8({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel8),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp8),
       child: this,
     );
   }
@@ -147,7 +147,7 @@ extension PaddingExtensions on Widget {
   Padding py12({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel12),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp12),
       child: this,
     );
   }
@@ -155,7 +155,7 @@ extension PaddingExtensions on Widget {
   Padding py16({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel16),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp16),
       child: this,
     );
   }
@@ -163,7 +163,7 @@ extension PaddingExtensions on Widget {
   Padding py20({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel20),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp20),
       child: this,
     );
   }
@@ -171,7 +171,7 @@ extension PaddingExtensions on Widget {
   Padding py24({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel24),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp24),
       child: this,
     );
   }
@@ -179,7 +179,7 @@ extension PaddingExtensions on Widget {
   Padding py32({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel32),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp32),
       child: this,
     );
   }
@@ -187,7 +187,7 @@ extension PaddingExtensions on Widget {
   Padding py64({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(vertical: VelocityX.pixel64),
+      padding: const EdgeInsets.symmetric(vertical: VelocityX.dp64),
       child: this,
     );
   }
@@ -195,7 +195,7 @@ extension PaddingExtensions on Widget {
   Padding px0({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel0),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp0),
       child: this,
     );
   }
@@ -203,7 +203,7 @@ extension PaddingExtensions on Widget {
   Padding px1({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel1),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp1),
       child: this,
     );
   }
@@ -211,7 +211,7 @@ extension PaddingExtensions on Widget {
   Padding px2({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel2),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp2),
       child: this,
     );
   }
@@ -219,7 +219,7 @@ extension PaddingExtensions on Widget {
   Padding px4({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel4),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp4),
       child: this,
     );
   }
@@ -227,7 +227,7 @@ extension PaddingExtensions on Widget {
   Padding px8({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel8),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp8),
       child: this,
     );
   }
@@ -235,7 +235,7 @@ extension PaddingExtensions on Widget {
   Padding px12({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel12),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp12),
       child: this,
     );
   }
@@ -243,7 +243,7 @@ extension PaddingExtensions on Widget {
   Padding px16({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel16),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp16),
       child: this,
     );
   }
@@ -251,7 +251,7 @@ extension PaddingExtensions on Widget {
   Padding px20({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel20),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp20),
       child: this,
     );
   }
@@ -259,7 +259,7 @@ extension PaddingExtensions on Widget {
   Padding px24({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel24),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp24),
       child: this,
     );
   }
@@ -267,7 +267,7 @@ extension PaddingExtensions on Widget {
   Padding px32({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel32),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp32),
       child: this,
     );
   }
@@ -275,12 +275,12 @@ extension PaddingExtensions on Widget {
   Padding px64({Key key}) {
     return Padding(
       key: key,
-      padding: const EdgeInsets.symmetric(horizontal: VelocityX.pixel64),
+      padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp64),
       child: this,
     );
   }
 
-  Padding pAll(double value, {Key key}) {
+  Padding p(double value, {Key key}) {
     return Padding(
       key: key,
       padding: EdgeInsets.all(value),

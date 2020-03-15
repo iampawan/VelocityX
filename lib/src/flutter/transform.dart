@@ -85,4 +85,14 @@ extension TransformExtension on Widget {
         scale: 1.1,
         child: this,
       );
+
+  Widget scale150({Key key}) => Transform.scale(
+        scale: 1.5,
+        child: this,
+      );
+
+  Widget scale200({Key key}) => Transform.scale(
+        scale: 2.0,
+        child: this,
+      );
 }

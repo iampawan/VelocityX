@@ -15,25 +15,25 @@ import 'package:flutter/material.dart';
 
 mixin VelocityX {
   /// Pixel Values
-  static const double pixel0 = 0.0;
-  static const double pixel1 = 1.0;
-  static const double pixel2 = 2.0;
-  static const double pixel3 = 3.0;
-  static const double pixel4 = 4.0;
-  static const double pixel5 = 5.0;
-  static const double pixel6 = 6.0;
-  static const double pixel8 = 8.0;
-  static const double pixel10 = 10.0;
-  static const double pixel12 = 12.0;
-  static const double pixel14 = 14.0;
-  static const double pixel16 = 16.0;
-  static const double pixel20 = 20.0;
-  static const double pixel24 = 24.0;
-  static const double pixel32 = 32.0;
-  static const double pixel40 = 40.0;
-  static const double pixel48 = 48.0;
-  static const double pixel56 = 56.0;
-  static const double pixel64 = 64.0;
+  static const double dp0 = 0.0;
+  static const double dp1 = 1.0;
+  static const double dp2 = 2.0;
+  static const double dp3 = 3.0;
+  static const double dp4 = 4.0;
+  static const double dp5 = 5.0;
+  static const double dp6 = 6.0;
+  static const double dp8 = 8.0;
+  static const double dp10 = 10.0;
+  static const double dp12 = 12.0;
+  static const double dp14 = 14.0;
+  static const double dp16 = 16.0;
+  static const double dp20 = 20.0;
+  static const double dp24 = 24.0;
+  static const double dp32 = 32.0;
+  static const double dp40 = 40.0;
+  static const double dp48 = 48.0;
+  static const double dp56 = 56.0;
+  static const double dp64 = 64.0;
 
   ///colors
   static const String black = "#000000";
@@ -253,29 +253,29 @@ mixin VelocityX {
   static Color pinkColor900 = hexToColor(pink900);
 
   /// All Fixed EdgeInsets
-  static EdgeInsets edp4 = const EdgeInsets.all(pixel4);
-  static EdgeInsets edp8 = const EdgeInsets.all(pixel8);
-  static EdgeInsets edp12 = const EdgeInsets.all(pixel12);
-  static EdgeInsets edp16 = const EdgeInsets.all(pixel16);
-  static EdgeInsets edp20 = const EdgeInsets.all(pixel20);
-  static EdgeInsets edp24 = const EdgeInsets.all(pixel24);
-  static EdgeInsets edp32 = const EdgeInsets.all(pixel32);
+  static EdgeInsets m4 = const EdgeInsets.all(dp4);
+  static EdgeInsets m8 = const EdgeInsets.all(dp8);
+  static EdgeInsets m12 = const EdgeInsets.all(dp12);
+  static EdgeInsets m16 = const EdgeInsets.all(dp16);
+  static EdgeInsets m20 = const EdgeInsets.all(dp20);
+  static EdgeInsets m24 = const EdgeInsets.all(dp24);
+  static EdgeInsets m32 = const EdgeInsets.all(dp32);
 
   /// Symmetric Fixed EdgeInsets
-  static const edpVertical4 = EdgeInsets.symmetric(vertical: pixel4);
-  static const edpHorizontal4 = EdgeInsets.symmetric(horizontal: pixel4);
-  static const edpVertical8 = EdgeInsets.symmetric(vertical: pixel8);
-  static const edpHorizontal8 = EdgeInsets.symmetric(horizontal: pixel8);
-  static const edpHorizontal12 = EdgeInsets.symmetric(horizontal: pixel12);
-  static const edpVertical12 = EdgeInsets.symmetric(vertical: pixel12);
-  static const edpVertical16 = EdgeInsets.symmetric(vertical: pixel16);
-  static const edpHorizontal16 = EdgeInsets.symmetric(horizontal: pixel16);
-  static const edpVertical20 = EdgeInsets.symmetric(vertical: pixel20);
-  static const edpHorizontal20 = EdgeInsets.symmetric(horizontal: pixel20);
-  static const edpVertical24 = EdgeInsets.symmetric(vertical: pixel24);
-  static const edpHorizontal24 = EdgeInsets.symmetric(horizontal: pixel24);
-  static const edpVertical32 = EdgeInsets.symmetric(vertical: pixel24);
-  static const edpHorizontal32 = EdgeInsets.symmetric(horizontal: pixel32);
+  static const mV4 = EdgeInsets.symmetric(vertical: dp4);
+  static const mH4 = EdgeInsets.symmetric(horizontal: dp4);
+  static const mV8 = EdgeInsets.symmetric(vertical: dp8);
+  static const mH8 = EdgeInsets.symmetric(horizontal: dp8);
+  static const mH12 = EdgeInsets.symmetric(horizontal: dp12);
+  static const mV12 = EdgeInsets.symmetric(vertical: dp12);
+  static const mV16 = EdgeInsets.symmetric(vertical: dp16);
+  static const mH16 = EdgeInsets.symmetric(horizontal: dp16);
+  static const mV20 = EdgeInsets.symmetric(vertical: dp20);
+  static const mH20 = EdgeInsets.symmetric(horizontal: dp20);
+  static const mV24 = EdgeInsets.symmetric(vertical: dp24);
+  static const mH24 = EdgeInsets.symmetric(horizontal: dp24);
+  static const mV32 = EdgeInsets.symmetric(vertical: dp24);
+  static const mH32 = EdgeInsets.symmetric(horizontal: dp32);
 
   /// Get color from the hex value
   static Color hexToColor(String code) {

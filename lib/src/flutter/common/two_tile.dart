@@ -27,6 +27,7 @@ class VelocityTwo extends StatelessWidget {
   final bool isHorizontal;
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisAlignment mainAxisAlignment;
+  final MainAxisSize mainAxisSize;
 
   const VelocityTwo({
     Key key,
@@ -42,6 +43,7 @@ class VelocityTwo extends StatelessWidget {
     this.isHorizontal = false,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.min,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -72,12 +74,14 @@ class VelocityTwo extends StatelessWidget {
     ];
     if (isHorizontal) {
       return Row(
+        mainAxisSize: mainAxisSize,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         children: list,
       );
     } else {
       return Column(
+        mainAxisSize: mainAxisSize,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         children: list,
