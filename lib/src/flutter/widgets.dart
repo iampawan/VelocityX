@@ -346,6 +346,56 @@ extension WidgetsExtension on Widget {
         alignment: Alignment.center,
       );
 
+  Widget objectNone({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.none,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectBottomCenter({Key key}) => Align(
+        alignment: Alignment.bottomCenter,
+        child: this,
+      );
+
+  Widget objectBottomLeft({Key key}) => Align(
+        alignment: Alignment.bottomLeft,
+        child: this,
+      );
+  Widget objectBottomRight({Key key}) => Align(
+        alignment: Alignment.bottomRight,
+        child: this,
+      );
+
+  Widget objectCenter({Key key}) => Align(
+        alignment: Alignment.center,
+        child: this,
+      );
+
+  Widget objectCenterLeft({Key key}) => Align(
+        alignment: Alignment.centerLeft,
+        child: this,
+      );
+  Widget objectCenterRight({Key key}) => Align(
+        alignment: Alignment.centerRight,
+        child: this,
+      );
+
+  Widget objectTopCenter({Key key}) => Align(
+        alignment: Alignment.topCenter,
+        child: this,
+      );
+
+  Widget objectLTopLeft({Key key}) => Align(
+        alignment: Alignment.topLeft,
+        child: this,
+      );
+
+  Widget objectTopRight({Key key}) => Align(
+        alignment: Alignment.topRight,
+        child: this,
+      );
+
   Widget bgWhite({Key key}) =>
       _coloredWidget(key: key, child: this, color: VelocityX.white);
   Widget bgBlack({Key key}) =>
