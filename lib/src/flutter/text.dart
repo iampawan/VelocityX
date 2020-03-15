@@ -336,6 +336,45 @@ extension TextExtensions on Text {
   Text text6XL({Key key}) =>
       _fontSizedText(key: key, child: this, scaleFactor: 4);
 
+  Text textCenter({Key key}) => Text(data,
+      textAlign: TextAlign.center,
+      key: key,
+      locale: locale,
+      maxLines: maxLines,
+      overflow: overflow,
+      semanticsLabel: semanticsLabel,
+      softWrap: softWrap,
+      strutStyle: strutStyle,
+      textDirection: textDirection,
+      textHeightBehavior: textHeightBehavior,
+      textScaleFactor: textScaleFactor,
+      textWidthBasis: textWidthBasis,
+      style: style != null
+          ? TextStyle(
+              background: style?.background,
+              backgroundColor: style?.backgroundColor,
+              color: style?.color,
+              debugLabel: style?.debugLabel,
+              decoration: style?.decoration,
+              decorationColor: style?.decorationColor,
+              decorationStyle: style?.decorationStyle,
+              decorationThickness: style?.decorationThickness,
+              fontFamily: style?.fontFamily,
+              fontFamilyFallback: style?.fontFamilyFallback,
+              fontFeatures: style?.fontFeatures,
+              fontSize: style?.fontSize,
+              fontStyle: style?.fontStyle,
+              fontWeight: style?.fontWeight,
+              foreground: style?.foreground,
+              height: style?.height,
+              inherit: style?.inherit,
+              letterSpacing: style?.letterSpacing,
+              locale: style?.locale,
+              shadows: style?.shadows,
+              textBaseline: style?.textBaseline,
+              wordSpacing: style?.wordSpacing)
+          : null);
+
   Text _fontSizedText(
       {Key key, @required Text child, @required double scaleFactor}) {
     return Text(

@@ -52,6 +52,11 @@ extension StringExtension on String {
         this,
         key: key,
       );
+  Text centeredText({Key key}) => Text(
+        this,
+        textAlign: TextAlign.center,
+        key: key,
+      );
 }
 
 /// Extension Methods & Widgets for the numbers

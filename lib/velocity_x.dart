@@ -7,6 +7,7 @@ export 'src/flutter/common/ensure_visible.dart';
 export 'src/flutter/common/two_tile.dart';
 export 'src/flutter/common/velocity_zero.dart';
 export 'src/flutter/container.dart';
+export 'src/flutter/flex.dart';
 export 'src/flutter/gesture.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';

@@ -310,6 +310,42 @@ extension WidgetsExtension on Widget {
         child: this,
       );
 
+  Widget boxBorder({Key key, @required double width, @required Color color}) =>
+      DecoratedBox(
+        key: key,
+        decoration:
+            BoxDecoration(border: Border.all(color: color, width: width)),
+        child: this,
+      );
+
+  Widget objectCover({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.cover,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectContain({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.contain,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectFill({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.fill,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectScaleDown({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.scaleDown,
+        child: this,
+        alignment: Alignment.center,
+      );
+
   Widget bgWhite({Key key}) =>
       _coloredWidget(key: key, child: this, color: VelocityX.white);
   Widget bgBlack({Key key}) =>
