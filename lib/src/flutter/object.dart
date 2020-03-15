@@ -14,8 +14,43 @@
 
 import 'package:flutter/material.dart';
 
-extension AlignExtensions on Widget {
-  Align alignAtTopLeft({
+extension ObjectExtensions on Widget {
+  Widget objectCover({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.cover,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectContain({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.contain,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectFill({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.fill,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectScaleDown({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.scaleDown,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Widget objectNone({Key key}) => FittedBox(
+        key: key,
+        fit: BoxFit.none,
+        child: this,
+        alignment: Alignment.center,
+      );
+
+  Align objectTopLeft({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -27,7 +62,7 @@ extension AlignExtensions on Widget {
         heightFactor: heightFactor,
         widthFactor: widthFactor,
       );
-  Align alignAtTopCenter({
+  Align objectTopCenter({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -40,7 +75,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtTopRight({
+  Align objectTopRight({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -53,7 +88,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtBottomLeft({
+  Align objectBottomLeft({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -66,7 +101,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtBottomCenter({
+  Align objectBottomCenter({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -79,7 +114,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtBottomRight({
+  Align objectBottomRight({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -92,7 +127,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtCenterLeft({
+  Align objectCenterLeft({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -105,7 +140,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtCenter({
+  Align objectCenter({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -118,7 +153,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtCenterRight({
+  Align objectCenterRight({
     Key key,
     double heightFactor,
     double widthFactor,
@@ -131,7 +166,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignAtLERP(
+  Align objectLERP(
     Alignment a,
     Alignment b,
     double t, {
@@ -147,7 +182,7 @@ extension AlignExtensions on Widget {
         widthFactor: widthFactor,
       );
 
-  Align alignXY(
+  Align objectXY(
     double x,
     double y, {
     Key key,
