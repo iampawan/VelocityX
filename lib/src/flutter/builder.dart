@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 abstract class VelocityXWidgetBuilder<T extends Widget> {
   T build();
@@ -8,36 +9,22 @@ abstract class VelocityXWidgetContextBuilder<T extends Widget> {
   T build(BuildContext context);
 }
 
-class TextBuilder extends VelocityXWidgetBuilder<Text> {
-  TextBuilder(this._text);
+mixin ColorMixin<T> {
+  T _coloredChild;
+  Color _theColor;
 
-  String _text;
-  Color _color;
-  String _fontFamily;
-
-  TextBuilder text(String text) {
-    _text = text;
-    return this;
+  void setColor(Color color) {
+    _theColor = color;
   }
 
-  TextBuilder color(Color color) {
-    _color = color;
-    return this;
+  void setColoredChild(Color color) {
+    _theColor = color;
   }
 
-  TextBuilder fontFamily(String family) {
-    _fontFamily = family;
-    return this;
-  }
+  T get red900 => _coloredText(child: _coloredChild, color: VelocityX.red900);
 
-  @override
-  Text build() {
-    return Text(
-      _text,
-      style: TextStyle(
-        color: _color,
-        fontFamily: _fontFamily,
-      ),
-    );
+  T _coloredText({@required String color, @required T child}) {
+    _theColor = VelocityX.hexToColor(color);
+    return child;
   }
 }

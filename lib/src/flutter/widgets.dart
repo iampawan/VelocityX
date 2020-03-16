@@ -37,16 +37,12 @@ extension WidgetsExtension on Widget {
       );
 
   ///Hide a widget
-  Widget hide({Key key, bool isVisible = false}) => Visibility(
+  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) =>
+      Visibility(
         child: this,
         visible: isVisible,
-      );
-
-  Widget hideButOccupy({Key key, bool isVisible = false}) => Visibility(
-        child: this,
-        visible: isVisible,
-        maintainAnimation: true,
-        maintainState: true,
-        maintainSize: true,
+        maintainSize: maintainSize,
+        maintainAnimation: maintainSize,
+        maintainState: maintainSize,
       );
 }

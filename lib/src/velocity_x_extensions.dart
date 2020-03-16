@@ -12,8 +12,9 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
+
+import 'flutter/text.dart';
 
 class VelocityXExtensions {}
 
@@ -48,7 +49,7 @@ extension StringExtension on String {
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
   bool get isNotBlank => this != null && trim().isNotEmpty;
 
-  TextBuilder get text => TextBuilder(this);
+  VelocityXTextBuilder get text => VelocityXTextBuilder(this);
 
   ///Widgets
   // Text text({Key key}) => Text(

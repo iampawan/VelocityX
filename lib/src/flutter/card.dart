@@ -23,6 +23,11 @@ class _CardBuilder extends VelocityXWidgetBuilder<Widget> {
   Color _shadowColor;
   double _elevation = 1.0;
   ShapeBorder _shape;
+
+  _CardBuilder color(Color val) => this.._cardColor = val;
+
+  _CardBuilder elevation(double val) => this.._elevation = val;
+
   _CardBuilder get circular => this.._shape = const CircleBorder();
   _CardBuilder get zeroCircular => this
     .._shape = const CircleBorder()

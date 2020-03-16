@@ -15,83 +15,89 @@
 import 'package:flutter/material.dart';
 
 extension TransformExtension on Widget {
-  Widget rotate0({Key key}) => Transform.rotate(
+  Widget get perspective => Transform(
+        transform: Matrix4.identity()..setEntry(3, 2, 0.001),
+        child: this,
+      );
+
+  Widget get rotate0 => Transform.rotate(
         angle: 0,
         child: this,
       );
-  Widget rotate45({Key key}) => Transform.rotate(
+
+  Widget get rotate45 => Transform.rotate(
         angle: 45,
         child: this,
       );
 
-  Widget rotate90({Key key}) => Transform.rotate(
+  Widget get rotate90 => Transform.rotate(
         angle: 90,
         child: this,
       );
 
-  Widget rotate180({Key key}) => Transform.rotate(
+  Widget get rotate180 => Transform.rotate(
         angle: 180,
         child: this,
       );
-  Widget rotateN180({Key key}) => Transform.rotate(
+  Widget get rotateN180 => Transform.rotate(
         angle: -180,
         child: this,
       );
-  Widget rotateN90({Key key}) => Transform.rotate(
+  Widget get rotateN90 => Transform.rotate(
         angle: -90,
         child: this,
       );
 
-  Widget rotateN45({Key key}) => Transform.rotate(
+  Widget get rotateN45 => Transform.rotate(
         angle: -45,
         child: this,
       );
 
-  Widget scale0({Key key}) => Transform.scale(
+  Widget get scale0 => Transform.scale(
         scale: 0,
         child: this,
       );
 
-  Widget scale50({Key key}) => Transform.scale(
+  Widget get scale50 => Transform.scale(
         scale: 0.5,
         child: this,
       );
 
-  Widget scale75({Key key}) => Transform.scale(
+  Widget get scale75 => Transform.scale(
         scale: 0.75,
         child: this,
       );
 
-  Widget scale90({Key key}) => Transform.scale(
+  Widget get scale90 => Transform.scale(
         scale: 0.9,
         child: this,
       );
 
-  Widget scale95({Key key}) => Transform.scale(
+  Widget get scale95 => Transform.scale(
         scale: 0.95,
         child: this,
       );
 
-  Widget scale100({Key key}) => Transform.scale(
+  Widget get scale100 => Transform.scale(
         scale: 1,
         child: this,
       );
-  Widget scale105({Key key}) => Transform.scale(
+  Widget get scale105 => Transform.scale(
         scale: 1.05,
         child: this,
       );
 
-  Widget scale110({Key key}) => Transform.scale(
+  Widget get scale110 => Transform.scale(
         scale: 1.1,
         child: this,
       );
 
-  Widget scale150({Key key}) => Transform.scale(
+  Widget get scale150 => Transform.scale(
         scale: 1.5,
         child: this,
       );
 
-  Widget scale200({Key key}) => Transform.scale(
+  Widget get scale200 => Transform.scale(
         scale: 2.0,
         child: this,
       );

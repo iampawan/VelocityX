@@ -26,7 +26,44 @@ class _ContainerBuilder extends VelocityXWidgetBuilder<Widget> {
   List<BoxShadow> _boxShadow;
   BoxBorder _border;
   Gradient _gradient;
+  double _height;
+  double _width;
+  EdgeInsetsGeometry _padding;
+  EdgeInsetsGeometry _margin;
+  AlignmentGeometry _alignment;
+  Matrix4 _transform;
 
+  _ContainerBuilder height(double val) => this.._height = val;
+  _ContainerBuilder width(double val) => this.._width = val;
+
+  /// Alignment
+  _ContainerBuilder alignment(Alignment val) => this.._alignment = val;
+  _ContainerBuilder get alignTopCenter =>
+      this.._alignment = Alignment.topCenter;
+
+  _ContainerBuilder get alignTopLeft => this.._alignment = Alignment.topLeft;
+
+  _ContainerBuilder get alignTopRight => this.._alignment = Alignment.topRight;
+
+  _ContainerBuilder get alignCenter => this.._alignment = Alignment.center;
+  _ContainerBuilder get alignCenterLeft =>
+      this.._alignment = Alignment.centerLeft;
+  _ContainerBuilder get alignCenterRight =>
+      this.._alignment = Alignment.centerRight;
+
+  _ContainerBuilder get alignBottomCenter =>
+      this.._alignment = Alignment.bottomCenter;
+
+  _ContainerBuilder get alignBottomLeft =>
+      this.._alignment = Alignment.bottomLeft;
+
+  _ContainerBuilder get alignBottomRight =>
+      this.._alignment = Alignment.bottomRight;
+
+  // transforming
+  _ContainerBuilder transform(Matrix4 val) => this.._transform = val;
+
+  /// Rounding
   _ContainerBuilder get roundedNone => this.._roundedValue = 0.0;
 
   _ContainerBuilder get roundedSM => this.._roundedValue = 7.5;
@@ -40,6 +77,7 @@ class _ContainerBuilder extends VelocityXWidgetBuilder<Widget> {
 
   _ContainerBuilder get roundedFull => this.._isCircleRounded = true;
 
+  /// Shadowing
   _ContainerBuilder get shadow {
     _boxShadow = [
       const BoxShadow(
@@ -169,6 +207,7 @@ class _ContainerBuilder extends VelocityXWidgetBuilder<Widget> {
     return this;
   }
 
+  /// Bordering
   _ContainerBuilder border(
       {Color color = Colors.black,
       double width = 1.0,
@@ -177,6 +216,7 @@ class _ContainerBuilder extends VelocityXWidgetBuilder<Widget> {
     return this;
   }
 
+  ///Gradienting
   _ContainerBuilder linearGradient(List<Color> colors) =>
       this.._gradient = LinearGradient(colors: colors);
 
@@ -186,6 +226,7 @@ class _ContainerBuilder extends VelocityXWidgetBuilder<Widget> {
   _ContainerBuilder sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
 
+  ///Colors
   _ContainerBuilder get bgWhite =>
       _coloredWidget(child: this, color: VelocityX.white);
   _ContainerBuilder get bgBlack =>
@@ -392,6 +433,12 @@ class _ContainerBuilder extends VelocityXWidgetBuilder<Widget> {
   @override
   Widget build() {
     return Container(
+      height: _height,
+      width: _width,
+      padding: _padding,
+      margin: _margin,
+      alignment: _alignment,
+      transform: _transform,
       child: _child,
       decoration: BoxDecoration(
           color: _bgColor,
