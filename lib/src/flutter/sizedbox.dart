@@ -13,464 +13,413 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/velocity_x_extensions.dart';
+
+class SizedBoxBuilder extends VelocityXWidgetContextBuilder<Widget> {
+  final Widget _child;
+
+  double _widthFactor;
+  double _heightFactor;
+
+  SizedBoxBuilder(this._child);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: _child,
+      width:
+          _widthFactor.isNotNull ? context.percentWidth * _widthFactor : null,
+      height: _heightFactor.isNotNull
+          ? context.percentHeight * _heightFactor
+          : null,
+    );
+  }
+}
 
 extension SizedBoxExtension on Widget {
   ///All available widths
-  Widget w({Key key, @required double width}) => SizedBox(
-        key: key,
+  Widget w(double width) => SizedBox(
         width: width,
         child: this,
       );
-  Widget w0({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w0(BuildContext context) => SizedBox(
         width: context.percentWidth * 0,
         child: this,
       );
 
-  Widget w1({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w1(BuildContext context) => SizedBox(
         width: context.percentWidth * 1,
         child: this,
       );
 
-  Widget w2({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w2(BuildContext context) => SizedBox(
         width: context.percentWidth * 2,
         child: this,
       );
 
-  Widget w4({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w4(BuildContext context) => SizedBox(
         width: context.percentWidth * 4,
         child: this,
       );
 
-  Widget w8({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w8(BuildContext context) => SizedBox(
         width: context.percentWidth * 8,
         child: this,
       );
 
-  Widget w10({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w10(BuildContext context) => SizedBox(
         width: context.percentWidth * 10,
         child: this,
       );
 
-  Widget w15({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w15(BuildContext context) => SizedBox(
         width: context.percentWidth * 15,
         child: this,
       );
 
-  Widget w16({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w16(BuildContext context) => SizedBox(
         width: context.percentWidth * 16,
         child: this,
       );
 
-  Widget w20({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w20(BuildContext context) => SizedBox(
         width: context.percentWidth * 20,
         child: this,
       );
 
-  Widget w24({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w24(BuildContext context) => SizedBox(
         width: context.percentWidth * 24,
         child: this,
       );
 
-  Widget w32({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w32(BuildContext context) => SizedBox(
         width: context.percentWidth * 32,
         child: this,
       );
 
-  Widget w40({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w40(BuildContext context) => SizedBox(
         width: context.percentWidth * 40,
         child: this,
       );
 
-  Widget w48({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w48(BuildContext context) => SizedBox(
         width: context.percentWidth * 48,
         child: this,
       );
 
-  Widget w56({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w56(BuildContext context) => SizedBox(
         width: context.percentWidth * 56,
         child: this,
       );
 
-  Widget w60({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w60(BuildContext context) => SizedBox(
         width: context.percentWidth * 60,
         child: this,
       );
 
-  Widget w64({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget w64(BuildContext context) => SizedBox(
         width: context.percentWidth * 64,
         child: this,
       );
 
-  Widget wHalf({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wHalf(BuildContext context) => SizedBox(
         width: context.percentWidth * 50,
         child: this,
       );
 
-  Widget wOneThird({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wOneThird(BuildContext context) => SizedBox(
         width: context.percentWidth * 33.333333,
         child: this,
       );
 
-  Widget wTwoThird({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wTwoThird(BuildContext context) => SizedBox(
         width: context.percentWidth * 66.666667,
         child: this,
       );
 
-  Widget wOneForth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wOneForth(BuildContext context) => SizedBox(
         width: context.percentWidth * 25,
         child: this,
       );
 
-  Widget wThreeForth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wThreeForth(BuildContext context) => SizedBox(
         width: context.percentWidth * 75,
         child: this,
       );
 
-  Widget wFourFifth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wFourFifth(BuildContext context) => SizedBox(
         width: context.percentWidth * 80,
         child: this,
       );
 
-  Widget wFull({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wFull(BuildContext context) => SizedBox(
         width: context.screenWidth,
         child: this,
       );
 
   ///All available heights
 
-  Widget h({Key key, @required double height}) => SizedBox(
-        key: key,
+  Widget h(double height) => SizedBox(
         height: height,
         child: this,
       );
 
-  Widget h0({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h0(BuildContext context) => SizedBox(
         height: context.percentHeight * 0,
         child: this,
       );
 
-  Widget h1({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h1(BuildContext context) => SizedBox(
         height: context.percentHeight * 1,
         child: this,
       );
 
-  Widget h2({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h2(BuildContext context) => SizedBox(
         height: context.percentHeight * 2,
         child: this,
       );
 
-  Widget h4({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h4(BuildContext context) => SizedBox(
         height: context.percentHeight * 4,
         child: this,
       );
 
-  Widget h8({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h8(BuildContext context) => SizedBox(
         height: context.percentHeight * 8,
         child: this,
       );
 
-  Widget h10({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h10(BuildContext context) => SizedBox(
         height: context.percentHeight * 10,
         child: this,
       );
 
-  Widget h15({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h15(BuildContext context) => SizedBox(
         height: context.percentHeight * 15,
         child: this,
       );
 
-  Widget h16({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h16(BuildContext context) => SizedBox(
         height: context.percentHeight * 16,
         child: this,
       );
 
-  Widget h20({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h20(BuildContext context) => SizedBox(
         height: context.percentHeight * 20,
         child: this,
       );
 
-  Widget h24({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h24(BuildContext context) => SizedBox(
         height: context.percentHeight * 24,
         child: this,
       );
 
-  Widget h32({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h32(BuildContext context) => SizedBox(
         height: context.percentHeight * 32,
         child: this,
       );
 
-  Widget h40({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h40(BuildContext context) => SizedBox(
         height: context.percentHeight * 40,
         child: this,
       );
 
-  Widget h48({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h48(BuildContext context) => SizedBox(
         height: context.percentHeight * 48,
         child: this,
       );
 
-  Widget h56({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h56(BuildContext context) => SizedBox(
         height: context.percentHeight * 56,
         child: this,
       );
 
-  Widget h60({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h60(BuildContext context) => SizedBox(
         height: context.percentHeight * 60,
         child: this,
       );
 
-  Widget h64({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget h64(BuildContext context) => SizedBox(
         height: context.percentHeight * 64,
         child: this,
       );
 
-  Widget hHalf({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hHalf(BuildContext context) => SizedBox(
         height: context.percentHeight * 50,
         child: this,
       );
 
-  Widget hOneThird({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hOneThird(BuildContext context) => SizedBox(
         height: context.percentHeight * 33.333333,
         child: this,
       );
 
-  Widget hThoThird({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hThoThird(BuildContext context) => SizedBox(
         height: context.percentHeight * 66.666667,
         child: this,
       );
 
-  Widget hOneForth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hOneForth(BuildContext context) => SizedBox(
         height: context.percentHeight * 25,
         child: this,
       );
 
-  Widget hThreeForth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hThreeForth(BuildContext context) => SizedBox(
         height: context.percentHeight * 75,
         child: this,
       );
 
-  Widget hFourFifth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hFourFifth(BuildContext context) => SizedBox(
         height: context.percentHeight * 80,
         child: this,
       );
 
-  Widget hFull({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget hFull(BuildContext context) => SizedBox(
         height: context.screenHeight,
         child: this,
       );
 
   /// All Size Width - Height
-  Widget wh({Key key, @required double width, @required double height}) =>
-      SizedBox(
-        key: key,
+  Widget wh(double width, double height) => SizedBox(
         width: width,
         height: height,
         child: this,
       );
 
-  Widget wh0({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh0(BuildContext context) => SizedBox(
         width: context.percentWidth * 0,
         height: context.percentHeight * 0,
         child: this,
       );
 
-  Widget wh1({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh1(BuildContext context) => SizedBox(
         width: context.percentWidth * 1,
         height: context.percentHeight * 1,
         child: this,
       );
 
-  Widget wh2({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh2(BuildContext context) => SizedBox(
         width: context.percentWidth * 2,
         height: context.percentHeight * 2,
         child: this,
       );
 
-  Widget wh4({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh4(BuildContext context) => SizedBox(
         width: context.percentWidth * 4,
         height: context.percentHeight * 4,
         child: this,
       );
 
-  Widget wh8({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh8(BuildContext context) => SizedBox(
         width: context.percentWidth * 8,
         height: context.percentHeight * 8,
         child: this,
       );
 
-  Widget wh10({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh10(BuildContext context) => SizedBox(
         width: context.percentWidth * 10,
         height: context.percentHeight * 10,
         child: this,
       );
 
-  Widget wh15({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh15(BuildContext context) => SizedBox(
         width: context.percentWidth * 15,
         height: context.percentHeight * 15,
         child: this,
       );
 
-  Widget wh16({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh16(BuildContext context) => SizedBox(
         width: context.percentWidth * 16,
         height: context.percentHeight * 16,
         child: this,
       );
 
-  Widget wh20({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh20(BuildContext context) => SizedBox(
         width: context.percentWidth * 20,
         height: context.percentHeight * 20,
         child: this,
       );
 
-  Widget wh24({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh24(BuildContext context) => SizedBox(
         width: context.percentWidth * 24,
         height: context.percentHeight * 24,
         child: this,
       );
 
-  Widget wh32({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh32(BuildContext context) => SizedBox(
         width: context.percentWidth * 32,
         height: context.percentHeight * 32,
         child: this,
       );
 
-  Widget wh40({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh40(BuildContext context) => SizedBox(
         width: context.percentWidth * 40,
         height: context.percentHeight * 40,
         child: this,
       );
 
-  Widget wh48({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh48(BuildContext context) => SizedBox(
         width: context.percentWidth * 48,
         height: context.percentHeight * 48,
         child: this,
       );
 
-  Widget wh56({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh56(BuildContext context) => SizedBox(
         width: context.percentWidth * 56,
         height: context.percentHeight * 56,
         child: this,
       );
 
-  Widget wh60({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh60(BuildContext context) => SizedBox(
         width: context.percentWidth * 60,
         height: context.percentHeight * 60,
         child: this,
       );
 
-  Widget wh64({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget wh64(BuildContext context) => SizedBox(
         width: context.percentWidth * 64,
         height: context.percentHeight * 64,
         child: this,
       );
 
-  Widget whHalf({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whHalf(BuildContext context) => SizedBox(
         width: context.percentWidth * 50,
         height: context.percentHeight * 50,
         child: this,
       );
 
-  Widget whOneThird({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whOneThird(BuildContext context) => SizedBox(
         width: context.percentWidth * 33.333333,
         height: context.percentHeight * 33.333333,
         child: this,
       );
 
-  Widget whThoThird({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whThoThird(BuildContext context) => SizedBox(
         width: context.percentWidth * 66.666667,
         height: context.percentHeight * 66.666667,
         child: this,
       );
 
-  Widget whOneForth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whOneForth(BuildContext context) => SizedBox(
         width: context.percentWidth * 25,
         height: context.percentHeight * 25,
         child: this,
       );
 
-  Widget whThreeForth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whThreeForth(BuildContext context) => SizedBox(
         width: context.percentWidth * 75,
         height: context.percentHeight * 75,
         child: this,
       );
 
-  Widget whFourFifth({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whFourFifth(BuildContext context) => SizedBox(
         width: context.percentWidth * 80,
         height: context.percentHeight * 80,
         child: this,
       );
 
-  Widget whFull({Key key, @required BuildContext context}) => SizedBox(
-        key: key,
+  Widget whFull(BuildContext context) => SizedBox(
         width: context.screenWidth,
         height: context.screenHeight,
         child: this,

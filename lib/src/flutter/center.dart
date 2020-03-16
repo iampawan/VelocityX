@@ -13,12 +13,33 @@
  */
 
 import 'package:flutter/material.dart';
+import 'builder.dart';
 
 /// Should be the last operation
+
 extension CenterExtension on Widget {
-  Center centered() {
-    return Center(
-      child: this,
+  Widget get center => Center(child: this);
+
+  // _MyPaddingCallable get padding => _MyPaddingCallable(build());
+}
+
+extension CenterBuilderExtension on VelocityXWidgetBuilder<Widget> {
+  Widget get center => Center(child: build());
+}
+
+// extension on Widget {}
+
+class _MyPaddingCallable {
+  _MyPaddingCallable(this.child);
+
+  final Widget child;
+
+  Padding call(EdgeInsets edgeInsets) {
+    return Padding(
+      padding: edgeInsets,
+      child: child,
     );
   }
+
+  Padding get all16 => Padding(padding: const EdgeInsets.all(16), child: child);
 }

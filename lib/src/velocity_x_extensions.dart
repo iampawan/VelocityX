@@ -12,6 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
 
 class VelocityXExtensions {}
@@ -47,16 +48,18 @@ extension StringExtension on String {
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
   bool get isNotBlank => this != null && trim().isNotEmpty;
 
+  TextBuilder get text => TextBuilder(this);
+
   ///Widgets
-  Text text({Key key}) => Text(
-        this,
-        key: key,
-      );
-  Text centeredText({Key key}) => Text(
-        this,
-        textAlign: TextAlign.center,
-        key: key,
-      );
+  // Text text({Key key}) => Text(
+  //       this,
+  //       key: key,
+  //     );
+  // Text centeredText({Key key}) => Text(
+  //       this,
+  //       textAlign: TextAlign.center,
+  //       key: key,
+  //     );
 }
 
 /// Extension Methods & Widgets for the numbers
@@ -65,6 +68,7 @@ extension NumExtension on num {
       toStringAsFixed(truncateToDouble() == this ? 0 : digit);
 
   bool get isNull => this == null;
+  bool get isNotNull => this != null;
 
   /// Returns number of digits in this number
   int get numberOfDigits => toString().length;
@@ -82,12 +86,10 @@ extension NumExtension on num {
   bool get isNegative => this < 0;
 
   ///Widgets
-  Widget wBox({Key key}) => SizedBox(
-        key: key,
+  Widget get wBox => SizedBox(
         width: toDouble(),
       );
-  Widget hBox({Key key}) => SizedBox(
-        key: key,
+  Widget get hBox => SizedBox(
         height: toDouble(),
       );
 }

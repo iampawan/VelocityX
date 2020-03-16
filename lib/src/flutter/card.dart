@@ -14,35 +14,35 @@
 
 import 'package:flutter/material.dart';
 
+import 'builder.dart';
+
+class _CardBuilder extends VelocityXWidgetBuilder<Widget> {
+  _CardBuilder(this._child);
+  final Widget _child;
+  Color _cardColor;
+  Color _shadowColor;
+  double _elevation = 1.0;
+  ShapeBorder _shape;
+  _CardBuilder get circular => this.._shape = const CircleBorder();
+  _CardBuilder get zeroCircular => this
+    .._shape = const CircleBorder()
+    .._elevation = 0.0;
+
+  _CardBuilder get zero => this.._elevation = 0.0;
+
+  @override
+  Widget build() {
+    return Card(
+      child: _child,
+      color: _cardColor ?? ThemeData().cardColor,
+      clipBehavior: Clip.antiAlias,
+      elevation: _elevation,
+      shape: _shape,
+      shadowColor: _shadowColor,
+    );
+  }
+}
+
 extension CardExtension on Widget {
-  Widget card({Key key, Color color, double elevation}) => Card(
-        child: this,
-        color: color ?? ThemeData().cardColor,
-        clipBehavior: Clip.antiAlias,
-        elevation: elevation ?? 1.0,
-      );
-
-  Widget circularCard({Key key, Color color, double elevation}) => Card(
-        child: this,
-        shape: const CircleBorder(),
-        color: color ?? ThemeData().cardColor,
-        clipBehavior: Clip.antiAlias,
-        elevation: elevation ?? 1.0,
-      );
-
-  Widget circularCardZero({Key key, Color color}) => Card(
-        child: this,
-        shape: const CircleBorder(),
-        color: color ?? ThemeData().cardColor,
-        clipBehavior: Clip.antiAlias,
-        elevation: 0.0,
-      );
-
-  ///Card with no elevation
-  Widget cardZero({Key key, Color color}) => Card(
-        child: this,
-        color: color ?? ThemeData().cardColor,
-        clipBehavior: Clip.antiAlias,
-        elevation: 0.0,
-      );
+  _CardBuilder get card => _CardBuilder(this);
 }

@@ -16,28 +16,29 @@ import 'package:flutter/material.dart';
 
 extension OpacityExtension on Widget {
   Widget opacity({Key key, @required double value}) => Opacity(
+        key: key,
         opacity: value,
         child: this,
       );
 
-  Widget opacity0({Key key}) => Opacity(
+  Widget get opacity0 => Opacity(
         opacity: 0.0,
         child: this,
       );
 
-  Widget opacity25({Key key}) => Opacity(
+  Widget get opacity25 => Opacity(
         opacity: 0.25,
         child: this,
       );
-  Widget opacity50({Key key}) => Opacity(
+  Widget get opacity50 => Opacity(
         opacity: 0.5,
         child: this,
       );
-  Widget opacity75({Key key}) => Opacity(
+  Widget get opacity75 => Opacity(
         opacity: 0.75,
         child: this,
       );
-  Widget opacity100({Key key}) => Opacity(
+  Widget get opacity100 => Opacity(
         opacity: 1.0,
         child: this,
       );

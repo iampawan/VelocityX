@@ -52,7 +52,7 @@ class VelocityTwo extends StatelessWidget {
         title,
         style: TextStyle(fontSize: titleFontSize, color: titleColor),
       ),
-      if (isHorizontal) 8.wBox() else 8.hBox(),
+      if (isHorizontal) 8.wBox else 8.hBox,
       Text.rich(
         TextSpan(
           text: subtitle,
@@ -103,7 +103,7 @@ class VelocityTwoColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         top,
-        10.hBox(),
+        10.hBox,
         bottom,
       ],
     );
@@ -124,7 +124,7 @@ class VelocityTwoRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         left,
-        10.wBox(),
+        10.wBox,
         right,
       ],
     );
@@ -146,11 +146,11 @@ class VelocityTwoIconColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         top,
-        10.hBox(),
+        10.hBox,
         Row(
           children: <Widget>[
             icon,
-            10.wBox(),
+            10.wBox,
             bottom,
           ],
         ),

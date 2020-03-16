@@ -1,19 +1,17 @@
 library velocity_x;
 
+export 'src/flutter/builder.dart';
 export 'src/flutter/card.dart';
 export 'src/flutter/center.dart';
 export 'src/flutter/common/ensure_visible.dart';
-export 'src/flutter/common/two_tile.dart';
+export 'src/flutter/common/velocity_two.dart';
 export 'src/flutter/common/velocity_zero.dart';
 export 'src/flutter/container.dart';
 export 'src/flutter/flex.dart';
 export 'src/flutter/gesture.dart';
-export 'src/flutter/gradient.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';
-export 'src/flutter/round.dart';
-export 'src/flutter/shadow.dart';
 export 'src/flutter/sizedbox.dart';
 export 'src/flutter/text.dart';
 export 'src/flutter/transform.dart';
