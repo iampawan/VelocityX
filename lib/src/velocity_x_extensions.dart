@@ -13,6 +13,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'flutter/text.dart';
 
@@ -83,6 +84,11 @@ extension NumExtension on num {
   Widget get hBox => SizedBox(
         height: toDouble(),
       );
+}
+
+extension ListExtension on List {
+  Widget get vStack => VStack(this);
+  Widget get hStack => HStack(this);
 }
 
 extension ContextExtensions on BuildContext {

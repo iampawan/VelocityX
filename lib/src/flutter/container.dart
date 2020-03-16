@@ -48,6 +48,11 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   _VelocityXContainerBuilder margin(EdgeInsetsGeometry val) =>
       this.._margin = val;
 
+  _VelocityXContainerBuilder color(Color color) => this..velocityColor = color;
+
+  _VelocityXContainerBuilder hexColor(String colorHex) =>
+      this..velocityColor = VelocityX.hexToColor(colorHex);
+
   /// Alignment
   _VelocityXContainerBuilder alignment(Alignment val) => this.._alignment = val;
   _VelocityXContainerBuilder get alignTopCenter =>

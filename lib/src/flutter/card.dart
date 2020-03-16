@@ -13,6 +13,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
 
@@ -31,6 +32,9 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
   ShapeBorder _shape;
 
   _VelocityXCardBuilder color(Color val) => this..velocityColor = val;
+
+  _VelocityXCardBuilder hexColor(String colorHex) =>
+      this..velocityColor = VelocityX.hexToColor(colorHex);
 
   _VelocityXCardBuilder elevation(double val) => this.._elevation = val;
 

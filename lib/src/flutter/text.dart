@@ -46,6 +46,9 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     return this;
   }
 
+  VelocityXTextBuilder hexColor(String colorHex) =>
+      this..velocityColor = VelocityX.hexToColor(colorHex);
+
   VelocityXTextBuilder maxLines(int lines) {
     _maxLines = lines;
     return this;
