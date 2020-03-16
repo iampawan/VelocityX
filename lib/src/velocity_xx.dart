@@ -289,6 +289,13 @@ mixin VelocityX {
   static const mV64 = EdgeInsets.symmetric(vertical: dp24);
   static const mH64 = EdgeInsets.symmetric(horizontal: dp32);
 
+  static ShapeBorder roundedSm =
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5));
+  static ShapeBorder rounded =
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15));
+  static ShapeBorder roundedLg =
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(30));
+
   /// Get color from the hex value
   static Color hexToColor(String code) {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);

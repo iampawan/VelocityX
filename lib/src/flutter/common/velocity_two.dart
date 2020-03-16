@@ -28,6 +28,7 @@ class VelocityTwo extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
+  final int maxLinesSubtitle;
 
   const VelocityTwo({
     Key key,
@@ -44,6 +45,7 @@ class VelocityTwo extends StatelessWidget {
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.min,
+    this.maxLinesSubtitle = 1,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class VelocityTwo extends StatelessWidget {
             subtitle3 ?? const TextSpan(),
           ],
         ),
-        maxLines: 1,
+        maxLines: maxLinesSubtitle,
         textAlign: TextAlign.justify,
         softWrap: true,
         style: TextStyle(
