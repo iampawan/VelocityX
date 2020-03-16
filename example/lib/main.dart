@@ -13,17 +13,10 @@ class Demo extends StatelessWidget {
         child: Column(
       children: <Widget>[
         20.hBox,
-        "hello world"
-            .text
-            .bold
-            .xl
-            .build()
-            .p16
-            .card
-            .blue500
-            .elevation(5)
-            .build()
-            .p32,
+        const Text(
+          "hello world",
+          style: TextStyle(color: Colors.white),
+        ).text.bold.xl.build().p16.card.blue500.elevation(5).build().p32,
         20.hBox,
         "hello world"
             .text
