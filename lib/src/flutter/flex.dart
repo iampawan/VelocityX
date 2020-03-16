@@ -70,3 +70,29 @@ class VelocityXInlineBlock extends Flex {
           textBaseline: textBaseline,
         );
 }
+
+class VStack extends StatelessWidget {
+  final List<Widget> children;
+  const VStack(this.children);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: children,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+    );
+  }
+}
+
+class HStack extends StatelessWidget {
+  final List<Widget> children;
+  const HStack(this.children);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: children,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+    );
+  }
+}
