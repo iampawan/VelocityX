@@ -84,6 +84,11 @@ extension NumExtension on num {
   Widget get hBox => SizedBox(
         height: toDouble(),
       );
+
+  Widget get whBox => SizedBox(
+        height: toDouble(),
+        width: toDouble(),
+      );
 }
 
 extension ListExtension on List {
