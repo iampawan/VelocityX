@@ -96,3 +96,26 @@ class HStack extends StatelessWidget {
     );
   }
 }
+
+class ZStack extends StatelessWidget {
+  final List<Widget> children;
+  const ZStack(this.children);
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: children,
+    );
+  }
+}
+
+class ZStackExpanded extends StatelessWidget {
+  final List<Widget> children;
+  const ZStackExpanded(this.children);
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: children,
+      fit: StackFit.expand,
+    );
+  }
+}

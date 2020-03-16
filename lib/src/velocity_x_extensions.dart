@@ -89,6 +89,8 @@ extension NumExtension on num {
 extension ListExtension on List {
   Widget get vStack => VStack(this);
   Widget get hStack => HStack(this);
+  Widget get zStack => ZStack(this);
+  Widget get zStackExpanded => ZStackExpanded(this);
 }
 
 extension ContextExtensions on BuildContext {
