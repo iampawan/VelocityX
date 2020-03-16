@@ -20,10 +20,10 @@ class _VelocityXGestureBuilder extends VelocityXWidgetBuilder<Widget> {
   _VelocityXGestureBuilder(this._child, this._onClick)
       : assert(_onClick != null);
   _VelocityXGestureBuilder.doubleClick(this._child, this._onDoubleClick)
-      : assert(_onClick != null),
+      : assert(_child != null),
         assert(_onDoubleClick != null);
   _VelocityXGestureBuilder.longClick(this._child, this._onLongClick)
-      : assert(_onClick != null),
+      : assert(_child != null),
         assert(_onLongClick != null);
 
   final Widget _child;
