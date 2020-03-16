@@ -25,20 +25,18 @@ class Demo extends StatelessWidget {
             .build()
             .p32,
         20.hBox,
-        "hello pk"
+        "hello world"
             .text
             .white
             .bold
             .xl
             .build()
-            .p32
             .box
+            .p16
             .roundedLg
             .linearGradient([Colors.indigo, Colors.purple])
             .shadow2xl
-            .alignCenter
             .build()
-            .whOneForth(context)
       ],
     ));
   }

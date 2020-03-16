@@ -17,9 +17,12 @@ import 'package:flutter/material.dart';
 import 'builder.dart';
 
 class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
-    with VelocityColorMixin<_VelocityXCardBuilder> {
+    with
+        VelocityColorMixin<_VelocityXCardBuilder>,
+        VelocityPaddingMixin<_VelocityXCardBuilder> {
   _VelocityXCardBuilder(this._child) {
     setChildToColor(this);
+    setChildToPad(this);
   }
   final Widget _child;
 
@@ -41,6 +44,7 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
   @override
   Widget build() {
     return Card(
+      margin: velocityPadding,
       child: _child,
       color: velocityColor ?? ThemeData().cardColor,
       clipBehavior: Clip.antiAlias,

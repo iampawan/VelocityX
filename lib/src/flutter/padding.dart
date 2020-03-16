@@ -15,7 +15,26 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
 
+import 'builder.dart';
+
+class _VelocityXPaddingBuilder extends VelocityXWidgetBuilder<Widget>
+    with VelocityPaddingMixin<_VelocityXPaddingBuilder> {
+  _VelocityXPaddingBuilder(this._child) {
+    setChildToPad(this);
+  }
+  final Widget _child;
+
+  @override
+  Widget build() {
+    return Padding(
+      child: _child,
+      padding: velocityPadding,
+    );
+  }
+}
+
 extension PaddingExtensions on Widget {
+  _VelocityXPaddingBuilder get pad => _VelocityXPaddingBuilder(this);
   Padding get p0 => Padding(
         padding: const EdgeInsets.all(VelocityX.dp0),
         child: this,

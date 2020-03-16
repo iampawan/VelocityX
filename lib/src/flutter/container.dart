@@ -17,9 +17,12 @@ import 'package:flutter/material.dart';
 import 'builder.dart';
 
 class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
-    with VelocityColorMixin<_VelocityXContainerBuilder> {
+    with
+        VelocityColorMixin<_VelocityXContainerBuilder>,
+        VelocityPaddingMixin<_VelocityXContainerBuilder> {
   _VelocityXContainerBuilder(this._child) {
     setChildToColor(this);
+    setChildToPad(this);
   }
 
   final Widget _child;
@@ -31,13 +34,19 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   Gradient _gradient;
   double _height;
   double _width;
-  EdgeInsetsGeometry _padding;
+
   EdgeInsetsGeometry _margin;
   AlignmentGeometry _alignment;
   Matrix4 _transform;
 
   _VelocityXContainerBuilder height(double val) => this.._height = val;
   _VelocityXContainerBuilder width(double val) => this.._width = val;
+
+  _VelocityXContainerBuilder padding(EdgeInsetsGeometry val) =>
+      this..velocityPadding = val;
+
+  _VelocityXContainerBuilder margin(EdgeInsetsGeometry val) =>
+      this.._margin = val;
 
   /// Alignment
   _VelocityXContainerBuilder alignment(Alignment val) => this.._alignment = val;
@@ -237,7 +246,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return Container(
       height: _height,
       width: _width,
-      padding: _padding,
+      padding: velocityPadding,
       margin: _margin,
       alignment: _alignment,
       transform: _transform,

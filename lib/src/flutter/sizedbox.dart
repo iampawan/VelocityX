@@ -13,11 +13,10 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/velocity_x_extensions.dart';
 
-// class _VelocityXSizedBoxBuilder extends VelocityXWidgetContextBuilder<Widget> {
-//   final Widget _child;
+// class _VelocityXSizedBoxBuilder extends VelocityXWidget getContextBuilder<Widget get> {
+//   final Widget get _child;
 
 //   double _widthFactor;
 //   double _heightFactor;
@@ -25,13 +24,13 @@ import 'package:velocity_x/src/velocity_x_extensions.dart';
 //   _VelocityXSizedBoxBuilder(this._child);
 
 //   @override
-//   Widget build(BuildContext context) {
+//   Widget get build {
 //     return SizedBox(
 //       child: _child,
 //       width:
-//           _widthFactor.isNotNull ? context.percentWidth * _widthFactor : null,
+//           _widthFactor.isNotNull ?  _widthFactor : null,
 //       height: _heightFactor.isNotNull
-//           ? context.percentHeight * _heightFactor
+//           ?  _heightFactor
 //           : null,
 //     );
 //   }

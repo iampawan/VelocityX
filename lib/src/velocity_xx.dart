@@ -253,6 +253,9 @@ mixin VelocityX {
   static Color pinkColor900 = hexToColor(pink900);
 
   /// All Fixed EdgeInsets
+  static EdgeInsets m0 = const EdgeInsets.all(dp0);
+  static EdgeInsets m1 = const EdgeInsets.all(dp1);
+  static EdgeInsets m2 = const EdgeInsets.all(dp2);
   static EdgeInsets m4 = const EdgeInsets.all(dp4);
   static EdgeInsets m8 = const EdgeInsets.all(dp8);
   static EdgeInsets m12 = const EdgeInsets.all(dp12);
@@ -260,8 +263,15 @@ mixin VelocityX {
   static EdgeInsets m20 = const EdgeInsets.all(dp20);
   static EdgeInsets m24 = const EdgeInsets.all(dp24);
   static EdgeInsets m32 = const EdgeInsets.all(dp32);
+  static EdgeInsets m64 = const EdgeInsets.all(dp64);
 
   /// Symmetric Fixed EdgeInsets
+  static const mV0 = EdgeInsets.symmetric(vertical: dp0);
+  static const mH0 = EdgeInsets.symmetric(horizontal: dp0);
+  static const mV1 = EdgeInsets.symmetric(vertical: dp1);
+  static const mH1 = EdgeInsets.symmetric(horizontal: dp1);
+  static const mV2 = EdgeInsets.symmetric(vertical: dp2);
+  static const mH2 = EdgeInsets.symmetric(horizontal: dp2);
   static const mV4 = EdgeInsets.symmetric(vertical: dp4);
   static const mH4 = EdgeInsets.symmetric(horizontal: dp4);
   static const mV8 = EdgeInsets.symmetric(vertical: dp8);
@@ -276,6 +286,8 @@ mixin VelocityX {
   static const mH24 = EdgeInsets.symmetric(horizontal: dp24);
   static const mV32 = EdgeInsets.symmetric(vertical: dp24);
   static const mH32 = EdgeInsets.symmetric(horizontal: dp32);
+  static const mV64 = EdgeInsets.symmetric(vertical: dp24);
+  static const mH64 = EdgeInsets.symmetric(horizontal: dp32);
 
   /// Get color from the hex value
   static Color hexToColor(String code) {
