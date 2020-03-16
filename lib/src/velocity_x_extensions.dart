@@ -49,18 +49,8 @@ extension StringExtension on String {
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
   bool get isNotBlank => this != null && trim().isNotEmpty;
 
+  /// Get Text Widget for the String
   VelocityXTextBuilder get text => VelocityXTextBuilder(this);
-
-  ///Widgets
-  // Text text({Key key}) => Text(
-  //       this,
-  //       key: key,
-  //     );
-  // Text centeredText({Key key}) => Text(
-  //       this,
-  //       textAlign: TextAlign.center,
-  //       key: key,
-  //     );
 }
 
 /// Extension Methods & Widgets for the numbers

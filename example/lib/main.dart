@@ -15,13 +15,12 @@ class Demo extends StatelessWidget {
         20.hBox,
         "hello world"
             .text
-            .red900
             .bold
             .xl
             .build()
             .p16
             .card
-            .color(Colors.white)
+            .blue500
             .elevation(5)
             .build()
             .p32,

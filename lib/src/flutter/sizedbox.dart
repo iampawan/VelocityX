@@ -16,26 +16,26 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/velocity_x_extensions.dart';
 
-class SizedBoxBuilder extends VelocityXWidgetContextBuilder<Widget> {
-  final Widget _child;
+// class _VelocityXSizedBoxBuilder extends VelocityXWidgetContextBuilder<Widget> {
+//   final Widget _child;
 
-  double _widthFactor;
-  double _heightFactor;
+//   double _widthFactor;
+//   double _heightFactor;
 
-  SizedBoxBuilder(this._child);
+//   _VelocityXSizedBoxBuilder(this._child);
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      child: _child,
-      width:
-          _widthFactor.isNotNull ? context.percentWidth * _widthFactor : null,
-      height: _heightFactor.isNotNull
-          ? context.percentHeight * _heightFactor
-          : null,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       child: _child,
+//       width:
+//           _widthFactor.isNotNull ? context.percentWidth * _widthFactor : null,
+//       height: _heightFactor.isNotNull
+//           ? context.percentHeight * _heightFactor
+//           : null,
+//     );
+//   }
+// }
 
 extension SizedBoxExtension on Widget {
   ///All available widths

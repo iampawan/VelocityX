@@ -16,30 +16,33 @@ import 'package:flutter/material.dart';
 
 import 'builder.dart';
 
-class _CardBuilder extends VelocityXWidgetBuilder<Widget> {
-  _CardBuilder(this._child);
+class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
+    with VelocityColorMixin<_VelocityXCardBuilder> {
+  _VelocityXCardBuilder(this._child) {
+    setChildToColor(this);
+  }
   final Widget _child;
-  Color _cardColor;
+
   Color _shadowColor;
   double _elevation = 1.0;
   ShapeBorder _shape;
 
-  _CardBuilder color(Color val) => this.._cardColor = val;
+  _VelocityXCardBuilder color(Color val) => this..velocityColor = val;
 
-  _CardBuilder elevation(double val) => this.._elevation = val;
+  _VelocityXCardBuilder elevation(double val) => this.._elevation = val;
 
-  _CardBuilder get circular => this.._shape = const CircleBorder();
-  _CardBuilder get zeroCircular => this
+  _VelocityXCardBuilder get circular => this.._shape = const CircleBorder();
+  _VelocityXCardBuilder get zeroCircular => this
     .._shape = const CircleBorder()
     .._elevation = 0.0;
 
-  _CardBuilder get zero => this.._elevation = 0.0;
+  _VelocityXCardBuilder get zero => this.._elevation = 0.0;
 
   @override
   Widget build() {
     return Card(
       child: _child,
-      color: _cardColor ?? ThemeData().cardColor,
+      color: velocityColor ?? ThemeData().cardColor,
       clipBehavior: Clip.antiAlias,
       elevation: _elevation,
       shape: _shape,
@@ -49,5 +52,5 @@ class _CardBuilder extends VelocityXWidgetBuilder<Widget> {
 }
 
 extension CardExtension on Widget {
-  _CardBuilder get card => _CardBuilder(this);
+  _VelocityXCardBuilder get card => _VelocityXCardBuilder(this);
 }

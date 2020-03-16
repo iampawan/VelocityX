@@ -14,74 +14,73 @@
 
 import 'package:flutter/material.dart';
 
-import 'builder.dart';
+// class _VelocityXObjectFitBuilder extends VelocityXWidgetBuilder<Widget> {
+//   _VelocityXObjectFitBuilder.cover(this._child) : _boxFit = BoxFit.cover;
+//   _VelocityXObjectFitBuilder.contain(this._child) : _boxFit = BoxFit.contain;
+//   _VelocityXObjectFitBuilder.fill(this._child) : _boxFit = BoxFit.fill;
+//   _VelocityXObjectFitBuilder.scaleDown(this._child)
+//       : _boxFit = BoxFit.scaleDown;
+//   _VelocityXObjectFitBuilder.none(this._child) : _boxFit = BoxFit.none;
 
-class ObjectFitBuilder extends VelocityXWidgetBuilder<Widget> {
-  ObjectFitBuilder.cover(this._child) : _boxFit = BoxFit.cover;
-  ObjectFitBuilder.contain(this._child) : _boxFit = BoxFit.contain;
-  ObjectFitBuilder.fill(this._child) : _boxFit = BoxFit.fill;
-  ObjectFitBuilder.scaleDown(this._child) : _boxFit = BoxFit.scaleDown;
-  ObjectFitBuilder.none(this._child) : _boxFit = BoxFit.none;
+//   final Widget _child;
+//   final BoxFit _boxFit;
+//   Alignment _alignment;
 
-  final Widget _child;
-  final BoxFit _boxFit;
-  Alignment _alignment;
+//   _VelocityXObjectFitBuilder alignment({@required alignment}) =>
+//       this.._alignment = alignment;
 
-  ObjectFitBuilder alignment({@required alignment}) =>
-      this.._alignment = alignment;
+//   @override
+//   Widget build() {
+//     return FittedBox(
+//       child: _child,
+//       alignment: _alignment ?? Alignment.center,
+//       fit: _boxFit,
+//     );
+//   }
+// }
 
-  @override
-  Widget build() {
-    return FittedBox(
-      child: _child,
-      alignment: _alignment ?? Alignment.center,
-      fit: _boxFit,
-    );
-  }
-}
+// class _VelocityXObjectAlignBuilder extends VelocityXWidgetBuilder<Widget> {
+//   _VelocityXObjectAlignBuilder.topLeft(this._child) : _alignment = Alignment.topLeft;
+//   _VelocityXObjectAlignBuilder.topCenter(this._child) : _alignment = Alignment.topCenter;
+//   _VelocityXObjectAlignBuilder.topRight(this._child) : _alignment = Alignment.topRight;
+//   _VelocityXObjectAlignBuilder.centerLeft(this._child)
+//       : _alignment = Alignment.centerLeft;
+//   _VelocityXObjectAlignBuilder.center(this._child) : _alignment = Alignment.center;
+//   _VelocityXObjectAlignBuilder.centerRight(this._child)
+//       : _alignment = Alignment.centerRight;
+//   _VelocityXObjectAlignBuilder.bottomLeft(this._child)
+//       : _alignment = Alignment.bottomLeft;
+//   _VelocityXObjectAlignBuilder.bottomCenter(this._child)
+//       : _alignment = Alignment.bottomCenter;
+//   _VelocityXObjectAlignBuilder.bottomRight(this._child)
+//       : _alignment = Alignment.bottomRight;
 
-class ObjectAlignBuilder extends VelocityXWidgetBuilder<Widget> {
-  ObjectAlignBuilder.topLeft(this._child) : _alignment = Alignment.topLeft;
-  ObjectAlignBuilder.topCenter(this._child) : _alignment = Alignment.topCenter;
-  ObjectAlignBuilder.topRight(this._child) : _alignment = Alignment.topRight;
-  ObjectAlignBuilder.centerLeft(this._child)
-      : _alignment = Alignment.centerLeft;
-  ObjectAlignBuilder.center(this._child) : _alignment = Alignment.center;
-  ObjectAlignBuilder.centerRight(this._child)
-      : _alignment = Alignment.centerRight;
-  ObjectAlignBuilder.bottomLeft(this._child)
-      : _alignment = Alignment.bottomLeft;
-  ObjectAlignBuilder.bottomCenter(this._child)
-      : _alignment = Alignment.bottomCenter;
-  ObjectAlignBuilder.bottomRight(this._child)
-      : _alignment = Alignment.bottomRight;
+//   _VelocityXObjectAlignBuilder.xy(this._child, double x, double y)
+//       : _alignment = Alignment(x, y);
 
-  ObjectAlignBuilder.xy(this._child, double x, double y)
-      : _alignment = Alignment(x, y);
+//   _VelocityXObjectAlignBuilder.lerp(this._child, Alignment a, Alignment b, double t)
+//       : _alignment = Alignment.lerp(a, b, t);
 
-  ObjectAlignBuilder.lerp(this._child, Alignment a, Alignment b, double t)
-      : _alignment = Alignment.lerp(a, b, t);
+//   final Widget _child;
+//   final Alignment _alignment;
+//   double _heightfactor;
+//   double _widthfactor;
 
-  final Widget _child;
-  final Alignment _alignment;
-  double _heightfactor;
-  double _widthfactor;
+//   _VelocityXObjectAlignBuilder heightFactor(double heightFactor) =>
+//       this.._heightfactor = heightFactor;
+//   _VelocityXObjectAlignBuilder widthFactor(double widthFactor) =>
+//       this.._widthfactor = widthFactor;
 
-  ObjectAlignBuilder heightFactor(double heightFactor) =>
-      this.._heightfactor = heightFactor;
-  ObjectAlignBuilder widthFactor(double widthFactor) =>
-      this.._widthfactor = widthFactor;
-
-  @override
-  Widget build() {
-    return Align(
-      child: _child,
-      alignment: _alignment ?? Alignment.center,
-      heightFactor: _heightfactor,
-      widthFactor: _widthfactor,
-    );
-  }
-}
+//   @override
+//   Widget build() {
+//     return Align(
+//       child: _child,
+//       alignment: _alignment ?? Alignment.center,
+//       heightFactor: _heightfactor,
+//       widthFactor: _widthfactor,
+//     );
+//   }
+// }
 
 extension ObjectExtensions on Widget {
   // ObjectFitBuilder get objectCover => ObjectFitBuilder.cover(this);
