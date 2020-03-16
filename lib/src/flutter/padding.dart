@@ -19,7 +19,7 @@ import 'builder.dart';
 
 class _VelocityXPaddingBuilder extends VelocityXWidgetBuilder<Widget>
     with VelocityPaddingMixin<_VelocityXPaddingBuilder> {
-  _VelocityXPaddingBuilder(this._child) {
+  _VelocityXPaddingBuilder(this._child) : assert(_child != null) {
     setChildToPad(this);
   }
   final Widget _child;

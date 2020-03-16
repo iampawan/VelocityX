@@ -73,7 +73,7 @@ class VelocityXInlineBlock extends Flex {
 
 class VStack extends StatelessWidget {
   final List<Widget> children;
-  const VStack(this.children);
+  const VStack(this.children) : assert(children != null);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -86,7 +86,7 @@ class VStack extends StatelessWidget {
 
 class HStack extends StatelessWidget {
   final List<Widget> children;
-  const HStack(this.children);
+  const HStack(this.children) : assert(children != null);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -99,7 +99,7 @@ class HStack extends StatelessWidget {
 
 class ZStack extends StatelessWidget {
   final List<Widget> children;
-  const ZStack(this.children);
+  const ZStack(this.children) : assert(children != null);
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -110,7 +110,7 @@ class ZStack extends StatelessWidget {
 
 class ZStackExpanded extends StatelessWidget {
   final List<Widget> children;
-  const ZStackExpanded(this.children);
+  const ZStackExpanded(this.children) : assert(children != null);
   @override
   Widget build(BuildContext context) {
     return Stack(

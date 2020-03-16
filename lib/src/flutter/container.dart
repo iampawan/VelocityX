@@ -20,7 +20,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     with
         VelocityColorMixin<_VelocityXContainerBuilder>,
         VelocityPaddingMixin<_VelocityXContainerBuilder> {
-  _VelocityXContainerBuilder(this._child) {
+  _VelocityXContainerBuilder(this._child) : assert(_child != null) {
     setChildToColor(this);
     setChildToPad(this);
   }

@@ -21,7 +21,7 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
     with
         VelocityColorMixin<_VelocityXCardBuilder>,
         VelocityPaddingMixin<_VelocityXCardBuilder> {
-  _VelocityXCardBuilder(this._child) {
+  _VelocityXCardBuilder(this._child) : assert(_child != null) {
     setChildToColor(this);
     setChildToPad(this);
   }

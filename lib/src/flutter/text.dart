@@ -18,11 +18,13 @@ import 'package:velocity_x/velocity_x.dart';
 @protected
 class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     with VelocityColorMixin<VelocityXTextBuilder> {
-  VelocityXTextBuilder(this._text) {
+  VelocityXTextBuilder(this._text) : assert(_text != null) {
     setChildToColor(this);
   }
 
-  VelocityXTextBuilder.existing(this._text, this._textStyle) {
+  VelocityXTextBuilder.existing(this._text, this._textStyle)
+      : assert(_text != null),
+        assert(_textStyle != null) {
     setChildToColor(this);
   }
 

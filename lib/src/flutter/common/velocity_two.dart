@@ -46,7 +46,9 @@ class VelocityTwo extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.min,
     this.maxLinesSubtitle = 1,
-  }) : super(key: key);
+  })  : assert(title != null),
+        assert(subtitle != null),
+        super(key: key);
   @override
   Widget build(BuildContext context) {
     final list = [
@@ -97,7 +99,9 @@ class VelocityTwoColumn extends StatelessWidget {
   final Widget bottom;
 
   const VelocityTwoColumn({Key key, @required this.top, @required this.bottom})
-      : super(key: key);
+      : assert(top != null),
+        assert(bottom != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +121,9 @@ class VelocityTwoRow extends StatelessWidget {
   final Widget right;
 
   const VelocityTwoRow({Key key, @required this.left, @required this.right})
-      : super(key: key);
+      : assert(left != null),
+        assert(right != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +146,10 @@ class VelocityTwoIconColumn extends StatelessWidget {
 
   const VelocityTwoIconColumn(
       {Key key, @required this.top, @required this.bottom, @required this.icon})
-      : super(key: key);
+      : assert(top != null),
+        assert(bottom != null),
+        assert(icon != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
