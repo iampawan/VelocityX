@@ -43,9 +43,7 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
 
 class VelocityZeroCard extends StatefulWidget {
   const VelocityZeroCard(
-      {this.isCircularImage = true,
-      this.isBottomLinesActive = true,
-      this.isDark = false});
+      {this.isCircularImage = true, this.isBottomLinesActive = true, this.isDark = false});
   final bool isCircularImage;
   final bool isBottomLinesActive;
   final bool isDark;
@@ -54,8 +52,7 @@ class VelocityZeroCard extends StatefulWidget {
   _VelocityZeroCardState createState() => _VelocityZeroCardState();
 }
 
-class _VelocityZeroCardState extends State<VelocityZeroCard>
-    with SingleTickerProviderStateMixin {
+class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> animation;
 
@@ -67,12 +64,11 @@ class _VelocityZeroCardState extends State<VelocityZeroCard>
       duration: const Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
-        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0)
+        .animate(CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed ||
-          status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
         _controller.repeat();
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();
@@ -108,8 +104,7 @@ class _VelocityZeroCardState extends State<VelocityZeroCard>
                       height: context.percentHeight * 10,
                       width: context.percentWidth * 10,
                       decoration: myBoxDec(animation,
-                          isCircle: widget.isCircularImage,
-                          isDark: widget.isDark),
+                          isCircle: widget.isCircularImage, isDark: widget.isDark),
                     ),
                     const SizedBox(
                       width: 20,
@@ -120,8 +115,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          LineContainer(20, 0.8, animation, widget.isDark),
-                          LineContainer(15, 0.7, animation, widget.isDark),
+                          _VelocityLine(20, 0.8, animation, widget.isDark),
+                          _VelocityLine(15, 0.7, animation, widget.isDark),
                         ],
                       ),
                     ),
@@ -132,8 +127,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          LineContainer(15, 0.8, animation, widget.isDark),
-                          LineContainer(15, 0.7, animation, widget.isDark),
+                          _VelocityLine(15, 0.8, animation, widget.isDark),
+                          _VelocityLine(15, 0.7, animation, widget.isDark),
                         ],
                       ),
                     ),
@@ -146,15 +141,15 @@ class _VelocityZeroCardState extends State<VelocityZeroCard>
                       const SizedBox(
                         height: 20,
                       ),
-                      LineContainer(70, 0.7, animation, widget.isDark),
+                      _VelocityLine(70, 0.7, animation, widget.isDark),
                       const SizedBox(
                         height: 10,
                       ),
-                      LineContainer(80, 0.7, animation, widget.isDark),
+                      _VelocityLine(80, 0.7, animation, widget.isDark),
                       const SizedBox(
                         height: 10,
                       ),
-                      LineContainer(50, 0.7, animation, widget.isDark),
+                      _VelocityLine(50, 0.7, animation, widget.isDark),
                     ],
                   )
                 else
@@ -168,8 +163,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard>
   }
 }
 
-class LineContainer extends StatelessWidget {
-  const LineContainer(
+class _VelocityLine extends StatelessWidget {
+  const _VelocityLine(
     this.widthRatio,
     this.heightRatio,
     this.animation,
@@ -194,10 +189,12 @@ class LineContainer extends StatelessWidget {
 
 class VelocityZeroList extends StatelessWidget {
   const VelocityZeroList(
-      {this.isCircularImage = true,
+      {Key key,
+      this.isCircularImage = true,
       this.length = 10,
       this.isBottomLinesActive = true,
-      this.isDark = false});
+      this.isDark = false})
+      : super(key: key);
 
   final bool isCircularImage;
   final bool isBottomLinesActive;
@@ -207,6 +204,7 @@ class VelocityZeroList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: key,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: length,
       shrinkWrap: true,
@@ -224,8 +222,7 @@ class VelocityZeroList extends StatelessWidget {
 // TODO: CardProfile VelocityZero
 
 class PKCardProfileSkeleton extends StatefulWidget {
-  const PKCardProfileSkeleton(
-      {this.isCircularImage = true, this.isBottomLinesActive = true});
+  const PKCardProfileSkeleton({this.isCircularImage = true, this.isBottomLinesActive = true});
   final bool isCircularImage;
   final bool isBottomLinesActive;
 
@@ -246,12 +243,11 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
       duration: const Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
-        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0)
+        .animate(CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed ||
-          status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
         _controller.repeat();
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();
@@ -286,8 +282,7 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
                 Container(
                   height: width * 0.25,
                   width: width * 0.25,
-                  decoration:
-                      myBoxDec(animation, isCircle: widget.isCircularImage),
+                  decoration: myBoxDec(animation, isCircle: widget.isCircularImage),
                 ),
                 Expanded(
                   child: Column(
@@ -300,8 +295,7 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
                           Container(
                             height: width * 0.13,
                             width: width * 0.13,
-                            decoration: myBoxDec(animation,
-                                isCircle: widget.isCircularImage),
+                            decoration: myBoxDec(animation, isCircle: widget.isCircularImage),
                           ),
                           const SizedBox(
                             width: 20,
@@ -394,12 +388,11 @@ class _PKCardPageSkeletonState extends State<PKCardPageSkeleton>
       duration: const Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
-        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0)
+        .animate(CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed ||
-          status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
         _controller.repeat();
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();

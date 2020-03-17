@@ -21,24 +21,24 @@ extension OpacityExtension on Widget {
         child: this,
       );
 
-  Widget get opacity0 => Opacity(
+  Widget opacity0({Key key}) => Opacity(
         opacity: 0.0,
         child: this,
       );
 
-  Widget get opacity25 => Opacity(
+  Widget opacity25({Key key}) => Opacity(
         opacity: 0.25,
         child: this,
       );
-  Widget get opacity50 => Opacity(
+  Widget opacity50({Key key}) => Opacity(
         opacity: 0.5,
         child: this,
       );
-  Widget get opacity75 => Opacity(
+  Widget opacity75({Key key}) => Opacity(
         opacity: 0.75,
         child: this,
       );
-  Widget get opacity100 => Opacity(
+  Widget opacity100({Key key}) => Opacity(
         opacity: 1.0,
         child: this,
       );

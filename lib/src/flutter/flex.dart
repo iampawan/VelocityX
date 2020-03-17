@@ -73,10 +73,12 @@ class VelocityXInlineBlock extends Flex {
 
 class VStack extends StatelessWidget {
   const VStack(this.children,
-      {this.alignment = MainAxisAlignment.start,
+      {Key key,
+      this.alignment = MainAxisAlignment.start,
       this.crossAlignment = CrossAxisAlignment.start,
       this.axisSize = MainAxisSize.min})
-      : assert(children != null);
+      : assert(children != null),
+        super(key: key);
   final List<Widget> children;
 
   final MainAxisAlignment alignment;
@@ -86,20 +88,23 @@ class VStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: key,
       children: children,
-      mainAxisAlignment: alignment,
-      crossAxisAlignment: crossAlignment,
-      mainAxisSize: axisSize,
+      mainAxisAlignment: alignment ?? MainAxisAlignment.start,
+      crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.start,
+      mainAxisSize: axisSize ?? MainAxisSize.min,
     );
   }
 }
 
 class HStack extends StatelessWidget {
   const HStack(this.children,
-      {this.alignment = MainAxisAlignment.start,
+      {Key key,
+      this.alignment = MainAxisAlignment.start,
       this.crossAlignment = CrossAxisAlignment.start,
       this.axisSize = MainAxisSize.min})
-      : assert(children != null);
+      : assert(children != null),
+        super(key: key);
   final List<Widget> children;
   final MainAxisAlignment alignment;
   final CrossAxisAlignment crossAlignment;
@@ -107,20 +112,23 @@ class HStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      key: key,
       children: children,
-      mainAxisAlignment: alignment,
-      crossAxisAlignment: crossAlignment,
-      mainAxisSize: axisSize,
+      mainAxisAlignment: alignment ?? MainAxisAlignment.start,
+      crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.start,
+      mainAxisSize: axisSize ?? MainAxisSize.min,
     );
   }
 }
 
 class ZStack extends StatelessWidget {
   const ZStack(this.children,
-      {this.alignment = AlignmentDirectional.topStart,
+      {Key key,
+      this.alignment = AlignmentDirectional.topStart,
       this.fit = StackFit.loose,
       this.overflow = Overflow.clip})
-      : assert(children != null);
+      : assert(children != null),
+        super(key: key);
 
   final List<Widget> children;
   final AlignmentGeometry alignment;
@@ -130,10 +138,11 @@ class ZStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      key: key,
       children: children,
-      alignment: alignment,
-      fit: fit,
-      overflow: overflow,
+      alignment: alignment ?? AlignmentDirectional.topStart,
+      fit: fit ?? StackFit.loose,
+      overflow: overflow ?? Overflow.clip,
     );
   }
 }

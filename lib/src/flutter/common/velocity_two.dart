@@ -78,6 +78,7 @@ class VelocityTwo extends StatelessWidget {
     ];
     if (isHorizontal) {
       return Row(
+        key: key,
         mainAxisSize: mainAxisSize,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
@@ -85,6 +86,7 @@ class VelocityTwo extends StatelessWidget {
       );
     } else {
       return Column(
+        key: key,
         mainAxisSize: mainAxisSize,
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
@@ -106,6 +108,7 @@ class VelocityTwoColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: key,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         top,
@@ -128,6 +131,7 @@ class VelocityTwoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flex(
+      key: key,
       direction: Axis.horizontal,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -154,6 +158,7 @@ class VelocityTwoIconColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: key,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         top,

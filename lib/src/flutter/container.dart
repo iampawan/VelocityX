@@ -15,19 +15,23 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter/material.dart';
 
 import 'builder.dart';
+import 'velocityx_mixins/color_mixin.dart';
+import 'velocityx_mixins/padding_mixin.dart';
+import 'velocityx_mixins/round_mixin.dart';
 
 class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     with
         VelocityColorMixin<_VelocityXContainerBuilder>,
-        VelocityPaddingMixin<_VelocityXContainerBuilder> {
+        VelocityPaddingMixin<_VelocityXContainerBuilder>,
+        VelocityRoundMixin<_VelocityXContainerBuilder> {
   _VelocityXContainerBuilder(this._child) : assert(_child != null) {
     setChildToColor(this);
     setChildToPad(this);
+    setChildToRound(this);
   }
 
   final Widget _child;
 
-  double _roundedValue;
   bool _isCircleRounded = false;
   List<BoxShadow> _boxShadow;
   BoxBorder _border;
@@ -42,11 +46,9 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   _VelocityXContainerBuilder height(double val) => this.._height = val;
   _VelocityXContainerBuilder width(double val) => this.._width = val;
 
-  _VelocityXContainerBuilder padding(EdgeInsetsGeometry val) =>
-      this..velocityPadding = val;
+  _VelocityXContainerBuilder padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
 
-  _VelocityXContainerBuilder margin(EdgeInsetsGeometry val) =>
-      this.._margin = val;
+  _VelocityXContainerBuilder margin(EdgeInsetsGeometry val) => this.._margin = val;
 
   _VelocityXContainerBuilder color(Color color) => this..velocityColor = color;
 
@@ -55,45 +57,24 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
 
   /// Alignment
   _VelocityXContainerBuilder alignment(Alignment val) => this.._alignment = val;
-  _VelocityXContainerBuilder get alignTopCenter =>
-      this.._alignment = Alignment.topCenter;
+  _VelocityXContainerBuilder get alignTopCenter => this.._alignment = Alignment.topCenter;
 
-  _VelocityXContainerBuilder get alignTopLeft =>
-      this.._alignment = Alignment.topLeft;
+  _VelocityXContainerBuilder get alignTopLeft => this.._alignment = Alignment.topLeft;
 
-  _VelocityXContainerBuilder get alignTopRight =>
-      this.._alignment = Alignment.topRight;
+  _VelocityXContainerBuilder get alignTopRight => this.._alignment = Alignment.topRight;
 
-  _VelocityXContainerBuilder get alignCenter =>
-      this.._alignment = Alignment.center;
-  _VelocityXContainerBuilder get alignCenterLeft =>
-      this.._alignment = Alignment.centerLeft;
-  _VelocityXContainerBuilder get alignCenterRight =>
-      this.._alignment = Alignment.centerRight;
+  _VelocityXContainerBuilder get alignCenter => this.._alignment = Alignment.center;
+  _VelocityXContainerBuilder get alignCenterLeft => this.._alignment = Alignment.centerLeft;
+  _VelocityXContainerBuilder get alignCenterRight => this.._alignment = Alignment.centerRight;
 
-  _VelocityXContainerBuilder get alignBottomCenter =>
-      this.._alignment = Alignment.bottomCenter;
+  _VelocityXContainerBuilder get alignBottomCenter => this.._alignment = Alignment.bottomCenter;
 
-  _VelocityXContainerBuilder get alignBottomLeft =>
-      this.._alignment = Alignment.bottomLeft;
+  _VelocityXContainerBuilder get alignBottomLeft => this.._alignment = Alignment.bottomLeft;
 
-  _VelocityXContainerBuilder get alignBottomRight =>
-      this.._alignment = Alignment.bottomRight;
+  _VelocityXContainerBuilder get alignBottomRight => this.._alignment = Alignment.bottomRight;
 
   // transforming
   _VelocityXContainerBuilder transform(Matrix4 val) => this.._transform = val;
-
-  /// Rounding
-  _VelocityXContainerBuilder get roundedNone => this.._roundedValue = 0.0;
-
-  _VelocityXContainerBuilder get roundedSM => this.._roundedValue = 7.5;
-
-  _VelocityXContainerBuilder get rounded => this.._roundedValue = 15.0;
-
-  _VelocityXContainerBuilder withRounded({double value = 15.0}) =>
-      this.._roundedValue = value;
-
-  _VelocityXContainerBuilder get roundedLg => this.._roundedValue = 30.0;
 
   _VelocityXContainerBuilder get roundedFull => this.._isCircleRounded = true;
 
@@ -216,8 +197,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   _VelocityXContainerBuilder shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(
-        color: outlineColor?.withOpacity(0.5) ??
-            const Color.fromRGBO(66, 153, 225, 0.5),
+        color: outlineColor?.withOpacity(0.5) ?? const Color.fromRGBO(66, 153, 225, 0.5),
         blurRadius: 0.0,
         spreadRadius: 3.0,
         offset: const Offset(0.0, 0.0),
@@ -229,9 +209,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
 
   /// Bordering
   _VelocityXContainerBuilder border(
-      {Color color = Colors.black,
-      double width = 1.0,
-      BorderStyle style = BorderStyle.solid}) {
+      {Color color = Colors.black, double width = 1.0, BorderStyle style = BorderStyle.solid}) {
     _border = Border.all(color: color, width: width, style: style);
     return this;
   }
@@ -247,8 +225,9 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
       this.._gradient = SweepGradient(colors: colors);
 
   @override
-  Widget make() {
+  Widget make({Key key}) {
     return Container(
+      key: key,
       height: _height,
       width: _width,
       padding: velocityPadding,
@@ -258,9 +237,8 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
       child: _child,
       decoration: BoxDecoration(
           color: velocityColor,
-          borderRadius: _isCircleRounded || _roundedValue.isNull
-              ? null
-              : BorderRadius.circular(_roundedValue),
+          borderRadius:
+              _isCircleRounded || roundedValue.isNull ? null : BorderRadius.circular(roundedValue),
           shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
           boxShadow: _boxShadow ?? [],
           border: _border,

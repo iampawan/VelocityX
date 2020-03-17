@@ -17,7 +17,8 @@ import 'package:flutter/material.dart';
 extension WidgetsExtension on Widget {
   ///Tooltip as accesibility
   Widget tooltip(String message,
-          {Decoration decoration,
+          {Key key,
+          Decoration decoration,
           double height,
           bool preferBelow,
           EdgeInsetsGeometry padding,
@@ -25,6 +26,7 @@ extension WidgetsExtension on Widget {
           Duration waitDuration,
           EdgeInsetsGeometry margin}) =>
       Tooltip(
+        key: key,
         message: message,
         decoration: decoration,
         height: height,
@@ -37,8 +39,8 @@ extension WidgetsExtension on Widget {
       );
 
   ///Hide a widget
-  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) =>
-      Visibility(
+  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) => Visibility(
+        key: key,
         child: this,
         visible: isVisible,
         maintainSize: maintainSize,

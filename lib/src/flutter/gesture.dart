@@ -17,8 +17,7 @@ import 'package:flutter/material.dart';
 import 'builder.dart';
 
 class _VelocityXGestureBuilder extends VelocityXWidgetBuilder<Widget> {
-  _VelocityXGestureBuilder(this._child, this._onClick)
-      : assert(_onClick != null);
+  _VelocityXGestureBuilder(this._child, this._onClick) : assert(_onClick != null);
   _VelocityXGestureBuilder.doubleClick(this._child, this._onDoubleClick)
       : assert(_child != null),
         assert(_onDoubleClick != null);
@@ -38,8 +37,9 @@ class _VelocityXGestureBuilder extends VelocityXWidgetBuilder<Widget> {
       this.._onLongClick = onLongClick;
 
   @override
-  Widget make() {
+  Widget make({Key key}) {
     return GestureDetector(
+      key: key,
       onTap: _onClick,
       child: _child,
       onDoubleTap: _onDoubleClick,
@@ -59,8 +59,7 @@ class _VelocityXInkWellBuilder extends VelocityXWidgetBuilder<Widget> {
   Function _onLongClick;
   Color _splashColor;
 
-  _VelocityXInkWellBuilder splashColor(Color color) =>
-      this.._splashColor = color;
+  _VelocityXInkWellBuilder splashColor(Color color) => this.._splashColor = color;
 
   _VelocityXInkWellBuilder mdDoubleClick({@required Function onDoubleClick}) =>
       this.._onDoubleClick = onDoubleClick;
@@ -69,8 +68,9 @@ class _VelocityXInkWellBuilder extends VelocityXWidgetBuilder<Widget> {
       this.._onLongClick = onLongClick;
 
   @override
-  Widget make() {
+  Widget make({Key key}) {
     return InkWell(
+      key: key,
       onTap: _onClick,
       child: _child,
       splashColor: _splashColor,
@@ -81,15 +81,13 @@ class _VelocityXInkWellBuilder extends VelocityXWidgetBuilder<Widget> {
 }
 
 extension GestureExtensions on Widget {
-  _VelocityXGestureBuilder click(Function onClick) =>
-      _VelocityXGestureBuilder(this, onClick);
+  _VelocityXGestureBuilder click(Function onClick) => _VelocityXGestureBuilder(this, onClick);
   _VelocityXGestureBuilder doubleClick(Function onClick) =>
       _VelocityXGestureBuilder.doubleClick(this, onClick);
   _VelocityXGestureBuilder longClick(Function onClick) =>
       _VelocityXGestureBuilder.longClick(this, onClick);
 
-  _VelocityXInkWellBuilder mdClick(Function onClick) =>
-      _VelocityXInkWellBuilder(this, onClick);
+  _VelocityXInkWellBuilder mdClick(Function onClick) => _VelocityXInkWellBuilder(this, onClick);
   _VelocityXInkWellBuilder mdDoubleClick(Function onClick) =>
       _VelocityXInkWellBuilder.mdDoubleClick(this, onClick);
   _VelocityXInkWellBuilder mdLongClick(Function onClick) =>

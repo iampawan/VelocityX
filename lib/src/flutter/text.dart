@@ -15,6 +15,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'builder.dart';
+import 'velocityx_mixins/color_mixin.dart';
+
 @protected
 class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     with VelocityColorMixin<VelocityXTextBuilder> {
@@ -70,23 +73,19 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
 
   VelocityXTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
 
-  VelocityXTextBuilder get sm =>
-      _fontSizedText(child: this, scaleFactor: 0.875);
+  VelocityXTextBuilder get sm => _fontSizedText(child: this, scaleFactor: 0.875);
 
   VelocityXTextBuilder get base => _fontSizedText(child: this, scaleFactor: 1);
 
-  VelocityXTextBuilder get lg =>
-      _fontSizedText(child: this, scaleFactor: 1.125);
+  VelocityXTextBuilder get lg => _fontSizedText(child: this, scaleFactor: 1.125);
 
   VelocityXTextBuilder get xl => _fontSizedText(child: this, scaleFactor: 1.25);
 
   VelocityXTextBuilder get xl2 => _fontSizedText(child: this, scaleFactor: 1.5);
 
-  VelocityXTextBuilder get xl3 =>
-      _fontSizedText(child: this, scaleFactor: 1.875);
+  VelocityXTextBuilder get xl3 => _fontSizedText(child: this, scaleFactor: 1.875);
 
-  VelocityXTextBuilder get xl4 =>
-      _fontSizedText(child: this, scaleFactor: 2.25);
+  VelocityXTextBuilder get xl4 => _fontSizedText(child: this, scaleFactor: 2.25);
 
   VelocityXTextBuilder get xl5 => _fontSizedText(child: this, scaleFactor: 3);
 
@@ -98,32 +97,23 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     return this;
   }
 
-  VelocityXTextBuilder get hairLine =>
-      _fontWeightedText(child: this, weight: FontWeight.w100);
+  VelocityXTextBuilder get hairLine => _fontWeightedText(child: this, weight: FontWeight.w100);
 
-  VelocityXTextBuilder get thin =>
-      _fontWeightedText(child: this, weight: FontWeight.w200);
+  VelocityXTextBuilder get thin => _fontWeightedText(child: this, weight: FontWeight.w200);
 
-  VelocityXTextBuilder get light =>
-      _fontWeightedText(child: this, weight: FontWeight.w300);
+  VelocityXTextBuilder get light => _fontWeightedText(child: this, weight: FontWeight.w300);
 
-  VelocityXTextBuilder get normal =>
-      _fontWeightedText(child: this, weight: FontWeight.w400);
+  VelocityXTextBuilder get normal => _fontWeightedText(child: this, weight: FontWeight.w400);
 
-  VelocityXTextBuilder get medium =>
-      _fontWeightedText(child: this, weight: FontWeight.w500);
+  VelocityXTextBuilder get medium => _fontWeightedText(child: this, weight: FontWeight.w500);
 
-  VelocityXTextBuilder get semiBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w600);
+  VelocityXTextBuilder get semiBold => _fontWeightedText(child: this, weight: FontWeight.w600);
 
-  VelocityXTextBuilder get bold =>
-      _fontWeightedText(child: this, weight: FontWeight.w700);
+  VelocityXTextBuilder get bold => _fontWeightedText(child: this, weight: FontWeight.w700);
 
-  VelocityXTextBuilder get extraBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w800);
+  VelocityXTextBuilder get extraBold => _fontWeightedText(child: this, weight: FontWeight.w800);
 
-  VelocityXTextBuilder get extraBlack =>
-      _fontWeightedText(child: this, weight: FontWeight.w900);
+  VelocityXTextBuilder get extraBlack => _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VelocityXTextBuilder _fontWeightedText(
       {@required FontWeight weight, @required VelocityXTextBuilder child}) {
@@ -134,9 +124,10 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
   VelocityXTextBuilder get italic => this.._fontStyle = FontStyle.italic;
 
   @override
-  AutoSizeText make() {
+  AutoSizeText make({Key key}) {
     return AutoSizeText(
       _text,
+      key: key,
       textAlign: _textAlign,
       maxLines: _maxLines,
       textScaleFactor: _scaleFactor,

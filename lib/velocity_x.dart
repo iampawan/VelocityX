@@ -1,9 +1,8 @@
 library velocity_x;
 
-export 'src/flutter/builder.dart';
 export 'src/flutter/card.dart';
 export 'src/flutter/center.dart';
-export 'src/flutter/common/ensure_visible.dart';
+export 'src/flutter/common/velocity_ensure_visible.dart';
 export 'src/flutter/common/velocity_two.dart';
 export 'src/flutter/common/velocity_zero.dart';
 export 'src/flutter/container.dart';

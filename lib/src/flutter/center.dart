@@ -18,13 +18,13 @@ import 'builder.dart';
 /// Should be the last operation
 
 extension CenterExtension on Widget {
-  Widget get centered => Center(child: this);
+  Widget centered({Key key}) => Center(key: key, child: this);
 
   // _MyPaddingCallable get padding => _MyPaddingCallable(build());
 }
 
 extension CenterBuilderExtension on VelocityXWidgetBuilder<Widget> {
-  Widget makeCentered() => Center(child: make());
+  Widget makeCentered({Key key}) => Center(key: key, child: make());
 }
 
 // class _MyPaddingCallable {

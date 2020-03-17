@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
 
 import 'builder.dart';
+import 'velocityx_mixins/padding_mixin.dart';
 
 class _VelocityXPaddingBuilder extends VelocityXWidgetBuilder<Widget>
     with VelocityPaddingMixin<_VelocityXPaddingBuilder> {
@@ -25,8 +26,9 @@ class _VelocityXPaddingBuilder extends VelocityXWidgetBuilder<Widget>
   final Widget _child;
 
   @override
-  Widget make() {
+  Widget make({Key key}) {
     return Padding(
+      key: key,
       child: _child,
       padding: velocityPadding,
     );
@@ -35,167 +37,200 @@ class _VelocityXPaddingBuilder extends VelocityXWidgetBuilder<Widget>
 
 extension PaddingExtensions on Widget {
   _VelocityXPaddingBuilder get pad => _VelocityXPaddingBuilder(this);
-  Padding get p0 => Padding(
+  Padding p0({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp0),
         child: this,
       );
 
-  Padding get p1 => Padding(
+  Padding p1({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp1),
         child: this,
       );
 
-  Padding get p2 => Padding(
+  Padding p2({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp2),
         child: this,
       );
 
-  Padding get p4 => Padding(
+  Padding p4({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp4),
         child: this,
       );
 
-  Padding get p8 => Padding(
+  Padding p8({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp8),
         child: this,
       );
 
-  Padding get p12 => Padding(
+  Padding p12({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp12),
         child: this,
       );
 
-  Padding get p16 => Padding(
+  Padding p16({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp16),
         child: this,
       );
 
-  Padding get p20 => Padding(
+  Padding p20({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp20),
         child: this,
       );
 
-  Padding get p24 => Padding(
+  Padding p24({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp24),
         child: this,
       );
 
-  Padding get p32 => Padding(
+  Padding p32({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp32),
         child: this,
       );
 
-  Padding get p64 => Padding(
+  Padding p64({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.all(VelocityX.dp64),
         child: this,
       );
 
-  Padding get py0 => Padding(
+  Padding py0({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp0),
         child: this,
       );
 
-  Padding get py1 => Padding(
+  Padding py1({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp1),
         child: this,
       );
 
-  Padding get py2 => Padding(
+  Padding py2({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp2),
         child: this,
       );
 
-  Padding get py4 => Padding(
+  Padding py4({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp4),
         child: this,
       );
 
-  Padding get py8 => Padding(
+  Padding py8({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp8),
         child: this,
       );
 
-  Padding get py12 => Padding(
+  Padding py12({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp12),
         child: this,
       );
 
-  Padding get py16 => Padding(
+  Padding py16({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp16),
         child: this,
       );
 
-  Padding get py20 => Padding(
+  Padding py20({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp20),
         child: this,
       );
 
-  Padding get py24 => Padding(
+  Padding py24({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp24),
         child: this,
       );
 
-  Padding get py32 => Padding(
+  Padding py32({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp32),
         child: this,
       );
 
-  Padding get py64 => Padding(
+  Padding py64({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(vertical: VelocityX.dp64),
         child: this,
       );
 
-  Padding get px0 => Padding(
+  Padding px0({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp0),
         child: this,
       );
 
-  Padding get px1 => Padding(
+  Padding px1({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp1),
         child: this,
       );
 
-  Padding get px2 => Padding(
+  Padding px2({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp2),
         child: this,
       );
 
-  Padding get px4 => Padding(
+  Padding px4({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp4),
         child: this,
       );
 
-  Padding get px8 => Padding(
+  Padding px8({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp8),
         child: this,
       );
 
-  Padding get px12 => Padding(
+  Padding px12({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp12),
         child: this,
       );
 
-  Padding get px16 => Padding(
+  Padding px16({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp16),
         child: this,
       );
 
-  Padding get px20 => Padding(
+  Padding px20({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp20),
         child: this,
       );
 
-  Padding get px24 => Padding(
+  Padding px24({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp24),
         child: this,
       );
 
-  Padding get px32 => Padding(
+  Padding px32({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp32),
         child: this,
       );
 
-  Padding get px64 => Padding(
+  Padding px64({Key key}) => Padding(
+        key: key,
         padding: const EdgeInsets.symmetric(horizontal: VelocityX.dp64),
         child: this,
       );
@@ -238,8 +273,7 @@ extension PaddingExtensions on Widget {
           double bottom = 0.0}) =>
       Padding(
         key: key,
-        padding:
-            EdgeInsets.only(left: left, right: right, top: top, bottom: bottom),
+        padding: EdgeInsets.only(left: left, right: right, top: top, bottom: bottom),
         child: this,
       );
 }

@@ -10,19 +10,34 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: "Hi"
-            .text
-            .white
-            .xl4
-            .semiBold
-            .make()
-            .p12
-            .card
-            .roundedLg
-            .purple500
-            .make()
-            .whHalf(context)
-            .centered);
+        child: [
+      "Hi"
+          .text
+          .white
+          .xl4
+          .semiBold
+          .make()
+          .p12(key: UniqueKey())
+          .card
+          .roundedLg
+          .purple500
+          .make()
+          .whHalf(context)
+          .centered(),
+      "Hi"
+          .text
+          .white
+          .xl4
+          .semiBold
+          .make()
+          .p12(key: UniqueKey())
+          .card
+          .roundedLg
+          .red500
+          .make()
+          .whHalf(context)
+          .centered(),
+    ].vStack());
 
     // return Material(
     //     child: Center(

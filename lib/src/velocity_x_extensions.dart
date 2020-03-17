@@ -23,9 +23,8 @@ class VelocityXExtensions {}
 
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
-  String firstLetterUpperCase() => length > 1
-      ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}"
-      : this;
+  String firstLetterUpperCase() =>
+      length > 1 ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}" : this;
 
   ///Removes first element
   String get eliminateFirst => "${substring(1, length)}";
@@ -33,9 +32,8 @@ extension StringExtension on String {
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
 
-  bool validateEmail() => RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(this);
+  bool validateEmail() =>
+      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this);
 
   /// Returns the string if it is not `null`, or the empty string otherwise
   String get orEmpty => this ?? "";
@@ -93,29 +91,32 @@ extension NumExtension on num {
 
 extension ListExtension on List {
   Widget vStack(
-          {MainAxisAlignment alignment,
+          {Key key,
+          MainAxisAlignment alignment,
           CrossAxisAlignment crossAlignment,
           MainAxisSize axisSize}) =>
       VStack(
         this,
+        key: key,
         alignment: alignment,
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
   Widget hStack(
-          {MainAxisAlignment alignment,
+          {Key key,
+          MainAxisAlignment alignment,
           CrossAxisAlignment crossAlignment,
           MainAxisSize axisSize}) =>
       HStack(
         this,
+        key: key,
         alignment: alignment,
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
-  Widget zStack(
-          {AlignmentGeometry alignment, StackFit fit, Overflow overflow}) =>
-      ZStack(
+  Widget zStack({Key key, AlignmentGeometry alignment, StackFit fit, Overflow overflow}) => ZStack(
         this,
+        key: key,
         alignment: alignment,
         fit: fit,
         overflow: overflow,
@@ -123,8 +124,7 @@ extension ListExtension on List {
 }
 
 extension ContextExtensions on BuildContext {
-  MaterialResponsiveUiData get _mdResponsive =>
-      MaterialResponsiveUiData.of(this);
+  MaterialResponsiveUiData get _mdResponsive => MaterialResponsiveUiData.of(this);
 
   /// Screen Sizes Extensions for responsive UI
   int get mdColumns => _mdResponsive.columns;

@@ -83,50 +83,55 @@ import 'package:flutter/material.dart';
 // }
 
 extension ObjectExtensions on Widget {
-  // ObjectFitBuilder get objectCover => ObjectFitBuilder.cover(this);
-  // ObjectFitBuilder get objectContain => ObjectFitBuilder.contain(this);
-  // ObjectFitBuilder get objectFill => ObjectFitBuilder.fill(this);
-  // ObjectFitBuilder get objectScaleDown => ObjectFitBuilder.scaleDown(this);
-  // ObjectFitBuilder get objectNone => ObjectFitBuilder.none(this);
-  // ObjectAlignBuilder get objectTopLeft => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectTopCenter => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectTopRight => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectCenterLeft => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectCenter => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectCenterRight => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectBottomLeft => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectBottomCenter => ObjectAlignBuilder.topLeft(this);
-  // ObjectAlignBuilder get objectBottomRight => ObjectAlignBuilder.topLeft(this);
+  // ObjectFitBuilder  objectCover => ObjectFitBuilder.cover(this);
+  // ObjectFitBuilder  objectContain => ObjectFitBuilder.contain(this);
+  // ObjectFitBuilder  objectFill => ObjectFitBuilder.fill(this);
+  // ObjectFitBuilder  objectScaleDown => ObjectFitBuilder.scaleDown(this);
+  // ObjectFitBuilder  objectNone => ObjectFitBuilder.none(this);
+  // ObjectAlignBuilder  objectTopLeft => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectTopCenter => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectTopRight => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectCenterLeft => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectCenter => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectCenterRight => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectBottomLeft => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectBottomCenter => ObjectAlignBuilder.topLeft(this);
+  // ObjectAlignBuilder  objectBottomRight => ObjectAlignBuilder.topLeft(this);
   // ObjectAlignBuilder objectXY({@required double x, @required double y}) =>
   //     ObjectAlignBuilder.xy(this, x, y);
   // ObjectAlignBuilder objectLerp(
   //         {@required Alignment a, @required Alignment b, @required double t}) =>
   //     ObjectAlignBuilder.lerp(this, a, b, t);
-  Widget get objectCover => FittedBox(
+  Widget objectCover({Key key}) => FittedBox(
+        key: key,
         fit: BoxFit.cover,
         child: this,
         alignment: Alignment.center,
       );
 
-  Widget get objectContain => FittedBox(
+  Widget objectContain({Key key}) => FittedBox(
+        key: key,
         fit: BoxFit.contain,
         child: this,
         alignment: Alignment.center,
       );
 
-  Widget get objectFill => FittedBox(
+  Widget objectFill({Key key}) => FittedBox(
+        key: key,
         fit: BoxFit.fill,
         child: this,
         alignment: Alignment.center,
       );
 
-  Widget get objectScaleDown => FittedBox(
+  Widget objectScaleDown({Key key}) => FittedBox(
+        key: key,
         fit: BoxFit.scaleDown,
         child: this,
         alignment: Alignment.center,
       );
 
-  Widget get objectNone => FittedBox(
+  Widget objectNone({Key key}) => FittedBox(
+        key: key,
         fit: BoxFit.none,
         child: this,
         alignment: Alignment.center,
