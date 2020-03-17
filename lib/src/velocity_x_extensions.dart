@@ -129,7 +129,8 @@ extension ContextExtensions on BuildContext {
   /// Screen Sizes Extensions for responsive UI
   int get mdColumns => _mdResponsive.columns;
   double get mdGutter => _mdResponsive.gutter;
-  MobileDeviceInfo get mdDeviceInfo => _mdResponsive.deviceInfo;
+  MobileDeviceType get mdDeviceType => _mdResponsive.deviceInfo.deviceType;
+  MobileDeviceSize get mdDeviceSize => _mdResponsive.deviceInfo.deviceSize;
   MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
 
   MediaQueryData get mq => MediaQuery.of(this);

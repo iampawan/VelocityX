@@ -12,19 +12,37 @@ class Demo extends StatelessWidget {
     return Material(
         child: [
       const SquareBox(20),
-      const Text("Hi")
-          .text
-          .white
-          .xl4
-          .semiBold
-          .make()
-          .p12()
-          .card
-          .roundedLg
-          .purple500
-          .make()
-          .whHalf(context)
-          .centered(),
+      VelocityConditionalSwitch.single(
+          context: context,
+          valueBuilder: (context) => context.mdWindowSize,
+          caseBuilders: {
+            MobileWindowSize.xsmall: (context) => "Mobile"
+                .text
+                .white
+                .xl4
+                .semiBold
+                .make()
+                .p12()
+                .card
+                .roundedLg
+                .green500
+                .make()
+                .whOneForth(context)
+                .centered()
+          },
+          fallbackBuilder: (context) => "Web"
+              .text
+              .white
+              .xl4
+              .semiBold
+              .make()
+              .p12()
+              .card
+              .roundedLg
+              .orange600
+              .make()
+              .whOneForth(context)
+              .centered()),
     ].vStack());
 
     // return Material(
