@@ -10,16 +10,9 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: VelocityConditionalSwitch.single(
-        context: context,
-        valueBuilder: (context) => context.mdWindowSize,
-        caseBuilders: {
-          MobileWindowSize.xsmall: (context) =>
-              "Mobile".text.white.xl4.semiBold.center.make().p12().centered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered()
-        },
-        fallbackBuilder: (context) =>
-            "Web".text.white.xl4.semiBold.make().p12().centered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered(),
-      ),
+      child: VelocityDevice(
+          mobile: "Mobile".text.white.xl4.semiBold.center.make().p12().centered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered(),
+          web: "Web".text.white.xl4.semiBold.make().p12().centered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered()),
     );
 
     // return Material(

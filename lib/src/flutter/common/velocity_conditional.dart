@@ -13,6 +13,8 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/velocity_x_extensions.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 /// Runs a [WidgetBuilder]'s result if the [condition] is true.
 ///
@@ -68,8 +70,7 @@ class VelocityConditional extends StatelessWidget {
         super(key: key);
 
   @override
-  Widget build(BuildContext context) =>
-      condition ? builder(context) : fallback != null ? fallback(context) : const Offstage();
+  Widget build(BuildContext context) => condition ? builder(context) : fallback != null ? fallback(context) : const Offstage();
 }
 
 /// Renders widgets based on switch case conditions
@@ -134,5 +135,24 @@ class VelocityConditionalSwitch {
     } else {
       return fallbackBuilder(context);
     }
+  }
+}
+
+class VelocityDevice extends StatelessWidget {
+  final Widget mobile;
+  final Widget web;
+
+  const VelocityDevice({Key key, @required this.mobile, @required this.web})
+      : assert(mobile != null),
+        assert(web != null),
+        super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return VelocityConditionalSwitch.single(
+      context: context,
+      valueBuilder: (context) => context.mdWindowSize,
+      caseBuilders: {MobileWindowSize.xsmall: (context) => mobile},
+      fallbackBuilder: (context) => web,
+    );
   }
 }

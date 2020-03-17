@@ -15,8 +15,7 @@
 import 'package:flutter/material.dart';
 import 'builder.dart';
 
-/// Should be the last operation
-
+/// Center the widget
 extension CenterExtension on Widget {
   Widget centered({Key key}) => Center(key: key, child: this);
 
