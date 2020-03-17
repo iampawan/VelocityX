@@ -10,27 +10,42 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Column(
-      children: <Widget>[
-        20.heightBox,
-        const Text(
-          "hello world",
-          style: TextStyle(color: Colors.white),
-        ).text.bold.xl.make().p16.card.blue500.elevation(5).make().p32,
-        20.heightBox,
-        "hello world"
+        child: "Hi"
             .text
             .white
-            .bold
-            .xl
+            .xl4
+            .semiBold
             .make()
-            .box
-            .p16
+            .p12
+            .card
             .roundedLg
-            .linearGradient([Colors.indigo, Colors.purple])
-            .shadow2xl
+            .purple500
             .make()
-      ],
-    ));
+            .whHalf(context)
+            .centered);
+
+    // return Material(
+    //     child: Center(
+    //   child: Container(
+    //     height: 100,
+    //     width: 100,
+    //     decoration: BoxDecoration(
+    //         color: Colors.purple.shade500,
+    //         borderRadius: BorderRadius.circular(15),
+    //         boxShadow: [
+    //           BoxShadow(
+    //             blurRadius: 3.0,
+    //             color: Colors.black.withOpacity(0.5),
+    //           )
+    //         ]),
+    //     child: Center(
+    //       child: Text(
+    //         "Hi",
+    //         textScaleFactor: 3,
+    //         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    //       ),
+    //     ),
+    //   ),
+    // ));
   }
 }

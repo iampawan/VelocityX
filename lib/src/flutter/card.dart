@@ -18,9 +18,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'builder.dart';
 
 class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
-    with
-        VelocityColorMixin<_VelocityXCardBuilder>,
-        VelocityPaddingMixin<_VelocityXCardBuilder> {
+    with VelocityColorMixin<_VelocityXCardBuilder>, VelocityPaddingMixin<_VelocityXCardBuilder> {
   _VelocityXCardBuilder(this._child) : assert(_child != null) {
     setChildToColor(this);
     setChildToPad(this);
@@ -30,6 +28,7 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
   Color _shadowColor;
   double _elevation = 1.0;
   ShapeBorder _shape;
+  double _roundedValue;
 
   _VelocityXCardBuilder color(Color val) => this..velocityColor = val;
 
@@ -45,6 +44,17 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
 
   _VelocityXCardBuilder get zero => this.._elevation = 0.0;
 
+  /// Rounding
+  _VelocityXCardBuilder get roundedNone => this.._roundedValue = 0.0;
+
+  _VelocityXCardBuilder get roundedSM => this.._roundedValue = 7.5;
+
+  _VelocityXCardBuilder get rounded => this.._roundedValue = 15.0;
+
+  _VelocityXCardBuilder withRounded({double value = 15.0}) => this.._roundedValue = value;
+
+  _VelocityXCardBuilder get roundedLg => this.._roundedValue = 30.0;
+
   @override
   Widget make() {
     return Card(
@@ -53,7 +63,9 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
       color: velocityColor ?? ThemeData().cardColor,
       clipBehavior: Clip.antiAlias,
       elevation: _elevation,
-      shape: _shape,
+      shape: _roundedValue.isNotNull
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(_roundedValue))
+          : _shape,
       shadowColor: _shadowColor,
     );
   }
