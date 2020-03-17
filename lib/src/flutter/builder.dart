@@ -3,11 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 abstract class VelocityXWidgetBuilder<T extends Widget> {
-  T build();
+  T make();
 }
 
 abstract class VelocityXWidgetContextBuilder<T extends Widget> {
-  T build(BuildContext context);
+  T make(BuildContext context);
 }
 
 /// Runs a [WidgetBuilder]'s result if the [condition] is true.

@@ -41,8 +41,8 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
   );
 }
 
-class VelocityZeroCardSkeleton extends StatefulWidget {
-  const VelocityZeroCardSkeleton(
+class VelocityZeroCard extends StatefulWidget {
+  const VelocityZeroCard(
       {this.isCircularImage = true,
       this.isBottomLinesActive = true,
       this.isDark = false});
@@ -51,11 +51,10 @@ class VelocityZeroCardSkeleton extends StatefulWidget {
   final bool isDark;
 
   @override
-  _VelocityZeroCardSkeletonState createState() =>
-      _VelocityZeroCardSkeletonState();
+  _VelocityZeroCardState createState() => _VelocityZeroCardState();
 }
 
-class _VelocityZeroCardSkeletonState extends State<VelocityZeroCardSkeleton>
+class _VelocityZeroCardState extends State<VelocityZeroCard>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> animation;
@@ -193,8 +192,8 @@ class LineContainer extends StatelessWidget {
   }
 }
 
-class VelocityZeroListSkeleton extends StatelessWidget {
-  const VelocityZeroListSkeleton(
+class VelocityZeroList extends StatelessWidget {
+  const VelocityZeroList(
       {this.isCircularImage = true,
       this.length = 10,
       this.isBottomLinesActive = true,
@@ -212,7 +211,7 @@ class VelocityZeroListSkeleton extends StatelessWidget {
       itemCount: length,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
-        return VelocityZeroCardSkeleton(
+        return VelocityZeroCard(
           isCircularImage: isCircularImage,
           isBottomLinesActive: isBottomLinesActive,
           isDark: isDark,

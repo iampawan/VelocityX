@@ -134,7 +134,7 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
   VelocityXTextBuilder get italic => this.._fontStyle = FontStyle.italic;
 
   @override
-  AutoSizeText build() {
+  AutoSizeText make() {
     return AutoSizeText(
       _text,
       textAlign: _textAlign,

@@ -15,8 +15,58 @@
 import 'package:flutter/material.dart';
 
 extension ScrollExtension on Widget {
-  Widget get scrollVertical =>
-      SingleChildScrollView(child: this, scrollDirection: Axis.vertical);
-  Widget get scrollHorizontal =>
-      SingleChildScrollView(child: this, scrollDirection: Axis.horizontal);
+  Widget scrollVertical(
+          {ScrollController controller,
+          ScrollPhysics physics,
+          EdgeInsetsGeometry padding}) =>
+      SingleChildScrollView(
+          child: this,
+          scrollDirection: Axis.vertical,
+          controller: controller,
+          physics: physics,
+          padding: padding);
+  Widget scrollHorizontal(
+          {ScrollController controller,
+          ScrollPhysics physics,
+          EdgeInsetsGeometry padding}) =>
+      SingleChildScrollView(
+        child: this,
+        scrollDirection: Axis.horizontal,
+      );
+}
+
+class ScrollVertical extends StatelessWidget {
+  final ScrollController controller;
+  final ScrollPhysics physics;
+  final EdgeInsetsGeometry padding;
+
+  const ScrollVertical({Key key, this.controller, this.physics, this.padding})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+        child: this,
+        scrollDirection: Axis.vertical,
+        controller: controller,
+        physics: physics,
+        padding: padding);
+  }
+}
+
+class ScrollHorizontal extends StatelessWidget {
+  final ScrollController controller;
+  final ScrollPhysics physics;
+  final EdgeInsetsGeometry padding;
+
+  const ScrollHorizontal({Key key, this.controller, this.physics, this.padding})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+        child: this,
+        scrollDirection: Axis.horizontal,
+        controller: controller,
+        physics: physics,
+        padding: padding);
+  }
 }

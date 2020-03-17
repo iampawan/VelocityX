@@ -24,7 +24,7 @@ extension CenterExtension on Widget {
 }
 
 extension CenterBuilderExtension on VelocityXWidgetBuilder<Widget> {
-  Widget get buildWithCenter => Center(child: build());
+  Widget get buildWithCenter => Center(child: make());
 }
 
 // class _MyPaddingCallable {

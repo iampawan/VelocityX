@@ -78,37 +78,60 @@ extension NumExtension on num {
   bool get isNegative => this < 0;
 
   ///Widgets
-  Widget get wBox => SizedBox(
+  Widget get widthBox => SizedBox(
         width: toDouble(),
       );
-  Widget get hBox => SizedBox(
+  Widget get heightBox => SizedBox(
         height: toDouble(),
       );
 
-  Widget get whBox => SizedBox(
+  Widget get squareBox => SizedBox(
         height: toDouble(),
         width: toDouble(),
       );
 }
 
 extension ListExtension on List {
-  Widget get vStack => VStack(this);
-  Widget get hStack => HStack(this);
-  Widget get zStack => ZStack(this);
-  Widget get zStackExpanded => ZStackExpanded(this);
+  Widget vStack(
+          {MainAxisAlignment alignment,
+          CrossAxisAlignment crossAlignment,
+          MainAxisSize axisSize}) =>
+      VStack(
+        this,
+        alignment: alignment,
+        axisSize: axisSize,
+        crossAlignment: crossAlignment,
+      );
+  Widget hStack(
+          {MainAxisAlignment alignment,
+          CrossAxisAlignment crossAlignment,
+          MainAxisSize axisSize}) =>
+      HStack(
+        this,
+        alignment: alignment,
+        axisSize: axisSize,
+        crossAlignment: crossAlignment,
+      );
+  Widget zStack(
+          {AlignmentGeometry alignment, StackFit fit, Overflow overflow}) =>
+      ZStack(
+        this,
+        alignment: alignment,
+        fit: fit,
+        overflow: overflow,
+      );
 }
 
 extension ContextExtensions on BuildContext {
-  /// Extension for getting textTheme
-  TextTheme get textTheme => Theme.of(this).textTheme;
-
-  MaterialResponsiveUiData get mdResponsive =>
+  MaterialResponsiveUiData get _mdResponsive =>
       MaterialResponsiveUiData.of(this);
 
-  /// Extension for getting NavigatorSatte
-  NavigatorState get nav => Navigator.of(this);
-
   /// Screen Sizes Extensions for responsive UI
+  int get mdColumns => _mdResponsive.columns;
+  double get mdGutter => _mdResponsive.gutter;
+  MobileDeviceInfo get mdDeviceInfo => _mdResponsive.deviceInfo;
+  MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
+
   MediaQueryData get mq => MediaQuery.of(this);
   double get screenWidth => mq.size.width;
   double get screenHeight => mq.size.height;
@@ -121,4 +144,10 @@ extension ContextExtensions on BuildContext {
 
   /// Returns if Orientation is landscape
   bool get isLandscape => mq.orientation == Orientation.landscape;
+
+  /// Extension for getting NavigatorSatte
+  NavigatorState get nav => Navigator.of(this);
+
+  /// Extension for getting textTheme
+  TextTheme get textTheme => Theme.of(this).textTheme;
 }

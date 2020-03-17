@@ -46,7 +46,7 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
   _VelocityXCardBuilder get zero => this.._elevation = 0.0;
 
   @override
-  Widget build() {
+  Widget make() {
     return Card(
       margin: velocityPadding,
       child: _child,

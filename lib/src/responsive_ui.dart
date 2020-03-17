@@ -1,12 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'velocity_x_extensions.dart';
 
 /// A class that can be queried for breakpoints based on the guidelines in
 /// https://material.io/guidelines/layout/responsive-ui.html .
 class MaterialResponsiveUiData {
   static MaterialResponsiveUiData of(BuildContext context) =>
-      MaterialResponsiveUiData._(context.mq);
+      MaterialResponsiveUiData._(MediaQuery.of(context));
 
   final MediaQueryData _data;
 

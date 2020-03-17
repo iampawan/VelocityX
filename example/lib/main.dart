@@ -12,24 +12,24 @@ class Demo extends StatelessWidget {
     return Material(
         child: Column(
       children: <Widget>[
-        20.hBox,
+        20.heightBox,
         const Text(
           "hello world",
           style: TextStyle(color: Colors.white),
-        ).text.bold.xl.build().p16.card.blue500.elevation(5).build().p32,
-        20.hBox,
+        ).text.bold.xl.make().p16.card.blue500.elevation(5).make().p32,
+        20.heightBox,
         "hello world"
             .text
             .white
             .bold
             .xl
-            .build()
+            .make()
             .box
             .p16
             .roundedLg
             .linearGradient([Colors.indigo, Colors.purple])
             .shadow2xl
-            .build()
+            .make()
       ],
     ));
   }

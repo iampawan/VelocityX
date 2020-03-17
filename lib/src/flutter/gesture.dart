@@ -38,7 +38,7 @@ class _VelocityXGestureBuilder extends VelocityXWidgetBuilder<Widget> {
       this.._onLongClick = onLongClick;
 
   @override
-  Widget build() {
+  Widget make() {
     return GestureDetector(
       onTap: _onClick,
       child: _child,
@@ -69,7 +69,7 @@ class _VelocityXInkWellBuilder extends VelocityXWidgetBuilder<Widget> {
       this.._onLongClick = onLongClick;
 
   @override
-  Widget build() {
+  Widget make() {
     return InkWell(
       onTap: _onClick,
       child: _child,

@@ -247,7 +247,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
       this.._gradient = SweepGradient(colors: colors);
 
   @override
-  Widget build() {
+  Widget make() {
     return Container(
       height: _height,
       width: _width,

@@ -424,3 +424,53 @@ extension SizedBoxExtension on Widget {
         child: this,
       );
 }
+
+class WidthBox extends StatelessWidget {
+  const WidthBox(
+    this.width, {
+    Key key,
+  }) : super(key: key);
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      key: key,
+    );
+  }
+}
+
+class HeightBox extends StatelessWidget {
+  const HeightBox(
+    this.height, {
+    Key key,
+  }) : super(key: key);
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      key: key,
+    );
+  }
+}
+
+class SquareBox extends StatelessWidget {
+  const SquareBox(
+    this.size, {
+    Key key,
+  }) : super(key: key);
+  final double size;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size,
+      height: size,
+      key: key,
+    );
+  }
+}

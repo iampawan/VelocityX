@@ -25,7 +25,7 @@ class _VelocityXPaddingBuilder extends VelocityXWidgetBuilder<Widget>
   final Widget _child;
 
   @override
-  Widget build() {
+  Widget make() {
     return Padding(
       child: _child,
       padding: velocityPadding,
