@@ -25,9 +25,7 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     setChildToColor(this);
   }
 
-  VelocityXTextBuilder.existing(this._text, this._textStyle)
-      : assert(_text != null),
-        assert(_textStyle != null) {
+  VelocityXTextBuilder.existing(this._text, this._textStyle) : assert(_text != null) {
     setChildToColor(this);
   }
 

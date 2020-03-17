@@ -10,7 +10,9 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: "Hi"
+        child: [
+      const SquareBox(20),
+      const Text("Hi")
           .text
           .white
           .xl4
@@ -23,7 +25,7 @@ class Demo extends StatelessWidget {
           .make()
           .whHalf(context)
           .centered(),
-    );
+    ].vStack());
 
     // return Material(
     //     child: Center(
