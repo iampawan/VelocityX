@@ -10,40 +10,17 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: [
-      const SquareBox(20),
-      VelocityConditionalSwitch.single(
-          context: context,
-          valueBuilder: (context) => context.mdWindowSize,
-          caseBuilders: {
-            MobileWindowSize.xsmall: (context) => "Mobile"
-                .text
-                .white
-                .xl4
-                .semiBold
-                .make()
-                .p12()
-                .card
-                .roundedLg
-                .green500
-                .make()
-                .whOneForth(context)
-                .centered()
-          },
-          fallbackBuilder: (context) => "Web"
-              .text
-              .white
-              .xl4
-              .semiBold
-              .make()
-              .p12()
-              .card
-              .roundedLg
-              .orange600
-              .make()
-              .whOneForth(context)
-              .centered()),
-    ].vStack());
+      child: VelocityConditionalSwitch.single(
+        context: context,
+        valueBuilder: (context) => context.mdWindowSize,
+        caseBuilders: {
+          MobileWindowSize.xsmall: (context) =>
+              "Mobile".text.white.xl4.semiBold.center.make().p12().centered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered()
+        },
+        fallbackBuilder: (context) =>
+            "Web".text.white.xl4.semiBold.make().p12().centered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered(),
+      ),
+    );
 
     // return Material(
     //     child: Center(
