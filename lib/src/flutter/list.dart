@@ -15,13 +15,13 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class VelocityListDisc extends StatelessWidget {
+class VelocityDiscList extends StatelessWidget {
   final List<String> _items;
   final EdgeInsetsGeometry padding;
   final Color color;
   final double fontSize;
 
-  const VelocityListDisc(
+  const VelocityDiscList(
     this._items, {
     Key key,
     this.padding,
@@ -49,13 +49,13 @@ class VelocityListDisc extends StatelessWidget {
   }
 }
 
-class VelocityListDecimal extends StatelessWidget {
+class VelocityDecimalList extends StatelessWidget {
   final List<String> _items;
   final EdgeInsetsGeometry padding;
   final Color color;
   final double fontSize;
 
-  const VelocityListDecimal(
+  const VelocityDecimalList(
     this._items, {
     Key key,
     this.padding,

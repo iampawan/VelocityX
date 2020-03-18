@@ -136,7 +136,7 @@ extension NumExtension on num {
   VelocityXTextBuilder get text => VelocityXTextBuilder(toString());
 }
 
-extension ListExtension on List<Widget> {
+extension ListWidgetExtension on List<Widget> {
   Widget vStack({Key key, MainAxisAlignment alignment, CrossAxisAlignment crossAlignment, MainAxisSize axisSize}) => VStack(
         this,
         key: key,
@@ -157,6 +157,36 @@ extension ListExtension on List<Widget> {
         alignment: alignment,
         fit: fit,
         overflow: overflow,
+      );
+}
+
+extension ListStringExtension on List<String> {
+  Widget discList({
+    Key key,
+    Color color = Colors.black,
+    double fontSize,
+    EdgeInsetsGeometry padding,
+  }) =>
+      VelocityDiscList(
+        this,
+        key: key,
+        padding: padding,
+        fontSize: fontSize,
+        color: color,
+      );
+
+  Widget decimalList({
+    Key key,
+    Color color = Colors.black,
+    double fontSize,
+    EdgeInsetsGeometry padding,
+  }) =>
+      VelocityDecimalList(
+        this,
+        key: key,
+        padding: padding,
+        fontSize: fontSize,
+        color: color,
       );
 }
 
