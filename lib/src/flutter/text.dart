@@ -25,7 +25,8 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     setChildToColor(this);
   }
 
-  VelocityXTextBuilder.existing(this._text, this._textStyle) : assert(_text != null) {
+  VelocityXTextBuilder.existing(this._text, this._textStyle)
+      : assert(_text != null) {
     setChildToColor(this);
   }
 
@@ -38,6 +39,9 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
   int _maxLines;
   FontStyle _fontStyle;
   TextStyle _textStyle;
+  double _letterSpacing;
+  double _lineHeight;
+  TextDecoration _decoration;
 
   VelocityXTextBuilder text(String text) {
     _text = text;
@@ -71,19 +75,23 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
 
   VelocityXTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
 
-  VelocityXTextBuilder get sm => _fontSizedText(child: this, scaleFactor: 0.875);
+  VelocityXTextBuilder get sm =>
+      _fontSizedText(child: this, scaleFactor: 0.875);
 
   VelocityXTextBuilder get base => _fontSizedText(child: this, scaleFactor: 1);
 
-  VelocityXTextBuilder get lg => _fontSizedText(child: this, scaleFactor: 1.125);
+  VelocityXTextBuilder get lg =>
+      _fontSizedText(child: this, scaleFactor: 1.125);
 
   VelocityXTextBuilder get xl => _fontSizedText(child: this, scaleFactor: 1.25);
 
   VelocityXTextBuilder get xl2 => _fontSizedText(child: this, scaleFactor: 1.5);
 
-  VelocityXTextBuilder get xl3 => _fontSizedText(child: this, scaleFactor: 1.875);
+  VelocityXTextBuilder get xl3 =>
+      _fontSizedText(child: this, scaleFactor: 1.875);
 
-  VelocityXTextBuilder get xl4 => _fontSizedText(child: this, scaleFactor: 2.25);
+  VelocityXTextBuilder get xl4 =>
+      _fontSizedText(child: this, scaleFactor: 2.25);
 
   VelocityXTextBuilder get xl5 => _fontSizedText(child: this, scaleFactor: 3);
 
@@ -95,23 +103,32 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     return this;
   }
 
-  VelocityXTextBuilder get hairLine => _fontWeightedText(child: this, weight: FontWeight.w100);
+  VelocityXTextBuilder get hairLine =>
+      _fontWeightedText(child: this, weight: FontWeight.w100);
 
-  VelocityXTextBuilder get thin => _fontWeightedText(child: this, weight: FontWeight.w200);
+  VelocityXTextBuilder get thin =>
+      _fontWeightedText(child: this, weight: FontWeight.w200);
 
-  VelocityXTextBuilder get light => _fontWeightedText(child: this, weight: FontWeight.w300);
+  VelocityXTextBuilder get light =>
+      _fontWeightedText(child: this, weight: FontWeight.w300);
 
-  VelocityXTextBuilder get normal => _fontWeightedText(child: this, weight: FontWeight.w400);
+  VelocityXTextBuilder get normal =>
+      _fontWeightedText(child: this, weight: FontWeight.w400);
 
-  VelocityXTextBuilder get medium => _fontWeightedText(child: this, weight: FontWeight.w500);
+  VelocityXTextBuilder get medium =>
+      _fontWeightedText(child: this, weight: FontWeight.w500);
 
-  VelocityXTextBuilder get semiBold => _fontWeightedText(child: this, weight: FontWeight.w600);
+  VelocityXTextBuilder get semiBold =>
+      _fontWeightedText(child: this, weight: FontWeight.w600);
 
-  VelocityXTextBuilder get bold => _fontWeightedText(child: this, weight: FontWeight.w700);
+  VelocityXTextBuilder get bold =>
+      _fontWeightedText(child: this, weight: FontWeight.w700);
 
-  VelocityXTextBuilder get extraBold => _fontWeightedText(child: this, weight: FontWeight.w800);
+  VelocityXTextBuilder get extraBold =>
+      _fontWeightedText(child: this, weight: FontWeight.w800);
 
-  VelocityXTextBuilder get extraBlack => _fontWeightedText(child: this, weight: FontWeight.w900);
+  VelocityXTextBuilder get extraBlack =>
+      _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VelocityXTextBuilder _fontWeightedText(
       {@required FontWeight weight, @required VelocityXTextBuilder child}) {
@@ -120,6 +137,36 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
   }
 
   VelocityXTextBuilder get italic => this.._fontStyle = FontStyle.italic;
+
+  VelocityXTextBuilder get tightest => this.._letterSpacing = -3.0;
+  VelocityXTextBuilder get tighter => this.._letterSpacing = -2.0;
+  VelocityXTextBuilder get tight => this.._letterSpacing = -1.0;
+  VelocityXTextBuilder get wide => this.._letterSpacing = 1.0;
+  VelocityXTextBuilder get wider => this.._letterSpacing = 2.0;
+  VelocityXTextBuilder get widest => this.._letterSpacing = 3.0;
+
+  VelocityXTextBuilder letterSpacing(double val) => this.._letterSpacing = val;
+
+  VelocityXTextBuilder get underline =>
+      this.._decoration = TextDecoration.underline;
+
+  VelocityXTextBuilder get lineThrough =>
+      this.._decoration = TextDecoration.lineThrough;
+
+  VelocityXTextBuilder get oveline =>
+      this.._decoration = TextDecoration.overline;
+
+  VelocityXTextBuilder get uppercase => this.._text = _text.toUpperCase();
+  VelocityXTextBuilder get lowercase => this.._text = _text.toLowerCase();
+  VelocityXTextBuilder get capitalize =>
+      this.._text = _text.allWordsCapitilize();
+  VelocityXTextBuilder get hidePartial => this.._text = _text.hidePartial();
+
+  VelocityXTextBuilder get heightTight => this.._lineHeight = 0.75;
+  VelocityXTextBuilder get heightSnug => this.._lineHeight = 0.875;
+  VelocityXTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
+  VelocityXTextBuilder get heightLoose => this.._lineHeight = 1.5;
+  VelocityXTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
   @override
   AutoSizeText make({Key key}) {
@@ -136,6 +183,9 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
             fontStyle: _fontStyle ?? FontStyle.normal,
             fontFamily: _fontFamily,
             fontWeight: _fontWeight,
+            letterSpacing: _letterSpacing ?? 0.0,
+            decoration: _decoration ?? TextDecoration.none,
+            height: _lineHeight,
           ) ??
           TextStyle(
             color: velocityColor,
@@ -143,6 +193,9 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
             fontStyle: _fontStyle ?? FontStyle.normal,
             fontFamily: _fontFamily,
             fontWeight: _fontWeight,
+            letterSpacing: _letterSpacing ?? 0.0,
+            decoration: _decoration ?? TextDecoration.none,
+            height: _lineHeight,
           ),
     );
   }

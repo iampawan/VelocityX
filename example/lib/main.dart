@@ -10,10 +10,16 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: VelocityDevice(
-          mobile: "Mobile".text.white.xl4.semiBold.center.make().p12().centered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered(),
-          web: "Web".text.white.xl4.semiBold.make().p12().centered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered()),
+      child: VelocityListDisc(
+        ["Pawan", "Kumar", "is", "a", "Pro"],
+        fontSize: 24,
+        color: VelocityX.redColor500,
+      ),
     );
+    //   child: VelocityDevice(
+    //       mobile: "Mobile".text.white.xl4.semiBold.center.makeCentered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered(),
+    //       web: "Web".text.white.xl4.hidePartial.heightLoose.semiBold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered()),
+    // );
 
     // return Material(
     //     child: Center(

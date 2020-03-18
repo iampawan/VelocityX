@@ -23,8 +23,7 @@ class VelocityXExtensions {}
 
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
-  String firstLetterUpperCase() =>
-      length > 1 ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}" : this;
+  String firstLetterUpperCase() => length > 1 ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}" : this;
 
   ///Removes first element
   String get eliminateFirst => "${substring(1, length)}";
@@ -32,8 +31,7 @@ extension StringExtension on String {
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
 
-  bool validateEmail() =>
-      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this);
+  bool validateEmail() => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this);
 
   /// Returns the string if it is not `null`, or the empty string otherwise
   String get orEmpty => this ?? "";
@@ -48,14 +46,60 @@ extension StringExtension on String {
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
   bool get isNotBlank => this != null && trim().isNotEmpty;
 
+  ///
+  /// Replaces chars of the given String [s] with [replace].
+  ///
+  /// The default value of [replace] is *.
+  /// [begin] determines the start of the 'replacing'. If [begin] is null, it starts from index 0.
+  /// [end] defines the end of the 'replacing'. If [end] is null, it ends at [s] length divided by 2.
+  /// If [s] is empty or consists of only 1 char, the method returns null.
+  ///
+  /// Example :
+  /// 1234567890 => *****67890
+  /// 1234567890 with begin 2 and end 6 => 12****7890
+  /// 1234567890 with begin 1 => 1****67890
+  ///
+  String hidePartial({int begin = 0, int end, String replace = '*'}) {
+    final buffer = StringBuffer();
+    if (length <= 1) {
+      return null;
+    }
+    if (end == null) {
+      end = (length / 2).round();
+    } else {
+      if (end > length) {
+        end = length;
+      }
+    }
+    for (var i = 0; i < length; i++) {
+      if (i >= end) {
+        buffer.write(String.fromCharCode(runes.elementAt(i)));
+        continue;
+      }
+      if (i >= begin) {
+        buffer.write(replace);
+        continue;
+      }
+      buffer.write(String.fromCharCode(runes.elementAt(i)));
+    }
+    return buffer.toString();
+  }
+
+  ///Capitalize all words inside a string
+  String allWordsCapitilize() {
+    return toLowerCase().split(' ').map((word) {
+      final String leftText = (word.length > 1) ? word.substring(1, word.length) : '';
+      return word[0].toUpperCase() + leftText;
+    }).join(' ');
+  }
+
   /// Get Text Widget for the String
   VelocityXTextBuilder get text => VelocityXTextBuilder(this);
 }
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
-  String toDoubleStringAsFixed({int digit = 2}) =>
-      toStringAsFixed(truncateToDouble() == this ? 0 : digit);
+  String toDoubleStringAsFixed({int digit = 2}) => toStringAsFixed(truncateToDouble() == this ? 0 : digit);
 
   bool get isNull => this == null;
   bool get isNotNull => this != null;
@@ -87,27 +131,20 @@ extension NumExtension on num {
         height: toDouble(),
         width: toDouble(),
       );
+
+  /// Get Text Widget for the String
+  VelocityXTextBuilder get text => VelocityXTextBuilder(toString());
 }
 
-extension ListExtension on List {
-  Widget vStack(
-          {Key key,
-          MainAxisAlignment alignment,
-          CrossAxisAlignment crossAlignment,
-          MainAxisSize axisSize}) =>
-      VStack(
+extension ListExtension on List<Widget> {
+  Widget vStack({Key key, MainAxisAlignment alignment, CrossAxisAlignment crossAlignment, MainAxisSize axisSize}) => VStack(
         this,
         key: key,
         alignment: alignment,
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
-  Widget hStack(
-          {Key key,
-          MainAxisAlignment alignment,
-          CrossAxisAlignment crossAlignment,
-          MainAxisSize axisSize}) =>
-      HStack(
+  Widget hStack({Key key, MainAxisAlignment alignment, CrossAxisAlignment crossAlignment, MainAxisSize axisSize}) => HStack(
         this,
         key: key,
         alignment: alignment,

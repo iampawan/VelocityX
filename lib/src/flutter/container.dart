@@ -19,18 +19,14 @@ import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
-class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
-    with
-        VelocityColorMixin<_VelocityXContainerBuilder>,
-        VelocityPaddingMixin<_VelocityXContainerBuilder>,
-        VelocityRoundMixin<_VelocityXContainerBuilder> {
-  _VelocityXContainerBuilder(this._child) : assert(_child != null) {
+class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin<VelocityBox>, VelocityPaddingMixin<VelocityBox>, VelocityRoundMixin<VelocityBox> {
+  VelocityBox({this.child}) {
     setChildToColor(this);
     setChildToPad(this);
     setChildToRound(this);
   }
 
-  final Widget _child;
+  final Widget child;
 
   bool _isCircleRounded = false;
   List<BoxShadow> _boxShadow;
@@ -43,43 +39,42 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   AlignmentGeometry _alignment;
   Matrix4 _transform;
 
-  _VelocityXContainerBuilder height(double val) => this.._height = val;
-  _VelocityXContainerBuilder width(double val) => this.._width = val;
+  VelocityBox height(double val) => this.._height = val;
+  VelocityBox width(double val) => this.._width = val;
 
-  _VelocityXContainerBuilder padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
+  VelocityBox padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
 
-  _VelocityXContainerBuilder margin(EdgeInsetsGeometry val) => this.._margin = val;
+  VelocityBox margin(EdgeInsetsGeometry val) => this.._margin = val;
 
-  _VelocityXContainerBuilder color(Color color) => this..velocityColor = color;
+  VelocityBox color(Color color) => this..velocityColor = color;
 
-  _VelocityXContainerBuilder hexColor(String colorHex) =>
-      this..velocityColor = VelocityX.hexToColor(colorHex);
+  VelocityBox hexColor(String colorHex) => this..velocityColor = VelocityX.hexToColor(colorHex);
 
   /// Alignment
-  _VelocityXContainerBuilder alignment(Alignment val) => this.._alignment = val;
-  _VelocityXContainerBuilder get alignTopCenter => this.._alignment = Alignment.topCenter;
+  VelocityBox alignment(Alignment val) => this.._alignment = val;
+  VelocityBox get alignTopCenter => this.._alignment = Alignment.topCenter;
 
-  _VelocityXContainerBuilder get alignTopLeft => this.._alignment = Alignment.topLeft;
+  VelocityBox get alignTopLeft => this.._alignment = Alignment.topLeft;
 
-  _VelocityXContainerBuilder get alignTopRight => this.._alignment = Alignment.topRight;
+  VelocityBox get alignTopRight => this.._alignment = Alignment.topRight;
 
-  _VelocityXContainerBuilder get alignCenter => this.._alignment = Alignment.center;
-  _VelocityXContainerBuilder get alignCenterLeft => this.._alignment = Alignment.centerLeft;
-  _VelocityXContainerBuilder get alignCenterRight => this.._alignment = Alignment.centerRight;
+  VelocityBox get alignCenter => this.._alignment = Alignment.center;
+  VelocityBox get alignCenterLeft => this.._alignment = Alignment.centerLeft;
+  VelocityBox get alignCenterRight => this.._alignment = Alignment.centerRight;
 
-  _VelocityXContainerBuilder get alignBottomCenter => this.._alignment = Alignment.bottomCenter;
+  VelocityBox get alignBottomCenter => this.._alignment = Alignment.bottomCenter;
 
-  _VelocityXContainerBuilder get alignBottomLeft => this.._alignment = Alignment.bottomLeft;
+  VelocityBox get alignBottomLeft => this.._alignment = Alignment.bottomLeft;
 
-  _VelocityXContainerBuilder get alignBottomRight => this.._alignment = Alignment.bottomRight;
+  VelocityBox get alignBottomRight => this.._alignment = Alignment.bottomRight;
 
   // transforming
-  _VelocityXContainerBuilder transform(Matrix4 val) => this.._transform = val;
+  VelocityBox transform(Matrix4 val) => this.._transform = val;
 
-  _VelocityXContainerBuilder get roundedFull => this.._isCircleRounded = true;
+  VelocityBox get roundedFull => this.._isCircleRounded = true;
 
   /// Shadowing
-  _VelocityXContainerBuilder get shadow {
+  VelocityBox get shadow {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -98,7 +93,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder get shadowXs {
+  VelocityBox get shadowXs {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.05),
@@ -111,7 +106,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder get shadowSm {
+  VelocityBox get shadowSm {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.05),
@@ -124,7 +119,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder get shadowMd {
+  VelocityBox get shadowMd {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -143,7 +138,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder get shadowLg {
+  VelocityBox get shadowLg {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -162,7 +157,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder get shadowXl {
+  VelocityBox get shadowXl {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -181,7 +176,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder get shadow2xl {
+  VelocityBox get shadow2xl {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.25),
@@ -194,7 +189,7 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  _VelocityXContainerBuilder shadowOutline({Color outlineColor}) {
+  VelocityBox shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(
         color: outlineColor?.withOpacity(0.5) ?? const Color.fromRGBO(66, 153, 225, 0.5),
@@ -208,21 +203,17 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   }
 
   /// Bordering
-  _VelocityXContainerBuilder border(
-      {Color color = Colors.black, double width = 1.0, BorderStyle style = BorderStyle.solid}) {
+  VelocityBox border({Color color = Colors.black, double width = 1.0, BorderStyle style = BorderStyle.solid}) {
     _border = Border.all(color: color, width: width, style: style);
     return this;
   }
 
   ///Gradienting
-  _VelocityXContainerBuilder linearGradient(List<Color> colors) =>
-      this.._gradient = LinearGradient(colors: colors);
+  VelocityBox linearGradient(List<Color> colors) => this.._gradient = LinearGradient(colors: colors);
 
-  _VelocityXContainerBuilder radialGradient(List<Color> colors) =>
-      this.._gradient = RadialGradient(colors: colors);
+  VelocityBox radialGradient(List<Color> colors) => this.._gradient = RadialGradient(colors: colors);
 
-  _VelocityXContainerBuilder sweepGradient(List<Color> colors) =>
-      this.._gradient = SweepGradient(colors: colors);
+  VelocityBox sweepGradient(List<Color> colors) => this.._gradient = SweepGradient(colors: colors);
 
   @override
   Widget make({Key key}) {
@@ -234,11 +225,10 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
       margin: _margin,
       alignment: _alignment,
       transform: _transform,
-      child: _child,
+      child: child,
       decoration: BoxDecoration(
           color: velocityColor,
-          borderRadius:
-              _isCircleRounded || roundedValue.isNull ? null : BorderRadius.circular(roundedValue),
+          borderRadius: _isCircleRounded || roundedValue.isNull ? null : BorderRadius.circular(roundedValue),
           shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
           boxShadow: _boxShadow ?? [],
           border: _border,
@@ -247,6 +237,6 @@ class _VelocityXContainerBuilder extends VelocityXWidgetBuilder<Widget>
   }
 }
 
-extension ContainerExtension on Widget {
-  _VelocityXContainerBuilder get box => _VelocityXContainerBuilder(this);
+extension ContainerWidgetExtension on Widget {
+  VelocityBox get box => VelocityBox(child: this);
 }

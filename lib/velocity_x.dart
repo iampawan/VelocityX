@@ -9,6 +9,7 @@ export 'src/flutter/common/velocity_zero.dart';
 export 'src/flutter/container.dart';
 export 'src/flutter/flex.dart';
 export 'src/flutter/gesture.dart';
+export 'src/flutter/list.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';
