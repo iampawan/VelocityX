@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+velocitylib.code-workspace
 
 # IntelliJ related
 *.iml
