@@ -39,6 +39,8 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
   AlignmentGeometry _alignment;
   Matrix4 _transform;
 
+  DecorationImage _bgImage;
+
   VelocityBox height(double val) => this.._height = val;
   VelocityBox width(double val) => this.._width = val;
 
@@ -215,6 +217,8 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
 
   VelocityBox sweepGradient(List<Color> colors) => this.._gradient = SweepGradient(colors: colors);
 
+  VelocityBox bgImage(DecorationImage image) => this.._bgImage = image;
+
   @override
   Widget make({Key key}) {
     return Container(
@@ -227,12 +231,14 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
       transform: _transform,
       child: child,
       decoration: BoxDecoration(
-          color: velocityColor,
-          borderRadius: _isCircleRounded || roundedValue.isNull ? null : BorderRadius.circular(roundedValue),
-          shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-          boxShadow: _boxShadow ?? [],
-          border: _border,
-          gradient: _gradient),
+        color: velocityColor,
+        borderRadius: _isCircleRounded || roundedValue.isNull ? null : BorderRadius.circular(roundedValue),
+        shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+        boxShadow: _boxShadow ?? [],
+        border: _border,
+        gradient: _gradient,
+        image: _bgImage,
+      ),
     );
   }
 }
