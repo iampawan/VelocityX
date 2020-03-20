@@ -38,7 +38,7 @@ class VelocityDiscList extends StatelessWidget {
           [
             VelocityBox().height(fontSize / 2.8).width(fontSize / 2.8).color(color).roundedFull.makeCentered(),
             10.widthBox,
-            _items[i].text.color(color).size(fontSize).make(),
+            _items[i].selectableText.color(color).size(fontSize).make(),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();
@@ -72,7 +72,7 @@ class VelocityDecimalList extends StatelessWidget {
           [
             (i + 1).text.color(color).size(fontSize).make(),
             10.widthBox,
-            _items[i].text.color(color).size(fontSize).make(),
+            _items[i].selectableText.color(color).size(fontSize).make(),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();

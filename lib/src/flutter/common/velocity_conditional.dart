@@ -13,8 +13,6 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/velocity_x_extensions.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 /// Runs a [WidgetBuilder]'s result if the [condition] is true.
 ///
