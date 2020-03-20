@@ -1,8 +1,8 @@
 name: velocity_x
-description: A new Flutter package.
-version: 0.0.1
-author:
-homepage:
+description: A minimalist Flutter framework for rapidly building custom designs.
+version: 0.1.0
+homepage: https://velocity-x.web.app
+repository: https://github.com/iampawan/VelocityX
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
