@@ -137,22 +137,3 @@ class VelocityConditionalSwitch {
     }
   }
 }
-
-class VelocityDevice extends StatelessWidget {
-  final Widget mobile;
-  final Widget web;
-
-  const VelocityDevice({Key key, @required this.mobile, @required this.web})
-      : assert(mobile != null),
-        assert(web != null),
-        super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return VelocityConditionalSwitch.single(
-      context: context,
-      valueBuilder: (context) => context.mdWindowSize,
-      caseBuilders: {MobileWindowSize.xsmall: (context) => mobile},
-      fallbackBuilder: (context) => web,
-    );
-  }
-}

@@ -4,6 +4,7 @@ export 'src/flutter/card.dart';
 export 'src/flutter/center.dart';
 export 'src/flutter/common/velocity_conditional.dart';
 export 'src/flutter/common/velocity_ensure_visible.dart';
+export 'src/flutter/common/velocity_responsive.dart';
 export 'src/flutter/common/velocity_two.dart';
 export 'src/flutter/common/velocity_zero.dart';
 export 'src/flutter/container.dart';
