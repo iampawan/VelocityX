@@ -12,6 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -95,6 +96,9 @@ extension StringExtension on String {
 
   /// Get Text Widget for the String
   VelocityXTextBuilder get text => VelocityXTextBuilder(this);
+
+  /// Get SelectableText Widget for the String
+  VelocityXSelectableTextBuilder get selectableText => VelocityXSelectableTextBuilder(this);
 }
 
 /// Extension Methods & Widgets for the numbers

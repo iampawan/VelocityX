@@ -14,6 +14,7 @@ export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';
 export 'src/flutter/scroll.dart';
+export 'src/flutter/selectable_text.dart';
 export 'src/flutter/sizedbox.dart';
 export 'src/flutter/text.dart';
 export 'src/flutter/transform.dart';
