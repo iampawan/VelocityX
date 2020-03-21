@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://velocity-x.web.app/" target="_blank">
+  <a href="https://velocityx.dev/" target="_blank">
     <h1>VelocityX</h1>
   </a>
 </p>
 
-[**VelocityX**](https://velocity-x.web.app/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
+[**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
 
 ## Inspired from Tailwindcss and SwiftUI.
 
@@ -14,7 +14,21 @@
 
 ## Quick start
 
-Read the [Getting started page](https://velocity-x.web.app/#/home)
+Read the [Getting started page](https://velocityx.dev/#/home)
+
+## Screenshot
+
+ <p align="center">
+  <a target="_blank" href="https://velocityx.dev/">
+    <img src="https://i.imgur.com/dMLivNy.png" alt="VelocityX">
+  </a>
+</p>
+
+<p align="center">
+  <a target="_blank" href="https://velocityx.dev/">
+    <img src="https://i.imgur.com/5Kh8iIb.png" alt="VelocityX">
+  </a>
+</p>
 
 ## Contributing
 
@@ -29,7 +43,7 @@ VelocityX is **100% free** and **open source**. We encourage and support an acti
 
 ## Documentation
 
-[**Installation Guide**](https://velocity-x.web.app/#/home)
+[**Installation Guide**](https://velocityx.dev/#/home)
 
 ### Social Media
 
