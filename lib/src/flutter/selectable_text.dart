@@ -160,7 +160,7 @@ class VelocityXSelectableTextBuilder extends VelocityXWidgetBuilder<SelectableTe
       enableInteractiveSelection: true,
 
       // showCursor: true,
-      textScaleFactor: _scaleFactor,
+      // textScaleFactor: _scaleFactor,
       style: _textStyle?.copyWith(
             color: velocityColor,
             fontSize: _fontSize ?? 14.0,

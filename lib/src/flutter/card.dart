@@ -31,7 +31,7 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
   }
   final Widget _child;
 
-  Color _shadowColor;
+  // Color _shadowColor;
   double _elevation = 1.0;
   ShapeBorder _shape;
 
@@ -58,7 +58,7 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
       clipBehavior: Clip.antiAlias,
       elevation: _elevation,
       shape: roundedValue.isNotNull ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(roundedValue)) : _shape,
-      shadowColor: _shadowColor,
+      // shadowColor: _shadowColor,
     );
   }
 }
