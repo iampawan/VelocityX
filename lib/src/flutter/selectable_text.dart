@@ -158,6 +158,7 @@ class VelocityXSelectableTextBuilder extends VelocityXWidgetBuilder<SelectableTe
       toolbarOptions: const ToolbarOptions(copy: true, cut: true, paste: true, selectAll: true),
       onTap: _onTap,
       enableInteractiveSelection: true,
+
       // showCursor: true,
       textScaleFactor: _scaleFactor,
       style: _textStyle?.copyWith(

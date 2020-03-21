@@ -17,7 +17,7 @@ class Demo extends StatelessWidget {
       //   ),
       // );
       child: VelocityDevice(
-          mobile: "Mobile".text.white.xl4.semiBold.center.makeCentered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered(),
+          mobile: "Mobile".selectableText.white.xl4.semiBold.center.makeCentered().box.roundedLg.green500.shadow2xl.make().whHalf(context).centered(),
           web: "Web".text.white.xl4.bold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered()),
     );
 
