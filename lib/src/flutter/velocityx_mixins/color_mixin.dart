@@ -26,8 +26,8 @@ mixin VelocityColorMixin<T> {
     _childToColor = child;
   }
 
-  T get white => _colorIt(child: _childToColor, color: VelocityX.white);
-  T get black => _colorIt(child: _childToColor, color: VelocityX.black);
+  T get white => _colorIt(child: _childToColor, color: VelocityX.whiteColor);
+  T get black => _colorIt(child: _childToColor, color: VelocityX.blackColor);
 
   T get gray100 => _colorIt(child: _childToColor, color: VelocityX.gray100);
   T get gray200 => _colorIt(child: _childToColor, color: VelocityX.gray200);
@@ -134,8 +134,8 @@ mixin VelocityColorMixin<T> {
     return _childToColor;
   }
 
-  T _colorIt({@required String color, @required T child}) {
-    velocityColor = VelocityX.hexToColor(color);
+  T _colorIt({@required Color color, @required T child}) {
+    velocityColor = color;
     return child;
   }
 }

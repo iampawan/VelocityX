@@ -5,6 +5,6 @@
     }
   ],
   "settings": {
-    "dart.lineLength": 200
+    // "dart.lineLength": 200
   }
 }

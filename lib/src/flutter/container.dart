@@ -10,16 +10,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:flutter/material.dart';
 
 import 'builder.dart';
+import 'common/velocity_curve.dart';
 import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
-class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin<VelocityBox>, VelocityPaddingMixin<VelocityBox>, VelocityRoundMixin<VelocityBox> {
+class VelocityBox extends VelocityXWidgetBuilder<Widget>
+    with
+        VelocityColorMixin<VelocityBox>,
+        VelocityPaddingMixin<VelocityBox>,
+        VelocityRoundMixin<VelocityBox>,
+        VelocityNeuMixin {
   VelocityBox({this.child}) {
     setChildToColor(this);
     setChildToPad(this);
@@ -34,6 +41,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
   Gradient _gradient;
   double _height;
   double _width;
+  VelocityNeumorph _velocityNeumorph;
 
   EdgeInsetsGeometry _margin;
   AlignmentGeometry _alignment;
@@ -50,7 +58,8 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
 
   VelocityBox color(Color color) => this..velocityColor = color;
 
-  VelocityBox hexColor(String colorHex) => this..velocityColor = VelocityX.hexToColor(colorHex);
+  VelocityBox hexColor(String colorHex) =>
+      this..velocityColor = VelocityX.hexToColor(colorHex);
 
   /// Alignment
   VelocityBox alignment(Alignment val) => this.._alignment = val;
@@ -64,7 +73,8 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
   VelocityBox get alignCenterLeft => this.._alignment = Alignment.centerLeft;
   VelocityBox get alignCenterRight => this.._alignment = Alignment.centerRight;
 
-  VelocityBox get alignBottomCenter => this.._alignment = Alignment.bottomCenter;
+  VelocityBox get alignBottomCenter =>
+      this.._alignment = Alignment.bottomCenter;
 
   VelocityBox get alignBottomLeft => this.._alignment = Alignment.bottomLeft;
 
@@ -194,7 +204,8 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
   VelocityBox shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(
-        color: outlineColor?.withOpacity(0.5) ?? const Color.fromRGBO(66, 153, 225, 0.5),
+        color: outlineColor?.withOpacity(0.5) ??
+            const Color.fromRGBO(66, 153, 225, 0.5),
         blurRadius: 0.0,
         spreadRadius: 3.0,
         offset: const Offset(0.0, 0.0),
@@ -205,19 +216,35 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
   }
 
   /// Bordering
-  VelocityBox border({Color color = Colors.black, double width = 1.0, BorderStyle style = BorderStyle.solid}) {
+  VelocityBox border(
+      {Color color = Colors.black,
+      double width = 1.0,
+      BorderStyle style = BorderStyle.solid}) {
     _border = Border.all(color: color, width: width, style: style);
     return this;
   }
 
   ///Gradienting
-  VelocityBox linearGradient(List<Color> colors) => this.._gradient = LinearGradient(colors: colors);
+  VelocityBox linearGradient(List<Color> colors) =>
+      this.._gradient = LinearGradient(colors: colors);
 
-  VelocityBox radialGradient(List<Color> colors) => this.._gradient = RadialGradient(colors: colors);
+  VelocityBox radialGradient(List<Color> colors) =>
+      this.._gradient = RadialGradient(colors: colors);
 
-  VelocityBox sweepGradient(List<Color> colors) => this.._gradient = SweepGradient(colors: colors);
+  VelocityBox sweepGradient(List<Color> colors) =>
+      this.._gradient = SweepGradient(colors: colors);
 
   VelocityBox bgImage(DecorationImage image) => this.._bgImage = image;
+
+  VelocityBox neumorphic(
+          {Color color,
+          VelocityCurve curve = VelocityCurve.concave,
+          double elevation = 12.0}) =>
+      this
+        .._velocityNeumorph = velocityDecoration(
+            color ?? velocityColor ?? ThemeData().scaffoldBackgroundColor,
+            curve,
+            elevation);
 
   @override
   Widget make({Key key}) {
@@ -230,15 +257,28 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget> with VelocityColorMixin
       alignment: _alignment,
       transform: _transform,
       child: child,
-      decoration: BoxDecoration(
-        color: velocityColor,
-        borderRadius: _isCircleRounded || roundedValue.isNull ? null : BorderRadius.circular(roundedValue),
-        shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-        boxShadow: _boxShadow ?? [],
-        border: _border,
-        gradient: _gradient,
-        image: _bgImage,
-      ),
+      decoration: _velocityNeumorph != null
+          ? BoxDecoration(
+              borderRadius: _isCircleRounded || roundedValue.isNull
+                  ? null
+                  : BorderRadius.circular(roundedValue),
+              shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+              boxShadow: _velocityNeumorph.shadows,
+              border: _border,
+              gradient: _velocityNeumorph.gradient,
+              image: _bgImage,
+            )
+          : BoxDecoration(
+              color: velocityColor,
+              borderRadius: _isCircleRounded || roundedValue.isNull
+                  ? null
+                  : BorderRadius.circular(roundedValue),
+              shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+              boxShadow: _boxShadow ?? [],
+              border: _border,
+              gradient: _gradient,
+              image: _bgImage,
+            ),
     );
   }
 }
