@@ -20,6 +20,7 @@ class VelocityDiscList extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color color;
   final double fontSize;
+  final bool primary;
 
   const VelocityDiscList(
     this._items, {
@@ -27,12 +28,14 @@ class VelocityDiscList extends StatelessWidget {
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
+    this.primary = false,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
       shrinkWrap: true,
+      primary: primary,
       itemBuilder: (context, i) {
         return HStack(
           [
@@ -54,6 +57,7 @@ class VelocityDecimalList extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color color;
   final double fontSize;
+  final bool primary;
 
   const VelocityDecimalList(
     this._items, {
@@ -61,12 +65,14 @@ class VelocityDecimalList extends StatelessWidget {
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
+    this.primary = false,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
       shrinkWrap: true,
+      primary: primary,
       itemBuilder: (context, i) {
         return HStack(
           [

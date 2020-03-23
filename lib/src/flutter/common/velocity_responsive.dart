@@ -3,6 +3,10 @@ import 'package:velocity_x/velocity_x.dart';
 
 import 'velocity_conditional.dart';
 
+/// VelocityDevice widget can be used for making responsive apps based on if it's mobile or web.
+/// In case, if you want more options based on window size, use [VelocityResponsive].
+/// You can specify two widgets depends on the screen size  [mobile] and [web].
+/// They must not be null.
 class VelocityDevice extends StatelessWidget {
   final Widget mobile;
   final Widget web;
@@ -22,6 +26,9 @@ class VelocityDevice extends StatelessWidget {
   }
 }
 
+/// VelocityResponsive widget can be used for making responsive apps based on different window sizes.
+/// You can specify multiple widgets depends on the screen size like [xsmall], [small], [medium],[large],
+/// and [xlarge]. The [fallback] must not be null. It will be replaced if you don't specity any above widget.
 class VelocityResponsive extends StatelessWidget {
   final Widget xsmall;
   final Widget small;
@@ -37,11 +44,11 @@ class VelocityResponsive extends StatelessWidget {
       context: context,
       valueBuilder: (context) => context.mdWindowSize,
       caseBuilders: {
-        MobileWindowSize.xsmall: (context) => xsmall,
-        MobileWindowSize.small: (context) => small,
-        MobileWindowSize.medium: (context) => medium,
-        MobileWindowSize.large: (context) => large,
-        MobileWindowSize.xlarge: (context) => xlarge,
+        MobileWindowSize.xsmall: (context) => xsmall ?? fallback,
+        MobileWindowSize.small: (context) => small ?? fallback,
+        MobileWindowSize.medium: (context) => medium ?? fallback,
+        MobileWindowSize.large: (context) => large ?? fallback,
+        MobileWindowSize.xlarge: (context) => xlarge ?? fallback,
       },
       fallbackBuilder: (context) => fallback,
     );
