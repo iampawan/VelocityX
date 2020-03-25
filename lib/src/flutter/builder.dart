@@ -8,3 +8,9 @@ abstract class VelocityXWidgetBuilder<T extends Widget> {
 abstract class VelocityXWidgetContextBuilder<T extends Widget> {
   T make(BuildContext context, {Key key});
 }
+
+abstract class VelocityXTextSpanBuilder<TextSpan> {
+  TextSpan make({Key key});
+}
+
+
