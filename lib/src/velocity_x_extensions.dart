@@ -16,6 +16,7 @@ import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'flutter/rich_text.dart';
 import 'flutter/text.dart';
 
 class VelocityXExtensions {}
@@ -99,6 +100,12 @@ extension StringExtension on String {
 
   /// Get SelectableText Widget for the String
   VelocityXSelectableTextBuilder get selectableText => VelocityXSelectableTextBuilder(this);
+
+  /// Get TextSpan for the String
+  VelocityXTextSpan get textSpan => VelocityXTextSpan(this);
+
+  /// Get RichText Widget for the String
+  VelocityXRichTextBuilder get richText => VelocityXRichTextBuilder(this);
 }
 
 /// Extension Methods & Widgets for the numbers

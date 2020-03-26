@@ -15,6 +15,7 @@ export 'src/flutter/list.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';
+export 'src/flutter/rich_text.dart';
 export 'src/flutter/scroll.dart';
 export 'src/flutter/selectable_text.dart';
 export 'src/flutter/sizedbox.dart';
