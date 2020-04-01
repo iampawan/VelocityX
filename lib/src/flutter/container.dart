@@ -10,6 +10,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -23,11 +24,13 @@ import 'velocityx_mixins/round_mixin.dart';
 
 class VelocityBox extends VelocityXWidgetBuilder<Widget>
     with
+        VelocityAlignmentMixing<VelocityBox>,
         VelocityColorMixin<VelocityBox>,
         VelocityPaddingMixin<VelocityBox>,
         VelocityRoundMixin<VelocityBox>,
         VelocityNeuMixin {
   VelocityBox({this.child}) {
+    setChildForAlignment(this);
     setChildToColor(this);
     setChildToPad(this);
     setChildToRound(this);
@@ -44,12 +47,12 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
   VelocityNeumorph _velocityNeumorph;
 
   EdgeInsetsGeometry _margin;
-  AlignmentGeometry _alignment;
   Matrix4 _transform;
 
   DecorationImage _bgImage;
 
   VelocityBox height(double val) => this.._height = val;
+
   VelocityBox width(double val) => this.._width = val;
 
   VelocityBox padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
@@ -60,25 +63,6 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
 
   VelocityBox hexColor(String colorHex) =>
       this..velocityColor = VelocityX.hexToColor(colorHex);
-
-  /// Alignment
-  VelocityBox alignment(Alignment val) => this.._alignment = val;
-  VelocityBox get alignTopCenter => this.._alignment = Alignment.topCenter;
-
-  VelocityBox get alignTopLeft => this.._alignment = Alignment.topLeft;
-
-  VelocityBox get alignTopRight => this.._alignment = Alignment.topRight;
-
-  VelocityBox get alignCenter => this.._alignment = Alignment.center;
-  VelocityBox get alignCenterLeft => this.._alignment = Alignment.centerLeft;
-  VelocityBox get alignCenterRight => this.._alignment = Alignment.centerRight;
-
-  VelocityBox get alignBottomCenter =>
-      this.._alignment = Alignment.bottomCenter;
-
-  VelocityBox get alignBottomLeft => this.._alignment = Alignment.bottomLeft;
-
-  VelocityBox get alignBottomRight => this.._alignment = Alignment.bottomRight;
 
   // transforming
   VelocityBox transform(Matrix4 val) => this.._transform = val;
@@ -254,7 +238,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
       width: _width,
       padding: velocityPadding,
       margin: _margin,
-      alignment: _alignment,
+      alignment: velocityAlignment,
       transform: _transform,
       child: child,
       decoration: _velocityNeumorph != null
