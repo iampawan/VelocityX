@@ -18,8 +18,8 @@ import 'builder.dart';
 
 class VelocityAnimatedPadding extends VelocityXWidgetBuilder<Widget>
     with
-        VelocityDurationMixing<VelocityAnimatedPadding>,
-        VelocityCurvesMixing<VelocityAnimatedPadding> {
+        VelocityDurationMixin<VelocityAnimatedPadding>,
+        VelocityCurvesMixin<VelocityAnimatedPadding> {
   VelocityAnimatedPadding({this.child}) {
     setChildForCurve(this);
     setChildForDuration(this);

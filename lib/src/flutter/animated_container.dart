@@ -23,9 +23,9 @@ import 'velocityx_mixins/round_mixin.dart';
 
 class VelocityAnimatedBox extends VelocityXWidgetBuilder<Widget>
     with
-        VelocityAlignmentMixing<VelocityAnimatedBox>,
-        VelocityDurationMixing<VelocityAnimatedBox>,
-        VelocityCurvesMixing<VelocityAnimatedBox>,
+        VelocityAlignmentMixin<VelocityAnimatedBox>,
+        VelocityDurationMixin<VelocityAnimatedBox>,
+        VelocityCurvesMixin<VelocityAnimatedBox>,
         VelocityColorMixin<VelocityAnimatedBox>,
         VelocityPaddingMixin<VelocityAnimatedBox>,
         VelocityRoundMixin<VelocityAnimatedBox> {

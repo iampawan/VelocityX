@@ -13,7 +13,7 @@
 
 import 'package:flutter/material.dart';
 
-mixin VelocityCurvesMixing<T> {
+mixin VelocityCurvesMixin<T> {
   T _child;
 
   @protected
