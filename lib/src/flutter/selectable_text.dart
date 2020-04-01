@@ -42,6 +42,7 @@ class VelocityXSelectableTextBuilder
   double _lineHeight;
   TextDecoration _decoration;
   Function _onTap;
+  TextStyle _themedStyle;
 
   VelocityXSelectableTextBuilder selectableText(String text) {
     _text = text;
@@ -63,6 +64,12 @@ class VelocityXSelectableTextBuilder
 
   VelocityXSelectableTextBuilder fontFamily(String family) {
     _fontFamily = family;
+    return this;
+  }
+
+  /// Use textStyle to provide custom or any theme style.
+  VelocityXSelectableTextBuilder textStyle(TextStyle _style) {
+    _themedStyle = _style;
     return this;
   }
 
@@ -188,39 +195,28 @@ class VelocityXSelectableTextBuilder
 
   @override
   SelectableText make({Key key}) {
-    return SelectableText(
-      _text,
-      key: key,
-      textAlign: _textAlign,
-      maxLines: _maxLines,
-      toolbarOptions: const ToolbarOptions(
-          copy: true, cut: true, paste: true, selectAll: true),
-      onTap: _onTap,
-      enableInteractiveSelection: true,
-
-      // showCursor: true,
-      // textScaleFactor: _scaleFactor,
-      style: _textStyle?.copyWith(
-            color: velocityColor,
-            fontSize: _fontSize ?? 14.0,
-            fontStyle: _fontStyle ?? FontStyle.normal,
-            fontFamily: _fontFamily,
-            fontWeight: _fontWeight,
-            letterSpacing: _letterSpacing ?? 0.0,
-            decoration: _decoration ?? TextDecoration.none,
-            height: _lineHeight,
-          ) ??
-          TextStyle(
-            color: velocityColor,
-            fontSize: _fontSize ?? 14.0,
-            fontStyle: _fontStyle ?? FontStyle.normal,
-            fontFamily: _fontFamily,
-            fontWeight: _fontWeight,
-            letterSpacing: _letterSpacing ?? 0.0,
-            decoration: _decoration ?? TextDecoration.none,
-            height: _lineHeight,
-          ),
+    final ts = TextStyle(
+      color: velocityColor,
+      fontSize: _fontSize,
+      fontStyle: _fontStyle,
+      fontFamily: _fontFamily,
+      fontWeight: _fontWeight,
+      letterSpacing: _letterSpacing,
+      decoration: _decoration,
+      height: _lineHeight,
     );
+    return SelectableText(_text,
+        key: key,
+        textAlign: _textAlign,
+        maxLines: _maxLines,
+        toolbarOptions: const ToolbarOptions(
+            copy: true, cut: true, paste: true, selectAll: true),
+        onTap: _onTap,
+        enableInteractiveSelection: true,
+        // showCursor: true,
+        // ? Because not available in stable channel
+        // textScaleFactor: _scaleFactor,
+        style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts);
   }
 }
 

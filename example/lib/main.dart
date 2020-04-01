@@ -11,35 +11,47 @@ class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: VelocityX.teal500,
-      child: VelocityDevice(
-          mobile: "Mobile"
-              .selectableText
+      child: VStack(
+        [
+          VelocityDevice(
+              mobile: "Mobile"
+                  .text
+                  .textStyle(context.textTheme.headline4)
+                  .italic
+                  .center
+                  .make()
+                  .centered()
+                  .box
+                  .rounded
+                  .teal500
+                  .neumorphic()
+                  .make()
+                  .whHalf(context),
+              web: "Web"
+                  .text
+                  .white
+                  .xl4
+                  .bold
+                  .center
+                  .makeCentered()
+                  .animatedBox
+                  .bounceIn
+                  .rounded
+                  .teal500
+                  .neumorphic()
+                  .make()
+                  .whHalf(context)),
+          20.heightBox,
+          "Velocity"
+              .richText
+              .withTextSpanChildren(["X".textSpan.red400.make()])
               .xl4
-              .semiBold
-              .center
-              .makeCentered()
-              .box
-              .rounded
-              .teal500
-              .neumorphic()
-              .make()
-              .whHalf(context)
-              .centered(),
-          web: "Web"
-              .text
               .white
-              .xl4
-              .bold
-              .center
-              .makeCentered()
-              .animatedBox
-              .bounceIn
-              .rounded
-              .teal500
-              .neumorphic()
               .make()
-              .whHalf(context)
-              .centered()),
+        ],
+        alignment: MainAxisAlignment.center,
+        crossAlignment: CrossAxisAlignment.center,
+      ).p16().scrollVertical(),
     );
   }
 }

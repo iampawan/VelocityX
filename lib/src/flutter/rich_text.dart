@@ -24,6 +24,11 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     setChildToColor(this);
   }
 
+  VelocityXRichTextBuilder.existing(this._text, this._textStyle)
+      : assert(_text != null) {
+    setChildToColor(this);
+  }
+
   String _text;
   List<TextSpan> _textSpanChildren;
   String _fontFamily;
@@ -37,6 +42,8 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
   double _lineHeight;
   TextDecoration _decoration;
   GestureRecognizer _gestureRecognizer;
+  TextStyle _textStyle;
+  TextStyle _themedStyle;
 
   VelocityXRichTextBuilder tap(Function function) {
     final recognizer = TapGestureRecognizer()..onTap = function;
@@ -68,6 +75,12 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
 
   VelocityXRichTextBuilder fontFamily(String family) {
     _fontFamily = family;
+    return this;
+  }
+
+  /// Use textStyle to provide custom or any theme style.
+  VelocityXRichTextBuilder textStyle(TextStyle _style) {
+    _themedStyle = _style;
     return this;
   }
 
@@ -198,21 +211,23 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
 
   @override
   AutoSizeText make({Key key}) {
+    final ts = TextStyle(
+      color: velocityColor,
+      fontSize: _fontSize,
+      fontStyle: _fontStyle,
+      fontFamily: _fontFamily,
+      fontWeight: _fontWeight,
+      letterSpacing: _letterSpacing,
+      decoration: _decoration,
+      height: _lineHeight,
+    );
     return AutoSizeText.rich(
       TextSpan(
-          text: _text,
-          children: _textSpanChildren,
-          recognizer: _gestureRecognizer,
-          style: TextStyle(
-            color: velocityColor,
-            fontSize: _fontSize ?? 14.0,
-            fontStyle: _fontStyle ?? FontStyle.normal,
-            fontFamily: _fontFamily,
-            fontWeight: _fontWeight,
-            letterSpacing: _letterSpacing ?? 0.0,
-            decoration: _decoration ?? TextDecoration.none,
-            height: _lineHeight,
-          )),
+        text: _text,
+        children: _textSpanChildren,
+        recognizer: _gestureRecognizer,
+        style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+      ),
       key: key,
       textAlign: _textAlign,
       maxLines: _maxLines,
@@ -221,9 +236,6 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     );
   }
 }
-
-
-
 
 class VelocityXTextSpan extends VelocityXTextSpanBuilder
     with VelocityColorMixin<VelocityXTextSpan> {
@@ -241,6 +253,8 @@ class VelocityXTextSpan extends VelocityXTextSpanBuilder
   double _letterSpacing;
   double _lineHeight;
   List<TextSpan> _textSpanChildren;
+  TextStyle _textStyle;
+  TextStyle _themedStyle;
 
   VelocityXTextSpan tap(Function function) {
     final recognizer = TapGestureRecognizer()..onTap = function;
@@ -266,6 +280,12 @@ class VelocityXTextSpan extends VelocityXTextSpanBuilder
 
   VelocityXTextSpan fontFamily(String family) {
     _fontFamily = family;
+    return this;
+  }
+
+  /// Use textStyle to provide custom or any theme style.
+  VelocityXTextSpan textStyle(TextStyle _style) {
+    _themedStyle = _style;
     return this;
   }
 
@@ -348,20 +368,34 @@ class VelocityXTextSpan extends VelocityXTextSpanBuilder
 
   @override
   TextSpan make({Key key}) {
+    final ts = TextStyle(
+      color: velocityColor,
+      fontSize: _fontSize,
+      fontStyle: _fontStyle,
+      fontFamily: _fontFamily,
+      fontWeight: _fontWeight,
+      letterSpacing: _letterSpacing,
+      decoration: _decoration,
+      height: _lineHeight,
+    );
     return TextSpan(
       text: _text,
       recognizer: _gestureRecognizer,
       children: _textSpanChildren,
-      style: TextStyle(
-        color: velocityColor,
-        fontSize: _fontSize ?? 14.0,
-        fontStyle: _fontStyle ?? FontStyle.normal,
-        fontFamily: _fontFamily,
-        fontWeight: _fontWeight,
-        letterSpacing: _letterSpacing ?? 0.0,
-        decoration: _decoration ?? TextDecoration.none,
-        height: _lineHeight,
-      ),
+      style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
     );
   }
+}
+
+extension VelocityXRichTextExtension on RichText {
+  /// Get TextSpan for the String
+
+  /// Get RichText Widget for the String
+  VelocityXRichTextBuilder get richText =>
+      VelocityXRichTextBuilder.existing((text as TextSpan).text, text.style);
+}
+
+extension VelocityXTextSpanExtension on TextSpan {
+  /// Get TextSpan for the String
+  VelocityXTextSpan get textSpan => VelocityXTextSpan(text);
 }
