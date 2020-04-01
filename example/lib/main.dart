@@ -14,7 +14,6 @@ class Demo extends StatelessWidget {
       child: VelocityDevice(
           mobile: "Mobile"
               .selectableText
-              .white
               .xl4
               .semiBold
               .center
@@ -33,7 +32,8 @@ class Demo extends StatelessWidget {
               .bold
               .center
               .makeCentered()
-              .box
+              .animatedBox
+              .bounceIn
               .rounded
               .teal500
               .neumorphic()

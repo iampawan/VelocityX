@@ -13,14 +13,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/curves_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/duration_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/padding_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/round_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'builder.dart';
-import 'velocityx_mixins/color_mixin.dart';
-import 'velocityx_mixins/padding_mixin.dart';
-import 'velocityx_mixins/round_mixin.dart';
+
+import '../builder.dart';
 
 class VelocityAnimatedBox extends VelocityXWidgetBuilder<Widget>
     with
