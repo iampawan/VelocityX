@@ -1,5 +1,6 @@
 library velocity_x;
 export 'src/flutter/animated_padding.dart';
+export 'src/flutter/animated_container.dart';
 export 'src/flutter/card.dart';
 export 'src/flutter/center.dart';
 export 'src/flutter/common/velocity_conditional.dart';
