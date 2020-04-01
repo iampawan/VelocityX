@@ -388,8 +388,6 @@ class VelocityXTextSpan extends VelocityXTextSpanBuilder
 }
 
 extension VelocityXRichTextExtension on RichText {
-  /// Get TextSpan for the String
-
   /// Get RichText Widget for the String
   VelocityXRichTextBuilder get richText =>
       VelocityXRichTextBuilder.existing((text as TextSpan).text, text.style);
