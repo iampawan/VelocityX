@@ -1,3 +1,8 @@
+## [0.2.0] - April 01, 2020
+-- Added support for rich text.
+-- Added support for animated container.
+-- Added new textstyle prop for all kind of texts.
+
 ## Breaking Change[0.1.2] - March 23, 2020
 
 -- Renamed Colors -> Eg: redColor100 is now red100 and red100 is now redHex100.
