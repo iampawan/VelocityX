@@ -13,6 +13,9 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/text_align_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/text_scale_factor_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/text_style_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
@@ -20,29 +23,29 @@ import 'velocityx_mixins/color_mixin.dart';
 
 @protected
 class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
-    with VelocityColorMixin<VelocityXTextBuilder> {
+    with
+        VelocityColorMixin<VelocityXTextBuilder>,
+        VelocityTextStyleMixin<VelocityXTextBuilder>,
+        VelocityTextScaleFactorMixin<VelocityXTextBuilder>,
+        VelocityTextAlignMixin<VelocityXTextBuilder> {
   VelocityXTextBuilder(this._text) : assert(_text != null) {
     setChildToColor(this);
+    setChildForTextStyling(this);
+    setChildForTextScaleFactor(this);
+    setChildForTextAlign(this);
   }
 
   VelocityXTextBuilder.existing(this._text, this._textStyle)
       : assert(_text != null) {
     setChildToColor(this);
+    setChildForTextStyling(this);
+    setChildForTextScaleFactor(this);
+    setChildForTextAlign(this);
   }
 
   String _text;
-  String _fontFamily;
-  FontWeight _fontWeight;
-  TextAlign _textAlign;
-  double _scaleFactor;
-  double _fontSize;
   int _maxLines;
-  FontStyle _fontStyle;
-  double _letterSpacing;
-  double _lineHeight;
-  TextDecoration _decoration;
   TextStyle _textStyle;
-  TextStyle _themedStyle;
 
   VelocityXTextBuilder text(String text) {
     _text = text;
@@ -62,138 +65,36 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
     return this;
   }
 
-  VelocityXTextBuilder fontFamily(String family) {
-    _fontFamily = family;
-    return this;
-  }
-
-  /// Use textStyle to provide custom or any theme style.
-  VelocityXTextBuilder textStyle(TextStyle _style) {
-    _themedStyle = _style;
-    return this;
-  }
-
-  VelocityXTextBuilder get center => this.._textAlign = TextAlign.center;
-  VelocityXTextBuilder get start => this.._textAlign = TextAlign.start;
-  VelocityXTextBuilder get end => this.._textAlign = TextAlign.end;
-  VelocityXTextBuilder get justify => this.._textAlign = TextAlign.justify;
-
-  VelocityXTextBuilder size(double size) => this.._fontSize = size;
-
-  VelocityXTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
-
-  VelocityXTextBuilder get sm =>
-      _fontSizedText(child: this, scaleFactor: 0.875);
-
-  VelocityXTextBuilder get base => _fontSizedText(child: this, scaleFactor: 1);
-
-  VelocityXTextBuilder get lg =>
-      _fontSizedText(child: this, scaleFactor: 1.125);
-
-  VelocityXTextBuilder get xl => _fontSizedText(child: this, scaleFactor: 1.25);
-
-  VelocityXTextBuilder get xl2 => _fontSizedText(child: this, scaleFactor: 1.5);
-
-  VelocityXTextBuilder get xl3 =>
-      _fontSizedText(child: this, scaleFactor: 1.875);
-
-  VelocityXTextBuilder get xl4 =>
-      _fontSizedText(child: this, scaleFactor: 2.25);
-
-  VelocityXTextBuilder get xl5 => _fontSizedText(child: this, scaleFactor: 3);
-
-  VelocityXTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
-
-  VelocityXTextBuilder _fontSizedText(
-      {@required double scaleFactor, @required VelocityXTextBuilder child}) {
-    _scaleFactor = scaleFactor;
-    return this;
-  }
-
-  VelocityXTextBuilder get hairLine =>
-      _fontWeightedText(child: this, weight: FontWeight.w100);
-
-  VelocityXTextBuilder get thin =>
-      _fontWeightedText(child: this, weight: FontWeight.w200);
-
-  VelocityXTextBuilder get light =>
-      _fontWeightedText(child: this, weight: FontWeight.w300);
-
-  VelocityXTextBuilder get normal =>
-      _fontWeightedText(child: this, weight: FontWeight.w400);
-
-  VelocityXTextBuilder get medium =>
-      _fontWeightedText(child: this, weight: FontWeight.w500);
-
-  VelocityXTextBuilder get semiBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w600);
-
-  VelocityXTextBuilder get bold =>
-      _fontWeightedText(child: this, weight: FontWeight.w700);
-
-  VelocityXTextBuilder get extraBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w800);
-
-  VelocityXTextBuilder get extraBlack =>
-      _fontWeightedText(child: this, weight: FontWeight.w900);
-
-  VelocityXTextBuilder _fontWeightedText(
-      {@required FontWeight weight, @required VelocityXTextBuilder child}) {
-    _fontWeight = weight;
-    return this;
-  }
-
-  VelocityXTextBuilder get italic => this.._fontStyle = FontStyle.italic;
-
-  VelocityXTextBuilder get tightest => this.._letterSpacing = -3.0;
-  VelocityXTextBuilder get tighter => this.._letterSpacing = -2.0;
-  VelocityXTextBuilder get tight => this.._letterSpacing = -1.0;
-  VelocityXTextBuilder get wide => this.._letterSpacing = 1.0;
-  VelocityXTextBuilder get wider => this.._letterSpacing = 2.0;
-  VelocityXTextBuilder get widest => this.._letterSpacing = 3.0;
-
-  VelocityXTextBuilder letterSpacing(double val) => this.._letterSpacing = val;
-
-  VelocityXTextBuilder get underline =>
-      this.._decoration = TextDecoration.underline;
-
-  VelocityXTextBuilder get lineThrough =>
-      this.._decoration = TextDecoration.lineThrough;
-
-  VelocityXTextBuilder get overline =>
-      this.._decoration = TextDecoration.overline;
-
   VelocityXTextBuilder get uppercase => this.._text = _text.toUpperCase();
+
   VelocityXTextBuilder get lowercase => this.._text = _text.toLowerCase();
+
   VelocityXTextBuilder get capitalize =>
       this.._text = _text.allWordsCapitilize();
-  VelocityXTextBuilder get hidePartial => this.._text = _text.hidePartial();
 
-  VelocityXTextBuilder get heightTight => this.._lineHeight = 0.75;
-  VelocityXTextBuilder get heightSnug => this.._lineHeight = 0.875;
-  VelocityXTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
-  VelocityXTextBuilder get heightLoose => this.._lineHeight = 1.5;
-  VelocityXTextBuilder lineHeight(double val) => this.._lineHeight = val;
+  VelocityXTextBuilder get hidePartial => this.._text = _text.hidePartial();
 
   @override
   AutoSizeText make({Key key}) {
     final ts = TextStyle(
       color: velocityColor,
-      fontSize: _fontSize,
-      fontStyle: _fontStyle,
-      fontFamily: _fontFamily,
-      fontWeight: _fontWeight,
-      letterSpacing: _letterSpacing,
-      decoration: _decoration,
-      height: _lineHeight,
+      fontSize: velocityFontSize,
+      fontStyle: velocityFontStyle,
+      fontFamily: velocityFontFamily,
+      fontWeight: velocityFontWeight,
+      letterSpacing: velocityLetterSpacing,
+      decoration: velocityTextDecoration,
+      height: velocityLineHeight,
     );
-    return AutoSizeText(_text,
-        key: key,
-        textAlign: _textAlign,
-        maxLines: _maxLines,
-        textScaleFactor: _scaleFactor,
-        softWrap: true,
-        style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts);
+    return AutoSizeText(
+      _text,
+      key: key,
+      textAlign: velocityTextAlign,
+      maxLines: _maxLines,
+      textScaleFactor: velocityScaleFactor,
+      softWrap: true,
+      style: velocityTextStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+    );
   }
 }
 
