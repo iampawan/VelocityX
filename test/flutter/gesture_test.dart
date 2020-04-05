@@ -36,23 +36,23 @@ void main() {
   });
 
   testWidgets('onLongPress for GestureDetector is working correctly', (WidgetTester tester) async {
-    bool didTap = false;
+    bool didLongPress = false;
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: Material(
         child: 'VelocityX'
             .text
             .make()
-            .longClick(() => didTap = true)
+            .longClick(() => didLongPress = true)
             .make()
             .centered(),
       ),
     ));
 
-    expect(didTap, isFalse);
+    expect(didLongPress, isFalse);
     await tester.longPress(find.text('VelocityX'));
     await tester.pump();
-    expect(didTap, isTrue);
+    expect(didLongPress, isTrue);
   });
 
   testWidgets('onTap for InkWell is working correctly', (WidgetTester tester) async {
@@ -76,22 +76,22 @@ void main() {
   });
 
   testWidgets('onLongPress for InkWell is working correctly', (WidgetTester tester) async {
-    bool didTap = false;
+    bool didLongPress = false;
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: Material(
         child: 'VelocityX'
             .text
             .make()
-            .mdLongClick(() => didTap = true)
+            .mdLongClick(() => didLongPress = true)
             .make()
             .centered(),
       ),
     ));
 
-    expect(didTap, isFalse);
+    expect(didLongPress, isFalse);
     await tester.longPress(find.text('VelocityX'));
     await tester.pump();
-    expect(didTap, isTrue);
+    expect(didLongPress, isTrue);
   });
 }
