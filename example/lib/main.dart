@@ -27,9 +27,27 @@ class Demo extends StatelessWidget {
                   .neumorphic()
                   .make()
                   .whHalf(context),
-              web: "Web".text.white.xl4.bold.center.makeCentered().animatedBox.bounceIn.rounded.teal500.neumorphic().make().whHalf(context)),
+              web: "Web"
+                  .text
+                  .white
+                  .xl4
+                  .bold
+                  .center
+                  .makeCentered()
+                  .animatedBox
+                  .bounceIn
+                  .rounded
+                  .teal500
+                  .neumorphic()
+                  .make()
+                  .whHalf(context)),
           20.heightBox,
-          "Velocity".richText.withTextSpanChildren(["X".textSpan.red400.make()]).xl4.white.make()
+          "Velocity"
+              .richText
+              .withTextSpanChildren(["X".textSpan.red400.make()])
+              .xl4
+              .white
+              .make()
         ],
         alignment: MainAxisAlignment.center,
         crossAlignment: CrossAxisAlignment.center,
