@@ -16,6 +16,7 @@ class Demo extends StatelessWidget {
           VelocityDevice(
               mobile: "Mobile"
                   .text
+                  .xl6
                   .textStyle(context.textTheme.caption)
                   .italic
                   .center

@@ -185,6 +185,12 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
+  /// Provide custom list of box shadows
+  VelocityBox withShadow(List<BoxShadow> shadows) {
+    _boxShadow = shadows;
+    return this;
+  }
+
   VelocityBox shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(
@@ -226,9 +232,10 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
           double elevation = 12.0}) =>
       this
         .._velocityNeumorph = velocityDecoration(
-            color ?? velocityColor ?? ThemeData().scaffoldBackgroundColor,
-            curve,
-            elevation);
+          color ?? velocityColor ?? ThemeData().scaffoldBackgroundColor,
+          curve,
+          elevation,
+        );
 
   @override
   Widget make({Key key}) {

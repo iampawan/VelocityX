@@ -209,6 +209,11 @@ class VelocityAnimatedBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
+  VelocityAnimatedBox withShadow(List<BoxShadow> shadows) {
+    _boxShadow = shadows;
+    return this;
+  }
+
   VelocityAnimatedBox shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(

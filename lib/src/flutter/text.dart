@@ -106,6 +106,7 @@ class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
 
   VelocityXTextBuilder _fontSizedText(
       {@required double scaleFactor, @required VelocityXTextBuilder child}) {
+    _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
   }
