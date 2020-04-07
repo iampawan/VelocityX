@@ -82,6 +82,8 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   VxAnimatedBox sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
 
+  VxAnimatedBox withGradient(Gradient gradient) => this.._gradient = gradient;
+
   VxAnimatedBox margin(EdgeInsetsGeometry val) => this.._margin = val;
 
   // DecorationImage BoxDecoration

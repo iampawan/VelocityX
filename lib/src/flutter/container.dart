@@ -224,6 +224,8 @@ class VxBox extends VxWidgetBuilder<Widget>
   VxBox sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
 
+  VxBox withGradient(Gradient gradient) => this.._gradient = gradient;
+
   VxBox bgImage(DecorationImage image) => this.._bgImage = image;
 
   VxBox neumorphic(
