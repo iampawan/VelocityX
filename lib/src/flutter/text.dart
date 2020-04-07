@@ -19,7 +19,7 @@ import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
 @protected
-class VxTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
+class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
     with VxColorMixin<VxTextBuilder> {
   VxTextBuilder(this._text) : assert(_text != null) {
     setChildToColor(this);

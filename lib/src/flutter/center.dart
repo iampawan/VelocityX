@@ -22,7 +22,7 @@ extension CenterExtension on Widget {
   // _MyPaddingCallable get padding => _MyPaddingCallable(build());
 }
 
-extension CenterBuilderExtension on VelocityXWidgetBuilder<Widget> {
+extension CenterBuilderExtension on VxWidgetBuilder<Widget> {
   Widget makeCentered({Key key}) => Center(key: key, child: make());
 }
 

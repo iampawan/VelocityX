@@ -23,7 +23,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../builder.dart';
 
-class VxAnimatedBox extends VelocityXWidgetBuilder<Widget>
+class VxAnimatedBox extends VxWidgetBuilder<Widget>
     with
         VxAlignmentMixing<VxAnimatedBox>,
         VxDurationMixing<VxAnimatedBox>,

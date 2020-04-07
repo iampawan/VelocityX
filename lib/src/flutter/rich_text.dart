@@ -18,14 +18,14 @@ import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class VxRichText extends VelocityXWidgetBuilder<AutoSizeText>
+@protected
+class VxRichText extends VxWidgetBuilder<AutoSizeText>
     with VxColorMixin<VxRichText> {
   VxRichText(this._text) : assert(_text != null) {
     setChildToColor(this);
   }
 
-  VxRichText.existing(this._text, this._textStyle)
-      : assert(_text != null) {
+  VxRichText.existing(this._text, this._textStyle) : assert(_text != null) {
     setChildToColor(this);
   }
 
@@ -94,39 +94,28 @@ class VxRichText extends VelocityXWidgetBuilder<AutoSizeText>
 
   VxRichText size(double size) => this.._fontSize = size;
 
-  VxRichText get xs =>
-      _fontSizedText(child: this, scaleFactor: 0.75);
+  VxRichText get xs => _fontSizedText(child: this, scaleFactor: 0.75);
 
-  VxRichText get sm =>
-      _fontSizedText(child: this, scaleFactor: 0.875);
+  VxRichText get sm => _fontSizedText(child: this, scaleFactor: 0.875);
 
-  VxRichText get base =>
-      _fontSizedText(child: this, scaleFactor: 1);
+  VxRichText get base => _fontSizedText(child: this, scaleFactor: 1);
 
-  VxRichText get lg =>
-      _fontSizedText(child: this, scaleFactor: 1.125);
+  VxRichText get lg => _fontSizedText(child: this, scaleFactor: 1.125);
 
-  VxRichText get xl =>
-      _fontSizedText(child: this, scaleFactor: 1.25);
+  VxRichText get xl => _fontSizedText(child: this, scaleFactor: 1.25);
 
-  VxRichText get xl2 =>
-      _fontSizedText(child: this, scaleFactor: 1.5);
+  VxRichText get xl2 => _fontSizedText(child: this, scaleFactor: 1.5);
 
-  VxRichText get xl3 =>
-      _fontSizedText(child: this, scaleFactor: 1.875);
+  VxRichText get xl3 => _fontSizedText(child: this, scaleFactor: 1.875);
 
-  VxRichText get xl4 =>
-      _fontSizedText(child: this, scaleFactor: 2.25);
+  VxRichText get xl4 => _fontSizedText(child: this, scaleFactor: 2.25);
 
-  VxRichText get xl5 =>
-      _fontSizedText(child: this, scaleFactor: 3);
+  VxRichText get xl5 => _fontSizedText(child: this, scaleFactor: 3);
 
-  VxRichText get xl6 =>
-      _fontSizedText(child: this, scaleFactor: 4);
+  VxRichText get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
   VxRichText _fontSizedText(
-      {@required double scaleFactor,
-      @required VxRichText child}) {
+      {@required double scaleFactor, @required VxRichText child}) {
     _scaleFactor = scaleFactor;
     return this;
   }
@@ -178,24 +167,19 @@ class VxRichText extends VelocityXWidgetBuilder<AutoSizeText>
 
   VxRichText get widest => this.._letterSpacing = 3.0;
 
-  VxRichText letterSpacing(double val) =>
-      this.._letterSpacing = val;
+  VxRichText letterSpacing(double val) => this.._letterSpacing = val;
 
-  VxRichText get underline =>
-      this.._decoration = TextDecoration.underline;
+  VxRichText get underline => this.._decoration = TextDecoration.underline;
 
-  VxRichText get lineThrough =>
-      this.._decoration = TextDecoration.lineThrough;
+  VxRichText get lineThrough => this.._decoration = TextDecoration.lineThrough;
 
-  VxRichText get overline =>
-      this.._decoration = TextDecoration.overline;
+  VxRichText get overline => this.._decoration = TextDecoration.overline;
 
   VxRichText get uppercase => this.._text = _text.toUpperCase();
 
   VxRichText get lowercase => this.._text = _text.toLowerCase();
 
-  VxRichText get capitalize =>
-      this.._text = _text.allWordsCapitilize();
+  VxRichText get capitalize => this.._text = _text.allWordsCapitilize();
 
   VxRichText get hidePartial => this.._text = _text.hidePartial();
 
@@ -237,7 +221,7 @@ class VxRichText extends VelocityXWidgetBuilder<AutoSizeText>
   }
 }
 
-class VelocityXTextSpan extends VelocityXTextSpanBuilder
+class VelocityXTextSpan extends VxTextSpanBuilder
     with VxColorMixin<VelocityXTextSpan> {
   VelocityXTextSpan(this._text) : assert(_text != null) {
     setChildToColor(this);

@@ -20,7 +20,7 @@ import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
-class VxCard extends VelocityXWidgetBuilder<Widget>
+class VxCard extends VxWidgetBuilder<Widget>
     with VxColorMixin<VxCard>, VxPaddingMixin<VxCard>, VxRoundMixin<VxCard> {
   VxCard(
     this._child,

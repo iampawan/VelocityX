@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 
 import 'builder.dart';
 
-class _VxGestureBuilder extends VelocityXWidgetBuilder<Widget> {
+class _VxGestureBuilder extends VxWidgetBuilder<Widget> {
   _VxGestureBuilder(this._child, this._onClick) : assert(_onClick != null);
   _VxGestureBuilder.doubleClick(this._child, this._onDoubleClick)
       : assert(_child != null),
@@ -48,7 +48,7 @@ class _VxGestureBuilder extends VelocityXWidgetBuilder<Widget> {
   }
 }
 
-class _VelocityXInkWellBuilder extends VelocityXWidgetBuilder<Widget> {
+class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
   _VelocityXInkWellBuilder(this._child, this._onClick);
   _VelocityXInkWellBuilder.mdDoubleClick(this._child, this._onDoubleClick);
   _VelocityXInkWellBuilder.mdLongClick(this._child, this._onLongClick);

@@ -18,7 +18,7 @@ import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
 @protected
-class VxSelectableTextBuilder extends VelocityXWidgetBuilder<SelectableText>
+class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
     with VxColorMixin<VxSelectableTextBuilder> {
   VxSelectableTextBuilder(this._text) : assert(_text != null) {
     setChildToColor(this);

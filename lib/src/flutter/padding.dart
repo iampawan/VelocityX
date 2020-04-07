@@ -18,7 +18,7 @@ import 'package:velocity_x/src/velocity_xx.dart';
 import 'builder.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 
-class _VxPaddingBuilder extends VelocityXWidgetBuilder<Widget>
+class _VxPaddingBuilder extends VxWidgetBuilder<Widget>
     with VxPaddingMixin<_VxPaddingBuilder> {
   _VxPaddingBuilder(this._child) : assert(_child != null) {
     setChildToPad(this);

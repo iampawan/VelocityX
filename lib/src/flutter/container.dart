@@ -22,7 +22,7 @@ import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
-class VxBox extends VelocityXWidgetBuilder<Widget>
+class VxBox extends VxWidgetBuilder<Widget>
     with
         VxAlignmentMixing<VxBox>,
         VxColorMixin<VxBox>,
