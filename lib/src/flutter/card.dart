@@ -20,9 +20,9 @@ import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
-class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
-    with VelocityColorMixin<_VelocityXCardBuilder>, VelocityPaddingMixin<_VelocityXCardBuilder>, VelocityRoundMixin<_VelocityXCardBuilder> {
-  _VelocityXCardBuilder(
+class VxCard extends VelocityXWidgetBuilder<Widget>
+    with VxColorMixin<VxCard>, VxPaddingMixin<VxCard>, VxRoundMixin<VxCard> {
+  VxCard(
     this._child,
   ) : assert(_child != null) {
     setChildToColor(this);
@@ -35,18 +35,19 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
   double _elevation = 1.0;
   ShapeBorder _shape;
 
-  _VelocityXCardBuilder color(Color val) => this..velocityColor = val;
+  VxCard color(Color val) => this..velocityColor = val;
 
-  _VelocityXCardBuilder hexColor(String colorHex) => this..velocityColor = VelocityX.hexToColor(colorHex);
+  VxCard hexColor(String colorHex) =>
+      this..velocityColor = Vx.hexToColor(colorHex);
 
-  _VelocityXCardBuilder elevation(double val) => this.._elevation = val;
+  VxCard elevation(double val) => this.._elevation = val;
 
-  _VelocityXCardBuilder get circular => this.._shape = const CircleBorder();
-  _VelocityXCardBuilder get zeroCircular => this
+  VxCard get circular => this.._shape = const CircleBorder();
+  VxCard get zeroCircular => this
     .._shape = const CircleBorder()
     .._elevation = 0.0;
 
-  _VelocityXCardBuilder get zero => this.._elevation = 0.0;
+  VxCard get zero => this.._elevation = 0.0;
 
   @override
   Widget make({Key key}) {
@@ -57,12 +58,15 @@ class _VelocityXCardBuilder extends VelocityXWidgetBuilder<Widget>
       color: velocityColor ?? ThemeData().cardColor,
       clipBehavior: Clip.antiAlias,
       elevation: _elevation,
-      shape: roundedValue.isNotNull ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(roundedValue)) : _shape,
+      shape: roundedValue.isNotNull
+          ? RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(roundedValue))
+          : _shape,
       // shadowColor: _shadowColor,
     );
   }
 }
 
 extension CardExtension on Widget {
-  _VelocityXCardBuilder get card => _VelocityXCardBuilder(this);
+  VxCard get card => VxCard(this);
 }

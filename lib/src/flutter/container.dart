@@ -22,14 +22,14 @@ import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
-class VelocityBox extends VelocityXWidgetBuilder<Widget>
+class VxBox extends VelocityXWidgetBuilder<Widget>
     with
-        VelocityAlignmentMixing<VelocityBox>,
-        VelocityColorMixin<VelocityBox>,
-        VelocityPaddingMixin<VelocityBox>,
-        VelocityRoundMixin<VelocityBox>,
-        VelocityNeuMixin {
-  VelocityBox({this.child}) {
+        VxAlignmentMixing<VxBox>,
+        VxColorMixin<VxBox>,
+        VxPaddingMixin<VxBox>,
+        VxRoundMixin<VxBox>,
+        VxNeuMixin {
+  VxBox({this.child}) {
     setChildForAlignment(this);
     setChildToColor(this);
     setChildToPad(this);
@@ -44,33 +44,33 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
   Gradient _gradient;
   double _height;
   double _width;
-  VelocityNeumorph _velocityNeumorph;
+  VxNeumorph _velocityNeumorph;
 
   EdgeInsetsGeometry _margin;
   Matrix4 _transform;
 
   DecorationImage _bgImage;
 
-  VelocityBox height(double val) => this.._height = val;
+  VxBox height(double val) => this.._height = val;
 
-  VelocityBox width(double val) => this.._width = val;
+  VxBox width(double val) => this.._width = val;
 
-  VelocityBox padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
+  VxBox padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
 
-  VelocityBox margin(EdgeInsetsGeometry val) => this.._margin = val;
+  VxBox margin(EdgeInsetsGeometry val) => this.._margin = val;
 
-  VelocityBox color(Color color) => this..velocityColor = color;
+  VxBox color(Color color) => this..velocityColor = color;
 
-  VelocityBox hexColor(String colorHex) =>
-      this..velocityColor = VelocityX.hexToColor(colorHex);
+  VxBox hexColor(String colorHex) =>
+      this..velocityColor = Vx.hexToColor(colorHex);
 
   // transforming
-  VelocityBox transform(Matrix4 val) => this.._transform = val;
+  VxBox transform(Matrix4 val) => this.._transform = val;
 
-  VelocityBox get roundedFull => this.._isCircleRounded = true;
+  VxBox get roundedFull => this.._isCircleRounded = true;
 
   /// Shadowing
-  VelocityBox get shadow {
+  VxBox get shadow {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -89,7 +89,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  VelocityBox get shadowXs {
+  VxBox get shadowXs {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.05),
@@ -102,7 +102,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  VelocityBox get shadowSm {
+  VxBox get shadowSm {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.05),
@@ -115,7 +115,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  VelocityBox get shadowMd {
+  VxBox get shadowMd {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -134,7 +134,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  VelocityBox get shadowLg {
+  VxBox get shadowLg {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -153,7 +153,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  VelocityBox get shadowXl {
+  VxBox get shadowXl {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -172,7 +172,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
     return this;
   }
 
-  VelocityBox get shadow2xl {
+  VxBox get shadow2xl {
     _boxShadow = [
       const BoxShadow(
         color: Color.fromRGBO(0, 0, 0, 0.25),
@@ -186,12 +186,12 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
   }
 
   /// Provide custom list of box shadows
-  VelocityBox withShadow(List<BoxShadow> shadows) {
+  VxBox withShadow(List<BoxShadow> shadows) {
     _boxShadow = shadows;
     return this;
   }
 
-  VelocityBox shadowOutline({Color outlineColor}) {
+  VxBox shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(
         color: outlineColor?.withOpacity(0.5) ??
@@ -206,7 +206,7 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
   }
 
   /// Bordering
-  VelocityBox border(
+  VxBox border(
       {Color color = Colors.black,
       double width = 1.0,
       BorderStyle style = BorderStyle.solid}) {
@@ -215,20 +215,20 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
   }
 
   ///Gradienting
-  VelocityBox linearGradient(List<Color> colors) =>
+  VxBox linearGradient(List<Color> colors) =>
       this.._gradient = LinearGradient(colors: colors);
 
-  VelocityBox radialGradient(List<Color> colors) =>
+  VxBox radialGradient(List<Color> colors) =>
       this.._gradient = RadialGradient(colors: colors);
 
-  VelocityBox sweepGradient(List<Color> colors) =>
+  VxBox sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
 
-  VelocityBox bgImage(DecorationImage image) => this.._bgImage = image;
+  VxBox bgImage(DecorationImage image) => this.._bgImage = image;
 
-  VelocityBox neumorphic(
+  VxBox neumorphic(
           {Color color,
-          VelocityCurve curve = VelocityCurve.concave,
+          VxCurve curve = VxCurve.concave,
           double elevation = 12.0}) =>
       this
         .._velocityNeumorph = velocityDecoration(
@@ -275,5 +275,5 @@ class VelocityBox extends VelocityXWidgetBuilder<Widget>
 }
 
 extension ContainerWidgetExtension on Widget {
-  VelocityBox get box => VelocityBox(child: this);
+  VxBox get box => VxBox(child: this);
 }

@@ -14,7 +14,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/velocity_x_extensions.dart';
 
-class VelocityTwo extends StatelessWidget {
+class VxTwo extends StatelessWidget {
   final String title;
   final double titleFontSize;
   final Color titleColor;
@@ -30,7 +30,7 @@ class VelocityTwo extends StatelessWidget {
   final MainAxisSize mainAxisSize;
   final int maxLinesSubtitle;
 
-  const VelocityTwo({
+  const VxTwo({
     Key key,
     @required this.title,
     this.titleFontSize = 16.0,
@@ -96,11 +96,11 @@ class VelocityTwo extends StatelessWidget {
   }
 }
 
-class VelocityTwoColumn extends StatelessWidget {
+class VxTwoColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
 
-  const VelocityTwoColumn({Key key, @required this.top, @required this.bottom})
+  const VxTwoColumn({Key key, @required this.top, @required this.bottom})
       : assert(top != null),
         assert(bottom != null),
         super(key: key);
@@ -119,11 +119,11 @@ class VelocityTwoColumn extends StatelessWidget {
   }
 }
 
-class VelocityTwoRow extends StatelessWidget {
+class VxTwoRow extends StatelessWidget {
   final Widget left;
   final Widget right;
 
-  const VelocityTwoRow({Key key, @required this.left, @required this.right})
+  const VxTwoRow({Key key, @required this.left, @required this.right})
       : assert(left != null),
         assert(right != null),
         super(key: key);

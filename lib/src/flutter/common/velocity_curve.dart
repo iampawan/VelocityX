@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-enum VelocityCurve {
+enum VxCurve {
   concave,
   convex,
   emboss,
   flat,
 }
 
-class VelocityNeumorph {
+class VxNeumorph {
   final List<BoxShadow> shadows;
   final Gradient gradient;
 
-  VelocityNeumorph(this.shadows, this.gradient);
+  VxNeumorph(this.shadows, this.gradient);
 }

@@ -15,7 +15,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-mixin VelocityPaddingMixin<T> {
+mixin VxPaddingMixin<T> {
   T _childToPad;
 
   @protected
@@ -26,41 +26,41 @@ mixin VelocityPaddingMixin<T> {
     _childToPad = child;
   }
 
-  T get p0 => _padIt(child: _childToPad, padding: VelocityX.m0);
-  T get p1 => _padIt(child: _childToPad, padding: VelocityX.m1);
-  T get p3 => _padIt(child: _childToPad, padding: VelocityX.m2);
-  T get p4 => _padIt(child: _childToPad, padding: VelocityX.m4);
-  T get p8 => _padIt(child: _childToPad, padding: VelocityX.m8);
-  T get p12 => _padIt(child: _childToPad, padding: VelocityX.m12);
-  T get p16 => _padIt(child: _childToPad, padding: VelocityX.m16);
-  T get p20 => _padIt(child: _childToPad, padding: VelocityX.m20);
-  T get p24 => _padIt(child: _childToPad, padding: VelocityX.m24);
-  T get p32 => _padIt(child: _childToPad, padding: VelocityX.m32);
-  T get p64 => _padIt(child: _childToPad, padding: VelocityX.m64);
+  T get p0 => _padIt(child: _childToPad, padding: Vx.m0);
+  T get p1 => _padIt(child: _childToPad, padding: Vx.m1);
+  T get p3 => _padIt(child: _childToPad, padding: Vx.m2);
+  T get p4 => _padIt(child: _childToPad, padding: Vx.m4);
+  T get p8 => _padIt(child: _childToPad, padding: Vx.m8);
+  T get p12 => _padIt(child: _childToPad, padding: Vx.m12);
+  T get p16 => _padIt(child: _childToPad, padding: Vx.m16);
+  T get p20 => _padIt(child: _childToPad, padding: Vx.m20);
+  T get p24 => _padIt(child: _childToPad, padding: Vx.m24);
+  T get p32 => _padIt(child: _childToPad, padding: Vx.m32);
+  T get p64 => _padIt(child: _childToPad, padding: Vx.m64);
 
-  T get px0 => _padIt(child: _childToPad, padding: VelocityX.mH0);
-  T get px1 => _padIt(child: _childToPad, padding: VelocityX.mH1);
-  T get px3 => _padIt(child: _childToPad, padding: VelocityX.mH2);
-  T get px4 => _padIt(child: _childToPad, padding: VelocityX.mH4);
-  T get px8 => _padIt(child: _childToPad, padding: VelocityX.mH8);
-  T get px12 => _padIt(child: _childToPad, padding: VelocityX.mH12);
-  T get px16 => _padIt(child: _childToPad, padding: VelocityX.mH16);
-  T get px20 => _padIt(child: _childToPad, padding: VelocityX.mH20);
-  T get px24 => _padIt(child: _childToPad, padding: VelocityX.mH24);
-  T get px32 => _padIt(child: _childToPad, padding: VelocityX.mH32);
-  T get px64 => _padIt(child: _childToPad, padding: VelocityX.mH64);
+  T get px0 => _padIt(child: _childToPad, padding: Vx.mH0);
+  T get px1 => _padIt(child: _childToPad, padding: Vx.mH1);
+  T get px3 => _padIt(child: _childToPad, padding: Vx.mH2);
+  T get px4 => _padIt(child: _childToPad, padding: Vx.mH4);
+  T get px8 => _padIt(child: _childToPad, padding: Vx.mH8);
+  T get px12 => _padIt(child: _childToPad, padding: Vx.mH12);
+  T get px16 => _padIt(child: _childToPad, padding: Vx.mH16);
+  T get px20 => _padIt(child: _childToPad, padding: Vx.mH20);
+  T get px24 => _padIt(child: _childToPad, padding: Vx.mH24);
+  T get px32 => _padIt(child: _childToPad, padding: Vx.mH32);
+  T get px64 => _padIt(child: _childToPad, padding: Vx.mH64);
 
-  T get py0 => _padIt(child: _childToPad, padding: VelocityX.mV0);
-  T get py1 => _padIt(child: _childToPad, padding: VelocityX.mV1);
-  T get py3 => _padIt(child: _childToPad, padding: VelocityX.mV2);
-  T get py4 => _padIt(child: _childToPad, padding: VelocityX.mV4);
-  T get py8 => _padIt(child: _childToPad, padding: VelocityX.mV8);
-  T get py12 => _padIt(child: _childToPad, padding: VelocityX.mV12);
-  T get py16 => _padIt(child: _childToPad, padding: VelocityX.mV16);
-  T get py20 => _padIt(child: _childToPad, padding: VelocityX.mV20);
-  T get py24 => _padIt(child: _childToPad, padding: VelocityX.mV24);
-  T get py32 => _padIt(child: _childToPad, padding: VelocityX.mV32);
-  T get py64 => _padIt(child: _childToPad, padding: VelocityX.mV64);
+  T get py0 => _padIt(child: _childToPad, padding: Vx.mV0);
+  T get py1 => _padIt(child: _childToPad, padding: Vx.mV1);
+  T get py3 => _padIt(child: _childToPad, padding: Vx.mV2);
+  T get py4 => _padIt(child: _childToPad, padding: Vx.mV4);
+  T get py8 => _padIt(child: _childToPad, padding: Vx.mV8);
+  T get py12 => _padIt(child: _childToPad, padding: Vx.mV12);
+  T get py16 => _padIt(child: _childToPad, padding: Vx.mV16);
+  T get py20 => _padIt(child: _childToPad, padding: Vx.mV20);
+  T get py24 => _padIt(child: _childToPad, padding: Vx.mV24);
+  T get py32 => _padIt(child: _childToPad, padding: Vx.mV32);
+  T get py64 => _padIt(child: _childToPad, padding: Vx.mV64);
 
   T _padIt({@required EdgeInsetsGeometry padding, @required T child}) {
     velocityPadding = padding;

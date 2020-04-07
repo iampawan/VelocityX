@@ -13,7 +13,7 @@
 
 import 'package:flutter/material.dart';
 
-mixin VelocityX {
+mixin Vx {
   /// Pixel Values
   static const double dp0 = 0.0;
   static const double dp1 = 1.0;
@@ -35,12 +35,12 @@ mixin VelocityX {
   static const double dp56 = 56.0;
   static const double dp64 = 64.0;
 
-  ///colors
-  static const String black = "#000000";
-  static const String white = "#FFFFFF";
+  static const String blackHex = "#000000";
+  static const String whiteHex = "#ffffff";
 
-  static Color blackColor = hexToColor(black);
-  static Color whiteColor = hexToColor(white);
+  ///colors
+  static Color black = hexToColor(blackHex);
+  static Color white = hexToColor(whiteHex);
 
   ///Gray Colors
   static const String grayHex100 = "#F7FAFC";
@@ -295,6 +295,9 @@ mixin VelocityX {
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(15));
   static ShapeBorder roundedLg =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(30));
+
+  static ShapeBorder withRounded(double radius) =>
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius));
 
   /// Get color from the hex value
   static Color hexToColor(String code) {

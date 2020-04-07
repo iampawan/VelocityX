@@ -23,21 +23,21 @@ import 'package:flutter/material.dart';
 /// Example:
 ///
 /// ```dart
-/// VelocityConditional(
+/// VxConditional(
 ///  condition: true,
 /// builder: (context) {
 ///    return Text('This gets rendered');
 ///  },
 /// )
 ///
-/// VelocityConditional(
+/// VxConditional(
 ///  condition: false,
 ///  builder: (context) {
 ///    return Text('This does not get rendered, an empty offstage will be rendered');
 ///  },
 /// )
 ///
-/// VelocityConditional(
+/// VxConditional(
 ///  condition: false,
 ///  builder: (context) {
 ///    return Text('This does not get rendered, as fallback is not null, it is used to render the fallback widget.');
@@ -48,7 +48,7 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 
-class VelocityConditional extends StatelessWidget {
+class VxConditional extends StatelessWidget {
   /// Condition to control what gets rendered.
   final bool condition;
 
@@ -58,7 +58,7 @@ class VelocityConditional extends StatelessWidget {
   /// Run if [condition] is false and it is not null.
   final WidgetBuilder fallback;
 
-  const VelocityConditional({
+  const VxConditional({
     Key key,
     @required this.condition,
     @required this.builder,
@@ -68,7 +68,9 @@ class VelocityConditional extends StatelessWidget {
         super(key: key);
 
   @override
-  Widget build(BuildContext context) => condition ? builder(context) : fallback != null ? fallback(context) : const Offstage();
+  Widget build(BuildContext context) => condition
+      ? builder(context)
+      : fallback != null ? fallback(context) : const Offstage();
 }
 
 /// Renders widgets based on switch case conditions
@@ -76,7 +78,7 @@ class VelocityConditional extends StatelessWidget {
 /// Example:
 ///
 /// ```dart
-///  VelocityConditionalSwitch.single<String>(
+///  VxConditionalSwitch.single<String>(
 ///         context: context,
 ///         valueBuilder: (BuildContext context) => mynumber,
 ///         caseBuilders: {
@@ -86,8 +88,8 @@ class VelocityConditional extends StatelessWidget {
 ///         fallbackBuilder: (BuildContext context) => Text('None of the cases matched!'),
 ///      ),
 /// ```
-class VelocityConditionalSwitch {
-  VelocityConditionalSwitch._();
+class VxConditionalSwitch {
+  VxConditionalSwitch._();
 
   /// A function which returns a single `Widget`
   ///

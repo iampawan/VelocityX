@@ -106,7 +106,7 @@ void main() {
           child: 'VelocityX'.richText.green100.make(key: key)));
 
       expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan.style.color,
-          VelocityX.green100);
+          Vx.green100);
     });
 
     testWidgets('VelocityXRichTextBuilder responds to color',
@@ -116,7 +116,7 @@ void main() {
           child: 'VelocityX'.richText.green100.make(key: key)));
 
       expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan.style.color,
-          VelocityX.green100);
+          Vx.green100);
     });
 
     testWidgets('VelocityXRichTextBuilder responds to fontSize',

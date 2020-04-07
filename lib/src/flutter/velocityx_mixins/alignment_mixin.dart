@@ -13,7 +13,7 @@
 
 import 'package:flutter/material.dart';
 
-mixin VelocityAlignmentMixing<T> {
+mixin VxAlignmentMixing<T> {
   T _child;
 
   @protected

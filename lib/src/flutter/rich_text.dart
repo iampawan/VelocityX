@@ -18,13 +18,13 @@ import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
-    with VelocityColorMixin<VelocityXRichTextBuilder> {
-  VelocityXRichTextBuilder(this._text) : assert(_text != null) {
+class VxRichText extends VelocityXWidgetBuilder<AutoSizeText>
+    with VxColorMixin<VxRichText> {
+  VxRichText(this._text) : assert(_text != null) {
     setChildToColor(this);
   }
 
-  VelocityXRichTextBuilder.existing(this._text, this._textStyle)
+  VxRichText.existing(this._text, this._textStyle)
       : assert(_text != null) {
     setChildToColor(this);
   }
@@ -45,169 +45,169 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
   TextStyle _textStyle;
   TextStyle _themedStyle;
 
-  VelocityXRichTextBuilder tap(Function function) {
+  VxRichText tap(Function function) {
     final recognizer = TapGestureRecognizer()..onTap = function;
     return this.._gestureRecognizer = recognizer;
   }
 
-  VelocityXRichTextBuilder doubleTap(Function function) {
+  VxRichText doubleTap(Function function) {
     final recognizer = DoubleTapGestureRecognizer()..onDoubleTap = function;
     return this.._gestureRecognizer = recognizer;
   }
 
-  VelocityXRichTextBuilder withTextSpanChildren(List<TextSpan> children) {
+  VxRichText withTextSpanChildren(List<TextSpan> children) {
     _textSpanChildren = children ?? <TextSpan>[];
     return this;
   }
 
-  VelocityXRichTextBuilder color(Color color) {
+  VxRichText color(Color color) {
     velocityColor = color;
     return this;
   }
 
-  VelocityXRichTextBuilder hexColor(String colorHex) =>
-      this..velocityColor = VelocityX.hexToColor(colorHex);
+  VxRichText hexColor(String colorHex) =>
+      this..velocityColor = Vx.hexToColor(colorHex);
 
-  VelocityXRichTextBuilder maxLines(int lines) {
+  VxRichText maxLines(int lines) {
     _maxLines = lines;
     return this;
   }
 
-  VelocityXRichTextBuilder fontFamily(String family) {
+  VxRichText fontFamily(String family) {
     _fontFamily = family;
     return this;
   }
 
   /// Use textStyle to provide custom or any theme style.
-  VelocityXRichTextBuilder textStyle(TextStyle _style) {
+  VxRichText textStyle(TextStyle _style) {
     _themedStyle = _style;
     return this;
   }
 
-  VelocityXRichTextBuilder get center => this.._textAlign = TextAlign.center;
+  VxRichText get center => this.._textAlign = TextAlign.center;
 
-  VelocityXRichTextBuilder get start => this.._textAlign = TextAlign.start;
+  VxRichText get start => this.._textAlign = TextAlign.start;
 
-  VelocityXRichTextBuilder get end => this.._textAlign = TextAlign.end;
+  VxRichText get end => this.._textAlign = TextAlign.end;
 
-  VelocityXRichTextBuilder get justify => this.._textAlign = TextAlign.justify;
+  VxRichText get justify => this.._textAlign = TextAlign.justify;
 
-  VelocityXRichTextBuilder size(double size) => this.._fontSize = size;
+  VxRichText size(double size) => this.._fontSize = size;
 
-  VelocityXRichTextBuilder get xs =>
+  VxRichText get xs =>
       _fontSizedText(child: this, scaleFactor: 0.75);
 
-  VelocityXRichTextBuilder get sm =>
+  VxRichText get sm =>
       _fontSizedText(child: this, scaleFactor: 0.875);
 
-  VelocityXRichTextBuilder get base =>
+  VxRichText get base =>
       _fontSizedText(child: this, scaleFactor: 1);
 
-  VelocityXRichTextBuilder get lg =>
+  VxRichText get lg =>
       _fontSizedText(child: this, scaleFactor: 1.125);
 
-  VelocityXRichTextBuilder get xl =>
+  VxRichText get xl =>
       _fontSizedText(child: this, scaleFactor: 1.25);
 
-  VelocityXRichTextBuilder get xl2 =>
+  VxRichText get xl2 =>
       _fontSizedText(child: this, scaleFactor: 1.5);
 
-  VelocityXRichTextBuilder get xl3 =>
+  VxRichText get xl3 =>
       _fontSizedText(child: this, scaleFactor: 1.875);
 
-  VelocityXRichTextBuilder get xl4 =>
+  VxRichText get xl4 =>
       _fontSizedText(child: this, scaleFactor: 2.25);
 
-  VelocityXRichTextBuilder get xl5 =>
+  VxRichText get xl5 =>
       _fontSizedText(child: this, scaleFactor: 3);
 
-  VelocityXRichTextBuilder get xl6 =>
+  VxRichText get xl6 =>
       _fontSizedText(child: this, scaleFactor: 4);
 
-  VelocityXRichTextBuilder _fontSizedText(
+  VxRichText _fontSizedText(
       {@required double scaleFactor,
-      @required VelocityXRichTextBuilder child}) {
+      @required VxRichText child}) {
     _scaleFactor = scaleFactor;
     return this;
   }
 
-  VelocityXRichTextBuilder get hairLine =>
+  VxRichText get hairLine =>
       _fontWeightedText(child: this, weight: FontWeight.w100);
 
-  VelocityXRichTextBuilder get thin =>
+  VxRichText get thin =>
       _fontWeightedText(child: this, weight: FontWeight.w200);
 
-  VelocityXRichTextBuilder get light =>
+  VxRichText get light =>
       _fontWeightedText(child: this, weight: FontWeight.w300);
 
-  VelocityXRichTextBuilder get normal =>
+  VxRichText get normal =>
       _fontWeightedText(child: this, weight: FontWeight.w400);
 
-  VelocityXRichTextBuilder get medium =>
+  VxRichText get medium =>
       _fontWeightedText(child: this, weight: FontWeight.w500);
 
-  VelocityXRichTextBuilder get semiBold =>
+  VxRichText get semiBold =>
       _fontWeightedText(child: this, weight: FontWeight.w600);
 
-  VelocityXRichTextBuilder get bold =>
+  VxRichText get bold =>
       _fontWeightedText(child: this, weight: FontWeight.w700);
 
-  VelocityXRichTextBuilder get extraBold =>
+  VxRichText get extraBold =>
       _fontWeightedText(child: this, weight: FontWeight.w800);
 
-  VelocityXRichTextBuilder get extraBlack =>
+  VxRichText get extraBlack =>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
-  VelocityXRichTextBuilder _fontWeightedText(
-      {@required FontWeight weight, @required VelocityXRichTextBuilder child}) {
+  VxRichText _fontWeightedText(
+      {@required FontWeight weight, @required VxRichText child}) {
     _fontWeight = weight;
     return this;
   }
 
-  VelocityXRichTextBuilder get italic => this.._fontStyle = FontStyle.italic;
+  VxRichText get italic => this.._fontStyle = FontStyle.italic;
 
-  VelocityXRichTextBuilder get tightest => this.._letterSpacing = -3.0;
+  VxRichText get tightest => this.._letterSpacing = -3.0;
 
-  VelocityXRichTextBuilder get tighter => this.._letterSpacing = -2.0;
+  VxRichText get tighter => this.._letterSpacing = -2.0;
 
-  VelocityXRichTextBuilder get tight => this.._letterSpacing = -1.0;
+  VxRichText get tight => this.._letterSpacing = -1.0;
 
-  VelocityXRichTextBuilder get wide => this.._letterSpacing = 1.0;
+  VxRichText get wide => this.._letterSpacing = 1.0;
 
-  VelocityXRichTextBuilder get wider => this.._letterSpacing = 2.0;
+  VxRichText get wider => this.._letterSpacing = 2.0;
 
-  VelocityXRichTextBuilder get widest => this.._letterSpacing = 3.0;
+  VxRichText get widest => this.._letterSpacing = 3.0;
 
-  VelocityXRichTextBuilder letterSpacing(double val) =>
+  VxRichText letterSpacing(double val) =>
       this.._letterSpacing = val;
 
-  VelocityXRichTextBuilder get underline =>
+  VxRichText get underline =>
       this.._decoration = TextDecoration.underline;
 
-  VelocityXRichTextBuilder get lineThrough =>
+  VxRichText get lineThrough =>
       this.._decoration = TextDecoration.lineThrough;
 
-  VelocityXRichTextBuilder get overline =>
+  VxRichText get overline =>
       this.._decoration = TextDecoration.overline;
 
-  VelocityXRichTextBuilder get uppercase => this.._text = _text.toUpperCase();
+  VxRichText get uppercase => this.._text = _text.toUpperCase();
 
-  VelocityXRichTextBuilder get lowercase => this.._text = _text.toLowerCase();
+  VxRichText get lowercase => this.._text = _text.toLowerCase();
 
-  VelocityXRichTextBuilder get capitalize =>
+  VxRichText get capitalize =>
       this.._text = _text.allWordsCapitilize();
 
-  VelocityXRichTextBuilder get hidePartial => this.._text = _text.hidePartial();
+  VxRichText get hidePartial => this.._text = _text.hidePartial();
 
-  VelocityXRichTextBuilder get heightTight => this.._lineHeight = 0.75;
+  VxRichText get heightTight => this.._lineHeight = 0.75;
 
-  VelocityXRichTextBuilder get heightSnug => this.._lineHeight = 0.875;
+  VxRichText get heightSnug => this.._lineHeight = 0.875;
 
-  VelocityXRichTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
+  VxRichText get heightRelaxed => this.._lineHeight = 1.25;
 
-  VelocityXRichTextBuilder get heightLoose => this.._lineHeight = 1.5;
+  VxRichText get heightLoose => this.._lineHeight = 1.5;
 
-  VelocityXRichTextBuilder lineHeight(double val) => this.._lineHeight = val;
+  VxRichText lineHeight(double val) => this.._lineHeight = val;
 
   @override
   AutoSizeText make({Key key}) {
@@ -238,7 +238,7 @@ class VelocityXRichTextBuilder extends VelocityXWidgetBuilder<AutoSizeText>
 }
 
 class VelocityXTextSpan extends VelocityXTextSpanBuilder
-    with VelocityColorMixin<VelocityXTextSpan> {
+    with VxColorMixin<VelocityXTextSpan> {
   VelocityXTextSpan(this._text) : assert(_text != null) {
     setChildToColor(this);
   }
@@ -276,7 +276,7 @@ class VelocityXTextSpan extends VelocityXTextSpanBuilder
   }
 
   VelocityXTextSpan hexColor(String colorHex) =>
-      this..velocityColor = VelocityX.hexToColor(colorHex);
+      this..velocityColor = Vx.hexToColor(colorHex);
 
   VelocityXTextSpan fontFamily(String family) {
     _fontFamily = family;
@@ -389,8 +389,8 @@ class VelocityXTextSpan extends VelocityXTextSpanBuilder
 
 extension VelocityXRichTextExtension on RichText {
   /// Get RichText Widget for the String
-  VelocityXRichTextBuilder get richText =>
-      VelocityXRichTextBuilder.existing((text as TextSpan).text, text.style);
+  VxRichText get richText =>
+      VxRichText.existing((text as TextSpan).text, text.style);
 }
 
 extension VelocityXTextSpanExtension on TextSpan {

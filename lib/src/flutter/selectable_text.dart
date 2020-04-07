@@ -18,14 +18,13 @@ import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
 @protected
-class VelocityXSelectableTextBuilder
-    extends VelocityXWidgetBuilder<SelectableText>
-    with VelocityColorMixin<VelocityXSelectableTextBuilder> {
-  VelocityXSelectableTextBuilder(this._text) : assert(_text != null) {
+class VxSelectableTextBuilder extends VelocityXWidgetBuilder<SelectableText>
+    with VxColorMixin<VxSelectableTextBuilder> {
+  VxSelectableTextBuilder(this._text) : assert(_text != null) {
     setChildToColor(this);
   }
 
-  VelocityXSelectableTextBuilder.existing(this._text, this._textStyle)
+  VxSelectableTextBuilder.existing(this._text, this._textStyle)
       : assert(_text != null) {
     setChildToColor(this);
   }
@@ -44,154 +43,144 @@ class VelocityXSelectableTextBuilder
   Function _onTap;
   TextStyle _themedStyle;
 
-  VelocityXSelectableTextBuilder selectableText(String text) {
+  VxSelectableTextBuilder selectableText(String text) {
     _text = text;
     return this;
   }
 
-  VelocityXSelectableTextBuilder color(Color color) {
+  VxSelectableTextBuilder color(Color color) {
     velocityColor = color;
     return this;
   }
 
-  VelocityXSelectableTextBuilder hexColor(String colorHex) =>
-      this..velocityColor = VelocityX.hexToColor(colorHex);
+  VxSelectableTextBuilder hexColor(String colorHex) =>
+      this..velocityColor = Vx.hexToColor(colorHex);
 
-  VelocityXSelectableTextBuilder maxLines(int lines) {
+  VxSelectableTextBuilder maxLines(int lines) {
     _maxLines = lines;
     return this;
   }
 
-  VelocityXSelectableTextBuilder fontFamily(String family) {
+  VxSelectableTextBuilder fontFamily(String family) {
     _fontFamily = family;
     return this;
   }
 
   /// Use textStyle to provide custom or any theme style.
-  VelocityXSelectableTextBuilder textStyle(TextStyle _style) {
+  VxSelectableTextBuilder textStyle(TextStyle _style) {
     _themedStyle = _style;
     return this;
   }
 
-  VelocityXSelectableTextBuilder get center =>
-      this.._textAlign = TextAlign.center;
-  VelocityXSelectableTextBuilder get start =>
-      this.._textAlign = TextAlign.start;
-  VelocityXSelectableTextBuilder get end => this.._textAlign = TextAlign.end;
-  VelocityXSelectableTextBuilder get justify =>
-      this.._textAlign = TextAlign.justify;
+  VxSelectableTextBuilder get center => this.._textAlign = TextAlign.center;
+  VxSelectableTextBuilder get start => this.._textAlign = TextAlign.start;
+  VxSelectableTextBuilder get end => this.._textAlign = TextAlign.end;
+  VxSelectableTextBuilder get justify => this.._textAlign = TextAlign.justify;
 
-  VelocityXSelectableTextBuilder size(double size) => this.._fontSize = size;
+  VxSelectableTextBuilder size(double size) => this.._fontSize = size;
 
-  VelocityXSelectableTextBuilder get xs =>
+  VxSelectableTextBuilder get xs =>
       _fontSizedText(child: this, scaleFactor: 0.75);
 
-  VelocityXSelectableTextBuilder get sm =>
+  VxSelectableTextBuilder get sm =>
       _fontSizedText(child: this, scaleFactor: 0.875);
 
-  VelocityXSelectableTextBuilder get base =>
+  VxSelectableTextBuilder get base =>
       _fontSizedText(child: this, scaleFactor: 1);
 
-  VelocityXSelectableTextBuilder get lg =>
+  VxSelectableTextBuilder get lg =>
       _fontSizedText(child: this, scaleFactor: 1.125);
 
-  VelocityXSelectableTextBuilder get xl =>
+  VxSelectableTextBuilder get xl =>
       _fontSizedText(child: this, scaleFactor: 1.25);
 
-  VelocityXSelectableTextBuilder get xl2 =>
+  VxSelectableTextBuilder get xl2 =>
       _fontSizedText(child: this, scaleFactor: 1.5);
 
-  VelocityXSelectableTextBuilder get xl3 =>
+  VxSelectableTextBuilder get xl3 =>
       _fontSizedText(child: this, scaleFactor: 1.875);
 
-  VelocityXSelectableTextBuilder get xl4 =>
+  VxSelectableTextBuilder get xl4 =>
       _fontSizedText(child: this, scaleFactor: 2.25);
 
-  VelocityXSelectableTextBuilder get xl5 =>
+  VxSelectableTextBuilder get xl5 =>
       _fontSizedText(child: this, scaleFactor: 3);
 
-  VelocityXSelectableTextBuilder get xl6 =>
+  VxSelectableTextBuilder get xl6 =>
       _fontSizedText(child: this, scaleFactor: 4);
 
-  VelocityXSelectableTextBuilder _fontSizedText(
-      {@required double scaleFactor,
-      @required VelocityXSelectableTextBuilder child}) {
+  VxSelectableTextBuilder _fontSizedText(
+      {@required double scaleFactor, @required VxSelectableTextBuilder child}) {
     return this;
   }
 
-  VelocityXSelectableTextBuilder get hairLine =>
+  VxSelectableTextBuilder get hairLine =>
       _fontWeightedText(child: this, weight: FontWeight.w100);
 
-  VelocityXSelectableTextBuilder get thin =>
+  VxSelectableTextBuilder get thin =>
       _fontWeightedText(child: this, weight: FontWeight.w200);
 
-  VelocityXSelectableTextBuilder get light =>
+  VxSelectableTextBuilder get light =>
       _fontWeightedText(child: this, weight: FontWeight.w300);
 
-  VelocityXSelectableTextBuilder get normal =>
+  VxSelectableTextBuilder get normal =>
       _fontWeightedText(child: this, weight: FontWeight.w400);
 
-  VelocityXSelectableTextBuilder get medium =>
+  VxSelectableTextBuilder get medium =>
       _fontWeightedText(child: this, weight: FontWeight.w500);
 
-  VelocityXSelectableTextBuilder get semiBold =>
+  VxSelectableTextBuilder get semiBold =>
       _fontWeightedText(child: this, weight: FontWeight.w600);
 
-  VelocityXSelectableTextBuilder get bold =>
+  VxSelectableTextBuilder get bold =>
       _fontWeightedText(child: this, weight: FontWeight.w700);
 
-  VelocityXSelectableTextBuilder get extraBold =>
+  VxSelectableTextBuilder get extraBold =>
       _fontWeightedText(child: this, weight: FontWeight.w800);
 
-  VelocityXSelectableTextBuilder get extraBlack =>
+  VxSelectableTextBuilder get extraBlack =>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
-  VelocityXSelectableTextBuilder _fontWeightedText(
-      {@required FontWeight weight,
-      @required VelocityXSelectableTextBuilder child}) {
+  VxSelectableTextBuilder _fontWeightedText(
+      {@required FontWeight weight, @required VxSelectableTextBuilder child}) {
     _fontWeight = weight;
     return this;
   }
 
-  VelocityXSelectableTextBuilder get italic =>
-      this.._fontStyle = FontStyle.italic;
+  VxSelectableTextBuilder get italic => this.._fontStyle = FontStyle.italic;
 
-  VelocityXSelectableTextBuilder get tightest => this.._letterSpacing = -3.0;
-  VelocityXSelectableTextBuilder get tighter => this.._letterSpacing = -2.0;
-  VelocityXSelectableTextBuilder get tight => this.._letterSpacing = -1.0;
-  VelocityXSelectableTextBuilder get wide => this.._letterSpacing = 1.0;
-  VelocityXSelectableTextBuilder get wider => this.._letterSpacing = 2.0;
-  VelocityXSelectableTextBuilder get widest => this.._letterSpacing = 3.0;
+  VxSelectableTextBuilder get tightest => this.._letterSpacing = -3.0;
+  VxSelectableTextBuilder get tighter => this.._letterSpacing = -2.0;
+  VxSelectableTextBuilder get tight => this.._letterSpacing = -1.0;
+  VxSelectableTextBuilder get wide => this.._letterSpacing = 1.0;
+  VxSelectableTextBuilder get wider => this.._letterSpacing = 2.0;
+  VxSelectableTextBuilder get widest => this.._letterSpacing = 3.0;
 
-  VelocityXSelectableTextBuilder letterSpacing(double val) =>
+  VxSelectableTextBuilder letterSpacing(double val) =>
       this.._letterSpacing = val;
 
-  VelocityXSelectableTextBuilder get underline =>
+  VxSelectableTextBuilder get underline =>
       this.._decoration = TextDecoration.underline;
 
-  VelocityXSelectableTextBuilder get lineThrough =>
+  VxSelectableTextBuilder get lineThrough =>
       this.._decoration = TextDecoration.lineThrough;
 
-  VelocityXSelectableTextBuilder get overline =>
+  VxSelectableTextBuilder get overline =>
       this.._decoration = TextDecoration.overline;
 
-  VelocityXSelectableTextBuilder get uppercase =>
-      this.._text = _text.toUpperCase();
-  VelocityXSelectableTextBuilder get lowercase =>
-      this.._text = _text.toLowerCase();
-  VelocityXSelectableTextBuilder get capitalize =>
+  VxSelectableTextBuilder get uppercase => this.._text = _text.toUpperCase();
+  VxSelectableTextBuilder get lowercase => this.._text = _text.toLowerCase();
+  VxSelectableTextBuilder get capitalize =>
       this.._text = _text.allWordsCapitilize();
-  VelocityXSelectableTextBuilder get hidePartial =>
-      this.._text = _text.hidePartial();
+  VxSelectableTextBuilder get hidePartial => this.._text = _text.hidePartial();
 
-  VelocityXSelectableTextBuilder get heightTight => this.._lineHeight = 0.75;
-  VelocityXSelectableTextBuilder get heightSnug => this.._lineHeight = 0.875;
-  VelocityXSelectableTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
-  VelocityXSelectableTextBuilder get heightLoose => this.._lineHeight = 1.5;
-  VelocityXSelectableTextBuilder lineHeight(double val) =>
-      this.._lineHeight = val;
+  VxSelectableTextBuilder get heightTight => this.._lineHeight = 0.75;
+  VxSelectableTextBuilder get heightSnug => this.._lineHeight = 0.875;
+  VxSelectableTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
+  VxSelectableTextBuilder get heightLoose => this.._lineHeight = 1.5;
+  VxSelectableTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
-  VelocityXSelectableTextBuilder onTap(Function _tap) => this.._onTap = _tap;
+  VxSelectableTextBuilder onTap(Function _tap) => this.._onTap = _tap;
 
   @override
   SelectableText make({Key key}) {
@@ -221,6 +210,6 @@ class VelocityXSelectableTextBuilder
 }
 
 extension SelectableTextExtensions on SelectableText {
-  VelocityXSelectableTextBuilder get selectableText =>
-      VelocityXSelectableTextBuilder.existing(data, style);
+  VxSelectableTextBuilder get selectableText =>
+      VxSelectableTextBuilder.existing(data, style);
 }

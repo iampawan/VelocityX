@@ -172,7 +172,7 @@ void main() {
           getDirectionalityWidget(child: 'VelocityX'.text.red300.make()));
 
       expect(tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style.color,
-          VelocityX.red300);
+          Vx.red300);
     });
   });
 }

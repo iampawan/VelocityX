@@ -13,7 +13,7 @@ import 'package:flutter/rendering.dart';
 ///
 /// In the build(BuildContext context), wrap the TextFormField as follows:
 ///
-///   new VelocityEnsureVisibleWhenFocused(
+///   new VxEnsureVisibleWhenFocused(
 ///     focusNode: _focusNode,
 ///     child: new TextFormField(
 ///       ...
@@ -25,8 +25,8 @@ import 'package:flutter/rendering.dart';
 /// Extended (see highlighting) to cover the case when the keyboard is dismissed and the
 /// user clicks the TextFormField/TextField which still has the focus.
 ///
-class VelocityEnsureVisibleWhenFocused extends StatefulWidget {
-  const VelocityEnsureVisibleWhenFocused({
+class VxEnsureVisibleWhenFocused extends StatefulWidget {
+  const VxEnsureVisibleWhenFocused({
     Key key,
     @required this.child,
     @required this.focusNode,
@@ -53,13 +53,13 @@ class VelocityEnsureVisibleWhenFocused extends StatefulWidget {
   final Duration duration;
 
   @override
-  _VelocityEnsureVisibleWhenFocusedState createState() => _VelocityEnsureVisibleWhenFocusedState();
+  _VxEnsureVisibleWhenFocusedState createState() => _VxEnsureVisibleWhenFocusedState();
 }
 
 ///
 /// We implement the WidgetsBindingObserver to be notified of any change to the window metrics
 ///
-class _VelocityEnsureVisibleWhenFocusedState extends State<VelocityEnsureVisibleWhenFocused>
+class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     with WidgetsBindingObserver {
   @override
   void initState() {

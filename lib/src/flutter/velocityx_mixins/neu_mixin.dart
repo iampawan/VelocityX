@@ -15,17 +15,17 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/common/velocity_curve.dart';
 
-mixin VelocityNeuMixin {
+mixin VxNeuMixin {
   Gradient _gradient;
 
   @protected
-  VelocityNeumorph velocityDecoration(
+  VxNeumorph velocityDecoration(
     Color _color,
-    VelocityCurve curveType,
+    VxCurve curveType,
     double elevation,
   ) {
     final color = _color;
-    final emboss = curveType == VelocityCurve.emboss;
+    final emboss = curveType == VxCurve.emboss;
 
     Color colorValue = color;
 
@@ -59,18 +59,18 @@ mixin VelocityNeuMixin {
       colorValue = _getNeuColor(colorValue, 0 - elevation / 2);
     }
     switch (curveType) {
-      case VelocityCurve.concave:
+      case VxCurve.concave:
         _gradient = _getConcaveGradients(colorValue, elevation);
         break;
-      case VelocityCurve.convex:
+      case VxCurve.convex:
         _gradient = _getConvexGradients(colorValue, elevation);
         break;
-      case VelocityCurve.emboss:
-      case VelocityCurve.flat:
+      case VxCurve.emboss:
+      case VxCurve.flat:
         _gradient = _getFlatGradients(colorValue, elevation);
         break;
     }
-    return VelocityNeumorph(
+    return VxNeumorph(
       shadowList,
       _gradient,
     );

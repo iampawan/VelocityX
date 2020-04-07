@@ -14,7 +14,7 @@
 import 'package:flutter/material.dart';
 // import 'package:velocity_x/velocity_x.dart';
 
-class VelocityXBlock extends Flex {
+class VxBlock extends Flex {
   /// Use Block to create a block-level element.
   ///
   /// The [direction], [mainAxisAlignment],
@@ -23,7 +23,7 @@ class VelocityXBlock extends Flex {
   /// any. If there is no ambient directionality, and a text direction is going
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
-  VelocityXBlock({
+  VxBlock({
     Key key,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     TextDirection textDirection,
@@ -43,7 +43,7 @@ class VelocityXBlock extends Flex {
         );
 }
 
-class VelocityXInlineBlock extends Flex {
+class VxInlineBlock extends Flex {
   /// Use Block to create a block-level element.
   ///
   /// The [direction], [mainAxisAlignment],
@@ -52,7 +52,7 @@ class VelocityXInlineBlock extends Flex {
   /// any. If there is no ambient directionality, and a text direction is going
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
-  VelocityXInlineBlock({
+  VxInlineBlock({
     Key key,
     TextDirection textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,

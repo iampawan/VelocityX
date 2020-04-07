@@ -96,16 +96,16 @@ extension StringExtension on String {
   }
 
   /// Get Text Widget for the String
-  VelocityXTextBuilder get text => VelocityXTextBuilder(this);
+  VxTextBuilder get text => VxTextBuilder(this);
 
   /// Get SelectableText Widget for the String
-  VelocityXSelectableTextBuilder get selectableText => VelocityXSelectableTextBuilder(this);
+  VxSelectableTextBuilder get selectableText => VxSelectableTextBuilder(this);
 
   /// Get TextSpan for the String
   VelocityXTextSpan get textSpan => VelocityXTextSpan(this);
 
   /// Get RichText Widget for the String
-  VelocityXRichTextBuilder get richText => VelocityXRichTextBuilder(this);
+  VxRichText get richText => VxRichText(this);
 }
 
 /// Extension Methods & Widgets for the numbers
@@ -144,7 +144,7 @@ extension NumExtension on num {
       );
 
   /// Get Text Widget for the String
-  VelocityXTextBuilder get text => VelocityXTextBuilder(toString());
+  VxTextBuilder get text => VxTextBuilder(toString());
 }
 
 extension ListWidgetExtension on List<Widget> {
@@ -178,7 +178,7 @@ extension ListStringExtension on List<String> {
     double fontSize,
     EdgeInsetsGeometry padding,
   }) =>
-      VelocityDiscList(
+      VxDiscList(
         this,
         key: key,
         padding: padding,
@@ -192,7 +192,7 @@ extension ListStringExtension on List<String> {
     double fontSize,
     EdgeInsetsGeometry padding,
   }) =>
-      VelocityDecimalList(
+      VxDecimalList(
         this,
         key: key,
         padding: padding,

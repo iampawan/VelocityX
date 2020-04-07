@@ -43,7 +43,7 @@ void main() {
         child: const Text('Velocity').card.blue600.make(),
       ));
 
-      expect(tester.widget<Card>(find.byType(Card)).color, VelocityX.blue600);
+      expect(tester.widget<Card>(find.byType(Card)).color, Vx.blue600);
     });
 
     testWidgets('card Widget responds to zero Elevation',

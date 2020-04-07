@@ -10,10 +10,10 @@ class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: VelocityX.teal500,
+      color: Vx.teal500,
       child: VStack(
         [
-          VelocityDevice(
+          VxDevice(
               mobile: "Mobile"
                   .text
                   .xl6

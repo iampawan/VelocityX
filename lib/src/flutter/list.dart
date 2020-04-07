@@ -15,14 +15,14 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class VelocityDiscList extends StatelessWidget {
+class VxDiscList extends StatelessWidget {
   final List<String> _items;
   final EdgeInsetsGeometry padding;
   final Color color;
   final double fontSize;
   final bool primary;
 
-  const VelocityDiscList(
+  const VxDiscList(
     this._items, {
     Key key,
     this.padding,
@@ -39,7 +39,12 @@ class VelocityDiscList extends StatelessWidget {
       itemBuilder: (context, i) {
         return HStack(
           [
-            VelocityBox().height(fontSize / 2.8).width(fontSize / 2.8).color(color).roundedFull.makeCentered(),
+            VxBox()
+                .height(fontSize / 2.8)
+                .width(fontSize / 2.8)
+                .color(color)
+                .roundedFull
+                .makeCentered(),
             10.widthBox,
             _items[i].selectableText.color(color).size(fontSize).make(),
           ],
@@ -52,14 +57,14 @@ class VelocityDiscList extends StatelessWidget {
   }
 }
 
-class VelocityDecimalList extends StatelessWidget {
+class VxDecimalList extends StatelessWidget {
   final List<String> _items;
   final EdgeInsetsGeometry padding;
   final Color color;
   final double fontSize;
   final bool primary;
 
-  const VelocityDecimalList(
+  const VxDecimalList(
     this._items, {
     Key key,
     this.padding,
