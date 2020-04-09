@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
   VxDropDownButton(
     this.items, {
-    this.valueHolder,
-  });
+    @required this.valueHolder,
+    @required this.onValueChange,
+  })  : assert(valueHolder != null),
+        assert(onValueChange != null);
 
   List<String> items;
   String valueHolder;
@@ -20,6 +22,8 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
   bool _autoFocus = false;
   bool _isExpanded = false;
   bool _isDense = false;
+
+  final ValueChanged<String> onValueChange;
 
   VxDropDownButton textStyle(TextStyle style) => this.._textStyle = style;
 
@@ -73,14 +77,10 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
             setState(() {
               valueHolder = value;
             });
+            onValueChange(value);
           },
         );
       },
     );
   }
-}
-
-extension DropDownButtonExtension on List<String> {
-  VxDropDownButton dropDownButton({@required String valueHolder}) =>
-      VxDropDownButton(this, valueHolder: valueHolder);
 }
