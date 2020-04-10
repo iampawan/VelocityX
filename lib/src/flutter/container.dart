@@ -51,9 +51,22 @@ class VxBox extends VxWidgetBuilder<Widget>
 
   DecorationImage _bgImage;
 
+  BoxDecoration _decoration;
+
   VxBox height(double val) => this.._height = val;
 
   VxBox width(double val) => this.._width = val;
+
+  VxBox size(double width, double height) => this
+    .._width = width
+    .._height = height;
+
+  VxBox square(double val) => this
+    .._width = val
+    .._height = val;
+
+  VxBox withDecoration(BoxDecoration decoration) =>
+      this.._decoration = decoration;
 
   VxBox padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
 
@@ -224,6 +237,8 @@ class VxBox extends VxWidgetBuilder<Widget>
   VxBox sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
 
+  VxBox withGradient(Gradient gradient) => this.._gradient = gradient;
+
   VxBox bgImage(DecorationImage image) => this.._bgImage = image;
 
   VxBox neumorphic(
@@ -259,17 +274,18 @@ class VxBox extends VxWidgetBuilder<Widget>
               gradient: _velocityNeumorph.gradient,
               image: _bgImage,
             )
-          : BoxDecoration(
-              color: velocityColor,
-              borderRadius: _isCircleRounded || roundedValue.isNull
-                  ? null
-                  : BorderRadius.circular(roundedValue),
-              shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-              boxShadow: _boxShadow ?? [],
-              border: _border,
-              gradient: _gradient,
-              image: _bgImage,
-            ),
+          : _decoration ??
+              BoxDecoration(
+                color: velocityColor,
+                borderRadius: _isCircleRounded || roundedValue.isNull
+                    ? null
+                    : BorderRadius.circular(roundedValue),
+                shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+                boxShadow: _boxShadow ?? [],
+                border: _border,
+                gradient: _gradient,
+                image: _bgImage,
+              ),
     );
   }
 }

@@ -52,6 +52,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   List<BoxShadow> _boxShadow;
   VxNeumorph _velocityNeumorph;
   Matrix4 _transform;
+  BoxDecoration _decoration;
 
   VxAnimatedBox color(Color color) => this..velocityColor = color;
 
@@ -61,6 +62,17 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   VxAnimatedBox height(double val) => this.._height = val;
 
   VxAnimatedBox width(double val) => this.._width = val;
+
+  VxAnimatedBox size(double width, double height) => this
+    .._width = width
+    .._height = height;
+
+  VxAnimatedBox square(double val) => this
+    .._width = val
+    .._height = val;
+
+  VxAnimatedBox withDecoration(BoxDecoration decoration) =>
+      this.._decoration = decoration;
 
   VxAnimatedBox border(
       {Color color = Colors.black,
@@ -81,6 +93,8 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
 
   VxAnimatedBox sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
+
+  VxAnimatedBox withGradient(Gradient gradient) => this.._gradient = gradient;
 
   VxAnimatedBox margin(EdgeInsetsGeometry val) => this.._margin = val;
 
@@ -260,17 +274,19 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
                 gradient: _velocityNeumorph.gradient,
                 image: _bgImage,
               )
-            : BoxDecoration(
-                color: velocityColor,
-                borderRadius: _isCircleRounded || roundedValue.isNull
-                    ? null
-                    : BorderRadius.circular(roundedValue),
-                shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-                boxShadow: _boxShadow ?? [],
-                border: _border,
-                gradient: _gradient,
-                image: _bgImage,
-              ));
+            : _decoration ??
+                BoxDecoration(
+                  color: velocityColor,
+                  borderRadius: _isCircleRounded || roundedValue.isNull
+                      ? null
+                      : BorderRadius.circular(roundedValue),
+                  shape:
+                      _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+                  boxShadow: _boxShadow ?? [],
+                  border: _border,
+                  gradient: _gradient,
+                  image: _bgImage,
+                ));
   }
 }
 

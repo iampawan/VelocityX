@@ -12,7 +12,9 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
+import 'package:velocity_x/src/flutter/swiper.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -25,7 +27,9 @@ class VelocityXExtensions {}
 
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
-  String firstLetterUpperCase() => length > 1 ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}" : this;
+  String firstLetterUpperCase() => length > 1
+      ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}"
+      : this;
 
   ///Removes first element
   String get eliminateFirst => "${substring(1, length)}";
@@ -33,7 +37,9 @@ extension StringExtension on String {
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
 
-  bool validateEmail() => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this);
+  bool validateEmail() => RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(this);
 
   /// Returns the string if it is not `null`, or the empty string otherwise
   String get orEmpty => this ?? "";
@@ -90,7 +96,8 @@ extension StringExtension on String {
   ///Capitalize all words inside a string
   String allWordsCapitilize() {
     return toLowerCase().split(' ').map((word) {
-      final String leftText = (word.length > 1) ? word.substring(1, word.length) : '';
+      final String leftText =
+          (word.length > 1) ? word.substring(1, word.length) : '';
       return word[0].toUpperCase() + leftText;
     }).join(' ');
   }
@@ -110,7 +117,8 @@ extension StringExtension on String {
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
-  String toDoubleStringAsFixed({int digit = 2}) => toStringAsFixed(truncateToDouble() == this ? 0 : digit);
+  String toDoubleStringAsFixed({int digit = 2}) =>
+      toStringAsFixed(truncateToDouble() == this ? 0 : digit);
 
   bool get isNull => this == null;
   bool get isNotNull => this != null;
@@ -148,26 +156,83 @@ extension NumExtension on num {
 }
 
 extension ListWidgetExtension on List<Widget> {
-  Widget vStack({Key key, MainAxisAlignment alignment, CrossAxisAlignment crossAlignment, MainAxisSize axisSize}) => VStack(
+  Widget vStack(
+          {Key key,
+          MainAxisAlignment alignment,
+          CrossAxisAlignment crossAlignment,
+          MainAxisSize axisSize}) =>
+      VStack(
         this,
         key: key,
         alignment: alignment,
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
-  Widget hStack({Key key, MainAxisAlignment alignment, CrossAxisAlignment crossAlignment, MainAxisSize axisSize}) => HStack(
+  Widget hStack(
+          {Key key,
+          MainAxisAlignment alignment,
+          CrossAxisAlignment crossAlignment,
+          MainAxisSize axisSize}) =>
+      HStack(
         this,
         key: key,
         alignment: alignment,
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
-  Widget zStack({Key key, AlignmentGeometry alignment, StackFit fit, Overflow overflow}) => ZStack(
+  Widget zStack(
+          {Key key,
+          AlignmentGeometry alignment,
+          StackFit fit,
+          Overflow overflow}) =>
+      ZStack(
         this,
         key: key,
         alignment: alignment,
         fit: fit,
         overflow: overflow,
+      );
+
+  Widget vSwiper({
+    Key key,
+    double height,
+    double aspectRatio = 16 / 9,
+    bool enableInfiniteScroll = true,
+    bool enlargeCenterPage = false,
+    Function(int index) onPageChanged,
+    ScrollPhysics scrollPhysics,
+    Axis scrollDirection = Axis.vertical,
+  }) =>
+      VxSwiper(
+        items: this,
+        height: height,
+        aspectRatio: aspectRatio,
+        enableInfiniteScroll: enableInfiniteScroll,
+        enlargeCenterPage: enlargeCenterPage,
+        onPageChanged: onPageChanged,
+        scrollPhysics: scrollPhysics,
+        scrollDirection: scrollDirection,
+      );
+
+  Widget swiper({
+    Key key,
+    double height,
+    double aspectRatio = 16 / 9,
+    bool enableInfiniteScroll = true,
+    bool enlargeCenterPage = false,
+    Function(int index) onPageChanged,
+    ScrollPhysics scrollPhysics,
+    Axis scrollDirection = Axis.horizontal,
+  }) =>
+      VxSwiper(
+        items: this,
+        height: height,
+        aspectRatio: aspectRatio,
+        enableInfiniteScroll: enableInfiniteScroll,
+        enlargeCenterPage: enlargeCenterPage,
+        onPageChanged: onPageChanged,
+        scrollPhysics: scrollPhysics,
+        scrollDirection: scrollDirection,
       );
 }
 
@@ -202,7 +267,8 @@ extension ListStringExtension on List<String> {
 }
 
 extension ContextExtensions on BuildContext {
-  MaterialResponsiveUiData get _mdResponsive => MaterialResponsiveUiData.of(this);
+  MaterialResponsiveUiData get _mdResponsive =>
+      MaterialResponsiveUiData.of(this);
 
   /// Screen Sizes Extensions for responsive UI
   int get mdColumns => _mdResponsive.columns;
@@ -210,6 +276,11 @@ extension ContextExtensions on BuildContext {
   MobileDeviceType get mdDeviceType => _mdResponsive.deviceInfo.deviceType;
   MobileDeviceSize get mdDeviceSize => _mdResponsive.deviceInfo.deviceSize;
   MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
+  bool get isMobile => mdWindowSize == MobileWindowSize.xsmall;
+
+  /// It measures landscape positions too
+  bool get isMobileTypeHandset => mdDeviceType == MobileDeviceType.handset;
+  bool get isMobileTypeTablet => mdDeviceType == MobileDeviceType.tablet;
 
   MediaQueryData get mq => MediaQuery.of(this);
   double get screenWidth => mq.size.width;
