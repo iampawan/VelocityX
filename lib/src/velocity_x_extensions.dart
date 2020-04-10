@@ -12,7 +12,9 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
+import 'package:velocity_x/src/flutter/swiper.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -190,6 +192,48 @@ extension ListWidgetExtension on List<Widget> {
         fit: fit,
         overflow: overflow,
       );
+
+  Widget vSwiper({
+    Key key,
+    double height,
+    double aspectRatio = 16 / 9,
+    bool enableInfiniteScroll = true,
+    bool enlargeCenterPage = false,
+    Function(int index) onPageChanged,
+    ScrollPhysics scrollPhysics,
+    Axis scrollDirection = Axis.vertical,
+  }) =>
+      VxSwiper(
+        items: this,
+        height: height,
+        aspectRatio: aspectRatio,
+        enableInfiniteScroll: enableInfiniteScroll,
+        enlargeCenterPage: enlargeCenterPage,
+        onPageChanged: onPageChanged,
+        scrollPhysics: scrollPhysics,
+        scrollDirection: scrollDirection,
+      );
+
+  Widget swiper({
+    Key key,
+    double height,
+    double aspectRatio = 16 / 9,
+    bool enableInfiniteScroll = true,
+    bool enlargeCenterPage = false,
+    Function(int index) onPageChanged,
+    ScrollPhysics scrollPhysics,
+    Axis scrollDirection = Axis.horizontal,
+  }) =>
+      VxSwiper(
+        items: this,
+        height: height,
+        aspectRatio: aspectRatio,
+        enableInfiniteScroll: enableInfiniteScroll,
+        enlargeCenterPage: enlargeCenterPage,
+        onPageChanged: onPageChanged,
+        scrollPhysics: scrollPhysics,
+        scrollDirection: scrollDirection,
+      );
 }
 
 extension ListStringExtension on List<String> {
@@ -232,8 +276,11 @@ extension ContextExtensions on BuildContext {
   MobileDeviceType get mdDeviceType => _mdResponsive.deviceInfo.deviceType;
   MobileDeviceSize get mdDeviceSize => _mdResponsive.deviceInfo.deviceSize;
   MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
-  bool get isMobile => mdDeviceType == MobileDeviceType.handset;
-  bool get isTablet => mdDeviceType == MobileDeviceType.tablet;
+  bool get isMobile => mdWindowSize == MobileWindowSize.xsmall;
+
+  /// It measures landscape positions too
+  bool get isMobileTypeHandset => mdDeviceType == MobileDeviceType.handset;
+  bool get isMobileTypeTablet => mdDeviceType == MobileDeviceType.tablet;
 
   MediaQueryData get mq => MediaQuery.of(this);
   double get screenWidth => mq.size.width;

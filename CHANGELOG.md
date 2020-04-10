@@ -1,3 +1,12 @@
+## [0.3.1] - April 10, 2020
+
+- Added VxSwiper Widget with swiper() ext.
+- Added VxAppBar Widget with search functionality.
+- Added VxShimmar Widget with shimmer() ext.
+- Added size(), square(), withDecoration() methods to boxes.
+- Example App updated.
+- Bug Fixes
+
 ## Breaking Change[0.3.0] - April 07, 2020
 
 - VxCard Introduced
