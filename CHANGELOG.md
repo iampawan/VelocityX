@@ -4,6 +4,7 @@
 - Added VxAppBar Widget with search functionality.
 - Added VxShimmar Widget with shimmer() ext.
 - Added size(), square(), withDecoration() methods to boxes.
+- isMobile prop added for context.
 - Example App updated.
 - Bug Fixes
 

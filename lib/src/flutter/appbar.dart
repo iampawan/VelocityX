@@ -288,11 +288,8 @@ class VxAppBar extends StatefulWidget implements PreferredSizeWidget {
     switch (theme.platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
-      case TargetPlatform.linux:
-      case TargetPlatform.windows:
         return false;
       case TargetPlatform.iOS:
-      case TargetPlatform.macOS:
         return actions == null || actions.length < 2;
       default:
         return false;
