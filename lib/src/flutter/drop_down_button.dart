@@ -12,6 +12,7 @@
  */
 
 import 'package:velocity_x/src/flutter/builder.dart';
+import 'package:velocity_x/src/velocity_x_extensions.dart';
 import 'package:flutter/material.dart';
 
 class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
@@ -19,7 +20,6 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
     this._items, {
     @required this.valueHolder,
   }) : assert(valueHolder != null);
-
 
   final List<String> _items;
   String valueHolder;
@@ -64,7 +64,6 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
   VxDropDownButton onChange(ValueChanged<String> function) =>
       this.._onValueChange = function;
 
-
   @override
   StatefulBuilder make({Key key}) {
     return StatefulBuilder(
@@ -86,7 +85,7 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
           items: _items
               .map<DropdownMenuItem<String>>((item) => DropdownMenuItem<String>(
                     value: item,
-                    child: Text(item),
+                    child: item.text.make(),
                   ))
               .toList(),
           onChanged: (String value) {
