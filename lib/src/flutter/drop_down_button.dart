@@ -21,21 +21,67 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
     @required this.valueHolder,
   }) : assert(valueHolder != null);
 
+  /// The List<String> used to create [DropdownMenuItem].
+  ///
+  /// _items can't be null.
   final List<String> _items;
+
+  /// The value used to define currently selected value of [VxDropDownButton].
   String valueHolder;
+
+  /// Defines the [TextStyle] for [DropdownMenuItem].
+  ///
+  /// By default the value of `_textStyle` is [TextTheme.subhead]
+  /// value of the current [ThemeData.textTheme].
   TextStyle _textStyle;
+
+  ///  Defines the widget used to draw underline for [VxDropDownButton]
   Widget _underLine;
+
+  /// Defines the elevation for menu when drop down is open.
+  ///
+  /// By default, the value of `_elevation` is 8.
   int _elevation;
+
+  /// Defines the size of [VxDropDownButton] icon.
+  ///
+  /// By default, the value of `_iconSize` is 24.
   double _iconSize;
+
+  /// The [Icon] used for [VxDropDownButton].
+  ///
+  /// By default, the icon is [Icons.arrow_drop_down]
   Icon _dropDownIcon;
+
+  /// Defines the drop down button icon color when button is disabled.
+  ///
+  /// By default, the color is `Colors.grey.shade400`.
   Color _disabledIconColor;
+
+  /// Defines the drop down button icon color when button is enabled.
+  ///
+  /// By default, the color is `Colors.grey.shade700`  when the theme's [ThemeData.brightness]
+  /// is [Brightness.light] and to [Colors.white70] when it is [Brightness.dark].
   Color _enabledIconColor;
+
+  /// The color for the button's Material when it has the input focus.
   Color _focusColor;
+
+  /// If the `_autoFocus` is true, [VxDropDownButton] will be selected as the initial focus when no other node
+  /// in its scope is currently focused.
   bool _autoFocus = false;
+
+  /// Set the dropdown's inner contents to horizontally fill its parent.
   bool _isExpanded = false;
+
+  /// Reduce the button's height.
+  ///
+  /// By default this button's height is the same as its menu items' heights.
   bool _isDense = false;
 
+  /// Called when user selects a value from drop down menu.
   ValueChanged<String> _onValueChange;
+
 
   VxDropDownButton textStyle(TextStyle style) => this.._textStyle = style;
 
