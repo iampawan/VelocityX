@@ -1,15 +1,27 @@
+/*
+ * Copyright 2020 Pawan Kumar. All rights reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:flutter/material.dart';
 
 class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
   VxDropDownButton(
-    this.items, {
+    this._items, {
     @required this.valueHolder,
-    @required this.onValueChange,
-  })  : assert(valueHolder != null),
-        assert(onValueChange != null);
+  }) : assert(valueHolder != null);
 
-  List<String> items;
+
+  final List<String> _items;
   String valueHolder;
   TextStyle _textStyle;
   Widget _underLine;
@@ -23,7 +35,7 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
   bool _isExpanded = false;
   bool _isDense = false;
 
-  final ValueChanged<String> onValueChange;
+  ValueChanged<String> _onValueChange;
 
   VxDropDownButton textStyle(TextStyle style) => this.._textStyle = style;
 
@@ -31,7 +43,7 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
 
   VxDropDownButton elevation(int val) => this.._elevation = val;
 
-  VxDropDownButton iconSize(double val) => this.._iconSize = _iconSize;
+  VxDropDownButton iconSize(double val) => this.._iconSize = val;
 
   VxDropDownButton icon(Icon _icon) => this.._dropDownIcon = _icon;
 
@@ -48,6 +60,10 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
   VxDropDownButton get isDense => this.._isDense = true;
 
   VxDropDownButton focusColor(Color color) => this.._focusColor = color;
+
+  VxDropDownButton onChange(ValueChanged<String> function) =>
+      this.._onValueChange = function;
+
 
   @override
   StatefulBuilder make({Key key}) {
@@ -67,7 +83,7 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
           isExpanded: _isExpanded,
           focusColor: _focusColor,
           isDense: _isDense,
-          items: items
+          items: _items
               .map<DropdownMenuItem<String>>((item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(item),
@@ -77,10 +93,15 @@ class VxDropDownButton extends VxWidgetBuilder<StatefulBuilder> {
             setState(() {
               valueHolder = value;
             });
-            onValueChange(value);
+            _onValueChange(value);
           },
         );
       },
     );
   }
+}
+
+extension DropDownExtension on List<String> {
+  VxDropDownButton dropDown({@required String value}) =>
+      VxDropDownButton(this, valueHolder: value);
 }
