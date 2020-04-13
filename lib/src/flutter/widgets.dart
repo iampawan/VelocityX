@@ -38,8 +38,9 @@ extension WidgetsExtension on Widget {
         child: this,
       );
 
-  ///Hide a widget
-  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) => Visibility(
+  ///Hides a widget
+  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) =>
+      Visibility(
         key: key,
         child: this,
         visible: isVisible,
@@ -47,4 +48,7 @@ extension WidgetsExtension on Widget {
         maintainAnimation: maintainSize,
         maintainState: maintainSize,
       );
+
+  /// Widget to show exception
+  Widget errorWidget(Object ex) => ErrorWidget(ex);
 }

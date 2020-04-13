@@ -1,3 +1,12 @@
+## [0.3.2] - April 13, 2020
+
+- Added VxTextDropDown Widget with textDropDown() ext.
+- Added VxRandomBox Widget with randomBox() ext.
+- Added Vx.log(), Vx.inspect() utilities.
+- Added Vx.isReleaseMode, Vx.isProfileMode, Vx.isDebugMode, Vx.isWeb utilities..
+- Example App updated.
+- Bug Fixes
+
 ## [0.3.1] - April 10, 2020
 
 - Added VxSwiper Widget with swiper() ext.

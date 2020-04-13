@@ -12,6 +12,7 @@ void main() => runApp(MaterialApp(
 class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Vx.inspect("message");
     return Scaffold(
       appBar: VxAppBar(
         searchBar: true,
@@ -81,6 +82,14 @@ class Demo extends StatelessWidget {
           ["Decimal Item 1", "Decimal Item 2"],
           primary: false,
         ),
+        ["Item 1", "Item 2", "Item 3"]
+            .textDropDown(
+              selectedValue: "Item 1",
+              onChanged: (value) {
+                Vx.log(value);
+              },
+            )
+            .make(),
       ]).p16().scrollVertical(),
     );
   }
