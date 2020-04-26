@@ -16,6 +16,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+double degreeToRad(double degrees) => degrees / 180.0 * math.pi;
+
 extension TransformExtension on Widget {
   Widget perspective({Key key}) => Transform(
         key: key,
@@ -29,11 +31,9 @@ extension TransformExtension on Widget {
         child: this,
       );
 
-  double _degreeToRad(degrees) => degrees / 180.0 * math.pi;
-
   Widget rotate(double degrees, {Key key}) => Transform.rotate(
         key: key,
-        angle: _degreeToRad(degrees),
+        angle: degreeToRad(degrees),
         child: this,
       );
 
