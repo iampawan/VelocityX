@@ -1,3 +1,12 @@
+## [0.3.3] - May 04, 2020
+
+- Fixed transform extension issues.
+- Added clip prop to the card and box.
+- Added guard similar to Swift.
+- Many more extensions added for context, iterable and num like duration, sum, themedata etc.
+- Bug Fixes
+
+
 ## [0.3.2] - April 13, 2020
 
 - Added VxTextDropDown Widget with textDropDown() ext.
