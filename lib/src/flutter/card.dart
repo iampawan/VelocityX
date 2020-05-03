@@ -34,6 +34,7 @@ class VxCard extends VxWidgetBuilder<Widget>
   // Color _shadowColor;
   double _elevation = 1.0;
   ShapeBorder _shape;
+  Clip _clip;
 
   VxCard color(Color val) => this..velocityColor = val;
 
@@ -41,6 +42,8 @@ class VxCard extends VxWidgetBuilder<Widget>
       this..velocityColor = Vx.hexToColor(colorHex);
 
   VxCard elevation(double val) => this.._elevation = val;
+
+  VxCard clip(Clip clip) => this.._clip = clip;
 
   VxCard get circular => this.._shape = const CircleBorder();
   VxCard get zeroCircular => this
@@ -56,7 +59,7 @@ class VxCard extends VxWidgetBuilder<Widget>
       margin: velocityPadding,
       child: _child,
       color: velocityColor ?? ThemeData().cardColor,
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: _clip ?? Clip.antiAlias,
       elevation: _elevation,
       shape: roundedValue.isNotNull
           ? RoundedRectangleBorder(

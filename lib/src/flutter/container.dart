@@ -10,11 +10,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import 'package:flutter/material.dart';
 
 import 'builder.dart';
 import 'common/velocity_curve.dart';
@@ -45,6 +44,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   double _height;
   double _width;
   VxNeumorph _velocityNeumorph;
+  Clip _clip;
 
   EdgeInsetsGeometry _margin;
   Matrix4 _transform;
@@ -79,6 +79,8 @@ class VxBox extends VxWidgetBuilder<Widget>
 
   // transforming
   VxBox transform(Matrix4 val) => this.._transform = val;
+
+  VxBox clip(Clip clip) => this.._clip = clip;
 
   VxBox get roundedFull => this.._isCircleRounded = true;
 
@@ -263,6 +265,7 @@ class VxBox extends VxWidgetBuilder<Widget>
       alignment: velocityAlignment,
       transform: _transform,
       child: child,
+      clipBehavior: _clip ?? Clip.antiAlias,
       decoration: _velocityNeumorph != null
           ? BoxDecoration(
               borderRadius: _isCircleRounded || roundedValue.isNull
