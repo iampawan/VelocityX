@@ -12,8 +12,8 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
-import 'package:velocity_x/src/velocity_x_extensions.dart';
 
 class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
   VxTextDropDown(

@@ -13,6 +13,8 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/num_ext.dart';
+import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class VxDiscList extends StatelessWidget {

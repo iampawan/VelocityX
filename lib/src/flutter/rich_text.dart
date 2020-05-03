@@ -14,9 +14,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
+import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:velocity_x/src/velocity_xx.dart';
 
 @protected
 class VxRichText extends VxWidgetBuilder<AutoSizeText>

@@ -37,9 +37,7 @@ class Demo extends StatelessWidget {
             .p8
             .alignCenter
             .shadow2xl
-            .linearGradient([Vx.teal400, Vx.indigo400])
-            .makeCentered()
-            ,
+            .linearGradient([Vx.teal400, Vx.indigo400]).makeCentered(),
         20.heightBox,
         [
           "Item 1"

@@ -11,6 +11,7 @@
  * limitations under the License.
  */
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';

@@ -13,6 +13,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';

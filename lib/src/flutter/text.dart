@@ -13,7 +13,8 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:velocity_x/src/extensions/string_ext.dart';
+import 'package:velocity_x/src/velocity_xx.dart';
 
 import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';

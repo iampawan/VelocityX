@@ -13,7 +13,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/velocity_x_extensions.dart';
+import 'package:velocity_x/src/extensions/context_ext.dart';
 
 // class _VelocityXSizedBoxBuilder extends VelocityXWidget getContextBuilder<Widget get> {
 //   final Widget get _child;

@@ -1,3 +1,5 @@
+import 'package:velocity_x/src/velocity_xx.dart';
+
 ///Evaluates the function wrapping the body with try/catch and returns
 ///default value if error was raised or return value is null
 ///Originally available at https://pub.dev/packages/guard
@@ -7,7 +9,9 @@ T guard<T>(T Function() callback, [T defaultValue]) {
 
   try {
     result = callback();
-  } catch (err) {}
+  } catch (err) {
+    Vx.log(err);
+  }
 
   return result ?? defaultValue;
 }
@@ -17,7 +21,9 @@ Future<T> asyncGuard<T>(Future<T> Function() callback, [T defaultValue]) async {
 
   try {
     result = await callback();
-  } catch (err) {}
+  } catch (err) {
+    Vx.log(err);
+  }
 
   return result ?? defaultValue;
 }

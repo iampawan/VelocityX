@@ -1,5 +1,11 @@
 library velocity_x;
 
+export 'src/dart/guard.dart';
+export 'src/extensions/context_ext.dart';
+export 'src/extensions/iterable_ext.dart';
+export 'src/extensions/list_ext.dart';
+export 'src/extensions/num_ext.dart';
+export 'src/extensions/string_ext.dart';
 export 'src/flutter/animated/animated_container.dart';
 export 'src/flutter/appbar.dart';
 export 'src/flutter/card.dart';
@@ -30,5 +36,4 @@ export 'src/flutter/text.dart';
 export 'src/flutter/transform.dart';
 export 'src/flutter/widgets.dart';
 export 'src/responsive_ui.dart';
-export 'src/velocity_x_extensions.dart';
 export 'src/velocity_xx.dart';

@@ -12,6 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/curves_mixin.dart';
