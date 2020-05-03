@@ -12,7 +12,11 @@
  *  * limitations under the License.
  */
 
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
+double degreeToRad(double degrees) => degrees / 180.0 * math.pi;
 
 extension TransformExtension on Widget {
   Widget perspective({Key key}) => Transform(
@@ -27,37 +31,44 @@ extension TransformExtension on Widget {
         child: this,
       );
 
+  Widget rotate(double degrees, {Key key}) => Transform.rotate(
+        key: key,
+        angle: degreeToRad(degrees),
+        child: this,
+      );
+
   Widget rotate45({Key key}) => Transform.rotate(
         key: key,
-        angle: 45,
+        angle: math.pi / 4,
         child: this,
       );
 
   Widget rotate90({Key key}) => Transform.rotate(
         key: key,
-        angle: 90,
+        angle: math.pi / 2,
         child: this,
       );
 
   Widget rotate180({Key key}) => Transform.rotate(
         key: key,
-        angle: 180,
+        angle: math.pi,
         child: this,
       );
+
   Widget rotateN180({Key key}) => Transform.rotate(
         key: key,
-        angle: -180,
+        angle: -math.pi,
         child: this,
       );
   Widget rotateN90({Key key}) => Transform.rotate(
         key: key,
-        angle: -90,
+        angle: -math.pi / 2,
         child: this,
       );
 
   Widget rotateN45({Key key}) => Transform.rotate(
         key: key,
-        angle: -45,
+        angle: -math.pi / 4,
         child: this,
       );
 
