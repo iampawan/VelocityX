@@ -34,7 +34,7 @@
 - scaleFactor for text improved.
 - withRounded method added for Vx.
 
-This classes are renamed (Breaking change).
+These classes are renamed (Breaking change).
 
 1. VelocityX -> Vx
 
