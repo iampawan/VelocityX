@@ -45,7 +45,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   double _height;
   double _width;
   VxNeumorph _velocityNeumorph;
-  Clip _clip;
+//  Clip _clip;
 
   EdgeInsetsGeometry _margin;
   Matrix4 _transform;
@@ -81,7 +81,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   // transforming
   VxBox transform(Matrix4 val) => this.._transform = val;
 
-  VxBox clip(Clip clip) => this.._clip = clip;
+//  VxBox clip(Clip clip) => this.._clip = clip;
 
   VxBox get roundedFull => this.._isCircleRounded = true;
 
@@ -266,7 +266,6 @@ class VxBox extends VxWidgetBuilder<Widget>
       alignment: velocityAlignment,
       transform: _transform,
       child: child,
-      clipBehavior: _clip ?? Clip.antiAlias,
       decoration: _velocityNeumorph != null
           ? BoxDecoration(
               borderRadius: _isCircleRounded || roundedValue.isNull

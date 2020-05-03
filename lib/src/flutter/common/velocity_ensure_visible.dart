@@ -53,7 +53,8 @@ class VxEnsureVisibleWhenFocused extends StatefulWidget {
   final Duration duration;
 
   @override
-  _VxEnsureVisibleWhenFocusedState createState() => _VxEnsureVisibleWhenFocusedState();
+  _VxEnsureVisibleWhenFocusedState createState() =>
+      _VxEnsureVisibleWhenFocusedState();
 }
 
 ///
@@ -109,7 +110,10 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
 
   Future<void> _ensureVisible() async {
     // Wait for the keyboard to come into view
-    await Future.any([Future.delayed(const Duration(milliseconds: 300)), _keyboardToggled()]);
+    await Future.any([
+      Future.delayed(const Duration(milliseconds: 300)),
+      _keyboardToggled()
+    ]);
 
     // No need to go any further if the node has not the focus
     if (!widget.focusNode.hasFocus) {
@@ -136,7 +140,8 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     if (position.pixels > viewport.getOffsetToReveal(object, 0.0).offset) {
       // Move down to the top of the viewport
       alignment = 0.0;
-    } else if (position.pixels < viewport.getOffsetToReveal(object, 1.0).offset) {
+    } else if (position.pixels <
+        viewport.getOffsetToReveal(object, 1.0).offset) {
       // Move up to the bottom of the viewport
       alignment = 1.0;
     } else {

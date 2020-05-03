@@ -47,5 +47,4 @@ mixin VxDurationMixing<T> {
     velocityDuration = Duration(minutes: mins);
     return _child;
   }
-
 }

@@ -1,4 +1,4 @@
-## [0.3.3] - May 04, 2020
+## [0.3.4] - May 04, 2020
 
 - Fixed transform extension issues.
 - Added clip prop to the card and box.
