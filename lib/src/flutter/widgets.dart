@@ -15,7 +15,7 @@
 import 'package:flutter/material.dart';
 
 extension WidgetsExtension on Widget {
-  ///Tooltip as accesibility
+  ///Tooltip as accessibility
   Widget tooltip(String message,
           {Key key,
           Decoration decoration,

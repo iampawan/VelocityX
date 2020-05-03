@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-///  Use it to pin and shift widget usefult for making complex ui Eg
+///  Use it to pin and shift widget useful for making complex ui Eg
 /// Container(
 ///   height: 200,
 ///   width: 200,
 ///   decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xffE0D8F9)
 ///       ),
-/// ).shift(100, alignment: Alignment.bottomRight) , 
+/// ).shift(100, alignment: Alignment.bottomRight) ,
 extension ShiftWidgetExt on Widget {
   Widget shift(
     double shift, {
@@ -20,7 +20,6 @@ extension ShiftWidgetExt on Widget {
         shift: shift,
       );
 }
-
 
 class WidgetShifter extends StatelessWidget {
   const WidgetShifter({
