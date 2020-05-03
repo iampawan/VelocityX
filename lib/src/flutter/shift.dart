@@ -7,22 +7,9 @@ import 'package:flutter/material.dart';
 ///   decoration: BoxDecoration(shape: BoxShape.circle, color: Color(0xffE0D8F9)
 ///       ),
 /// ).shift(100, alignment: Alignment.bottomRight) ,
-extension ShiftWidgetExt on Widget {
-  Widget shift(
-    double shift, {
-    Key key,
-    @required Alignment alignment,
-  }) =>
-      WidgetShifter(
-        key: key,
-        child: this,
-        alignment: alignment,
-        shift: shift,
-      );
-}
 
-class WidgetShifter extends StatelessWidget {
-  const WidgetShifter({
+class VxShifter extends StatelessWidget {
+  const VxShifter({
     Key key,
 
     // @required this.w,
@@ -67,4 +54,18 @@ class WidgetShifter extends StatelessWidget {
       ),
     );
   }
+}
+
+extension ShiftWidgetExt on Widget {
+  Widget shift(
+    double shift, {
+    Key key,
+    @required Alignment alignment,
+  }) =>
+      VxShifter(
+        key: key,
+        child: this,
+        alignment: alignment,
+        shift: shift,
+      );
 }

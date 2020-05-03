@@ -296,9 +296,15 @@ extension ContextExtensions on BuildContext {
   /// Returns if Orientation is landscape
   bool get isLandscape => mq.orientation == Orientation.landscape;
 
-  /// Extension for getting NavigatorSatte
+  /// Extension for getting NavigatorState
   NavigatorState get nav => Navigator.of(this);
+
+  /// Extension for getting Theme
+  ThemeData get theme => Theme.of(this);
 
   /// Extension for getting textTheme
   TextTheme get textTheme => Theme.of(this).textTheme;
+
+  /// Extension for getting textTheme
+  TextStyle get captionStyle => Theme.of(this).textTheme.caption;
 }
