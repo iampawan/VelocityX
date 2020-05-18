@@ -44,8 +44,7 @@ void main() {
         (WidgetTester tester) async {
       const Key key = Key('Key');
       await tester.pumpWidget(Material(
-        child:
-            Center(child: VxBox().height(100).width(500).make(key: key)),
+        child: Center(child: VxBox().height(100).width(500).make(key: key)),
       ));
 
       final size = tester.getRect(find.byKey(key));
@@ -108,8 +107,7 @@ void main() {
         textDirection: TextDirection.ltr,
         child: Material(
           child: Center(
-            child:
-                VxBox(child: const Text('VelocityX')).alignCenter.make(),
+            child: VxBox(child: const Text('VelocityX')).alignCenter.make(),
           ),
         ),
       ));
@@ -122,8 +120,7 @@ void main() {
     });
 
     testWidgets('VelocityBox responds to shadow', (WidgetTester tester) async {
-      await tester
-          .pumpWidget(VxBox().height(50).width(50).shadowLg.make());
+      await tester.pumpWidget(VxBox().height(50).width(50).shadowLg.make());
 
       // box shadow defined for shadowLg
       final shadow = [
@@ -149,8 +146,7 @@ void main() {
 
     testWidgets('VelocityBox responds to border radius',
         (WidgetTester tester) async {
-      await tester
-          .pumpWidget(VxBox().height(40).width(40).roundedFull.make());
+      await tester.pumpWidget(VxBox().height(40).width(40).roundedFull.make());
 
       final decoration = tester
           .widget<Container>(find.byType(Container))
@@ -181,7 +177,7 @@ void main() {
           .widget<Container>(find.byType(Container))
           .decoration as BoxDecoration;
       expect(decoration.gradient,
-          LinearGradient(colors: [Vx.red300, Vx.blue600]));
+          const LinearGradient(colors: [Vx.red300, Vx.blue600]));
     });
 
     testWidgets('VelocityBox responds to border', (WidgetTester tester) async {
