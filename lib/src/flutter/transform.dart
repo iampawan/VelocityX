@@ -25,6 +25,29 @@ extension TransformExtension on Widget {
         child: this,
       );
 
+  Widget flipHorizontal({Key key}) => Transform(
+        key: key,
+        transform: Matrix4.rotationY(math.pi),
+        child: this,
+      );
+
+  Widget flipY({Key key, double radian}) => Transform(
+        key: key,
+        transform: Matrix4.rotationY(radian),
+        child: this,
+      );
+  Widget flipVertical({Key key}) => Transform(
+        key: key,
+        transform: Matrix4.rotationX(math.pi),
+        child: this,
+      );
+
+  Widget flipX({Key key, double radian}) => Transform(
+        key: key,
+        transform: Matrix4.rotationX(radian),
+        child: this,
+      );
+
   Widget rotate0({Key key}) => Transform.rotate(
         key: key,
         angle: 0,
