@@ -32,12 +32,14 @@ class VxCard extends VxWidgetBuilder<Widget>
   }
   final Widget _child;
 
-  // Color _shadowColor;
+  Color _shadowColor;
   double _elevation = 1.0;
   ShapeBorder _shape;
   Clip _clip;
 
   VxCard color(Color val) => this..velocityColor = val;
+
+  VxCard shadowColor(Color val) => this.._shadowColor = val;
 
   VxCard hexColor(String colorHex) =>
       this..velocityColor = Vx.hexToColor(colorHex);
@@ -66,7 +68,7 @@ class VxCard extends VxWidgetBuilder<Widget>
           ? RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(roundedValue))
           : _shape,
-      // shadowColor: _shadowColor,
+      shadowColor: _shadowColor,
     );
   }
 }
