@@ -95,6 +95,12 @@ extension TransformExtension on Widget {
         child: this,
       );
 
+  Widget scale({Key key, double scaleValue}) => Transform.scale(
+        key: key,
+        scale: scaleValue ?? 0,
+        child: this,
+      );
+
   Widget scale0({Key key}) => Transform.scale(
         key: key,
         scale: 0,
