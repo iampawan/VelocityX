@@ -16,6 +16,10 @@ import 'package:velocity_x/src/flutter/text.dart';
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
+  String toDollarAsFixed({int digit = 2}) {
+    return toStringAsFixed(truncateToDouble() == this ? 0 : digit);
+  }
+
   String toDoubleStringAsFixed({int digit = 2}) =>
       toStringAsFixed(truncateToDouble() == this ? 0 : digit);
 

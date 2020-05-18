@@ -56,4 +56,40 @@ extension ContextExtensions on BuildContext {
 
   /// Extension for getting textTheme
   TextStyle get captionStyle => Theme.of(this).textTheme.caption;
+
+  /// Extension for navigation to next page
+  void nextPage(Widget page, {bool maintainState = true}) =>
+      _nextPage(context: this, page: page, maintainState: maintainState);
+  void nextReplacementPage(Widget page, {bool maintainState = true}) =>
+      _nextReplacementPage(
+          context: this, page: page, maintainState: maintainState);
+
+  void nextAndRemoveUntilPage(Widget page) =>
+      _nextAndRemoveUntilPage(context: this, page: page);
+  void pop() => Navigator.pop(this);
 }
+
+Future<void> _nextPage(
+        {@required BuildContext context,
+        @required Widget page,
+        bool maintainState = true}) async =>
+    await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => page,
+          maintainState: maintainState,
+        ));
+Future<void> _nextReplacementPage(
+        {@required BuildContext context,
+        @required Widget page,
+        bool maintainState = true}) async =>
+    await Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => page,
+          maintainState: maintainState,
+        ));
+Future<void> _nextAndRemoveUntilPage(
+        {@required BuildContext context, @required Widget page}) async =>
+    await Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => page), (route) => false);
