@@ -9,7 +9,7 @@
 ## Inspired from Tailwindcss and SwiftUI.
 
 ```dart
-"Web".text.white.xl4.bold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered());
+"Web".text.white.xl4.bold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered();
 ```
 
 ### Show some :heart: and star the repo.
@@ -23,6 +23,10 @@
 
 Read the [Getting started page of VelocityX](https://velocityx.dev/#/home)
 
+## VelocityX Video Tutorials
+
+[Watch here](https://www.youtube.com/playlist?list=PLR2qQy0Zxs_UHLXSYbK50jEapx0ORmLYv)
+
 ## YouTube Channel
 
 [MTechViral](https://www.youtube.com/mtechviral)
@@ -35,14 +39,14 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/#/home)
 
 [Flutter Example Apps](https://github.com/iampawan/FlutterExampleApps)
 
-## Screenshot
+## Some designs made using VelocityX
 
 <p float="left">
-  <img src="https://i.imgur.com/qonwyrb.png" width="200" />
-  <img src="https://i.imgur.com/LeDH00x.png" width="200" />
-  <img src="https://i.imgur.com/FIAHZhU.png" width="200" />
-  <img src="https://i.imgur.com/7UTmlsO.png" width="200" />
- 
+ <img src="https://i.imgur.com/50tJKqU.png"  />
+  <img src="https://i.imgur.com/vNPjDMs.png"  />
+  <img src="https://i.imgur.com/xbV5OAQ.png" />
+  <img src="https://i.imgur.com/k6kT85i.png" />
+  <img src="https://i.imgur.com/s44TaIt.png" />
 </p>
 
 ## Contributing

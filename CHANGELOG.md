@@ -1,3 +1,13 @@
+## [0.4.0] - May 18, 2020
+
+- Uses latest material design text specs.
+- Shadow color method added to card.
+- New transform extensions - flipX, flipY, flipHorizontal, flipVertical, customScale
+- New theme extensions - lightTheme, darkTheme, customTheme
+- New navigator extensions - nextPage, nextReplacementPage, nextAndRemoveUntilPage, pop.
+- Bug fixes.
+- Readme updated.
+
 ## [0.3.4] - May 04, 2020
 
 - Fixed transform extension issues.
@@ -5,7 +15,6 @@
 - Added guard similar to Swift.
 - Many more extensions added for context, iterable and num like duration, sum, themedata etc.
 - Bug Fixes
-
 
 ## [0.3.2] - April 13, 2020
 
