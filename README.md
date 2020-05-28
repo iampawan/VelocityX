@@ -90,4 +90,4 @@ Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #E
 
 ## Copyright-and-license
 
-Code and documentation Copyright 2020 [Pawan Kumar](https://pawan.live). Code released under the [Apache License]. Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Code and documentation Copyright 2020 [Pawan Kumar](https://pawan.live). Code released under the [Apache License](./LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
