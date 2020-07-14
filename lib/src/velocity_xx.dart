@@ -340,16 +340,16 @@ class Vx {
   static void inspect(Object object) => dev.inspect(object);
 
   ///Checks whether release mode or not
-  bool get isReleaseMode => kReleaseMode;
+  static bool get isReleaseMode => kReleaseMode;
 
   ///Checks whether debug mode or not
-  bool get isDebugMode => kDebugMode;
+  static bool get isDebugMode => kDebugMode;
 
   ///Checks whether profile mode or not
-  bool get isProfileMode => kProfileMode;
+  static bool get isProfileMode => kProfileMode;
 
-  ///Checks whether profile mode or not
-  bool get isWeb => kIsWeb;
+  ///Checks whether web or not
+  static bool get isWeb => kIsWeb;
 
   /// Get color from the hex value
   static Color hexToColor(String code) {
