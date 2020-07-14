@@ -17,7 +17,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 void main() {
   group("Group all card tests", () {
-    testWidgets("card creates Card Widget", (WidgetTester tester) async {
+    testWidgets("Card creates card widget", (WidgetTester tester) async {
       const Key key = Key('key');
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
@@ -27,7 +27,7 @@ void main() {
       expect(find.byKey(key), findsOneWidget);
     });
 
-    testWidgets('card widget responds to padding', (WidgetTester tester) async {
+    testWidgets('Card widget responds to padding', (WidgetTester tester) async {
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
         child: const Text('Velocity').card.p16.make(),
@@ -37,7 +37,7 @@ void main() {
       expect(tester.getTopLeft(find.byType(Text)), const Offset(16.0, 16.0));
     });
 
-    testWidgets('card Widget responds to color', (WidgetTester tester) async {
+    testWidgets('Card Widget responds to color', (WidgetTester tester) async {
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
         child: const Text('Velocity').card.blue600.make(),
@@ -46,7 +46,7 @@ void main() {
       expect(tester.widget<Card>(find.byType(Card)).color, Vx.blue600);
     });
 
-    testWidgets('card Widget responds to zero Elevation',
+    testWidgets('Card widget responds to zero Elevation',
         (WidgetTester tester) async {
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
@@ -56,7 +56,7 @@ void main() {
       expect(tester.widget<Card>(find.byType(Card)).elevation, 0);
     });
 
-    testWidgets('card Widget responds to custom Elevation',
+    testWidgets('Card widget responds to custom Elevation',
         (WidgetTester tester) async {
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,
@@ -66,7 +66,7 @@ void main() {
       expect(tester.widget<Card>(find.byType(Card)).elevation, 20);
     });
 
-    testWidgets('card Widget responds to custom shape',
+    testWidgets('Card Widget responds to custom shape',
         (WidgetTester tester) async {
       await tester.pumpWidget(Directionality(
         textDirection: TextDirection.ltr,

@@ -46,7 +46,7 @@ void main() {
 
       final AutoSizeText autoSizeText = tester.widget(find.byKey(key));
       expect(
-        autoSizeText.textSpan.text + autoSizeText.textSpan.text,
+        autoSizeText.textSpan.text + autoSizeText.textSpan.children.first.text,
         'VelocityX Hey ',
       );
 
