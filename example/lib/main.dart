@@ -62,6 +62,14 @@ class Demo extends StatelessWidget {
             scrollDirection:
                 context.isMobile ? Axis.vertical : Axis.horizontal),
         20.heightBox,
+        "Card Sample"
+            .text
+            .makeCentered()
+            .card
+            .color(Vx.green400)
+            .make()
+            .h10(context),
+        20.heightBox,
         "Neumorphic"
             .text
             .bold
