@@ -91,7 +91,7 @@ class VStack extends StatelessWidget {
       key: key,
       children: children,
       mainAxisAlignment: alignment ?? MainAxisAlignment.start,
-      crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.start,
+      crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.center,
       mainAxisSize: axisSize ?? MainAxisSize.min,
     );
   }
@@ -101,7 +101,7 @@ class HStack extends StatelessWidget {
   const HStack(this.children,
       {Key key,
       this.alignment = MainAxisAlignment.start,
-      this.crossAlignment = CrossAxisAlignment.start,
+      this.crossAlignment = CrossAxisAlignment.center,
       this.axisSize = MainAxisSize.min})
       : assert(children != null),
         super(key: key);
@@ -115,7 +115,7 @@ class HStack extends StatelessWidget {
       key: key,
       children: children,
       mainAxisAlignment: alignment ?? MainAxisAlignment.start,
-      crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.start,
+      crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.center,
       mainAxisSize: axisSize ?? MainAxisSize.min,
     );
   }
