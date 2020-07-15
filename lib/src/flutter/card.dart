@@ -61,7 +61,7 @@ class VxCard extends VxWidgetBuilder<Widget>
       key: key,
       margin: velocityPadding,
       child: _child,
-      color: velocityColor ?? ThemeData().cardColor,
+      color: velocityColor,
       clipBehavior: _clip ?? Clip.antiAlias,
       elevation: _elevation,
       shape: roundedValue.isNotNull
