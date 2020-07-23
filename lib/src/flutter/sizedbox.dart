@@ -297,7 +297,7 @@ extension SizedBoxExtension on Widget {
         child: this,
       );
 
-  Widget hThoThird(BuildContext context, {Key key}) => SizedBox(
+  Widget hTwoThird(BuildContext context, {Key key}) => SizedBox(
         key: key,
         height: context.percentHeight * 66.666667,
         child: this,
@@ -461,7 +461,7 @@ extension SizedBoxExtension on Widget {
         child: this,
       );
 
-  Widget whThoThird(BuildContext context, {Key key}) => SizedBox(
+  Widget whTwoThird(BuildContext context, {Key key}) => SizedBox(
         key: key,
         width: context.percentWidth * 66.666667,
         height: context.percentHeight * 66.666667,
