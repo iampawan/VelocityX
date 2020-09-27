@@ -33,6 +33,18 @@ extension StringExtension on String {
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(this);
 
+  /// Check if String is Right to Left Language
+  bool isRtlLanguage() {
+    final _rtlLocaleRegex = RegExp(
+        r'^(ar|dv|he|iw|fa|nqo|ps|sd|ug|ur|yi|.*[-_]'
+        r'(Arab|Hebr|Thaa|Nkoo|Tfng))(?!.*[-_](Latn|Cyrl)($|-|_))'
+        r'($|-|_)',
+        caseSensitive: false);
+
+    final bool _rtlCheck = _rtlLocaleRegex.hasMatch(this);
+
+    return _rtlCheck;
+  }
   /// Returns the string if it is not `null`, or the empty string otherwise
   String get orEmpty => this ?? "";
 
