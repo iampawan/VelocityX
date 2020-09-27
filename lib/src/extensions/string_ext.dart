@@ -85,6 +85,10 @@ extension StringExtension on String {
     return buffer.toString();
   }
 
+  /// Format numeric currency
+  String changeNUm()=>
+    return iNtl.NumberFormat("#,##0", "en_US").format(this);
+
   ///Capitalize all words inside a string
   String allWordsCapitilize() {
     return toLowerCase().split(' ').map((word) {
