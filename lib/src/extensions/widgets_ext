@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 extension WidgetExtension on Widget {
   Widget circleLocalImage(String imageUri) => CircleAvatar(
         radius: 35.0,
