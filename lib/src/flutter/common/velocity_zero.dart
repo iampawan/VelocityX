@@ -14,6 +14,9 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/context_ext.dart';
 
+///
+/// [myBoxDesc] to reuse with [PKSkeleton]
+///
 Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
   return BoxDecoration(
     shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
@@ -41,13 +44,22 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
   );
 }
 
+///
+/// [VxZeroCard] can be used to provide a single loading card with PKSkeleton cool animation.
+///
 class VxZeroCard extends StatefulWidget {
   const VxZeroCard(
       {this.isCircularImage = true,
       this.isBottomLinesActive = true,
       this.isDark = false});
+
+  /// if the image should be circular? By default it is true
   final bool isCircularImage;
+
+  /// if the bottom lines are visible or not.
   final bool isBottomLinesActive;
+
+  /// if dark theme is enabled or not. Disabled by default.
   final bool isDark;
 
   @override
@@ -192,6 +204,9 @@ class _VxLine extends StatelessWidget {
   }
 }
 
+///
+/// [VxZeroList] can be used to provide a list of loading cards with PKSkeleton cool animation.
+///
 class VxZeroList extends StatelessWidget {
   const VxZeroList(
       {Key key,
@@ -201,10 +216,17 @@ class VxZeroList extends StatelessWidget {
       this.isDark = false})
       : super(key: key);
 
+  /// if the image should be circular? By default it is true
   final bool isCircularImage;
+
+  /// if the bottom lines are visible or not.
   final bool isBottomLinesActive;
-  final int length;
+
+  /// if dark theme is enabled or not. Disabled by default.
   final bool isDark;
+
+  /// Specify the length of the list. By default it is 10.
+  final int length;
 
   @override
   Widget build(BuildContext context) {
@@ -225,11 +247,17 @@ class VxZeroList extends StatelessWidget {
 }
 
 // TODO: CardProfile VelocityZero
-
+///
+/// [PKCardProfileSkeleton] can be used to provide a profile loading card with PKSkeleton cool animation.
+///
 class PKCardProfileSkeleton extends StatefulWidget {
   const PKCardProfileSkeleton(
       {this.isCircularImage = true, this.isBottomLinesActive = true});
+
+  /// if the image is circule. Default is true,
   final bool isCircularImage;
+
+  /// if the bottom lines are active.
   final bool isBottomLinesActive;
 
   @override
@@ -375,9 +403,13 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
 }
 
 // TODO: CardPage VelocityZero
-
+///
+/// [PKCardPageSkeleton] can be used to provide a Card Page loading card with PKSkeleton cool animation.
+///
 class PKCardPageSkeleton extends StatefulWidget {
   const PKCardPageSkeleton({this.totalLines = 5});
+
+  /// No. of total line. By default it is 5.
   final int totalLines;
 
   @override

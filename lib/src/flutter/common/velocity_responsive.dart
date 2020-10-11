@@ -9,7 +9,14 @@ import 'velocity_conditional.dart';
 /// You can specify two widgets depends on the screen size  [mobile] and [web].
 /// They must not be null.
 class VxDevice extends StatelessWidget {
+  ///
+  /// For mobile size window
+  ///
   final Widget mobile;
+
+  ///
+  /// For non - mobile size window
+  ///
   final Widget web;
 
   const VxDevice({Key key, @required this.mobile, @required this.web})
@@ -31,11 +38,34 @@ class VxDevice extends StatelessWidget {
 /// You can specify multiple widgets depends on the screen size like [xsmall], [small], [medium],[large],
 /// and [xlarge]. The [fallback] must not be null. It will be replaced if you don't specity any above widget.
 class VxResponsive extends StatelessWidget {
+  ///
+  /// For window size as extra small
+  ///
   final Widget xsmall;
+
+  ///
+  /// For window size as small
+  ///
   final Widget small;
+
+  ///
+  /// For window size as medium
+  ///
   final Widget medium;
+
+  ///
+  /// For window size as large
+  ///
   final Widget large;
+
+  ///
+  /// For window size as extra large
+  ///
   final Widget xlarge;
+
+  ///
+  /// if none of the above props are specified then [fallback] is used
+  ///
   final Widget fallback;
 
   const VxResponsive(

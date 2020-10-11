@@ -14,10 +14,28 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/num_ext.dart';
 
+///
+/// Can be used for two texts together vertically or horizontally.
+///
 class VxTwo extends StatelessWidget {
+  ///
+  /// Title text
+  ///
   final String title;
+
+  ///
+  /// Font size of the title text
+  ///
   final double titleFontSize;
+
+  ///
+  /// Color  of the title text
+  ///
   final Color titleColor;
+
+  ///
+  /// Subtitle text
+  ///
   final String subtitle;
   final TextSpan subtitle2;
   final TextSpan subtitle3;
@@ -96,6 +114,9 @@ class VxTwo extends StatelessWidget {
   }
 }
 
+///
+/// Can be used for two widgets together vertically.
+///
 class VxTwoColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
@@ -119,6 +140,9 @@ class VxTwoColumn extends StatelessWidget {
   }
 }
 
+///
+/// Can be used for two widgets together horizontally.
+///
 class VxTwoRow extends StatelessWidget {
   final Widget left;
   final Widget right;
@@ -143,6 +167,9 @@ class VxTwoRow extends StatelessWidget {
   }
 }
 
+///
+/// Can be used for two widgets and one icon together vertically .
+///
 class VelocityTwoIconColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
