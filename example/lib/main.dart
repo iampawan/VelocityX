@@ -71,6 +71,14 @@ class Demo extends StatelessWidget {
           xlarge: Text("Hi Extra Large"),
           fallback: Text("Hi Nothing Specified"),
         ),
+        "Card Sample"
+            .text
+            .makeCentered()
+            .card
+            .color(Vx.green400)
+            .make()
+            .h10(context),
+        20.heightBox,
         "Neumorphic"
             .text
             .bold
