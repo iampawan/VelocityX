@@ -53,7 +53,7 @@ extension WidgetsExtension on Widget {
 
   ///Hides a widget
   Widget popupMenu(
-    Function menuBuilder, {
+    MenuBuilderCallback menuBuilder, {
     Key key,
     VxPopupMenuController controller,
     Color arrowColor = const Color(0xFF4C4C4C),

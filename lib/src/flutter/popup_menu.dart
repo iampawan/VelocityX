@@ -8,6 +8,8 @@ enum VxClickType {
   singleClick,
 }
 
+typedef MenuBuilderCallback = Widget Function();
+
 /// [VxPopupMenuController] gives you access to hide the menu or
 /// toggle it using [showMenu], [hideMenu] & [toggleMenu].
 class VxPopupMenuController extends ChangeNotifier {
@@ -55,7 +57,7 @@ class VxPopupMenu extends StatefulWidget {
   final double verticalMargin;
   final double arrowSize;
   final VxPopupMenuController controller;
-  final Widget Function() menuBuilder;
+  final MenuBuilderCallback menuBuilder;
   @override
   _VxPopupMenuState createState() => _VxPopupMenuState();
 }
