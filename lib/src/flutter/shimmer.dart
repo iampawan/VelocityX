@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
 
+/// [VxShimmer] widget can be used to provide shimmer effect to any widget.
 class VxShimmer extends StatefulWidget {
   const VxShimmer({
     Key key,
@@ -235,6 +236,9 @@ class _VxShimmerFilter extends RenderProxyBox {
 }
 
 extension ShimmerExtension on Widget {
+  ///
+  /// Extension method to directly access [VxShimmer] with any widget without wrapping or with dot operator.
+  ///
   /// show shimmer extension
   Widget shimmer({
     Key key,

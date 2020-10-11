@@ -46,6 +46,7 @@ class _VxRandomBoxState extends State<VxRandomBox> {
   }
 }
 
+///Random Color box extension method
 extension RandomContainerWidgetExtension on Widget {
   VxRandomBox randomBox(
           {double width, double height, bool changeOnRedraw = true}) =>

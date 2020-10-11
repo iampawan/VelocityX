@@ -15,16 +15,19 @@ typedef MenuBuilderCallback = Widget Function();
 class VxPopupMenuController extends ChangeNotifier {
   bool menuIsShowing = false;
 
+  /// Method to show the [VxPopupMenu]
   void showMenu() {
     menuIsShowing = true;
     notifyListeners();
   }
 
+  /// Method to hide the [VxPopupMenu]
   void hideMenu() {
     menuIsShowing = false;
     notifyListeners();
   }
 
+  /// Method to toggle the [VxPopupMenu]
   void toggleMenu() {
     menuIsShowing = !menuIsShowing;
     notifyListeners();
@@ -48,15 +51,34 @@ class VxPopupMenu extends StatefulWidget {
   })  : assert(menuBuilder != null),
         super(key: key);
 
+  /// Child for the [VxPopupMenu] which can be clicked
   final Widget child;
+
+  /// Specify the [clickType]. It can be [VxClickType.singleClick] or [VxClickType.longClick]
   final VxClickType clickType;
+
+  /// Whether to show the arrow or not. Default is [true]
   final bool showArrow;
+
+  /// Color of the arrow. Default is [Color(0xFF4C4C4C)]
   final Color arrowColor;
+
+  /// Color of the barrier. Default is [Colors.black12]
   final Color barrierColor;
+
+  /// Specify the [horizontalMargin]. Default is 10
   final double horizontalMargin;
+
+  /// Specify the [verticalMargin]. Default is 10
   final double verticalMargin;
+
+  /// Specify the [arrowSize]. Default is 10
   final double arrowSize;
+
+  /// Specify the [controller] to control or hide/show the [VxPopupMenu]
   final VxPopupMenuController controller;
+
+  /// Compulsory to build a menu to show in the popup.
   final MenuBuilderCallback menuBuilder;
   @override
   _VxPopupMenuState createState() => _VxPopupMenuState();

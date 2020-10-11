@@ -14,7 +14,12 @@
 
 import 'package:flutter/material.dart';
 
+///
+/// Extension method to directly access [SingleChildScrollView] with any widget without wrapping or with dot operator.
 extension ScrollExtension on Widget {
+  ///
+  /// Extension method to directly access [SingleChildScrollView] vertically with any widget without wrapping or with dot operator.
+  ///
   Widget scrollVertical(
           {Key key,
           ScrollController controller,
@@ -27,6 +32,10 @@ extension ScrollExtension on Widget {
           controller: controller,
           physics: physics,
           padding: padding);
+
+  ///
+  /// Extension method to directly access [SingleChildScrollView] horizontally with any widget without wrapping or with dot operator.
+  ///
   Widget scrollHorizontal(
           {Key key,
           ScrollController controller,
@@ -39,12 +48,15 @@ extension ScrollExtension on Widget {
       );
 }
 
-class ScrollVertical extends StatelessWidget {
+///
+/// Widget to directly access [SingleChildScrollView] vertically.
+///
+class VxScrollVertical extends StatelessWidget {
   final ScrollController controller;
   final ScrollPhysics physics;
   final EdgeInsetsGeometry padding;
 
-  const ScrollVertical({Key key, this.controller, this.physics, this.padding})
+  const VxScrollVertical({Key key, this.controller, this.physics, this.padding})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -58,12 +70,16 @@ class ScrollVertical extends StatelessWidget {
   }
 }
 
-class ScrollHorizontal extends StatelessWidget {
+///
+/// Widget to directly access [SingleChildScrollView] horizontally.
+///
+class VxScrollHorizontal extends StatelessWidget {
   final ScrollController controller;
   final ScrollPhysics physics;
   final EdgeInsetsGeometry padding;
 
-  const ScrollHorizontal({Key key, this.controller, this.physics, this.padding})
+  const VxScrollHorizontal(
+      {Key key, this.controller, this.physics, this.padding})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

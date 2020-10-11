@@ -17,13 +17,28 @@ import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+/// [VxDiscList] is inspired from html where you can have a circular disk with an item (string)
+/// Use [VxDiscList] to have a list of strings with circular disk of boxes with a defined color.
 class VxDiscList extends StatelessWidget {
+  /// List of strings
   final List<String> _items;
+
+  /// Add padding to the listview
   final EdgeInsetsGeometry padding;
+
+  /// Specify color of the disc. Default is black
   final Color color;
+
+  /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
   final double fontSize;
+
+  /// If the listview is primary. Default is false.
   final bool primary;
+
+  /// If the listview is shrinkWrapped. Default is true.
   final bool shrinkWrap;
+
+  /// Specify the [ScrollPhysics].
   final ScrollPhysics physics;
 
   const VxDiscList(
@@ -69,13 +84,28 @@ class VxDiscList extends StatelessWidget {
   }
 }
 
+/// [VxDecimalList] is inspired from html where you can have a numeric index with an item (string)
+/// Use [VxDecimalList] to have a list of strings with index.
 class VxDecimalList extends StatelessWidget {
+  /// List of strings
   final List<String> _items;
+
+  /// Add padding to the listview
   final EdgeInsetsGeometry padding;
+
+  /// Specify color of the disc. Default is black
   final Color color;
+
+  /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
   final double fontSize;
+
+  /// If the listview is primary. Default is false.
   final bool primary;
+
+  /// If the listview is shrinkWrapped. Default is true.
   final bool shrinkWrap;
+
+  /// Specify the [ScrollPhysics].
   final ScrollPhysics physics;
 
   const VxDecimalList(
