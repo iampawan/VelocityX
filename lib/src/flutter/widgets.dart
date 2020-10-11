@@ -14,6 +14,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../velocity_x.dart';
+
 extension WidgetsExtension on Widget {
   ///Tooltip as accessibility
   Widget tooltip(String message,
@@ -47,6 +49,33 @@ extension WidgetsExtension on Widget {
         maintainSize: maintainSize,
         maintainAnimation: maintainSize,
         maintainState: maintainSize,
+      );
+
+  ///Hides a widget
+  Widget popupMenu(
+    Function menuBuilder, {
+    Key key,
+    VxPopupMenuController controller,
+    Color arrowColor = const Color(0xFF4C4C4C),
+    double arrowSize = 10.0,
+    Color barrierColor = Colors.black12,
+    double horizontalMargin = 10.0,
+    double verticalMargin = 10.0,
+    bool showArrow = true,
+    VxClickType clickType = VxClickType.singleClick,
+  }) =>
+      VxPopupMenu(
+        key: key,
+        child: this,
+        clickType: clickType,
+        controller: controller,
+        arrowColor: arrowColor,
+        arrowSize: arrowSize,
+        barrierColor: barrierColor,
+        horizontalMargin: horizontalMargin,
+        showArrow: showArrow,
+        verticalMargin: verticalMargin,
+        menuBuilder: menuBuilder,
       );
 
   /// Widget to show exception

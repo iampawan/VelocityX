@@ -102,12 +102,11 @@ class Demo extends StatelessWidget {
         10.heightBox,
         DateTime.now().timeAgo().text.make(),
         10.heightBox,
-        VxPopupMenu(
-          child: Container(
-            child: const Icon(Icons.menu),
-            padding: Vx.m20,
-          ),
-          menuBuilder: () => ClipRRect(
+        Container(
+          child: const Icon(Icons.menu),
+          padding: Vx.m20,
+        ).popupMenu(
+          () => ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: IntrinsicWidth(
               child: VStack(
@@ -161,7 +160,7 @@ class Demo extends StatelessWidget {
                 )
                 .make(),
           ),
-          pressType: VxClickType.singleClick,
+          clickType: VxClickType.singleClick,
           verticalMargin: -10,
           controller: _controller,
         ),

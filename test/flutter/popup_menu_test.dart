@@ -86,7 +86,7 @@ void main() {
               )
               .make(),
         ),
-        pressType: VxClickType.singleClick,
+        clickType: VxClickType.singleClick,
         verticalMargin: -10,
       )));
 

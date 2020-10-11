@@ -2,9 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-/// Provide click type either [longPress] or [singleClick]
+/// Provide click type either [longClick] or [singleClick]
 enum VxClickType {
-  longPress,
+  longClick,
   singleClick,
 }
 
@@ -34,7 +34,7 @@ class VxPopupMenu extends StatefulWidget {
   const VxPopupMenu({
     @required this.child,
     @required this.menuBuilder,
-    @required this.pressType,
+    @required this.clickType,
     Key key,
     this.controller,
     this.arrowColor = const Color(0xFF4C4C4C),
@@ -47,7 +47,7 @@ class VxPopupMenu extends StatefulWidget {
         super(key: key);
 
   final Widget child;
-  final VxClickType pressType;
+  final VxClickType clickType;
   final bool showArrow;
   final Color arrowColor;
   final Color barrierColor;
@@ -183,12 +183,12 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
         behavior: HitTestBehavior.translucent,
         child: widget.child,
         onTap: () {
-          if (widget.pressType == VxClickType.singleClick) {
+          if (widget.clickType == VxClickType.singleClick) {
             _showMenu();
           }
         },
         onLongPress: () {
-          if (widget.pressType == VxClickType.longPress) {
+          if (widget.clickType == VxClickType.longClick) {
             _showMenu();
           }
         },
