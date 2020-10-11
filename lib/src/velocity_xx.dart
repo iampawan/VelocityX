@@ -18,6 +18,7 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// Mixin [Vx] provides basic operations and utilities
 mixin Vx {
   /// Pixel Values
   static const double dp0 = 0.0;
