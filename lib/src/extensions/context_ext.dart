@@ -33,6 +33,8 @@ extension ContextExtensions on BuildContext {
   bool get isMobileTypeTablet => mdDeviceType == MobileDeviceType.tablet;
 
   MediaQueryData get mq => MediaQuery.of(this);
+  Size get screenSize => mq.size;
+  EdgeInsets get screenPadding => mq.padding;
   double get screenWidth => mq.size.width;
   double get screenHeight => mq.size.height;
   double get percentWidth => screenWidth / 100;
@@ -48,7 +50,8 @@ extension ContextExtensions on BuildContext {
   ///Returns Orientation
   Orientation get orientation => mq.orientation;
 
-  /// Extension for getting NavigatorState
+  /// Extension for getting NavigatorState. Use [navigator] now.
+  @Deprecated('Use [navigator] instead. It will be removed soon.')
   NavigatorState get nav => Navigator.of(this);
 
   /// Extension for getting Theme
@@ -60,7 +63,65 @@ extension ContextExtensions on BuildContext {
   /// Extension for getting textTheme
   TextStyle get captionStyle => Theme.of(this).textTheme.caption;
 
+  ///
+  /// The foreground color for widgets (knobs, text, overscroll edge effect, etc).
+  ///
+  /// Accent color is also known as the secondary color.
+  ///
+  Color get accentColor => theme.accentColor;
+
+  ///
+  /// The background color for major parts of the app (toolbars, tab bars, etc).
+  ///
+  Color get primaryColor => theme.primaryColor;
+
+  ///
+  /// A color that contrasts with the [primaryColor].
+  ///
+  Color get backgroundColor => theme.backgroundColor;
+
+  ///
+  /// The default color of [MaterialType.canvas] [Material].
+  ///
+  Color get canvasColor => theme.canvasColor;
+
+  ///
+  /// The default color of [MaterialType.card] [Material].
+  ///
+  Color get cardColor => theme.cardColor;
+
+  ///
+  /// The default color of textSelectionColor.
+  ///
+  Color get selectionColor => theme.textSelectionColor;
+
+  ///
+  /// The default brightness of the [Theme].
+  ///
+  Brightness get brightness => theme.brightness;
+
   /// Extension for navigation to next page
+  /// Returns The state from the closest instance of this class that encloses the given context.
+  ///
+  /// It is used for routing in flutter
+  ///
+  NavigatorState get navigator => Navigator.of(this);
+
+  ///
+  /// Pushes the built widget to the screen using the material fade in animation
+  ///
+  /// Will return a value when the built widget calls [pop]
+  ///
+  Future<T> push<T>(WidgetBuilder builder) async {
+    return await navigator.push<T>(MaterialPageRoute(builder: builder));
+  }
+
+  ///
+  /// Removes the top most Widget in the navigator's stack
+  ///
+  /// Will return the [result] to the caller of [push]
+  ///
+  void pop<T>([T result]) => navigator.pop<T>(result);
   void nextPage(Widget page, {bool maintainState = true}) =>
       _nextPage(context: this, page: page, maintainState: maintainState);
   void nextReplacementPage(Widget page, {bool maintainState = true}) =>
@@ -69,7 +130,51 @@ extension ContextExtensions on BuildContext {
 
   void nextAndRemoveUntilPage(Widget page) =>
       _nextAndRemoveUntilPage(context: this, page: page);
-  void pop() => Navigator.pop(this);
+
+  /// Action Extension
+  bool invokeAction(Intent intent, {bool nullOk}) =>
+      Actions.invoke(this, intent, nullOk: nullOk);
+
+  /// Returns The state from the closest instance of this class that encloses the given context.
+  /// It is used for validating forms
+  FormState get form => Form.of(this);
+
+  ///
+  /// Returns The current [Locale] of the app as specified in the [Localizations] widget.
+  ///
+  Locale get locale => Localizations.localeOf(this);
+
+  /// Returns The state from the closest instance of this class that encloses the given context.
+  ///
+  /// It is used for showing widgets on top of everything.
+  ///
+  OverlayState get overlay => Overlay.of(this);
+
+  ///
+  /// Insert the given widget into the overlay.
+  /// The newly inserted widget will always be at the top.
+  ///
+  OverlayEntry addOverlay(WidgetBuilder builder) {
+    final entry = OverlayEntry(builder: builder);
+    overlay.insert(entry);
+    return entry;
+  }
+
+  ///
+  /// Returns the closest instance of [ScaffoldState] in the widget tree,
+  /// which can be use to get information about that scaffold.
+  ///
+  /// If there is no [Scaffold] in scope, then this will throw an exception.
+  ///
+  ScaffoldState get scaffold => Scaffold.of(this);
+
+  ///
+  /// Shows a [SnackBar] at the bottom of the scaffold.
+  ///
+  /// If you call this function too quickly, the new snackbar is added to a
+  /// queue and displayed when the current one disappears.
+  ///
+  void showSnackBar(SnackBar snackbar) => scaffold.showSnackBar(snackbar);
 }
 
 Future<void> _nextPage(

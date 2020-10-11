@@ -19,9 +19,8 @@ import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
-  @deprecated
-
-  /// This ext will be removed soon. Use toDoubleStringAsFixed rather
+  /// This ext will be removed soon. Use [toDoubleStringAsFixed] instead.
+  @Deprecated('Use [toDoubleStringAsFixed] instead. It will be removed soon.')
   String toDollarAsFixed({int digit = 2}) {
     return toStringAsFixed(truncateToDouble() == this ? 0 : digit);
   }
