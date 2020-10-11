@@ -13,6 +13,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/text.dart';
+import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
@@ -40,6 +41,16 @@ extension NumExtension on num {
 
   /// Returns if the number is negative
   bool get isNegative => this < 0;
+
+  /// Format numeric currency
+  String get numCurrency =>
+      intl.NumberFormat.currency(customPattern: "#,##0.00").format(this);
+
+  /// Format numeric currency with provided locale
+  String numCurrencyWithLocale({String locale = "en_US"}) =>
+      intl.NumberFormat.currency(
+        locale: locale,
+      ).format(this);
 
   ///Widgets
   Widget get widthBox => SizedBox(

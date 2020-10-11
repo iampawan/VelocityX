@@ -17,7 +17,7 @@ import 'dart:developer' as dev;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class Vx {
+mixin Vx {
   /// Pixel Values
   static const double dp0 = 0.0;
   static const double dp1 = 1.0;

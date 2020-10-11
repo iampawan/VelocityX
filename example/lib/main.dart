@@ -79,6 +79,9 @@ class Demo extends StatelessWidget {
             .make()
             .h10(context),
         20.heightBox,
+        "100100.1546".numCurrency.text.make(),
+        12341.42334.numCurrencyWithLocale(locale: "hi_IN").text.make(),
+        20.heightBox,
         "Neumorphic"
             .text
             .bold

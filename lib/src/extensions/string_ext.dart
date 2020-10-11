@@ -14,6 +14,7 @@
 import 'package:velocity_x/src/flutter/rich_text.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
+import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the strings
 
@@ -45,6 +46,7 @@ extension StringExtension on String {
 
     return _rtlCheck;
   }
+
   /// Returns the string if it is not `null`, or the empty string otherwise
   String get orEmpty => this ?? "";
 
@@ -98,8 +100,16 @@ extension StringExtension on String {
   }
 
   /// Format numeric currency
-  String changeNUm()=>
-    return iNtl.NumberFormat("#,##0", "en_US").format(this);
+  String get numCurrency =>
+      intl.NumberFormat.currency(customPattern: "#,##0.00")
+          .format(double.tryParse(this))
+          ?.toString();
+
+  /// Format numeric currency with provided locale
+  String numCurrencyWithLocale({String locale = "en_US"}) =>
+      intl.NumberFormat.currency(
+        locale: locale,
+      ).format(double.tryParse(this))?.toString();
 
   ///Capitalize all words inside a string
   String allWordsCapitilize() {
