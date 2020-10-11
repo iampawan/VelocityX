@@ -126,23 +126,22 @@ class ZStack extends StatelessWidget {
       {Key key,
       this.alignment = AlignmentDirectional.topStart,
       this.fit = StackFit.loose,
-      this.overflow = Overflow.clip})
+      this.clip = Clip.none})
       : assert(children != null),
         super(key: key);
 
   final List<Widget> children;
   final AlignmentGeometry alignment;
   final StackFit fit;
-  final Overflow overflow;
+  final Clip clip;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      key: key,
-      children: children,
-      alignment: alignment ?? AlignmentDirectional.topStart,
-      fit: fit ?? StackFit.loose,
-      overflow: overflow ?? Overflow.clip,
-    );
+        key: key,
+        children: children,
+        alignment: alignment ?? AlignmentDirectional.topStart,
+        fit: fit ?? StackFit.loose,
+        clipBehavior: clip ?? Clip.none);
   }
 }

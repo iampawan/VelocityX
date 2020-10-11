@@ -45,13 +45,13 @@ extension ListWidgetExtension on List<Widget> {
           {Key key,
           AlignmentGeometry alignment,
           StackFit fit,
-          Overflow overflow}) =>
+          Clip clip}) =>
       ZStack(
         this,
         key: key,
         alignment: alignment,
         fit: fit,
-        overflow: overflow,
+        clip: clip,
       );
 
   Widget vSwiper({
