@@ -2,6 +2,7 @@ library velocity_x;
 
 export 'src/dart/guard.dart';
 export 'src/extensions/context_ext.dart';
+export 'src/extensions/date_time_ext.dart';
 export 'src/extensions/iterable_ext.dart';
 export 'src/extensions/list_ext.dart';
 export 'src/extensions/num_ext.dart';

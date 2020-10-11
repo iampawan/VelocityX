@@ -96,6 +96,7 @@ class Demo extends StatelessWidget {
           dashColor: Colors.red,
         ),
         10.heightBox,
+        DateTime.now().timeAgo().text.make(),
         "Neumorphic"
             .text
             .bold

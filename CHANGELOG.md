@@ -3,8 +3,8 @@
 - numCurrency and numCurrencyWithLocale() added.
 - circularAssetImage, circularNetworImage, circularAssetShadowImage added to string extension methods.
 - orientation prop added to context extensions.
+- randomColor, randomOpaqueColor and randomPrimaryColor added to Vx.
 - [BREAKING] Overflow has been removed and clip has been added with default as Clipbehavior.None. It can affect all the widgets which uses Stack or ZStack.
-
 
 ## [0.4.1] - July 15, 2020
 
