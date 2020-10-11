@@ -1,5 +1,6 @@
 ## [0.5.0] - October 11, 2020
 
+- Compatible with latest flutter versions.
 - numCurrency and numCurrencyWithLocale() added.
 - circularAssetImage, circularNetworImage, circularAssetShadowImage added to string extension methods.
 - orientation prop added to context extensions.
