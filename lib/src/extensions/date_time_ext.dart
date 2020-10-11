@@ -13,7 +13,11 @@
 
 import 'package:velocity_x/src/dart/language.dart';
 
+/// Date Time Extension Methods
 extension DateTimeExtension on DateTime {
+  ///
+  ///Helps in converting the [DateTime] to readable Time Ago format of String.
+  ///
   String timeAgo(
       {DateTime clock, bool enableFromNow, bool useShortForm = false}) {
     final mIsFromNowEnabled = enableFromNow ?? false;

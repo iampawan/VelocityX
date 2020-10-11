@@ -17,7 +17,6 @@ import 'package:velocity_x/src/flutter/text.dart';
 import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the strings
-
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
   String firstLetterUpperCase() => length > 1
@@ -30,6 +29,9 @@ extension StringExtension on String {
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
 
+  ///
+  /// Uses regex to check if the provided string is a valid email address or not
+  ///
   bool validateEmail() => RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(this);

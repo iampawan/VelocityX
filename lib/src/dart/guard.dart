@@ -16,6 +16,10 @@ T guard<T>(T Function() callback, [T defaultValue]) {
   return result ?? defaultValue;
 }
 
+///Evaluates the function asynchonically wrapping the body with try/catch and returns
+///default value if error was raised or return value is null
+///Originally available at https://pub.dev/packages/guard
+
 Future<T> asyncGuard<T>(Future<T> Function() callback, [T defaultValue]) async {
   T result;
 

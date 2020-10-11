@@ -30,6 +30,7 @@ abstract class Language {
   String delimiter() => ' ';
 }
 
+/// To use [English] language for timeAgo. More languages can be added in the future.
 class English implements Language {
   @override
   bool shortForm;

@@ -6,7 +6,8 @@
 - randomColor, randomOpaqueColor and randomPrimaryColor added to Vx.
 - VxPopupMenu widget and popupMenu ext Added.
 - Added timeAgo ext for DateTime.
-- New extension methods added for mediaquery, theme, navigator, form, scaffold and overlay etc.
+- New extension methods added for Context - mediaquery, theme, navigator, form, scaffold and overlay etc.
+- New extension methods added for Icon.
 - [BREAKING] Overflow has been removed and clip has been added with default as Clipbehavior.None. It can affect all the widgets which uses Stack or ZStack.
 
 ## [0.4.1] - July 15, 2020

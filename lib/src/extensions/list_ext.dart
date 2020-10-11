@@ -16,7 +16,11 @@ import 'package:velocity_x/src/flutter/flex.dart';
 import 'package:velocity_x/src/flutter/list.dart';
 import 'package:velocity_x/src/flutter/swiper.dart';
 
+/// Extension Methods for List of widgets.
 extension ListWidgetExtension on List<Widget> {
+  ///
+  /// Extension for using [VStack] directly with list of widgets
+  ///
   Widget vStack(
           {Key key,
           MainAxisAlignment alignment,
@@ -29,6 +33,10 @@ extension ListWidgetExtension on List<Widget> {
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
+
+  ///
+  /// Extension for using [HStack] directly with list of widgets
+  ///
   Widget hStack(
           {Key key,
           MainAxisAlignment alignment,
@@ -41,6 +49,10 @@ extension ListWidgetExtension on List<Widget> {
         axisSize: axisSize,
         crossAlignment: crossAlignment,
       );
+
+  ///
+  /// Extension for using [ZStack] directly with list of widgets
+  ///
   Widget zStack(
           {Key key, AlignmentGeometry alignment, StackFit fit, Clip clip}) =>
       ZStack(
@@ -86,6 +98,9 @@ extension ListWidgetExtension on List<Widget> {
         clip: clip,
       );
 
+  ///
+  /// Extension for using [VxSwiper] vertically directly with list of widgets
+  ///
   Widget vSwiper({
     Key key,
     double height,
@@ -107,6 +122,9 @@ extension ListWidgetExtension on List<Widget> {
         scrollDirection: scrollDirection,
       );
 
+  ///
+  /// Extension for using [VxSwiper] directly with list of widgets
+  ///
   Widget swiper({
     Key key,
     double height,
@@ -130,6 +148,9 @@ extension ListWidgetExtension on List<Widget> {
 }
 
 extension ListStringExtension on List<String> {
+  ///
+  /// Extension for using [VxDiscList] directly with list of strings.
+  ///
   Widget discList({
     Key key,
     Color color = Colors.black,
@@ -150,6 +171,9 @@ extension ListStringExtension on List<String> {
         shrinkWrap: shrinkWrap,
       );
 
+  ///
+  /// Extension for using [VxDecimalList] directly with list of strings.
+  ///
   Widget decimalList({
     Key key,
     Color color = Colors.black,

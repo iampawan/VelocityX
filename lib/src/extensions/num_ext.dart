@@ -25,15 +25,28 @@ extension NumExtension on num {
     return toStringAsFixed(truncateToDouble() == this ? 0 : digit);
   }
 
+  ///
+  /// Use this extension method to get fixed values after decimal with defined length.
+  ///
   String toDoubleStringAsFixed({int digit = 2}) =>
       toStringAsFixed(truncateToDouble() == this ? 0 : digit);
 
+  ///
+  /// Use this extension method to get precised values after decimal with defined length.
+  ///
   String toDoubleStringAsPrecised({int length = 4}) {
     return ((this * pow(10, length)).truncateToDouble() / pow(10, length))
         .toString();
   }
 
+  ///
+  /// Check if the number is null
+  ///
   bool get isNull => this == null;
+
+  ///
+  /// Check if the number is not null
+  ///
   bool get isNotNull => this != null;
 
   /// Returns number of digits in this number
@@ -62,13 +75,24 @@ extension NumExtension on num {
       ).format(this);
 
   ///Widgets
+
+  ///
+  ///Converts the number into a [SizedBox] with the width as that number.
+  ///
   Widget get widthBox => SizedBox(
         width: toDouble(),
       );
+
+  ///
+  ///Converts the number into a [SizedBox] with the height as that number.
+  ///
   Widget get heightBox => SizedBox(
         height: toDouble(),
       );
 
+  ///
+  ///Converts the number into a [SizedBox] with the width & height as that number.
+  ///
   Widget get squareBox => SizedBox(
         height: toDouble(),
         width: toDouble(),
@@ -78,6 +102,7 @@ extension NumExtension on num {
   VxTextBuilder get text => VxTextBuilder(toString());
 }
 
+/// Extension method for integers.
 extension IntExtension on int {
   /// Returns an iterable from `0` up to but not including [this].
   /// Example:

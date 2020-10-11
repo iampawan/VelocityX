@@ -16,39 +16,75 @@ import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+/// Extensions for general basic [Context]
 extension ContextExtensions on BuildContext {
   MaterialResponsiveUiData get _mdResponsive =>
       MaterialResponsiveUiData.of(this);
 
   /// Screen Sizes Extensions for responsive UI
+
+  /// Returns Material no. of Columns as per Material Design Guidlines.
   int get mdColumns => _mdResponsive.columns;
+
+  /// Returns Material no. of Gutters as per Material Design Guidlines.
   double get mdGutter => _mdResponsive.gutter;
+
+  /// Returns device Type  as per Material Design Guidlines.
   MobileDeviceType get mdDeviceType => _mdResponsive.deviceInfo.deviceType;
+
+  /// Returns device size as per Material Design Guidlines.
   MobileDeviceSize get mdDeviceSize => _mdResponsive.deviceInfo.deviceSize;
+
+  /// Returns the current window size as per Material Design Guidlines.
   MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
+
+  /// Check if the window size is of Mobile Type as per Material Design Guidlines.
   bool get isMobile => mdWindowSize == MobileWindowSize.xsmall;
 
-  /// It measures landscape positions too
+  /// Returns if it's a handset as per Material Design Guidlines.
   bool get isMobileTypeHandset => mdDeviceType == MobileDeviceType.handset;
+
+  /// Returns if it's a tablet as per Material Design Guidlines.
   bool get isMobileTypeTablet => mdDeviceType == MobileDeviceType.tablet;
 
+  /// To get a [MediaQuery] directly.
   MediaQueryData get mq => MediaQuery.of(this);
+
+  /// Get MediaQuery Screen Size
   Size get screenSize => mq.size;
+
+  /// Get MediaQuery Screen Padding
   EdgeInsets get screenPadding => mq.padding;
+
+  /// Get MediaQuery Screen Width
   double get screenWidth => mq.size.width;
+
+  /// Get MediaQuery Screen Height
   double get screenHeight => mq.size.height;
+
+  /// Get MediaQuery Screen Width in percentage
   double get percentWidth => screenWidth / 100;
+
+  /// Get MediaQuery Screen height in percentage
   double get percentHeight => screenHeight / 100;
+
+  /// Get MediaQuery safearea padding horizontally
   double get _safeAreaHorizontal => mq.padding.left + mq.padding.right;
+
+  /// Get MediaQuery safearea padding vertically
   double get _safeAreaVertical => mq.padding.top + mq.padding.bottom;
+
+  /// Get MediaQuery Screen Width in percentage including safe area calculation.
   double get safePercentWidth => (screenWidth - _safeAreaHorizontal) / 100;
+
+  /// Get MediaQuery Screen Height in percentage including safe area calculation.
   double get safePercentHeight => (screenHeight - _safeAreaVertical) / 100;
 
-  /// Returns if Orientation is landscape
-  bool get isLandscape => mq.orientation == Orientation.landscape;
-
-  ///Returns Orientation
+  ///Returns Orientation using [MediaQuery]
   Orientation get orientation => mq.orientation;
+
+  /// Returns if Orientation is landscape
+  bool get isLandscape => orientation == Orientation.landscape;
 
   /// Extension for getting NavigatorState. Use [navigator] now.
   @Deprecated('Use [navigator] instead. It will be removed soon.')
@@ -122,12 +158,19 @@ extension ContextExtensions on BuildContext {
   /// Will return the [result] to the caller of [push]
   ///
   void pop<T>([T result]) => navigator.pop<T>(result);
+
+  ///
+  /// Pushes the built widget to the screen using the material fade in animation
+  ///
   void nextPage(Widget page, {bool maintainState = true}) =>
       _nextPage(context: this, page: page, maintainState: maintainState);
+
+  /// Pushes and replacing the built widget to the screen using the material fade in animation
   void nextReplacementPage(Widget page, {bool maintainState = true}) =>
       _nextReplacementPage(
           context: this, page: page, maintainState: maintainState);
 
+  /// Removing all the widgets till defined rule, and pushes the built widget to the screen using the material fade in animation
   void nextAndRemoveUntilPage(Widget page) =>
       _nextAndRemoveUntilPage(context: this, page: page);
 
