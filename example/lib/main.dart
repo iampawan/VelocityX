@@ -27,7 +27,7 @@ class Demo extends StatelessWidget {
             .blue500
             .minFontSize(20)
             .make(),
-        20.heightBox,
+        10.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
             .text
             .bold
@@ -89,9 +89,12 @@ class Demo extends StatelessWidget {
         "100100.1546".numCurrency.text.make(),
         12341.42334.numCurrencyWithLocale(locale: "hi_IN").text.make(),
         10.heightBox,
-        "assets/vxbox.png".circularAssetShadowImage(),
         "https://avatars0.githubusercontent.com/u/12619420?s=460&u=26db98cbde1dd34c7c67b85c240505a436b2c36d&v=4"
             .circlularNetworkImage(),
+        10.heightBox,
+        const VxDash(
+          dashColor: Colors.red,
+        ),
         10.heightBox,
         "Neumorphic"
             .text
