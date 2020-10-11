@@ -11,18 +11,28 @@
  * limitations under the License.
  */
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/text.dart';
 import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {
+  @deprecated
+
+  /// This ext will be removed soon. Use toDoubleStringAsFixed rather
   String toDollarAsFixed({int digit = 2}) {
     return toStringAsFixed(truncateToDouble() == this ? 0 : digit);
   }
 
   String toDoubleStringAsFixed({int digit = 2}) =>
       toStringAsFixed(truncateToDouble() == this ? 0 : digit);
+
+  String toDoubleStringAsPrecised({int length = 4}) {
+    return ((this * pow(10, length)).truncateToDouble() / pow(10, length))
+        .toString();
+  }
 
   bool get isNull => this == null;
   bool get isNotNull => this != null;

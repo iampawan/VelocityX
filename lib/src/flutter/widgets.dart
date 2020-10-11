@@ -55,11 +55,13 @@ extension WidgetsExtension on Widget {
 
 extension StringWidgetsExtension on String {
   Widget circularAssetImage(
-          {double radius = 35.0,
+          {Key key,
+          double radius = 35.0,
           Color bgColor = Colors.white,
           Color fgColor,
           Widget child}) =>
       CircleAvatar(
+        key: key,
         radius: radius,
         backgroundColor: bgColor,
         child: child,
@@ -68,11 +70,13 @@ extension StringWidgetsExtension on String {
       );
 
   Widget circlularNetworkImage(
-          {double radius = 65.0,
+          {Key key,
+          double radius = 65.0,
           Color bgColor = Colors.white,
           Color fgColor,
           Widget child}) =>
       CircleAvatar(
+        key: key,
         radius: radius,
         backgroundColor: bgColor,
         child: child,
@@ -83,6 +87,7 @@ extension StringWidgetsExtension on String {
       );
 
   Widget circularAssetShadowImage({
+    Key key,
     EdgeInsets margin = const EdgeInsets.all(0.0),
     EdgeInsets padding = const EdgeInsets.all(0.0),
     double width = 40.0,
@@ -91,6 +96,7 @@ extension StringWidgetsExtension on String {
     double borderRadius = 50.0,
   }) =>
       Container(
+        key: key,
         margin: margin,
         padding: padding,
         width: width,
