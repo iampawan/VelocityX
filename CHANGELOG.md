@@ -1,6 +1,8 @@
 ## [0.5.0] - October 11, 2020
 
 - numCurrency and numCurrencyWithLocale() added.
+- circularAssetImage, circularNetworImage, circularAssetShadowImage added to string extension methods.
+- orientation prop added to context extensions.
 
 ## [0.4.1] - July 15, 2020
 

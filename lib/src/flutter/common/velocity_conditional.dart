@@ -70,7 +70,9 @@ class VxConditional extends StatelessWidget {
   @override
   Widget build(BuildContext context) => condition
       ? builder(context)
-      : fallback != null ? fallback(context) : const Offstage();
+      : fallback != null
+          ? fallback(context)
+          : const Offstage();
 }
 
 /// Renders widgets based on switch case conditions
