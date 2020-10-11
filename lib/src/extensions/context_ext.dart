@@ -46,7 +46,7 @@ extension ContextExtensions on BuildContext {
   bool get isLandscape => mq.orientation == Orientation.landscape;
 
   ///Returns Orientation
-  Orientation get orientation => MediaQuery.of(this).orientation;
+  Orientation get orientation => mq.orientation;
 
   /// Extension for getting NavigatorState
   NavigatorState get nav => Navigator.of(this);

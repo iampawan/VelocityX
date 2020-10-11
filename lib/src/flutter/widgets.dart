@@ -52,3 +52,64 @@ extension WidgetsExtension on Widget {
   /// Widget to show exception
   Widget errorWidget(Object ex) => ErrorWidget(ex);
 }
+
+extension StringWidgetsExtension on String {
+  Widget circularAssetImage(
+          {double radius = 35.0,
+          Color bgColor = Colors.white,
+          Color fgColor,
+          Widget child}) =>
+      CircleAvatar(
+        radius: radius,
+        backgroundColor: bgColor,
+        child: child,
+        foregroundColor: fgColor,
+        backgroundImage: AssetImage(this),
+      );
+
+  Widget circlularNetworkImage(
+          {double radius = 65.0,
+          Color bgColor = Colors.white,
+          Color fgColor,
+          Widget child}) =>
+      CircleAvatar(
+        radius: radius,
+        backgroundColor: bgColor,
+        child: child,
+        foregroundColor: fgColor,
+        backgroundImage: NetworkImage(
+          this,
+        ),
+      );
+
+  Widget circularAssetShadowImage({
+    EdgeInsets margin = const EdgeInsets.all(0.0),
+    EdgeInsets padding = const EdgeInsets.all(0.0),
+    double width = 40.0,
+    double height = 40.0,
+    double blurRadius = 3.0,
+    double borderRadius = 50.0,
+  }) =>
+      Container(
+        margin: margin,
+        padding: padding,
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.rectangle,
+          image: DecorationImage(image: AssetImage(this)),
+          borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              blurRadius: blurRadius,
+              offset: const Offset(
+                0.0,
+                0.0,
+              ),
+            )
+          ],
+        ),
+      );
+}
