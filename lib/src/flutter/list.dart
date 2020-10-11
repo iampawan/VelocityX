@@ -23,6 +23,7 @@ class VxDiscList extends StatelessWidget {
   final Color color;
   final double fontSize;
   final bool primary;
+  final bool shrinkWrap;
 
   const VxDiscList(
     this._items, {
@@ -31,12 +32,13 @@ class VxDiscList extends StatelessWidget {
     this.color = Colors.black,
     this.fontSize = 14.0,
     this.primary = false,
+    this.shrinkWrap = true,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
-      shrinkWrap: true,
+      shrinkWrap: shrinkWrap,
       primary: primary,
       itemBuilder: (context, i) {
         return HStack(
@@ -48,7 +50,12 @@ class VxDiscList extends StatelessWidget {
                 .roundedFull
                 .makeCentered(),
             10.widthBox,
-            _items[i].selectableText.color(color).size(fontSize).make(),
+            Expanded(
+                child: _items[i]
+                    .selectableText
+                    .color(color)
+                    .size(fontSize)
+                    .make()),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();
@@ -65,6 +72,7 @@ class VxDecimalList extends StatelessWidget {
   final Color color;
   final double fontSize;
   final bool primary;
+  final bool shrinkWrap;
 
   const VxDecimalList(
     this._items, {
@@ -73,19 +81,25 @@ class VxDecimalList extends StatelessWidget {
     this.color = Colors.black,
     this.fontSize = 14.0,
     this.primary = false,
+    this.shrinkWrap = true,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
-      shrinkWrap: true,
+      shrinkWrap: shrinkWrap,
       primary: primary,
       itemBuilder: (context, i) {
         return HStack(
           [
             (i + 1).text.color(color).size(fontSize).make(),
             10.widthBox,
-            _items[i].selectableText.color(color).size(fontSize).make(),
+            Expanded(
+                child: _items[i]
+                    .selectableText
+                    .color(color)
+                    .size(fontSize)
+                    .make()),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();

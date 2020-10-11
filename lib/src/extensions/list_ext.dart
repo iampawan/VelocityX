@@ -42,10 +42,42 @@ extension ListWidgetExtension on List<Widget> {
         crossAlignment: crossAlignment,
       );
   Widget zStack(
+          {Key key, AlignmentGeometry alignment, StackFit fit, Clip clip}) =>
+      ZStack(
+        this,
+        key: key,
+        alignment: alignment,
+        fit: fit,
+        clip: clip,
+      );
+
+  /// Same as [hStack]. Added just for ease who are familiar with Flutter widgets.
+  Widget row(
           {Key key,
-          AlignmentGeometry alignment,
-          StackFit fit,
-          Clip clip}) =>
+          MainAxisAlignment alignment,
+          CrossAxisAlignment crossAlignment,
+          MainAxisSize axisSize}) =>
+      hStack(
+          key: key,
+          alignment: alignment,
+          axisSize: axisSize,
+          crossAlignment: crossAlignment);
+
+  /// Same as [vStack]. Added just for ease who are familiar with Flutter widgets.
+  Widget column(
+          {Key key,
+          MainAxisAlignment alignment,
+          CrossAxisAlignment crossAlignment,
+          MainAxisSize axisSize}) =>
+      vStack(
+          key: key,
+          alignment: alignment,
+          axisSize: axisSize,
+          crossAlignment: crossAlignment);
+
+  /// Same as [zStack]. Added just for ease who are familiar with Flutter widgets.
+  Widget stack(
+          {Key key, AlignmentGeometry alignment, StackFit fit, Clip clip}) =>
       ZStack(
         this,
         key: key,
