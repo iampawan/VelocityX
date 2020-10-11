@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-mixin VelocityRoundMixin<T> {
+mixin VxRoundMixin<T> {
   T _childToRound;
 
   @protected

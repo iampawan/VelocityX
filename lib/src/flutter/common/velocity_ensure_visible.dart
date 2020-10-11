@@ -13,7 +13,7 @@ import 'package:flutter/rendering.dart';
 ///
 /// In the build(BuildContext context), wrap the TextFormField as follows:
 ///
-///   new VelocityEnsureVisibleWhenFocused(
+///   new VxEnsureVisibleWhenFocused(
 ///     focusNode: _focusNode,
 ///     child: new TextFormField(
 ///       ...
@@ -25,8 +25,8 @@ import 'package:flutter/rendering.dart';
 /// Extended (see highlighting) to cover the case when the keyboard is dismissed and the
 /// user clicks the TextFormField/TextField which still has the focus.
 ///
-class VelocityEnsureVisibleWhenFocused extends StatefulWidget {
-  const VelocityEnsureVisibleWhenFocused({
+class VxEnsureVisibleWhenFocused extends StatefulWidget {
+  const VxEnsureVisibleWhenFocused({
     Key key,
     @required this.child,
     @required this.focusNode,
@@ -53,13 +53,14 @@ class VelocityEnsureVisibleWhenFocused extends StatefulWidget {
   final Duration duration;
 
   @override
-  _VelocityEnsureVisibleWhenFocusedState createState() => _VelocityEnsureVisibleWhenFocusedState();
+  _VxEnsureVisibleWhenFocusedState createState() =>
+      _VxEnsureVisibleWhenFocusedState();
 }
 
 ///
 /// We implement the WidgetsBindingObserver to be notified of any change to the window metrics
 ///
-class _VelocityEnsureVisibleWhenFocusedState extends State<VelocityEnsureVisibleWhenFocused>
+class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     with WidgetsBindingObserver {
   @override
   void initState() {
@@ -109,7 +110,10 @@ class _VelocityEnsureVisibleWhenFocusedState extends State<VelocityEnsureVisible
 
   Future<void> _ensureVisible() async {
     // Wait for the keyboard to come into view
-    await Future.any([Future.delayed(const Duration(milliseconds: 300)), _keyboardToggled()]);
+    await Future.any([
+      Future.delayed(const Duration(milliseconds: 300)),
+      _keyboardToggled()
+    ]);
 
     // No need to go any further if the node has not the focus
     if (!widget.focusNode.hasFocus) {
@@ -136,7 +140,8 @@ class _VelocityEnsureVisibleWhenFocusedState extends State<VelocityEnsureVisible
     if (position.pixels > viewport.getOffsetToReveal(object, 0.0).offset) {
       // Move down to the top of the viewport
       alignment = 0.0;
-    } else if (position.pixels < viewport.getOffsetToReveal(object, 1.0).offset) {
+    } else if (position.pixels <
+        viewport.getOffsetToReveal(object, 1.0).offset) {
       // Move up to the bottom of the viewport
       alignment = 1.0;
     } else {

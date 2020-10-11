@@ -11,9 +11,15 @@
  * limitations under the License.
  */
 
+import 'dart:async';
+import 'dart:developer' as dev;
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-mixin VelocityX {
+/// Mixin [Vx] provides basic operations and utilities
+mixin Vx {
   /// Pixel Values
   static const double dp0 = 0.0;
   static const double dp1 = 1.0;
@@ -35,222 +41,222 @@ mixin VelocityX {
   static const double dp56 = 56.0;
   static const double dp64 = 64.0;
 
-  ///colors
-  static const String black = "#000000";
-  static const String white = "#FFFFFF";
+  ///Colors
+  static const String blackHex = "#000000";
+  static const String whiteHex = "#ffffff";
 
-  static Color blackColor = hexToColor(black);
-  static Color whiteColor = hexToColor(white);
+  static const Color black = Color(0xFF000000);
+  static const Color white = Color(0xFFFFFFFF);
 
   ///Gray Colors
-  static const String gray100 = "#F7FAFC";
-  static const String gray200 = "#EDF2F7";
-  static const String gray300 = "#E2E8F0";
-  static const String gray400 = "#CBD5E0";
-  static const String gray500 = "#A0AEC0";
-  static const String gray600 = "#718096";
-  static const String gray700 = "#4A5568";
-  static const String gray800 = "#2D3748";
-  static const String gray900 = "#1A202C";
+  static const String grayHex100 = "#F7FAFC";
+  static const String grayHex200 = "#EDF2F7";
+  static const String grayHex300 = "#E2E8F0";
+  static const String grayHex400 = "#CBD5E0";
+  static const String grayHex500 = "#A0AEC0";
+  static const String grayHex600 = "#718096";
+  static const String grayHex700 = "#4A5568";
+  static const String grayHex800 = "#2D3748";
+  static const String grayHex900 = "#1A202C";
 
-  static Color grayColor100 = hexToColor(gray100);
-  static Color grayColor200 = hexToColor(gray200);
-  static Color grayColor300 = hexToColor(gray300);
-  static Color grayColor400 = hexToColor(gray400);
-  static Color grayColor500 = hexToColor(gray500);
-  static Color grayColor600 = hexToColor(gray600);
-  static Color grayColor700 = hexToColor(gray700);
-  static Color grayColor800 = hexToColor(gray800);
-  static Color grayColor900 = hexToColor(gray900);
+  static const Color gray100 = Color(0xFFF7FAFC);
+  static const Color gray200 = Color(0xFFEDF2F7);
+  static const Color gray300 = Color(0xFFE2E8F0);
+  static const Color gray400 = Color(0xFFCBD5E0);
+  static const Color gray500 = Color(0xFFA0AEC0);
+  static const Color gray600 = Color(0xFF718096);
+  static const Color gray700 = Color(0xFF4A5568);
+  static const Color gray800 = Color(0xFF2D3748);
+  static const Color gray900 = Color(0xFF1A202C);
 
   ///Red Colors
-  static const String red100 = "#FFF5F5";
-  static const String red200 = "#FED7D7";
-  static const String red300 = "#FEB2B2";
-  static const String red400 = "#FC8181";
-  static const String red500 = "#F56565";
-  static const String red600 = "#E53E3E";
-  static const String red700 = "#C53030";
-  static const String red800 = "#9B2C2C";
-  static const String red900 = "#742A2A";
+  static const String redHex100 = "#FFF5F5";
+  static const String redHex200 = "#FED7D7";
+  static const String redHex300 = "#FEB2B2";
+  static const String redHex400 = "#FC8181";
+  static const String redHex500 = "#F56565";
+  static const String redHex600 = "#E53E3E";
+  static const String redHex700 = "#C53030";
+  static const String redHex800 = "#9B2C2C";
+  static const String redHex900 = "#742A2A";
 
-  static Color redColor100 = hexToColor(red100);
-  static Color redColor200 = hexToColor(red200);
-  static Color redColor300 = hexToColor(red300);
-  static Color redColor400 = hexToColor(red400);
-  static Color redColor500 = hexToColor(red500);
-  static Color redColor600 = hexToColor(red600);
-  static Color redColor700 = hexToColor(red700);
-  static Color redColor800 = hexToColor(red800);
-  static Color redColor900 = hexToColor(red900);
+  static const Color red100 = Color(0xFFFFF5F5);
+  static const Color red200 = Color(0xFFFED7D7);
+  static const Color red300 = Color(0xFFFEB2B2);
+  static const Color red400 = Color(0xFFFC8181);
+  static const Color red500 = Color(0xFFF56565);
+  static const Color red600 = Color(0xFFE53E3E);
+  static const Color red700 = Color(0xFFC53030);
+  static const Color red800 = Color(0xFF9B2C2C);
+  static const Color red900 = Color(0xFF742A2A);
 
   ///Orange Colors
-  static const String orange100 = "#FFFAF0";
-  static const String orange200 = "#FEEBC8";
-  static const String orange300 = "#FBD38D";
-  static const String orange400 = "#F6AD55";
-  static const String orange500 = "#ED8936";
-  static const String orange600 = "#DD6B20";
-  static const String orange700 = "#C05621";
-  static const String orange800 = "#9C4221";
-  static const String orange900 = "#7B341E";
+  static const String orangeHex100 = "#FFFAF0";
+  static const String orangeHex200 = "#FEEBC8";
+  static const String orangeHex300 = "#FBD38D";
+  static const String orangeHex400 = "#F6AD55";
+  static const String orangeHex500 = "#ED8936";
+  static const String orangeHex600 = "#DD6B20";
+  static const String orangeHex700 = "#C05621";
+  static const String orangeHex800 = "#9C4221";
+  static const String orangeHex900 = "#7B341E";
 
-  static Color orangeColor100 = hexToColor(orange100);
-  static Color orangeColor200 = hexToColor(orange200);
-  static Color orangeColor300 = hexToColor(orange300);
-  static Color orangeColor400 = hexToColor(orange400);
-  static Color orangeColor500 = hexToColor(orange500);
-  static Color orangeColor600 = hexToColor(orange600);
-  static Color orangeColor700 = hexToColor(orange700);
-  static Color orangeColor800 = hexToColor(orange800);
-  static Color orangeColor900 = hexToColor(orange900);
+  static const Color orange100 = Color(0xFFFFFAF0);
+  static const Color orange200 = Color(0xFFFEEBC8);
+  static const Color orange300 = Color(0xFFFBD38D);
+  static const Color orange400 = Color(0xFFF6AD55);
+  static const Color orange500 = Color(0xFFED8936);
+  static const Color orange600 = Color(0xFFDD6B20);
+  static const Color orange700 = Color(0xFFC05621);
+  static const Color orange800 = Color(0xFF9C4221);
+  static const Color orange900 = Color(0xFF7B341E);
 
   ///Yellow Colors
-  static const String yellow100 = "#FFFFF0";
-  static const String yellow200 = "#FEFCBF";
-  static const String yellow300 = "#FAF089";
-  static const String yellow400 = "#F6E05E";
-  static const String yellow500 = "#ECC94B";
-  static const String yellow600 = "#D69E2E";
-  static const String yellow700 = "#B7791F";
-  static const String yellow800 = "#975A16";
-  static const String yellow900 = "#744210";
+  static const String yellowHex100 = "#FFFFF0";
+  static const String yellowHex200 = "#FEFCBF";
+  static const String yellowHex300 = "#FAF089";
+  static const String yellowHex400 = "#F6E05E";
+  static const String yellowHex500 = "#ECC94B";
+  static const String yellowHex600 = "#D69E2E";
+  static const String yellowHex700 = "#B7791F";
+  static const String yellowHex800 = "#975A16";
+  static const String yellowHex900 = "#744210";
 
-  static Color yellowColor100 = hexToColor(yellow100);
-  static Color yellowColor200 = hexToColor(yellow200);
-  static Color yellowColor300 = hexToColor(yellow300);
-  static Color yellowColor400 = hexToColor(yellow400);
-  static Color yellowColor500 = hexToColor(yellow500);
-  static Color yellowColor600 = hexToColor(yellow600);
-  static Color yellowColor700 = hexToColor(yellow700);
-  static Color yellowColor800 = hexToColor(yellow800);
-  static Color yellowColor900 = hexToColor(yellow900);
+  static const Color yellow100 = Color(0xFFFFFFF0);
+  static const Color yellow200 = Color(0xFFFEFCBF);
+  static const Color yellow300 = Color(0xFFFAF089);
+  static const Color yellow400 = Color(0xFFF6E05E);
+  static const Color yellow500 = Color(0xFFECC94B);
+  static const Color yellow600 = Color(0xFFD69E2E);
+  static const Color yellow700 = Color(0xFFB7791F);
+  static const Color yellow800 = Color(0xFF975A16);
+  static const Color yellow900 = Color(0xFF744210);
 
   ///Green Colors
-  static const String green100 = "#F0FFF4";
-  static const String green200 = "#C6F6D5";
-  static const String green300 = "#9AE6B4";
-  static const String green400 = "#68D391";
-  static const String green500 = "#48BB78";
-  static const String green600 = "#38A169";
-  static const String green700 = "#2F855A";
-  static const String green800 = "#276749";
-  static const String green900 = "#22543D";
+  static const String greenHex100 = "#F0FFF4";
+  static const String greenHex200 = "#C6F6D5";
+  static const String greenHex300 = "#9AE6B4";
+  static const String greenHex400 = "#68D391";
+  static const String greenHex500 = "#48BB78";
+  static const String greenHex600 = "#38A169";
+  static const String greenHex700 = "#2F855A";
+  static const String greenHex800 = "#276749";
+  static const String greenHex900 = "#22543D";
 
-  static Color greenColor100 = hexToColor(green100);
-  static Color greenColor200 = hexToColor(green200);
-  static Color greenColor300 = hexToColor(green300);
-  static Color greenColor400 = hexToColor(green400);
-  static Color greenColor500 = hexToColor(green500);
-  static Color greenColor600 = hexToColor(green600);
-  static Color greenColor700 = hexToColor(green700);
-  static Color greenColor800 = hexToColor(green800);
-  static Color greenColor900 = hexToColor(green900);
+  static const Color green100 = Color(0xFFF0FFF4);
+  static const Color green200 = Color(0xFFC6F6D5);
+  static const Color green300 = Color(0xFF9AE6B4);
+  static const Color green400 = Color(0xFF68D391);
+  static const Color green500 = Color(0xFF48BB78);
+  static const Color green600 = Color(0xFF38A169);
+  static const Color green700 = Color(0xFF2F855A);
+  static const Color green800 = Color(0xFF276749);
+  static const Color green900 = Color(0xFF22543D);
 
   ///Teal Colors
-  static const String teal100 = "#E6FFFA";
-  static const String teal200 = "#B2F5EA";
-  static const String teal300 = "#81E6D9";
-  static const String teal400 = "#4FD1C5";
-  static const String teal500 = "#38B2AC";
-  static const String teal600 = "#319795";
-  static const String teal700 = "#2C7A7B";
-  static const String teal800 = "#285E61";
-  static const String teal900 = "#234E52";
+  static const String tealHex100 = "#E6FFFA";
+  static const String tealHex200 = "#B2F5EA";
+  static const String tealHex300 = "#81E6D9";
+  static const String tealHex400 = "#4FD1C5";
+  static const String tealHex500 = "#38B2AC";
+  static const String tealHex600 = "#319795";
+  static const String tealHex700 = "#2C7A7B";
+  static const String tealHex800 = "#285E61";
+  static const String tealHex900 = "#234E52";
 
-  static Color tealColor100 = hexToColor(teal100);
-  static Color tealColor200 = hexToColor(teal200);
-  static Color tealColor300 = hexToColor(teal300);
-  static Color tealColor400 = hexToColor(teal400);
-  static Color tealColor500 = hexToColor(teal500);
-  static Color tealColor600 = hexToColor(teal600);
-  static Color tealColor700 = hexToColor(teal700);
-  static Color tealColor800 = hexToColor(teal800);
-  static Color tealColor900 = hexToColor(teal900);
+  static const Color teal100 = Color(0xFFE6FFFA);
+  static const Color teal200 = Color(0xFFB2F5EA);
+  static const Color teal300 = Color(0xFF81E6D9);
+  static const Color teal400 = Color(0xFF4FD1C5);
+  static const Color teal500 = Color(0xFF38B2AC);
+  static const Color teal600 = Color(0xFF319795);
+  static const Color teal700 = Color(0xFF2C7A7B);
+  static const Color teal800 = Color(0xFF285E61);
+  static const Color teal900 = Color(0xFF234E52);
 
   ///Blue Colors
-  static const String blue100 = "#EBF8FF";
-  static const String blue200 = "#BEE3F8";
-  static const String blue300 = "#90CDF4";
-  static const String blue400 = "#63B3ED";
-  static const String blue500 = "#4299E1";
-  static const String blue600 = "#3182CE";
-  static const String blue700 = "#2B6CB0";
-  static const String blue800 = "#2C5282";
-  static const String blue900 = "#2A4365";
+  static const String blueHex100 = "#EBF8FF";
+  static const String blueHex200 = "#BEE3F8";
+  static const String blueHex300 = "#90CDF4";
+  static const String blueHex400 = "#63B3ED";
+  static const String blueHex500 = "#4299E1";
+  static const String blueHex600 = "#3182CE";
+  static const String blueHex700 = "#2B6CB0";
+  static const String blueHex800 = "#2C5282";
+  static const String blueHex900 = "#2A4365";
 
-  static Color blueColor100 = hexToColor(blue100);
-  static Color blueColor200 = hexToColor(blue200);
-  static Color blueColor300 = hexToColor(blue300);
-  static Color blueColor400 = hexToColor(blue400);
-  static Color blueColor500 = hexToColor(blue500);
-  static Color blueColor600 = hexToColor(blue600);
-  static Color blueColor700 = hexToColor(blue700);
-  static Color blueColor800 = hexToColor(blue800);
-  static Color blueColor900 = hexToColor(blue900);
+  static const Color blue100 = Color(0xFFEBF8FF);
+  static const Color blue200 = Color(0xFFBEE3F8);
+  static const Color blue300 = Color(0xFF90CDF4);
+  static const Color blue400 = Color(0xFF63B3ED);
+  static const Color blue500 = Color(0xFF4299E1);
+  static const Color blue600 = Color(0xFF3182CE);
+  static const Color blue700 = Color(0xFF2B6CB0);
+  static const Color blue800 = Color(0xFF2C5282);
+  static const Color blue900 = Color(0xFF2A4365);
 
   ///Indigo Colors
-  static const String indigo100 = "#EBF4FF";
-  static const String indigo200 = "#C3DAFE";
-  static const String indigo300 = "#A3BFFA";
-  static const String indigo400 = "#7F9CF5";
-  static const String indigo500 = "#667EEA";
-  static const String indigo600 = "#5A67D8";
-  static const String indigo700 = "#4C51BF";
-  static const String indigo800 = "#434190";
-  static const String indigo900 = "#3C366B";
+  static const String indigoHex100 = "#EBF4FF";
+  static const String indigoHex200 = "#C3DAFE";
+  static const String indigoHex300 = "#A3BFFA";
+  static const String indigoHex400 = "#7F9CF5";
+  static const String indigoHex500 = "#667EEA";
+  static const String indigoHex600 = "#5A67D8";
+  static const String indigoHex700 = "#4C51BF";
+  static const String indigoHex800 = "#434190";
+  static const String indigoHex900 = "#3C366B";
 
-  static Color indigoColor100 = hexToColor(indigo100);
-  static Color indigoColor200 = hexToColor(indigo200);
-  static Color indigoColor300 = hexToColor(indigo300);
-  static Color indigoColor400 = hexToColor(indigo400);
-  static Color indigoColor500 = hexToColor(indigo500);
-  static Color indigoColor600 = hexToColor(indigo600);
-  static Color indigoColor700 = hexToColor(indigo700);
-  static Color indigoColor800 = hexToColor(indigo800);
-  static Color indigoColor900 = hexToColor(indigo900);
+  static const Color indigo100 = Color(0xFFEBF4FF);
+  static const Color indigo200 = Color(0xFFC3DAFE);
+  static const Color indigo300 = Color(0xFFA3BFFA);
+  static const Color indigo400 = Color(0xFF7F9CF5);
+  static const Color indigo500 = Color(0xFF667EEA);
+  static const Color indigo600 = Color(0xFF5A67D8);
+  static const Color indigo700 = Color(0xFF4C51BF);
+  static const Color indigo800 = Color(0xFF434190);
+  static const Color indigo900 = Color(0xFF3C366B);
 
   ///Purple Colors
-  static const String purple100 = "#FAF5FF";
-  static const String purple200 = "#E9D8FD";
-  static const String purple300 = "#D6BCFA";
-  static const String purple400 = "#B794F4";
-  static const String purple500 = "#9F7AEA";
-  static const String purple600 = "#805AD5";
-  static const String purple700 = "#6B46C1";
-  static const String purple800 = "#553C9A";
-  static const String purple900 = "#44337A";
+  static const String purpleHex100 = "#FAF5FF";
+  static const String purpleHex200 = "#E9D8FD";
+  static const String purpleHex300 = "#D6BCFA";
+  static const String purpleHex400 = "#B794F4";
+  static const String purpleHex500 = "#9F7AEA";
+  static const String purpleHex600 = "#805AD5";
+  static const String purpleHex700 = "#6B46C1";
+  static const String purpleHex800 = "#553C9A";
+  static const String purpleHex900 = "#44337A";
 
-  static Color purpleColor100 = hexToColor(purple100);
-  static Color purpleColor200 = hexToColor(purple200);
-  static Color purpleColor300 = hexToColor(purple300);
-  static Color purpleColor400 = hexToColor(purple400);
-  static Color purpleColor500 = hexToColor(purple500);
-  static Color purpleColor600 = hexToColor(purple600);
-  static Color purpleColor700 = hexToColor(purple700);
-  static Color purpleColor800 = hexToColor(purple800);
-  static Color purpleColor900 = hexToColor(purple900);
+  static const Color purple100 = Color(0xFFFAF5FF);
+  static const Color purple200 = Color(0xFFE9D8FD);
+  static const Color purple300 = Color(0xFFD6BCFA);
+  static const Color purple400 = Color(0xFFB794F4);
+  static const Color purple500 = Color(0xFF9F7AEA);
+  static const Color purple600 = Color(0xFF805AD5);
+  static const Color purple700 = Color(0xFF6B46C1);
+  static const Color purple800 = Color(0xFF553C9A);
+  static const Color purple900 = Color(0xFF44337A);
 
   ///Pink Colors
-  static const String pink100 = "#FFF5F7";
-  static const String pink200 = "#FED7E2";
-  static const String pink300 = "#FBB6CE";
-  static const String pink400 = "#F687B3";
-  static const String pink500 = "#ED64A6";
-  static const String pink600 = "#D53F8C";
-  static const String pink700 = "#B83280";
-  static const String pink800 = "#97266D";
-  static const String pink900 = "#702459";
+  static const String pinkHex100 = "#FFF5F7";
+  static const String pinkHex200 = "#FED7E2";
+  static const String pinkHex300 = "#FBB6CE";
+  static const String pinkHex400 = "#F687B3";
+  static const String pinkHex500 = "#ED64A6";
+  static const String pinkHex600 = "#D53F8C";
+  static const String pinkHex700 = "#B83280";
+  static const String pinkHex800 = "#97266D";
+  static const String pinkHex900 = "#702459";
 
-  static Color pinkColor100 = hexToColor(pink100);
-  static Color pinkColor200 = hexToColor(pink200);
-  static Color pinkColor300 = hexToColor(pink300);
-  static Color pinkColor400 = hexToColor(pink400);
-  static Color pinkColor500 = hexToColor(pink500);
-  static Color pinkColor600 = hexToColor(pink600);
-  static Color pinkColor700 = hexToColor(pink700);
-  static Color pinkColor800 = hexToColor(pink800);
-  static Color pinkColor900 = hexToColor(pink900);
+  static const Color pink100 = Color(0xFFFFF5F7);
+  static const Color pink200 = Color(0xFFFED7E2);
+  static const Color pink300 = Color(0xFFFBB6CE);
+  static const Color pink400 = Color(0xFFF687B3);
+  static const Color pink500 = Color(0xFFED64A6);
+  static const Color pink600 = Color(0xFFD53F8C);
+  static const Color pink700 = Color(0xFFB83280);
+  static const Color pink800 = Color(0xFF97266D);
+  static const Color pink900 = Color(0xFF702459);
 
   /// All Fixed EdgeInsets
   static EdgeInsets m0 = const EdgeInsets.all(dp0);
@@ -289,15 +295,110 @@ mixin VelocityX {
   static const mV64 = EdgeInsets.symmetric(vertical: dp24);
   static const mH64 = EdgeInsets.symmetric(horizontal: dp32);
 
+  /// [EdgeInsets] with custom [left], [right], [top] & [bottom] values
+  static EdgeInsets mLTRB(
+    double left,
+    double top,
+    double right,
+    double bottom,
+  ) =>
+      EdgeInsets.fromLTRB(left, top, right, bottom);
+
+  /// [EdgeInsets] with custom symmetric [v] for vertical and [h] for horizontal value
+  static EdgeInsets mSymmetric({double v = 0.0, double h = 0.0}) =>
+      EdgeInsets.symmetric(
+        vertical: v,
+        horizontal: h,
+      );
+
+  /// [EdgeInsets] with custom [left], [right], [top] & [bottom] values
+  static EdgeInsets mOnly(
+          {double left = 0.0,
+          double right = 0.0,
+          double top = 0.0,
+          double bottom = 0.0}) =>
+      EdgeInsets.only(left: left, right: right, top: top, bottom: bottom);
+
+  /// [ShapeBorder] with border radius 7.5
   static ShapeBorder roundedSm =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5));
+
+  /// [ShapeBorder] with border radius 15
   static ShapeBorder rounded =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(15));
+
+  /// [ShapeBorder] with border radius 30
   static ShapeBorder roundedLg =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(30));
+
+  /// [ShapeBorder] with custom border [radius]
+  static ShapeBorder withRounded(double radius) =>
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius));
+
+  // Emit a log event.
+  ///
+  /// This function was designed to map closely to the logging information
+  /// collected by `package:logging`.
+  ///
+  /// - [message] is the log message
+  /// - [time] (optional) is the timestamp
+  /// - [sequenceNumber] (optional) is a monotonically increasing sequence number
+  /// - [level] (optional) is the severity level (a value between 0 and 2000); see
+  ///   the `package:logging` `Level` class for an overview of the possible values
+  /// - [name] (optional) is the name of the source of the log message
+  /// - [zone] (optional) the zone where the log was emitted
+  /// - [error] (optional) an error object associated with this log event
+  /// - [stackTrace] (optional) a stack trace associated with this log event
+  static void log(String message,
+          {DateTime time,
+          int sequenceNumber,
+          int level = 0,
+          String name = '',
+          Zone zone,
+          Object error,
+          StackTrace stackTrace}) =>
+      dev.log(message,
+          error: error,
+          level: level,
+          name: name,
+          sequenceNumber: sequenceNumber,
+          stackTrace: stackTrace,
+          time: time,
+          zone: zone);
+
+  /// Send a reference to [object] to any attached debuggers.
+  ///
+  /// Debuggers may open an inspector on the object. Returns the argument.
+  static void inspect(Object object) => dev.inspect(object);
+
+  ///Checks whether release mode or not
+  static bool get isReleaseMode => kReleaseMode;
+
+  ///Checks whether debug mode or not
+  static bool get isDebugMode => kDebugMode;
+
+  ///Checks whether profile mode or not
+  static bool get isProfileMode => kProfileMode;
+
+  ///Checks whether web or not
+  static bool get isWeb => kIsWeb;
+
+  ///Checks whether android or not
+  static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
 
   /// Get color from the hex value
   static Color hexToColor(String code) {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
+
+  /// Get Random Primary Color
+  static Color get randomPrimaryColor =>
+      Colors.primaries[Random().nextInt(Colors.primaries.length)];
+
+  /// Get Random Non-Primary Color
+  static Color get randomColor => Color(Random().nextInt(0xffffffff));
+
+  /// Get Random Non-Primary Color
+  static Color get randomOpaqueColor =>
+      Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
 }

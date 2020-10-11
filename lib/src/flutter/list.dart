@@ -13,32 +13,67 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/num_ext.dart';
+import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class VelocityDiscList extends StatelessWidget {
+/// [VxDiscList] is inspired from html where you can have a circular disk with an item (string)
+/// Use [VxDiscList] to have a list of strings with circular disk of boxes with a defined color.
+class VxDiscList extends StatelessWidget {
+  /// List of strings
   final List<String> _items;
+
+  /// Add padding to the listview
   final EdgeInsetsGeometry padding;
+
+  /// Specify color of the disc. Default is black
   final Color color;
+
+  /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
   final double fontSize;
 
-  const VelocityDiscList(
+  /// If the listview is primary. Default is false.
+  final bool primary;
+
+  /// If the listview is shrinkWrapped. Default is true.
+  final bool shrinkWrap;
+
+  /// Specify the [ScrollPhysics].
+  final ScrollPhysics physics;
+
+  const VxDiscList(
     this._items, {
     Key key,
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
+    this.primary = false,
+    this.shrinkWrap = true,
+    this.physics,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
-      shrinkWrap: true,
+      shrinkWrap: shrinkWrap,
+      primary: primary,
+      physics: physics,
       itemBuilder: (context, i) {
         return HStack(
           [
-            VelocityBox().height(fontSize / 2.8).width(fontSize / 2.8).color(color).roundedFull.makeCentered(),
+            VxBox()
+                .height(fontSize / 2.8)
+                .width(fontSize / 2.8)
+                .color(color)
+                .roundedFull
+                .makeCentered(),
             10.widthBox,
-            _items[i].selectableText.color(color).size(fontSize).make(),
+            Expanded(
+                child: _items[i]
+                    .selectableText
+                    .color(color)
+                    .size(fontSize)
+                    .make()),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();
@@ -49,30 +84,58 @@ class VelocityDiscList extends StatelessWidget {
   }
 }
 
-class VelocityDecimalList extends StatelessWidget {
+/// [VxDecimalList] is inspired from html where you can have a numeric index with an item (string)
+/// Use [VxDecimalList] to have a list of strings with index.
+class VxDecimalList extends StatelessWidget {
+  /// List of strings
   final List<String> _items;
+
+  /// Add padding to the listview
   final EdgeInsetsGeometry padding;
+
+  /// Specify color of the disc. Default is black
   final Color color;
+
+  /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
   final double fontSize;
 
-  const VelocityDecimalList(
+  /// If the listview is primary. Default is false.
+  final bool primary;
+
+  /// If the listview is shrinkWrapped. Default is true.
+  final bool shrinkWrap;
+
+  /// Specify the [ScrollPhysics].
+  final ScrollPhysics physics;
+
+  const VxDecimalList(
     this._items, {
     Key key,
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
+    this.primary = false,
+    this.shrinkWrap = true,
+    this.physics,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
-      shrinkWrap: true,
+      shrinkWrap: shrinkWrap,
+      primary: primary,
+      physics: physics,
       itemBuilder: (context, i) {
         return HStack(
           [
             (i + 1).text.color(color).size(fontSize).make(),
             10.widthBox,
-            _items[i].selectableText.color(color).size(fontSize).make(),
+            Expanded(
+                child: _items[i]
+                    .selectableText
+                    .color(color)
+                    .size(fontSize)
+                    .make()),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();

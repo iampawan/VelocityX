@@ -12,12 +12,30 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/velocity_x_extensions.dart';
+import 'package:velocity_x/src/extensions/num_ext.dart';
 
-class VelocityTwo extends StatelessWidget {
+///
+/// Can be used for two texts together vertically or horizontally.
+///
+class VxTwo extends StatelessWidget {
+  ///
+  /// Title text
+  ///
   final String title;
+
+  ///
+  /// Font size of the title text
+  ///
   final double titleFontSize;
+
+  ///
+  /// Color  of the title text
+  ///
   final Color titleColor;
+
+  ///
+  /// Subtitle text
+  ///
   final String subtitle;
   final TextSpan subtitle2;
   final TextSpan subtitle3;
@@ -30,7 +48,7 @@ class VelocityTwo extends StatelessWidget {
   final MainAxisSize mainAxisSize;
   final int maxLinesSubtitle;
 
-  const VelocityTwo({
+  const VxTwo({
     Key key,
     @required this.title,
     this.titleFontSize = 16.0,
@@ -96,11 +114,14 @@ class VelocityTwo extends StatelessWidget {
   }
 }
 
-class VelocityTwoColumn extends StatelessWidget {
+///
+/// Can be used for two widgets together vertically.
+///
+class VxTwoColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
 
-  const VelocityTwoColumn({Key key, @required this.top, @required this.bottom})
+  const VxTwoColumn({Key key, @required this.top, @required this.bottom})
       : assert(top != null),
         assert(bottom != null),
         super(key: key);
@@ -119,11 +140,14 @@ class VelocityTwoColumn extends StatelessWidget {
   }
 }
 
-class VelocityTwoRow extends StatelessWidget {
+///
+/// Can be used for two widgets together horizontally.
+///
+class VxTwoRow extends StatelessWidget {
   final Widget left;
   final Widget right;
 
-  const VelocityTwoRow({Key key, @required this.left, @required this.right})
+  const VxTwoRow({Key key, @required this.left, @required this.right})
       : assert(left != null),
         assert(right != null),
         super(key: key);
@@ -143,6 +167,9 @@ class VelocityTwoRow extends StatelessWidget {
   }
 }
 
+///
+/// Can be used for two widgets and one icon together vertically .
+///
 class VelocityTwoIconColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;

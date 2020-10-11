@@ -13,172 +13,393 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:velocity_x/src/extensions/string_ext.dart';
+import 'package:velocity_x/src/velocity_xx.dart';
 
 import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
+/// Flutter widget that automatically resizes text to fit perfectly within its bounds.
+///
+/// All size constraints as well as maxLines are taken into account. If the text
+/// overflows anyway, you should check if the parent widget actually constraints
+/// the size of this widget.
 @protected
-class VelocityXTextBuilder extends VelocityXWidgetBuilder<AutoSizeText> with VelocityColorMixin<VelocityXTextBuilder> {
-  VelocityXTextBuilder(this._text) : assert(_text != null) {
+class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
+    with VxColorMixin<VxTextBuilder> {
+  VxTextBuilder(this._text) : assert(_text != null) {
     setChildToColor(this);
   }
 
-  VelocityXTextBuilder.existing(this._text, this._textStyle) : assert(_text != null) {
+  VxTextBuilder.existing(this._text, this._textStyle) : assert(_text != null) {
     setChildToColor(this);
   }
 
-  String _text;
-  String _fontFamily;
+  String _text, _fontFamily;
+
+  double _scaleFactor,
+      _fontSize,
+      _minFontSize,
+      _letterSpacing,
+      _lineHeight,
+      _maxFontSize,
+      _stepGranularity,
+      _wordSpacing;
+  int _maxLines;
   FontWeight _fontWeight;
   TextAlign _textAlign;
-  double _scaleFactor;
-  double _fontSize;
-  int _maxLines;
   FontStyle _fontStyle;
-  TextStyle _textStyle;
-  double _letterSpacing;
-  double _lineHeight;
   TextDecoration _decoration;
+  TextStyle _textStyle, _themedStyle;
+  StrutStyle _strutStyle;
+  TextOverflow _overflow;
+  TextBaseline _textBaseline;
+  Widget _replacement;
+  bool _softWrap, _wrapWords;
 
-  VelocityXTextBuilder text(String text) {
+  /// The text to display.
+  ///
+  /// This will be null if a [textSpan] is provided instead.
+  VxTextBuilder text(String text) {
     _text = text;
     return this;
   }
 
-  VelocityXTextBuilder color(Color color) {
+  /// Set [color] of the text
+  VxTextBuilder color(Color color) {
     velocityColor = color;
     return this;
   }
 
-  VelocityXTextBuilder hexColor(String colorHex) => this..velocityColor = VelocityX.hexToColor(colorHex);
+  /// Set [color] of the text using hexvalue
+  VxTextBuilder hexColor(String colorHex) =>
+      this..velocityColor = Vx.hexToColor(colorHex);
 
-  VelocityXTextBuilder maxLines(int lines) {
+  /// An optional maximum number of lines for the text to span, wrapping if necessary.
+  /// If the text exceeds the given number of lines, it will be resized according
+  /// to the specified bounds and if necessary truncated according to [overflow].
+  ///
+  /// If this is 1, text will not wrap. Otherwise, text will be wrapped at the
+  /// edge of the box.
+  ///
+  /// If this is null, but there is an ambient [DefaultTextStyle] that specifies
+  /// an explicit number for its [DefaultTextStyle.maxLines], then the
+  /// [DefaultTextStyle] value will take precedence. You can use a [RichText]
+  /// widget directly to entirely override the [DefaultTextStyle].
+  VxTextBuilder maxLines(int lines) {
     _maxLines = lines;
     return this;
   }
 
-  VelocityXTextBuilder fontFamily(String family) {
+  /// Set [fontFamily] for the text
+  VxTextBuilder fontFamily(String family) {
     _fontFamily = family;
     return this;
   }
 
-  VelocityXTextBuilder get center => this.._textAlign = TextAlign.center;
-  VelocityXTextBuilder get start => this.._textAlign = TextAlign.start;
-  VelocityXTextBuilder get end => this.._textAlign = TextAlign.end;
-  VelocityXTextBuilder get justify => this.._textAlign = TextAlign.justify;
+  /// Whether the text should break at soft line breaks.
+  ///
+  /// If false, the glyphs in the text will be positioned as if there was
+  /// unlimited horizontal space.
+  VxTextBuilder softWrap(bool softWrap) {
+    _softWrap = softWrap;
+    return this;
+  }
 
-  VelocityXTextBuilder size(double size) => this.._fontSize = size;
+  /// Whether words which don't fit in one line should be wrapped.
+  ///
+  /// If false, the fontSize is lowered as far as possible until all words fit
+  /// into a single line.
+  VxTextBuilder wrapWords(bool wrapWords) {
+    _wrapWords = wrapWords;
+    return this;
+  }
 
-  VelocityXTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
+  /// The common baseline that should be aligned between this text span and its
+  /// parent text span, or, for the root text spans, with the line box.
+  VxTextBuilder textBaseLine(TextBaseline baseline) {
+    _textBaseline = baseline;
+    return this;
+  }
 
-  VelocityXTextBuilder get sm => _fontSizedText(child: this, scaleFactor: 0.875);
+  /// The amount of space (in logical pixels) to add at each sequence of
+  /// white-space (i.e. between each word). A negative value can be used to
+  /// bring the words closer.
+  VxTextBuilder wordSpacing(double spacing) {
+    _wordSpacing = spacing;
+    return this;
+  }
 
-  VelocityXTextBuilder get base => _fontSizedText(child: this, scaleFactor: 1);
+  /// Can be used to set overflow of a text.
+  /// How visual overflow should be handled.
+  VxTextBuilder overflow(TextOverflow overflow) {
+    _overflow = overflow;
+    return this;
+  }
 
-  VelocityXTextBuilder get lg => _fontSizedText(child: this, scaleFactor: 1.125);
+  ///
+  /// The minimum text size constraint to be used when auto-sizing text.
+  ///
+  VxTextBuilder minFontSize(double minFontSize) {
+    _minFontSize = minFontSize;
+    return this;
+  }
 
-  VelocityXTextBuilder get xl => _fontSizedText(child: this, scaleFactor: 1.25);
+  ///
+  ///  The maximum text size constraint to be used when auto-sizing text.
+  ///
+  VxTextBuilder maxFontSize(double maxFontSize) {
+    _maxFontSize = maxFontSize;
+    return this;
+  }
 
-  VelocityXTextBuilder get xl2 => _fontSizedText(child: this, scaleFactor: 1.5);
+  /// The step size in which the font size is being adapted to constraints.
+  ///
+  /// The Text scales uniformly in a range between [minFontSize] and
+  /// [maxFontSize].
+  /// Each increment occurs as per the step size set in stepGranularity.
+  ///
+  /// Most of the time you don't want a stepGranularity below 1.0.
+  ///
+  VxTextBuilder stepGranularity(double stepGranularity) {
+    _stepGranularity = stepGranularity;
+    return this;
+  }
 
-  VelocityXTextBuilder get xl3 => _fontSizedText(child: this, scaleFactor: 1.875);
+  /// If the text is overflowing and does not fit its bounds, this widget is
+  /// displayed instead.
+  VxTextBuilder overflowReplacement(Widget overflowReplacement) {
+    _replacement = overflowReplacement;
+    return this;
+  }
 
-  VelocityXTextBuilder get xl4 => _fontSizedText(child: this, scaleFactor: 2.25);
+  /// Use textStyle to provide custom or any theme style.
+  ///
+  /// If the style's 'inherit' property is true, the style will be merged with
+  /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
+  /// replace the closest enclosing [DefaultTextStyle].
+  VxTextBuilder textStyle(TextStyle _style) {
+    _themedStyle = _style;
+    return this;
+  }
 
-  VelocityXTextBuilder get xl5 => _fontSizedText(child: this, scaleFactor: 3);
+  /// The strut style to use. Strut style defines the strut, which sets minimum
+  /// vertical layout metrics.
+  ///
+  /// Omitting or providing null will disable strut.
+  ///
+  /// Omitting or providing null for any properties of [StrutStyle] will result in
+  /// default values being used. It is highly recommended to at least specify a
+  /// font size.
+  ///
+  /// See [StrutStyle] for details.
+  VxTextBuilder strutStyle(StrutStyle _style) {
+    _strutStyle = _style;
+    return this;
+  }
 
-  VelocityXTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
+  /// How the text should be aligned horizontally.
+  ///
+  /// To align text in [center]
+  VxTextBuilder get center => this.._textAlign = TextAlign.center;
 
-  VelocityXTextBuilder _fontSizedText({@required double scaleFactor, @required VelocityXTextBuilder child}) {
+  /// To align text in [start]
+  VxTextBuilder get start => this.._textAlign = TextAlign.start;
+
+  /// To align text in [end]
+  VxTextBuilder get end => this.._textAlign = TextAlign.end;
+
+  /// To align text as [justify]
+  VxTextBuilder get justify => this.._textAlign = TextAlign.justify;
+
+  /// To overlow text as [fade]
+  VxTextBuilder get fade => this.._overflow = TextOverflow.fade;
+
+  /// To overlow text as [ellipsis]
+  VxTextBuilder get ellipsis => this.._overflow = TextOverflow.ellipsis;
+
+  /// To overlow text as [visible]
+  VxTextBuilder get visible => this.._overflow = TextOverflow.visible;
+
+  /// To set fontSize of the text using [size]
+  VxTextBuilder size(double size) => this.._fontSize = size;
+
+  /// Sets [textScaleFactor] to extra small i.e. 0.75
+  VxTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
+
+  /// Sets [textScaleFactor] to small i.e. 0.875
+  VxTextBuilder get sm => _fontSizedText(child: this, scaleFactor: 0.875);
+
+  /// Sets [textScaleFactor] to base i.e. 1 or default
+  VxTextBuilder get base => _fontSizedText(child: this, scaleFactor: 1);
+
+  /// Sets [textScaleFactor] to large i.e. 1.125
+  VxTextBuilder get lg => _fontSizedText(child: this, scaleFactor: 1.125);
+
+  /// Sets [textScaleFactor] to extra large i.e. 1.25
+  VxTextBuilder get xl => _fontSizedText(child: this, scaleFactor: 1.25);
+
+  /// Sets [textScaleFactor] to twice extra large i.e. 1.5
+  VxTextBuilder get xl2 => _fontSizedText(child: this, scaleFactor: 1.5);
+
+  /// Sets [textScaleFactor] to thrice extra large i.e. 1.875
+  VxTextBuilder get xl3 => _fontSizedText(child: this, scaleFactor: 1.875);
+
+  /// Sets [textScaleFactor] to four times extra large i.e. 2.25
+  VxTextBuilder get xl4 => _fontSizedText(child: this, scaleFactor: 2.25);
+
+  /// Sets [textScaleFactor] to five times extra large i.e. 3
+  VxTextBuilder get xl5 => _fontSizedText(child: this, scaleFactor: 3);
+
+  /// Sets [textScaleFactor] to six times extra large i.e. 4
+  VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
+
+  VxTextBuilder _fontSizedText(
+      {@required double scaleFactor, @required VxTextBuilder child}) {
+    _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
   }
 
-  VelocityXTextBuilder get hairLine => _fontWeightedText(child: this, weight: FontWeight.w100);
+  /// Sets [FontWeight] to [FontWeight.w100]
+  VxTextBuilder get hairLine =>
+      _fontWeightedText(child: this, weight: FontWeight.w100);
 
-  VelocityXTextBuilder get thin => _fontWeightedText(child: this, weight: FontWeight.w200);
+  /// Sets [FontWeight] to [FontWeight.w200]
+  VxTextBuilder get thin =>
+      _fontWeightedText(child: this, weight: FontWeight.w200);
 
-  VelocityXTextBuilder get light => _fontWeightedText(child: this, weight: FontWeight.w300);
+  /// Sets [FontWeight] to [FontWeight.w300]
+  VxTextBuilder get light =>
+      _fontWeightedText(child: this, weight: FontWeight.w300);
 
-  VelocityXTextBuilder get normal => _fontWeightedText(child: this, weight: FontWeight.w400);
+  /// Sets [FontWeight] to [FontWeight.w400]
+  VxTextBuilder get normal =>
+      _fontWeightedText(child: this, weight: FontWeight.w400);
 
-  VelocityXTextBuilder get medium => _fontWeightedText(child: this, weight: FontWeight.w500);
+  /// Sets [FontWeight] to [FontWeight.w500]
+  VxTextBuilder get medium =>
+      _fontWeightedText(child: this, weight: FontWeight.w500);
 
-  VelocityXTextBuilder get semiBold => _fontWeightedText(child: this, weight: FontWeight.w600);
+  /// Sets [FontWeight] to [FontWeight.w600]
+  VxTextBuilder get semiBold =>
+      _fontWeightedText(child: this, weight: FontWeight.w600);
 
-  VelocityXTextBuilder get bold => _fontWeightedText(child: this, weight: FontWeight.w700);
+  /// Sets [FontWeight] to [FontWeight.w700]
+  VxTextBuilder get bold =>
+      _fontWeightedText(child: this, weight: FontWeight.w700);
 
-  VelocityXTextBuilder get extraBold => _fontWeightedText(child: this, weight: FontWeight.w800);
+  /// Sets [FontWeight] to [FontWeight.w800]
+  VxTextBuilder get extraBold =>
+      _fontWeightedText(child: this, weight: FontWeight.w800);
 
-  VelocityXTextBuilder get extraBlack => _fontWeightedText(child: this, weight: FontWeight.w900);
+  /// Sets [FontWeight] to [FontWeight.w900]
+  VxTextBuilder get extraBlack =>
+      _fontWeightedText(child: this, weight: FontWeight.w900);
 
-  VelocityXTextBuilder _fontWeightedText({@required FontWeight weight, @required VelocityXTextBuilder child}) {
+  VxTextBuilder _fontWeightedText(
+      {@required FontWeight weight, @required VxTextBuilder child}) {
     _fontWeight = weight;
     return this;
   }
 
-  VelocityXTextBuilder get italic => this.._fontStyle = FontStyle.italic;
+  /// Sets [FontStyle] to [FontStyle.italic]
+  VxTextBuilder get italic => this.._fontStyle = FontStyle.italic;
 
-  VelocityXTextBuilder get tightest => this.._letterSpacing = -3.0;
-  VelocityXTextBuilder get tighter => this.._letterSpacing = -2.0;
-  VelocityXTextBuilder get tight => this.._letterSpacing = -1.0;
-  VelocityXTextBuilder get wide => this.._letterSpacing = 1.0;
-  VelocityXTextBuilder get wider => this.._letterSpacing = 2.0;
-  VelocityXTextBuilder get widest => this.._letterSpacing = 3.0;
+  /// Sets [letterSpacing] to -3.0
+  VxTextBuilder get tightest => this.._letterSpacing = -3.0;
 
-  VelocityXTextBuilder letterSpacing(double val) => this.._letterSpacing = val;
+  /// Sets [letterSpacing] to -2.0
+  VxTextBuilder get tighter => this.._letterSpacing = -2.0;
 
-  VelocityXTextBuilder get underline => this.._decoration = TextDecoration.underline;
+  /// Sets [letterSpacing] to -1.0
+  VxTextBuilder get tight => this.._letterSpacing = -1.0;
 
-  VelocityXTextBuilder get lineThrough => this.._decoration = TextDecoration.lineThrough;
+  /// Sets [letterSpacing] to 1.0
+  VxTextBuilder get wide => this.._letterSpacing = 1.0;
 
-  VelocityXTextBuilder get overline => this.._decoration = TextDecoration.overline;
+  /// Sets [letterSpacing] to 2.0
+  VxTextBuilder get wider => this.._letterSpacing = 2.0;
 
-  VelocityXTextBuilder get uppercase => this.._text = _text.toUpperCase();
-  VelocityXTextBuilder get lowercase => this.._text = _text.toLowerCase();
-  VelocityXTextBuilder get capitalize => this.._text = _text.allWordsCapitilize();
-  VelocityXTextBuilder get hidePartial => this.._text = _text.hidePartial();
+  /// Sets [letterSpacing] to 3.0
+  VxTextBuilder get widest => this.._letterSpacing = 3.0;
 
-  VelocityXTextBuilder get heightTight => this.._lineHeight = 0.75;
-  VelocityXTextBuilder get heightSnug => this.._lineHeight = 0.875;
-  VelocityXTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
-  VelocityXTextBuilder get heightLoose => this.._lineHeight = 1.5;
-  VelocityXTextBuilder lineHeight(double val) => this.._lineHeight = val;
+  /// Sets custom [letterSpacing] with [val]
+  VxTextBuilder letterSpacing(double val) => this.._letterSpacing = val;
+
+  /// Sets [TextDecoration] as [TextDecoration.underline]
+  VxTextBuilder get underline => this.._decoration = TextDecoration.underline;
+
+  /// Sets [TextDecoration] as [TextDecoration.lineThrough]
+  VxTextBuilder get lineThrough =>
+      this.._decoration = TextDecoration.lineThrough;
+
+  /// Sets [TextDecoration] as [TextDecoration.overline]
+  VxTextBuilder get overline => this.._decoration = TextDecoration.overline;
+
+  /// Converts the text to fully uppercase.
+  VxTextBuilder get uppercase => this.._text = _text.toUpperCase();
+
+  /// Converts the text to fully lowercase.
+  VxTextBuilder get lowercase => this.._text = _text.toLowerCase();
+
+  /// Converts the text to first letter of very word as uppercase.
+  VxTextBuilder get capitalize => this.._text = _text.allWordsCapitilize();
+
+  /// Converts the text to partially hideen text. Best for sensitive data.
+  VxTextBuilder get hidePartial => this.._text = _text.hidePartial();
+
+  /// Sets [lineHeight] to 0.75
+  VxTextBuilder get heightTight => this.._lineHeight = 0.75;
+
+  /// Sets [lineHeight] to 0.875
+  VxTextBuilder get heightSnug => this.._lineHeight = 0.875;
+
+  /// Sets [lineHeight] to 1.25
+  VxTextBuilder get heightRelaxed => this.._lineHeight = 1.25;
+
+  /// Sets [lineHeight] to 1.5
+  VxTextBuilder get heightLoose => this.._lineHeight = 1.5;
+
+  /// Sets custom [lineHeight] with [val]
+  VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
   @override
   AutoSizeText make({Key key}) {
+    final ts = TextStyle(
+      color: velocityColor,
+      fontSize: _fontSize,
+      fontStyle: _fontStyle,
+      fontFamily: _fontFamily,
+      fontWeight: _fontWeight,
+      letterSpacing: _letterSpacing,
+      decoration: _decoration,
+      height: _lineHeight,
+      textBaseline: _textBaseline ?? TextBaseline.alphabetic,
+      wordSpacing: _wordSpacing,
+    );
     return AutoSizeText(
       _text,
       key: key,
       textAlign: _textAlign,
       maxLines: _maxLines,
       textScaleFactor: _scaleFactor,
-      softWrap: true,
-      style: _textStyle?.copyWith(
-            color: velocityColor,
-            fontSize: _fontSize ?? 14.0,
-            fontStyle: _fontStyle ?? FontStyle.normal,
-            fontFamily: _fontFamily,
-            fontWeight: _fontWeight,
-            letterSpacing: _letterSpacing ?? 0.0,
-            decoration: _decoration ?? TextDecoration.none,
-            height: _lineHeight,
-          ) ??
-          TextStyle(
-            color: velocityColor,
-            fontSize: _fontSize ?? 14.0,
-            fontStyle: _fontStyle ?? FontStyle.normal,
-            fontFamily: _fontFamily,
-            fontWeight: _fontWeight,
-            letterSpacing: _letterSpacing ?? 0.0,
-            decoration: _decoration ?? TextDecoration.none,
-            height: _lineHeight,
-          ),
+      style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+      softWrap: _softWrap ?? true,
+      minFontSize: _minFontSize ?? 12,
+      maxFontSize: _maxFontSize ?? double.infinity,
+      stepGranularity: _stepGranularity ?? 1,
+      overflowReplacement: _replacement,
+      overflow: _overflow ?? TextOverflow.clip,
+      strutStyle: _strutStyle,
+      wrapWords: _wrapWords ?? true,
     );
   }
 }
 
 extension TextExtensions on Text {
-  VelocityXTextBuilder get text => VelocityXTextBuilder.existing(data, style);
+  ///
+  /// Extension method to directly access [VxTextBuilder] with any widget without wrapping or with dot operator.
+  ///
+  VxTextBuilder get text => VxTextBuilder.existing(data, style);
 }

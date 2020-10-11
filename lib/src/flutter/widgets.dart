@@ -14,8 +14,10 @@
 
 import 'package:flutter/material.dart';
 
+import '../../velocity_x.dart';
+
 extension WidgetsExtension on Widget {
-  ///Tooltip as accesibility
+  ///Tooltip as accessibility
   Widget tooltip(String message,
           {Key key,
           Decoration decoration,
@@ -38,13 +40,111 @@ extension WidgetsExtension on Widget {
         child: this,
       );
 
-  ///Hide a widget
-  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) => Visibility(
+  ///Hides a widget
+  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) =>
+      Visibility(
         key: key,
         child: this,
         visible: isVisible,
         maintainSize: maintainSize,
         maintainAnimation: maintainSize,
         maintainState: maintainSize,
+      );
+
+  ///Hides a widget
+  Widget popupMenu(
+    MenuBuilderCallback menuBuilder, {
+    Key key,
+    VxPopupMenuController controller,
+    Color arrowColor = const Color(0xFF4C4C4C),
+    double arrowSize = 10.0,
+    Color barrierColor = Colors.black12,
+    double horizontalMargin = 10.0,
+    double verticalMargin = 10.0,
+    bool showArrow = true,
+    VxClickType clickType = VxClickType.singleClick,
+  }) =>
+      VxPopupMenu(
+        key: key,
+        child: this,
+        clickType: clickType,
+        controller: controller,
+        arrowColor: arrowColor,
+        arrowSize: arrowSize,
+        barrierColor: barrierColor,
+        horizontalMargin: horizontalMargin,
+        showArrow: showArrow,
+        verticalMargin: verticalMargin,
+        menuBuilder: menuBuilder,
+      );
+
+  /// Widget to show exception
+  Widget errorWidget(Object ex) => ErrorWidget(ex);
+}
+
+extension StringWidgetsExtension on String {
+  Widget circularAssetImage(
+          {Key key,
+          double radius = 35.0,
+          Color bgColor = Colors.white,
+          Color fgColor,
+          Widget child}) =>
+      CircleAvatar(
+        key: key,
+        radius: radius,
+        backgroundColor: bgColor,
+        child: child,
+        foregroundColor: fgColor,
+        backgroundImage: AssetImage(this),
+      );
+
+  Widget circlularNetworkImage(
+          {Key key,
+          double radius = 65.0,
+          Color bgColor = Colors.white,
+          Color fgColor,
+          Widget child}) =>
+      CircleAvatar(
+        key: key,
+        radius: radius,
+        backgroundColor: bgColor,
+        child: child,
+        foregroundColor: fgColor,
+        backgroundImage: NetworkImage(
+          this,
+        ),
+      );
+
+  Widget circularAssetShadowImage({
+    Key key,
+    EdgeInsets margin = const EdgeInsets.all(0.0),
+    EdgeInsets padding = const EdgeInsets.all(0.0),
+    double width = 40.0,
+    double height = 40.0,
+    double blurRadius = 3.0,
+    double borderRadius = 50.0,
+  }) =>
+      Container(
+        key: key,
+        margin: margin,
+        padding: padding,
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.rectangle,
+          image: DecorationImage(image: AssetImage(this)),
+          borderRadius: BorderRadius.circular(borderRadius),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              blurRadius: blurRadius,
+              offset: const Offset(
+                0.0,
+                0.0,
+              ),
+            )
+          ],
+        ),
       );
 }

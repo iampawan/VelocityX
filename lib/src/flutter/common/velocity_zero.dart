@@ -12,8 +12,11 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/velocity_x_extensions.dart';
+import 'package:velocity_x/src/extensions/context_ext.dart';
 
+///
+/// [myBoxDesc] to reuse with [PKSkeleton]
+///
 Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
   return BoxDecoration(
     shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
@@ -41,18 +44,30 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
   );
 }
 
-class VelocityZeroCard extends StatefulWidget {
-  const VelocityZeroCard(
-      {this.isCircularImage = true, this.isBottomLinesActive = true, this.isDark = false});
+///
+/// [VxZeroCard] can be used to provide a single loading card with PKSkeleton cool animation.
+///
+class VxZeroCard extends StatefulWidget {
+  const VxZeroCard(
+      {this.isCircularImage = true,
+      this.isBottomLinesActive = true,
+      this.isDark = false});
+
+  /// if the image should be circular? By default it is true
   final bool isCircularImage;
+
+  /// if the bottom lines are visible or not.
   final bool isBottomLinesActive;
+
+  /// if dark theme is enabled or not. Disabled by default.
   final bool isDark;
 
   @override
-  _VelocityZeroCardState createState() => _VelocityZeroCardState();
+  _VxZeroCardState createState() => _VxZeroCardState();
 }
 
-class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerProviderStateMixin {
+class _VxZeroCardState extends State<VxZeroCard>
+    with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> animation;
 
@@ -64,11 +79,12 @@ class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerPr
       duration: const Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0)
-        .animate(CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
+        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
         _controller.repeat();
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();
@@ -104,7 +120,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerPr
                       height: context.percentHeight * 10,
                       width: context.percentWidth * 10,
                       decoration: myBoxDec(animation,
-                          isCircle: widget.isCircularImage, isDark: widget.isDark),
+                          isCircle: widget.isCircularImage,
+                          isDark: widget.isDark),
                     ),
                     const SizedBox(
                       width: 20,
@@ -115,8 +132,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerPr
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          _VelocityLine(20, 0.8, animation, widget.isDark),
-                          _VelocityLine(15, 0.7, animation, widget.isDark),
+                          _VxLine(20, 0.8, animation, widget.isDark),
+                          _VxLine(15, 0.7, animation, widget.isDark),
                         ],
                       ),
                     ),
@@ -127,8 +144,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerPr
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          _VelocityLine(15, 0.8, animation, widget.isDark),
-                          _VelocityLine(15, 0.7, animation, widget.isDark),
+                          _VxLine(15, 0.8, animation, widget.isDark),
+                          _VxLine(15, 0.7, animation, widget.isDark),
                         ],
                       ),
                     ),
@@ -141,15 +158,15 @@ class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerPr
                       const SizedBox(
                         height: 20,
                       ),
-                      _VelocityLine(70, 0.7, animation, widget.isDark),
+                      _VxLine(70, 0.7, animation, widget.isDark),
                       const SizedBox(
                         height: 10,
                       ),
-                      _VelocityLine(80, 0.7, animation, widget.isDark),
+                      _VxLine(80, 0.7, animation, widget.isDark),
                       const SizedBox(
                         height: 10,
                       ),
-                      _VelocityLine(50, 0.7, animation, widget.isDark),
+                      _VxLine(50, 0.7, animation, widget.isDark),
                     ],
                   )
                 else
@@ -163,8 +180,8 @@ class _VelocityZeroCardState extends State<VelocityZeroCard> with SingleTickerPr
   }
 }
 
-class _VelocityLine extends StatelessWidget {
-  const _VelocityLine(
+class _VxLine extends StatelessWidget {
+  const _VxLine(
     this.widthRatio,
     this.heightRatio,
     this.animation,
@@ -187,8 +204,11 @@ class _VelocityLine extends StatelessWidget {
   }
 }
 
-class VelocityZeroList extends StatelessWidget {
-  const VelocityZeroList(
+///
+/// [VxZeroList] can be used to provide a list of loading cards with PKSkeleton cool animation.
+///
+class VxZeroList extends StatelessWidget {
+  const VxZeroList(
       {Key key,
       this.isCircularImage = true,
       this.length = 10,
@@ -196,10 +216,17 @@ class VelocityZeroList extends StatelessWidget {
       this.isDark = false})
       : super(key: key);
 
+  /// if the image should be circular? By default it is true
   final bool isCircularImage;
+
+  /// if the bottom lines are visible or not.
   final bool isBottomLinesActive;
-  final int length;
+
+  /// if dark theme is enabled or not. Disabled by default.
   final bool isDark;
+
+  /// Specify the length of the list. By default it is 10.
+  final int length;
 
   @override
   Widget build(BuildContext context) {
@@ -209,7 +236,7 @@ class VelocityZeroList extends StatelessWidget {
       itemCount: length,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
-        return VelocityZeroCard(
+        return VxZeroCard(
           isCircularImage: isCircularImage,
           isBottomLinesActive: isBottomLinesActive,
           isDark: isDark,
@@ -220,10 +247,17 @@ class VelocityZeroList extends StatelessWidget {
 }
 
 // TODO: CardProfile VelocityZero
-
+///
+/// [PKCardProfileSkeleton] can be used to provide a profile loading card with PKSkeleton cool animation.
+///
 class PKCardProfileSkeleton extends StatefulWidget {
-  const PKCardProfileSkeleton({this.isCircularImage = true, this.isBottomLinesActive = true});
+  const PKCardProfileSkeleton(
+      {this.isCircularImage = true, this.isBottomLinesActive = true});
+
+  /// if the image is circule. Default is true,
   final bool isCircularImage;
+
+  /// if the bottom lines are active.
   final bool isBottomLinesActive;
 
   @override
@@ -243,11 +277,12 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
       duration: const Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0)
-        .animate(CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
+        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
         _controller.repeat();
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();
@@ -282,7 +317,8 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
                 Container(
                   height: width * 0.25,
                   width: width * 0.25,
-                  decoration: myBoxDec(animation, isCircle: widget.isCircularImage),
+                  decoration:
+                      myBoxDec(animation, isCircle: widget.isCircularImage),
                 ),
                 Expanded(
                   child: Column(
@@ -295,7 +331,8 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
                           Container(
                             height: width * 0.13,
                             width: width * 0.13,
-                            decoration: myBoxDec(animation, isCircle: widget.isCircularImage),
+                            decoration: myBoxDec(animation,
+                                isCircle: widget.isCircularImage),
                           ),
                           const SizedBox(
                             width: 20,
@@ -366,9 +403,13 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
 }
 
 // TODO: CardPage VelocityZero
-
+///
+/// [PKCardPageSkeleton] can be used to provide a Card Page loading card with PKSkeleton cool animation.
+///
 class PKCardPageSkeleton extends StatefulWidget {
   const PKCardPageSkeleton({this.totalLines = 5});
+
+  /// No. of total line. By default it is 5.
   final int totalLines;
 
   @override
@@ -388,11 +429,12 @@ class _PKCardPageSkeletonState extends State<PKCardPageSkeleton>
       duration: const Duration(seconds: 1),
     );
 
-    animation = Tween<double>(begin: -1.0, end: 2.0)
-        .animate(CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+    animation = Tween<double>(begin: -1.0, end: 2.0).animate(
+        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
     animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
+      if (status == AnimationStatus.completed ||
+          status == AnimationStatus.dismissed) {
         _controller.repeat();
       } else if (status == AnimationStatus.dismissed) {
         _controller.forward();
