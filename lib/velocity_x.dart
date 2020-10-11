@@ -22,6 +22,7 @@ export 'src/flutter/dash.dart';
 export 'src/flutter/drop_down_button.dart';
 export 'src/flutter/flex.dart';
 export 'src/flutter/gesture.dart';
+export 'src/flutter/icon.dart';
 export 'src/flutter/list.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
