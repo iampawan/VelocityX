@@ -151,7 +151,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   ///
   VxAnimatedBox bgImage(DecorationImage image) => this.._bgImage = image;
 
-  // transforming
+  /// transforming
   ///
   /// Sets the transform property to the animated box.
   ///

@@ -22,6 +22,33 @@ import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
 
+/// A convenience widget that combines common painting, positioning, and sizing
+/// widgets.
+///
+/// {@youtube 560 315 https://www.youtube.com/watch?v=c1xLMaTUWCY}
+///
+/// A container/VxBox first surrounds the child with [padding] (inflated by any
+/// borders present in the [decoration]) and then applies additional
+/// [constraints] to the padded extent (incorporating the `width` and `height`
+/// as constraints, if either is non-null). The container is then surrounded by
+/// additional empty space described from the [margin].
+///
+/// During painting, the container first applies the given [transform], then
+/// paints the [decoration] to fill the padded extent, then it paints the child,
+/// and finally paints the [foregroundDecoration], also filling the padded
+/// extent.
+///
+/// Containers with no children try to be as big as possible unless the incoming
+/// constraints are unbounded, in which case they try to be as small as
+/// possible. Containers with children size themselves to their children. The
+/// `width`, `height`, and [constraints] arguments to the constructor override
+/// this.
+///
+/// By default, boxes/containers return false for all hit tests. If the [color]
+/// property is specified, the hit testing is handled by [ColoredBox], which
+/// always returns true. If the [decoration] or [foregroundDecoration] properties
+/// are specified, hit testing is handled by [Decoration.hitTest].
+///
 class VxBox extends VxWidgetBuilder<Widget>
     with
         VxAlignmentMixing<VxBox>,
@@ -45,44 +72,93 @@ class VxBox extends VxWidgetBuilder<Widget>
   double _height;
   double _width;
   VxNeumorph _velocityNeumorph;
-//  Clip _clip;
+  Clip _clip;
 
   EdgeInsetsGeometry _margin;
   Matrix4 _transform;
 
   DecorationImage _bgImage;
 
-  BoxDecoration _decoration;
+  BoxDecoration _decoration, _foregroundDecoration;
+  BoxConstraints _constraints;
 
+  ///
+  /// Sets the height property of the box.
+  ///
   VxBox height(double val) => this.._height = val;
 
+  ///
+  /// Sets the width property of the box.
+  ///
   VxBox width(double val) => this.._width = val;
 
+  ///
+  /// Sets the size (width & height) property of the box.
+  ///
   VxBox size(double width, double height) => this
     .._width = width
     .._height = height;
 
+  ///
+  /// Sets the height and width as square of the box.
+  ///
   VxBox square(double val) => this
     .._width = val
     .._height = val;
 
+  ///
+  /// Provide a custom DecoratedBox
+  ///
   VxBox withDecoration(BoxDecoration decoration) =>
       this.._decoration = decoration;
 
+  ///
+  /// Provide a custom Foreground DecoratedBox
+  ///
+  VxBox withForegroundDecoration(BoxDecoration decoration) =>
+      this.._foregroundDecoration = decoration;
+
+  ///
+  /// Provide a box constraint
+  ///
+  VxBox withConstraints(BoxConstraints constraints) =>
+      this.._constraints = constraints;
+
+  ///
+  /// Sets the padding property of the box.
+  ///
   VxBox padding(EdgeInsetsGeometry val) => this..velocityPadding = val;
 
+  ///
+  /// Sets the margin property of the box.
+  ///
   VxBox margin(EdgeInsetsGeometry val) => this.._margin = val;
 
+  ///
+  /// Sets the color property of the box.
+  ///
   VxBox color(Color color) => this..velocityColor = color;
 
+  ///
+  /// Sets the color property of the box using the hex color value.
+  ///
   VxBox hexColor(String colorHex) =>
       this..velocityColor = Vx.hexToColor(colorHex);
 
-  // transforming
+  /// transforming
+  ///
+  /// Sets the transform property to the animated box.
+  ///
   VxBox transform(Matrix4 val) => this.._transform = val;
 
-//  VxBox clip(Clip clip) => this.._clip = clip;
+  ///
+  /// Sets the clip behavior of the box.
+  ///
+  VxBox clip(Clip clip) => this.._clip = clip;
 
+  ///
+  /// Sets the decorated box as circular.
+  ///
   VxBox get roundedFull => this.._isCircleRounded = true;
 
   /// Shadowing
@@ -105,6 +181,9 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
+  ///
+  /// To give extra small shadow.
+  ///
   VxBox get shadowXs {
     _boxShadow = [
       const BoxShadow(
@@ -118,6 +197,9 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
+  ///
+  /// To give small shadow.
+  ///
   VxBox get shadowSm {
     _boxShadow = [
       const BoxShadow(
@@ -131,6 +213,9 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
+  ///
+  /// To give medium shadow.
+  ///
   VxBox get shadowMd {
     _boxShadow = [
       const BoxShadow(
@@ -150,6 +235,9 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
+  ///
+  /// To give large shadow.
+  ///
   VxBox get shadowLg {
     _boxShadow = [
       const BoxShadow(
@@ -169,6 +257,9 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
+  ///
+  /// To give extra large shadow.
+  ///
   VxBox get shadowXl {
     _boxShadow = [
       const BoxShadow(
@@ -188,6 +279,9 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
+  ///
+  /// To give twice extra small shadow.
+  ///
   VxBox get shadow2xl {
     _boxShadow = [
       const BoxShadow(
@@ -202,11 +296,17 @@ class VxBox extends VxWidgetBuilder<Widget>
   }
 
   /// Provide custom list of box shadows
+  ///
+  /// To give custom shadow.
+  ///
   VxBox withShadow(List<BoxShadow> shadows) {
     _boxShadow = shadows;
     return this;
   }
 
+  ///
+  /// To give shadow with some outline color.
+  ///
   VxBox shadowOutline({Color outlineColor}) {
     _boxShadow = [
       BoxShadow(
@@ -222,6 +322,8 @@ class VxBox extends VxWidgetBuilder<Widget>
   }
 
   /// Bordering
+  /// Sets the border of the Box.
+  ///
   VxBox border(
       {Color color = Colors.black,
       double width = 1.0,
@@ -230,20 +332,38 @@ class VxBox extends VxWidgetBuilder<Widget>
     return this;
   }
 
-  ///Gradienting
+  /// Gradienting
+  /// Sets the linear gradient to the decorated box.
+  ///
   VxBox linearGradient(List<Color> colors) =>
       this.._gradient = LinearGradient(colors: colors);
 
+  ///
+  /// Sets the radial gradient to the decorated box.
+  ///
   VxBox radialGradient(List<Color> colors) =>
       this.._gradient = RadialGradient(colors: colors);
 
+  ///
+  /// Sets the sweep gradient to the decorated box.
+  ///
   VxBox sweepGradient(List<Color> colors) =>
       this.._gradient = SweepGradient(colors: colors);
 
+  ///
+  /// Sets the defined gradient to the decorated box.
+  ///
   VxBox withGradient(Gradient gradient) => this.._gradient = gradient;
 
+// DecorationImage BoxDecoration
+  ///
+  /// Sets the background image to the decorated box.
+  ///
   VxBox bgImage(DecorationImage image) => this.._bgImage = image;
 
+  ///
+  /// Use this to convert your box to the neumorphic design. Use it wisely.
+  ///
   VxBox neumorphic(
           {Color color,
           VxCurve curve = VxCurve.concave,
@@ -260,12 +380,15 @@ class VxBox extends VxWidgetBuilder<Widget>
     return Container(
       key: key,
       height: _height,
+      constraints: _constraints,
+      clipBehavior: _clip ?? Clip.none,
       width: _width,
       padding: velocityPadding,
       margin: _margin,
       alignment: velocityAlignment,
       transform: _transform,
       child: child,
+      foregroundDecoration: _foregroundDecoration,
       decoration: _velocityNeumorph != null
           ? BoxDecoration(
               borderRadius: _isCircleRounded || roundedValue.isNull
@@ -294,5 +417,8 @@ class VxBox extends VxWidgetBuilder<Widget>
 }
 
 extension ContainerWidgetExtension on Widget {
+  ///
+  /// Extension method to directly access material [VxBox] with any widget without wrapping or with dot operator.
+  ///
   VxBox get box => VxBox(child: this);
 }

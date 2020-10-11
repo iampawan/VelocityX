@@ -15,6 +15,29 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
 
+/// A material design button for selecting from a list of items.
+///
+/// A dropdown button lets the user select from a number of items. The button
+/// shows the currently selected item as well as an arrow that opens a menu for
+/// selecting another item.
+///
+/// The type `T` is the type of the [value] that each dropdown item represents.
+/// All the entries in a given menu must represent values with consistent types.
+/// Typically, an enum is used. Each [DropdownMenuItem] in [items] must be
+/// specialized with that same type argument.
+///
+/// The [onChanged] callback should update a state variable that defines the
+/// dropdown's value. It should also call [State.setState] to rebuild the
+/// dropdown with the new value.
+///
+/// {@tool dartpad --template=stateful_widget_scaffold_center}
+///
+/// This sample shows a `DropdownButton` with a large arrow icon,
+/// purple text style, and bold purple underline, whose value is one of "One",
+/// "Two", "Free", or "Four".
+///
+/// ![](https://flutter.github.io/assets-for-api-docs/assets/material/dropdown_button.png)
+///
 class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
   VxTextDropDown(
     this._items, {
@@ -148,7 +171,10 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
 }
 
 extension DropDownExtension on List<String> {
-  /// The [value] should be a part of the list of strings.
+  ///
+  /// Extension method to directly access [VxTextDropDown] with any widget without wrapping or with dot operator.
+  ///
+  /// The [selectedValue] should be a part of the list of strings.
   VxTextDropDown textDropDown(
           {@required String selectedValue,
           @required ValueChanged<String> onChanged}) =>

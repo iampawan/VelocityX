@@ -23,6 +23,17 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
+        "Hello"
+            .text
+            .make()
+            .box
+            .p8
+            .rounded
+            .red400
+            .alignCenter
+            .withConstraints(BoxConstraints(maxWidth: 50, minWidth: 50))
+            .make(),
+        10.heightBox,
         "Welcome to VelocityX"
             .text
             .maxLines(4)

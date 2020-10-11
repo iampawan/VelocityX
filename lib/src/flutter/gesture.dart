@@ -16,6 +16,28 @@ import 'package:flutter/material.dart';
 
 import 'builder.dart';
 
+/// A widget that detects gestures.
+///
+/// Attempts to recognize gestures that correspond to its non-null callbacks.
+///
+/// If this widget has a child, it defers to that child for its sizing behavior.
+/// If it does not have a child, it grows to fit the parent instead.
+///
+/// By default a GestureDetector with an invisible child ignores touches;
+/// this behavior can be controlled with [behavior].
+///
+/// GestureDetector also listens for accessibility events and maps
+/// them to the callbacks. To ignore accessibility events, set
+/// [excludeFromSemantics] to true.
+///
+/// See <http://flutter.dev/gestures/> for additional information.
+///
+/// Material design applications typically react to touches with ink splash
+/// effects. The [InkWell] class implements this effect and can be used in place
+/// of a [GestureDetector] for handling taps.
+///
+/// {@animation 200 150 https://flutter.github.io/assets-for-api-docs/assets/widgets/gesture_detector.mp4}
+///
 class _VxGestureBuilder extends VxWidgetBuilder<Widget> {
   _VxGestureBuilder(this._child, this._onClick) : assert(_onClick != null);
   _VxGestureBuilder.doubleClick(this._child, this._onDoubleClick)
@@ -30,9 +52,11 @@ class _VxGestureBuilder extends VxWidgetBuilder<Widget> {
   Function _onDoubleClick;
   Function _onLongClick;
 
+  /// On clicking two times.
   _VxGestureBuilder doubleClick({@required Function onDoubleClick}) =>
       this.._onDoubleClick = onDoubleClick;
 
+  /// On long pressing.
   _VxGestureBuilder longClick({@required Function onLongClick}) =>
       this.._onLongClick = onLongClick;
 
@@ -59,12 +83,15 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
   Function _onLongClick;
   Color _splashColor;
 
+  /// Use to show a splash color when clicking on the widget.
   _VelocityXInkWellBuilder splashColor(Color color) =>
       this.._splashColor = color;
 
+  /// On clicking two times.
   _VelocityXInkWellBuilder mdDoubleClick({@required Function onDoubleClick}) =>
       this.._onDoubleClick = onDoubleClick;
 
+  /// On long pressing.
   _VelocityXInkWellBuilder mdLongClick({@required Function onLongClick}) =>
       this.._onLongClick = onLongClick;
 
@@ -82,16 +109,38 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
 }
 
 extension GestureExtensions on Widget {
+  ///
+  /// Extension method to directly access [_VxGestureBuilder] single click with any widget without wrapping or with dot operator.
+  ///
   _VxGestureBuilder click(Function onClick) => _VxGestureBuilder(this, onClick);
+
+  ///
+  /// Extension method to directly access [_VxGestureBuilder] double click with any widget without wrapping or with dot operator.
+  ///
   _VxGestureBuilder doubleClick(Function onClick) =>
       _VxGestureBuilder.doubleClick(this, onClick);
+
+  ///
+  /// Extension method to directly access [_VxGestureBuilder] long click with any widget without wrapping or with dot operator.
+  ///
   _VxGestureBuilder longClick(Function onClick) =>
       _VxGestureBuilder.longClick(this, onClick);
 
+  ///
+  /// Extension method to directly access material [_VelocityXInkWellBuilder] single click with any widget without wrapping or with dot operator.
+  ///
   _VelocityXInkWellBuilder mdClick(Function onClick) =>
       _VelocityXInkWellBuilder(this, onClick);
+
+  ///
+  /// Extension method to directly access material [_VelocityXInkWellBuilder] double click with any widget without wrapping or with dot operator.
+  ///
   _VelocityXInkWellBuilder mdDoubleClick(Function onClick) =>
       _VelocityXInkWellBuilder.mdDoubleClick(this, onClick);
+
+  ///
+  /// Extension method to directly access material [_VelocityXInkWellBuilder] long click with any widget without wrapping or with dot operator.
+  ///
   _VelocityXInkWellBuilder mdLongClick(Function onClick) =>
       _VelocityXInkWellBuilder.mdLongClick(this, onClick);
 }

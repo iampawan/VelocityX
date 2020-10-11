@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+///
+/// VelocityX widget to show Dashes with gaps if needed. It can be vertical or horizontal.
+///
 class VxDash extends StatelessWidget {
   const VxDash(
       {Key key,
@@ -12,12 +15,25 @@ class VxDash extends StatelessWidget {
       this.dashBorderRadius = 0})
       : super(key: key);
 
+  /// Direction of the dash. Default is horizontal
   final Axis direction;
+
+  /// Color of the dash. Default is black
   final Color dashColor;
+
+  /// Total length. Default is 200
   final double length;
+
+  /// Gap between the dashes. Default is 3px
   final double dashGap;
+
+  /// Length of the dash. Default is 6
   final double dashLength;
+
+  /// Thinkness of the dash. Default is 1
   final double dashThickness;
+
+  /// Border radius of the dash. Default is 0
   final double dashBorderRadius;
 
   @override
@@ -40,6 +56,7 @@ class VxDash extends StatelessWidget {
     }
   }
 
+  /// Method to create step
   Widget step(int index, double newDashGap) {
     final bool isHorizontal = direction == Axis.horizontal;
     return Padding(

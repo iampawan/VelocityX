@@ -18,6 +18,7 @@ import 'package:velocity_x/velocity_x.dart';
 mixin VxPaddingMixin<T> {
   T _childToPad;
 
+  /// Provides [Padding]
   @protected
   EdgeInsetsGeometry velocityPadding;
 

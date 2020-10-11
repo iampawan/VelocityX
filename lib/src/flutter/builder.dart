@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+///
+/// Being used interally by VxWidgetBuilders for eg [VxTextBuilder]
+///
 abstract class VxWidgetBuilder<T extends Widget> {
   T make({Key key});
 }
