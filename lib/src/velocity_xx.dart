@@ -293,6 +293,27 @@ mixin Vx {
   static const mV64 = EdgeInsets.symmetric(vertical: dp24);
   static const mH64 = EdgeInsets.symmetric(horizontal: dp32);
 
+  static EdgeInsets mLTRB(
+    double left,
+    double top,
+    double right,
+    double bottom,
+  ) =>
+      EdgeInsets.fromLTRB(left, top, right, bottom);
+
+  static EdgeInsets mSymmetric({double v = 0.0, double h = 0.0}) =>
+      EdgeInsets.symmetric(
+        vertical: v,
+        horizontal: h,
+      );
+
+  static EdgeInsets mOnly(
+          {double left = 0.0,
+          double right = 0.0,
+          double top = 0.0,
+          double bottom = 0.0}) =>
+      EdgeInsets.only(left: left, right: right, top: top, bottom: bottom);
+
   static ShapeBorder roundedSm =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5));
   static ShapeBorder rounded =
