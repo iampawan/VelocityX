@@ -24,6 +24,7 @@ class VxDiscList extends StatelessWidget {
   final double fontSize;
   final bool primary;
   final bool shrinkWrap;
+  final ScrollPhysics physics;
 
   const VxDiscList(
     this._items, {
@@ -33,6 +34,7 @@ class VxDiscList extends StatelessWidget {
     this.fontSize = 14.0,
     this.primary = false,
     this.shrinkWrap = true,
+    this.physics,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class VxDiscList extends StatelessWidget {
       key: key,
       shrinkWrap: shrinkWrap,
       primary: primary,
+      physics: physics,
       itemBuilder: (context, i) {
         return HStack(
           [
@@ -73,6 +76,7 @@ class VxDecimalList extends StatelessWidget {
   final double fontSize;
   final bool primary;
   final bool shrinkWrap;
+  final ScrollPhysics physics;
 
   const VxDecimalList(
     this._items, {
@@ -82,6 +86,7 @@ class VxDecimalList extends StatelessWidget {
     this.fontSize = 14.0,
     this.primary = false,
     this.shrinkWrap = true,
+    this.physics,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -89,6 +94,7 @@ class VxDecimalList extends StatelessWidget {
       key: key,
       shrinkWrap: shrinkWrap,
       primary: primary,
+      physics: physics,
       itemBuilder: (context, i) {
         return HStack(
           [

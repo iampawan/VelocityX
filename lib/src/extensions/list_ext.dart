@@ -135,6 +135,9 @@ extension ListStringExtension on List<String> {
     Color color = Colors.black,
     double fontSize,
     EdgeInsetsGeometry padding,
+    ScrollPhysics physics,
+    bool primary,
+    bool shrinkWrap = true,
   }) =>
       VxDiscList(
         this,
@@ -142,6 +145,9 @@ extension ListStringExtension on List<String> {
         padding: padding,
         fontSize: fontSize,
         color: color,
+        physics: physics,
+        primary: primary,
+        shrinkWrap: shrinkWrap,
       );
 
   Widget decimalList({
@@ -149,6 +155,9 @@ extension ListStringExtension on List<String> {
     Color color = Colors.black,
     double fontSize,
     EdgeInsetsGeometry padding,
+    ScrollPhysics physics,
+    bool primary,
+    bool shrinkWrap = true,
   }) =>
       VxDecimalList(
         this,
@@ -156,5 +165,8 @@ extension ListStringExtension on List<String> {
         padding: padding,
         fontSize: fontSize,
         color: color,
+        physics: physics,
+        primary: primary,
+        shrinkWrap: shrinkWrap,
       );
 }
