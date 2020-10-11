@@ -30,19 +30,24 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
     setChildToColor(this);
   }
 
-  String _text;
-  String _fontFamily;
+  String _text, _fontFamily;
+
+  double _scaleFactor,
+      _fontSize,
+      _minFontSize,
+      _letterSpacing,
+      _lineHeight,
+      _maxFontSize,
+      _stepGranularity;
+  int _maxLines;
   FontWeight _fontWeight;
   TextAlign _textAlign;
-  double _scaleFactor;
-  double _fontSize;
-  int _maxLines;
   FontStyle _fontStyle;
-  double _letterSpacing;
-  double _lineHeight;
   TextDecoration _decoration;
-  TextStyle _textStyle;
-  TextStyle _themedStyle;
+  TextStyle _textStyle, _themedStyle;
+  TextOverflow _overflow;
+  Widget _replacement;
+  bool _softWrap;
 
   VxTextBuilder text(String text) {
     _text = text;
@@ -67,6 +72,37 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
     return this;
   }
 
+  VxTextBuilder softWrap(bool softWrap) {
+    _softWrap = softWrap;
+    return this;
+  }
+
+  /// Can be used to set overflow of a text
+  VxTextBuilder overflow(TextOverflow overflow) {
+    _overflow = overflow;
+    return this;
+  }
+
+  VxTextBuilder minFontSize(double minFontSize) {
+    _minFontSize = minFontSize;
+    return this;
+  }
+
+  VxTextBuilder maxFontSize(double maxFontSize) {
+    _maxFontSize = maxFontSize;
+    return this;
+  }
+
+  VxTextBuilder stepGranularity(double stepGranularity) {
+    _stepGranularity = stepGranularity;
+    return this;
+  }
+
+  VxTextBuilder overflowReplacement(Widget overflowReplacement) {
+    _replacement = overflowReplacement;
+    return this;
+  }
+
   /// Use textStyle to provide custom or any theme style.
   VxTextBuilder textStyle(TextStyle _style) {
     _themedStyle = _style;
@@ -77,6 +113,10 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   VxTextBuilder get start => this.._textAlign = TextAlign.start;
   VxTextBuilder get end => this.._textAlign = TextAlign.end;
   VxTextBuilder get justify => this.._textAlign = TextAlign.justify;
+
+  VxTextBuilder get fade => this.._overflow = TextOverflow.fade;
+  VxTextBuilder get ellipsis => this.._overflow = TextOverflow.ellipsis;
+  VxTextBuilder get visible => this.._overflow = TextOverflow.visible;
 
   VxTextBuilder size(double size) => this.._fontSize = size;
 
@@ -181,13 +221,20 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
       decoration: _decoration,
       height: _lineHeight,
     );
-    return AutoSizeText(_text,
-        key: key,
-        textAlign: _textAlign,
-        maxLines: _maxLines,
-        textScaleFactor: _scaleFactor,
-        softWrap: true,
-        style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts);
+    return AutoSizeText(
+      _text,
+      key: key,
+      textAlign: _textAlign,
+      maxLines: _maxLines,
+      textScaleFactor: _scaleFactor,
+      style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+      softWrap: _softWrap ?? true,
+      minFontSize: _minFontSize ?? 12,
+      maxFontSize: _maxFontSize ?? double.infinity,
+      stepGranularity: _stepGranularity ?? 1,
+      overflowReplacement: _replacement,
+      overflow: _overflow ?? TextOverflow.clip,
+    );
   }
 }
 

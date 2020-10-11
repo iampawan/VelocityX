@@ -19,7 +19,14 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
-        "Welcome to VelocityX".text.semiBold.blue500.xl4.make(),
+        "Welcome to VelocityX"
+            .text
+            .maxLines(4)
+            .semiBold
+            .ellipsis
+            .blue500
+            .minFontSize(20)
+            .make(),
         20.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
             .text
