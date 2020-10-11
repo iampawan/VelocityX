@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Test {
   /*
  * Copyright (c) 2020 pawan Kumar. All rights reserved.
@@ -12,4 +14,10 @@ class Test {
  *  * See the License for the specific language governing permissions and
  *  * limitations under the License.
  */
+}
+
+class ItemModel {
+  String title;
+  IconData icon;
+  ItemModel(this.title, this.icon);
 }

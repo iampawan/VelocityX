@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'dummy.dart';
+
 void main() => runApp(MaterialApp(
       home: Demo(),
       theme: ThemeData(
@@ -10,6 +12,8 @@ void main() => runApp(MaterialApp(
     ));
 
 class Demo extends StatelessWidget {
+  final VxPopupMenuController _controller = VxPopupMenuController();
+
   @override
   Widget build(BuildContext context) {
     Vx.inspect("message");
@@ -97,6 +101,71 @@ class Demo extends StatelessWidget {
         ),
         10.heightBox,
         DateTime.now().timeAgo().text.make(),
+        10.heightBox,
+        VxPopupMenu(
+          child: Container(
+            child: const Icon(Icons.menu),
+            padding: Vx.m20,
+          ),
+          menuBuilder: () => ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: IntrinsicWidth(
+              child: VStack(
+                [
+                  ItemModel(
+                    "Chat",
+                    Icons.chat_bubble,
+                  ),
+                  ItemModel(
+                    "Add",
+                    Icons.group_add,
+                  )
+                ]
+                    .map(
+                      (item) => GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () {
+                          print(item.title);
+                        },
+                        child: HStack(
+                          [
+                            Icon(
+                              item.icon,
+                              size: 15,
+                              color: Colors.white,
+                            ),
+                            Expanded(
+                              child: Text(
+                                item.title,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                              )
+                                  .box
+                                  .margin(Vx.mOnly(left: 10))
+                                  .padding(Vx.mSymmetric(v: 10))
+                                  .make(),
+                            ),
+                          ],
+                        ).box.height(40).padding(Vx.mSymmetric(h: 20)).make(),
+                      ),
+                    )
+                    .toList(),
+                crossAlignment: CrossAxisAlignment.stretch,
+              ),
+            )
+                .box
+                .color(
+                  const Color(0xFF4C4C4C),
+                )
+                .make(),
+          ),
+          pressType: VxClickType.singleClick,
+          verticalMargin: -10,
+          controller: _controller,
+        ),
+        20.heightBox,
         "Neumorphic"
             .text
             .bold
