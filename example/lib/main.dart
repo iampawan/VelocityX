@@ -62,6 +62,15 @@ class Demo extends StatelessWidget {
             scrollDirection:
                 context.isMobile ? Axis.vertical : Axis.horizontal),
         20.heightBox,
+        const VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
+        const VxResponsive(
+          xsmall: Text("Hi Extra Small"),
+          small: Text("Hi Small"),
+          medium: Text("Hi Medium"),
+          large: Text("Hi Large"),
+          xlarge: Text("Hi Extra Large"),
+          fallback: Text("Hi Nothing Specified"),
+        ),
         "Neumorphic"
             .text
             .bold
