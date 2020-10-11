@@ -13,6 +13,7 @@
 
 import 'dart:async';
 import 'dart:developer' as dev;
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -379,4 +380,15 @@ mixin Vx {
   static Color hexToColor(String code) {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
+
+  /// Get Random Primary Color
+  static Color get randomPrimaryColor =>
+      Colors.primaries[Random().nextInt(Colors.primaries.length)];
+
+  /// Get Random Non-Primary Color
+  static Color get randomColor => Color(Random().nextInt(0xffffffff));
+
+  /// Get Random Non-Primary Color
+  static Color get randomOpaqueColor =>
+      Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
 }

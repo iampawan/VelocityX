@@ -82,7 +82,7 @@ class Demo extends StatelessWidget {
             .text
             .makeCentered()
             .card
-            .color(Vx.green400)
+            .color(Vx.randomOpaqueColor)
             .make()
             .h10(context),
         20.heightBox,
