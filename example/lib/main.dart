@@ -24,14 +24,14 @@ class Demo extends StatelessWidget {
       ),
       body: VStack([
         "Hello"
-            .text
+            .selectableText
             .make()
             .box
             .p8
             .rounded
             .red400
             .alignCenter
-            .withConstraints(BoxConstraints(maxWidth: 50, minWidth: 50))
+            .withConstraints(const BoxConstraints(maxWidth: 100, minWidth: 50))
             .make(),
         10.heightBox,
         "Welcome to VelocityX"

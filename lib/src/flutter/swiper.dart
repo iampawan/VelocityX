@@ -17,6 +17,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// Use this widget [VxSwiper] to give your list a swipeable effect with full customization.
 class VxSwiper extends StatefulWidget {
   VxSwiper(
       {@required this.items,

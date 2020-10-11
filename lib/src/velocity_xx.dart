@@ -294,6 +294,7 @@ mixin Vx {
   static const mV64 = EdgeInsets.symmetric(vertical: dp24);
   static const mH64 = EdgeInsets.symmetric(horizontal: dp32);
 
+  /// [EdgeInsets] with custom [left], [right], [top] & [bottom] values
   static EdgeInsets mLTRB(
     double left,
     double top,
@@ -302,12 +303,14 @@ mixin Vx {
   ) =>
       EdgeInsets.fromLTRB(left, top, right, bottom);
 
+  /// [EdgeInsets] with custom symmetric [v] for vertical and [h] for horizontal value
   static EdgeInsets mSymmetric({double v = 0.0, double h = 0.0}) =>
       EdgeInsets.symmetric(
         vertical: v,
         horizontal: h,
       );
 
+  /// [EdgeInsets] with custom [left], [right], [top] & [bottom] values
   static EdgeInsets mOnly(
           {double left = 0.0,
           double right = 0.0,
@@ -315,13 +318,19 @@ mixin Vx {
           double bottom = 0.0}) =>
       EdgeInsets.only(left: left, right: right, top: top, bottom: bottom);
 
+  /// [ShapeBorder] with border radius 7.5
   static ShapeBorder roundedSm =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5));
+
+  /// [ShapeBorder] with border radius 15
   static ShapeBorder rounded =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(15));
+
+  /// [ShapeBorder] with border radius 30
   static ShapeBorder roundedLg =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(30));
 
+  /// [ShapeBorder] with custom border [radius]
   static ShapeBorder withRounded(double radius) =>
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius));
 
