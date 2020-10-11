@@ -372,6 +372,9 @@ mixin Vx {
   ///Checks whether web or not
   static bool get isWeb => kIsWeb;
 
+  ///Checks whether android or not
+  static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
+
   /// Get color from the hex value
   static Color hexToColor(String code) {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
