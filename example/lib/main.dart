@@ -32,7 +32,13 @@ class Demo extends StatelessWidget {
             .red400
             .alignCenter
             .withConstraints(const BoxConstraints(maxWidth: 100, minWidth: 50))
-            .make(),
+            .make()
+            .skeleton(
+              width: 100,
+              height: 40,
+              type: VxSkeletonAnimationType.stretch,
+              stretchWidth: 150,
+            ),
         10.heightBox,
         "Welcome to VelocityX"
             .text

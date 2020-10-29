@@ -2,7 +2,7 @@
  Original Author
  MIT License
 
-Copyright (c) 2017 serenader
+Copyright (c) 2017 serenader (Originally)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -295,8 +295,7 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
           builder: (BuildContext context, child) {
             // on the first render, the pageController.page is null,
             // this is a dirty hack
-            if (widget.pageController.position.minScrollExtent == null ||
-                widget.pageController.position.maxScrollExtent == null) {
+            if (!widget.pageController.position.hasContentDimensions) {
               Future.delayed(const Duration(microseconds: 1), () {
                 if (mounted) {
                   setState(() {});

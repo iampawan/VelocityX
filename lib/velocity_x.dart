@@ -35,6 +35,7 @@ export 'src/flutter/selectable_text.dart';
 export 'src/flutter/shift.dart';
 export 'src/flutter/shimmer.dart';
 export 'src/flutter/sizedbox.dart';
+export 'src/flutter/skeleton.dart';
 export 'src/flutter/swiper.dart';
 export 'src/flutter/text.dart';
 export 'src/flutter/theme.dart';
