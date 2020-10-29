@@ -35,7 +35,7 @@ class Demo extends StatelessWidget {
             .make()
             .badge(
                 size: 20,
-                num: 100,
+                count: 1,
                 limit: true,
                 color: Colors.black,
                 type: VxBadgeType.round),

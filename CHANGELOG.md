@@ -2,6 +2,8 @@
 
 - Fixed VxSwiper issue on non-stable flutter channels.
 - Added VxSkeleton widget with skeleton extension.
+- Added VxMarquee widget with marquee extension.
+- Added VxBadge widget with badge extension.
 
 ## [0.5.0] - October 11, 2020
 

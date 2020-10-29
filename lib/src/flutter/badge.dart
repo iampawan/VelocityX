@@ -25,7 +25,7 @@ class VxBadge extends StatelessWidget {
   final VxBadgeType type;
   final Color color;
   final TextStyle textStyle;
-  final int num;
+  final int count;
   final bool limit;
   final Widget child;
   final double size;
@@ -36,7 +36,7 @@ class VxBadge extends StatelessWidget {
     this.type = VxBadgeType.round,
     this.color,
     this.textStyle,
-    this.num,
+    this.count,
     this.limit = false,
     this.size,
     this.position = VxBadgePosition.rightTop,
@@ -52,12 +52,12 @@ class VxBadge extends StatelessWidget {
 
   /// Get the number to show in the badge
   String getNumber() {
-    if (num == null) {
+    if (count == null) {
       return "";
-    } else if (limit && num > 99) {
+    } else if (limit && count > 99) {
       return '99+';
     }
-    return '$num';
+    return '$count';
   }
 
   /// Get the style of the text
@@ -142,7 +142,7 @@ extension BadgeExtension on Widget {
     VxBadgeType type = VxBadgeType.round,
     Color color,
     TextStyle textStyle,
-    int num,
+    int count,
     bool limit = false,
     double size,
     VxBadgePosition position = VxBadgePosition.rightTop,
@@ -152,7 +152,7 @@ extension BadgeExtension on Widget {
         textStyle: textStyle,
         color: color,
         limit: limit,
-        num: num,
+        count: count,
         position: position,
         size: size,
         type: type,
