@@ -11,8 +11,30 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
     ));
 
-class Demo extends StatelessWidget {
+class Demo extends StatefulWidget {
+  @override
+  _DemoState createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
   final VxPopupMenuController _controller = VxPopupMenuController();
+
+  double anim = 10.0;
+
+  @override
+  void initState() {
+    super.initState();
+    // withAnimation(
+    //   vsync: this,
+    //   tween: Tween(begin: 10.0, end: 100.0),
+    //   isRepeated: true,
+    //   duration: 10.seconds,
+    //   callBack: (value, percent) {
+    //     anim = value;
+    //     print(anim);
+    //   },
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {

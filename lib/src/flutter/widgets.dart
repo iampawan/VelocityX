@@ -12,7 +12,9 @@
  *  * limitations under the License.
  */
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../velocity_x.dart';
 
@@ -80,6 +82,72 @@ extension WidgetsExtension on Widget {
 
   /// Widget to show exception
   Widget errorWidget(Object ex) => ErrorWidget(ex);
+
+  /// Extension for [Expanded]
+  Expanded expand({Key key, int flex = 1}) {
+    return Expanded(
+      key: key,
+      flex: flex,
+      child: this,
+    );
+  }
+
+  /// Extension for coloring a widget with [DecoratedBox]
+  DecoratedBox backgroundColor(Color color) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: color,
+      ),
+      child: this,
+    );
+  }
+
+  /// Extension for adding a corner radius a widget with [ClipRRect]
+  ClipRRect cornerRadius(double radius) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(radius),
+      child: this,
+    );
+  }
+
+  /// Extension for keepAlive
+  Widget keepAlive() {
+    return _KeepAliveWidget(this);
+  }
+
+  ///it is very like onTap extension but when you put your finger on it, its color will change,
+  ///and you can decide that whether it will have a touchFeedBack (vibration on your phone)
+  ///
+
+  Widget onFeedBackTap(VoidCallback onTap,
+      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild,
+      bool touchFeedBack = false}) {
+    return _CallbackButton(
+      child: this,
+      onTap: onTap,
+      needHaptic: touchFeedBack,
+      hitTestBehavior: hitTestBehavior,
+    );
+  }
+
+  CupertinoPageRoute cupertinoRoute({bool fullscreenDialog = false}) {
+    /// Example:
+    /// Navigator.push(context, YourPage().cupertinoRoute());
+    ///
+    return CupertinoPageRoute(
+        fullscreenDialog: fullscreenDialog,
+        builder: (ctx) {
+          return this;
+        });
+  }
+
+  MaterialPageRoute materialRoute({bool fullscreenDialog = false}) {
+    return MaterialPageRoute(
+        fullscreenDialog: fullscreenDialog,
+        builder: (ctx) {
+          return this;
+        });
+  }
 }
 
 extension StringWidgetsExtension on String {
@@ -147,4 +215,116 @@ extension StringWidgetsExtension on String {
           ],
         ),
       );
+}
+
+class _KeepAliveWidget extends StatefulWidget {
+  final Widget child;
+
+  const _KeepAliveWidget(this.child);
+
+  @override
+  State<StatefulWidget> createState() => _KeepAliveState();
+}
+
+class _KeepAliveState extends State<_KeepAliveWidget>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return widget.child;
+  }
+}
+
+class _CallbackButton extends StatefulWidget {
+  final VoidCallback onTap;
+  final Widget child;
+  final Color normalColor;
+  final Color pressedColor;
+  final bool needHaptic;
+  final HitTestBehavior hitTestBehavior;
+
+  const _CallbackButton(
+      {Key key,
+      this.onTap,
+      this.child,
+      this.normalColor = Colors.transparent,
+      this.pressedColor = Colors.black12,
+      this.needHaptic = false,
+      this.hitTestBehavior})
+      : super(key: key);
+
+  @override
+  _CallbackButtonState createState() => _CallbackButtonState();
+}
+
+class _CallbackButtonState extends State<_CallbackButton> {
+  Color bgColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: widget.hitTestBehavior,
+      onTap: widget.onTap,
+      onTapDown: handleTapDown,
+      onTapUp: handleTapUp,
+      onTapCancel: handleCancel,
+      child: Container(
+        color: bgColor,
+        child: widget.child,
+      ),
+    );
+  }
+
+  void handleTapDown(TapDownDetails tapDownDetails) {
+    setState(() {
+      bgColor = widget.pressedColor;
+    });
+  }
+
+  void handleCancel() {
+    setState(() {
+      bgColor = widget.normalColor;
+    });
+  }
+
+  void handleTapUp(TapUpDetails tapDownDetails) {
+    if (widget.needHaptic) {
+      HapticFeedback.heavyImpact();
+    }
+    setState(() {
+      bgColor = widget.normalColor;
+    });
+  }
+}
+
+typedef AnimationUpdateCallBack<T> = Function(T value, double percent);
+
+void withAnimation<T>(
+    {@required TickerProvider vsync,
+    @required Tween<T> tween,
+    @required AnimationUpdateCallBack<T> callBack,
+    Duration duration = const Duration(seconds: 1),
+    double initialValue = 0.0,
+    Curve curve = Curves.linear,
+    bool isRepeated = false}) {
+  final AnimationController controller = AnimationController(
+      vsync: vsync, duration: duration, value: initialValue);
+  final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
+  final Animation animation = tween.animate(curveAnimation);
+  animation.addListener(() {
+    callBack?.call(animation.value, controller.value);
+  });
+
+  if (isRepeated) {
+    controller.repeat().whenCompleteOrCancel(() {
+      controller.dispose();
+    });
+  } else {
+    controller.forward().whenCompleteOrCancel(() {
+      controller.dispose();
+    });
+  }
 }
