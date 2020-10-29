@@ -1,3 +1,8 @@
+## [0.6.0] - October 30, 2020
+
+- Fixed VxSwiper issue on non-stable flutter channels.
+- Added VxSkeleton widget with skeleton extension.
+
 ## [0.5.0] - October 11, 2020
 
 - Compatible with latest flutter versions.
