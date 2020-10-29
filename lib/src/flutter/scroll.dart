@@ -48,6 +48,27 @@ extension ScrollExtension on Widget {
       );
 }
 
+/// Extensions for ScrollController
+extension ScrollControllerExtension on ScrollController {
+  void animToTop() {
+    animateTo(0,
+        duration: const Duration(milliseconds: 300), curve: Curves.decelerate);
+  }
+
+  void animToBottom() {
+    animateTo(position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300), curve: Curves.decelerate);
+  }
+
+  void jumpToTop() {
+    jumpTo(0);
+  }
+
+  void jumpToBottom() {
+    jumpTo(position.maxScrollExtent);
+  }
+}
+
 ///
 /// Widget to directly access [SingleChildScrollView] vertically.
 ///

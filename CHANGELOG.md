@@ -4,6 +4,7 @@
 - Added VxSkeleton widget with skeleton extension.
 - Added VxMarquee widget with marquee extension.
 - Added VxBadge widget with badge extension.
+- Added VxToast widget with showToast & showLoading context extension.
 
 ## [0.5.0] - October 11, 2020
 
