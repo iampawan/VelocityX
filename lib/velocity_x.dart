@@ -9,6 +9,7 @@ export 'src/extensions/num_ext.dart';
 export 'src/extensions/string_ext.dart';
 export 'src/flutter/animated/animated_container.dart';
 export 'src/flutter/appbar.dart';
+export 'src/flutter/badge.dart';
 export 'src/flutter/card.dart';
 export 'src/flutter/center.dart';
 export 'src/flutter/common/velocity_conditional.dart';

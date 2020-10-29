@@ -32,7 +32,13 @@ class Demo extends StatelessWidget {
             .red400
             .alignCenter
             .withConstraints(const BoxConstraints(maxWidth: 100, minWidth: 50))
-            .make(),
+            .make()
+            .badge(
+                size: 20,
+                num: 100,
+                limit: true,
+                color: Colors.black,
+                type: VxBadgeType.round),
         10.heightBox,
         "Breaking news from VelocityX".marquee().h10(context),
         "Welcome to VelocityX"
@@ -43,7 +49,7 @@ class Demo extends StatelessWidget {
             .blue500
             .minFontSize(20)
             .make(),
-        10.heightBox,
+        20.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
             .text
             .bold
