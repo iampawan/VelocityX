@@ -48,7 +48,18 @@ class Demo extends StatelessWidget {
             .ellipsis
             .blue500
             .minFontSize(20)
-            .make(),
+            .make()
+            .click(() {
+          // Show Toast
+          context.showToast(msg: "Hello Vx");
+
+          /// or
+          // VxToast.show(context, msg: "Hello from vx");
+
+          /// Show loading
+          // final close = context.showLoading(msg: "Loading");
+          // Future.delayed(2.seconds, close);
+        }).make(),
         20.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
             .text

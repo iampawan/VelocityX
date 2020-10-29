@@ -41,6 +41,7 @@ export 'src/flutter/skeleton.dart';
 export 'src/flutter/swiper.dart';
 export 'src/flutter/text.dart';
 export 'src/flutter/theme.dart';
+export 'src/flutter/toast.dart';
 export 'src/flutter/transform.dart';
 export 'src/flutter/widgets.dart';
 export 'src/responsive_ui.dart';

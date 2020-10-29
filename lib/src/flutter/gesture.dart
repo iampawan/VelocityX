@@ -72,15 +72,17 @@ class _VxGestureBuilder extends VxWidgetBuilder<Widget> {
   }
 }
 
+typedef FnBuilderCallback = void Function();
+
 class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
   _VelocityXInkWellBuilder(this._child, this._onClick);
   _VelocityXInkWellBuilder.mdDoubleClick(this._child, this._onDoubleClick);
   _VelocityXInkWellBuilder.mdLongClick(this._child, this._onLongClick);
 
   final Widget _child;
-  Function _onClick;
-  Function _onDoubleClick;
-  Function _onLongClick;
+  FnBuilderCallback _onClick;
+  FnBuilderCallback _onDoubleClick;
+  FnBuilderCallback _onLongClick;
   Color _splashColor;
 
   /// Use to show a splash color when clicking on the widget.
@@ -88,11 +90,13 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
       this.._splashColor = color;
 
   /// On clicking two times.
-  _VelocityXInkWellBuilder mdDoubleClick({@required Function onDoubleClick}) =>
+  _VelocityXInkWellBuilder mdDoubleClick(
+          {@required FnBuilderCallback onDoubleClick}) =>
       this.._onDoubleClick = onDoubleClick;
 
   /// On long pressing.
-  _VelocityXInkWellBuilder mdLongClick({@required Function onLongClick}) =>
+  _VelocityXInkWellBuilder mdLongClick(
+          {@required FnBuilderCallback onLongClick}) =>
       this.._onLongClick = onLongClick;
 
   @override
@@ -112,35 +116,36 @@ extension GestureExtensions on Widget {
   ///
   /// Extension method to directly access [_VxGestureBuilder] single click with any widget without wrapping or with dot operator.
   ///
-  _VxGestureBuilder click(Function onClick) => _VxGestureBuilder(this, onClick);
+  _VxGestureBuilder click(FnBuilderCallback onClick) =>
+      _VxGestureBuilder(this, onClick);
 
   ///
   /// Extension method to directly access [_VxGestureBuilder] double click with any widget without wrapping or with dot operator.
   ///
-  _VxGestureBuilder doubleClick(Function onClick) =>
+  _VxGestureBuilder doubleClick(FnBuilderCallback onClick) =>
       _VxGestureBuilder.doubleClick(this, onClick);
 
   ///
   /// Extension method to directly access [_VxGestureBuilder] long click with any widget without wrapping or with dot operator.
   ///
-  _VxGestureBuilder longClick(Function onClick) =>
+  _VxGestureBuilder longClick(FnBuilderCallback onClick) =>
       _VxGestureBuilder.longClick(this, onClick);
 
   ///
   /// Extension method to directly access material [_VelocityXInkWellBuilder] single click with any widget without wrapping or with dot operator.
   ///
-  _VelocityXInkWellBuilder mdClick(Function onClick) =>
+  _VelocityXInkWellBuilder mdClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder(this, onClick);
 
   ///
   /// Extension method to directly access material [_VelocityXInkWellBuilder] double click with any widget without wrapping or with dot operator.
   ///
-  _VelocityXInkWellBuilder mdDoubleClick(Function onClick) =>
+  _VelocityXInkWellBuilder mdDoubleClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder.mdDoubleClick(this, onClick);
 
   ///
   /// Extension method to directly access material [_VelocityXInkWellBuilder] long click with any widget without wrapping or with dot operator.
   ///
-  _VelocityXInkWellBuilder mdLongClick(Function onClick) =>
+  _VelocityXInkWellBuilder mdLongClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder.mdLongClick(this, onClick);
 }

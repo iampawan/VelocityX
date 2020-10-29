@@ -129,7 +129,7 @@ extension ContextExtensions on BuildContext {
   ///
   /// The default color of textSelectionColor.
   ///
-  Color get selectionColor => theme.textSelectionColor;
+  Color get selectionColor => TextSelectionTheme.of(this).selectionColor;
 
   ///
   /// The default brightness of the [Theme].
