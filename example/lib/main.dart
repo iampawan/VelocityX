@@ -8,9 +8,8 @@ import 'dummy.dart';
 
 void main() => runApp(MaterialApp(
       home: Demo(),
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      theme:
+          ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
       debugShowCheckedModeBanner: false,
     ));
 
@@ -58,6 +57,21 @@ class Demo extends StatelessWidget {
         10.heightBox,
         "Breaking news from VelocityX".marquee().h10(context),
         TapMeWidget(),
+        10.heightBox,
+        const VxStepper(
+          inputBoxColor: Colors.black,
+          inputTextColor: Colors.white,
+        ),
+        10.heightBox,
+        VxRating(
+          onRatingUpdate: (value) {},
+        ),
+        20.heightBox,
+        const VxTextField(
+          obscureText: false,
+          borderType: VxTextFieldBorderType.roundLine,
+          isPassword: true,
+        ),
         20.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
             .selectableText
