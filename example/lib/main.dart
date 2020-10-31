@@ -27,6 +27,7 @@ class Demo extends StatelessWidget {
       body: VStack([
         AnimationExample(),
         AnimationExample2(),
+        10.heightBox,
         "Hello"
             .selectableText
             .make()
@@ -45,7 +46,7 @@ class Demo extends StatelessWidget {
                 type: VxBadgeType.round),
         10.heightBox,
         "Breaking news from VelocityX".marquee().h10(context),
-        "Welcome to VelocityX"
+        "Tap me"
             .text
             .maxLines(4)
             .semiBold
@@ -55,7 +56,10 @@ class Demo extends StatelessWidget {
             .make()
             .click(() {
           // Show Toast
-          context.showToast(msg: "Hello Vx");
+          // context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
+
+          context.navigator
+              .push(AnimationExample2().vxRoute(parentContext: context));
 
           /// or
           // VxToast.show(context, msg: "Hello from vx");
@@ -278,7 +282,7 @@ class AnimationExample2 extends StatefulWidget {
 
 class _AnimationExample2State extends State<AnimationExample2>
     with SingleTickerProviderStateMixin {
-  num anim;
+  num anim = 1.0;
 
   @override
   void initState() {
@@ -305,6 +309,8 @@ class _AnimationExample2State extends State<AnimationExample2>
         .center
         .makeCentered()
         .scale(scaleValue: anim)
-        .p16();
+        .p16()
+        .card
+        .make();
   }
 }

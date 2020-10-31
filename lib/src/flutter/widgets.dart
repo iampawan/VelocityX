@@ -130,25 +130,6 @@ extension WidgetsExtension on Widget {
     );
   }
 
-  CupertinoPageRoute cupertinoRoute({bool fullscreenDialog = false}) {
-    /// Example:
-    /// Navigator.push(context, YourPage().cupertinoRoute());
-    ///
-    return CupertinoPageRoute(
-        fullscreenDialog: fullscreenDialog,
-        builder: (ctx) {
-          return this;
-        });
-  }
-
-  MaterialPageRoute materialRoute({bool fullscreenDialog = false}) {
-    return MaterialPageRoute(
-        fullscreenDialog: fullscreenDialog,
-        builder: (ctx) {
-          return this;
-        });
-  }
-
   SliverToBoxAdapter sliverBoxAdapter() {
     return SliverToBoxAdapter(
       child: this,

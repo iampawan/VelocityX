@@ -219,7 +219,8 @@ class _VxToastViewState extends State<_VxToastView>
               widget.msg,
               style: TextStyle(
                 fontSize: widget.textSize,
-                color: widget.textColor ?? Theme.of(context).backgroundColor,
+                color: widget.textColor ??
+                    Theme.of(context).accentTextTheme.bodyText1.color,
               ),
             ),
           ),
@@ -249,8 +250,8 @@ class _VxToastViewState extends State<_VxToastView>
                   widget.msg,
                   style: TextStyle(
                     fontSize: widget.textSize,
-                    color:
-                        widget.textColor ?? Theme.of(context).backgroundColor,
+                    color: widget.textColor ??
+                        Theme.of(context).accentTextTheme.bodyText1.color,
                   ),
                 )
               ],
