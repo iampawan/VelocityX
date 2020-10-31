@@ -13,6 +13,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'builder.dart';
 
@@ -114,38 +115,169 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
 
 extension GestureExtensions on Widget {
   ///
-  /// Extension method to directly access [_VxGestureBuilder] single click with any widget without wrapping or with dot operator.
+  /// Note - For single prop use [onTap]. Extension method to directly access [_VxGestureBuilder] single click with any widget without wrapping or with dot operator.
   ///
   _VxGestureBuilder click(FnBuilderCallback onClick) =>
       _VxGestureBuilder(this, onClick);
 
   ///
-  /// Extension method to directly access [_VxGestureBuilder] double click with any widget without wrapping or with dot operator.
+  /// Note - For single prop use [onDoubleTap]. Extension method to directly access [_VxGestureBuilder] double click with any widget without wrapping or with dot operator.
   ///
   _VxGestureBuilder doubleClick(FnBuilderCallback onClick) =>
       _VxGestureBuilder.doubleClick(this, onClick);
 
-  ///
+  /// Note - For single prop use [onLongPress].
   /// Extension method to directly access [_VxGestureBuilder] long click with any widget without wrapping or with dot operator.
   ///
   _VxGestureBuilder longClick(FnBuilderCallback onClick) =>
       _VxGestureBuilder.longClick(this, onClick);
 
-  ///
+  /// Note - For single prop use [onInkTap].
   /// Extension method to directly access material [_VelocityXInkWellBuilder] single click with any widget without wrapping or with dot operator.
   ///
   _VelocityXInkWellBuilder mdClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder(this, onClick);
 
-  ///
+  /// Note - For single prop use [onInkDoubleTap].
   /// Extension method to directly access material [_VelocityXInkWellBuilder] double click with any widget without wrapping or with dot operator.
   ///
   _VelocityXInkWellBuilder mdDoubleClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder.mdDoubleClick(this, onClick);
 
-  ///
+  /// Note - For single prop use [onInkLongPress].
   /// Extension method to directly access material [_VelocityXInkWellBuilder] long click with any widget without wrapping or with dot operator.
   ///
   _VelocityXInkWellBuilder mdLongClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder.mdLongClick(this, onClick);
+
+  GestureDetector onTap(VoidCallback onTap,
+      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
+    return GestureDetector(
+      behavior: hitTestBehavior,
+      onTap: onTap,
+      child: this,
+    );
+  }
+
+  InkWell onInkTap(
+    VoidCallback onTap,
+  ) {
+    return InkWell(
+      onTap: onTap,
+      child: this,
+    );
+  }
+
+  GestureDetector onDoubleTap(VoidCallback onDoubleTap,
+      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
+    return GestureDetector(
+      behavior: hitTestBehavior,
+      onDoubleTap: onDoubleTap,
+      child: this,
+    );
+  }
+
+  InkWell onInkDoubleTap(
+    VoidCallback onDoubleTap,
+  ) {
+    return InkWell(
+      onDoubleTap: onDoubleTap,
+      child: this,
+    );
+  }
+
+  GestureDetector onLongPress(VoidCallback onLongPress,
+      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
+    return GestureDetector(
+      behavior: hitTestBehavior,
+      onLongPress: onLongPress,
+      child: this,
+    );
+  }
+
+  InkWell onInkLongPress(
+    VoidCallback onLongPress,
+  ) {
+    return InkWell(
+      onLongPress: onLongPress,
+      child: this,
+    );
+  }
+
+  ///it is very much like onTap extension but when you put your finger on it, its color will change,
+  ///and you can decide that whether it will have a touchFeedBack (vibration on your phone)
+  ///
+
+  Widget onFeedBackTap(VoidCallback onTap,
+      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild,
+      bool touchFeedBack = false}) {
+    return _CallbackButton(
+      child: this,
+      onTap: onTap,
+      needHaptic: touchFeedBack,
+      hitTestBehavior: hitTestBehavior,
+    );
+  }
+}
+
+class _CallbackButton extends StatefulWidget {
+  final VoidCallback onTap;
+  final Widget child;
+  final Color normalColor;
+  final Color pressedColor;
+  final bool needHaptic;
+  final HitTestBehavior hitTestBehavior;
+
+  const _CallbackButton(
+      {Key key,
+      this.onTap,
+      this.child,
+      this.normalColor = Colors.transparent,
+      this.pressedColor = Colors.black12,
+      this.needHaptic = false,
+      this.hitTestBehavior})
+      : super(key: key);
+
+  @override
+  _CallbackButtonState createState() => _CallbackButtonState();
+}
+
+class _CallbackButtonState extends State<_CallbackButton> {
+  Color bgColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: widget.hitTestBehavior,
+      onTap: widget.onTap,
+      onTapDown: handleTapDown,
+      onTapUp: handleTapUp,
+      onTapCancel: handleCancel,
+      child: Container(
+        color: bgColor,
+        child: widget.child,
+      ),
+    );
+  }
+
+  void handleTapDown(TapDownDetails tapDownDetails) {
+    setState(() {
+      bgColor = widget.pressedColor;
+    });
+  }
+
+  void handleCancel() {
+    setState(() {
+      bgColor = widget.normalColor;
+    });
+  }
+
+  void handleTapUp(TapUpDetails tapDownDetails) {
+    if (widget.needHaptic) {
+      HapticFeedback.heavyImpact();
+    }
+    setState(() {
+      bgColor = widget.normalColor;
+    });
+  }
 }

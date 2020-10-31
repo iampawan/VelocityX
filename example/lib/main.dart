@@ -43,31 +43,11 @@ class Demo extends StatelessWidget {
                 count: 1,
                 limit: true,
                 color: Colors.black,
-                type: VxBadgeType.round),
+                type: VxBadgeType.round)
+            .onTap(() {}),
         10.heightBox,
         "Breaking news from VelocityX".marquee().h10(context),
-        "Tap me"
-            .text
-            .maxLines(4)
-            .semiBold
-            .ellipsis
-            .blue500
-            .minFontSize(20)
-            .make()
-            .click(() {
-          // Show Toast
-          // context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
-
-          context.navigator
-              .push(AnimationExample2().vxPreviewRoute(parentContext: context));
-
-          /// or
-          // VxToast.show(context, msg: "Hello from vx");
-
-          /// Show loading
-          // final close = context.showLoading(msg: "Loading");
-          // Future.delayed(2.seconds, close);
-        }).make(),
+        TapMeWidget(),
         20.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
             .text
@@ -225,6 +205,36 @@ class Demo extends StatelessWidget {
   }
 }
 
+class TapMeWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return [
+      "Tap me"
+          .text
+          .maxLines(4)
+          .semiBold
+          .ellipsis
+          .blue500
+          .minFontSize(20)
+          .make(),
+      "assets/vxbox.png".circularAssetImage(radius: 50)
+    ].row().onInkTap(() {
+      // Show Toast
+      // context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
+
+      context.navigator.push(const _SecondPage("assets/vxbox.png")
+          .vxPreviewRoute(parentContext: context));
+
+      /// or
+      // VxToast.show(context, msg: "Hello from vx");
+
+      /// Show loading
+      // final close = context.showLoading(msg: "Loading");
+      // Future.delayed(2.seconds, close);
+    });
+  }
+}
+
 class AnimationExample extends StatefulWidget {
   @override
   _AnimationExampleState createState() => _AnimationExampleState();
@@ -309,8 +319,33 @@ class _AnimationExample2State extends State<AnimationExample2>
         .center
         .makeCentered()
         .scale(scaleValue: anim)
-        .p16()
-        .card
-        .make();
+        .p16();
+  }
+}
+
+class _SecondPage extends StatelessWidget {
+  final String imageAssetName;
+
+  const _SecondPage(this.imageAssetName);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Material(
+          child: InkWell(
+            onTap: () => Navigator.of(context).pop(),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(
+                imageAssetName,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

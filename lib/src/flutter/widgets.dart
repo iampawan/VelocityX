@@ -115,21 +115,6 @@ extension WidgetsExtension on Widget {
     return _KeepAliveWidget(this);
   }
 
-  ///it is very like onTap extension but when you put your finger on it, its color will change,
-  ///and you can decide that whether it will have a touchFeedBack (vibration on your phone)
-  ///
-
-  Widget onFeedBackTap(VoidCallback onTap,
-      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild,
-      bool touchFeedBack = false}) {
-    return _CallbackButton(
-      child: this,
-      onTap: onTap,
-      needHaptic: touchFeedBack,
-      hitTestBehavior: hitTestBehavior,
-    );
-  }
-
   SliverToBoxAdapter sliverBoxAdapter() {
     return SliverToBoxAdapter(
       child: this,
@@ -235,68 +220,6 @@ class _KeepAliveState extends State<_KeepAliveWidget>
   Widget build(BuildContext context) {
     super.build(context);
     return widget.child;
-  }
-}
-
-class _CallbackButton extends StatefulWidget {
-  final VoidCallback onTap;
-  final Widget child;
-  final Color normalColor;
-  final Color pressedColor;
-  final bool needHaptic;
-  final HitTestBehavior hitTestBehavior;
-
-  const _CallbackButton(
-      {Key key,
-      this.onTap,
-      this.child,
-      this.normalColor = Colors.transparent,
-      this.pressedColor = Colors.black12,
-      this.needHaptic = false,
-      this.hitTestBehavior})
-      : super(key: key);
-
-  @override
-  _CallbackButtonState createState() => _CallbackButtonState();
-}
-
-class _CallbackButtonState extends State<_CallbackButton> {
-  Color bgColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: widget.hitTestBehavior,
-      onTap: widget.onTap,
-      onTapDown: handleTapDown,
-      onTapUp: handleTapUp,
-      onTapCancel: handleCancel,
-      child: Container(
-        color: bgColor,
-        child: widget.child,
-      ),
-    );
-  }
-
-  void handleTapDown(TapDownDetails tapDownDetails) {
-    setState(() {
-      bgColor = widget.pressedColor;
-    });
-  }
-
-  void handleCancel() {
-    setState(() {
-      bgColor = widget.normalColor;
-    });
-  }
-
-  void handleTapUp(TapUpDetails tapDownDetails) {
-    if (widget.needHaptic) {
-      HapticFeedback.heavyImpact();
-    }
-    setState(() {
-      bgColor = widget.normalColor;
-    });
   }
 }
 
