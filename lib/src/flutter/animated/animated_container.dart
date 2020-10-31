@@ -64,6 +64,12 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   VxAnimatedBox color(Color color) => this..velocityColor = color;
 
   ///
+  /// Sets the duration property of the animated box.
+  ///
+  VxAnimatedBox animDuration(Duration duration) =>
+      this..velocityDuration = duration;
+
+  ///
   /// Sets the color property of the box using the hex color value.
   ///
   VxAnimatedBox hexColor(String colorHex) =>

@@ -319,16 +319,47 @@ class _CallbackButtonState extends State<_CallbackButton> {
   }
 }
 
-typedef AnimationUpdateCallBack<T> = Function(T value, double percent);
+typedef AnimationUpdateCallBack<T> = Function(
+    T animationVal, double controllerVal);
 
-void withAnimation<T>(
-    {@required TickerProvider vsync,
-    @required Tween<T> tween,
-    @required AnimationUpdateCallBack<T> callBack,
-    Duration duration = const Duration(seconds: 1),
-    double initialValue = 0.0,
-    Curve curve = Curves.linear,
-    bool isRepeated = false}) {
+/// To perform forward animation in a simpler way
+void withAnimation<T>({
+  @required TickerProvider vsync,
+  @required Tween<T> tween,
+  @required AnimationUpdateCallBack<T> callBack,
+  Duration duration = const Duration(seconds: 1),
+  double initialValue = 0.0,
+  Curve curve = Curves.linear,
+}) {
+  final AnimationController controller = AnimationController(
+    vsync: vsync,
+    duration: duration,
+    value: initialValue,
+  );
+  final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
+  final Animation animation = tween.animate(curveAnimation);
+  animation.addListener(() {
+    callBack?.call(animation.value, controller.value);
+  });
+
+  controller.forward().whenCompleteOrCancel(() {
+    controller.dispose();
+  });
+}
+
+/// To perform repeat animation in a simpler way
+void withRepeatAnimation<T>({
+  @required TickerProvider vsync,
+  @required Tween<T> tween,
+  @required AnimationUpdateCallBack<T> callBack,
+  Duration duration = const Duration(seconds: 1),
+  double initialValue = 0.0,
+  Curve curve = Curves.linear,
+  double lowerBound,
+  double upperBound,
+  bool isRepeatReversed = false,
+  Duration repeatPeriod,
+}) {
   final AnimationController controller = AnimationController(
       vsync: vsync, duration: duration, value: initialValue);
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
@@ -337,13 +368,13 @@ void withAnimation<T>(
     callBack?.call(animation.value, controller.value);
   });
 
-  if (isRepeated) {
-    controller.repeat().whenCompleteOrCancel(() {
-      controller.dispose();
-    });
-  } else {
-    controller.forward().whenCompleteOrCancel(() {
-      controller.dispose();
-    });
-  }
+  controller
+      .repeat(
+          min: lowerBound,
+          max: upperBound,
+          period: repeatPeriod,
+          reverse: isRepeatReversed)
+      .whenCompleteOrCancel(() {
+    controller.dispose();
+  });
 }

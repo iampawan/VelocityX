@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -11,31 +14,8 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
     ));
 
-class Demo extends StatefulWidget {
-  @override
-  _DemoState createState() => _DemoState();
-}
-
-class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
+class Demo extends StatelessWidget {
   final VxPopupMenuController _controller = VxPopupMenuController();
-
-  double anim = 10.0;
-
-  @override
-  void initState() {
-    super.initState();
-    // withAnimation(
-    //   vsync: this,
-    //   tween: Tween(begin: 10.0, end: 100.0),
-    //   isRepeated: true,
-    //   duration: 10.seconds,
-    //   callBack: (value, percent) {
-    //     anim = value;
-    //     print(anim);
-    //   },
-    // );
-  }
-
   @override
   Widget build(BuildContext context) {
     Vx.inspect("message");
@@ -45,6 +25,8 @@ class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
+        AnimationExample(),
+        AnimationExample2(),
         "Hello"
             .selectableText
             .make()
@@ -102,17 +84,7 @@ class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
             .linearGradient([Vx.teal400, Vx.indigo400]).makeCentered(),
         20.heightBox,
         [
-          "Item 1"
-              .text
-              .white
-              .make()
-              .shimmer()
-              .box
-              .rounded
-              .alignCenter
-              .black
-              .make()
-              .p4(),
+          "Item 1".text.white.make().box.rounded.alignCenter.black.make().p4(),
           "Item 2".text.make().box.rounded.alignCenter.green500.make().p4(),
           "Item 3".text.make().box.rounded.alignCenter.blue500.make().p4(),
           "Item 4".text.make().box.rounded.alignCenter.red500.make().p4(),
@@ -137,7 +109,7 @@ class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
             .text
             .makeCentered()
             .card
-            .color(Vx.randomOpaqueColor)
+            .color(Vx.indigo500)
             .make()
             .h10(context),
         20.heightBox,
@@ -246,5 +218,93 @@ class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
             .make(),
       ]).p16().scrollVertical(),
     );
+  }
+}
+
+class AnimationExample extends StatefulWidget {
+  @override
+  _AnimationExampleState createState() => _AnimationExampleState();
+}
+
+class _AnimationExampleState extends State<AnimationExample> {
+  double _width, _height, _radius;
+  Color _color;
+
+  @override
+  void initState() {
+    super.initState();
+
+    Timer.periodic(5.seconds, (timer) {
+      setState(() {});
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final random = Random();
+
+    // Generate a random width and height.
+    _width = random.nextInt(300).toDouble();
+    _height = random.nextInt(300).toDouble();
+
+    // Generate a random color.
+    _color = Color.fromRGBO(
+      random.nextInt(256),
+      random.nextInt(256),
+      random.nextInt(256),
+      1,
+    );
+
+    // Generate a random border radius.
+    _radius = random.nextInt(100).toDouble();
+    return VxAnimatedBox()
+        .seconds(sec: 5)
+        .fastOutSlowIn
+        .width(_width + 50)
+        .height(_height)
+        .color(_color)
+        .withRounded(value: _radius)
+        .p16
+        .alignCenter
+        .make()
+        .py16();
+  }
+}
+
+class AnimationExample2 extends StatefulWidget {
+  @override
+  _AnimationExample2State createState() => _AnimationExample2State();
+}
+
+class _AnimationExample2State extends State<AnimationExample2>
+    with SingleTickerProviderStateMixin {
+  num anim;
+
+  @override
+  void initState() {
+    super.initState();
+
+    withRepeatAnimation(
+      vsync: this,
+      tween: Tween(begin: 0.2, end: 2.0),
+      duration: 5.seconds,
+      isRepeatReversed: true,
+      callBack: (value, percent) {
+        anim = value;
+        setState(() {});
+        // print(anim);
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return "Animated Text"
+        .text
+        .semiBold
+        .center
+        .makeCentered()
+        .scale(scaleValue: anim)
+        .p16();
   }
 }

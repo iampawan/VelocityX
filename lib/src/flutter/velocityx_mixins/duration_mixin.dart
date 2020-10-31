@@ -24,19 +24,19 @@ mixin VxDurationMixing<T> {
     _child = child;
   }
 
-  T secs({@required int sec}) {
+  T seconds({@required int sec}) {
     assert(sec != null);
     velocityDuration = Duration(seconds: sec);
     return _child;
   }
 
-  T milliSecs({@required int milliSec}) {
+  T milliSeconds({@required int milliSec}) {
     assert(milliSec != null);
     velocityDuration = Duration(milliseconds: milliSec);
     return _child;
   }
 
-  T microSecs({@required int microSec}) {
+  T microSeconds({@required int microSec}) {
     assert(microSec != null);
     velocityDuration = Duration(microseconds: microSec);
     return _child;
@@ -45,6 +45,18 @@ mixin VxDurationMixing<T> {
   T minutes({@required int mins}) {
     assert(mins != null);
     velocityDuration = Duration(minutes: mins);
+    return _child;
+  }
+
+  T hours({@required int hours}) {
+    assert(hours != null);
+    velocityDuration = Duration(hours: hours);
+    return _child;
+  }
+
+  T days({@required int days}) {
+    assert(hours != null);
+    velocityDuration = Duration(days: days);
     return _child;
   }
 }
