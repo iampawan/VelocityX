@@ -29,7 +29,7 @@ class Demo extends StatelessWidget {
         AnimationExample2(),
         10.heightBox,
         "Hello"
-            .selectableText
+            .text
             .make()
             .box
             .p8
@@ -44,13 +44,23 @@ class Demo extends StatelessWidget {
                 limit: true,
                 color: Colors.black,
                 type: VxBadgeType.round)
-            .onTap(() {}),
+            .onInkTap(() {
+          // Show Toast
+          context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
+
+          /// or
+          // VxToast.show(context, msg: "Hello from vx");
+
+          /// Or Show loading
+          // final close = context.showLoading(msg: "Loading");
+          // Future.delayed(2.seconds, close);
+        }),
         10.heightBox,
         "Breaking news from VelocityX".marquee().h10(context),
         TapMeWidget(),
         20.heightBox,
         "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
-            .text
+            .selectableText
             .bold
             .white
             .size(context.isMobile ? 20 : 40)
@@ -219,18 +229,8 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      // Show Toast
-      // context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
-
       context.navigator.push(const _SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
-
-      /// or
-      // VxToast.show(context, msg: "Hello from vx");
-
-      /// Show loading
-      // final close = context.showLoading(msg: "Loading");
-      // Future.delayed(2.seconds, close);
     });
   }
 }
