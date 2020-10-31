@@ -24,10 +24,11 @@ extension RoutesWidgetsExtension on Widget {
         });
   }
 
-  /// Example:
+  /// Best for showing zoomed/version of widgets like images
+  ///  Example:
   /// Navigator.push(context, YourPage().vxRoute());
   ///
-  Route vxRoute({@required BuildContext parentContext}) {
+  Route vxPreviewRoute({@required BuildContext parentContext}) {
     return PageRouteBuilder<void>(
       pageBuilder: (context, animation, secondaryAnimation) {
         return this;

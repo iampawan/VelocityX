@@ -59,7 +59,7 @@ class Demo extends StatelessWidget {
           // context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
 
           context.navigator
-              .push(AnimationExample2().vxRoute(parentContext: context));
+              .push(AnimationExample2().vxPreviewRoute(parentContext: context));
 
           /// or
           // VxToast.show(context, msg: "Hello from vx");
