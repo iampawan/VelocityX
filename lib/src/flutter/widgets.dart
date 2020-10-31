@@ -148,6 +148,25 @@ extension WidgetsExtension on Widget {
           return this;
         });
   }
+
+  SliverToBoxAdapter sliverBoxAdapter() {
+    return SliverToBoxAdapter(
+      child: this,
+    );
+  }
+
+  ///Maybe often use this when you want to make your own AppBar or NavigationBar with your custom UI
+  ///
+  /// tip:the size of ios navigation bar is Size.fromHeight(44.0) [kMinInteractiveDimensionCupertino],
+  /// material style appBar is Size.fromHeight(56.0)   [kToolbarHeight],
+  ///
+  /// example:
+  ///  appBar: Center(
+  ///   child: Text("hello"),
+  /// ).preferredSize(Size.fromHeight(44.0)),
+  PreferredSize preferredSize(Size size) {
+    return PreferredSize(child: this, preferredSize: size);
+  }
 }
 
 extension StringWidgetsExtension on String {

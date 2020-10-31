@@ -31,6 +31,17 @@ extension TransformExtension on Widget {
         child: this,
       );
 
+  /// Extension method to set an offset of any widget
+  Widget offset(
+      {Key key, @required Offset offset, bool transformHitTests = true}) {
+    return Transform.translate(
+      key: key,
+      transformHitTests: transformHitTests,
+      offset: offset,
+      child: this,
+    );
+  }
+
   ///
   /// Extension method to horizontally flip any widget without wrapping or with dot operator.
   ///
@@ -79,9 +90,13 @@ extension TransformExtension on Widget {
   ///
   /// Extension method to rotate any widget by specified [degrees] without wrapping or with dot operator.
   ///
-  Widget rotate(double degrees, {Key key}) => Transform.rotate(
+  Widget rotate(double degrees,
+          {Key key, Alignment alignment = Alignment.center, Offset origin}) =>
+      Transform.rotate(
         key: key,
         angle: _degreeToRad(degrees),
+        alignment: alignment,
+        origin: origin,
         child: this,
       );
 
@@ -142,9 +157,16 @@ extension TransformExtension on Widget {
   ///
   /// Extension method to scale any widget by specified [scalevalue] without wrapping or with dot operator.
   ///
-  Widget scale({Key key, double scaleValue}) => Transform.scale(
+  Widget scale(
+          {Key key,
+          double scaleValue,
+          Offset origin,
+          Alignment alignment = Alignment.center}) =>
+      Transform.scale(
         key: key,
         scale: scaleValue ?? 0,
+        alignment: alignment,
+        origin: origin,
         child: this,
       );
 
