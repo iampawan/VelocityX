@@ -129,6 +129,8 @@ class Demo extends StatelessWidget {
             .h10(context)
             .onMouseHover((event) {
           print(event.distance);
+        }).onMouseEnter((event) {
+          print(event.delta);
         }),
         20.heightBox,
         "100100.1546".numCurrency.text.make(),

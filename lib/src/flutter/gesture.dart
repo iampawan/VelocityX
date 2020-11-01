@@ -249,6 +249,37 @@ extension GestureExtensions on Widget {
       child: this,
     );
   }
+
+  /// Mouse Region Enter & Exit
+  MouseRegion onMouseEnterExit({
+    @required PointerEnterEventListener onEnter,
+    @required PointerExitEventListener onExit,
+  }) {
+    return MouseRegion(
+      onEnter: onEnter,
+      onExit: onExit,
+      child: this,
+    );
+  }
+
+  /// [MouseRegion] Full Widget
+  MouseRegion mouseRegion(
+      {Key key,
+      PointerHoverEventListener onHover,
+      PointerEnterEventListener onEnter,
+      PointerExitEventListener onExit,
+      MouseCursor mouseCursor = MouseCursor.defer,
+      bool opaque = true}) {
+    return MouseRegion(
+      key: key,
+      onHover: onHover,
+      cursor: mouseCursor,
+      opaque: opaque,
+      onEnter: onEnter,
+      onExit: onExit,
+      child: this,
+    );
+  }
 }
 
 class _CallbackButton extends StatefulWidget {
