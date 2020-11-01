@@ -254,21 +254,21 @@ typedef AnimationUpdateCallBack<T> = Function(
     T animationVal, double controllerVal);
 
 /// To perform forward animation in a simpler way
-void withAnimation<T>({
-  @required TickerProvider vsync,
-  @required Tween<T> tween,
-  @required AnimationUpdateCallBack<T> callBack,
-  Duration duration = const Duration(seconds: 1),
-  double initialValue = 0.0,
-  Curve curve = Curves.linear,
-}) {
+void withAnimation<T>(
+    {@required TickerProvider vsync,
+    @required Tween<T> tween,
+    @required AnimationUpdateCallBack<T> callBack,
+    Duration duration = const Duration(seconds: 1),
+    double initialValue = 0.0,
+    Curve curve = Curves.linear,
+    Animation customAnimation}) {
   final AnimationController controller = AnimationController(
     vsync: vsync,
     duration: duration,
     value: initialValue,
   );
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
-  final Animation animation = tween.animate(curveAnimation);
+  final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
     callBack?.call(animation.value, controller.value);
   });
@@ -279,22 +279,22 @@ void withAnimation<T>({
 }
 
 /// To perform repeat animation in a simpler way
-void withRepeatAnimation<T>({
-  @required TickerProvider vsync,
-  @required Tween<T> tween,
-  @required AnimationUpdateCallBack<T> callBack,
-  Duration duration = const Duration(seconds: 1),
-  double initialValue = 0.0,
-  Curve curve = Curves.linear,
-  double lowerBound,
-  double upperBound,
-  bool isRepeatReversed = false,
-  Duration repeatPeriod,
-}) {
+void withRepeatAnimation<T>(
+    {@required TickerProvider vsync,
+    @required Tween<T> tween,
+    @required AnimationUpdateCallBack<T> callBack,
+    Duration duration = const Duration(seconds: 1),
+    double initialValue = 0.0,
+    Curve curve = Curves.linear,
+    double lowerBound,
+    double upperBound,
+    bool isRepeatReversed = false,
+    Duration repeatPeriod,
+    Animation customAnimation}) {
   final AnimationController controller = AnimationController(
       vsync: vsync, duration: duration, value: initialValue);
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
-  final Animation animation = tween.animate(curveAnimation);
+  final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
     callBack?.call(animation.value, controller.value);
   });
