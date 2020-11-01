@@ -132,6 +132,34 @@ extension WidgetsExtension on Widget {
   PreferredSize preferredSize(Size size) {
     return PreferredSize(child: this, preferredSize: size);
   }
+
+  /// Extension method for [Material] Widget
+  Widget material(
+          {Key key,
+          MaterialType type = MaterialType.canvas,
+          Duration animationDuration = kThemeAnimationDuration,
+          bool borderOnForeground = true,
+          BorderRadiusGeometry borderRadius,
+          Clip clipBehavior = Clip.none,
+          Color color,
+          double elevation = 0.0,
+          Color shadowColor,
+          ShapeBorder shape,
+          TextStyle textStyle}) =>
+      Material(
+        key: key,
+        type: type,
+        animationDuration: animationDuration,
+        borderOnForeground: borderOnForeground,
+        borderRadius: borderRadius,
+        clipBehavior: clipBehavior,
+        color: color,
+        elevation: elevation,
+        shadowColor: shadowColor,
+        shape: shape,
+        textStyle: textStyle,
+        child: this,
+      );
 }
 
 extension StringWidgetsExtension on String {
