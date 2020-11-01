@@ -295,7 +295,10 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
           builder: (BuildContext context, child) {
             // on the first render, the pageController.page is null,
             // this is a dirty hack
-            if (!widget.pageController.position.hasContentDimensions) {
+            if (widget.pageController.position.minScrollExtent == null ||
+                widget.pageController.position.maxScrollExtent == null) {
+              //Enable it in next version
+              // if (!widget.pageController.position.hasContentDimensions) {
               Future.delayed(const Duration(microseconds: 1), () {
                 if (mounted) {
                   setState(() {});

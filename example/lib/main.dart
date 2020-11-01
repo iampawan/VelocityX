@@ -57,21 +57,20 @@ class Demo extends StatelessWidget {
           // Future.delayed(2.seconds, close);
         }),
         10.heightBox,
-        "Breaking news from VelocityX".marquee().h10(context),
+        "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
         TapMeWidget(),
         10.heightBox,
         const VxStepper(
           inputBoxColor: Colors.black,
           inputTextColor: Colors.white,
           disableInput: true,
-          step: 5,
         ),
         10.heightBox,
         VxRating(
           onRatingUpdate: (value) {},
-          count: 3,
+          count: 5,
           selectionColor: Colors.teal,
-          size: 50,
+          size: 30,
         ),
         20.heightBox,
         const VxTextField(
