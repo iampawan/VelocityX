@@ -24,6 +24,7 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
+        TimelineExample(),
         AnimationExample(),
         AnimationExample2(),
         10.heightBox,
@@ -436,5 +437,24 @@ class _AnimatedPageViewState extends State<AnimatedPageView> {
       notifyScroll: (scrollNotification) {},
     );
     return child;
+  }
+}
+
+class TimelineExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return VxTimeline(
+        animationDuration: 5.seconds,
+        showTrailing: true,
+        onItemTap: (value) {
+          print(value.heading);
+        },
+        timelineList: List.generate(
+            3,
+            (index) => VxTimelineModel(
+                id: index,
+                heading: "Nov 01, 2020",
+                description: "Hello Vx $index",
+                actionUrl: "")).toList());
   }
 }

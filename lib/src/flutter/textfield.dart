@@ -67,10 +67,10 @@ class VxTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  VxTextFieldState createState() => VxTextFieldState();
+  _VxTextFieldState createState() => _VxTextFieldState();
 }
 
-class VxTextFieldState extends State<VxTextField> {
+class _VxTextFieldState extends State<VxTextField> {
   TextEditingController controller;
   bool obscureText = false;
   FocusNode focusNode;

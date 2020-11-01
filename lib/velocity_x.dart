@@ -1,6 +1,7 @@
 library velocity_x;
 
 export 'src/dart/guard.dart';
+export 'src/dart/timeline.dart';
 export 'src/extensions/context_ext.dart';
 export 'src/extensions/date_time_ext.dart';
 export 'src/extensions/iterable_ext.dart';
@@ -46,6 +47,7 @@ export 'src/flutter/swiper.dart';
 export 'src/flutter/text.dart';
 export 'src/flutter/textfield.dart';
 export 'src/flutter/theme.dart';
+export 'src/flutter/timeline/timeline_widget.dart';
 export 'src/flutter/toast.dart';
 export 'src/flutter/transform.dart';
 export 'src/flutter/widgets.dart';
