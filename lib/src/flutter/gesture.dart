@@ -13,6 +13,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 import 'builder.dart';
@@ -216,6 +217,36 @@ extension GestureExtensions on Widget {
       onTap: onTap,
       needHaptic: touchFeedBack,
       hitTestBehavior: hitTestBehavior,
+    );
+  }
+
+  /// Mouse Region Hover
+  MouseRegion onMouseHover(
+    PointerHoverEventListener onHover,
+  ) {
+    return MouseRegion(
+      onHover: onHover,
+      child: this,
+    );
+  }
+
+  /// Mouse Region Enter
+  MouseRegion onMouseEnter(
+    PointerEnterEventListener onEnter,
+  ) {
+    return MouseRegion(
+      onEnter: onEnter,
+      child: this,
+    );
+  }
+
+  /// Mouse Region Exit
+  MouseRegion onMouseExit(
+    PointerExitEventListener onExit,
+  ) {
+    return MouseRegion(
+      onExit: onExit,
+      child: this,
     );
   }
 }

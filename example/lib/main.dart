@@ -126,7 +126,10 @@ class Demo extends StatelessWidget {
             .card
             .color(Vx.indigo500)
             .make()
-            .h10(context),
+            .h10(context)
+            .onMouseHover((event) {
+          print(event.distance);
+        }),
         20.heightBox,
         "100100.1546".numCurrency.text.make(),
         12341.42334.numCurrencyWithLocale(locale: "hi_IN").text.make(),
