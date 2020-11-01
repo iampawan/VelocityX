@@ -267,11 +267,11 @@ class _VxToastViewState extends State<_VxToastView>
   dynamic buildToastPosition(context) {
     dynamic backResult;
     if (widget.toastPosition == VxToastPosition.top) {
-      backResult = MediaQuery.of(context).size.height * 1 / 4;
+      backResult = MediaQuery.of(context).size.height * 1 / 6;
     } else if (widget.toastPosition == VxToastPosition.center) {
       backResult = MediaQuery.of(context).size.height * 1 / 2;
     } else {
-      backResult = MediaQuery.of(context).size.height * 3 / 4;
+      backResult = MediaQuery.of(context).size.height * 0.9;
     }
     return backResult;
   }

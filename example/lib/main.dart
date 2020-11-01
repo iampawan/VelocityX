@@ -39,8 +39,8 @@ class Demo extends StatelessWidget {
             .make()
             .badge(
                 size: 20,
-                count: 1,
-                limit: true,
+                count: 200,
+                limit: false,
                 color: Colors.black,
                 type: VxBadgeType.round)
             .onInkTap(() {
@@ -48,10 +48,12 @@ class Demo extends StatelessWidget {
           context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
 
           /// or
-          // VxToast.show(context, msg: "Hello from vx");
+          // VxToast.show(context, msg: "Hello from vx", showTime: 10000);
 
           /// Or Show loading
-          // final close = context.showLoading(msg: "Loading");
+          // final close = context.showLoading(
+          //   msg: "Loading",
+          // );
           // Future.delayed(2.seconds, close);
         }),
         10.heightBox,
@@ -61,14 +63,19 @@ class Demo extends StatelessWidget {
         const VxStepper(
           inputBoxColor: Colors.black,
           inputTextColor: Colors.white,
+          disableInput: true,
+          step: 5,
         ),
         10.heightBox,
         VxRating(
           onRatingUpdate: (value) {},
+          count: 3,
+          selectionColor: Colors.teal,
+          size: 50,
         ),
         20.heightBox,
         const VxTextField(
-          obscureText: false,
+          obscureText: true,
           borderType: VxTextFieldBorderType.roundLine,
           isPassword: true,
         ),
@@ -131,7 +138,7 @@ class Demo extends StatelessWidget {
           dashColor: Colors.red,
         ),
         10.heightBox,
-        DateTime.now().timeAgo().text.make(),
+        DateTime.now().subtract(10.minutes).timeAgo().text.make(),
         10.heightBox,
         Container(
           child: const Icon(Icons.menu),
