@@ -1,10 +1,20 @@
-## [0.6.0] - October 30, 2020
+## [1.0.0] - November 03, 2020
 
-- Fixed VxSwiper issue on non-stable flutter channels.
+- Added VxTimeline widget.
 - Added VxSkeleton widget with skeleton extension.
 - Added VxMarquee widget with marquee extension.
 - Added VxBadge widget with badge extension.
 - Added VxToast widget with showToast & showLoading context extension.
+- Extensions for ScrollController added.
+- withAnimation & withRepeatAnimation added.
+- onTap, onInkTap series added for more ease.
+- VxTextField added.
+- VxAnimatedHeight added.
+- Offset, preferredSize, sliverBoxAdapter extensions added.
+- vxPreviewRoute added along with materialRoute & cupertinoRoute extensions.
+- expand,backgroundColor,cornerRadius,keepAlive,onFeedBackTap extensions added.
+- Mouse Region extension methods added.
+- Material Extension added.
 
 ## [0.5.0] - October 11, 2020
 
