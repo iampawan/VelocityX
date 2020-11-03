@@ -7,7 +7,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'dummy.dart';
 
 void main() => runApp(MaterialApp(
-      home: Demo(),
+      home: Material(child: Demo()),
       theme:
           ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
       debugShowCheckedModeBanner: false,
@@ -453,11 +453,12 @@ class TimelineExample extends StatelessWidget {
           print(value.heading);
         },
         timelineList: List.generate(
-            3,
-            (index) => VxTimelineModel(
-                id: index,
-                heading: "Nov 01, 2020",
-                description: "Hello Vx $index",
-                actionUrl: "")).toList());
+          3,
+          (index) => VxTimelineModel(
+              id: index,
+              heading: "Nov 01, 2020",
+              description: "Hello Vx $index",
+              actionUrl: ""),
+        ).toList());
   }
 }
