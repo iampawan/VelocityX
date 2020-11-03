@@ -25,8 +25,8 @@ class Demo extends StatelessWidget {
       ),
       body: VStack([
         TimelineExample(),
-        AnimationExample(),
-        AnimationExample2(),
+        AnimatedBoxExample(),
+        VxAnimationExample(),
         10.heightBox,
         "Hello"
             .text
@@ -129,6 +129,8 @@ class Demo extends StatelessWidget {
             .h10(context)
             .onMouseHover((event) {
           print(event.distance);
+        }).onMouseEnter((event) {
+          print(event.delta);
         }),
         20.heightBox,
         "100100.1546".numCurrency.text.make(),
@@ -261,12 +263,12 @@ class TapMeWidget extends StatelessWidget {
   }
 }
 
-class AnimationExample extends StatefulWidget {
+class AnimatedBoxExample extends StatefulWidget {
   @override
-  _AnimationExampleState createState() => _AnimationExampleState();
+  _AnimatedBoxExampleState createState() => _AnimatedBoxExampleState();
 }
 
-class _AnimationExampleState extends State<AnimationExample> {
+class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
   double _width, _height, _radius;
   Color _color;
 
@@ -311,12 +313,12 @@ class _AnimationExampleState extends State<AnimationExample> {
   }
 }
 
-class AnimationExample2 extends StatefulWidget {
+class VxAnimationExample extends StatefulWidget {
   @override
-  _AnimationExample2State createState() => _AnimationExample2State();
+  _VxAnimationExampleState createState() => _VxAnimationExampleState();
 }
 
-class _AnimationExample2State extends State<AnimationExample2>
+class _VxAnimationExampleState extends State<VxAnimationExample>
     with SingleTickerProviderStateMixin {
   num anim = 1.0;
 
