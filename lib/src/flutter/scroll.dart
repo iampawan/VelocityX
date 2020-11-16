@@ -55,18 +55,26 @@ class VxScrollVertical extends StatelessWidget {
   final ScrollController controller;
   final ScrollPhysics physics;
   final EdgeInsetsGeometry padding;
+  final Widget child;
 
-  const VxScrollVertical({Key key, this.controller, this.physics, this.padding})
-      : super(key: key);
+  const VxScrollVertical({
+    Key key,
+    this.controller,
+    this.physics,
+    this.padding,
+    this.child,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        key: key,
-        child: this,
-        scrollDirection: Axis.vertical,
-        controller: controller,
-        physics: physics,
-        padding: padding);
+      key: key,
+      child: child,
+      scrollDirection: Axis.vertical,
+      controller: controller,
+      physics: physics,
+      padding: padding,
+    );
   }
 }
 
@@ -77,18 +85,25 @@ class VxScrollHorizontal extends StatelessWidget {
   final ScrollController controller;
   final ScrollPhysics physics;
   final EdgeInsetsGeometry padding;
+  final Widget child;
 
-  const VxScrollHorizontal(
-      {Key key, this.controller, this.physics, this.padding})
-      : super(key: key);
+  const VxScrollHorizontal({
+    Key key,
+    this.controller,
+    this.physics,
+    this.padding,
+    this.child,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        key: key,
-        child: this,
-        scrollDirection: Axis.horizontal,
-        controller: controller,
-        physics: physics,
-        padding: padding);
+      key: key,
+      child: child,
+      scrollDirection: Axis.horizontal,
+      controller: controller,
+      physics: physics,
+      padding: padding,
+    );
   }
 }
