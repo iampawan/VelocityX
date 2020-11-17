@@ -47,6 +47,7 @@ class Demo extends StatelessWidget {
             .onInkTap(() {
           // Show Toast
           context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
+          // VxToast.showLoading(context, msg: "Loading");
 
           /// or
           // VxToast.show(context, msg: "Hello from vx", showTime: 10000);
@@ -61,11 +62,9 @@ class Demo extends StatelessWidget {
         "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
         TapMeWidget(),
         10.heightBox,
-        const VxStepper(
-          inputBoxColor: Colors.black,
-          inputTextColor: Colors.white,
-          disableInput: true,
-        ),
+        VxStepper(onChange: (value) {
+          print(value);
+        }),
         10.heightBox,
         VxRating(
           onRatingUpdate: (value) {},
@@ -363,7 +362,7 @@ class _SecondPage extends StatelessWidget {
       body: Center(
         child: Material(
           child: InkWell(
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () => context.pop(),
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.asset(
