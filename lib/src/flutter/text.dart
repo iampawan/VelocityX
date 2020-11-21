@@ -173,6 +173,12 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
     return this;
   }
 
+  /// Set [FontWeight] for the text
+  VxTextBuilder fontWeight(FontWeight weight) {
+    _fontWeight = weight;
+    return this;
+  }
+
   /// Use textStyle to provide custom or any theme style.
   ///
   /// If the style's 'inherit' property is true, the style will be merged with
