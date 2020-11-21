@@ -37,10 +37,10 @@ class VxPopupMenuController extends ChangeNotifier {
 /// [VxPopupMenu] can help you in creating custom popup menus using overlay entry.
 class VxPopupMenu extends StatefulWidget {
   const VxPopupMenu({
-    @required this.child,
-    @required this.menuBuilder,
-    @required this.clickType,
-    Key key,
+    required this.child,
+    required this.menuBuilder,
+    required this.clickType,
+    Key? key,
     this.controller,
     this.arrowColor = const Color(0xFF4C4C4C),
     this.showArrow = true,
@@ -48,8 +48,7 @@ class VxPopupMenu extends StatefulWidget {
     this.arrowSize = 10.0,
     this.horizontalMargin = 10.0,
     this.verticalMargin = 10.0,
-  })  : assert(menuBuilder != null),
-        super(key: key);
+  })  : super(key: key);
 
   /// Child for the [VxPopupMenu] which can be clicked
   final Widget child;
@@ -76,7 +75,7 @@ class VxPopupMenu extends StatefulWidget {
   final double arrowSize;
 
   /// Specify the [controller] to control or hide/show the [VxPopupMenu]
-  final VxPopupMenuController controller;
+  final VxPopupMenuController? controller;
 
   /// Compulsory to build a menu to show in the popup.
   final MenuBuilderCallback menuBuilder;
@@ -85,10 +84,10 @@ class VxPopupMenu extends StatefulWidget {
 }
 
 class _VxPopupMenuState extends State<VxPopupMenu> {
-  RenderBox _childBox;
-  RenderBox _parentBox;
-  OverlayEntry _overlayEntry;
-  VxPopupMenuController _controller;
+  RenderBox? _childBox;
+  RenderBox? _parentBox;
+  OverlayEntry? _overlayEntry;
+  VxPopupMenuController? _controller;
 
   void _showMenu() {
     final Widget arrow = ClipPath(
@@ -114,13 +113,13 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
             Center(
               child: Container(
                 constraints: BoxConstraints(
-                  maxWidth: _parentBox.size.width - 2 * widget.horizontalMargin,
+                  maxWidth: _parentBox!.size.width - 2 * widget.horizontalMargin,
                   minWidth: 0,
                 ),
                 child: CustomMultiChildLayout(
                   delegate: _MenuLayoutDelegate(
-                    anchorSize: _childBox.size,
-                    anchorOffset: _childBox.localToGlobal(
+                    anchorSize: _childBox!.size,
+                    anchorOffset: _childBox!.localToGlobal(
                       Offset(-widget.horizontalMargin, 0),
                     ),
                     verticalMargin: widget.verticalMargin,
@@ -159,18 +158,18 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
         );
       },
     );
-    Overlay.of(context).insert(_overlayEntry);
+    Overlay.of(context)!.insert(_overlayEntry!);
   }
 
   void _hideMenu() {
     if (_overlayEntry != null) {
-      _overlayEntry.remove();
+      _overlayEntry!.remove();
       _overlayEntry = null;
     }
   }
 
   void _updateView() {
-    if (_controller.menuIsShowing) {
+    if (_controller!.menuIsShowing) {
       _showMenu();
     } else {
       _hideMenu();
@@ -182,17 +181,17 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
     super.initState();
     _controller = widget.controller;
     _controller ??= VxPopupMenuController();
-    _controller.addListener(_updateView);
-    WidgetsBinding.instance.addPostFrameCallback((call) {
-      _childBox = context.findRenderObject();
-      _parentBox = Overlay.of(context).context.findRenderObject();
+    _controller!.addListener(_updateView);
+    WidgetsBinding.instance!.addPostFrameCallback((call) {
+      _childBox = context.findRenderObject() as RenderBox?;
+      _parentBox = Overlay.of(context)!.context.findRenderObject() as RenderBox?;
     });
   }
 
   @override
   void dispose() {
     _hideMenu();
-    _controller.removeListener(_updateView);
+    _controller!.removeListener(_updateView);
     super.dispose();
   }
 
@@ -243,9 +242,9 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
     this.verticalMargin,
   });
 
-  final Size anchorSize;
-  final Offset anchorOffset;
-  final double verticalMargin;
+  final Size? anchorSize;
+  final Offset? anchorOffset;
+  final double? verticalMargin;
   @override
   void performLayout(Size size) {
     Size contentSize = Size.zero;
@@ -253,9 +252,9 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
     Offset contentOffset = const Offset(0, 0);
     Offset arrowOffset = const Offset(0, 0);
 
-    final double anchorCenterX = anchorOffset.dx + anchorSize.width / 2;
-    final double anchorTopY = anchorOffset.dy;
-    final double anchorBottomY = anchorTopY + anchorSize.height;
+    final double anchorCenterX = anchorOffset!.dx + anchorSize!.width / 2;
+    final double anchorTopY = anchorOffset!.dy;
+    final double anchorBottomY = anchorTopY + anchorSize!.height;
     _MenuPosition menuPosition = _MenuPosition.bottomCenter;
 
     if (hasChild(_MenuLayoutId.content)) {
@@ -278,7 +277,7 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
     }
 
     bool isTop = false;
-    if (anchorBottomY + verticalMargin + arrowSize.height + contentSize.height >
+    if (anchorBottomY + verticalMargin! + arrowSize.height + contentSize.height >
         size.height) {
       isTop = true;
     }
@@ -295,57 +294,57 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
       case _MenuPosition.bottomCenter:
         arrowOffset = Offset(
           anchorCenterX - arrowSize.width / 2,
-          anchorBottomY + verticalMargin,
+          anchorBottomY + verticalMargin!,
         );
         contentOffset = Offset(
           anchorCenterX - contentSize.width / 2,
-          anchorBottomY + verticalMargin + arrowSize.height,
+          anchorBottomY + verticalMargin! + arrowSize.height,
         );
         break;
       case _MenuPosition.bottomLeft:
         arrowOffset = Offset(anchorCenterX - arrowSize.width / 2,
-            anchorBottomY + verticalMargin);
+            anchorBottomY + verticalMargin!);
         contentOffset = Offset(
           0,
-          anchorBottomY + verticalMargin + arrowSize.height,
+          anchorBottomY + verticalMargin! + arrowSize.height,
         );
         break;
       case _MenuPosition.bottomRight:
         arrowOffset = Offset(anchorCenterX - arrowSize.width / 2,
-            anchorBottomY + verticalMargin);
+            anchorBottomY + verticalMargin!);
         contentOffset = Offset(
           size.width - contentSize.width,
-          anchorBottomY + verticalMargin + arrowSize.height,
+          anchorBottomY + verticalMargin! + arrowSize.height,
         );
         break;
       case _MenuPosition.topCenter:
         arrowOffset = Offset(
           anchorCenterX - arrowSize.width / 2,
-          anchorTopY - verticalMargin - arrowSize.height,
+          anchorTopY - verticalMargin! - arrowSize.height,
         );
         contentOffset = Offset(
           anchorCenterX - contentSize.width / 2,
-          anchorTopY - verticalMargin - arrowSize.height - contentSize.height,
+          anchorTopY - verticalMargin! - arrowSize.height - contentSize.height,
         );
         break;
       case _MenuPosition.topLeft:
         arrowOffset = Offset(
           anchorCenterX - arrowSize.width / 2,
-          anchorTopY - verticalMargin - arrowSize.height,
+          anchorTopY - verticalMargin! - arrowSize.height,
         );
         contentOffset = Offset(
           0,
-          anchorTopY - verticalMargin - arrowSize.height - contentSize.height,
+          anchorTopY - verticalMargin! - arrowSize.height - contentSize.height,
         );
         break;
       case _MenuPosition.topRight:
         arrowOffset = Offset(
           anchorCenterX - arrowSize.width / 2,
-          anchorTopY - verticalMargin - arrowSize.height,
+          anchorTopY - verticalMargin! - arrowSize.height,
         );
         contentOffset = Offset(
           size.width - contentSize.width,
-          anchorTopY - verticalMargin - arrowSize.height - contentSize.height,
+          anchorTopY - verticalMargin! - arrowSize.height - contentSize.height,
         );
         break;
     }

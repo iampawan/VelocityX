@@ -19,10 +19,8 @@ class VxDevice extends StatelessWidget {
   ///
   final Widget web;
 
-  const VxDevice({Key key, @required this.mobile, @required this.web})
-      : assert(mobile != null),
-        assert(web != null),
-        super(key: key);
+  const VxDevice({Key? key, required this.mobile, required this.web})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return VxConditionalSwitch.single(
@@ -30,7 +28,7 @@ class VxDevice extends StatelessWidget {
       valueBuilder: (context) => context.mdWindowSize,
       caseBuilders: {MobileWindowSize.xsmall: (context) => mobile},
       fallbackBuilder: (context) => web,
-    );
+    )!;
   }
 }
 
@@ -41,35 +39,35 @@ class VxResponsive extends StatelessWidget {
   ///
   /// For window size as extra small
   ///
-  final Widget xsmall;
+  final Widget? xsmall;
 
   ///
   /// For window size as small
   ///
-  final Widget small;
+  final Widget? small;
 
   ///
   /// For window size as medium
   ///
-  final Widget medium;
+  final Widget? medium;
 
   ///
   /// For window size as large
   ///
-  final Widget large;
+  final Widget? large;
 
   ///
   /// For window size as extra large
   ///
-  final Widget xlarge;
+  final Widget? xlarge;
 
   ///
   /// if none of the above props are specified then [fallback] is used
   ///
-  final Widget fallback;
+  final Widget? fallback;
 
   const VxResponsive(
-      {Key key,
+      {Key? key,
       this.xsmall,
       this.small,
       this.medium,
@@ -90,6 +88,6 @@ class VxResponsive extends StatelessWidget {
         MobileWindowSize.xlarge: (context) => xlarge ?? fallback,
       },
       fallbackBuilder: (context) => fallback,
-    );
+    )!;
   }
 }

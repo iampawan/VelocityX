@@ -12,7 +12,6 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/curves_mixin.dart';
@@ -45,18 +44,18 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
     setChildForAlignment(this);
   }
 
-  final Widget child;
-  BoxBorder _border;
-  Gradient _gradient;
-  double _height;
-  double _width;
-  EdgeInsetsGeometry _margin;
-  DecorationImage _bgImage;
+  final Widget? child;
+  BoxBorder? _border;
+  Gradient? _gradient;
+  double? _height;
+  double? _width;
+  EdgeInsetsGeometry? _margin;
+  DecorationImage? _bgImage;
   bool _isCircleRounded = false;
-  List<BoxShadow> _boxShadow;
-  VxNeumorph _velocityNeumorph;
-  Matrix4 _transform;
-  BoxDecoration _decoration;
+  List<BoxShadow>? _boxShadow;
+  VxNeumorph? _velocityNeumorph;
+  Matrix4? _transform;
+  BoxDecoration? _decoration;
 
   ///
   /// Sets the color property of the box.
@@ -313,7 +312,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   ///
   /// To give shadow with some outline color.
   ///
-  VxAnimatedBox shadowOutline({Color outlineColor}) {
+  VxAnimatedBox shadowOutline({Color? outlineColor}) {
     _boxShadow = [
       BoxShadow(
         color: outlineColor?.withOpacity(0.5) ??
@@ -331,21 +330,19 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   /// Use this to convert your box to the neumorphic design. Use it wisely.
   ///
   VxAnimatedBox neumorphic(
-          {Color color,
+          {Color? color,
           VxCurve curve = VxCurve.concave,
           double elevation = 12.0}) =>
       this
-        .._velocityNeumorph = velocityDecoration(
-            color ?? velocityColor ?? ThemeData().scaffoldBackgroundColor,
-            curve,
-            elevation);
+        .._velocityNeumorph =
+            velocityDecoration((color ?? velocityColor)!, curve, elevation);
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return AnimatedContainer(
         child: child,
-        curve: velocityCurve ?? Curves.easeIn,
-        duration: velocityDuration ?? const Duration(seconds: 1),
+        curve: velocityCurve,
+        duration: velocityDuration ?? const Duration(seconds: 100),
         height: _height,
         width: _width,
         padding: velocityPadding,
@@ -354,21 +351,21 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
         transform: _transform,
         decoration: _velocityNeumorph != null
             ? BoxDecoration(
-                borderRadius: _isCircleRounded || roundedValue.isNull
+                borderRadius: _isCircleRounded || (roundedValue == null)
                     ? null
-                    : BorderRadius.circular(roundedValue),
+                    : BorderRadius.circular(roundedValue!),
                 shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-                boxShadow: _velocityNeumorph.shadows,
+                boxShadow: _velocityNeumorph!.shadows,
                 border: _border,
-                gradient: _velocityNeumorph.gradient,
+                gradient: _velocityNeumorph!.gradient,
                 image: _bgImage,
               )
             : _decoration ??
                 BoxDecoration(
                   color: velocityColor,
-                  borderRadius: _isCircleRounded || roundedValue.isNull
+                  borderRadius: _isCircleRounded || (roundedValue == null)
                       ? null
-                      : BorderRadius.circular(roundedValue),
+                      : BorderRadius.circular(roundedValue!),
                   shape:
                       _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
                   boxShadow: _boxShadow ?? [],

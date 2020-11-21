@@ -50,7 +50,7 @@ extension StringExtension on String {
   }
 
   /// Returns the string if it is not `null`, or the empty string otherwise
-  String get orEmpty => this ?? "";
+  String get orEmpty => this;
 
 // if the string is empty perform an action
   String ifEmpty(Function action) => isEmpty ? action() : this;
@@ -75,7 +75,7 @@ extension StringExtension on String {
   /// 1234567890 with begin 2 and end 6 => 12****7890
   /// 1234567890 with begin 1 => 1****67890
   ///
-  String hidePartial({int begin = 0, int end, String replace = '*'}) {
+  String? hidePartial({int begin = 0, int? end, String replace = '*'}) {
     final buffer = StringBuffer();
     if (length <= 1) {
       return null;
@@ -105,13 +105,13 @@ extension StringExtension on String {
   String get numCurrency =>
       intl.NumberFormat.currency(customPattern: "#,##0.00")
           .format(double.tryParse(this))
-          ?.toString();
+          .toString();
 
   /// Format numeric currency with provided locale
   String numCurrencyWithLocale({String locale = "en_US"}) =>
       intl.NumberFormat.currency(
         locale: locale,
-      ).format(double.tryParse(this))?.toString();
+      ).format(double.tryParse(this)).toString();
 
   ///Capitalize all words inside a string
   String allWordsCapitilize() {

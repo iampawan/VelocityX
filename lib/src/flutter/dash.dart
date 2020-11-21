@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 ///
 class VxDash extends StatelessWidget {
   const VxDash(
-      {Key key,
+      {Key? key,
       this.direction = Axis.horizontal,
       this.dashColor = Colors.black,
       this.length = 200,

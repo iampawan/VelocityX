@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
@@ -27,17 +27,17 @@ import 'velocityx_mixins/color_mixin.dart';
 @protected
 class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
     with VxColorMixin<VxTextBuilder> {
-  VxTextBuilder(this._text) : assert(_text != null) {
+  VxTextBuilder(String this._text) {
     setChildToColor(this);
   }
 
-  VxTextBuilder.existing(this._text, this._textStyle) : assert(_text != null) {
+  VxTextBuilder.existing(String this._text, this._textStyle) {
     setChildToColor(this);
   }
 
-  String _text, _fontFamily;
+  String? _text, _fontFamily;
 
-  double _scaleFactor,
+  double? _scaleFactor,
       _fontSize,
       _minFontSize,
       _letterSpacing,
@@ -45,17 +45,17 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
       _maxFontSize,
       _stepGranularity,
       _wordSpacing;
-  int _maxLines;
-  FontWeight _fontWeight;
-  TextAlign _textAlign;
-  FontStyle _fontStyle;
-  TextDecoration _decoration;
-  TextStyle _textStyle, _themedStyle;
-  StrutStyle _strutStyle;
-  TextOverflow _overflow;
-  TextBaseline _textBaseline;
-  Widget _replacement;
-  bool _softWrap, _wrapWords;
+  int? _maxLines;
+  FontWeight? _fontWeight;
+  TextAlign? _textAlign;
+  FontStyle? _fontStyle;
+  TextDecoration? _decoration;
+  TextStyle? _textStyle, _themedStyle;
+  StrutStyle? _strutStyle;
+  TextOverflow? _overflow;
+  TextBaseline? _textBaseline;
+  Widget? _replacement;
+  bool? _softWrap, _wrapWords;
 
   /// The text to display.
   ///
@@ -228,7 +228,7 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   VxTextBuilder get visible => this.._overflow = TextOverflow.visible;
 
   /// To set fontSize of the text using [size]
-  VxTextBuilder size(double size) => this.._fontSize = size;
+  VxTextBuilder size(double? size) => this.._fontSize = size;
 
   /// Sets [textScaleFactor] to extra small i.e. 0.75
   VxTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
@@ -261,7 +261,7 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
   VxTextBuilder _fontSizedText(
-      {@required double scaleFactor, @required VxTextBuilder child}) {
+      {required double scaleFactor, required VxTextBuilder child}) {
     _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
@@ -304,7 +304,7 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VxTextBuilder _fontWeightedText(
-      {@required FontWeight weight, @required VxTextBuilder child}) {
+      {required FontWeight weight, required VxTextBuilder child}) {
     _fontWeight = weight;
     return this;
   }
@@ -344,16 +344,16 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   VxTextBuilder get overline => this.._decoration = TextDecoration.overline;
 
   /// Converts the text to fully uppercase.
-  VxTextBuilder get uppercase => this.._text = _text.toUpperCase();
+  VxTextBuilder get uppercase => this.._text = _text!.toUpperCase();
 
   /// Converts the text to fully lowercase.
-  VxTextBuilder get lowercase => this.._text = _text.toLowerCase();
+  VxTextBuilder get lowercase => this.._text = _text!.toLowerCase();
 
   /// Converts the text to first letter of very word as uppercase.
-  VxTextBuilder get capitalize => this.._text = _text.allWordsCapitilize();
+  VxTextBuilder get capitalize => this.._text = _text!.allWordsCapitilize();
 
   /// Converts the text to partially hideen text. Best for sensitive data.
-  VxTextBuilder get hidePartial => this.._text = _text.hidePartial();
+  VxTextBuilder get hidePartial => this.._text = _text!.hidePartial();
 
   /// Sets [lineHeight] to 0.75
   VxTextBuilder get heightTight => this.._lineHeight = 0.75;
@@ -371,7 +371,7 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
   @override
-  AutoSizeText make({Key key}) {
+  AutoSizeText make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
@@ -385,7 +385,7 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
       wordSpacing: _wordSpacing,
     );
     return AutoSizeText(
-      _text,
+      _text!,
       key: key,
       textAlign: _textAlign,
       maxLines: _maxLines,
@@ -407,5 +407,5 @@ extension TextExtensions on Text {
   ///
   /// Extension method to directly access [VxTextBuilder] with any widget without wrapping or with dot operator.
   ///
-  VxTextBuilder get text => VxTextBuilder.existing(data, style);
+  VxTextBuilder get text => VxTextBuilder.existing(data!, style);
 }

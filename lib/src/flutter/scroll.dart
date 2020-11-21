@@ -21,10 +21,10 @@ extension ScrollExtension on Widget {
   /// Extension method to directly access [SingleChildScrollView] vertically with any widget without wrapping or with dot operator.
   ///
   Widget scrollVertical(
-          {Key key,
-          ScrollController controller,
-          ScrollPhysics physics,
-          EdgeInsetsGeometry padding}) =>
+          {Key? key,
+          ScrollController? controller,
+          ScrollPhysics? physics,
+          EdgeInsetsGeometry? padding}) =>
       SingleChildScrollView(
           child: this,
           key: key,
@@ -37,10 +37,10 @@ extension ScrollExtension on Widget {
   /// Extension method to directly access [SingleChildScrollView] horizontally with any widget without wrapping or with dot operator.
   ///
   Widget scrollHorizontal(
-          {Key key,
-          ScrollController controller,
-          ScrollPhysics physics,
-          EdgeInsetsGeometry padding}) =>
+          {Key? key,
+          ScrollController? controller,
+          ScrollPhysics? physics,
+          EdgeInsetsGeometry? padding}) =>
       SingleChildScrollView(
         key: key,
         child: this,
@@ -73,13 +73,13 @@ extension ScrollControllerExtension on ScrollController {
 /// Widget to directly access [SingleChildScrollView] vertically.
 ///
 class VxScrollVertical extends StatelessWidget {
-  final ScrollController controller;
-  final ScrollPhysics physics;
-  final EdgeInsetsGeometry padding;
-  final Widget child;
+  final ScrollController? controller;
+  final ScrollPhysics? physics;
+  final EdgeInsetsGeometry? padding;
+  final Widget? child;
 
   const VxScrollVertical({
-    Key key,
+    Key? key,
     this.controller,
     this.physics,
     this.padding,
@@ -103,13 +103,13 @@ class VxScrollVertical extends StatelessWidget {
 /// Widget to directly access [SingleChildScrollView] horizontally.
 ///
 class VxScrollHorizontal extends StatelessWidget {
-  final ScrollController controller;
-  final ScrollPhysics physics;
-  final EdgeInsetsGeometry padding;
-  final Widget child;
+  final ScrollController? controller;
+  final ScrollPhysics? physics;
+  final EdgeInsetsGeometry? padding;
+  final Widget? child;
 
   const VxScrollHorizontal({
-    Key key,
+    Key? key,
     this.controller,
     this.physics,
     this.padding,

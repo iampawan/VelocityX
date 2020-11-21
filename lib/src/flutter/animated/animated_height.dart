@@ -5,23 +5,21 @@ import 'package:flutter/material.dart';
 class VxAnimatedHeightView<T extends Widget> extends StatefulWidget {
   final T pageViewChild;
 
-  final double Function(int currentIndex) computeAspectRadio;
+  final double Function(int? currentIndex) computeAspectRadio;
 
-  final Function(ScrollNotification scrollNotification) notifyScroll;
+  final Function(ScrollNotification scrollNotification)? notifyScroll;
 
   final int itemCount;
 
-  final int currentPageIndex;
+  final int? currentPageIndex;
 
   const VxAnimatedHeightView(
-      {@required this.pageViewChild,
-      @required this.computeAspectRadio,
+      {required this.pageViewChild,
+      required this.computeAspectRadio,
       this.notifyScroll,
-      this.itemCount,
+      required this.itemCount,
       this.currentPageIndex})
-      : assert(pageViewChild != null),
-        assert(computeAspectRadio != null),
-        assert(itemCount > 0);
+      : assert(itemCount > 0);
 
   @override
   State<StatefulWidget> createState() {
@@ -30,19 +28,19 @@ class VxAnimatedHeightView<T extends Widget> extends StatefulWidget {
 }
 
 class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
-  StreamController<double> _streamController;
-  Stream<double> _headerStream;
+  StreamController<double>? _streamController;
+  Stream<double>? _headerStream;
 
-  List<double> _hisAspectRadioList;
+  late List<double> _hisAspectRadioList;
 
-  int _currentIndex = 0;
+  int? _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _hisAspectRadioList = List.filled(widget.itemCount, 0);
     _streamController = StreamController.broadcast();
-    _headerStream = _streamController.stream;
+    _headerStream = _streamController!.stream;
   }
 
   @override
@@ -55,10 +53,10 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
   Widget build(BuildContext context) {
     Widget child = StreamBuilder(
       stream: _headerStream,
-      builder: (context, snapshot) {
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
         return AspectRatio(
           aspectRatio:
-              snapshot?.data ?? widget.computeAspectRadio(_currentIndex) ?? 1.0,
+              snapshot.data ?? widget.computeAspectRadio(_currentIndex) ?? 1.0,
           child: widget.pageViewChild,
         );
       },
@@ -67,7 +65,7 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
       child: child,
       onNotification: (scrollNotification) {
         if (widget.notifyScroll != null) {
-          widget?.notifyScroll(scrollNotification);
+          widget.notifyScroll!(scrollNotification);
         }
         if (scrollNotification.depth == 0)
           _computeRadioToRadio(scrollNotification);
@@ -84,7 +82,7 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
   }
 
   void _computeRadioToRadio(ScrollNotification scroll) {
-    final int beforeIndex = _currentIndex;
+    final int beforeIndex = _currentIndex!;
     int nextIndex;
 
     // Selected left margin
@@ -120,7 +118,7 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
 //            beforeIndex * scroll.metrics.viewportDimension)
 //            .abs() /
 //            scroll.metrics.viewportDimension)}");
-    _streamController.add(animationValue);
+    _streamController!.add(animationValue);
   }
 
   double getRadio(int index) {

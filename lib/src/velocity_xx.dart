@@ -350,13 +350,13 @@ mixin Vx {
   /// - [error] (optional) an error object associated with this log event
   /// - [stackTrace] (optional) a stack trace associated with this log event
   static void log(String message,
-          {DateTime time,
-          int sequenceNumber,
+          {DateTime? time,
+          int? sequenceNumber,
           int level = 0,
           String name = '',
-          Zone zone,
-          Object error,
-          StackTrace stackTrace}) =>
+          Zone? zone,
+          Object? error,
+          StackTrace? stackTrace}) =>
       dev.log(message,
           error: error,
           level: level,

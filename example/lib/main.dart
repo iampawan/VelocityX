@@ -14,6 +14,7 @@ void main() => runApp(MaterialApp(
     ));
 
 class Demo extends StatelessWidget {
+  final String helloText = "Hello";
   final VxPopupMenuController _controller = VxPopupMenuController();
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,8 @@ class Demo extends StatelessWidget {
         AnimatedBoxExample(),
         VxAnimationExample(),
         10.heightBox,
-        "Hello"
-            .text
+        Text(helloText),
+        helloText.text
             .make()
             .box
             .p8
@@ -242,7 +243,7 @@ class Demo extends StatelessWidget {
             .textDropDown(
               selectedValue: "Item 1",
               onChanged: (value) {
-                Vx.log(value);
+                Vx.log(value!);
               },
             )
             .make(),
@@ -265,7 +266,7 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator.push(const _SecondPage("assets/vxbox.png")
+      context.navigator!.push(const _SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
   }
@@ -277,8 +278,8 @@ class AnimatedBoxExample extends StatefulWidget {
 }
 
 class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
-  double _width, _height, _radius;
-  Color _color;
+  late double _width, _height, _radius;
+  late Color _color;
 
   @override
   void initState() {
@@ -340,7 +341,7 @@ class _VxAnimationExampleState extends State<VxAnimationExample>
       duration: 5.seconds,
       isRepeatReversed: true,
       callBack: (value, percent) {
-        anim = value;
+        anim = value as num;
         setState(() {});
         // print(anim);
       },
@@ -354,7 +355,7 @@ class _VxAnimationExampleState extends State<VxAnimationExample>
         .semiBold
         .center
         .makeCentered()
-        .scale(scaleValue: anim)
+        .scale(scaleValue: anim.toDouble())
         .p16();
   }
 }
@@ -429,7 +430,7 @@ class _AnimatedPageViewState extends State<AnimatedPageView> {
             onTap: () {
               print("tap img index is $index");
             },
-            child: Image.network(imgUrl ?? "",
+            child: Image.network(imgUrl,
                 width: w,
                 height: h,
                 fit: BoxFit.cover,
@@ -445,7 +446,7 @@ class _AnimatedPageViewState extends State<AnimatedPageView> {
       itemCount: pics.length,
       currentPageIndex: _currentIndex,
       computeAspectRadio: (index) {
-        return calculateImgScale(index);
+        return calculateImgScale(index!);
       },
       notifyScroll: (scrollNotification) {},
     );

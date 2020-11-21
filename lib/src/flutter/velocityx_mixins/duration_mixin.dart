@@ -14,48 +14,42 @@
 import 'package:flutter/material.dart';
 
 mixin VxDurationMixing<T> {
-  T _child;
+  late T _child;
 
   @protected
-  Duration velocityDuration;
+  Duration? velocityDuration;
 
   @protected
   void setChildForDuration(T child) {
     _child = child;
   }
 
-  T seconds({@required int sec}) {
-    assert(sec != null);
+  T seconds({required int sec}) {
     velocityDuration = Duration(seconds: sec);
     return _child;
   }
 
-  T milliSeconds({@required int milliSec}) {
-    assert(milliSec != null);
+  T milliSeconds({required int milliSec}) {
     velocityDuration = Duration(milliseconds: milliSec);
     return _child;
   }
 
-  T microSeconds({@required int microSec}) {
-    assert(microSec != null);
+  T microSeconds({required int microSec}) {
     velocityDuration = Duration(microseconds: microSec);
     return _child;
   }
 
-  T minutes({@required int mins}) {
-    assert(mins != null);
+  T minutes({required int mins}) {
     velocityDuration = Duration(minutes: mins);
     return _child;
   }
 
-  T hours({@required int hours}) {
-    assert(hours != null);
+  T hours({required int hours}) {
     velocityDuration = Duration(hours: hours);
     return _child;
   }
 
-  T days({@required int days}) {
-    assert(hours != null);
+  T days({required int days}) {
     velocityDuration = Duration(days: days);
     return _child;
   }

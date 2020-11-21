@@ -20,14 +20,14 @@ import '../../velocity_x.dart';
 extension WidgetsExtension on Widget {
   ///Tooltip as accessibility
   Widget tooltip(String message,
-          {Key key,
-          Decoration decoration,
-          double height,
-          bool preferBelow,
-          EdgeInsetsGeometry padding,
-          TextStyle textStyle,
-          Duration waitDuration,
-          EdgeInsetsGeometry margin}) =>
+          {Key? key,
+          Decoration? decoration,
+          double? height,
+          bool? preferBelow,
+          EdgeInsetsGeometry? padding,
+          TextStyle? textStyle,
+          Duration? waitDuration,
+          EdgeInsetsGeometry? margin}) =>
       Tooltip(
         key: key,
         message: message,
@@ -42,7 +42,7 @@ extension WidgetsExtension on Widget {
       );
 
   ///Hides a widget
-  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) =>
+  Widget hide({Key? key, bool isVisible = false, bool maintainSize = false}) =>
       Visibility(
         key: key,
         child: this,
@@ -55,8 +55,8 @@ extension WidgetsExtension on Widget {
   ///Hides a widget
   Widget popupMenu(
     MenuBuilderCallback menuBuilder, {
-    Key key,
-    VxPopupMenuController controller,
+    Key? key,
+    VxPopupMenuController? controller,
     Color arrowColor = const Color(0xFF4C4C4C),
     double arrowSize = 10.0,
     Color barrierColor = Colors.black12,
@@ -83,7 +83,7 @@ extension WidgetsExtension on Widget {
   Widget errorWidget(Object ex) => ErrorWidget(ex);
 
   /// Extension for [Expanded]
-  Expanded expand({Key key, int flex = 1}) {
+  Expanded expand({Key? key, int flex = 1}) {
     return Expanded(
       key: key,
       flex: flex,
@@ -135,17 +135,17 @@ extension WidgetsExtension on Widget {
 
   /// Extension method for [Material] Widget
   Widget material(
-          {Key key,
+          {Key? key,
           MaterialType type = MaterialType.canvas,
           Duration animationDuration = kThemeAnimationDuration,
           bool borderOnForeground = true,
-          BorderRadiusGeometry borderRadius,
+          BorderRadiusGeometry? borderRadius,
           Clip clipBehavior = Clip.none,
-          Color color,
+          Color? color,
           double elevation = 0.0,
-          Color shadowColor,
-          ShapeBorder shape,
-          TextStyle textStyle}) =>
+          Color? shadowColor,
+          ShapeBorder? shape,
+          TextStyle? textStyle}) =>
       Material(
         key: key,
         type: type,
@@ -164,11 +164,11 @@ extension WidgetsExtension on Widget {
 
 extension StringWidgetsExtension on String {
   Widget circularAssetImage(
-          {Key key,
+          {Key? key,
           double radius = 35.0,
           Color bgColor = Colors.white,
-          Color fgColor,
-          Widget child}) =>
+          Color? fgColor,
+          Widget? child}) =>
       CircleAvatar(
         key: key,
         radius: radius,
@@ -179,11 +179,11 @@ extension StringWidgetsExtension on String {
       );
 
   Widget circlularNetworkImage(
-          {Key key,
+          {Key? key,
           double radius = 65.0,
           Color bgColor = Colors.white,
-          Color fgColor,
-          Widget child}) =>
+          Color? fgColor,
+          Widget? child}) =>
       CircleAvatar(
         key: key,
         radius: radius,
@@ -196,7 +196,7 @@ extension StringWidgetsExtension on String {
       );
 
   Widget circularAssetShadowImage({
-    Key key,
+    Key? key,
     EdgeInsets margin = const EdgeInsets.all(0.0),
     EdgeInsets padding = const EdgeInsets.all(0.0),
     double width = 40.0,
@@ -255,13 +255,13 @@ typedef AnimationUpdateCallBack<T> = Function(
 
 /// To perform forward animation in a simpler way
 void withAnimation<T>(
-    {@required TickerProvider vsync,
-    @required Tween<T> tween,
-    @required AnimationUpdateCallBack<T> callBack,
+    {required TickerProvider vsync,
+    required Tween<T> tween,
+    required AnimationUpdateCallBack<T?> callBack,
     Duration duration = const Duration(seconds: 1),
     double initialValue = 0.0,
     Curve curve = Curves.linear,
-    Animation customAnimation}) {
+    Animation? customAnimation}) {
   final AnimationController controller = AnimationController(
     vsync: vsync,
     duration: duration,
@@ -270,7 +270,7 @@ void withAnimation<T>(
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
   final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
-    callBack?.call(animation.value, controller.value);
+    callBack.call(animation.value, controller.value);
   });
 
   controller.forward().whenCompleteOrCancel(() {
@@ -280,23 +280,23 @@ void withAnimation<T>(
 
 /// To perform repeat animation in a simpler way
 void withRepeatAnimation<T>(
-    {@required TickerProvider vsync,
-    @required Tween<T> tween,
-    @required AnimationUpdateCallBack<T> callBack,
+    {required TickerProvider vsync,
+    required Tween<T> tween,
+    required AnimationUpdateCallBack<T?> callBack,
     Duration duration = const Duration(seconds: 1),
     double initialValue = 0.0,
     Curve curve = Curves.linear,
-    double lowerBound,
-    double upperBound,
+    double? lowerBound,
+    double? upperBound,
     bool isRepeatReversed = false,
-    Duration repeatPeriod,
-    Animation customAnimation}) {
+    Duration? repeatPeriod,
+    Animation? customAnimation}) {
   final AnimationController controller = AnimationController(
       vsync: vsync, duration: duration, value: initialValue);
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
   final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
-    callBack?.call(animation.value, controller.value);
+    callBack.call(animation.value, controller.value);
   });
 
   controller

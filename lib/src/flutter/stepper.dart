@@ -27,11 +27,14 @@ class VxStepper extends StatefulWidget {
   final int max;
   final int step;
   final bool disableInput;
-  final ValueChanged<int> onChange;
-  final Color inputBoxColor, inputTextColor, actionButtonColor, actionIconColor;
+  final ValueChanged<int>? onChange;
+  final Color? inputBoxColor,
+      inputTextColor,
+      actionButtonColor,
+      actionIconColor;
 
   const VxStepper({
-    Key key,
+    Key? key,
     this.defaultValue = 0,
     this.min = 0,
     this.max = 999,
@@ -51,11 +54,11 @@ class VxStepper extends StatefulWidget {
 }
 
 class VxStepperState extends State<VxStepper> {
-  TextEditingController controller;
+  TextEditingController? controller;
 
   num recordNumber = 0;
-  bool enableMin;
-  bool enableMax;
+  late bool enableMin;
+  late bool enableMax;
 
   @override
   void initState() {
@@ -63,7 +66,7 @@ class VxStepperState extends State<VxStepper> {
     recordNumber =
         math.min(widget.max, math.max(widget.defaultValue, widget.min));
     controller = TextEditingController(text: '$recordNumber');
-    controller.addListener(valueChange);
+    controller!.addListener(valueChange);
 
     valueChange();
   }
@@ -77,12 +80,12 @@ class VxStepperState extends State<VxStepper> {
       width: _KDefaultButtonSize,
       child: FlatButton(
         shape: const CircleBorder(),
-        color: widget?.actionButtonColor,
+        color: widget.actionButtonColor,
         padding: EdgeInsets.zero,
         onPressed: enableMin ? onRemove : null,
         child: Icon(
           Icons.remove,
-          color: widget?.actionIconColor,
+          color: widget.actionIconColor,
         ),
       ),
     ));
@@ -93,7 +96,7 @@ class VxStepperState extends State<VxStepper> {
       height: _KDefaultButtonSize,
       width: 36,
       decoration: BoxDecoration(
-        color: widget?.inputBoxColor ??
+        color: widget.inputBoxColor ??
             DividerTheme.of(context).color ??
             Theme.of(context).dividerColor,
         borderRadius: BorderRadius.circular(3),
@@ -104,7 +107,7 @@ class VxStepperState extends State<VxStepper> {
         textAlignVertical: TextAlignVertical.center,
         enabled: !widget.disableInput,
         style: TextStyle(
-            fontSize: _KDefaultTextFontSize, color: widget?.inputTextColor),
+            fontSize: _KDefaultTextFontSize, color: widget.inputTextColor),
         keyboardType: TextInputType.number,
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
@@ -124,12 +127,12 @@ class VxStepperState extends State<VxStepper> {
       width: _KDefaultButtonSize,
       child: FlatButton(
         shape: const CircleBorder(),
-        color: widget?.actionButtonColor,
+        color: widget.actionButtonColor,
         onPressed: enableMax ? onAdd : null,
         padding: EdgeInsets.zero,
         child: Icon(
           Icons.add,
-          color: widget?.actionIconColor,
+          color: widget.actionIconColor,
         ),
       ),
     ));
@@ -172,16 +175,16 @@ class VxStepperState extends State<VxStepper> {
   }
 
   int getNumber() {
-    final String temp = controller.text;
-    if (temp == null || temp.isEmpty) {
+    final String temp = controller!.text;
+    if (temp.isEmpty) {
       return widget.min;
     } else {
-      return math.min(widget.max, num.parse(temp));
+      return math.min(widget.max, num.parse(temp) as int);
     }
   }
 
   void updateControllerValue(num number) {
-    controller.text = '$number';
+    controller!.text = '$number';
     recordNumber = number;
     setState(() {});
   }
@@ -202,14 +205,14 @@ class VxStepperState extends State<VxStepper> {
   void inputComplete() {
     unFocus();
     final int temp = getNumber();
-    controller.text = '$temp';
+    controller!.text = '$temp';
     recordNumber = temp;
   }
 
   void callBackNumber() {
     if (widget.onChange != null) {
       final int temp = getNumber();
-      widget.onChange(temp);
+      widget.onChange!(temp);
     }
   }
 

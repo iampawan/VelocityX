@@ -81,7 +81,7 @@ extension IterableBasics<E> on Iterable<E> {
 
     for (final element in otherElementCounts.keys) {
       final countInThis = thisElementCounts[element] ?? 0;
-      if (countInThis < otherElementCounts[element]) {
+      if (countInThis < otherElementCounts[element]!) {
         return false;
       }
     }
@@ -120,12 +120,12 @@ extension NumIterableBasics<E extends num> on Iterable<E> {
   /// [1, 2, 3].sum((i) => i * 3); // 18.
   /// [].sum() // 0.
   /// ```
-  num sum([num Function(E) addend]) {
+  num sum([num Function(E)? addend]) {
     if (isEmpty) {
       return 0;
     }
     return addend == null
-        ? reduce((a, b) => a + b)
+        ? reduce((a, b) => a + b as E)
         : fold(0, (prev, element) => prev + addend(element));
   }
 }

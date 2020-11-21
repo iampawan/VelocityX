@@ -23,25 +23,25 @@ enum VxSkeletonAnimationType {
 
 /// To show skeleton with any widget.
 class VxSkeleton extends StatefulWidget {
-  final BoxShape shape;
-  final EdgeInsetsGeometry padding;
-  final Color color;
-  final Color shimmerColor;
-  final double width;
-  final double height;
-  final EdgeInsetsGeometry margin;
-  final BorderRadiusGeometry borderRadius;
-  final Duration duration;
+  final BoxShape? shape;
+  final EdgeInsetsGeometry? padding;
+  final Color? color;
+  final Color? shimmerColor;
+  final double? width;
+  final double? height;
+  final EdgeInsetsGeometry? margin;
+  final BorderRadiusGeometry? borderRadius;
+  final Duration? duration;
   final bool active;
 
   /// [stretchWidth] required for using stretch
   final VxSkeletonAnimationType type;
 
   /// Required for stretch
-  final double stretchWidth;
+  final double? stretchWidth;
 
   const VxSkeleton(
-      {Key key,
+      {Key? key,
       this.shape,
       this.padding,
       this.color,
@@ -62,8 +62,8 @@ class VxSkeleton extends StatefulWidget {
 
 class VxSkeletonState extends State<VxSkeleton>
     with SingleTickerProviderStateMixin {
-  Animation<double> _animation;
-  AnimationController _controller;
+  late Animation<double> _animation;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -150,7 +150,7 @@ class VxSkeletonState extends State<VxSkeleton>
           final Color color = widget.color ?? const Color(0xFFE8E8E8);
           final Color shimmerColor =
               widget.shimmerColor ?? const Color(0xFFEDEDED);
-          final Gradient gradient =
+          final Gradient? gradient =
               widget.type == VxSkeletonAnimationType.shimmer
                   ? LinearGradient(
                       begin: Alignment.centerLeft,
@@ -166,7 +166,7 @@ class VxSkeletonState extends State<VxSkeleton>
                           _animation.value + 0.4
                         ])
                   : null;
-          final double width = widget.type == VxSkeletonAnimationType.shimmer
+          final double? width = widget.type == VxSkeletonAnimationType.shimmer
               ? widget.width
               : _animation.value;
           final decColor =
@@ -200,19 +200,19 @@ extension SkeletonExtension on Widget {
   ///
   /// show skeleton extension
   Widget skeleton(
-          {Key key,
-          BoxShape shape,
-          EdgeInsetsGeometry padding,
-          Color color,
-          Color shimmerColor,
-          double width,
-          double height,
-          EdgeInsetsGeometry margin,
-          BorderRadiusGeometry borderRadius,
-          Duration duration,
+          {Key? key,
+          BoxShape? shape,
+          EdgeInsetsGeometry? padding,
+          Color? color,
+          Color? shimmerColor,
+          double? width,
+          double? height,
+          EdgeInsetsGeometry? margin,
+          BorderRadiusGeometry? borderRadius,
+          Duration? duration,
           bool active = true,
           VxSkeletonAnimationType type = VxSkeletonAnimationType.shimmer,
-          double stretchWidth}) =>
+          double? stretchWidth}) =>
       VxSkeleton(
         key: key,
         active: active,

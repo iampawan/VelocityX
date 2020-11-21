@@ -5,18 +5,18 @@ homepage: https://velocityx.dev
 repository: https://github.com/iampawan/VelocityX
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  auto_size_text: ^2.1.0
-  intl: ^0.16.1
-  pedantic: ^1.9.2
+  auto_size_text_pk: ^3.0.0-nullsafety.0
+  intl: ^0.17.0-nullsafety.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.10.0-nullsafety.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

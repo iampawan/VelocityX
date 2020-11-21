@@ -15,7 +15,7 @@ enum VxCurve {
 ///
 class VxNeumorph {
   final List<BoxShadow> shadows;
-  final Gradient gradient;
+  final Gradient? gradient;
 
   VxNeumorph(this.shadows, this.gradient);
 }

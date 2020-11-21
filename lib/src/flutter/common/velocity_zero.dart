@@ -25,9 +25,9 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
       end: Alignment.centerRight,
       colors: isDark
           ? [
-              Colors.grey[700],
-              Colors.grey[600],
-              Colors.grey[700],
+              Colors.grey[700]!,
+              Colors.grey[600]!,
+              Colors.grey[700]!,
               // Color(0xfff6f7f9),
             ]
           : [
@@ -68,8 +68,8 @@ class VxZeroCard extends StatefulWidget {
 
 class _VxZeroCardState extends State<VxZeroCard>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  Animation<double>? animation;
 
   @override
   void initState() {
@@ -82,7 +82,7 @@ class _VxZeroCardState extends State<VxZeroCard>
     animation = Tween<double>(begin: -1.0, end: 2.0).animate(
         CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
 
-    animation.addStatusListener((status) {
+    animation!.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
           status == AnimationStatus.dismissed) {
         _controller.repeat();
@@ -102,7 +102,7 @@ class _VxZeroCardState extends State<VxZeroCard>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animation,
+      animation: animation!,
       builder: (context, child) {
         return Padding(
           padding: const EdgeInsets.all(16.0),
@@ -186,10 +186,10 @@ class _VxLine extends StatelessWidget {
     this.heightRatio,
     this.animation,
     this.isDark, {
-    Key key,
+    Key? key,
   }) : super(key: key);
 
-  final Animation<double> animation;
+  final Animation<double>? animation;
   final double widthRatio;
   final double heightRatio;
   final bool isDark;
@@ -209,7 +209,7 @@ class _VxLine extends StatelessWidget {
 ///
 class VxZeroList extends StatelessWidget {
   const VxZeroList(
-      {Key key,
+      {Key? key,
       this.isCircularImage = true,
       this.length = 10,
       this.isBottomLinesActive = true,
@@ -266,8 +266,8 @@ class PKCardProfileSkeleton extends StatefulWidget {
 
 class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -418,8 +418,8 @@ class PKCardPageSkeleton extends StatefulWidget {
 
 class _PKCardPageSkeletonState extends State<PKCardPageSkeleton>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> animation;
+  late AnimationController _controller;
+  late Animation<double> animation;
 
   @override
   void initState() {

@@ -4,13 +4,13 @@ import 'package:velocity_x/src/velocity_xx.dart';
 ///default value if error was raised or return value is null
 ///Originally available at https://pub.dev/packages/guard
 
-T guard<T>(T Function() callback, [T defaultValue]) {
-  T result;
+T? guard<T>(T Function() callback, [T? defaultValue]) {
+  T? result;
 
   try {
     result = callback();
   } catch (err) {
-    Vx.log(err);
+    Vx.log(err.toString());
   }
 
   return result ?? defaultValue;
@@ -20,13 +20,14 @@ T guard<T>(T Function() callback, [T defaultValue]) {
 ///default value if error was raised or return value is null
 ///Originally available at https://pub.dev/packages/guard
 
-Future<T> asyncGuard<T>(Future<T> Function() callback, [T defaultValue]) async {
-  T result;
+Future<T?> asyncGuard<T>(Future<T> Function() callback,
+    [T? defaultValue]) async {
+  T? result;
 
   try {
     result = await callback();
   } catch (err) {
-    Vx.log(err);
+    Vx.log(err.toString());
   }
 
   return result ?? defaultValue;

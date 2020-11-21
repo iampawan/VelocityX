@@ -19,10 +19,10 @@ enum VxRoundType { point, round, ellipse }
 /// VxRound Widget for different dot indicators
 class VxRound extends StatelessWidget {
   final VxRoundType type;
-  final double size;
-  final Color color;
+  final double? size;
+  final Color? color;
   final dynamic child;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   const VxRound({
     this.type = VxRoundType.point,
@@ -67,7 +67,7 @@ class VxRound extends StatelessWidget {
           borderRadius: BorderRadius.horizontal(left: radius, right: radius),
         ),
         child: Row(
-          children: [getContent()],
+          children: [getContent()!],
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
@@ -86,7 +86,7 @@ class VxRound extends StatelessWidget {
   }
 
   /// Get the content
-  Widget getContent() {
+  Widget? getContent() {
     if (child is String) {
       return Text(child, style: getTextStyle(), maxLines: 1);
     } else if (child is Widget) {

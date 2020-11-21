@@ -14,10 +14,10 @@
 import 'package:flutter/material.dart';
 
 mixin VxAlignmentMixing<T> {
-  T _child;
+  late T _child;
 
   @protected
-  Alignment velocityAlignment;
+  Alignment? velocityAlignment;
 
   @protected
   void setChildForAlignment(T child) {
@@ -30,24 +30,15 @@ mixin VxAlignmentMixing<T> {
   }
 
   T get alignTopCenter => _addAlignment(alignment: Alignment.topCenter);
-
   T get alignTopLeft => _addAlignment(alignment: Alignment.topLeft);
-
   T get alignTopRight => _addAlignment(alignment: Alignment.topRight);
-
   T get alignCenter => _addAlignment(alignment: Alignment.center);
-
   T get alignCenterLeft => _addAlignment(alignment: Alignment.centerLeft);
-
   T get alignCenterRight => _addAlignment(alignment: Alignment.centerRight);
-
   T get alignBottomCenter => _addAlignment(alignment: Alignment.bottomCenter);
-
   T get alignBottomLeft => _addAlignment(alignment: Alignment.bottomLeft);
-
   T get alignBottomRight => _addAlignment(alignment: Alignment.bottomRight);
-
-  T _addAlignment({@required Alignment alignment}) {
+  T _addAlignment({required Alignment alignment}) {
     velocityAlignment = alignment;
     return _child;
   }

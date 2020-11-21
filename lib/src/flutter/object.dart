@@ -105,7 +105,7 @@ extension ObjectExtensions on Widget {
   //     ObjectAlignBuilder.lerp(this, a, b, t);
 
   /// Can be used to wrap as cover fit of the FittedBox.
-  Widget objectCover({Key key}) => FittedBox(
+  Widget objectCover({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.cover,
         child: this,
@@ -113,7 +113,7 @@ extension ObjectExtensions on Widget {
       );
 
   /// Can be used to wrap as a contain fit of the FittedBox.
-  Widget objectContain({Key key}) => FittedBox(
+  Widget objectContain({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.contain,
         child: this,
@@ -121,7 +121,7 @@ extension ObjectExtensions on Widget {
       );
 
   /// Can be used to wrap as a fill fit of the FittedBox.
-  Widget objectFill({Key key}) => FittedBox(
+  Widget objectFill({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.fill,
         child: this,
@@ -129,7 +129,7 @@ extension ObjectExtensions on Widget {
       );
 
   /// Can be used to wrap as a scaledown fit of the FittedBox.
-  Widget objectScaleDown({Key key}) => FittedBox(
+  Widget objectScaleDown({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.scaleDown,
         child: this,
@@ -137,7 +137,7 @@ extension ObjectExtensions on Widget {
       );
 
   /// Can be used to wrap as a none fit of the FittedBox.
-  Widget objectNone({Key key}) => FittedBox(
+  Widget objectNone({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.none,
         child: this,
@@ -146,9 +146,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to topleft.
   Align objectTopLeft({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -160,9 +160,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to topcenter.
   Align objectTopCenter({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -174,9 +174,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to topright.
   Align objectTopRight({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -188,9 +188,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to bottomleft.
   Align objectBottomLeft({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -202,9 +202,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to bottomcenter.
   Align objectBottomCenter({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -216,9 +216,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to bottomright.
   Align objectBottomRight({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -230,9 +230,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to centerleft.
   Align objectCenterLeft({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -244,9 +244,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to center.
   Align objectCenter({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -258,9 +258,9 @@ extension ObjectExtensions on Widget {
 
   /// Can be used to align a widget to centerright.
   Align objectCenterRight({
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
@@ -275,14 +275,14 @@ extension ObjectExtensions on Widget {
     Alignment a,
     Alignment b,
     double t, {
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,
         child: this,
-        alignment: Alignment.lerp(a, b, t),
+        alignment: Alignment.lerp(a, b, t)!,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
       );
@@ -291,9 +291,9 @@ extension ObjectExtensions on Widget {
   Align objectXY(
     double x,
     double y, {
-    Key key,
-    double heightFactor,
-    double widthFactor,
+    Key? key,
+    double? heightFactor,
+    double? widthFactor,
   }) =>
       Align(
         key: key,

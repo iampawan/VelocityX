@@ -18,7 +18,7 @@ import 'package:velocity_x/velocity_x.dart';
 void main() {
   testWidgets('user is able to select value from drop down',
       (WidgetTester tester) async {
-    String _value = 'HEY';
+    String? _value = 'HEY';
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: MaterialApp(

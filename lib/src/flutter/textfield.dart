@@ -7,36 +7,36 @@ enum VxTextFieldBorderType { none, roundLine, underLine }
 
 /// An easy to use implementation of [TextField] with ready to use props.
 class VxTextField extends StatefulWidget {
-  final TextEditingController controller;
-  final String hint;
-  final String value;
+  final TextEditingController? controller;
+  final String? hint;
+  final String? value;
   final bool clear;
   final bool isPassword;
   final bool obscureText;
   final VxTextFieldBorderType borderType;
-  final int maxLine;
-  final int maxLength;
+  final int? maxLine;
+  final int? maxLength;
   final TextAlign textAlign;
-  final Color fillColor;
-  final Color borderColor;
-  final Widget prefixIcon;
+  final Color? fillColor;
+  final Color? borderColor;
+  final Widget? prefixIcon;
   final double height;
-  final Widget icon;
-  final double borderRadius;
-  final double contentPaddingLeft;
-  final double contentPaddingTop;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
-  final List<TextInputFormatter> inputFormatters;
-  final ValueChanged<String> onChanged;
-  final ValueChanged<String> onSubmitted;
-  final VoidCallback onEditingComplete;
-  final FocusNode focusNode;
-  final String counterText;
+  final Widget? icon;
+  final double? borderRadius;
+  final double? contentPaddingLeft;
+  final double? contentPaddingTop;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final List<TextInputFormatter>? inputFormatters;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final VoidCallback? onEditingComplete;
+  final FocusNode? focusNode;
+  final String? counterText;
   final bool autofocus;
 
   const VxTextField({
-    Key key,
+    Key? key,
     this.controller,
     this.hint,
     this.value,
@@ -71,9 +71,9 @@ class VxTextField extends StatefulWidget {
 }
 
 class _VxTextFieldState extends State<VxTextField> {
-  TextEditingController controller;
+  TextEditingController? controller;
   bool obscureText = false;
-  FocusNode focusNode;
+  FocusNode? focusNode;
 
   @override
   void initState() {
@@ -81,7 +81,7 @@ class _VxTextFieldState extends State<VxTextField> {
     controller = widget.controller ?? TextEditingController(text: widget.value);
     obscureText = widget.obscureText;
     focusNode = widget.focusNode ?? FocusNode();
-    focusNode.addListener(notify);
+    focusNode!.addListener(notify);
   }
 
   @override
@@ -114,7 +114,8 @@ class _VxTextFieldState extends State<VxTextField> {
       onSubmitted: onSubmitted,
     );
 
-    if (widget.maxLine == null &&
+    const other = null;
+    if (widget.maxLine == other &&
         widget.borderType == VxTextFieldBorderType.roundLine) {
       return Container(
         decoration: getBoxDecoration(),
@@ -127,15 +128,13 @@ class _VxTextFieldState extends State<VxTextField> {
   }
 
   /// Suffix widget to show
-  Widget suffixView() {
+  Widget? suffixView() {
     final List<Widget> children = [];
-    final String tempValue = controller.text;
+    final String tempValue = controller!.text;
     final double tempSize = math.min(widget.height / 2, 24);
 
     // Clear Button
-    if (widget.clear &&
-        focusNode.hasFocus &&
-        (tempValue != null && tempValue.isNotEmpty)) {
+    if (widget.clear && focusNode!.hasFocus && (tempValue.isNotEmpty)) {
       children.add(GestureDetector(
         onTap: clear,
         child: Icon(Icons.clear, size: tempSize),
@@ -196,7 +195,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// Non-filled decoration
 
-  InputBorder getInputBorder() {
+  InputBorder? getInputBorder() {
     final Color tempColor =
         widget.borderColor ?? Theme.of(context).primaryColor;
     if (widget.borderType == VxTextFieldBorderType.none) {
@@ -224,7 +223,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// Fill decoration
 
-  BoxDecoration getBoxDecoration() {
+  BoxDecoration? getBoxDecoration() {
     final Color tempColor =
         widget.borderColor ?? Theme.of(context).primaryColor;
     if (widget.borderType == VxTextFieldBorderType.roundLine) {
@@ -253,7 +252,7 @@ class _VxTextFieldState extends State<VxTextField> {
   void onChanged(String value) {
     notify();
     if (widget.onChanged != null) {
-      widget.onChanged(value);
+      widget.onChanged!(value);
     }
   }
 
@@ -261,7 +260,7 @@ class _VxTextFieldState extends State<VxTextField> {
   void onEditingComplete() {
 //    FocusScope.of(context).unfocus();
     if (widget.onEditingComplete != null) {
-      widget.onEditingComplete();
+      widget.onEditingComplete!();
     }
   }
 
@@ -269,7 +268,7 @@ class _VxTextFieldState extends State<VxTextField> {
   void onSubmitted(String value) {
 //    FocusScope.of(context).unfocus();
     if (widget.onSubmitted != null) {
-      widget.onSubmitted(value);
+      widget.onSubmitted!(value);
     }
   }
 
