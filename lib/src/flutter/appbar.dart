@@ -319,7 +319,12 @@ class _VxAppBarState extends State<VxAppBar> {
     assert(debugCheckHasMaterialLocalizations(context));
     final ThemeData theme = Theme.of(context);
     final AppBarTheme appBarTheme = AppBarTheme.of(context);
-    final ScaffoldState scaffold = Scaffold.of(context, nullOk: true);
+    ScaffoldState scaffold;
+    try {
+      scaffold = Scaffold.of(context);
+    } catch (_) {
+      scaffold = null;
+    }
     final ModalRoute<dynamic> parentRoute = ModalRoute.of(context);
     final bool hasDrawer = scaffold?.hasDrawer ?? false;
     final bool hasEndDrawer = scaffold?.hasEndDrawer ?? false;
