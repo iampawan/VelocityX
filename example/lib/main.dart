@@ -106,7 +106,7 @@ class Demo extends StatelessWidget {
                 .box
                 .rounded
                 .alignCenter
-                .black
+                .color(Vx.randomOpaqueColor)
                 .make()
                 .p4()).swiper(
             height: context.isMobile ? 200 : 400,
@@ -116,7 +116,6 @@ class Demo extends StatelessWidget {
               print(index);
             },
             isFastScrollingEnabled: true,
-            // scrollPhysics: ClampingScrollPhysics(),
             scrollDirection:
                 context.isMobile ? Axis.horizontal : Axis.horizontal),
         20.heightBox,

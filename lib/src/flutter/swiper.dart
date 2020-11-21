@@ -269,7 +269,7 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
               //Move to page based on velocity (increase velocity multiplier to scroll further)
               widget.pageController.animateToPage(
                   widget.pageController.page.toInt() + (v * 1.2)?.round(),
-                  duration: const Duration(milliseconds: 800),
+                  duration: const Duration(milliseconds: 400),
                   curve: Curves.easeOutCubic);
             }
           }
