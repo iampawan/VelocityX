@@ -4,6 +4,12 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://velocityx.dev/" target="_blank">
+    <img src="https://i.imgur.com/CXEiorH.png"  width="800" alt="VelocityX">
+  </a>
+</p>
+
 [**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
 
 ## Inspired from Tailwindcss and SwiftUI.
@@ -11,6 +17,14 @@
 ```dart
 "Web".text.white.xl4.bold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered();
 ```
+
+---
+
+## Why use VelocityX?
+
+<img src="https://i.imgur.com/UNf4fE6.png" width="300">
+<img src="https://i.imgur.com/UAzM6iT.png" width="290">
+<img src="https://i.imgur.com/rE46nEL.png" width="245">
 
 ### Show some :heart: and star the repo.
 
@@ -21,32 +35,34 @@
 
 # Quick start
 
-Read the [Getting started page of VelocityX](https://velocityx.dev/#/home)
+Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 
 ## VelocityX Video Tutorials
 
 [Watch here](https://www.youtube.com/playlist?list=PLR2qQy0Zxs_UHLXSYbK50jEapx0ORmLYv)
 
-## YouTube Channel
+---
 
-[MTechViral](https://www.youtube.com/mtechviral)
+<a href="https://www.buymeacoffee.com/mtechviral"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=mtechviral&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"></a>
 
-## Facebook Group
+---
 
-[Let's Flutter With Dart](https://www.facebook.com/groups/425920117856409/)
+## Some popular Vx widgets
 
-## Collection of flutter apps with tutorial
+| [VxTimeline]()                                                                  | [VxAnimation]()                                                                         | [VxSwiper]()                                                                          | [VxResponsive]()                                                                      |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| <img src="https://imagizer.imageshack.com/img922/3315/lYf8pd.png"  width="400"> | <img src="https://imagizer.imageshack.com/img924/6697/M7az7V.png" width="400" />        | <img src="https://imagizer.imageshack.com/img923/4109/Mmsi87.png" width="400">        | <img src="https://imagizer.imageshack.com/img924/1754/lry31m.png" width="400">        |
+| Demo 1                                                                          | Demo 2                                                                                  | Demo 3                                                                                | Demo 4                                                                                |
+| <img src="https://i.imgur.com/xtUOjiV.gif"  width="400">                        | <img src="https://imagizer.imageshack.com/v2/1024x768q90/922/YgXVGd.png" width="400" /> | <img src="https://imagizer.imageshack.com/v2/1024x768q90/924/u5VAhU.png" width="400"> | <img src="https://imagizer.imageshack.com/v2/1024x768q90/922/kNs9eC.png" width="400"> |
 
-[Flutter Example Apps](https://github.com/iampawan/FlutterExampleApps)
-
-## Some designs made using VelocityX
+## Some quick UIs made using VelocityX
 
 <p float="left">
- <img src="https://i.imgur.com/50tJKqU.png"  />
-  <img src="https://i.imgur.com/vNPjDMs.png"  />
-  <img src="https://i.imgur.com/xbV5OAQ.png" />
-  <img src="https://i.imgur.com/k6kT85i.png" />
-  <img src="https://i.imgur.com/s44TaIt.png" />
+ <img src="https://i.imgur.com/50tJKqU.png"  width="500"/>
+  <img src="https://i.imgur.com/vNPjDMs.png"  width="315"/>
+  <img src="https://i.imgur.com/xbV5OAQ.png" width="225"/>
+  <img src="https://i.imgur.com/k6kT85i.png" width="540"/>
+  <img src="https://i.imgur.com/s44TaIt.png" width="460"/>
 </p>
 
 ## Contributing
@@ -60,13 +76,29 @@ VelocityX is **100% free** and **open source**. We encourage and support an acti
 - Dig into [**CONTRIBUTING.MD**](CONTRIBUTING.md), which covers submitting bugs, requesting new features, preparing your code for a pull request, etc.
 - Please don't forget to **like**, **follow**, and **star our repo**!
 
-## Documentation
+# Documentation
 
-[**Installation Guide**](https://velocityx.dev/#/home)
+[**Installation Guide**](https://velocityx.dev/docs/install)
 
 ### :heart: Found this project useful?
 
 If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
+
+---
+
+### YouTube Channel
+
+[MTechViral](https://www.youtube.com/mtechviral)
+
+### Facebook Group
+
+[Let's Flutter With Dart](https://www.facebook.com/groups/425920117856409/)
+
+### Collection of flutter apps with tutorial
+
+[Flutter Example Apps](https://github.com/iampawan/FlutterExampleApps)
+
+---
 
 ## Project Created & Maintained By
 
@@ -87,6 +119,12 @@ Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #E
 > - [PayPal](https://www.paypal.me/imthepk/)
 
 ### Note: VelocityX is not directly and/or indirectly associated/affiliated with Flutter or Google LLC.
+
+## Active Contributors
+
+1. Ayush Bherwani
+1. Hasnen Tai
+1. Harpreet Singh
 
 ## Copyright-and-license
 
