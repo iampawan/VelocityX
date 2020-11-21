@@ -127,11 +127,6 @@ extension ContextExtensions on BuildContext {
   Color get cardColor => theme.cardColor;
 
   ///
-  /// The default color of textSelectionColor.
-  ///
-  Color get selectionColor => TextSelectionTheme.of(this).selectionColor;
-
-  ///
   /// The default brightness of the [Theme].
   ///
   Brightness get brightness => theme.brightness;
@@ -210,14 +205,6 @@ extension ContextExtensions on BuildContext {
   /// If there is no [Scaffold] in scope, then this will throw an exception.
   ///
   ScaffoldState get scaffold => Scaffold.of(this);
-
-  ///
-  /// Shows a [SnackBar] at the bottom of the scaffold.
-  ///
-  /// If you call this function too quickly, the new snackbar is added to a
-  /// queue and displayed when the current one disappears.
-  ///
-  void showSnackBar(SnackBar snackbar) => scaffold.showSnackBar(snackbar);
 }
 
 Future<void> _nextPage(

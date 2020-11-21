@@ -30,12 +30,13 @@ class VxSwiper extends StatefulWidget {
       this.reverse = false,
       this.autoPlay = false,
       this.autoPlayInterval = const Duration(seconds: 5),
-      this.autoPlayAnimationDuration = const Duration(seconds: 800),
+      this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
       this.autoPlayCurve = Curves.fastOutSlowIn,
       this.pauseAutoPlayOnTouch,
       this.enlargeCenterPage = false,
       this.onPageChanged,
       this.scrollPhysics,
+      this.isFastScrollingEnabled = false,
       this.scrollDirection = Axis.horizontal})
       : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
         itemCount = items.length,
@@ -58,12 +59,13 @@ class VxSwiper extends StatefulWidget {
       this.reverse = false,
       this.autoPlay = false,
       this.autoPlayInterval = const Duration(seconds: 5),
-      this.autoPlayAnimationDuration = const Duration(seconds: 1),
+      this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
       this.autoPlayCurve = Curves.fastOutSlowIn,
       this.pauseAutoPlayOnTouch,
       this.enlargeCenterPage = false,
       this.onPageChanged,
       this.scrollPhysics,
+      this.isFastScrollingEnabled = false,
       this.scrollDirection = Axis.horizontal})
       : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
         items = null,
@@ -174,6 +176,10 @@ class VxSwiper extends StatefulWidget {
   /// and can be used to control the [PageView] it is passed to.
   final PageController pageController;
 
+  /// [isFastScrollingEnabled] can be used to scrolling fast the [PageView].
+  /// But it will not work if [autoPlay] is enabled. It also sets the [scrollPhysics] to [ClampingScrollPhysics].
+  final bool isFastScrollingEnabled;
+
   /// Animates the controlled [VxSwiper] to the next page.
   ///
   /// The animation lasts for the given duration and follows the given curve.
@@ -244,18 +250,49 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
     });
   }
 
+  Widget fastScrollWidget(Widget child) {
+    int t; //Tid
+    double p; //Position
+    return Listener(
+        onPointerMove: (pos) {
+          //Get pointer position when pointer moves
+          //If time since last scroll is undefined or over 100 milliseconds
+          if (t == null || DateTime.now().millisecondsSinceEpoch - t > 100) {
+            t = DateTime.now().millisecondsSinceEpoch;
+            p = pos.position.dx; //x position
+          } else {
+            //Calculate velocity
+            final double v = (p - pos.position.dx) /
+                (DateTime.now().millisecondsSinceEpoch - t);
+            if (v < -2 || v > 2) {
+              //Don't run if velocity is to low
+              //Move to page based on velocity (increase velocity multiplier to scroll further)
+              widget.pageController.animateToPage(
+                  widget.pageController.page.toInt() + (v * 1.2)?.round(),
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeOutCubic);
+            }
+          }
+        },
+        child: child);
+  }
+
   Widget getWrapper(Widget child) {
     if (widget.height != null) {
       final Widget wrapper = Container(height: widget.height, child: child);
       return widget.autoPlay && widget.pauseAutoPlayOnTouch != null
           ? addGestureDetection(wrapper)
-          : wrapper;
+          : (widget.isFastScrollingEnabled
+              ? fastScrollWidget(wrapper)
+              : wrapper);
     } else {
       final Widget wrapper =
           AspectRatio(aspectRatio: widget.aspectRatio, child: child);
       return widget.autoPlay && widget.pauseAutoPlayOnTouch != null
           ? addGestureDetection(wrapper)
-          : wrapper;
+          : (widget.isFastScrollingEnabled
+              ? fastScrollWidget(wrapper)
+              : wrapper);
     }
   }
 
@@ -271,7 +308,9 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return getWrapper(PageView.builder(
-      physics: widget.scrollPhysics,
+      physics: widget.isFastScrollingEnabled
+          ? const ClampingScrollPhysics()
+          : widget.scrollPhysics,
       scrollDirection: widget.scrollDirection,
       controller: widget.pageController,
       reverse: widget.reverse,

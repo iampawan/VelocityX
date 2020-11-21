@@ -125,16 +125,26 @@ extension ListWidgetExtension on List<Widget> {
   ///
   /// Extension for using [VxSwiper] directly with list of widgets
   ///
-  Widget swiper({
-    Key key,
-    double height,
-    double aspectRatio = 16 / 9,
-    bool enableInfiniteScroll = true,
-    bool enlargeCenterPage = false,
-    Function(int index) onPageChanged,
-    ScrollPhysics scrollPhysics,
-    Axis scrollDirection = Axis.horizontal,
-  }) =>
+  Widget swiper(
+          {Key key,
+          double height,
+          double aspectRatio = 16 / 9,
+          bool enableInfiniteScroll = true,
+          bool enlargeCenterPage = false,
+          Function(int index) onPageChanged,
+          ScrollPhysics scrollPhysics,
+          Axis scrollDirection = Axis.horizontal,
+          num viewportFraction = 0.8,
+          bool autoPlay = false,
+          bool reverse = false,
+          Duration pauseAutoPlayOnTouch,
+          Duration autoPlayAnimationDuration =
+              const Duration(milliseconds: 800),
+          Duration autoPlayInterval = const Duration(seconds: 5),
+          Curve autoPlayCurve = Curves.fastOutSlowIn,
+          num initialPage = 0,
+          int realPage = 10000,
+          bool isFastScrollingEnabled = false}) =>
       VxSwiper(
         items: this,
         height: height,
@@ -144,6 +154,16 @@ extension ListWidgetExtension on List<Widget> {
         onPageChanged: onPageChanged,
         scrollPhysics: scrollPhysics,
         scrollDirection: scrollDirection,
+        viewportFraction: viewportFraction,
+        autoPlay: autoPlay,
+        pauseAutoPlayOnTouch: pauseAutoPlayOnTouch,
+        reverse: reverse,
+        autoPlayAnimationDuration: autoPlayAnimationDuration,
+        autoPlayCurve: autoPlayCurve,
+        autoPlayInterval: autoPlayInterval,
+        initialPage: initialPage,
+        realPage: realPage,
+        isFastScrollingEnabled: isFastScrollingEnabled,
       );
 }
 

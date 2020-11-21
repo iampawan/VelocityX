@@ -47,6 +47,7 @@ class Demo extends StatelessWidget {
             .onInkTap(() {
           // Show Toast
           context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
+          // VxToast.showLoading(context, msg: "Loading");
 
           /// or
           // VxToast.show(context, msg: "Hello from vx", showTime: 10000);
@@ -61,11 +62,9 @@ class Demo extends StatelessWidget {
         "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
         TapMeWidget(),
         10.heightBox,
-        const VxStepper(
-          inputBoxColor: Colors.black,
-          inputTextColor: Colors.white,
-          disableInput: true,
-        ),
+        VxStepper(onChange: (value) {
+          print(value);
+        }),
         10.heightBox,
         VxRating(
           onRatingUpdate: (value) {},
@@ -98,18 +97,27 @@ class Demo extends StatelessWidget {
             .shadow2xl
             .linearGradient([Vx.teal400, Vx.indigo400]).makeCentered(),
         20.heightBox,
-        [
-          "Item 1".text.white.make().box.rounded.alignCenter.black.make().p4(),
-          "Item 2".text.make().box.rounded.alignCenter.green500.make().p4(),
-          "Item 3".text.make().box.rounded.alignCenter.blue500.make().p4(),
-          "Item 4".text.make().box.rounded.alignCenter.red500.make().p4(),
-          "Item 5".text.make().box.rounded.alignCenter.orange500.make().p4(),
-          "Item 6".text.make().box.rounded.alignCenter.pink500.make().p4(),
-        ].swiper(
+        List.generate(
+            50,
+            (index) => "Item $index"
+                .text
+                .white
+                .make()
+                .box
+                .rounded
+                .alignCenter
+                .color(Vx.randomOpaqueColor)
+                .make()
+                .p4()).swiper(
             height: context.isMobile ? 200 : 400,
             enlargeCenterPage: true,
+            autoPlay: false,
+            onPageChanged: (index) {
+              print(index);
+            },
+            isFastScrollingEnabled: true,
             scrollDirection:
-                context.isMobile ? Axis.vertical : Axis.horizontal),
+                context.isMobile ? Axis.horizontal : Axis.horizontal),
         20.heightBox,
         const VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
         const VxResponsive(
@@ -363,7 +371,7 @@ class _SecondPage extends StatelessWidget {
       body: Center(
         child: Material(
           child: InkWell(
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () => context.pop(),
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.asset(

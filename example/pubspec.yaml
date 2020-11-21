@@ -19,6 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   velocity_x:
     path: ../
 
