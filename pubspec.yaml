@@ -1,11 +1,11 @@
 name: velocity_x
 description: A minimalist Flutter framework for rapidly building custom designs.
-version: 0.5.0
+version: 1.0.0
 homepage: https://velocityx.dev
 repository: https://github.com/iampawan/VelocityX
 
 environment:
-  sdk: ">=2.9.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
