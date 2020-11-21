@@ -1,3 +1,11 @@
+## [1.0.1] - November 21, 2020
+
+- Added isFastScrollingEnabled to fast scroll the VxSwiper or swiper ext.
+- Added .fontWeight method for texts to set custom font weight.
+- Fixed an issue with compilation with some of the flutter versions.
+- Fixed an issue with VxScrollVertical and VxScrollHorizontal where child was not working.
+- Minor bug fixes.
+
 ## [1.0.0] - November 03, 2020
 
 - Added VxTimeline widget.
