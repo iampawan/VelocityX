@@ -97,18 +97,28 @@ class Demo extends StatelessWidget {
             .shadow2xl
             .linearGradient([Vx.teal400, Vx.indigo400]).makeCentered(),
         20.heightBox,
-        [
-          "Item 1".text.white.make().box.rounded.alignCenter.black.make().p4(),
-          "Item 2".text.make().box.rounded.alignCenter.green500.make().p4(),
-          "Item 3".text.make().box.rounded.alignCenter.blue500.make().p4(),
-          "Item 4".text.make().box.rounded.alignCenter.red500.make().p4(),
-          "Item 5".text.make().box.rounded.alignCenter.orange500.make().p4(),
-          "Item 6".text.make().box.rounded.alignCenter.pink500.make().p4(),
-        ].swiper(
+        List.generate(
+            50,
+            (index) => "Item $index"
+                .text
+                .white
+                .make()
+                .box
+                .rounded
+                .alignCenter
+                .black
+                .make()
+                .p4()).swiper(
             height: context.isMobile ? 200 : 400,
             enlargeCenterPage: true,
+            autoPlay: false,
+            onPageChanged: (index) {
+              print(index);
+            },
+            isFastScrollingEnabled: true,
+            // scrollPhysics: ClampingScrollPhysics(),
             scrollDirection:
-                context.isMobile ? Axis.vertical : Axis.horizontal),
+                context.isMobile ? Axis.horizontal : Axis.horizontal),
         20.heightBox,
         const VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
         const VxResponsive(
