@@ -58,11 +58,11 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 ## Some quick UIs made using VelocityX
 
 <p float="left">
- <img src="https://i.imgur.com/50tJKqU.png"  width="500"/>
-  <img src="https://i.imgur.com/vNPjDMs.png"  width="315"/>
-  <img src="https://i.imgur.com/xbV5OAQ.png" width="225"/>
-  <img src="https://i.imgur.com/k6kT85i.png" width="540"/>
-  <img src="https://i.imgur.com/s44TaIt.png" width="460"/>
+ <img src="https://i.imgur.com/50tJKqU.png"  width="300"/>
+  <img src="https://i.imgur.com/vNPjDMs.png"  width="300"/>
+  <img src="https://i.imgur.com/Uk28KcB.png" width="300"/>
+  <img src="https://i.imgur.com/cWlCo6P.png" width="300"/>
+  <img src="https://i.imgur.com/Xpdx9UP.png" width="300"/>
 </p>
 
 ## Contributing
