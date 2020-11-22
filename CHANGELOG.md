@@ -1,3 +1,9 @@
+## [2.0.0-nullsafety.1] - November 22, 2020
+
+- BREAKING: opt into null safety
+- upgrade Dart SDK constraints to >=2.12.0-0 <3.0.0
+- upgrade Flutter SDK constraints to >=1.24.0-0 <2.0.0
+
 ## [1.0.1] - November 21, 2020
 
 - Added isFastScrollingEnabled to fast scroll the VxSwiper or swiper ext.

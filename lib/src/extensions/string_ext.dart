@@ -27,7 +27,7 @@ extension StringExtension on String {
   String get eliminateFirst => "${substring(1, length)}";
 
   /// Return a bool if the string is null or empty
-  bool get isEmptyOrNull => this == null || isEmpty;
+  bool get isEmptyOrNull => isEmpty;
 
   ///
   /// Uses regex to check if the provided string is a valid email address or not
@@ -60,7 +60,7 @@ extension StringExtension on String {
   String removeAllWhiteSpace() => replaceAll(RegExp(r"\s+\b|\b\s"), "");
 
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
-  bool get isNotBlank => this != null && trim().isNotEmpty;
+  bool get isNotBlank => trim().isNotEmpty;
 
   ///
   /// Replaces chars of the given String [s] with [replace].

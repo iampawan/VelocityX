@@ -1,16 +1,19 @@
 name: velocity_x
 description: A minimalist Flutter framework for rapidly building custom designs.
-version: 1.0.1
+version: 2.0.0-nullsafety.1
 homepage: https://velocityx.dev
 repository: https://github.com/iampawan/VelocityX
+documentation: https://velocityx.dev
 
 environment:
   sdk: ">=2.12.0-0 <3.0.0"
+  flutter: ">=1.24.0-0 <2.0.0"
 
 dependencies:
+  auto_size_text_pk: ^3.0.0-nullsafety.1
   flutter:
     sdk: flutter
-  auto_size_text_pk: ^3.0.0-nullsafety.0
+
   intl: ^0.17.0-nullsafety.2
 
 dev_dependencies:
@@ -21,7 +24,8 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
-flutter: null
+flutter:
+  uses-material-design: true
 # To add assets to your package, add an assets section, like this:
 # assets:
 #   - images/a_dot_burr.jpeg

@@ -14,7 +14,7 @@ packages:
       name: auto_size_text_pk
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-nullsafety.0"
+    version: "3.0.0-nullsafety.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -164,4 +164,5 @@ packages:
     source: hosted
     version: "2.1.0-nullsafety.5"
 sdks:
-  dart: ">=2.12.0-29.10.beta <3.0.0"
+  dart: ">=2.12.0-0.0 <3.0.0"
+  flutter: ">=1.24.0-0 <2.0.0"
