@@ -24,7 +24,9 @@ extension StringExtension on String {
       : this;
 
   ///Removes first element
-  String get eliminateFirst => "${substring(1, length)}";
+  String get eliminateFirst => length > 1 
+      ? "${substring(1, length)}"
+      : "";
 
   ///Removes last element
   String get eliminateLast => length > 1 
