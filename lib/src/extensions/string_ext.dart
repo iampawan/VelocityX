@@ -26,6 +26,11 @@ extension StringExtension on String {
   ///Removes first element
   String get eliminateFirst => "${substring(1, length)}";
 
+  ///Removes last element
+  String get eliminateLast => length > 1 
+      ? "${substring(0, length-1)}"
+      : "";
+
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
 
