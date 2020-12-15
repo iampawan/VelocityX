@@ -24,7 +24,6 @@ extension ThemeExtension on Widget {
   Theme darkTheme({Key key, bool isMaterialAppTheme}) => Theme(
         data: ThemeData.dark(),
         child: this,
-        isMaterialAppTheme: isMaterialAppTheme,
       );
 
   ///
@@ -33,7 +32,6 @@ extension ThemeExtension on Widget {
   Theme lightTheme({Key key, bool isMaterialAppTheme}) => Theme(
         data: ThemeData.light(),
         child: this,
-        isMaterialAppTheme: isMaterialAppTheme,
       );
 
   ///
@@ -44,6 +42,5 @@ extension ThemeExtension on Widget {
       Theme(
         data: themeData,
         child: this,
-        isMaterialAppTheme: isMaterialAppTheme,
       );
 }
