@@ -6,12 +6,14 @@ import 'package:velocity_x/velocity_x.dart';
 
 import 'dummy.dart';
 
-void main() => runApp(MaterialApp(
-      home: Material(child: Demo()),
-      theme:
-          ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
-      debugShowCheckedModeBanner: false,
-    ));
+void main() => runApp(
+      MaterialApp(
+        home: Material(child: Demo()),
+        theme:
+            ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
 
 class Demo extends StatelessWidget {
   final VxPopupMenuController _controller = VxPopupMenuController();
@@ -71,6 +73,7 @@ class Demo extends StatelessWidget {
           count: 5,
           selectionColor: Colors.teal,
           size: 30,
+          stepInt: true,
         ),
         20.heightBox,
         const VxTextField(
