@@ -24,7 +24,14 @@ extension StringExtension on String {
       : this;
 
   ///Removes first element
-  String get eliminateFirst => "${substring(1, length)}";
+  String get eliminateFirst => length > 1 
+      ? "${substring(1, length)}"
+      : "";
+
+  ///Removes last element
+  String get eliminateLast => length > 1 
+      ? "${substring(0, length-1)}"
+      : "";
 
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
