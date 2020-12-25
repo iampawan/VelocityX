@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -29,48 +30,7 @@ class Demo extends StatelessWidget {
         // TimelineExample(),
         // AnimatedBoxExample(),
         // VxAnimationExample(),
-        DataTable(
-          columns: <DataColumn>[
-            DataColumn(
-              label: 'Name'.text.isIntrinsic.make(),
-            ),
-            DataColumn(
-              label: Text(
-                'Age',
-                style: TextStyle(fontStyle: FontStyle.italic),
-              ),
-            ),
-            DataColumn(
-              label: Text(
-                'Role',
-                style: TextStyle(fontStyle: FontStyle.italic),
-              ),
-            ),
-          ],
-          rows: const <DataRow>[
-            DataRow(
-              cells: <DataCell>[
-                DataCell(Text('Sarah')),
-                DataCell(Text('19')),
-                DataCell(Text('Student')),
-              ],
-            ),
-            DataRow(
-              cells: <DataCell>[
-                DataCell(Text('Janine')),
-                DataCell(Text('43')),
-                DataCell(Text('Professor')),
-              ],
-            ),
-            DataRow(
-              cells: <DataCell>[
-                DataCell(Text('William')),
-                DataCell(Text('27')),
-                DataCell(Text('Associate Professor')),
-              ],
-            ),
-          ],
-        ),
+
         10.heightBox,
         "Hello"
             .text
@@ -87,6 +47,11 @@ class Demo extends StatelessWidget {
                 count: 200,
                 limit: false,
                 color: Colors.black,
+                // optionalWidget: Icon(
+                //   Icons.notification_important,
+                //   size: 8.0,
+                //   color: Colors.white,
+                // ),
                 type: VxBadgeType.round)
             .onInkTap(() {
           // Show Toast

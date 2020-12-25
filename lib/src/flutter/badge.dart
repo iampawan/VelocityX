@@ -164,7 +164,7 @@ extension BadgeExtension on Widget {
     int count,
     bool limit = false,
     double size,
-    Widget widget,
+    Widget optionalWidget,
     VxBadgePosition position = VxBadgePosition.rightTop,
   }) =>
       VxBadge(
@@ -176,6 +176,6 @@ extension BadgeExtension on Widget {
         position: position,
         size: size,
         type: type,
-        optionalWidget: widget,
+        optionalWidget: optionalWidget,
       );
 }
