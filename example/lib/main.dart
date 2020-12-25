@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:velocity_x/velocity_x_rest.dart';
 
 import 'dummy.dart';
 
@@ -66,8 +67,8 @@ class _DemoState extends State<Demo> {
         TextButton(
           child: "Restart Server".text.make(),
           onPressed: () async {
-            print(await VxRest.isConnectedToInternet());
-            VxRest.restartServer();
+            print(await Vx.isConnectedToInternet());
+            VxRest.closeServer();
           },
         ),
         TimelineExample(),

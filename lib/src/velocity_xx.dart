@@ -13,6 +13,7 @@
 
 import 'dart:async';
 import 'dart:developer' as dev;
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -401,4 +402,19 @@ mixin Vx {
   /// Get Random Non-Primary Color
   static Color get randomOpaqueColor =>
       Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+
+  /// Check if connected to internet
+  static Future<bool> isConnectedToInternet() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        print('Connected to internet');
+        return true;
+      }
+    } on SocketException catch (_) {
+      print('Not connected to internet');
+      return false;
+    }
+    return false;
+  }
 }
