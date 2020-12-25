@@ -12,11 +12,12 @@ dependencies:
     sdk: flutter
   auto_size_text: ^2.1.0
   intl: ^0.16.1
-  pedantic: ^1.9.2
+  mime: ^0.9.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.9.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

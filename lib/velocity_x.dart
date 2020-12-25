@@ -1,6 +1,7 @@
 library velocity_x;
 
 export 'src/dart/guard.dart';
+export 'src/dart/rest.dart';
 export 'src/dart/timeline.dart';
 export 'src/extensions/context_ext.dart';
 export 'src/extensions/date_time_ext.dart';

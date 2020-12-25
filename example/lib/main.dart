@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
@@ -16,8 +17,43 @@ void main() => runApp(
       ),
     );
 
-class Demo extends StatelessWidget {
+class Demo extends StatefulWidget {
+  @override
+  _DemoState createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
   final VxPopupMenuController _controller = VxPopupMenuController();
+
+  @override
+  void initState() {
+    super.initState();
+    restOperations();
+  }
+
+  Future<void> restOperations() async {
+    /// Registering routes
+    VxRest.auto('/', 'Hello world');
+    VxRest.get(
+        '/index.html',
+        File(
+            'Users/thepawankumar/Desktop/dev/flutterdev/packages/VelocityX/example/lib/html/index.html'));
+    VxRest.get('/testroute', () {
+      return 'some function';
+    });
+    VxRest.get('/testjson', () {
+      return VxRest.encodeJson({
+        'msg': 'Test Json',
+        'list': [0, 1, 2]
+      });
+    });
+
+    /// Listen to server
+    await VxRest.listen(host: '0.0.0.0', port: 4040);
+
+    /// Open http://127.0.0.1:4040/ on browser
+  }
+
   @override
   Widget build(BuildContext context) {
     Vx.inspect("message");
@@ -27,6 +63,13 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
+        TextButton(
+          child: "Restart Server".text.make(),
+          onPressed: () async {
+            print(await VxRest.isConnectedToInternet());
+            VxRest.restartServer();
+          },
+        ),
         TimelineExample(),
         AnimatedBoxExample(),
         VxAnimationExample(),
