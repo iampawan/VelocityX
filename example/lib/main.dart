@@ -27,17 +27,16 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
-        // TimelineExample(),
-        // AnimatedBoxExample(),
-        // VxAnimationExample(),
-
+        TimelineExample(),
+        AnimatedBoxExample(),
+        VxAnimationExample(),
         10.heightBox,
         "Hello"
             .text
             .make()
             .box
             .p8
-            .rounded
+            // .rounded
             .red400
             .alignCenter
             .withConstraints(const BoxConstraints(maxWidth: 100, minWidth: 50))
