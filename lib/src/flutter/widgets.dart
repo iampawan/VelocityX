@@ -101,6 +101,17 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for giving a stroke with [DecoratedBox]
+  DecoratedBox stroke(double width, Color color, {bool isCircle = false}) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(color: color, width: width),
+        shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
+      ),
+      child: this,
+    );
+  }
+
   /// Extension for adding a corner radius a widget with [ClipRRect]
   ClipRRect cornerRadius(double radius) {
     return ClipRRect(

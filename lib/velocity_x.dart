@@ -40,6 +40,7 @@ export 'src/flutter/rich_text.dart';
 export 'src/flutter/routes.dart';
 export 'src/flutter/scroll.dart';
 export 'src/flutter/selectable_text.dart';
+export 'src/flutter/shapes.dart';
 export 'src/flutter/shift.dart';
 export 'src/flutter/shimmer.dart';
 export 'src/flutter/sizedbox.dart';

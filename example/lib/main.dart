@@ -12,8 +12,10 @@ import 'dummy.dart';
 void main() => runApp(
       MaterialApp(
         home: Material(child: Demo()),
-        theme:
-            ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+          brightness: Brightness.light,
+        ),
         debugShowCheckedModeBanner: false,
       ),
     );
@@ -71,23 +73,20 @@ class _DemoState extends State<Demo> {
             VxRest.closeServer();
           },
         ),
-        // TimelineExample(),
-        // AnimatedBoxExample(),
-        // VxAnimationExample(),
-
+        TimelineExample(),
+        AnimatedBoxExample(),
+        VxAnimationExample(),
         VxAnimator<double>(
           builder: (context, animState, child) {
-            return "AnimatedBox"
-                .text
-                .xl
-                .make()
-                .box
-                .orange700
+            return VxBox()
+                .rounded
+                .alignCenter
+                .teal300
                 .square(animState.value)
                 .makeCentered();
           },
-        ).easeInCubic.doubleTween(10.0,200.0).make(),
-        10.heightBox,
+        ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
+        20.heightBox,
         "Hello"
             .text
             .make()
@@ -123,7 +122,6 @@ class _DemoState extends State<Demo> {
           // );
           // Future.delayed(2.seconds, close);
         }),
-
         10.heightBox,
         "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
         TapMeWidget(),
@@ -220,6 +218,45 @@ class _DemoState extends State<Demo> {
         10.heightBox,
         DateTime.now().subtract(10.minutes).timeAgo().text.make(),
         10.heightBox,
+        "New Shape"
+            .text
+            .white
+            .xs
+            .bold
+            .makeCentered()
+            .triangle(height: 120, width: 180, backgroundColor: Vx.indigo700),
+        10.heightBox,
+        const VxEllipse(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.green,
+        ),
+        10.heightBox,
+        const VxCapsule(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.red,
+        ),
+        10.heightBox,
+        const VxBevel(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.orange,
+        ),
+        10.heightBox,
+        const VxContinousRectangle(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.indigo,
+        ),
+        10.heightBox,
+        const VxTriangle(
+          width: 100,
+          height: 100,
+          backgroundColor: Colors.cyan,
+          strokeWidth: 4,
+        ),
+        20.heightBox,
         Container(
           child: const Icon(Icons.menu),
           padding: Vx.m20,
