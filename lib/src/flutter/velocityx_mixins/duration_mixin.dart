@@ -13,7 +13,7 @@
 
 import 'package:flutter/material.dart';
 
-mixin VxDurationMixing<T> {
+mixin VxDurationMixin<T> {
   T _child;
 
   @protected

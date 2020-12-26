@@ -24,14 +24,10 @@ extension StringExtension on String {
       : this;
 
   ///Removes first element
-  String get eliminateFirst => length > 1 
-      ? "${substring(1, length)}"
-      : "";
+  String get eliminateFirst => length > 1 ? "${substring(1, length)}" : "";
 
   ///Removes last element
-  String get eliminateLast => length > 1 
-      ? "${substring(0, length-1)}"
-      : "";
+  String get eliminateLast => length > 1 ? "${substring(0, length - 1)}" : "";
 
   /// Return a bool if the string is null or empty
   bool get isEmptyOrNull => this == null || isEmpty;
@@ -183,6 +179,50 @@ extension StringExtension on String {
       stringBuffer.write(this[i]);
     }
     return stringBuffer.toString();
+  }
+
+  /// Checks the validity of the card number using the Luhn algorithm.
+  bool isCardValid(String creditCardNumber) {
+    int _sum = 0;
+    bool _alternate = false;
+
+    for (int i = creditCardNumber.length - 1; i >= 0; i--) {
+      int digit = int.parse(creditCardNumber[i]);
+
+      if (_alternate) {
+        digit *= 2;
+        if (digit > 9) {
+          digit = (digit % 10) + 1;
+        }
+      }
+
+      _sum += digit;
+
+      _alternate = !_alternate;
+    }
+
+    return _sum % 10 == 0;
+  }
+
+  bool isNumber() {
+    final isMatch = RegExp("[1-9]").hasMatch(this);
+    return isMatch;
+  }
+
+  bool isLetter() {
+    final isMatch = RegExp("[A-Za-z]").hasMatch(this);
+    return isMatch;
+  }
+
+  bool isSymbol() {
+    const String pattern =
+        "[`~!@#\$%^&*()_\-+=<>?:\"{}|,.//\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]";
+    for (int i = 0; i < length; i++) {
+      if (pattern.contains(this[i])) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /// Get Text Widget for the String

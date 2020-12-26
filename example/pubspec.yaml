@@ -22,7 +22,6 @@ dependencies:
     sdk: flutter
   velocity_x:
     path: ../
-  device_preview: 0.6.2-beta
 
 dev_dependencies:
   flutter_test:

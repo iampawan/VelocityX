@@ -17,7 +17,7 @@ import 'package:velocity_x/src/flutter/common/velocity_round.dart';
 
 enum VxBadgeType { point, round, ellipse }
 
-enum VxBadgePosition { left, right, leftTop, rightTop,leftBottom,rightBottom }
+enum VxBadgePosition { left, right, leftTop, rightTop, leftBottom, rightBottom }
 
 /// VxBadge widget for using common badges as number or dot.
 
@@ -30,7 +30,9 @@ class VxBadge extends StatelessWidget {
   final Widget child;
   final double size;
   final VxBadgePosition position;
-  final Widget widget;
+
+  /// To provide an optional widget like an Icon
+  final Widget optionalWidget;
   const VxBadge({
     @required this.child,
     this.type = VxBadgeType.round,
@@ -39,13 +41,13 @@ class VxBadge extends StatelessWidget {
     this.count,
     this.limit = false,
     this.size,
-    this.widget,
+    this.optionalWidget,
     this.position = VxBadgePosition.rightTop,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (child == null&&widget==null) {
+    if (child == null && optionalWidget == null) {
       return getVxRound();
     }
     return positionView();
@@ -79,21 +81,22 @@ class VxBadge extends StatelessWidget {
         type: VxRoundType.round,
         color: color,
         size: size,
-        child: widget??
-        Text(
-          getNumber(),
-          style: getTextStyle(),
-        ),
+        child: optionalWidget ??
+            Text(
+              getNumber(),
+              style: getTextStyle(),
+            ),
       );
     } else {
       return VxRound(
         type: VxRoundType.ellipse,
         color: color,
         size: size,
-        child: widget??Text(
-          getNumber(),
-          style: getTextStyle(),
-        ),
+        child: optionalWidget ??
+            Text(
+              getNumber(),
+              style: getTextStyle(),
+            ),
       );
     }
   }
@@ -101,10 +104,9 @@ class VxBadge extends StatelessWidget {
   /// Get the position view
   Widget positionView() {
     final List<Widget> children = [];
-  
-      children.add(child);
-   
-    
+
+    children.add(child);
+
     if (position == VxBadgePosition.left) {
       children.insert(0, getVxRound());
     } else if (position == VxBadgePosition.right) {
@@ -121,13 +123,13 @@ class VxBadge extends StatelessWidget {
         right: 0,
         child: getVxRound(),
       ));
-    }else if (position == VxBadgePosition.leftBottom) {
+    } else if (position == VxBadgePosition.leftBottom) {
       children.add(Positioned(
         bottom: 0,
-        left :0,
+        left: 0,
         child: getVxRound(),
       ));
-    }else if (position == VxBadgePosition.rightBottom) {
+    } else if (position == VxBadgePosition.rightBottom) {
       children.add(Positioned(
         bottom: 0,
         right: 0,
@@ -162,9 +164,7 @@ extension BadgeExtension on Widget {
     int count,
     bool limit = false,
     double size,
-    Widget widget,
-
-
+    Widget optionalWidget,
     VxBadgePosition position = VxBadgePosition.rightTop,
   }) =>
       VxBadge(
@@ -176,6 +176,6 @@ extension BadgeExtension on Widget {
         position: position,
         size: size,
         type: type,
-        widget: widget,
+        optionalWidget: optionalWidget,
       );
 }

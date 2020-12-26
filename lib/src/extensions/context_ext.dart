@@ -53,6 +53,9 @@ extension ContextExtensions on BuildContext {
   /// Get MediaQuery Screen Size
   Size get screenSize => mq.size;
 
+  /// Get MediaQuery Screen Density
+  double get screenDensity => mq.devicePixelRatio;
+
   /// Get MediaQuery Screen Padding
   EdgeInsets get screenPadding => mq.padding;
 

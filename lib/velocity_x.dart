@@ -1,5 +1,6 @@
 library velocity_x;
 
+export 'package:animator/animator.dart';
 export 'src/dart/guard.dart';
 export 'src/dart/timeline.dart';
 export 'src/extensions/context_ext.dart';
@@ -10,6 +11,7 @@ export 'src/extensions/num_ext.dart';
 export 'src/extensions/string_ext.dart';
 export 'src/flutter/animated/animated_container.dart';
 export 'src/flutter/animated/animated_height.dart';
+export 'src/flutter/animator.dart';
 export 'src/flutter/appbar.dart';
 export 'src/flutter/badge.dart';
 export 'src/flutter/card.dart';
@@ -38,6 +40,7 @@ export 'src/flutter/rich_text.dart';
 export 'src/flutter/routes.dart';
 export 'src/flutter/scroll.dart';
 export 'src/flutter/selectable_text.dart';
+export 'src/flutter/shapes.dart';
 export 'src/flutter/shift.dart';
 export 'src/flutter/shimmer.dart';
 export 'src/flutter/sizedbox.dart';

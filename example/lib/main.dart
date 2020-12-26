@@ -1,22 +1,62 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:velocity_x/velocity_x_rest.dart';
 
 import 'dummy.dart';
 
 void main() => runApp(
       MaterialApp(
         home: Material(child: Demo()),
-        theme:
-            ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+          brightness: Brightness.light,
+        ),
         debugShowCheckedModeBanner: false,
       ),
     );
 
-class Demo extends StatelessWidget {
+class Demo extends StatefulWidget {
+  @override
+  _DemoState createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
   final VxPopupMenuController _controller = VxPopupMenuController();
+
+  @override
+  void initState() {
+    super.initState();
+    restOperations();
+  }
+
+  Future<void> restOperations() async {
+    /// Registering routes
+    VxRest.auto('/', 'Hello world');
+    VxRest.get(
+        '/index.html',
+        File(
+            'Users/thepawankumar/Desktop/dev/flutterdev/packages/VelocityX/example/lib/html/index.html'));
+    VxRest.get('/testroute', () {
+      return 'some function';
+    });
+    VxRest.get('/testjson', () {
+      return VxRest.encodeJson({
+        'msg': 'Test Json',
+        'list': [0, 1, 2]
+      });
+    });
+
+    /// Listen to server
+    await VxRest.listen(host: '0.0.0.0', port: 4040);
+
+    /// Open http://127.0.0.1:4040/ on browser
+  }
+
   @override
   Widget build(BuildContext context) {
     Vx.inspect("message");
@@ -26,10 +66,34 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
-        TimelineExample(),
-        AnimatedBoxExample(),
-        VxAnimationExample(),
+        TextButton(
+          child: "Restart Server".text.make(),
+          onPressed: () async {
+            print(await Vx.isConnectedToInternet());
+            VxRest.closeServer();
+          },
+        ),
+        const VxTicket(
+          width: 150,
+          height: 70,
+          isTwoSided: true,
+          backgroundColor: Colors.pink,
+        ),
         10.heightBox,
+        // TimelineExample(),
+        // AnimatedBoxExample(),
+        // VxAnimationExample(),
+        VxAnimator<double>(
+          builder: (context, animState, child) {
+            return VxBox()
+                .rounded
+                .alignCenter
+                .pink400
+                .square(animState.value)
+                .makeCentered();
+          },
+        ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
+        20.heightBox,
         "Hello"
             .text
             .make()
@@ -45,6 +109,11 @@ class Demo extends StatelessWidget {
                 count: 200,
                 limit: false,
                 color: Colors.black,
+                // optionalWidget: Icon(
+                //   Icons.notification_important,
+                //   size: 8.0,
+                //   color: Colors.white,
+                // ),
                 type: VxBadgeType.round)
             .onInkTap(() {
           // Show Toast
@@ -156,6 +225,45 @@ class Demo extends StatelessWidget {
         10.heightBox,
         DateTime.now().subtract(10.minutes).timeAgo().text.make(),
         10.heightBox,
+        "New Shape"
+            .text
+            .white
+            .xs
+            .bold
+            .makeCentered()
+            .triangle(height: 120, width: 180, backgroundColor: Vx.indigo700),
+        10.heightBox,
+        const VxEllipse(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.green,
+        ),
+        10.heightBox,
+        const VxCapsule(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.red,
+        ),
+        10.heightBox,
+        const VxBevel(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.orange,
+        ),
+        10.heightBox,
+        const VxContinousRectangle(
+          width: 100,
+          height: 50,
+          backgroundColor: Colors.indigo,
+        ),
+        10.heightBox,
+        const VxTriangle(
+          width: 100,
+          height: 100,
+          backgroundColor: Colors.cyan,
+          strokeWidth: 4,
+        ),
+        20.heightBox,
         Container(
           child: const Icon(Icons.menu),
           padding: Vx.m20,
