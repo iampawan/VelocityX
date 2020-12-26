@@ -71,16 +71,29 @@ class _DemoState extends State<Demo> {
             VxRest.closeServer();
           },
         ),
-        TimelineExample(),
-        AnimatedBoxExample(),
-        VxAnimationExample(),
+        // TimelineExample(),
+        // AnimatedBoxExample(),
+        // VxAnimationExample(),
+
+        VxAnimator<double>(
+          builder: (context, animState, child) {
+            return "AnimatedBox"
+                .text
+                .xl
+                .make()
+                .box
+                .orange700
+                .square(animState.value)
+                .makeCentered();
+          },
+        ).easeInCubic.doubleTween(10.0,200.0).make(),
         10.heightBox,
         "Hello"
             .text
             .make()
             .box
             .p8
-            // .rounded
+            .rounded
             .red400
             .alignCenter
             .withConstraints(const BoxConstraints(maxWidth: 100, minWidth: 50))
@@ -110,6 +123,7 @@ class _DemoState extends State<Demo> {
           // );
           // Future.delayed(2.seconds, close);
         }),
+
         10.heightBox,
         "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
         TapMeWidget(),

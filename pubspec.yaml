@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  animator: ^2.0.2
   auto_size_text: ^2.1.0
   intl: ^0.16.1
   mime: ^0.9.7
