@@ -170,10 +170,3 @@ class VxAnimator<T> extends VxWidgetBuilder<Widget>
     );
   }
 }
-
-extension AnimatorWidgetExtension on Widget {
-  ///
-  /// Extension method to directly access material [VxBox] with any widget without wrapping or with dot operator.
-  ///
-  VxAnimator get animator => VxAnimator(child: this);
-}
