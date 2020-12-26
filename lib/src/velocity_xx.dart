@@ -392,16 +392,27 @@ mixin Vx {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
+  /// Get Color in [int]
+  static int getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    hexColor = hexColor.replaceAll('0X', '');
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  /// Get Random Non-Primary Color
+  static Color get randomOpaqueColor =>
+      Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+
   /// Get Random Primary Color
   static Color get randomPrimaryColor =>
       Colors.primaries[Random().nextInt(Colors.primaries.length)];
 
   /// Get Random Non-Primary Color
-  static Color get randomColor => Color(Random().nextInt(0xffffffff));
-
-  /// Get Random Non-Primary Color
-  static Color get randomOpaqueColor =>
-      Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+  static Color get randomColor => Color.fromARGB(
+      100, Random().nextInt(255), Random().nextInt(255), Random().nextInt(255));
 
   /// Check if connected to internet
   static Future<bool> isConnectedToInternet() async {

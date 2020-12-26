@@ -204,6 +204,27 @@ extension StringExtension on String {
     return _sum % 10 == 0;
   }
 
+  bool isNumber() {
+    final isMatch = RegExp("[1-9]").hasMatch(this);
+    return isMatch;
+  }
+
+  bool isLetter() {
+    final isMatch = RegExp("[A-Za-z]").hasMatch(this);
+    return isMatch;
+  }
+
+  bool isSymbol() {
+    const String pattern =
+        "[`~!@#\$%^&*()_\-+=<>?:\"{}|,.//\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]";
+    for (int i = 0; i < length; i++) {
+      if (pattern.contains(this[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   /// Get Text Widget for the String
   VxTextBuilder get text => VxTextBuilder(this);
 
