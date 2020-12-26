@@ -254,7 +254,7 @@ typedef AnimationUpdateCallBack<T> = Function(
     T animationVal, double controllerVal);
 
 /// To perform forward animation in a simpler way
-void withAnimation<T>(
+AnimationController withAnimation<T>(
     {@required TickerProvider vsync,
     @required Tween<T> tween,
     @required AnimationUpdateCallBack<T> callBack,
@@ -276,10 +276,12 @@ void withAnimation<T>(
   controller.forward().whenCompleteOrCancel(() {
     controller.dispose();
   });
+
+  return controller;
 }
 
 /// To perform repeat animation in a simpler way
-void withRepeatAnimation<T>(
+AnimationController withRepeatAnimation<T>(
     {@required TickerProvider vsync,
     @required Tween<T> tween,
     @required AnimationUpdateCallBack<T> callBack,
@@ -308,4 +310,6 @@ void withRepeatAnimation<T>(
       .whenCompleteOrCancel(() {
     controller.dispose();
   });
+
+  return controller;
 }
