@@ -73,15 +73,22 @@ class _DemoState extends State<Demo> {
             VxRest.closeServer();
           },
         ),
-        TimelineExample(),
-        AnimatedBoxExample(),
-        VxAnimationExample(),
+        const VxTicket(
+          width: 150,
+          height: 70,
+          isTwoSided: true,
+          backgroundColor: Colors.pink,
+        ),
+        10.heightBox,
+        // TimelineExample(),
+        // AnimatedBoxExample(),
+        // VxAnimationExample(),
         VxAnimator<double>(
           builder: (context, animState, child) {
             return VxBox()
                 .rounded
                 .alignCenter
-                .teal300
+                .pink400
                 .square(animState.value)
                 .makeCentered();
           },

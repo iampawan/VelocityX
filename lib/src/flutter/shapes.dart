@@ -348,6 +348,70 @@ class VxContinousRectangle extends StatelessWidget {
   }
 }
 
+class VxTicket extends StatelessWidget {
+  /// Creates a continous rectangle that represents a shape.
+  const VxTicket({
+    Key key,
+    this.child,
+    this.backgroundColor,
+    this.width,
+    this.height,
+    this.isHardEdged = false,
+    this.isTwoSided = false,
+  }) : super(key: key);
+
+  /// The widget below this widget in the tree.
+  final Widget child;
+
+  /// The color with which to fill the rectangle.
+  /// If a [backgroundColor] is not specified, the theme's
+  /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
+  /// [ThemeData.primaryColorDark] with light foreground colors.
+  final Color backgroundColor;
+
+  /// The width of the rectangle.
+  final double width;
+
+  /// The height of the rectangle.
+  final double height;
+
+  /// The ticket type is by default curvish. If isHardEdged is true then it will be pointed edged.
+  final bool isHardEdged;
+
+  /// Ticket style both sides
+  final bool isTwoSided;
+
+  @override
+  Widget build(BuildContext context) {
+    final _width = width ?? MediaQuery.of(context).size.shortestSide;
+    final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    assert(debugCheckHasMediaQuery(context));
+    final ThemeData theme = Theme.of(context);
+    Color effectiveBackgroundColor = backgroundColor;
+    if (effectiveBackgroundColor == null) {
+      switch (theme.brightness) {
+        case Brightness.dark:
+          effectiveBackgroundColor = theme.primaryColorLight;
+          break;
+        case Brightness.light:
+          effectiveBackgroundColor = theme.primaryColorDark;
+          break;
+      }
+    }
+
+    return ClipPath(
+      child: AnimatedContainer(
+        height: _height,
+        width: _width,
+        color: effectiveBackgroundColor,
+        duration: kThemeChangeDuration,
+        child: child,
+      ),
+      clipper: _VxTicketClipper(isTwoSide: isTwoSided, isHardEdge: isHardEdged),
+    );
+  }
+}
+
 class VxTriangle extends StatelessWidget {
   /// Creates a triangle that represents a shape.
   const VxTriangle({
@@ -442,6 +506,54 @@ class _VxTriangle extends CustomPainter {
   @override
   bool shouldRepaint(covariant _VxTriangle oldDelegate) {
     return oldDelegate.color != color || oldDelegate.strokeWidth != strokeWidth;
+  }
+}
+
+class _VxTicketClipper extends CustomClipper<Path> {
+  final bool isTwoSide;
+  final bool isHardEdge;
+
+  _VxTicketClipper({this.isTwoSide = false, this.isHardEdge = false});
+  @override
+  Path getClip(Size size) {
+    final Path path = Path();
+    path.lineTo(0.0, size.height);
+    double x = 0;
+    double y = size.height;
+    final double yControlPoint = size.height * .85;
+    final double increment = size.width / (isHardEdge ? 20 : 12);
+    while (x < size.width) {
+      if (isHardEdge) {
+        x += increment;
+        y = (y == size.height) ? size.height * .88 : size.height;
+        path.lineTo(x, y);
+      } else {
+        path.quadraticBezierTo(
+            x + increment / 2, yControlPoint, x + increment, y);
+        x += increment;
+      }
+    }
+    path.lineTo(size.width, 0.0);
+    if (isTwoSide && !isHardEdge) {
+      while (x > 0) {
+        if (isHardEdge) {
+          // x -= increment;
+          // y = (y == 0) ? size.height * .15 : 0;
+          // path.lineTo(x, y);
+        } else {
+          path.quadraticBezierTo(
+              x - increment / 2, size.height * .15, x - increment, 0);
+          x -= increment;
+        }
+      }
+    }
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldDelegate) {
+    return oldDelegate != this;
   }
 }
 
@@ -572,5 +684,27 @@ extension ShapesExtension on Widget {
         width: width,
         height: height,
         strokeWidth: strokeWidth,
+      );
+
+  ///
+  /// Extension method to directly access [VxTicket] with any widget without wrapping or with dot operator.
+  ///
+  Widget ticket({
+    Key key,
+    Widget child,
+    Color backgroundColor,
+    double width,
+    double height,
+    bool isHardEdged,
+    bool isTwoSided,
+  }) =>
+      VxTicket(
+        key: key,
+        child: this,
+        backgroundColor: backgroundColor,
+        width: width,
+        height: height,
+        isHardEdged: isHardEdged,
+        isTwoSided: isTwoSided,
       );
 }
