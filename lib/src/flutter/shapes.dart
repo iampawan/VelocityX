@@ -21,6 +21,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
     this.gradient,
     this.backgroundImage,
     this.blendMode,
+    this.shadows,
   }) : super(key: key) {
     setChildForShadow(this);
   }
@@ -59,6 +60,9 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
   /// To provide blend mode
   final BlendMode blendMode;
 
+  /// To provide blend mode
+  final List<BoxShadow> shadows;
+
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
@@ -84,7 +88,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
             border: border,
             color: effectiveBackgroundColor,
             shape: BoxShape.circle,
-            boxShadow: velocityShadow ?? kElevationToShadow[0],
+            boxShadow: velocityShadow ?? shadows ?? kElevationToShadow[0],
             gradient: gradient,
             image: backgroundImage,
             backgroundBlendMode: blendMode,
@@ -108,6 +112,7 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
     this.gradient,
     this.backgroundImage,
     this.blendMode,
+    this.shadows,
   }) : super(key: key) {
     setChildForShadow(this);
   }
@@ -143,6 +148,9 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
   /// To provide blend mode
   final BlendMode blendMode;
 
+  /// To provide blend mode
+  final List<BoxShadow> shadows;
+
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
@@ -173,7 +181,7 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
               gradient: gradient,
               image: backgroundImage,
               backgroundBlendMode: blendMode,
-              boxShadow: velocityShadow ?? kElevationToShadow[0]),
+              boxShadow: velocityShadow ?? shadows ?? kElevationToShadow[0]),
       child: child,
     );
   }
@@ -193,6 +201,7 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
     this.gradient,
     this.backgroundImage,
     this.blendMode,
+    this.shadows,
   }) : super(key: key) {
     setChildForShadow(this);
   }
@@ -228,6 +237,9 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
   /// To provide blend mode
   final BlendMode blendMode;
 
+  /// To provide blend mode
+  final List<BoxShadow> shadows;
+
   @override
   Widget build(BuildContext context) {
     final _width = width ?? MediaQuery.of(context).size.shortestSide;
@@ -256,7 +268,7 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
             borderRadius: BorderRadius.all(Radius.elliptical(_width, _height)),
             color: effectiveBackgroundColor,
             shape: BoxShape.rectangle,
-            boxShadow: velocityShadow ?? kElevationToShadow[0],
+            boxShadow: velocityShadow ?? shadows ?? kElevationToShadow[0],
             gradient: gradient,
             image: backgroundImage,
             backgroundBlendMode: blendMode,
@@ -279,6 +291,7 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
     this.borderSide,
     this.gradient,
     this.backgroundImage,
+    this.shadows,
   }) : super(key: key) {
     setChildForShadow(this);
   }
@@ -311,6 +324,9 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
   /// To provide background image
   final DecorationImage backgroundImage;
 
+  /// To provide blend mode
+  final List<BoxShadow> shadows;
+
   @override
   Widget build(BuildContext context) {
     final _width = width ?? MediaQuery.of(context).size.shortestSide;
@@ -341,7 +357,7 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
             radius ?? 10.0,
           ),
         ),
-        shadows: velocityShadow ?? kElevationToShadow[0],
+        shadows: velocityShadow ?? shadows ?? kElevationToShadow[0],
         color: effectiveBackgroundColor,
         gradient: gradient,
         image: backgroundImage,
@@ -365,6 +381,7 @@ class VxContinousRectangle extends StatelessWidget
     this.borderSide,
     this.gradient,
     this.backgroundImage,
+    this.shadows,
   }) : super(key: key) {
     setChildForShadow(this);
   }
@@ -396,6 +413,9 @@ class VxContinousRectangle extends StatelessWidget
   /// To provide background image
   final DecorationImage backgroundImage;
 
+  /// To provide blend mode
+  final List<BoxShadow> shadows;
+
   @override
   Widget build(BuildContext context) {
     final _width = width ?? MediaQuery.of(context).size.shortestSide;
@@ -424,7 +444,7 @@ class VxContinousRectangle extends StatelessWidget
               const BorderSide(width: 0.0, color: Colors.transparent),
           borderRadius: BorderRadius.circular(radius ?? 10.0),
         ),
-        shadows: velocityShadow ?? kElevationToShadow[0],
+        shadows: velocityShadow ?? shadows ?? kElevationToShadow[0],
         color: effectiveBackgroundColor,
         image: backgroundImage,
         gradient: gradient,
@@ -657,6 +677,7 @@ extension ShapesExtension on Widget {
     DecorationImage backgroundImage,
     BlendMode blendMode,
     Gradient gradient,
+    List<BoxShadow> shadows,
   }) =>
       VxCircle(
         key: key,
@@ -668,6 +689,7 @@ extension ShapesExtension on Widget {
         backgroundImage: backgroundImage,
         blendMode: blendMode,
         gradient: gradient,
+        shadows: shadows,
       );
 
   ///
@@ -684,6 +706,7 @@ extension ShapesExtension on Widget {
     DecorationImage backgroundImage,
     BlendMode blendMode,
     Gradient gradient,
+    List<BoxShadow> shadows,
   }) =>
       VxCapsule(
         key: key,
@@ -696,6 +719,7 @@ extension ShapesExtension on Widget {
         backgroundImage: backgroundImage,
         blendMode: blendMode,
         gradient: gradient,
+        shadows: shadows,
       );
 
   ///
@@ -712,6 +736,7 @@ extension ShapesExtension on Widget {
     DecorationImage backgroundImage,
     BlendMode blendMode,
     Gradient gradient,
+    List<BoxShadow> shadows,
   }) =>
       VxEllipse(
         key: key,
@@ -724,6 +749,7 @@ extension ShapesExtension on Widget {
         backgroundImage: backgroundImage,
         blendMode: blendMode,
         gradient: gradient,
+        shadows: shadows,
       );
 
   ///
@@ -739,6 +765,7 @@ extension ShapesExtension on Widget {
     BorderSide borderSide,
     DecorationImage backgroundImage,
     Gradient gradient,
+    List<BoxShadow> shadows,
   }) =>
       VxBevel(
         key: key,
@@ -750,6 +777,7 @@ extension ShapesExtension on Widget {
         height: height,
         backgroundImage: backgroundImage,
         gradient: gradient,
+        shadows: shadows,
       );
 
   ///
@@ -765,6 +793,7 @@ extension ShapesExtension on Widget {
     BorderSide borderSide,
     DecorationImage backgroundImage,
     Gradient gradient,
+    List<BoxShadow> shadows,
   }) =>
       VxContinousRectangle(
         key: key,
@@ -776,6 +805,7 @@ extension ShapesExtension on Widget {
         height: height,
         backgroundImage: backgroundImage,
         gradient: gradient,
+        shadows: shadows,
       );
 
   ///
