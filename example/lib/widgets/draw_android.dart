@@ -41,7 +41,7 @@ class DrawAndroid extends StatelessWidget {
                   crossAlignment: CrossAxisAlignment.start)
               .offset(offset: const Offset(0, 50.0)),
         ).clipHalf(),
-        VxCapsule().clipHalf().flipVertical()
+        VxCapsule().clipHalf()
       ],
     );
   }
