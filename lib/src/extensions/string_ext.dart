@@ -182,12 +182,12 @@ extension StringExtension on String {
   }
 
   /// Checks the validity of the card number using the Luhn algorithm.
-  bool isCardValid(String creditCardNumber) {
+  bool isCardValid() {
     int _sum = 0;
     bool _alternate = false;
 
-    for (int i = creditCardNumber.length - 1; i >= 0; i--) {
-      int digit = int.parse(creditCardNumber[i]);
+    for (int i = length - 1; i >= 0; i--) {
+      int digit = int.parse(this[i]);
 
       if (_alternate) {
         digit *= 2;

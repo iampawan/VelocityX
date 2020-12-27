@@ -120,6 +120,16 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for creating a half shape using [VxHalfClipper]
+  ClipPath clipHalf({Clip clipBehavior = Clip.antiAlias}) {
+    return ClipPath(
+      key: key,
+      clipBehavior: clipBehavior,
+      clipper: VxHalfClipper(),
+      child: this,
+    );
+  }
+
   /// Extension for keepAlive
   Widget keepAlive() {
     return _KeepAliveWidget(this);
@@ -323,4 +333,23 @@ AnimationController withRepeatAnimation<T>(
   });
 
   return controller;
+}
+
+class VxHalfClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.moveTo(0, size.height / 2);
+    path.lineTo(size.width, size.height / 2);
+    path.lineTo(size.width, 0);
+    path.lineTo(0, 0);
+
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldClipper) {
+    return oldClipper != this;
+  }
 }

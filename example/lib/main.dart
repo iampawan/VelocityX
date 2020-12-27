@@ -1,13 +1,14 @@
-import 'dart:async';
-import 'dart:io';
-import 'dart:math';
-
+import 'package:example/vxrest.dart';
+import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:velocity_x/velocity_x_rest.dart';
 
-import 'dummy.dart';
+import 'examples/animated_page_view.dart';
+import 'examples/second_page.dart';
+import 'models/dummy.dart';
+import 'widgets/draw_android.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -34,29 +35,6 @@ class _DemoState extends State<Demo> {
     restOperations();
   }
 
-  Future<void> restOperations() async {
-    /// Registering routes
-    VxRest.auto('/', 'Hello world');
-    VxRest.get(
-        '/index.html',
-        File(
-            'Users/thepawankumar/Desktop/dev/flutterdev/packages/VelocityX/example/lib/html/index.html'));
-    VxRest.get('/testroute', () {
-      return 'some function';
-    });
-    VxRest.get('/testjson', () {
-      return VxRest.encodeJson({
-        'msg': 'Test Json',
-        'list': [0, 1, 2]
-      });
-    });
-
-    /// Listen to server
-    await VxRest.listen(host: '0.0.0.0', port: 4040);
-
-    /// Open http://127.0.0.1:4040/ on browser
-  }
-
   @override
   Widget build(BuildContext context) {
     Vx.inspect("message");
@@ -70,24 +48,12 @@ class _DemoState extends State<Demo> {
           child: "Restart Server".text.make(),
           onPressed: () async {
             print(await Vx.isConnectedToInternet());
-            VxRest.closeServer();
+            VxRest.restartServer();
           },
         ),
-        "Vx Demo".text.white.makeCentered().circle().shadow4xl,
+        "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
         10.heightBox,
-
-        VxCircle(
-          radius: 100,
-          backgroundColor: Colors.lightGreen,
-          blendMode: BlendMode.hue,
-        ),
-        10.heightBox,
-        const VxTicket(
-          width: 150,
-          height: 70,
-          isTwoSided: true,
-          backgroundColor: Colors.pink,
-        ),
+        DrawAndroid(),
         10.heightBox,
         // TimelineExample(),
         // AnimatedBoxExample(),
@@ -233,45 +199,7 @@ class _DemoState extends State<Demo> {
         ),
         10.heightBox,
         DateTime.now().subtract(10.minutes).timeAgo().text.make(),
-        10.heightBox,
-        "New Shape"
-            .text
-            .white
-            .xs
-            .bold
-            .makeCentered()
-            .triangle(height: 120, width: 180, backgroundColor: Vx.indigo700),
-        10.heightBox,
-        VxEllipse(
-          width: 100,
-          height: 50,
-          backgroundColor: Colors.green,
-        ).shadow,
-        10.heightBox,
-        VxCapsule(
-          width: 100,
-          height: 50,
-          backgroundColor: Colors.red,
-        ).shadow,
-        10.heightBox,
-        VxBevel(
-          width: 100,
-          height: 50,
-          backgroundColor: Colors.orange,
-        ).shadow,
-        10.heightBox,
-        VxContinousRectangle(
-          width: 100,
-          height: 50,
-          backgroundColor: Colors.indigo,
-        ).shadow4xl,
-        10.heightBox,
-        // VxTriangle(
-        //   width: 100,
-        //   height: 100,
-        //   backgroundColor: Colors.cyan,
-        //   strokeWidth: 4,
-        // ).shadow,
+        VxShapes(),
         20.heightBox,
         Container(
           child: const Icon(Icons.menu),
@@ -385,210 +313,8 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator.push(const _SecondPage("assets/vxbox.png")
+      context.navigator.push(const SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
-  }
-}
-
-class AnimatedBoxExample extends StatefulWidget {
-  @override
-  _AnimatedBoxExampleState createState() => _AnimatedBoxExampleState();
-}
-
-class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
-  double _width, _height, _radius;
-  Color _color;
-
-  @override
-  void initState() {
-    super.initState();
-
-    Timer.periodic(5.seconds, (timer) {
-      setState(() {});
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final random = Random();
-
-    // Generate a random width and height.
-    _width = random.nextInt(300).toDouble();
-    _height = random.nextInt(300).toDouble();
-
-    // Generate a random color.
-    _color = Color.fromRGBO(
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256),
-      1,
-    );
-
-    // Generate a random border radius.
-    _radius = random.nextInt(100).toDouble();
-    return VxAnimatedBox()
-        .seconds(sec: 5)
-        .fastOutSlowIn
-        .width(_width + 50)
-        .height(_height)
-        .color(_color)
-        .withRounded(value: _radius)
-        .p16
-        .alignCenter
-        .make()
-        .py16();
-  }
-}
-
-class VxAnimationExample extends StatefulWidget {
-  @override
-  _VxAnimationExampleState createState() => _VxAnimationExampleState();
-}
-
-class _VxAnimationExampleState extends State<VxAnimationExample>
-    with SingleTickerProviderStateMixin {
-  num anim = 1.0;
-
-  @override
-  void initState() {
-    super.initState();
-
-    withRepeatAnimation(
-      vsync: this,
-      tween: Tween(begin: 0.2, end: 2.0),
-      duration: 5.seconds,
-      isRepeatReversed: true,
-      callBack: (value, percent) {
-        anim = value;
-        setState(() {});
-        // print(anim);
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return "Animated Text"
-        .text
-        .semiBold
-        .center
-        .makeCentered()
-        .scale(scaleValue: anim)
-        .p16();
-  }
-}
-
-class _SecondPage extends StatelessWidget {
-  final String imageAssetName;
-
-  const _SecondPage(this.imageAssetName);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Material(
-          child: InkWell(
-            onTap: () => context.pop(),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.asset(
-                imageAssetName,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AnimatedPageView extends StatefulWidget {
-  @override
-  _AnimatedPageViewState createState() => _AnimatedPageViewState();
-}
-
-class _AnimatedPageViewState extends State<AnimatedPageView> {
-  final List<double> _imgScaleMap = [0.8, 0.7, 1.0, 0.9, 1.2, 1.5];
-  int _currentIndex = 0;
-
-  List<String> parsePics() {
-    return [
-      "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1541560052-3744e48ab80b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1559650656-5d1d361ad10e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-    ];
-  }
-
-  double calculateImgScale(int index) {
-    return _imgScaleMap[index];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final List<String> pics = parsePics();
-    if (pics.isEmpty) {
-      return Container();
-    }
-
-    final Widget child = VxAnimatedHeightView<PageView>(
-      pageViewChild: PageView.builder(
-        itemCount: pics.length,
-        controller: PageController(),
-        itemBuilder: (context, index) {
-          final String imgUrl = pics.elementAt(index);
-          final double w = context.screenWidth;
-          final double h = w * calculateImgScale(index);
-          return GestureDetector(
-            onTap: () {
-              print("tap img index is $index");
-            },
-            child: Image.network(imgUrl ?? "",
-                width: w,
-                height: h,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter),
-          );
-        },
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-      itemCount: pics.length,
-      currentPageIndex: _currentIndex,
-      computeAspectRadio: (index) {
-        return calculateImgScale(index);
-      },
-      notifyScroll: (scrollNotification) {},
-    );
-    return child;
-  }
-}
-
-class TimelineExample extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return VxTimeline(
-        animationDuration: 5.seconds,
-        showTrailing: true,
-        onItemTap: (value) {
-          print(value.heading);
-        },
-        timelineList: List.generate(
-          3,
-          (index) => VxTimelineModel(
-              id: index,
-              heading: "Nov 01, 2020",
-              description: "Hello Vx $index",
-              actionUrl: ""),
-        ).toList());
   }
 }

@@ -110,6 +110,15 @@ extension TransformExtension on Widget {
       );
 
   ///
+  /// Extension method to rotate any widget by 60 degrees without wrapping or with dot operator.
+  ///
+  Widget rotate60({Key key}) => Transform.rotate(
+        key: key,
+        angle: math.pi / 3,
+        child: this,
+      );
+
+  ///
   /// Extension method to rotate any widget by 90 degrees without wrapping or with dot operator.
   ///
   Widget rotate90({Key key}) => Transform.rotate(
@@ -151,6 +160,15 @@ extension TransformExtension on Widget {
   Widget rotateN45({Key key}) => Transform.rotate(
         key: key,
         angle: -math.pi / 4,
+        child: this,
+      );
+
+  ///
+  /// Extension method to rotate any widget by 60 degrees anti-clockwise without wrapping or with dot operator.
+  ///
+  Widget rotateN60({Key key}) => Transform.rotate(
+        key: key,
+        angle: -math.pi / 3,
         child: this,
       );
 
