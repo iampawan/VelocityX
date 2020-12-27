@@ -1,4 +1,5 @@
 import 'package:example/vxrest.dart';
+import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class _DemoState extends State<Demo> {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
+        PlatformBar(),
         TextButton(
           child: "Restart Server".text.make(),
           onPressed: () async {

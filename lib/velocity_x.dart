@@ -33,6 +33,7 @@ export 'src/flutter/marquee.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';
+export 'src/flutter/platforms.dart';
 export 'src/flutter/popup_menu.dart';
 export 'src/flutter/random.dart';
 export 'src/flutter/rating.dart';
