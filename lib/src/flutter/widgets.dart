@@ -112,6 +112,14 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for aspectRatio with [AspectRatio]
+  AspectRatio aspectRatio(double aspectRatio) {
+    return AspectRatio(
+      aspectRatio: aspectRatio,
+      child: this,
+    );
+  }
+
   /// Extension for adding a corner radius a widget with [ClipRRect]
   ClipRRect cornerRadius(double radius) {
     return ClipRRect(
@@ -135,6 +143,7 @@ extension WidgetsExtension on Widget {
     return _KeepAliveWidget(this);
   }
 
+  /// Extension for SliverToBox
   SliverToBoxAdapter sliverBoxAdapter() {
     return SliverToBoxAdapter(
       child: this,

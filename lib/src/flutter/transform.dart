@@ -56,7 +56,7 @@ extension TransformExtension on Widget {
   ///
   Widget flipY({Key key, double radian}) => Transform(
         key: key,
-        transform: Matrix4.rotationY(radian),
+        transform: Matrix4.rotationY(radian ?? 90),
         child: this,
       );
 
@@ -74,7 +74,7 @@ extension TransformExtension on Widget {
   ///
   Widget flipX({Key key, double radian}) => Transform(
         key: key,
-        transform: Matrix4.rotationX(radian),
+        transform: Matrix4.rotationX(radian ?? 90),
         child: this,
       );
 

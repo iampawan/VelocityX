@@ -29,18 +29,19 @@ class DrawAndroid extends StatelessWidget {
             VxCircle(
               backgroundColor: Colors.white,
               radius: 22.0,
-            ),
+            ).shadow,
             60.widthBox,
             VxCircle(
               backgroundColor: Colors.white,
               radius: 22.0,
-            ),
+            ).shadow,
           ]
               .hStack(
                   alignment: MainAxisAlignment.center,
                   crossAlignment: CrossAxisAlignment.start)
               .offset(offset: const Offset(0, 50.0)),
         ).clipHalf(),
+        VxCapsule().clipHalf().flipVertical()
       ],
     );
   }
