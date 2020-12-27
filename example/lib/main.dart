@@ -73,6 +73,15 @@ class _DemoState extends State<Demo> {
             VxRest.closeServer();
           },
         ),
+        "Vx Demo".text.white.makeCentered().circle().shadow4xl,
+        10.heightBox,
+
+        VxCircle(
+          radius: 100,
+          backgroundColor: Colors.lightGreen,
+          blendMode: BlendMode.hue,
+        ),
+        10.heightBox,
         const VxTicket(
           width: 150,
           height: 70,
@@ -233,36 +242,36 @@ class _DemoState extends State<Demo> {
             .makeCentered()
             .triangle(height: 120, width: 180, backgroundColor: Vx.indigo700),
         10.heightBox,
-        const VxEllipse(
+        VxEllipse(
           width: 100,
           height: 50,
           backgroundColor: Colors.green,
-        ),
+        ).shadow,
         10.heightBox,
-        const VxCapsule(
+        VxCapsule(
           width: 100,
           height: 50,
           backgroundColor: Colors.red,
-        ),
+        ).shadow,
         10.heightBox,
-        const VxBevel(
+        VxBevel(
           width: 100,
           height: 50,
           backgroundColor: Colors.orange,
-        ),
+        ).shadow,
         10.heightBox,
-        const VxContinousRectangle(
+        VxContinousRectangle(
           width: 100,
           height: 50,
           backgroundColor: Colors.indigo,
-        ),
+        ).shadow4xl,
         10.heightBox,
-        const VxTriangle(
-          width: 100,
-          height: 100,
-          backgroundColor: Colors.cyan,
-          strokeWidth: 4,
-        ),
+        // VxTriangle(
+        //   width: 100,
+        //   height: 100,
+        //   backgroundColor: Colors.cyan,
+        //   strokeWidth: 4,
+        // ).shadow,
         20.heightBox,
         Container(
           child: const Icon(Icons.menu),

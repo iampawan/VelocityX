@@ -16,7 +16,7 @@ import 'package:velocity_x/src/flutter/velocityx_mixins/curves_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/duration_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'builder.dart';
+import '../builder.dart';
 
 typedef AnimatorCallBack<T> = Function(
     BuildContext context, AnimatorState<T> animState, Widget child);
