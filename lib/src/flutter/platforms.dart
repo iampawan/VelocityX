@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +40,7 @@ abstract class VxPlatform<A extends Widget, I extends Widget, W extends Widget>
       return createWebWidget(context);
     } else if (defaultTargetPlatform == TargetPlatform.android) {
       return createAndroidWidget(context);
-    } else if (Platform.isIOS) {
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return createIosWidget(context);
     }
     // platform not supported returns an empty widget

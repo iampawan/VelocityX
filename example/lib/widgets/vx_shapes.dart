@@ -19,6 +19,11 @@ class VxShapes extends StatelessWidget {
           .makeCentered()
           .triangle(height: 120, width: 180, backgroundColor: Vx.indigo700),
       10.heightBox,
+      VxCircle(
+        radius: 100,
+        backgroundColor: Colors.blue,
+      ).shadow,
+      10.heightBox,
       VxEllipse(
         width: 100,
         height: 50,
