@@ -1,9 +1,8 @@
-## [1.2.2] - Decemeber 29, 2020
+## [1.3.0] - Decemeber 29, 2020
 
 - Introducing VxShapes with ext: VxCircle -> .circle(), VxEllipse -> .ellipse(), VxCapsule -> .capsule(), VxContinuousRectangle -> .continuousRectangle(), VxBevel -> .bevel(), VxTriangle -> .triangle() and VxTicket -> .ticket()
 - VxPlatform added to create a common widget for different platforms.
 - VxAnimator added exposing the animator package.
-- VxRest[Very Experimental] added to support backend ops.
 - Added widget support to badge and new positions.
 - Added isIntrinsic prop for some widgets like DataTable which doesn't support layout builder.
 - Vx.getColorFromHex() added to convert hex to color.
