@@ -13,7 +13,6 @@
 
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -414,18 +413,18 @@ mixin Vx {
   static Color get randomColor => Color.fromARGB(
       100, Random().nextInt(255), Random().nextInt(255), Random().nextInt(255));
 
-  /// Check if connected to internet
-  static Future<bool> isConnectedToInternet() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('Connected to internet');
-        return true;
-      }
-    } on SocketException catch (_) {
-      print('Not connected to internet');
-      return false;
-    }
-    return false;
-  }
+  // /// Check if connected to internet
+  // static Future<bool> isConnectedToInternet() async {
+  //   try {
+  //     final result = await InternetAddress.lookup('google.com');
+  //     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+  //       print('Connected to internet');
+  //       return true;
+  //     }
+  //   } on SocketException catch (_) {
+  //     print('Not connected to internet');
+  //     return false;
+  //   }
+  //   return false;
+  // }
 }
