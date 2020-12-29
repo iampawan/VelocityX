@@ -3,6 +3,7 @@ library velocity_x;
 export 'package:animator/animator.dart';
 export 'src/dart/guard.dart';
 export 'src/dart/timeline.dart';
+export 'src/extensions/bool_ext.dart';
 export 'src/extensions/context_ext.dart';
 export 'src/extensions/date_time_ext.dart';
 export 'src/extensions/iterable_ext.dart';
