@@ -58,7 +58,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
   /// To provide blend mode
   final BlendMode? blendMode;
 
-  /// To provide blend mode
+  /// To give shadow effect
   final List<BoxShadow>? shadows;
 
   @override
