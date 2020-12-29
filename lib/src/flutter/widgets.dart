@@ -91,12 +91,61 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for Stack [Positioned]
+  Widget positioned(
+      {double? top,
+      double? bottom,
+      double? left,
+      double? right,
+      double? height,
+      double? width,
+      bool isFilled = false}) {
+    return isFilled
+        ? Positioned.fill(
+            key: key,
+            top: top,
+            bottom: bottom,
+            left: left,
+            right: right,
+            child: this,
+          )
+        : Positioned(
+            key: key,
+            top: top,
+            bottom: bottom,
+            left: left,
+            right: right,
+            height: height,
+            width: width,
+            child: this,
+          );
+  }
+
   /// Extension for coloring a widget with [DecoratedBox]
   DecoratedBox backgroundColor(Color color) {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: color,
       ),
+      child: this,
+    );
+  }
+
+  /// Extension for giving a stroke with [DecoratedBox]
+  DecoratedBox stroke(double width, Color color, {bool isCircle = false}) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(color: color, width: width),
+        shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
+      ),
+      child: this,
+    );
+  }
+
+  /// Extension for aspectRatio with [AspectRatio]
+  AspectRatio aspectRatio(double aspectRatio) {
+    return AspectRatio(
+      aspectRatio: aspectRatio,
       child: this,
     );
   }
@@ -109,11 +158,22 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for creating a half shape using [VxHalfClipper]
+  ClipPath clipHalf({Clip clipBehavior = Clip.antiAlias}) {
+    return ClipPath(
+      key: key,
+      clipBehavior: clipBehavior,
+      clipper: VxHalfClipper(),
+      child: this,
+    );
+  }
+
   /// Extension for keepAlive
   Widget keepAlive() {
     return _KeepAliveWidget(this);
   }
 
+  /// Extension for SliverToBox
   SliverToBoxAdapter sliverBoxAdapter() {
     return SliverToBoxAdapter(
       child: this,
@@ -178,7 +238,7 @@ extension StringWidgetsExtension on String {
         backgroundImage: AssetImage(this),
       );
 
-  Widget circlularNetworkImage(
+  Widget circularNetworkImage(
           {Key? key,
           double radius = 65.0,
           Color bgColor = Colors.white,
@@ -254,7 +314,7 @@ typedef AnimationUpdateCallBack<T> = Function(
     T animationVal, double controllerVal);
 
 /// To perform forward animation in a simpler way
-void withAnimation<T>(
+AnimationController withAnimation<T>(
     {required TickerProvider vsync,
     required Tween<T> tween,
     required AnimationUpdateCallBack<T?> callBack,
@@ -276,10 +336,12 @@ void withAnimation<T>(
   controller.forward().whenCompleteOrCancel(() {
     controller.dispose();
   });
+
+  return controller;
 }
 
 /// To perform repeat animation in a simpler way
-void withRepeatAnimation<T>(
+AnimationController withRepeatAnimation<T>(
     {required TickerProvider vsync,
     required Tween<T> tween,
     required AnimationUpdateCallBack<T?> callBack,
@@ -308,4 +370,25 @@ void withRepeatAnimation<T>(
       .whenCompleteOrCancel(() {
     controller.dispose();
   });
+
+  return controller;
+}
+
+class VxHalfClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.moveTo(0, size.height / 2);
+    path.lineTo(size.width, size.height / 2);
+    path.lineTo(size.width, 0);
+    path.lineTo(0, 0);
+
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldClipper) {
+    return oldClipper != this;
+  }
 }

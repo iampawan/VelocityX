@@ -10,9 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
@@ -48,18 +50,23 @@ import 'velocityx_mixins/round_mixin.dart';
 /// always returns true. If the [decoration] or [foregroundDecoration] properties
 /// are specified, hit testing is handled by [Decoration.hitTest].
 ///
+typedef AnimatorMiniCallBack<T> = Function(
+    AnimatorState<T> animatorState, VxBox box);
+
 class VxBox extends VxWidgetBuilder<Widget>
     with
         VxAlignmentMixing<VxBox>,
         VxColorMixin<VxBox>,
         VxPaddingMixin<VxBox>,
         VxRoundMixin<VxBox>,
+        VxShadowMixin<VxBox>,
         VxNeuMixin {
   VxBox({this.child}) {
     setChildForAlignment(this);
     setChildToColor(this);
     setChildToPad(this);
     setChildToRound(this);
+    setChildForShadow(this);
   }
 
   final Widget? child;
@@ -159,140 +166,6 @@ class VxBox extends VxWidgetBuilder<Widget>
   /// Sets the decorated box as circular.
   ///
   VxBox get roundedFull => this.._isCircleRounded = true;
-
-  /// Shadowing
-  VxBox get shadow {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 3.0,
-        spreadRadius: 1.0,
-        offset: Offset(0.0, 1.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.06),
-        blurRadius: 2.0,
-        spreadRadius: 1.0,
-        offset: Offset(0.0, 1.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give extra small shadow.
-  ///
-  VxBox get shadowXs {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
-        blurRadius: 0.0,
-        spreadRadius: 1.0,
-        offset: Offset(0.0, 0.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give small shadow.
-  ///
-  VxBox get shadowSm {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
-        blurRadius: 2.0,
-        spreadRadius: 0.0,
-        offset: Offset(0.0, 1.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give medium shadow.
-  ///
-  VxBox get shadowMd {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 6.0,
-        spreadRadius: -1.0,
-        offset: Offset(0.0, 4.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.06),
-        blurRadius: 4.0,
-        spreadRadius: -1.0,
-        offset: Offset(0.0, 2.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give large shadow.
-  ///
-  VxBox get shadowLg {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 15.0,
-        spreadRadius: -3.0,
-        offset: Offset(0.0, 10.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
-        blurRadius: 6.0,
-        spreadRadius: -2.0,
-        offset: Offset(0.0, 4.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give extra large shadow.
-  ///
-  VxBox get shadowXl {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 25.0,
-        spreadRadius: -5.0,
-        offset: Offset(0.0, 20.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.04),
-        blurRadius: 10.0,
-        spreadRadius: -5.0,
-        offset: Offset(0.0, 10.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give twice extra small shadow.
-  ///
-  VxBox get shadow2xl {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.25),
-        blurRadius: 50.0,
-        spreadRadius: -12.0,
-        offset: Offset(0.0, 25.0),
-      ),
-    ];
-
-    return this;
-  }
 
   /// Provide custom list of box shadows
   ///
@@ -406,7 +279,7 @@ class VxBox extends VxWidgetBuilder<Widget>
                     ? null
                     : BorderRadius.circular(roundedValue!),
                 shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-                boxShadow: _boxShadow ?? [],
+                boxShadow: velocityShadow ?? _boxShadow ?? [],
                 border: _border,
                 gradient: _gradient,
                 image: _bgImage,
@@ -420,4 +293,11 @@ extension ContainerWidgetExtension on Widget {
   /// Extension method to directly access material [VxBox] with any widget without wrapping or with dot operator.
   ///
   VxBox get box => VxBox(child: this);
+}
+
+class AnimContainer<T> {
+  final AnimatorState<T> state;
+  final VxBox box;
+
+  AnimContainer(this.state, this.box);
 }

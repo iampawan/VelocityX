@@ -616,6 +616,20 @@ extension SizedBoxExtension on Widget {
         height: context.screenHeight,
         child: this,
       );
+
+  /// Extension for [FractionallySizedBox]
+  Widget fractionalBox(
+          {Key key,
+          @required double heightFactor,
+          @required double widthFactor,
+          Alignment alignment}) =>
+      FractionallySizedBox(
+        key: key,
+        heightFactor: heightFactor,
+        widthFactor: widthFactor,
+        alignment: alignment ?? Alignment.center,
+        child: this,
+      );
 }
 
 ///

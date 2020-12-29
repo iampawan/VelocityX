@@ -53,7 +53,7 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   TextBaseline? _textBaseline;
   Widget? _replacement;
   bool? _softWrap, _wrapWords;
-
+  bool? _isIntrinsic = false;
   /// Set tap func
   VxRichText tap(Function function) {
     final recognizer = TapGestureRecognizer()
@@ -83,6 +83,11 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   /// Set [color] of the text using hexvalue
   VxRichText hexColor(String colorHex) =>
       this..velocityColor = Vx.hexToColor(colorHex);
+
+  /// [LayoutBuilder] does not support using IntrinsicWidth or IntrinsicHeight.
+  ///
+  /// Note: Use it only for few widgets like [DataTable] which doesn't work well with Vx but using [isIntrinsic] will disable [AutoSizeText].
+  VxRichText get isIntrinsic => this.._isIntrinsic = true;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
   /// If the text exceeds the given number of lines, it will be resized according
@@ -351,26 +356,42 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
       textBaseline: _textBaseline ?? TextBaseline.alphabetic,
       wordSpacing: _wordSpacing,
     );
-    return AutoSizeText.rich(
-      TextSpan(
-        text: _text,
-        children: _textSpanChildren,
-        recognizer: _gestureRecognizer,
-        style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
-      ),
-      key: key,
-      textAlign: _textAlign,
-      maxLines: _maxLines,
-      textScaleFactor: _scaleFactor,
-      softWrap: _softWrap ?? true,
-      minFontSize: _minFontSize ?? 12,
-      maxFontSize: _maxFontSize ?? double.infinity,
-      stepGranularity: _stepGranularity ?? 1,
-      overflowReplacement: _replacement,
-      overflow: _overflow ?? TextOverflow.clip,
-      strutStyle: _strutStyle,
-      wrapWords: _wrapWords ?? true,
-    );
+    return _isIntrinsic
+        ? Text.rich(
+            TextSpan(
+              text: _text,
+              children: _textSpanChildren,
+              recognizer: _gestureRecognizer,
+              style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+            ),
+            key: key,
+            textAlign: _textAlign,
+            maxLines: _maxLines,
+            textScaleFactor: _scaleFactor,
+            softWrap: _softWrap ?? true,
+            overflow: _overflow ?? TextOverflow.clip,
+            strutStyle: _strutStyle,
+          )
+        : AutoSizeText.rich(
+            TextSpan(
+              text: _text,
+              children: _textSpanChildren,
+              recognizer: _gestureRecognizer,
+              style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+            ),
+            key: key,
+            textAlign: _textAlign,
+            maxLines: _maxLines,
+            textScaleFactor: _scaleFactor,
+            softWrap: _softWrap ?? true,
+            minFontSize: _minFontSize ?? 12,
+            maxFontSize: _maxFontSize ?? double.infinity,
+            stepGranularity: _stepGranularity ?? 1,
+            overflowReplacement: _replacement,
+            overflow: _overflow ?? TextOverflow.clip,
+            strutStyle: _strutStyle,
+            wrapWords: _wrapWords ?? true,
+          );
   }
 }
 

@@ -14,6 +14,7 @@ furnished to do so, subject to the following conditions:
 
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// Use this widget [VxSwiper] to give your list a swipeable effect with full customization.
@@ -268,10 +269,11 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
             final double v = (p - pos.position.dx) /
                 (DateTime.now().millisecondsSinceEpoch - t!);
             if (v < -2 || v > 2) {
+              final vx = (v * 1.2).isFinite ? (v * 1.2).round() : 0;
               //Don't run if velocity is to low
               //Move to page based on velocity (increase velocity multiplier to scroll further)
               widget.pageController.animateToPage(
-                  widget.pageController.page!.toInt() + (v * 1.2).round(),
+                  widget.pageController.page!.toInt() + vx,
                   duration: const Duration(milliseconds: 400),
                   curve: Curves.easeOutCubic);
             }
@@ -337,27 +339,34 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
               ? widget.items![index]
               : widget.itemBuilder!(context, index),
           builder: (BuildContext context, child) {
-            // on the first render, the pageController.page is null,
-            // this is a dirty hack
-            // if (widget.pageController.position.minScrollExtent == null ||
-            //     widget.pageController.position.maxScrollExtent == null) {
-            // Enable it in next version
-            if (!widget.pageController.position.hasContentDimensions) {
-              Future.delayed(const Duration(microseconds: 1), () {
-                if (mounted) {
-                  setState(() {});
+            double distortionValue = 1.0;
+            // if `enlargeCenterPage` is true, we must calculate the carousel item's height
+            // to display the visual effect
+            if (widget.enlargeCenterPage != null &&
+                widget.enlargeCenterPage == true) {
+              double itemOffset;
+              // pageController.page can only be accessed after the first build,
+              // so in the first build we calculate the itemoffset manually
+              try {
+                itemOffset = widget.pageController.page! - i;
+              } catch (e) {
+                final BuildContext storageContext =
+                    widget.pageController.position.context.storageContext;
+                final double previousSavedPosition =
+                    PageStorage.of(storageContext)?.readState(storageContext)
+                        as double;
+                if (previousSavedPosition != null) {
+                  itemOffset = previousSavedPosition - i.toDouble();
+                } else {
+                  itemOffset = widget.realPage.toDouble() - i.toDouble();
                 }
-              });
-              return Container();
+              }
+              final distortionRatio =
+                  (1 - (itemOffset.abs() * 0.3)).clamp(0.0, 1.0);
+              distortionValue = Curves.easeOut.transform(distortionRatio);
             }
-            double value = widget.pageController.page! - i;
-            value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
-
             final double height = widget.height ??
                 MediaQuery.of(context).size.width * (1 / widget.aspectRatio);
-            final double distortionValue = widget.enlargeCenterPage
-                ? Curves.easeOut.transform(value)
-                : 1.0;
 
             if (widget.scrollDirection == Axis.horizontal) {
               return Center(

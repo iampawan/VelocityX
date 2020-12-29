@@ -13,6 +13,7 @@
 
 import 'dart:async';
 import 'dart:developer' as dev;
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -391,14 +392,40 @@ mixin Vx {
     return Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
+  /// Get Color in [int]
+  static int getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    hexColor = hexColor.replaceAll('0X', '');
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  /// Get Random Non-Primary Color
+  static Color get randomOpaqueColor =>
+      Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+
   /// Get Random Primary Color
   static Color get randomPrimaryColor =>
       Colors.primaries[Random().nextInt(Colors.primaries.length)];
 
   /// Get Random Non-Primary Color
-  static Color get randomColor => Color(Random().nextInt(0xffffffff));
+  static Color get randomColor => Color.fromARGB(
+      100, Random().nextInt(255), Random().nextInt(255), Random().nextInt(255));
 
-  /// Get Random Non-Primary Color
-  static Color get randomOpaqueColor =>
-      Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+  /// Check if connected to internet
+  static Future<bool> isConnectedToInternet() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        print('Connected to internet');
+        return true;
+      }
+    } on SocketException catch (_) {
+      print('Not connected to internet');
+      return false;
+    }
+    return false;
+  }
 }

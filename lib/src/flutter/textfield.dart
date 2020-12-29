@@ -34,6 +34,9 @@ class VxTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final String? counterText;
   final bool autofocus;
+  final TextStyle style; 
+  final String labelText;
+  final TextStyle labelStyle; 
 
   const VxTextField({
     Key? key,
@@ -64,6 +67,9 @@ class VxTextField extends StatefulWidget {
     this.focusNode,
     this.counterText,
     this.autofocus = false,
+    this.style,
+    this.labelText,
+    this.labelStyle
   }) : super(key: key);
 
   @override
@@ -103,6 +109,8 @@ class _VxTextFieldState extends State<VxTextField> {
         fillColor: widget.fillColor,
         counterText: widget.counterText,
         filled: true,
+        labelText: widget.labelText,
+        labelStyle: widget.labelStyle,
         contentPadding: getContentPadding(),
         enabledBorder: getInputBorder(),
         focusedBorder: getInputBorder(),
@@ -112,6 +120,7 @@ class _VxTextFieldState extends State<VxTextField> {
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,
+      style: widget.style,
     );
 
     const other = null;

@@ -221,6 +221,17 @@ extension PaddingExtensions on Widget {
         child: this,
       );
 
+  /// Gives custom padding vertically.
+  Padding py(
+    double value, {
+    Key key,
+  }) =>
+      Padding(
+        key: key,
+        padding: EdgeInsets.symmetric(vertical: value),
+        child: this,
+      );
+
   /// Gives 0 padding horizontally.
   Padding px0({Key? key}) => Padding(
         key: key,
@@ -295,6 +306,17 @@ extension PaddingExtensions on Widget {
   Padding px64({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp64),
+        child: this,
+      );
+
+  /// Gives custom padding horizontally.
+  Padding px(
+    double value, {
+    Key key,
+  }) =>
+      Padding(
+        key: key,
+        padding: EdgeInsets.symmetric(horizontal: value),
         child: this,
       );
 
