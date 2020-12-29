@@ -91,6 +91,36 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for Stack [Positioned]
+  Widget positioned(
+      {double top,
+      double bottom,
+      double left,
+      double right,
+      double height,
+      double width,
+      bool isFilled = false}) {
+    return isFilled
+        ? Positioned.fill(
+            key: key,
+            top: top,
+            bottom: bottom,
+            left: left,
+            right: right,
+            child: this,
+          )
+        : Positioned(
+            key: key,
+            top: top,
+            bottom: bottom,
+            left: left,
+            right: right,
+            height: height,
+            width: width,
+            child: this,
+          );
+  }
+
   /// Extension for coloring a widget with [DecoratedBox]
   DecoratedBox backgroundColor(Color color) {
     return DecoratedBox(
