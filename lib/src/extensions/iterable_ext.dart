@@ -105,8 +105,6 @@ extension IterableBasics<E> on Iterable<E> {
     }
     return fold(0, (prev, element) => prev + addend(element));
   }
-
-  
 }
 
 extension IterableBasics2<T> on Iterable<T> {
@@ -748,7 +746,6 @@ extension IterableOfDoubleSC on Iterable<double> {
     return minimumBy((a, b) => a.compareTo(b));
   }
 }
-
 
 /// Utility extension methods for [Iterable]s containing [num]s.
 extension NumIterableBasics<E extends num> on Iterable<E> {
