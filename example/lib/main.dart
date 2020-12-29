@@ -1,21 +1,41 @@
-import 'dart:async';
-import 'dart:math';
-
+import 'package:example/vxrest.dart';
+import 'package:example/widgets/platform_widget.dart';
+import 'package:example/widgets/vx_shapes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:velocity_x/velocity_x_rest.dart';
 
-import 'dummy.dart';
+import 'examples/animated_page_view.dart';
+import 'examples/second_page.dart';
+import 'models/dummy.dart';
+import 'widgets/draw_android.dart';
 
-void main() => runApp(MaterialApp(
-      home: Material(child: Demo()),
-      theme:
-          ThemeData(primarySwatch: Colors.teal, brightness: Brightness.light),
-      debugShowCheckedModeBanner: false,
-    ));
+void main() => runApp(
+      MaterialApp(
+        home: Material(child: Demo()),
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+          brightness: Brightness.light,
+        ),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
 
-class Demo extends StatelessWidget {
-  final String helloText = "Hello";
+class Demo extends StatefulWidget {
+  @override
+  _DemoState createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
   final VxPopupMenuController _controller = VxPopupMenuController();
+
+  @override
+  void initState() {
+    super.initState();
+    restOperations();
+  }
+
   @override
   Widget build(BuildContext context) {
     Vx.inspect("message");
@@ -25,12 +45,34 @@ class Demo extends StatelessWidget {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
-        TimelineExample(),
-        AnimatedBoxExample(),
-        VxAnimationExample(),
+        PlatformBar(),
+        TextButton(
+          child: "Restart Server".text.make(),
+          onPressed: () async {
+            print(await Vx.isConnectedToInternet());
+            VxRest.restartServer();
+          },
+        ),
+        "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
         10.heightBox,
-        Text(helloText),
-        helloText.text
+        DrawAndroid(),
+        10.heightBox,
+        // TimelineExample(),
+        // AnimatedBoxExample(),
+        // VxAnimationExample(),
+        // VxAnimator<double>(
+        //   builder: (context, animState, child) {
+        //     return VxBox()
+        //         .rounded
+        //         .alignCenter
+        //         .pink400
+        //         .square(animState.value)
+        //         .makeCentered();
+        //   },
+        // ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
+        20.heightBox,
+        "Hello"
+            .text
             .make()
             .box
             .p8
@@ -44,6 +86,11 @@ class Demo extends StatelessWidget {
                 count: 200,
                 limit: false,
                 color: Colors.black,
+                // optionalWidget: Icon(
+                //   Icons.notification_important,
+                //   size: 8.0,
+                //   color: Colors.white,
+                // ),
                 type: VxBadgeType.round)
             .onInkTap(() {
           // Show Toast
@@ -72,6 +119,7 @@ class Demo extends StatelessWidget {
           count: 5,
           selectionColor: Colors.teal,
           size: 30,
+          stepInt: true,
         ),
         20.heightBox,
         const VxTextField(
@@ -146,14 +194,15 @@ class Demo extends StatelessWidget {
         12341.42334.numCurrencyWithLocale(locale: "hi_IN").text.make(),
         10.heightBox,
         "https://avatars0.githubusercontent.com/u/12619420?s=460&u=26db98cbde1dd34c7c67b85c240505a436b2c36d&v=4"
-            .circlularNetworkImage(),
+            .circularNetworkImage(),
         10.heightBox,
         const VxDash(
           dashColor: Colors.red,
         ),
         10.heightBox,
         DateTime.now().subtract(10.minutes).timeAgo().text.make(),
-        10.heightBox,
+        VxShapes(),
+        20.heightBox,
         Container(
           child: const Icon(Icons.menu),
           padding: Vx.m20,
@@ -266,210 +315,8 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator!.push(const _SecondPage("assets/vxbox.png")
+      context.navigator!.push(const SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
-  }
-}
-
-class AnimatedBoxExample extends StatefulWidget {
-  @override
-  _AnimatedBoxExampleState createState() => _AnimatedBoxExampleState();
-}
-
-class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
-  late double _width, _height, _radius;
-  late Color _color;
-
-  @override
-  void initState() {
-    super.initState();
-
-    Timer.periodic(5.seconds, (timer) {
-      setState(() {});
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final random = Random();
-
-    // Generate a random width and height.
-    _width = random.nextInt(300).toDouble();
-    _height = random.nextInt(300).toDouble();
-
-    // Generate a random color.
-    _color = Color.fromRGBO(
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256),
-      1,
-    );
-
-    // Generate a random border radius.
-    _radius = random.nextInt(100).toDouble();
-    return VxAnimatedBox()
-        .seconds(sec: 5)
-        .fastOutSlowIn
-        .width(_width + 50)
-        .height(_height)
-        .color(_color)
-        .withRounded(value: _radius)
-        .p16
-        .alignCenter
-        .make()
-        .py16();
-  }
-}
-
-class VxAnimationExample extends StatefulWidget {
-  @override
-  _VxAnimationExampleState createState() => _VxAnimationExampleState();
-}
-
-class _VxAnimationExampleState extends State<VxAnimationExample>
-    with SingleTickerProviderStateMixin {
-  num anim = 1.0;
-
-  @override
-  void initState() {
-    super.initState();
-
-    withRepeatAnimation(
-      vsync: this,
-      tween: Tween(begin: 0.2, end: 2.0),
-      duration: 5.seconds,
-      isRepeatReversed: true,
-      callBack: (value, percent) {
-        anim = value as num;
-        setState(() {});
-        // print(anim);
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return "Animated Text"
-        .text
-        .semiBold
-        .center
-        .makeCentered()
-        .scale(scaleValue: anim.toDouble())
-        .p16();
-  }
-}
-
-class _SecondPage extends StatelessWidget {
-  final String imageAssetName;
-
-  const _SecondPage(this.imageAssetName);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Material(
-          child: InkWell(
-            onTap: () => context.pop(),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.asset(
-                imageAssetName,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class AnimatedPageView extends StatefulWidget {
-  @override
-  _AnimatedPageViewState createState() => _AnimatedPageViewState();
-}
-
-class _AnimatedPageViewState extends State<AnimatedPageView> {
-  final List<double> _imgScaleMap = [0.8, 0.7, 1.0, 0.9, 1.2, 1.5];
-  int _currentIndex = 0;
-
-  List<String> parsePics() {
-    return [
-      "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1541560052-3744e48ab80b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1559650656-5d1d361ad10e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-      "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60",
-    ];
-  }
-
-  double calculateImgScale(int index) {
-    return _imgScaleMap[index];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final List<String> pics = parsePics();
-    if (pics.isEmpty) {
-      return Container();
-    }
-
-    final Widget child = VxAnimatedHeightView<PageView>(
-      pageViewChild: PageView.builder(
-        itemCount: pics.length,
-        controller: PageController(),
-        itemBuilder: (context, index) {
-          final String imgUrl = pics.elementAt(index);
-          final double w = context.screenWidth;
-          final double h = w * calculateImgScale(index);
-          return GestureDetector(
-            onTap: () {
-              print("tap img index is $index");
-            },
-            child: Image.network(imgUrl,
-                width: w,
-                height: h,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter),
-          );
-        },
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
-      itemCount: pics.length,
-      currentPageIndex: _currentIndex,
-      computeAspectRadio: (index) {
-        return calculateImgScale(index!);
-      },
-      notifyScroll: (scrollNotification) {},
-    );
-    return child;
-  }
-}
-
-class TimelineExample extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return VxTimeline(
-        animationDuration: 5.seconds,
-        showTrailing: true,
-        onItemTap: (value) {
-          print(value.heading);
-        },
-        timelineList: List.generate(
-          3,
-          (index) => VxTimelineModel(
-              id: index,
-              heading: "Nov 01, 2020",
-              description: "Hello Vx $index",
-              actionUrl: ""),
-        ).toList());
   }
 }

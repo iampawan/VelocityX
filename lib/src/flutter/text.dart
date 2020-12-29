@@ -25,7 +25,7 @@ import 'velocityx_mixins/color_mixin.dart';
 /// overflows anyway, you should check if the parent widget actually constraints
 /// the size of this widget.
 @protected
-class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
+class VxTextBuilder extends VxWidgetBuilder<Widget>
     with VxColorMixin<VxTextBuilder> {
   VxTextBuilder(String this._text) {
     setChildToColor(this);
@@ -57,6 +57,8 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   Widget? _replacement;
   bool? _softWrap, _wrapWords;
 
+  bool _isIntrinsic = false;
+
   /// The text to display.
   ///
   /// This will be null if a [textSpan] is provided instead.
@@ -74,6 +76,11 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   /// Set [color] of the text using hexvalue
   VxTextBuilder hexColor(String colorHex) =>
       this..velocityColor = Vx.hexToColor(colorHex);
+
+  /// [LayoutBuilder] does not support using IntrinsicWidth or IntrinsicHeight.
+  ///
+  /// Note: Use it only for few widgets like [DataTable] which doesn't work well with Vx but using [isIntrinsic] will disable [AutoSizeText].
+  VxTextBuilder get isIntrinsic => this.._isIntrinsic = true;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
   /// If the text exceeds the given number of lines, it will be resized according
@@ -371,7 +378,7 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
   VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
   @override
-  AutoSizeText make({Key? key}) {
+  Widget make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
@@ -384,22 +391,34 @@ class VxTextBuilder extends VxWidgetBuilder<AutoSizeText>
       textBaseline: _textBaseline ?? TextBaseline.alphabetic,
       wordSpacing: _wordSpacing,
     );
-    return AutoSizeText(
-      _text!,
-      key: key,
-      textAlign: _textAlign,
-      maxLines: _maxLines,
-      textScaleFactor: _scaleFactor,
-      style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
-      softWrap: _softWrap ?? true,
-      minFontSize: _minFontSize ?? 12,
-      maxFontSize: _maxFontSize ?? double.infinity,
-      stepGranularity: _stepGranularity ?? 1,
-      overflowReplacement: _replacement,
-      overflow: _overflow ?? TextOverflow.clip,
-      strutStyle: _strutStyle,
-      wrapWords: _wrapWords ?? true,
-    );
+    return _isIntrinsic
+        ? Text(
+            _text!,
+            key: key,
+            textAlign: _textAlign,
+            maxLines: _maxLines,
+            textScaleFactor: _scaleFactor,
+            style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+            softWrap: _softWrap ?? true,
+            overflow: _overflow ?? TextOverflow.clip,
+            strutStyle: _strutStyle,
+          )
+        : AutoSizeText(
+            _text!,
+            key: key,
+            textAlign: _textAlign,
+            maxLines: _maxLines,
+            textScaleFactor: _scaleFactor,
+            style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
+            softWrap: _softWrap ?? true,
+            minFontSize: _minFontSize ?? 12,
+            maxFontSize: _maxFontSize ?? double.infinity,
+            stepGranularity: _stepGranularity ?? 1,
+            overflowReplacement: _replacement,
+            overflow: _overflow ?? TextOverflow.clip,
+            strutStyle: _strutStyle,
+            wrapWords: _wrapWords ?? true,
+          );
   }
 }
 

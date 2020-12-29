@@ -54,9 +54,9 @@ extension TransformExtension on Widget {
   ///
   /// Extension method to rotate along Y-axis any widget without wrapping or with dot operator.
   ///
-  Widget flipY({Key? key, required double radian}) => Transform(
+  Widget flipY({Key? key, double? radian}) => Transform(
         key: key,
-        transform: Matrix4.rotationY(radian),
+        transform: Matrix4.rotationY(radian ?? 90),
         child: this,
       );
 
@@ -72,9 +72,9 @@ extension TransformExtension on Widget {
   ///
   /// Extension method to rotate along X-axis any widget without wrapping or with dot operator.
   ///
-  Widget flipX({Key? key, required double radian}) => Transform(
+  Widget flipX({Key? key, double? radian}) => Transform(
         key: key,
-        transform: Matrix4.rotationX(radian),
+        transform: Matrix4.rotationX(radian ?? 90),
         child: this,
       );
 
@@ -106,6 +106,15 @@ extension TransformExtension on Widget {
   Widget rotate45({Key? key}) => Transform.rotate(
         key: key,
         angle: math.pi / 4,
+        child: this,
+      );
+
+  ///
+  /// Extension method to rotate any widget by 60 degrees without wrapping or with dot operator.
+  ///
+  Widget rotate60({Key? key}) => Transform.rotate(
+        key: key,
+        angle: math.pi / 3,
         child: this,
       );
 
@@ -151,6 +160,15 @@ extension TransformExtension on Widget {
   Widget rotateN45({Key? key}) => Transform.rotate(
         key: key,
         angle: -math.pi / 4,
+        child: this,
+      );
+
+  ///
+  /// Extension method to rotate any widget by 60 degrees anti-clockwise without wrapping or with dot operator.
+  ///
+  Widget rotateN60({Key? key}) => Transform.rotate(
+        key: key,
+        angle: -math.pi / 3,
         child: this,
       );
 

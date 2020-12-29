@@ -34,37 +34,43 @@ class VxTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final String? counterText;
   final bool autofocus;
+  final TextStyle? style;
+  final String? labelText;
+  final TextStyle? labelStyle;
 
-  const VxTextField({
-    Key? key,
-    this.controller,
-    this.hint,
-    this.value,
-    this.clear = true,
-    this.isPassword = false,
-    this.obscureText = false,
-    this.borderType = VxTextFieldBorderType.underLine,
-    this.maxLine = 1,
-    this.maxLength,
-    this.textAlign = TextAlign.left,
-    this.fillColor,
-    this.borderColor,
-    this.prefixIcon,
-    this.height = 40,
-    this.icon,
-    this.borderRadius,
-    this.contentPaddingLeft,
-    this.contentPaddingTop,
-    this.keyboardType,
-    this.textInputAction,
-    this.inputFormatters,
-    this.onChanged,
-    this.onSubmitted,
-    this.onEditingComplete,
-    this.focusNode,
-    this.counterText,
-    this.autofocus = false,
-  }) : super(key: key);
+  const VxTextField(
+      {Key? key,
+      this.controller,
+      this.hint,
+      this.value,
+      this.clear = true,
+      this.isPassword = false,
+      this.obscureText = false,
+      this.borderType = VxTextFieldBorderType.underLine,
+      this.maxLine = 1,
+      this.maxLength,
+      this.textAlign = TextAlign.left,
+      this.fillColor,
+      this.borderColor,
+      this.prefixIcon,
+      this.height = 40,
+      this.icon,
+      this.borderRadius,
+      this.contentPaddingLeft,
+      this.contentPaddingTop,
+      this.keyboardType,
+      this.textInputAction,
+      this.inputFormatters,
+      this.onChanged,
+      this.onSubmitted,
+      this.onEditingComplete,
+      this.focusNode,
+      this.counterText,
+      this.autofocus = false,
+      this.style,
+      this.labelText,
+      this.labelStyle})
+      : super(key: key);
 
   @override
   _VxTextFieldState createState() => _VxTextFieldState();
@@ -103,6 +109,8 @@ class _VxTextFieldState extends State<VxTextField> {
         fillColor: widget.fillColor,
         counterText: widget.counterText,
         filled: true,
+        labelText: widget.labelText,
+        labelStyle: widget.labelStyle,
         contentPadding: getContentPadding(),
         enabledBorder: getInputBorder(),
         focusedBorder: getInputBorder(),
@@ -112,6 +120,7 @@ class _VxTextFieldState extends State<VxTextField> {
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
       onSubmitted: onSubmitted,
+      style: widget.style,
     );
 
     const other = null;
