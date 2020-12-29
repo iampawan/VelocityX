@@ -238,7 +238,7 @@ extension StringWidgetsExtension on String {
         backgroundImage: AssetImage(this),
       );
 
-  Widget circlularNetworkImage(
+  Widget circularNetworkImage(
           {Key key,
           double radius = 65.0,
           Color bgColor = Colors.white,

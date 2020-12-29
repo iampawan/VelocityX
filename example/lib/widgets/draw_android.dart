@@ -10,12 +10,12 @@ class DrawAndroid extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            VxContinousRectangle(
+            VxContinuousRectangle(
               height: 10.0,
               width: 50.0,
               backgroundColor: _androidColor,
             ).rotate60(),
-            VxContinousRectangle(
+            VxContinuousRectangle(
               height: 10.0,
               width: 50.0,
               backgroundColor: _androidColor,

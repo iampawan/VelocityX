@@ -368,10 +368,10 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
 }
 
 // ignore: must_be_immutable
-class VxContinousRectangle extends StatelessWidget
-    with VxShadowMixin<VxContinousRectangle> {
-  /// Creates a continous rectangle that represents a shape.
-  VxContinousRectangle({
+class VxContinuousRectangle extends StatelessWidget
+    with VxShadowMixin<VxContinuousRectangle> {
+  /// Creates a continuous rectangle that represents a shape.
+  VxContinuousRectangle({
     Key key,
     this.child,
     this.backgroundColor,
@@ -475,7 +475,7 @@ class VxTriangle extends StatelessWidget {
   /// [ThemeData.primaryColorDark] with light foreground colors.
   final Color backgroundColor;
 
-  /// The width of the traingle.
+  /// The width of the triangle.
   final double width;
 
   /// The height of the triangle.
@@ -781,9 +781,9 @@ extension ShapesExtension on Widget {
       );
 
   ///
-  /// Extension method to directly access [VxContinousRectangle] with any widget without wrapping or with dot operator.
+  /// Extension method to directly access [VxContinuousRectangle] with any widget without wrapping or with dot operator.
   ///
-  VxContinousRectangle continousRectangle({
+  VxContinuousRectangle continuousRectangle({
     Key key,
     Widget child,
     Color backgroundColor,
@@ -795,7 +795,7 @@ extension ShapesExtension on Widget {
     Gradient gradient,
     List<BoxShadow> shadows,
   }) =>
-      VxContinousRectangle(
+      VxContinuousRectangle(
         key: key,
         child: this,
         backgroundColor: backgroundColor,

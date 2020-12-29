@@ -194,7 +194,7 @@ class _DemoState extends State<Demo> {
         12341.42334.numCurrencyWithLocale(locale: "hi_IN").text.make(),
         10.heightBox,
         "https://avatars0.githubusercontent.com/u/12619420?s=460&u=26db98cbde1dd34c7c67b85c240505a436b2c36d&v=4"
-            .circlularNetworkImage(),
+            .circularNetworkImage(),
         10.heightBox,
         const VxDash(
           dashColor: Colors.red,
