@@ -152,7 +152,7 @@ class VxSwiper extends StatefulWidget {
   /// creating a feeling of depth in the carousel.
   ///
   /// Defaults to false.
-  final bool enlargeCenterPage;
+  final bool? enlargeCenterPage;
 
   /// The axis along which the page view scrolls.
   ///
@@ -338,7 +338,7 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
               ? widget.items![index]
               : widget.itemBuilder!(context, index),
           builder: (BuildContext context, child) {
-            double distortionValue = 1.0;
+            double? distortionValue = 1.0;
             // if `enlargeCenterPage` is true, we must calculate the carousel item's height
             // to display the visual effect
             if (widget.enlargeCenterPage != null &&

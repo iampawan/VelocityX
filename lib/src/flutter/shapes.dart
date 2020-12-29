@@ -369,7 +369,7 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
 // ignore: must_be_immutable
 class VxContinuousRectangle extends StatelessWidget
     with VxShadowMixin<VxContinuousRectangle> {
-  /// Creates a continous rectangle that represents a shape.
+  /// Creates a continuous rectangle that represents a shape.
   VxContinuousRectangle({
     Key? key,
     this.child,
@@ -516,7 +516,7 @@ class VxTriangle extends StatelessWidget {
 }
 
 class VxTicket extends StatelessWidget {
-  /// Creates a continous rectangle that represents a shape.
+  /// Creates a VxTicket that represents a shape.
   const VxTicket({
     Key? key,
     this.child,
