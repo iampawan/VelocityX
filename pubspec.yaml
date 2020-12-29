@@ -3,6 +3,7 @@ description: A minimalist Flutter framework for rapidly building custom designs.
 version: 1.2.0
 homepage: https://velocityx.dev
 repository: https://github.com/iampawan/VelocityX
+documentation: https://velocityx.dev
 
 environment:
   sdk: ">=2.6.0 <3.0.0"
