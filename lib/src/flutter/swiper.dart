@@ -14,7 +14,6 @@ furnished to do so, subject to the following conditions:
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// Use this widget [VxSwiper] to give your list a swipeable effect with full customization.
@@ -352,9 +351,9 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
               } catch (e) {
                 final BuildContext storageContext =
                     widget.pageController.position.context.storageContext;
-                final double previousSavedPosition =
+                final double? previousSavedPosition =
                     PageStorage.of(storageContext)?.readState(storageContext)
-                        as double;
+                        as double?;
                 if (previousSavedPosition != null) {
                   itemOffset = previousSavedPosition - i.toDouble();
                 } else {

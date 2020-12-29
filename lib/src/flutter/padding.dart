@@ -224,7 +224,7 @@ extension PaddingExtensions on Widget {
   /// Gives custom padding vertically.
   Padding py(
     double value, {
-    Key key,
+    Key? key,
   }) =>
       Padding(
         key: key,
@@ -312,7 +312,7 @@ extension PaddingExtensions on Widget {
   /// Gives custom padding horizontally.
   Padding px(
     double value, {
-    Key key,
+    Key? key,
   }) =>
       Padding(
         key: key,

@@ -20,7 +20,7 @@ class _VxAnimationExampleState extends State<VxAnimationExample>
       duration: 5.seconds,
       isRepeatReversed: true,
       callBack: (value, percent) {
-        anim = value;
+        anim = value as num;
         setState(() {});
         // print(anim);
       },
@@ -34,7 +34,7 @@ class _VxAnimationExampleState extends State<VxAnimationExample>
         .semiBold
         .center
         .makeCentered()
-        .scale(scaleValue: anim)
+        .scale(scaleValue: anim as double)
         .p16();
   }
 }

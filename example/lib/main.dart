@@ -60,16 +60,16 @@ class _DemoState extends State<Demo> {
         // TimelineExample(),
         // AnimatedBoxExample(),
         // VxAnimationExample(),
-        VxAnimator<double>(
-          builder: (context, animState, child) {
-            return VxBox()
-                .rounded
-                .alignCenter
-                .pink400
-                .square(animState.value)
-                .makeCentered();
-          },
-        ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
+        // VxAnimator<double>(
+        //   builder: (context, animState, child) {
+        //     return VxBox()
+        //         .rounded
+        //         .alignCenter
+        //         .pink400
+        //         .square(animState.value)
+        //         .makeCentered();
+        //   },
+        // ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
         20.heightBox,
         "Hello"
             .text
@@ -194,7 +194,7 @@ class _DemoState extends State<Demo> {
         12341.42334.numCurrencyWithLocale(locale: "hi_IN").text.make(),
         10.heightBox,
         "https://avatars0.githubusercontent.com/u/12619420?s=460&u=26db98cbde1dd34c7c67b85c240505a436b2c36d&v=4"
-            .circlularNetworkImage(),
+            .circularNetworkImage(),
         10.heightBox,
         const VxDash(
           dashColor: Colors.red,
@@ -292,7 +292,7 @@ class _DemoState extends State<Demo> {
             .textDropDown(
               selectedValue: "Item 1",
               onChanged: (value) {
-                Vx.log(value);
+                Vx.log(value!);
               },
             )
             .make(),
@@ -315,7 +315,7 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator.push(const SecondPage("assets/vxbox.png")
+      context.navigator!.push(const SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
   }

@@ -37,7 +37,7 @@ class VxShapes extends StatelessWidget {
         backgroundColor: Colors.orange,
       ).shadow,
       10.heightBox,
-      VxContinousRectangle(
+      VxContinuousRectangle(
         width: 100,
         height: 50,
         backgroundColor: Colors.indigo,

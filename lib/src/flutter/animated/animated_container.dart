@@ -210,7 +210,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   Widget make({Key? key}) {
     return AnimatedContainer(
         child: child,
-        curve: velocityCurve,
+        curve: velocityCurve ?? Curves.linear,
         duration: velocityDuration ?? const Duration(seconds: 100),
         height: _height,
         width: _width,

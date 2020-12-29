@@ -32,7 +32,7 @@ class VxBadge extends StatelessWidget {
   final VxBadgePosition position;
 
   /// To provide an optional widget like an Icon
-  final Widget optionalWidget;
+  final Widget? optionalWidget;
 
   const VxBadge({
     required this.child,

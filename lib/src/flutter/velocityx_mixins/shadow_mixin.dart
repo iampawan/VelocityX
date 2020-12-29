@@ -14,10 +14,10 @@
 import 'package:flutter/material.dart';
 
 mixin VxShadowMixin<T> {
-  T _child;
+  late T _child;
 
   @protected
-  List<BoxShadow> velocityShadow;
+  List<BoxShadow>? velocityShadow;
 
   @protected
   void setChildForShadow(T child) {
@@ -77,7 +77,7 @@ mixin VxShadowMixin<T> {
   ///
   T get shadowMax => _addShadow(shadows: kElevationToShadow[24]);
 
-  T _addShadow({@required List<BoxShadow> shadows}) {
+  T _addShadow({required List<BoxShadow>? shadows}) {
     velocityShadow = shadows;
     return _child;
   }

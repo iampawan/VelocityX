@@ -10,8 +10,8 @@ class AnimatedBoxExample extends StatefulWidget {
 }
 
 class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
-  double _width, _height, _radius;
-  Color _color;
+  double? _width, _height, _radius;
+  Color? _color;
 
   @override
   void initState() {
@@ -43,10 +43,10 @@ class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
     return VxAnimatedBox()
         .seconds(sec: 5)
         .fastOutSlowIn
-        .width(_width + 50)
-        .height(_height)
-        .color(_color)
-        .withRounded(value: _radius)
+        .width(_width! + 50)
+        .height(_height!)
+        .color(_color!)
+        .withRounded(value: _radius!)
         .p16
         .alignCenter
         .make()

@@ -17,7 +17,7 @@ mixin VxCurvesMixin<T> {
   late T _child;
 
   @protected
-  Curve velocityCurve = Curves.linear;
+  Curve? velocityCurve;
 
   @protected
   void setChildForCurve(T child) {

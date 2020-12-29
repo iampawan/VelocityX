@@ -38,7 +38,7 @@ extension ThemeExtension on Widget {
   /// Extension method to directly access [Theme] with custom [ThemeData] with any widget without wrapping or with dot operator.
   ///
   Theme customTheme({Key? key, required ThemeData? themeData}) => Theme(
-        data: themeData,
+        data: themeData!,
         child: this,
       );
 }

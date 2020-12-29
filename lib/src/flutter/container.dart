@@ -10,7 +10,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
@@ -50,8 +49,6 @@ import 'velocityx_mixins/round_mixin.dart';
 /// always returns true. If the [decoration] or [foregroundDecoration] properties
 /// are specified, hit testing is handled by [Decoration.hitTest].
 ///
-typedef AnimatorMiniCallBack<T> = Function(
-    AnimatorState<T> animatorState, VxBox box);
 
 class VxBox extends VxWidgetBuilder<Widget>
     with
@@ -293,11 +290,4 @@ extension ContainerWidgetExtension on Widget {
   /// Extension method to directly access material [VxBox] with any widget without wrapping or with dot operator.
   ///
   VxBox get box => VxBox(child: this);
-}
-
-class AnimContainer<T> {
-  final AnimatorState<T> state;
-  final VxBox box;
-
-  AnimContainer(this.state, this.box);
 }

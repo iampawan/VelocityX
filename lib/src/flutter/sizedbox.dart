@@ -619,10 +619,10 @@ extension SizedBoxExtension on Widget {
 
   /// Extension for [FractionallySizedBox]
   Widget fractionalBox(
-          {Key key,
-          @required double heightFactor,
-          @required double widthFactor,
-          Alignment alignment}) =>
+          {Key? key,
+          required double heightFactor,
+          required double widthFactor,
+          Alignment? alignment}) =>
       FractionallySizedBox(
         key: key,
         heightFactor: heightFactor,

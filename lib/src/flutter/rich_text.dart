@@ -21,8 +21,7 @@ import 'package:velocity_x/src/velocity_xx.dart';
 
 /// Creates a [AutoSizeText] widget with a [TextSpan].
 @protected
-class VxRichText extends VxWidgetBuilder<AutoSizeText>
-    with VxColorMixin<VxRichText> {
+class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
   VxRichText(String this._text) {
     setChildToColor(this);
   }
@@ -53,7 +52,8 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   TextBaseline? _textBaseline;
   Widget? _replacement;
   bool? _softWrap, _wrapWords;
-  bool? _isIntrinsic = false;
+  bool _isIntrinsic = false;
+
   /// Set tap func
   VxRichText tap(Function function) {
     final recognizer = TapGestureRecognizer()
@@ -343,7 +343,7 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   VxRichText lineHeight(double val) => this.._lineHeight = val;
 
   @override
-  AutoSizeText make({Key? key}) {
+  Widget make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
