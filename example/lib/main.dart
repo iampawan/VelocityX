@@ -49,7 +49,6 @@ class _DemoState extends State<Demo> {
         TextButton(
           child: "Restart Server".text.make(),
           onPressed: () async {
-            print(await Vx.isConnectedToInternet());
             VxRest.restartServer();
           },
         ),

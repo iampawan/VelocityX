@@ -1,4 +1,4 @@
-## [2.2.1-nullsafety.0] - Decemeber 29, 2020
+## [2.2.2-nullsafety.0] - Decemeber 29, 2020
 
 - Introducing VxShapes with ext: VxCircle -> .circle(), VxEllipse -> .ellipse(), VxCapsule -> .capsule(), VxContinuousRectangle -> .continuousRectangle(), VxBevel -> .bevel(), VxTriangle -> .triangle() and VxTicket -> .ticket()
 - VxPlatform added to create a common widget for different platforms.
