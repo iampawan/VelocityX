@@ -181,8 +181,8 @@ extension StringExtension on String {
     return stringBuffer.toString();
   }
 
-  /// Checks the validity of the card number using the Luhn algorithm.
-  bool isCardValid() {
+  /// Checks the validity of the credit/debit card number using the Luhn algorithm.
+  bool isCreditCardValid() {
     int _sum = 0;
     bool _alternate = false;
 

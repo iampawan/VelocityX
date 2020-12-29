@@ -28,7 +28,7 @@
 
 ### Show some :heart: and star the repo.
 
-[![GitHub followers](https://img.shields.io/github/followers/iampawan.svg?style=social&label=Follow)](https://github.com/iampawan/Coronavirus-Warrior)
+[![GitHub followers](https://img.shields.io/github/followers/iampawan.svg?style=social&label=Follow)](https://github.com/iampawan/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/imthepk.svg?style=social)](https://twitter.com/imthepk)
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
@@ -59,9 +59,9 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 
 | Demo                                                      | Demo2                                                     |
 | --------------------------------------------------------- | --------------------------------------------------------- |
+| <img src="https://i.imgur.com/Uk28KcB.png" width="300"/>  | <img src="https://i.imgur.com/V0mr3S9.png" width="300"/>  |
 | <img src="https://i.imgur.com/50tJKqU.png"  width="300"/> | <img src="https://i.imgur.com/vNPjDMs.png"  width="300"/> |
-| <img src="https://i.imgur.com/Uk28KcB.png" width="300"/>  | <img src="https://i.imgur.com/Xpdx9UP.png" width="300"/>  |
-| <img src="https://i.imgur.com/cWlCo6P.png" width="300"/>  |
+| <img src="https://i.imgur.com/cWlCo6P.png" width="300"/>  | <img src= "https://i.imgur.com/Xpdx9UP.png" width="300">  |
 
 ## Contributing
 
