@@ -1,10 +1,8 @@
-import 'package:example/vxrest.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:velocity_x/velocity_x_rest.dart';
 
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
@@ -33,7 +31,6 @@ class _DemoState extends State<Demo> {
   @override
   void initState() {
     super.initState();
-    restOperations();
   }
 
   @override
@@ -46,12 +43,6 @@ class _DemoState extends State<Demo> {
       ),
       body: VStack([
         PlatformBar(),
-        TextButton(
-          child: "Restart Server".text.make(),
-          onPressed: () async {
-            VxRest.restartServer();
-          },
-        ),
         "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
         10.heightBox,
         DrawAndroid(),
