@@ -48,7 +48,7 @@ class VxPopupMenu extends StatefulWidget {
     this.arrowSize = 10.0,
     this.horizontalMargin = 10.0,
     this.verticalMargin = 10.0,
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// Child for the [VxPopupMenu] which can be clicked
   final Widget child;
@@ -113,7 +113,8 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
             Center(
               child: Container(
                 constraints: BoxConstraints(
-                  maxWidth: _parentBox!.size.width - 2 * widget.horizontalMargin,
+                  maxWidth:
+                      _parentBox!.size.width - 2 * widget.horizontalMargin,
                   minWidth: 0,
                 ),
                 child: CustomMultiChildLayout(
@@ -184,7 +185,8 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
     _controller!.addListener(_updateView);
     WidgetsBinding.instance!.addPostFrameCallback((call) {
       _childBox = context.findRenderObject() as RenderBox?;
-      _parentBox = Overlay.of(context)!.context.findRenderObject() as RenderBox?;
+      _parentBox =
+          Overlay.of(context)!.context.findRenderObject() as RenderBox?;
     });
   }
 
@@ -277,7 +279,10 @@ class _MenuLayoutDelegate extends MultiChildLayoutDelegate {
     }
 
     bool isTop = false;
-    if (anchorBottomY + verticalMargin! + arrowSize.height + contentSize.height >
+    if (anchorBottomY +
+            verticalMargin! +
+            arrowSize.height +
+            contentSize.height >
         size.height) {
       isTop = true;
     }

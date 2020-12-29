@@ -54,7 +54,10 @@ extension ListWidgetExtension on List<Widget> {
   /// Extension for using [ZStack] directly with list of widgets
   ///
   Widget zStack(
-          {Key? key, AlignmentGeometry? alignment, StackFit? fit, Clip? clip}) =>
+          {Key? key,
+          AlignmentGeometry? alignment,
+          StackFit? fit,
+          Clip? clip}) =>
       ZStack(
         this,
         key: key,
@@ -89,7 +92,10 @@ extension ListWidgetExtension on List<Widget> {
 
   /// Same as [zStack]. Added just for ease who are familiar with Flutter widgets.
   Widget stack(
-          {Key? key, AlignmentGeometry? alignment, StackFit? fit, Clip? clip}) =>
+          {Key? key,
+          AlignmentGeometry? alignment,
+          StackFit? fit,
+          Clip? clip}) =>
       ZStack(
         this,
         key: key,

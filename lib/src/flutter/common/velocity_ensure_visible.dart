@@ -32,7 +32,7 @@ class VxEnsureVisibleWhenFocused extends StatefulWidget {
     required this.focusNode,
     this.curve = Curves.ease,
     this.duration = const Duration(milliseconds: 100),
-  })  : super(key: key);
+  }) : super(key: key);
 
   /// The node we will monitor to determine if the child is focused
   final FocusNode focusNode;
