@@ -8,7 +8,7 @@ import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 
 // ignore: must_be_immutable
 class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
-  /// Creates a circle that represents a user.
+  /// Creates a circle that represents a shape.
   VxCircle({
     Key? key,
     this.child,
