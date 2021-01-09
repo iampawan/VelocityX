@@ -7,18 +7,21 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
+import 'new/vx_demo.dart';
 import 'widgets/draw_android.dart';
 
-void main() => runApp(
-      MaterialApp(
-        home: Material(child: Demo()),
-        theme: ThemeData(
-          primarySwatch: Colors.teal,
-          brightness: Brightness.light,
-        ),
-        debugShowCheckedModeBanner: false,
+void main() {
+  runApp(
+    MaterialApp(
+      home: Material(child: SafeArea(child: VxDemo())),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+        brightness: Brightness.light,
       ),
-    );
+      debugShowCheckedModeBanner: false,
+    ),
+  );
+}
 
 class Demo extends StatefulWidget {
   @override
