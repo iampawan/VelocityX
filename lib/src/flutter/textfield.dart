@@ -282,7 +282,8 @@ class _VxTextFieldState extends State<VxTextField> {
 
   @override
   void dispose() {
-    controller?.dispose();
+    if(widget.controller == null)
+      controller?.dispose();
     focusNode?.dispose();
     super.dispose();
   }
