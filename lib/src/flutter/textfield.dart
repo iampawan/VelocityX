@@ -37,6 +37,7 @@ class VxTextField extends StatefulWidget {
   final TextStyle style;
   final String labelText;
   final TextStyle labelStyle;
+  final TextStyle hintStyle;
 
   const VxTextField(
       {Key key,
@@ -69,7 +70,8 @@ class VxTextField extends StatefulWidget {
       this.autofocus = false,
       this.style,
       this.labelText,
-      this.labelStyle})
+      this.labelStyle,
+      this.hintStyle})
       : super(key: key);
 
   @override
@@ -106,6 +108,7 @@ class _VxTextFieldState extends State<VxTextField> {
         prefixIcon: widget.prefixIcon,
         suffixIcon: suffixView(),
         hintText: widget.hint,
+        hintStyle: widget.hintStyle,
         fillColor: widget.fillColor,
         counterText: widget.counterText,
         filled: true,
