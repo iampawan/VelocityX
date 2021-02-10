@@ -1,6 +1,7 @@
 library velocity_x;
 
 export 'package:animator/animator.dart';
+export 'package:vxstate/vxstate.dart';
 export 'src/dart/guard.dart';
 export 'src/dart/timeline.dart';
 export 'src/extensions/bool_ext.dart';
