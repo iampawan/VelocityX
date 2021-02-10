@@ -172,7 +172,7 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   }
 
   // Give custom text alignment
-  VxRichText alignment(TextAlign align) => this.._textAlign = align;
+  VxRichText align(TextAlign align) => this.._textAlign = align;
 
   /// How the text should be aligned horizontally.
   ///
