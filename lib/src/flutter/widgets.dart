@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../velocity_x.dart';
+import 'clippers/vx_half.dart';
 
 extension WidgetsExtension on Widget {
   ///Tooltip as accessibility
@@ -372,23 +373,4 @@ AnimationController withRepeatAnimation<T>(
   });
 
   return controller;
-}
-
-class VxHalfClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.moveTo(0, size.height / 2);
-    path.lineTo(size.width, size.height / 2);
-    path.lineTo(size.width, 0);
-    path.lineTo(0, 0);
-
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper oldClipper) {
-    return oldClipper != this;
-  }
 }
