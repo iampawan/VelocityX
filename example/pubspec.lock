@@ -176,14 +176,14 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.4.0"
+    version: "1.4.1"
   vxstate:
     dependency: transitive
     description:
       name: vxstate
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
 sdks:
   dart: ">=2.12.0-0.0 <3.0.0"
   flutter: ">=1.17.0"
