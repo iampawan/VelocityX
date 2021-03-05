@@ -173,8 +173,7 @@ extension ContextExtensions on BuildContext {
       _nextAndRemoveUntilPage(context: this, page: page);
 
   /// Action Extension
-  bool? invokeAction(Intent intent, {required bool nullOk}) =>
-      Actions.invoke(this, intent, nullOk: nullOk) as bool?;
+  bool? invokeAction(Intent intent) => Actions.invoke(this, intent) as bool?;
 
   /// Returns The state from the closest instance of this class that encloses the given context.
   /// It is used for validating forms
