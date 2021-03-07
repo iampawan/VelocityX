@@ -78,7 +78,7 @@ class VxStepperState extends State<VxStepper> {
     children.add(Container(
       height: _KDefaultButtonSize,
       width: _KDefaultButtonSize,
-      child: FlatButton(
+      child: MaterialButton(
         shape: const CircleBorder(),
         color: widget.actionButtonColor,
         padding: EdgeInsets.zero,
@@ -125,7 +125,7 @@ class VxStepperState extends State<VxStepper> {
     children.add(Container(
       height: _KDefaultButtonSize,
       width: _KDefaultButtonSize,
-      child: FlatButton(
+      child: MaterialButton(
         shape: const CircleBorder(),
         color: widget.actionButtonColor,
         onPressed: enableMax ? onAdd : null,
