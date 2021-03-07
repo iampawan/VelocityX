@@ -115,7 +115,7 @@ class VxStepperState extends State<VxStepper> {
         ],
         decoration: const InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 0),
+          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 0),
         ),
         onEditingComplete: inputComplete,
       ),

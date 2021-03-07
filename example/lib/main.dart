@@ -7,11 +7,12 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
+import 'new/demo_list.dart';
 import 'widgets/draw_android.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: Material(child: Demo()),
+        home: Material(child: DemoList()),
         theme: ThemeData(
           primarySwatch: Colors.teal,
           brightness: Brightness.light,
