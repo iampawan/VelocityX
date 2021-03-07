@@ -290,8 +290,9 @@ class _VxTextFieldState extends State<VxTextField> {
 
   @override
   void dispose() {
-    if(widget.controller == null)
+    if (widget.controller == null) {
       controller?.dispose();
+    }
     focusNode?.dispose();
     super.dispose();
   }
