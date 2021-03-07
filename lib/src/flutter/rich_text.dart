@@ -172,6 +172,9 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
     return this;
   }
 
+  // Give custom text alignment
+  VxRichText alignment(TextAlign align) => this.._textAlign = align;
+
   /// How the text should be aligned horizontally.
   ///
   /// To align text in [center]
