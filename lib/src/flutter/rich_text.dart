@@ -13,6 +13,7 @@
 
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
@@ -200,6 +201,84 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
 
   /// To set fontSize of the text using [size]
   VxRichText size(double size) => this.._fontSize = size;
+
+  /// Sets [TextTheme] headline 1
+  VxRichText headline1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline1;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 2
+  VxRichText headline2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline2;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 3
+  VxRichText headline3(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline3;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 4
+  VxRichText headline4(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline4;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 5
+  VxRichText headline5(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline5;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 6
+  VxRichText headline6(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline6;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText1
+  VxRichText bodyText1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText2
+  VxRichText bodyText2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    return this;
+  }
+
+  /// Sets [TextTheme] caption
+  VxRichText caption(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.caption;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle1
+  VxRichText subtitle1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle2
+  VxRichText subtitle2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    return this;
+  }
+
+  /// Sets [TextTheme] overline
+  VxRichText overlineText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.overline;
+    return this;
+  }
+
+  /// Sets [TextTheme] button
+  VxRichText buttonText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.button;
+    return this;
+  }
 
   /// Sets [textScaleFactor] to extra small i.e. 0.75
   VxRichText get xs => _fontSizedText(child: this, scaleFactor: 0.75);
