@@ -29,7 +29,7 @@ class DemoList extends StatelessWidget {
                 .box
                 .p8
                 .rounded
-                .teal400
+                .lime200
                 .alignCenter
                 .withConstraints(
                     const BoxConstraints(maxWidth: 100, minWidth: 50))

@@ -11,8 +11,11 @@
  * limitations under the License.
  */
 
+import 'dart:ui' as ui;
+
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
 
