@@ -15,6 +15,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../extensions/context_ext.dart';
 
 const double _KDefaultButtonSize = 30;
 const double _KDefaultSpace = 8;
@@ -113,9 +114,10 @@ class VxStepperState extends State<VxStepper> {
           FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
           LengthLimitingTextInputFormatter(3),
         ],
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 0),
+          contentPadding: EdgeInsets.symmetric(
+              vertical: context.isMobile ? 14 : 16, horizontal: 0),
         ),
         onEditingComplete: inputComplete,
       ),
