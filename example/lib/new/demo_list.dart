@@ -8,6 +8,7 @@ class DemoList extends StatelessWidget {
   Widget build(BuildContext context) {
     final VxPopupMenuController _controller = VxPopupMenuController();
     return Scaffold(
+      backgroundColor: Vx.indigo50,
       appBar: AppBar(
         title: "VxDemo".text.make(),
       ),
@@ -16,7 +17,16 @@ class DemoList extends StatelessWidget {
           title: "VxText With Box".text.make(),
           childrenPadding: Vx.m32,
           children: [
-            "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
+            "Vx Demo"
+                .text
+                .emerald800
+                .makeCentered()
+                .box
+                .p32
+                .white
+                // .shadow5xl
+                .make()
+                .innerShadow(),
           ],
         ),
         ExpansionTile(
@@ -167,7 +177,6 @@ class DemoList extends StatelessWidget {
                 .text
                 .makeCentered()
                 .card
-                .color(Vx.teal500)
                 .make()
                 .h10(context)
                 .onMouseHover((event) {
