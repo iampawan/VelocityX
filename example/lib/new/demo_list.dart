@@ -8,7 +8,7 @@ class DemoList extends StatelessWidget {
   Widget build(BuildContext context) {
     final VxPopupMenuController _controller = VxPopupMenuController();
     return Scaffold(
-      backgroundColor: Vx.indigo50,
+      backgroundColor: Vx.white,
       appBar: AppBar(
         title: "VxDemo".text.make(),
       ),

@@ -10,8 +10,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/gradient_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -54,6 +57,7 @@ class VxBox extends VxWidgetBuilder<Widget>
     with
         VxAlignmentMixing<VxBox>,
         VxColorMixin<VxBox>,
+        VxGradientMixin<VxBox>,
         VxPaddingMixin<VxBox>,
         VxRoundMixin<VxBox>,
         VxShadowMixin<VxBox>,
@@ -61,6 +65,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   VxBox({this.child}) {
     setChildForAlignment(this);
     setChildToColor(this);
+    setChildToGradient(this);
     setChildToPad(this);
     setChildToRound(this);
     setChildForShadow(this);
@@ -204,20 +209,62 @@ class VxBox extends VxWidgetBuilder<Widget>
   /// Gradienting
   /// Sets the linear gradient to the decorated box.
   ///
-  VxBox linearGradient(List<Color> colors) =>
-      this.._gradient = LinearGradient(colors: colors);
+  VxBox linearGradient(List<Color> colors,
+          {AlignmentGeometry begin = Alignment.centerLeft,
+          AlignmentGeometry end = Alignment.centerRight,
+          List<double>? stops,
+          TileMode tileMode = TileMode.clamp,
+          GradientTransform? transform}) =>
+      this
+        .._gradient = LinearGradient(
+            colors: colors,
+            begin: begin,
+            stops: stops,
+            end: end,
+            tileMode: tileMode,
+            transform: transform);
 
   ///
   /// Sets the radial gradient to the decorated box.
   ///
-  VxBox radialGradient(List<Color> colors) =>
-      this.._gradient = RadialGradient(colors: colors);
+  VxBox radialGradient(List<Color> colors,
+          {AlignmentGeometry center = Alignment.center,
+          double radius = 0.5,
+          List<double>? stops,
+          TileMode tileMode = TileMode.clamp,
+          AlignmentGeometry? focal,
+          double focalRadius = 0.0,
+          GradientTransform? transform}) =>
+      this
+        .._gradient = RadialGradient(
+            colors: colors,
+            center: center,
+            radius: radius,
+            focalRadius: focalRadius,
+            stops: stops,
+            focal: focal,
+            tileMode: tileMode,
+            transform: transform);
 
   ///
   /// Sets the sweep gradient to the decorated box.
   ///
-  VxBox sweepGradient(List<Color> colors) =>
-      this.._gradient = SweepGradient(colors: colors);
+  VxBox sweepGradient(List<Color> colors,
+          {AlignmentGeometry center = Alignment.center,
+          double startAngle = 0.0,
+          double endAngle = pi * 2,
+          List<double>? stops,
+          TileMode tileMode = TileMode.clamp,
+          GradientTransform? transform}) =>
+      this
+        .._gradient = SweepGradient(
+            colors: colors,
+            center: center,
+            endAngle: endAngle,
+            startAngle: startAngle,
+            stops: stops,
+            tileMode: tileMode,
+            transform: transform);
 
   ///
   /// Sets the defined gradient to the decorated box.
@@ -266,7 +313,7 @@ class VxBox extends VxWidgetBuilder<Widget>
               shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
               boxShadow: _velocityNeumorph!.shadows,
               border: _border,
-              gradient: _velocityNeumorph!.gradient,
+              gradient: velocityGradient ?? _velocityNeumorph!.gradient,
               image: _bgImage,
             )
           : _decoration ??
@@ -278,7 +325,7 @@ class VxBox extends VxWidgetBuilder<Widget>
                 shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
                 boxShadow: velocityShadow ?? _boxShadow ?? [],
                 border: _border,
-                gradient: _gradient,
+                gradient: velocityGradient ?? _gradient,
                 image: _bgImage,
               ),
     );
