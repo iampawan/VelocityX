@@ -91,6 +91,17 @@ extension SizedBoxExtension on Widget {
         child: this,
       );
 
+  /// [SizedBox] widget with a specified [width] percentage
+  Widget wPCT({
+    required BuildContext context,
+    required double widthPCT,
+  }) =>
+      SizedBox(
+        key: key,
+        width: context.percentWidth * widthPCT,
+        child: this,
+      );
+
   /// [SizedBox] widget with 0% [width] of the [MediaQuery] width
   Widget w0(BuildContext context, {Key? key}) => SizedBox(
         key: key,
@@ -257,6 +268,14 @@ extension SizedBoxExtension on Widget {
   Widget h(double height) => SizedBox(
         key: key,
         height: height,
+        child: this,
+      );
+
+  /// [SizedBox] widget with a specified [height] percentage
+  Widget hPCT({required BuildContext context, required double heightPCT}) =>
+      SizedBox(
+        key: key,
+        height: context.percentHeight * heightPCT,
         child: this,
       );
 
@@ -428,6 +447,18 @@ extension SizedBoxExtension on Widget {
         key: key,
         width: width,
         height: height,
+        child: this,
+      );
+
+  /// [SizedBox] widget with a specified [width] & [height] percentage
+  Widget whPCT(
+          {required BuildContext context,
+          required double widthPCT,
+          required double heightPCT}) =>
+      SizedBox(
+        key: key,
+        width: context.percentWidth * widthPCT,
+        height: context.percentHeight * heightPCT,
         child: this,
       );
 

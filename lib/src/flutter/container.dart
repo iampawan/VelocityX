@@ -108,6 +108,17 @@ class VxBox extends VxWidgetBuilder<Widget>
     .._height = height;
 
   ///
+  /// Sets the size (width & height in percentage) property of the box.
+  ///
+  VxBox sizePCT(
+          {required BuildContext context,
+          required double widthPCT,
+          required double heightPCT}) =>
+      this
+        .._width = context.percentWidth * widthPCT
+        .._height = context.percentHeight * heightPCT;
+
+  ///
   /// Sets the height and width as square of the box.
   ///
   VxBox square(double val) => this

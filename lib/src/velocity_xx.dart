@@ -555,7 +555,7 @@ mixin Vx {
   static const Color rose900 = Color(0xFF881337);
 
   /// All Fixed EdgeInsets
-  static EdgeInsets m0 = const EdgeInsets.all(dp0);
+  static EdgeInsets m0 = EdgeInsets.zero;
   static EdgeInsets m1 = const EdgeInsets.all(dp1);
   static EdgeInsets m2 = const EdgeInsets.all(dp2);
   static EdgeInsets m4 = const EdgeInsets.all(dp4);
