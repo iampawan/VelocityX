@@ -1,3 +1,18 @@
+## [2.4.0-nullsafety.0] - Decemeber 29, 2020
+
+- Direct Text Themes support
+- Extended & Improved Color Pallete
+- New Demo Added
+- Added more gradient options
+- size percentage widget added for sizedbox and container
+- Flat button changed to Material button
+- Fixed nullOK issues
+- Added more clippers
+- Added align() method for text and richtext
+- Improvement in textfield
+- Added VxState
+- Minor bug fixes and improvements
+
 ## [2.3.1-nullsafety.0] - Decemeber 29, 2020
 
 - Introducing VxShapes with ext: VxCircle -> .circle(), VxEllipse -> .ellipse(), VxCapsule -> .capsule(), VxContinuousRectangle -> .continuousRectangle(), VxBevel -> .bevel(), VxTriangle -> .triangle() and VxTicket -> .ticket()

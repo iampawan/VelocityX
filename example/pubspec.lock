@@ -162,7 +162,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.4.0"
+    version: "2.4.0-nullsafety.0"
   vxstate:
     dependency: transitive
     description:
