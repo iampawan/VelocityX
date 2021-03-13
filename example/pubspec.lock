@@ -21,7 +21,7 @@ packages:
       name: auto_size_text_pk
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-nullsafety.1"
+    version: "3.0.0"
   boolean_selector:
     dependency: transitive
     description:
