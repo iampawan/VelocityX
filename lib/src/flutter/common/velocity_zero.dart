@@ -246,7 +246,6 @@ class VxZeroList extends StatelessWidget {
   }
 }
 
-// TODO: CardProfile VelocityZero
 ///
 /// [PKCardProfileSkeleton] can be used to provide a profile loading card with PKSkeleton cool animation.
 ///
@@ -402,7 +401,6 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
   }
 }
 
-// TODO: CardPage VelocityZero
 ///
 /// [PKCardPageSkeleton] can be used to provide a Card Page loading card with PKSkeleton cool animation.
 ///
