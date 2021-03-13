@@ -11,8 +11,6 @@
  * limitations under the License.
  */
 
-import 'dart:ui' as ui;
-
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';

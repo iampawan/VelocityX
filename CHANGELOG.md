@@ -1,4 +1,9 @@
-## [2.4.0-nullsafety.0] - Decemeber 29, 2020
+## [2.5.0] - March 13, 2020
+
+- VxAnimator added.
+- VxLayout added for responsiveness.
+
+## [2.4.0-nullsafety.0] - March 11, 2020
 
 - Direct Text Themes support
 - Extended & Improved Color Pallete

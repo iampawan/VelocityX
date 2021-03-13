@@ -36,10 +36,10 @@ extension ContextExtensions on BuildContext {
   MobileDeviceSize get mdDeviceSize => _mdResponsive.deviceInfo.deviceSize;
 
   /// Returns the current window size as per Material Design Guidlines.
-  MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
+  VxWindowSize get mdWindowSize => _mdResponsive.windowSize;
 
   /// Check if the window size is of Mobile Type as per Material Design Guidlines.
-  bool get isMobile => mdWindowSize == MobileWindowSize.xsmall;
+  bool get isMobile => mdWindowSize == VxWindowSize.xsmall;
 
   /// Returns if it's a handset as per Material Design Guidlines.
   bool get isMobileTypeHandset => mdDeviceType == MobileDeviceType.handset;

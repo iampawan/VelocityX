@@ -19,7 +19,7 @@ class DemoList extends StatelessWidget {
           children: [
             "Vx Demo"
                 .text
-                .emerald800
+                .blue600
                 .makeCentered()
                 .box
                 .p32
@@ -57,12 +57,41 @@ class DemoList extends StatelessWidget {
           ],
         ),
         ExpansionTile(
+          title: "VxLayout".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            VxLayout(
+              builder: (context, size, _) {
+                return ElevatedButton(
+                  onPressed: () {},
+                  child: size.toString().text.make(),
+                ).w(200).p16();
+              },
+            ),
+          ],
+        ),
+        ExpansionTile(
           title: "VxStepper".text.make(),
           childrenPadding: Vx.m32,
           children: [
             VxStepper(onChange: (value) {
               print(value);
             }),
+          ],
+        ),
+        ExpansionTile(
+          title: "VxAnimator".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            VxAnimator<Color>(
+              builder: (_, state, child) {
+                return VxAnimatedBox()
+                    .color(state.value)
+                    .sizePCT(context: context, widthPCT: 50, heightPCT: 10)
+                    .make();
+              },
+              child: "VelocityX".text.make(),
+            ).colorTween(Vx.teal200, Vx.blue600).infinite.easeInOut.make(),
           ],
         ),
         ExpansionTile(

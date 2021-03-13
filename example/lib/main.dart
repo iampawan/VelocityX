@@ -14,7 +14,8 @@ void main() => runApp(
       MaterialApp(
         home: Material(child: DemoList()),
         theme: ThemeData(
-          primarySwatch: Colors.teal,
+          primarySwatch: Colors.blue,
+          primaryColor: Vx.blue500,
           brightness: Brightness.light,
         ),
         debugShowCheckedModeBanner: false,
