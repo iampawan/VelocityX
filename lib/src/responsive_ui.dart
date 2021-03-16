@@ -15,23 +15,23 @@ class MaterialResponsiveUiData {
   MobileDeviceInfo get deviceInfo => MobileDeviceInfo(_data);
 
   /// Returns the symbolic window size of the device.
-  MobileWindowSize get windowSize {
+  VxWindowSize get windowSize {
     if (_width < 600.0) {
-      return MobileWindowSize.xsmall;
+      return VxWindowSize.xsmall;
     }
 
     if (_width < 1024.0) {
-      return MobileWindowSize.small;
+      return VxWindowSize.small;
     }
     if (_width < 1440.0) {
-      return MobileWindowSize.medium;
+      return VxWindowSize.medium;
     }
 
     if (_width < 1920.0) {
-      return MobileWindowSize.large;
+      return VxWindowSize.large;
     }
 
-    return MobileWindowSize.xlarge;
+    return VxWindowSize.xlarge;
   }
 
   /// Returns the recommended number of grid layout columns.
@@ -158,4 +158,4 @@ class _LandscapeDeviceInfo extends MobileDeviceInfo {
 }
 
 /// Symbolic window sizes of mobile devices.
-enum MobileWindowSize { xsmall, small, medium, large, xlarge }
+enum VxWindowSize { xsmall, small, medium, large, xlarge }

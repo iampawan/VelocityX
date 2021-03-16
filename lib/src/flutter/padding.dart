@@ -46,17 +46,17 @@ import 'velocityx_mixins/padding_mixin.dart';
 ///
 class _VxPaddingBuilder extends VxWidgetBuilder<Widget>
     with VxPaddingMixin<_VxPaddingBuilder> {
-  _VxPaddingBuilder(this._child) : assert(_child != null) {
+  _VxPaddingBuilder(this._child) {
     setChildToPad(this);
   }
   final Widget _child;
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return Padding(
       key: key,
       child: _child,
-      padding: velocityPadding,
+      padding: velocityPadding!,
     );
   }
 }
@@ -68,238 +68,260 @@ extension PaddingExtensions on Widget {
   _VxPaddingBuilder get pad => _VxPaddingBuilder(this);
 
   /// Gives 0 padding from all sides.
-  Padding p0({Key key}) => Padding(
+  Padding p0({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp0),
         child: this,
       );
 
   /// Gives 1dp padding from all sides.
-  Padding p1({Key key}) => Padding(
+  Padding p1({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp1),
         child: this,
       );
 
   /// Gives 2dp padding from all sides.
-  Padding p2({Key key}) => Padding(
+  Padding p2({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp2),
         child: this,
       );
 
   /// Gives 4dp padding from all sides.
-  Padding p4({Key key}) => Padding(
+  Padding p4({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp4),
         child: this,
       );
 
   /// Gives 8dp padding from all sides.
-  Padding p8({Key key}) => Padding(
+  Padding p8({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp8),
         child: this,
       );
 
   /// Gives 12dp padding from all sides.
-  Padding p12({Key key}) => Padding(
+  Padding p12({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp12),
         child: this,
       );
 
   /// Gives 16dp padding from all sides.
-  Padding p16({Key key}) => Padding(
+  Padding p16({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp16),
         child: this,
       );
 
   /// Gives 20dp padding from all sides.
-  Padding p20({Key key}) => Padding(
+  Padding p20({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp20),
         child: this,
       );
 
   /// Gives 24dp padding from all sides.
-  Padding p24({Key key}) => Padding(
+  Padding p24({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp24),
         child: this,
       );
 
   /// Gives 32dp padding from all sides.
-  Padding p32({Key key}) => Padding(
+  Padding p32({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp32),
         child: this,
       );
 
   /// Gives 64dp padding from all sides.
-  Padding p64({Key key}) => Padding(
+  Padding p64({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.all(Vx.dp64),
         child: this,
       );
 
   /// Gives 0 padding vertically.
-  Padding py0({Key key}) => Padding(
+  Padding py0({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp0),
         child: this,
       );
 
   /// Gives 1dp padding vertically.
-  Padding py1({Key key}) => Padding(
+  Padding py1({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp1),
         child: this,
       );
 
   /// Gives 2dp padding vertically.
-  Padding py2({Key key}) => Padding(
+  Padding py2({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp2),
         child: this,
       );
 
   /// Gives 4dp padding vertically.
-  Padding py4({Key key}) => Padding(
+  Padding py4({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp4),
         child: this,
       );
 
   /// Gives 8dp padding vertically.
-  Padding py8({Key key}) => Padding(
+  Padding py8({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp8),
         child: this,
       );
 
   /// Gives 12dp padding vertically.
-  Padding py12({Key key}) => Padding(
+  Padding py12({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp12),
         child: this,
       );
 
   /// Gives 16dp padding vertically.
-  Padding py16({Key key}) => Padding(
+  Padding py16({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp16),
         child: this,
       );
 
   /// Gives 20dp padding vertically.
-  Padding py20({Key key}) => Padding(
+  Padding py20({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp20),
         child: this,
       );
 
   /// Gives 24dp padding vertically.
-  Padding py24({Key key}) => Padding(
+  Padding py24({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp24),
         child: this,
       );
 
   /// Gives 32dp padding vertically.
-  Padding py32({Key key}) => Padding(
+  Padding py32({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp32),
         child: this,
       );
 
   /// Gives 64dp padding vertically.
-  Padding py64({Key key}) => Padding(
+  Padding py64({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(vertical: Vx.dp64),
         child: this,
       );
 
+  /// Gives custom padding vertically.
+  Padding py(
+    double value, {
+    Key? key,
+  }) =>
+      Padding(
+        key: key,
+        padding: EdgeInsets.symmetric(vertical: value),
+        child: this,
+      );
+
   /// Gives 0 padding horizontally.
-  Padding px0({Key key}) => Padding(
+  Padding px0({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp0),
         child: this,
       );
 
   /// Gives 1dp padding horizontally.
-  Padding px1({Key key}) => Padding(
+  Padding px1({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp1),
         child: this,
       );
 
   /// Gives 2dp padding horizontally.
-  Padding px2({Key key}) => Padding(
+  Padding px2({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp2),
         child: this,
       );
 
   /// Gives 4dp padding horizontally.
-  Padding px4({Key key}) => Padding(
+  Padding px4({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp4),
         child: this,
       );
 
   /// Gives 8dp padding horizontally.
-  Padding px8({Key key}) => Padding(
+  Padding px8({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp8),
         child: this,
       );
 
   /// Gives 12dp padding horizontally.
-  Padding px12({Key key}) => Padding(
+  Padding px12({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp12),
         child: this,
       );
 
   /// Gives 16dp padding horizontally.
-  Padding px16({Key key}) => Padding(
+  Padding px16({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp16),
         child: this,
       );
 
   /// Gives 20dp padding horizontally.
-  Padding px20({Key key}) => Padding(
+  Padding px20({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp20),
         child: this,
       );
 
   /// Gives 24dp padding horizontally.
-  Padding px24({Key key}) => Padding(
+  Padding px24({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp24),
         child: this,
       );
 
   /// Gives 32dp padding horizontally.
-  Padding px32({Key key}) => Padding(
+  Padding px32({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp32),
         child: this,
       );
 
   /// Gives 64dp padding horizontally.
-  Padding px64({Key key}) => Padding(
+  Padding px64({Key? key}) => Padding(
         key: key,
         padding: const EdgeInsets.symmetric(horizontal: Vx.dp64),
         child: this,
       );
 
+  /// Gives custom padding horizontally.
+  Padding px(
+    double value, {
+    Key? key,
+  }) =>
+      Padding(
+        key: key,
+        padding: EdgeInsets.symmetric(horizontal: value),
+        child: this,
+      );
+
   /// Gives custom padding from all sides by [value].
-  Padding p(double value, {Key key}) {
+  Padding p(double value, {Key? key}) {
     return Padding(
       key: key,
       padding: EdgeInsets.all(value),
@@ -313,7 +335,7 @@ extension PaddingExtensions on Widget {
     double top,
     double right,
     double bottom, {
-    Key key,
+    Key? key,
   }) =>
       Padding(
         key: key,
@@ -322,7 +344,7 @@ extension PaddingExtensions on Widget {
       );
 
   /// Gives custom padding symmetrically by [v] [h].
-  Padding pSymmetric({Key key, double v = 0.0, double h = 0.0}) => Padding(
+  Padding pSymmetric({Key? key, double v = 0.0, double h = 0.0}) => Padding(
         key: key,
         padding: EdgeInsets.symmetric(
           vertical: v,
@@ -333,7 +355,7 @@ extension PaddingExtensions on Widget {
 
   /// Gives custom padding by only [left] [top] [right] [bottom].
   Padding pOnly(
-          {Key key,
+          {Key? key,
           double left = 0.0,
           double right = 0.0,
           double top = 0.0,

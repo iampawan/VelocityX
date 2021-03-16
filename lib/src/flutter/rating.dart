@@ -15,18 +15,40 @@ import 'package:flutter/material.dart';
 
 /// VxRating widget to show ratings to the user and the user can change it too. Fully customizable
 class VxRating extends StatefulWidget {
+  /// Stars count
   final int count;
+
+  /// The maximum rating which can be given
   final double maxRating;
+
+  /// Currently selected value
   final double value;
+
+  /// Size of the icon/image
   final double size;
+
+  /// To give space between the stars/icons
   final double padding;
+
+  /// To provide a custom image of star/rating (unselected)
   final dynamic normalImage;
+
+  /// To provide a custom image of star/rating (selected)
   final dynamic selectImage;
+
+  /// Unselected color of the icon
   final Color normalColor;
+
+  /// Selected color of the icon
   final Color selectionColor;
+
+  /// If the rating is selectable or not
   final bool isSelectable;
+
+  /// true if Half star not allowed
   final bool stepInt;
 
+  /// Use onRatingUpdate to get the selected value.
   final ValueChanged<String> onRatingUpdate;
 
   const VxRating({
@@ -41,7 +63,7 @@ class VxRating extends StatefulWidget {
     this.selectionColor = Colors.red,
     this.isSelectable = true,
     this.stepInt = false,
-    @required this.onRatingUpdate,
+    required this.onRatingUpdate,
   });
 
   @override
@@ -49,7 +71,7 @@ class VxRating extends StatefulWidget {
 }
 
 class _VxRatingState extends State<VxRating> {
-  num value;
+  num? value;
 
   @override
   void initState() {
@@ -103,23 +125,23 @@ class _VxRatingState extends State<VxRating> {
       }
     }
     setState(() {
-      widget.onRatingUpdate(value.toStringAsFixed(1));
+      widget.onRatingUpdate(value!.toStringAsFixed(1));
     });
   }
 
   int fullStars() {
     if (value != null) {
-      return (value / (widget.maxRating / widget.count)).floor();
+      return (value! / (widget.maxRating / widget.count)).floor();
     }
     return 0;
   }
 
   num star() {
     if (value != null) {
-      if (widget.count / fullStars() == widget.maxRating / value) {
+      if (widget.count / fullStars() == widget.maxRating / value!) {
         return 0;
       }
-      final num temp = (value % (widget.maxRating / widget.count)) /
+      final num temp = (value! % (widget.maxRating / widget.count)) /
           (widget.maxRating / widget.count);
       if (widget.stepInt) {
         return temp.ceil();
@@ -226,7 +248,7 @@ class _VxRatingState extends State<VxRating> {
 class _VxClipper extends CustomClipper<Rect> {
   final double rating;
 
-  _VxClipper({@required this.rating}) : assert(rating != null);
+  _VxClipper({required this.rating});
 
   @override
   Rect getClip(Size size) {

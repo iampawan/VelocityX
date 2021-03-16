@@ -31,10 +31,10 @@ enum VxToastType {
 class VxToast {
   static void show(
     BuildContext context, {
-    @required String msg,
+    required String msg,
     int showTime = 2000,
-    Color bgColor,
-    Color textColor,
+    Color? bgColor,
+    Color? textColor,
     double textSize = 14,
     VxToastPosition position = VxToastPosition.bottom,
     double pdHorizontal = 20,
@@ -56,9 +56,9 @@ class VxToast {
 
   static Function showLoading(
     BuildContext context, {
-    String msg,
-    Color bgColor,
-    Color textColor,
+    String? msg,
+    Color? bgColor,
+    Color? textColor,
     double pdHorizontal = 20,
     double pdVertical = 10,
     double textSize = 14,
@@ -78,18 +78,18 @@ class VxToast {
 
 Function _showToast(
   BuildContext context, {
-  String msg,
+  String? msg,
   int showTime = 1000,
-  Color bgColor,
-  Color textColor,
-  double textSize,
+  Color? bgColor,
+  Color? textColor,
+  double? textSize,
   VxToastPosition position = VxToastPosition.center,
-  double pdHorizontal,
-  double pdVertical,
+  double? pdHorizontal,
+  double? pdVertical,
   VxToastType type = VxToastType.text,
 }) {
   /// Overlay state for showing toast as overlay
-  final OverlayState overlayState = Overlay.of(context);
+  final OverlayState? overlayState = Overlay.of(context);
 
   final GlobalKey<_VxToastViewState> key = GlobalKey();
 
@@ -124,34 +124,34 @@ Function _showToast(
 
 class _VxToastView extends StatefulWidget {
   /// Message to show for the toast
-  final String msg;
+  final String? msg;
 
   /// Background color of the toast
-  final Color bgColor;
+  final Color? bgColor;
 
   /// Text color of the toast
-  final Color textColor;
+  final Color? textColor;
 
   /// Font size of the text
-  final double textSize;
+  final double? textSize;
 
   /// Position of the toast. It can be [VxToastPosition.top] or [VxToastPosition.center] or [VxToastPosition.bottom]
-  final VxToastPosition toastPosition;
+  final VxToastPosition? toastPosition;
 
   /// Horizontal Padding
-  final double pdHorizontal;
+  final double? pdHorizontal;
 
   /// Vertical padding
-  final double pdVertical;
+  final double? pdVertical;
 
   /// Toast type. It can be [VxToastType.text] or [VxToastType.loading]
-  final VxToastType type;
+  final VxToastType? type;
 
-  final VoidCallback close;
+  final VoidCallback? close;
 
   const _VxToastView(
     this.msg, {
-    Key key,
+    Key? key,
     this.bgColor,
     this.textColor,
     this.textSize,
@@ -170,7 +170,7 @@ class _VxToastViewState extends State<_VxToastView>
     with SingleTickerProviderStateMixin {
   static const Duration _fadeInDuration = Duration(milliseconds: 150);
   static const Duration _fadeOutDuration = Duration(milliseconds: 75);
-  AnimationController _controller;
+  AnimationController? _controller;
 
   @override
   void initState() {
@@ -186,7 +186,7 @@ class _VxToastViewState extends State<_VxToastView>
   @override
   Widget build(BuildContext context) {
     final Widget toastView = FadeTransition(
-      opacity: _controller,
+      opacity: _controller!,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 40),
         width: MediaQuery.of(context).size.width,
@@ -209,18 +209,18 @@ class _VxToastViewState extends State<_VxToastView>
     if (widget.type == VxToastType.text) {
       return Center(
         child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6.color,
+          color: widget.bgColor ?? Theme.of(context).textTheme.headline6!.color,
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: widget.pdHorizontal,
-              vertical: widget.pdVertical,
+              horizontal: widget.pdHorizontal!,
+              vertical: widget.pdVertical!,
             ),
             child: Text(
-              widget.msg,
+              widget.msg!,
               style: TextStyle(
                 fontSize: widget.textSize,
                 color: widget.textColor ??
-                    Theme.of(context).accentTextTheme.bodyText1.color,
+                    Theme.of(context).accentTextTheme.bodyText1!.color,
               ),
             ),
           ),
@@ -229,11 +229,11 @@ class _VxToastViewState extends State<_VxToastView>
     } else if (widget.type == VxToastType.loading) {
       return Center(
         child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6.color,
+          color: widget.bgColor ?? Theme.of(context).textTheme.headline6!.color,
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: widget.pdHorizontal,
-              vertical: widget.pdVertical,
+              horizontal: widget.pdHorizontal!,
+              vertical: widget.pdVertical!,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -247,11 +247,11 @@ class _VxToastViewState extends State<_VxToastView>
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  widget.msg,
+                  widget.msg!,
                   style: TextStyle(
                     fontSize: widget.textSize,
                     color: widget.textColor ??
-                        Theme.of(context).accentTextTheme.bodyText1.color,
+                        Theme.of(context).accentTextTheme.bodyText1!.color,
                   ),
                 )
               ],
@@ -289,7 +289,7 @@ class _VxToastViewState extends State<_VxToastView>
   @override
   void dispose() {
     _hide();
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 }
@@ -300,10 +300,10 @@ extension ToastExtension on BuildContext {
   ///
   ///Show toast
   void showToast({
-    @required String msg,
+    required String msg,
     int showTime = 2000,
-    Color bgColor,
-    Color textColor,
+    Color? bgColor,
+    Color? textColor,
     double textSize = 14,
     VxToastPosition position = VxToastPosition.bottom,
     double pdHorizontal = 20,
@@ -321,9 +321,9 @@ extension ToastExtension on BuildContext {
 
   /// Show loading dialog
   Function showLoading({
-    @required String msg,
-    Color bgColor,
-    Color textColor,
+    required String msg,
+    Color? bgColor,
+    Color? textColor,
     double textSize = 14,
     double pdHorizontal = 20,
     double pdVertical = 10,

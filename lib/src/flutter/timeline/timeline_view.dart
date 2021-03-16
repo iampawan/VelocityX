@@ -21,9 +21,9 @@ import 'timeline_painter.dart';
 
 class VxTimelineView extends StatelessWidget {
   const VxTimelineView(
-      {@required this.lineColor,
-      @required this.backgroundColor,
-      @required this.model,
+      {required this.lineColor,
+      required this.backgroundColor,
+      required this.model,
       this.firstElement = false,
       this.lastElement = false,
       this.controller,
@@ -36,13 +36,13 @@ class VxTimelineView extends StatelessWidget {
   final VxTimelineModel model;
   final bool firstElement;
   final bool lastElement;
-  final Animation<double> controller;
-  final Color headingColor;
-  final Color descriptionColor;
+  final Animation<double>? controller;
+  final Color? headingColor;
+  final Color? descriptionColor;
   final bool hideLauncher;
-  final Widget trailing;
+  final Widget? trailing;
 
-  Widget _buildLine(BuildContext context, Widget child) {
+  Widget _buildLine(BuildContext context, Widget? child) {
     return Container(
       width: 40.0,
       child: CustomPaint(
@@ -51,7 +51,7 @@ class VxTimelineView extends StatelessWidget {
             backgroundColor: backgroundColor,
             firstElement: firstElement,
             lastElement: lastElement,
-            controller: controller),
+            controller: controller!),
       ),
     );
   }
@@ -75,11 +75,10 @@ class VxTimelineView extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            model.description != null
-                ? (model.description.length > 50
-                    ? model.description.substring(0, 50) + "..."
-                    : model.description)
-                : "", // To prevent overflowing of text to the next element, the text is truncated if greater than 75 characters
+            model.description.length > 50
+                ? model.description.substring(0, 50) + "..."
+                : model
+                    .description, // To prevent overflowing of text to the next element, the text is truncated if greater than 75 characters
             style: TextStyle(
               fontSize: 18,
               color: descriptionColor ?? Colors.black,
@@ -96,25 +95,24 @@ class VxTimelineView extends StatelessWidget {
       color: backgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          AnimatedBuilder(
-            builder: _buildLine,
-            animation: controller,
-          ),
-          Expanded(
-            child: _buildContentColumn(context),
-          ),
-          if (!hideLauncher)
-            if (trailing != null)
-              trailing
-            else
-              Icon(
-                Icons.open_in_new,
-                color: Theme.of(context).primaryColor,
-              )
-        ],
-      ),
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            AnimatedBuilder(
+              builder: _buildLine,
+              animation: controller!,
+            ),
+            Expanded(
+              child: _buildContentColumn(context),
+            ),
+            if (!hideLauncher)
+              if (trailing != null)
+                trailing!
+              else
+                Icon(
+                  Icons.open_in_new,
+                  color: Theme.of(context).primaryColor,
+                )
+          ]),
     );
   }
 

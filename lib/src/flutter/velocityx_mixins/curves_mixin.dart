@@ -13,11 +13,11 @@
 
 import 'package:flutter/material.dart';
 
-mixin VxCurvesMixing<T> {
-  T _child;
+mixin VxCurvesMixin<T> {
+  late T _child;
 
   @protected
-  Curve velocityCurve;
+  Curve? velocityCurve;
 
   @protected
   void setChildForCurve(T child) {
@@ -106,8 +106,7 @@ mixin VxCurvesMixing<T> {
   T get linearToEaseOut => _addCurve(curve: Curves.linearToEaseOut);
 
   T get slowMiddle => _addCurve(curve: Curves.slowMiddle);
-
-  T _addCurve({@required Curve curve}) {
+  T _addCurve({required Curve curve}) {
     velocityCurve = curve;
     return _child;
   }

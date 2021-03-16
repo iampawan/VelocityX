@@ -41,35 +41,31 @@ import 'builder.dart';
 /// {@animation 200 150 https://flutter.github.io/assets-for-api-docs/assets/widgets/gesture_detector.mp4}
 ///
 class _VxGestureBuilder extends VxWidgetBuilder<Widget> {
-  _VxGestureBuilder(this._child, this._onClick) : assert(_onClick != null);
-  _VxGestureBuilder.doubleClick(this._child, this._onDoubleClick)
-      : assert(_child != null),
-        assert(_onDoubleClick != null);
-  _VxGestureBuilder.longClick(this._child, this._onLongClick)
-      : assert(_child != null),
-        assert(_onLongClick != null);
+  _VxGestureBuilder(this._child, Function this._onClick);
+  _VxGestureBuilder.doubleClick(this._child, Function this._onDoubleClick);
+  _VxGestureBuilder.longClick(this._child, Function this._onLongClick);
 
   final Widget _child;
-  Function _onClick;
-  Function _onDoubleClick;
-  Function _onLongClick;
+  Function? _onClick;
+  Function? _onDoubleClick;
+  Function? _onLongClick;
 
   /// On clicking two times.
-  _VxGestureBuilder doubleClick({@required Function onDoubleClick}) =>
+  _VxGestureBuilder doubleClick({required Function onDoubleClick}) =>
       this.._onDoubleClick = onDoubleClick;
 
   /// On long pressing.
-  _VxGestureBuilder longClick({@required Function onLongClick}) =>
+  _VxGestureBuilder longClick({required Function onLongClick}) =>
       this.._onLongClick = onLongClick;
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return GestureDetector(
       key: key,
-      onTap: _onClick,
+      onTap: _onClick as void Function()?,
       child: _child,
-      onDoubleTap: _onDoubleClick,
-      onLongPress: _onLongClick,
+      onDoubleTap: _onDoubleClick as void Function()?,
+      onLongPress: _onLongClick as void Function()?,
     );
   }
 }
@@ -82,10 +78,10 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
   _VelocityXInkWellBuilder.mdLongClick(this._child, this._onLongClick);
 
   final Widget _child;
-  FnBuilderCallback _onClick;
-  FnBuilderCallback _onDoubleClick;
-  FnBuilderCallback _onLongClick;
-  Color _splashColor;
+  FnBuilderCallback? _onClick;
+  FnBuilderCallback? _onDoubleClick;
+  FnBuilderCallback? _onLongClick;
+  Color? _splashColor;
 
   /// Use to show a splash color when clicking on the widget.
   _VelocityXInkWellBuilder splashColor(Color color) =>
@@ -93,16 +89,16 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
 
   /// On clicking two times.
   _VelocityXInkWellBuilder mdDoubleClick(
-          {@required FnBuilderCallback onDoubleClick}) =>
+          {required FnBuilderCallback onDoubleClick}) =>
       this.._onDoubleClick = onDoubleClick;
 
   /// On long pressing.
   _VelocityXInkWellBuilder mdLongClick(
-          {@required FnBuilderCallback onLongClick}) =>
+          {required FnBuilderCallback onLongClick}) =>
       this.._onLongClick = onLongClick;
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return InkWell(
       key: key,
       onTap: _onClick,
@@ -252,8 +248,8 @@ extension GestureExtensions on Widget {
 
   /// Mouse Region Enter & Exit
   MouseRegion onMouseEnterExit({
-    @required PointerEnterEventListener onEnter,
-    @required PointerExitEventListener onExit,
+    required PointerEnterEventListener onEnter,
+    required PointerExitEventListener onExit,
   }) {
     return MouseRegion(
       onEnter: onEnter,
@@ -264,10 +260,10 @@ extension GestureExtensions on Widget {
 
   /// [MouseRegion] Full Widget
   MouseRegion mouseRegion(
-      {Key key,
-      PointerHoverEventListener onHover,
-      PointerEnterEventListener onEnter,
-      PointerExitEventListener onExit,
+      {Key? key,
+      PointerHoverEventListener? onHover,
+      PointerEnterEventListener? onEnter,
+      PointerExitEventListener? onExit,
       MouseCursor mouseCursor = MouseCursor.defer,
       bool opaque = true}) {
     return MouseRegion(
@@ -283,15 +279,15 @@ extension GestureExtensions on Widget {
 }
 
 class _CallbackButton extends StatefulWidget {
-  final VoidCallback onTap;
-  final Widget child;
+  final VoidCallback? onTap;
+  final Widget? child;
   final Color normalColor;
   final Color pressedColor;
   final bool needHaptic;
-  final HitTestBehavior hitTestBehavior;
+  final HitTestBehavior? hitTestBehavior;
 
   const _CallbackButton(
-      {Key key,
+      {Key? key,
       this.onTap,
       this.child,
       this.normalColor = Colors.transparent,
@@ -305,7 +301,7 @@ class _CallbackButton extends StatefulWidget {
 }
 
 class _CallbackButtonState extends State<_CallbackButton> {
-  Color bgColor;
+  Color? bgColor;
 
   @override
   Widget build(BuildContext context) {

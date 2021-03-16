@@ -8,10 +8,10 @@ extension VxIcon on Icon {
   /// Extension method to directly access [Icon]'s props without wrapping or with dot operator.
   ///
   Icon copyWith({
-    double size,
-    Color color,
-    String semanticLabel,
-    TextDirection textDirection,
+    double? size,
+    Color? color,
+    String? semanticLabel,
+    TextDirection? textDirection,
   }) =>
       Icon(
         icon,

@@ -56,22 +56,20 @@ class VxConditional extends StatelessWidget {
   final WidgetBuilder builder;
 
   /// Run if [condition] is false and it is not null.
-  final WidgetBuilder fallback;
+  final WidgetBuilder? fallback;
 
   const VxConditional({
-    Key key,
-    @required this.condition,
-    @required this.builder,
+    Key? key,
+    required this.condition,
+    required this.builder,
     this.fallback,
-  })  : assert(condition != null),
-        assert(builder != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => condition
       ? builder(context)
       : fallback != null
-          ? fallback(context)
+          ? fallback!(context)
           : const Offstage();
 }
 
@@ -102,15 +100,15 @@ class VxConditionalSwitch {
   /// - [fallbackBuilder] is a function which returns a `Widget`,
   ///  it is used when none of the keys in [caseBuilders]matches
   /// the value returns by [valueBuilder].
-  static Widget single<T>({
-    @required BuildContext context,
-    @required T Function(BuildContext context) valueBuilder,
-    @required Map<T, Widget Function(BuildContext context)> caseBuilders,
-    @required Widget Function(BuildContext context) fallbackBuilder,
+  static Widget? single<T>({
+    required BuildContext context,
+    required T Function(BuildContext context) valueBuilder,
+    required Map<T, Widget? Function(BuildContext context)> caseBuilders,
+    required Widget? Function(BuildContext context) fallbackBuilder,
   }) {
     final T value = valueBuilder(context);
     if (caseBuilders[value] != null) {
-      return caseBuilders[value](context);
+      return caseBuilders[value]!(context);
     } else {
       return fallbackBuilder(context);
     }
@@ -126,14 +124,14 @@ class VxConditionalSwitch {
   ///  it is used when none of the keys in [caseBuilders] matches
   /// the value returns by [valueBuilder].
   static List<Widget> list<T>({
-    @required BuildContext context,
-    @required T Function(BuildContext context) valueBuilder,
-    @required Map<T, List<Widget> Function(BuildContext context)> caseBuilders,
-    @required List<Widget> Function(BuildContext context) fallbackBuilder,
+    required BuildContext context,
+    required T Function(BuildContext context) valueBuilder,
+    required Map<T, List<Widget> Function(BuildContext context)> caseBuilders,
+    required List<Widget> Function(BuildContext context) fallbackBuilder,
   }) {
     final T value = valueBuilder(context);
     if (caseBuilders[value] != null) {
-      return caseBuilders[value](context);
+      return caseBuilders[value]!(context);
     } else {
       return fallbackBuilder(context);
     }

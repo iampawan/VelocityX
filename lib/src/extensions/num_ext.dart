@@ -42,12 +42,14 @@ extension NumExtension on num {
   ///
   /// Check if the number is null
   ///
-  bool get isNull => this == null;
+  // ignore: unnecessary_null_comparison
+  bool? get isNull => this == null;
 
   ///
   /// Check if the number is not null
   ///
-  bool get isNotNull => this != null;
+  // ignore: unnecessary_null_comparison
+  bool? get isNotNull => this != null;
 
   /// Returns number of digits in this number
   int get numberOfDigits => toString().length;

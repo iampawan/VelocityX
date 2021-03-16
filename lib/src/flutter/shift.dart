@@ -23,20 +23,20 @@ import 'package:flutter/material.dart';
 
 class VxShifter extends StatelessWidget {
   const VxShifter({
-    Key key,
+    Key? key,
 
     // @required this.w,
     // this.color,
     this.child,
-    @required this.alignment,
-    @required this.shift,
+    required this.alignment,
+    required this.shift,
 
     // @required this.paddingPerc,
   }) : super(key: key);
 
   final double shift;
   // final Color color;
-  final Widget child;
+  final Widget? child;
   final Alignment alignment;
   // final int paddingPerc;
 
@@ -72,8 +72,8 @@ class VxShifter extends StatelessWidget {
 extension ShiftWidgetExt on Widget {
   Widget shift(
     double shift, {
-    Key key,
-    @required Alignment alignment,
+    Key? key,
+    required Alignment alignment,
   }) =>
       VxShifter(
         key: key,

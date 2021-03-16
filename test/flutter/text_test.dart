@@ -11,14 +11,15 @@
  * limitations under the License.
  */
 
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  Directionality getDirectionalityWidget({Widget child}) => Directionality(
+  Directionality getDirectionalityWidget({required Widget child}) =>
+      Directionality(
         textDirection: TextDirection.ltr,
         child: child,
       );
@@ -61,7 +62,7 @@ void main() {
       );
 
       expect(
-        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style.fontSize,
+        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.fontSize,
         24,
       );
     });
@@ -76,7 +77,10 @@ void main() {
 
       // Font Weight for medium is 500
       expect(
-        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style.fontWeight,
+        tester
+            .widget<AutoSizeText>(find.byType(AutoSizeText))
+            .style!
+            .fontWeight,
         FontWeight.w500,
       );
     });
@@ -87,7 +91,7 @@ void main() {
           getDirectionalityWidget(child: 'VelocityX'.text.italic.make()));
 
       expect(
-        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style.fontStyle,
+        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.fontStyle,
         FontStyle.italic,
       );
     });
@@ -109,7 +113,7 @@ void main() {
       expect(
           tester
               .widget<AutoSizeText>(find.byType(AutoSizeText))
-              .style
+              .style!
               .letterSpacing,
           -3.0);
     });
@@ -122,7 +126,7 @@ void main() {
       expect(
           tester
               .widget<AutoSizeText>(find.byType(AutoSizeText))
-              .style
+              .style!
               .letterSpacing,
           4.0);
     });
@@ -135,7 +139,7 @@ void main() {
       expect(
           tester
               .widget<AutoSizeText>(find.byType(AutoSizeText))
-              .style
+              .style!
               .decoration,
           TextDecoration.underline);
     });
@@ -147,7 +151,7 @@ void main() {
 
       // Line Height or heightSnug is 0.875
       expect(
-          tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style.height,
+          tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.height,
           0.875);
     });
 
@@ -172,7 +176,8 @@ void main() {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.red300.make()));
 
-      expect(tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style.color,
+      expect(
+          tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.color,
           Vx.red300);
     });
   });

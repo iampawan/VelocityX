@@ -16,11 +16,11 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 mixin VxPaddingMixin<T> {
-  T _childToPad;
+  late T _childToPad;
 
   /// Provides [Padding]
   @protected
-  EdgeInsetsGeometry velocityPadding;
+  EdgeInsetsGeometry? velocityPadding;
 
   @protected
   void setChildToPad(T child) {
@@ -63,7 +63,7 @@ mixin VxPaddingMixin<T> {
   T get py32 => _padIt(child: _childToPad, padding: Vx.mV32);
   T get py64 => _padIt(child: _childToPad, padding: Vx.mV64);
 
-  T _padIt({@required EdgeInsetsGeometry padding, @required T child}) {
+  T _padIt({required EdgeInsetsGeometry padding, required T child}) {
     velocityPadding = padding;
     return child;
   }

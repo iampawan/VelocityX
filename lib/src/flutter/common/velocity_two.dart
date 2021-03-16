@@ -37,10 +37,10 @@ class VxTwo extends StatelessWidget {
   /// Subtitle text
   ///
   final String subtitle;
-  final TextSpan subtitle2;
-  final TextSpan subtitle3;
+  final TextSpan? subtitle2;
+  final TextSpan? subtitle3;
   final double subtitleFontSize;
-  final Color subtitleColor;
+  final Color? subtitleColor;
   final bool isSubtitleBold;
   final bool isHorizontal;
   final CrossAxisAlignment crossAxisAlignment;
@@ -49,11 +49,11 @@ class VxTwo extends StatelessWidget {
   final int maxLinesSubtitle;
 
   const VxTwo({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
     this.titleFontSize = 16.0,
     this.titleColor = Colors.black,
-    @required this.subtitle,
+    required this.subtitle,
     this.subtitle2,
     this.subtitle3,
     this.subtitleFontSize = 14.0,
@@ -64,9 +64,7 @@ class VxTwo extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.min,
     this.maxLinesSubtitle = 1,
-  })  : assert(title != null),
-        assert(subtitle != null),
-        super(key: key);
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final list = [
@@ -121,10 +119,8 @@ class VxTwoColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
 
-  const VxTwoColumn({Key key, @required this.top, @required this.bottom})
-      : assert(top != null),
-        assert(bottom != null),
-        super(key: key);
+  const VxTwoColumn({Key? key, required this.top, required this.bottom})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -147,10 +143,8 @@ class VxTwoRow extends StatelessWidget {
   final Widget left;
   final Widget right;
 
-  const VxTwoRow({Key key, @required this.left, @required this.right})
-      : assert(left != null),
-        assert(right != null),
-        super(key: key);
+  const VxTwoRow({Key? key, required this.left, required this.right})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -176,11 +170,8 @@ class VelocityTwoIconColumn extends StatelessWidget {
   final Widget icon;
 
   const VelocityTwoIconColumn(
-      {Key key, @required this.top, @required this.bottom, @required this.icon})
-      : assert(top != null),
-        assert(bottom != null),
-        assert(icon != null),
-        super(key: key);
+      {Key? key, required this.top, required this.bottom, required this.icon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

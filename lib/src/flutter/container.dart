@@ -10,10 +10,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/gradient_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
@@ -49,38 +52,43 @@ import 'velocityx_mixins/round_mixin.dart';
 /// always returns true. If the [decoration] or [foregroundDecoration] properties
 /// are specified, hit testing is handled by [Decoration.hitTest].
 ///
+
 class VxBox extends VxWidgetBuilder<Widget>
     with
         VxAlignmentMixing<VxBox>,
         VxColorMixin<VxBox>,
+        VxGradientMixin<VxBox>,
         VxPaddingMixin<VxBox>,
         VxRoundMixin<VxBox>,
+        VxShadowMixin<VxBox>,
         VxNeuMixin {
   VxBox({this.child}) {
     setChildForAlignment(this);
     setChildToColor(this);
+    setChildToGradient(this);
     setChildToPad(this);
     setChildToRound(this);
+    setChildForShadow(this);
   }
 
-  final Widget child;
+  final Widget? child;
 
   bool _isCircleRounded = false;
-  List<BoxShadow> _boxShadow;
-  BoxBorder _border;
-  Gradient _gradient;
-  double _height;
-  double _width;
-  VxNeumorph _velocityNeumorph;
-  Clip _clip;
+  List<BoxShadow>? _boxShadow;
+  BoxBorder? _border;
+  Gradient? _gradient;
+  double? _height;
+  double? _width;
+  VxNeumorph? _velocityNeumorph;
+  Clip? _clip;
 
-  EdgeInsetsGeometry _margin;
-  Matrix4 _transform;
+  EdgeInsetsGeometry? _margin;
+  Matrix4? _transform;
 
-  DecorationImage _bgImage;
+  DecorationImage? _bgImage;
 
-  BoxDecoration _decoration, _foregroundDecoration;
-  BoxConstraints _constraints;
+  BoxDecoration? _decoration, _foregroundDecoration;
+  BoxConstraints? _constraints;
 
   ///
   /// Sets the height property of the box.
@@ -98,6 +106,17 @@ class VxBox extends VxWidgetBuilder<Widget>
   VxBox size(double width, double height) => this
     .._width = width
     .._height = height;
+
+  ///
+  /// Sets the size (width & height in percentage) property of the box.
+  ///
+  VxBox sizePCT(
+          {required BuildContext context,
+          required double widthPCT,
+          required double heightPCT}) =>
+      this
+        .._width = context.percentWidth * widthPCT
+        .._height = context.percentHeight * heightPCT;
 
   ///
   /// Sets the height and width as square of the box.
@@ -161,140 +180,6 @@ class VxBox extends VxWidgetBuilder<Widget>
   ///
   VxBox get roundedFull => this.._isCircleRounded = true;
 
-  /// Shadowing
-  VxBox get shadow {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 3.0,
-        spreadRadius: 1.0,
-        offset: Offset(0.0, 1.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.06),
-        blurRadius: 2.0,
-        spreadRadius: 1.0,
-        offset: Offset(0.0, 1.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give extra small shadow.
-  ///
-  VxBox get shadowXs {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
-        blurRadius: 0.0,
-        spreadRadius: 1.0,
-        offset: Offset(0.0, 0.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give small shadow.
-  ///
-  VxBox get shadowSm {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
-        blurRadius: 2.0,
-        spreadRadius: 0.0,
-        offset: Offset(0.0, 1.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give medium shadow.
-  ///
-  VxBox get shadowMd {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 6.0,
-        spreadRadius: -1.0,
-        offset: Offset(0.0, 4.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.06),
-        blurRadius: 4.0,
-        spreadRadius: -1.0,
-        offset: Offset(0.0, 2.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give large shadow.
-  ///
-  VxBox get shadowLg {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 15.0,
-        spreadRadius: -3.0,
-        offset: Offset(0.0, 10.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.05),
-        blurRadius: 6.0,
-        spreadRadius: -2.0,
-        offset: Offset(0.0, 4.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give extra large shadow.
-  ///
-  VxBox get shadowXl {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.1),
-        blurRadius: 25.0,
-        spreadRadius: -5.0,
-        offset: Offset(0.0, 20.0),
-      ),
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.04),
-        blurRadius: 10.0,
-        spreadRadius: -5.0,
-        offset: Offset(0.0, 10.0),
-      ),
-    ];
-
-    return this;
-  }
-
-  ///
-  /// To give twice extra small shadow.
-  ///
-  VxBox get shadow2xl {
-    _boxShadow = [
-      const BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.25),
-        blurRadius: 50.0,
-        spreadRadius: -12.0,
-        offset: Offset(0.0, 25.0),
-      ),
-    ];
-
-    return this;
-  }
-
   /// Provide custom list of box shadows
   ///
   /// To give custom shadow.
@@ -307,7 +192,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   ///
   /// To give shadow with some outline color.
   ///
-  VxBox shadowOutline({Color outlineColor}) {
+  VxBox shadowOutline({Color? outlineColor}) {
     _boxShadow = [
       BoxShadow(
         color: outlineColor?.withOpacity(0.5) ??
@@ -335,20 +220,62 @@ class VxBox extends VxWidgetBuilder<Widget>
   /// Gradienting
   /// Sets the linear gradient to the decorated box.
   ///
-  VxBox linearGradient(List<Color> colors) =>
-      this.._gradient = LinearGradient(colors: colors);
+  VxBox linearGradient(List<Color> colors,
+          {AlignmentGeometry begin = Alignment.centerLeft,
+          AlignmentGeometry end = Alignment.centerRight,
+          List<double>? stops,
+          TileMode tileMode = TileMode.clamp,
+          GradientTransform? transform}) =>
+      this
+        .._gradient = LinearGradient(
+            colors: colors,
+            begin: begin,
+            stops: stops,
+            end: end,
+            tileMode: tileMode,
+            transform: transform);
 
   ///
   /// Sets the radial gradient to the decorated box.
   ///
-  VxBox radialGradient(List<Color> colors) =>
-      this.._gradient = RadialGradient(colors: colors);
+  VxBox radialGradient(List<Color> colors,
+          {AlignmentGeometry center = Alignment.center,
+          double radius = 0.5,
+          List<double>? stops,
+          TileMode tileMode = TileMode.clamp,
+          AlignmentGeometry? focal,
+          double focalRadius = 0.0,
+          GradientTransform? transform}) =>
+      this
+        .._gradient = RadialGradient(
+            colors: colors,
+            center: center,
+            radius: radius,
+            focalRadius: focalRadius,
+            stops: stops,
+            focal: focal,
+            tileMode: tileMode,
+            transform: transform);
 
   ///
   /// Sets the sweep gradient to the decorated box.
   ///
-  VxBox sweepGradient(List<Color> colors) =>
-      this.._gradient = SweepGradient(colors: colors);
+  VxBox sweepGradient(List<Color> colors,
+          {AlignmentGeometry center = Alignment.center,
+          double startAngle = 0.0,
+          double endAngle = pi * 2,
+          List<double>? stops,
+          TileMode tileMode = TileMode.clamp,
+          GradientTransform? transform}) =>
+      this
+        .._gradient = SweepGradient(
+            colors: colors,
+            center: center,
+            endAngle: endAngle,
+            startAngle: startAngle,
+            stops: stops,
+            tileMode: tileMode,
+            transform: transform);
 
   ///
   /// Sets the defined gradient to the decorated box.
@@ -365,18 +292,18 @@ class VxBox extends VxWidgetBuilder<Widget>
   /// Use this to convert your box to the neumorphic design. Use it wisely.
   ///
   VxBox neumorphic(
-          {Color color,
+          {Color? color,
           VxCurve curve = VxCurve.concave,
           double elevation = 12.0}) =>
       this
         .._velocityNeumorph = velocityDecoration(
-          color ?? velocityColor ?? ThemeData().scaffoldBackgroundColor,
+          (color ?? velocityColor)!,
           curve,
           elevation,
         );
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return Container(
       key: key,
       height: _height,
@@ -391,25 +318,25 @@ class VxBox extends VxWidgetBuilder<Widget>
       foregroundDecoration: _foregroundDecoration,
       decoration: _velocityNeumorph != null
           ? BoxDecoration(
-              borderRadius: _isCircleRounded || roundedValue.isNull
+              borderRadius: _isCircleRounded || (roundedValue == null)
                   ? null
-                  : BorderRadius.circular(roundedValue),
+                  : BorderRadius.circular(roundedValue!),
               shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-              boxShadow: _velocityNeumorph.shadows,
+              boxShadow: _velocityNeumorph!.shadows,
               border: _border,
-              gradient: _velocityNeumorph.gradient,
+              gradient: velocityGradient ?? _velocityNeumorph!.gradient,
               image: _bgImage,
             )
           : _decoration ??
               BoxDecoration(
                 color: velocityColor,
-                borderRadius: _isCircleRounded || roundedValue.isNull
+                borderRadius: _isCircleRounded || (roundedValue == null)
                     ? null
-                    : BorderRadius.circular(roundedValue),
+                    : BorderRadius.circular(roundedValue!),
                 shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-                boxShadow: _boxShadow ?? [],
+                boxShadow: velocityShadow ?? _boxShadow ?? [],
                 border: _border,
-                gradient: _gradient,
+                gradient: velocityGradient ?? _gradient,
                 image: _bgImage,
               ),
     );
