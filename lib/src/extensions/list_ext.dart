@@ -78,7 +78,7 @@ extension ListWidgetExtension on List<Widget> {
           double overflowSpacing = 0.0,
           double spacing = 0.0,
           TextDirection? textDirection}) =>
-      OverflowBar(
+      AStack(
         children: this,
         key: key,
         clipBehavior: clipBehavior,
