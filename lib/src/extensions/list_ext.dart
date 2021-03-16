@@ -12,6 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
+
 import 'package:velocity_x/src/flutter/flex.dart';
 import 'package:velocity_x/src/flutter/list.dart';
 import 'package:velocity_x/src/flutter/swiper.dart';
@@ -64,6 +65,28 @@ extension ListWidgetExtension on List<Widget> {
         alignment: alignment,
         fit: fit,
         clip: clip,
+      );
+
+  //
+  /// Extension for using [OverflowBar] directly with list of widgets
+  ///
+  Widget aStack(
+          {Key? key,
+          Clip clipBehavior = Clip.none,
+          OverflowBarAlignment overflowAlignment = OverflowBarAlignment.start,
+          VerticalDirection overflowDirection = VerticalDirection.down,
+          double overflowSpacing = 0.0,
+          double spacing = 0.0,
+          TextDirection? textDirection}) =>
+      OverflowBar(
+        children: this,
+        key: key,
+        clipBehavior: clipBehavior,
+        overflowAlignment: overflowAlignment,
+        overflowDirection: overflowDirection,
+        overflowSpacing: overflowSpacing,
+        spacing: spacing,
+        textDirection: textDirection,
       );
 
   /// Same as [hStack]. Added just for ease who are familiar with Flutter widgets.
