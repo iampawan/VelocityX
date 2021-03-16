@@ -6,6 +6,6 @@ class VxInformationParser extends RouteInformationParser<Uri> {
       Uri.parse(routeInformation.location!);
 
   @override
-  RouteInformation? restoreRouteInformation(Uri uri) =>
-      RouteInformation(location: Uri.decodeComponent(uri.toString()));
+  RouteInformation? restoreRouteInformation(Uri configuration) =>
+      RouteInformation(location: Uri.decodeComponent(configuration.toString()));
 }

@@ -1,3 +1,7 @@
+## [2.6.0] - March 16, 2020
+
+- VxNavigator (Navigator 2.0) support added.
+- AStack widget added.
 ## [2.5.0] - March 13, 2020
 
 - VxAnimator added.
