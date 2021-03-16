@@ -1,3 +1,4 @@
+import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,20 +8,25 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
-import 'new/demo_list.dart';
 import 'widgets/draw_android.dart';
 
-void main() => runApp(
-      MaterialApp(
-        home: Material(child: DemoList()),
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Vx.blue500,
-          brightness: Brightness.light,
-        ),
-        debugShowCheckedModeBanner: false,
+void main() {
+  runApp(
+    MaterialApp.router(
+      routeInformationParser: VxInformationParser(),
+      routerDelegate: VxNavigator(routes: {
+        "/": (uri, param) => MaterialPage(child: DemoList()),
+        "/demo": (uri, param) => MaterialPage(child: Demo()),
+      }),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        primaryColor: Vx.blue500,
+        brightness: Brightness.light,
       ),
-    );
+      debugShowCheckedModeBanner: false,
+    ),
+  );
+}
 
 class Demo extends StatefulWidget {
   @override

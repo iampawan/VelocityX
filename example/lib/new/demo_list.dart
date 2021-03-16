@@ -26,7 +26,10 @@ class DemoList extends StatelessWidget {
                 .white
                 // .shadow5xl
                 .make()
-                .innerShadow(),
+                .innerShadow()
+                .onTap(() {
+              VxNavigator.of(context).push(Uri(path: "/demo"));
+            }),
           ],
         ),
         ExpansionTile(
