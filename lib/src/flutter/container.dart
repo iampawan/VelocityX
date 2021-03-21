@@ -53,7 +53,7 @@ import 'velocityx_mixins/round_mixin.dart';
 
 class VxBox extends VxWidgetBuilder<Widget>
     with
-        VxAlignmentMixing<VxBox>,
+        VxAlignmentMixin<VxBox>,
         VxColorMixin<VxBox>,
         VxPaddingMixin<VxBox>,
         VxRoundMixin<VxBox>,
