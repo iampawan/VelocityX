@@ -30,7 +30,7 @@ extension StringExtension on String {
   String get eliminateLast => length > 1 ? "${substring(0, length - 1)}" : "";
 
   /// Return a bool if the string is null or empty
-  bool get isEmptyOrNull => isEmpty;
+  bool get isEmpty => trimLeft().isEmpty;
 
   ///
   /// Uses regex to check if the provided string is a valid email address or not
@@ -236,4 +236,13 @@ extension StringExtension on String {
 
   /// Get RichText Widget for the String
   VxRichText get richText => VxRichText(this);
+}
+
+extension NullableStringIsEmptyOrNullExtension on String? {
+  /// Returns `true` if the String is either null or empty.
+  bool get isEmptyOrNull => this?.isEmpty ?? true;
+}
+
+extension NullableStringIsEmptyOrNotNullExtension on String? {
+  bool get isEmptyOrNotNull => !isEmptyOrNull;
 }

@@ -543,7 +543,7 @@ class _VxAppBarState extends State<VxAppBar> {
     if (widget.flexibleSpace != null) {
       appBar = ZStack(
         [
-          widget.flexibleSpace,
+          widget.flexibleSpace!,
           appBar,
         ],
         fit: StackFit.passthrough,

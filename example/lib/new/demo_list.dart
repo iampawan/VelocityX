@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class DemoList extends StatelessWidget {
+  final String? x = null;
   @override
   Widget build(BuildContext context) {
     final VxPopupMenuController _controller = VxPopupMenuController();
@@ -12,7 +13,7 @@ class DemoList extends StatelessWidget {
       appBar: AppBar(
         title: "VxDemo".text.make(),
       ),
-      body: VStack([
+      body: ZStack([
         ExpansionTile(
           title: "VxText With Box".text.make(),
           childrenPadding: Vx.m32,

@@ -361,7 +361,7 @@ class ZStack extends StatelessWidget {
       : super(key: key);
 
   /// List of widgets in the stack.
-  final List<Widget?> children;
+  final List<Widget> children;
 
   /// How to align the non-positioned and partially-positioned children in the
   /// stack.
@@ -402,7 +402,7 @@ class ZStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
         key: key,
-        children: children as List<Widget>,
+        children: children,
         alignment: alignment ?? AlignmentDirectional.topStart,
         fit: fit ?? StackFit.loose,
         clipBehavior: clip ?? Clip.hardEdge);
