@@ -40,9 +40,9 @@
 
 ## Why use VelocityX?
 
-VelocityX is
+VelocityX is known for :
 
-|                                    |                             |
+|      Vx                              |          Vx                   |
 | :--------------------------------- | :-------------------------- |
 | 100% fast, performant & compatible | 100% free & open-source     |
 | 100% ready for production          | 200% faster for writing UIs |
@@ -51,7 +51,7 @@ VelocityX is
 
 ## Features
 
-✅ &nbsp; [State Management](https://velocityx.dev/docs/vxstate/getting_started)
+✅ &nbsp; [State Management](https://velocityx.dev/docs/vxstate/getting_started) </br>
 ✅ &nbsp; [Navigator 2.0](https://velocityx.dev/docs/vxnavigator/getting_started)  
 ✅ &nbsp; [Animations](https://velocityx.dev/docs/supervx/vxanimator)  
 ✅ &nbsp; [Custom UIs](https://velocityx.dev/docs/install)  
@@ -79,7 +79,7 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 
 | [VxAnimation](https://velocityx.dev/docs/supervx/vxanimator) | [VxSwiper](https://velocityx.dev/docs/supervx/vxswiper) | [VxResponsive](https://velocityx.dev/docs/features/responsive) | [VxPlatform](https://velocityx.dev/docs/supervx/vxplatform) | [VxToast](https://velocityx.dev/docs/supervx/vxtoast) | [VxRating](https://velocityx.dev/docs/supervx/vxrating) | [VxStepper](https://velocityx.dev/docs/supervx/vxstepper) |
 
-## Some quick UIs made using VelocityX
+## Some Quick UIs made using VelocityX
 
 <p float="left">
 <img src="https://i.imgur.com/DlSuaOG.png" width="500"/>
@@ -113,7 +113,8 @@ If you found this project useful, then please consider giving it a :star: on Git
 
 ### YouTube Channel
 
-[MTechViral](https://www.youtube.com/mtechviral)
+[mtechviral](https://www.youtube.com/mtechviral) </br>
+[codepur](https://www.youtube.com/codepur)
 
 ### Facebook Group
 
