@@ -1,14 +1,15 @@
 <p align="center">
   <a href="https://velocityx.dev/" target="_blank">
-    <h1>VelocityX</h1>
+    <img src="https://i.imgur.com/GcsbeIW.png"  width="800" alt="VelocityX">
   </a>
 </p>
 
-<p align="center">
-  <a href="https://velocityx.dev/" target="_blank">
-    <img src="https://i.imgur.com/CXEiorH.png"  width="800" alt="VelocityX">
-  </a>
-</p>
+[![VelocityX](https://img.shields.io/badge/velocityx-fast-red)](https://github.com/iampawan/velocityx)
+[![Pub release](https://img.shields.io/pub/v/velocity_x.svg?style=flat-square)](https://pub.dev/packages/velocity_x)
+[![GitHub Release Date](https://img.shields.io/github/release-date/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
+[![GitHub issues](https://img.shields.io/github/issues/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx/issues)
+[![GitHub top language](https://img.shields.io/github/languages/top/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
 
 [**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
 
