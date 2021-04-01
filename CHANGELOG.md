@@ -1,22 +1,22 @@
-## [2.6.1] - March 31, 2020
+## [2.6.1] - April 01, 2021
 
 - Fixed issue with ZStack.
 - Fixed issue with isEmptyOrNull String.
 
-## [2.6.0] - March 16, 2020
+## [2.6.0] - March 16, 2021
 
 - VxNavigator (Navigator 2.0) support added.
 - AStack widget added.
 
-## [2.5.0] - March 13, 2020
+## [2.5.0] - March 13, 2021
 
 - VxAnimator added.
 - VxLayout added for responsiveness.
 
-## [2.4.0-nullsafety.0] - March 11, 2020
+## [2.4.0-nullsafety.0] - March 11, 2021
 
 - Direct Text Themes support
-- Extended & Improved Color Pallete
+- Extended & Improved Color Palette
 - New Demo Added
 - Added more gradient options
 - size percentage widget added for sizedbox and container
