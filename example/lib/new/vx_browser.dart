@@ -4,10 +4,10 @@ import 'package:velocity_x/velocity_x.dart';
 class VxBrowser extends StatelessWidget {
   final List<Color> colorSet;
   final String title;
-  final Widget child;
+  final Widget? child;
 
   const VxBrowser(
-      {Key key, @required this.colorSet, this.title = "VxShapes", this.child})
+      {Key? key, required this.colorSet, this.title = "VxShapes", this.child})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

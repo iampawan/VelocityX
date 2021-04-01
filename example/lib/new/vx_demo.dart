@@ -131,7 +131,7 @@ class VxDemo extends StatelessWidget {
 class MadeWithVx extends StatelessWidget {
   final Color color;
 
-  const MadeWithVx({Key key, this.color}) : super(key: key);
+  const MadeWithVx({Key? key, required this.color}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return "Made With VelocityX"
