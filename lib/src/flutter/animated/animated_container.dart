@@ -30,7 +30,7 @@ import '../builder.dart';
 ///
 class VxAnimatedBox extends VxWidgetBuilder<Widget>
     with
-        VxAlignmentMixing<VxAnimatedBox>,
+        VxAlignmentMixin<VxAnimatedBox>,
         VxDurationMixin<VxAnimatedBox>,
         VxCurvesMixin<VxAnimatedBox>,
         VxColorMixin<VxAnimatedBox>,

@@ -13,7 +13,7 @@
 
 import 'package:flutter/material.dart';
 
-mixin VxAlignmentMixing<T> {
+mixin VxAlignmentMixin<T> {
   late T _child;
 
   @protected
