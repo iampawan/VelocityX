@@ -24,26 +24,26 @@ class VxDiscList extends StatelessWidget {
   final List<String> _items;
 
   /// Add padding to the listview
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Specify color of the disc. Default is black
   final Color color;
 
   /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
-  final double fontSize;
+  final double? fontSize;
 
   /// If the listview is primary. Default is false.
-  final bool primary;
+  final bool? primary;
 
   /// If the listview is shrinkWrapped. Default is true.
   final bool shrinkWrap;
 
   /// Specify the [ScrollPhysics].
-  final ScrollPhysics physics;
+  final ScrollPhysics? physics;
 
   const VxDiscList(
     this._items, {
-    Key key,
+    Key? key,
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
@@ -62,8 +62,8 @@ class VxDiscList extends StatelessWidget {
         return HStack(
           [
             VxBox()
-                .height(fontSize / 2.8)
-                .width(fontSize / 2.8)
+                .height(fontSize! / 2.8)
+                .width(fontSize! / 2.8)
                 .color(color)
                 .roundedFull
                 .makeCentered(),
@@ -91,26 +91,26 @@ class VxDecimalList extends StatelessWidget {
   final List<String> _items;
 
   /// Add padding to the listview
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Specify color of the disc. Default is black
   final Color color;
 
   /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
-  final double fontSize;
+  final double? fontSize;
 
   /// If the listview is primary. Default is false.
-  final bool primary;
+  final bool? primary;
 
   /// If the listview is shrinkWrapped. Default is true.
   final bool shrinkWrap;
 
   /// Specify the [ScrollPhysics].
-  final ScrollPhysics physics;
+  final ScrollPhysics? physics;
 
   const VxDecimalList(
     this._items, {
-    Key key,
+    Key? key,
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,

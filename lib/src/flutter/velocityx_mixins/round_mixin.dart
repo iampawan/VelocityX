@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 mixin VxRoundMixin<T> {
-  T _childToRound;
+  late T _childToRound;
 
   @protected
-  double roundedValue;
+  double? roundedValue;
 
   T get roundedNone {
     roundedValue = 0.0;

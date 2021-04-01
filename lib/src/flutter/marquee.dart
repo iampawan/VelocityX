@@ -18,16 +18,16 @@ import '../extensions/context_ext.dart';
 
 class VxMarquee extends StatefulWidget {
   final String text;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final Axis scrollAxis;
   final double ratioOfBlankToScreen;
 
   const VxMarquee({
-    @required this.text,
+    required this.text,
     this.textStyle,
     this.scrollAxis = Axis.horizontal,
     this.ratioOfBlankToScreen = 0.25,
-  }) : assert(text != null);
+  });
 
   @override
   VxMarqueeState createState() => VxMarqueeState();
@@ -35,11 +35,11 @@ class VxMarquee extends StatefulWidget {
 
 class VxMarqueeState extends State<VxMarquee>
     with SingleTickerProviderStateMixin {
-  ScrollController scrollController;
-  double blankWidth;
-  double blankHeight;
+  ScrollController? scrollController;
+  double? blankWidth;
+  double? blankHeight;
   double position = 0.0;
-  Timer timer;
+  late Timer timer;
   final double _moveDistance = 3.0;
   int duration = 100;
   final GlobalKey _key = GlobalKey();
@@ -48,23 +48,23 @@ class VxMarqueeState extends State<VxMarquee>
   void initState() {
     super.initState();
     scrollController = ScrollController();
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
+    WidgetsBinding.instance!.addPostFrameCallback((callback) {
       startTimer();
     });
   }
 
   void startTimer() {
     final double widgetWidth =
-        _key.currentContext.findRenderObject().paintBounds.size.width;
+        _key.currentContext!.findRenderObject()!.paintBounds.size.width;
     final double widgetHeight =
-        _key.currentContext.findRenderObject().paintBounds.size.height;
+        _key.currentContext!.findRenderObject()!.paintBounds.size.height;
 
     timer = Timer.periodic(
       Duration(milliseconds: duration),
       (timer) {
         final double maxScrollExtent =
-            scrollController.position.maxScrollExtent;
-        final double pixels = scrollController.position.pixels;
+            scrollController!.position.maxScrollExtent;
+        final double pixels = scrollController!.position.pixels;
         //When the distance of animateTo is greater than the maximum sliding distance, return to the specific position of the first child so that the end is exactly on the right side, and then continue to roll, creating the illusion of marquee
         if (pixels + _moveDistance >= maxScrollExtent) {
           if (widget.scrollAxis == Axis.horizontal) {
@@ -72,18 +72,18 @@ class VxMarqueeState extends State<VxMarquee>
             //(maxScrollExtent+widgetWidth-blankWidth)/2 can calculate the length of a TextView control, and then subtract widgetWidth. Calculate the offset required for the first child to shift to the rightmost
             //When animateTo slides to the end, but there is still a distance from the end, this distance should be taken into account when jumpingTo pixels-maxScrollExtent
             //The original calculation formula (maxScrollExtent+widgetWidth-blankWidth)/2 -widgetWidth + pixels- maxScrollExtent, the following calculation formula is simplified
-            position = (maxScrollExtent - blankWidth - widgetWidth) / 2 +
+            position = (maxScrollExtent - blankWidth! - widgetWidth) / 2 +
                 pixels -
                 maxScrollExtent;
           } else {
-            position = (maxScrollExtent - blankHeight - widgetHeight) / 2 +
+            position = (maxScrollExtent - blankHeight! - widgetHeight) / 2 +
                 pixels -
                 maxScrollExtent;
           }
-          scrollController.jumpTo(position);
+          scrollController!.jumpTo(position);
         }
         position += _moveDistance;
-        scrollController.animateTo(
+        scrollController!.animateTo(
           position,
           duration: Duration(milliseconds: duration),
           curve: Curves.linear,
@@ -160,7 +160,7 @@ extension MarqueeExtension on String {
   /// show [marquee] extension
 
   Widget marquee({
-    TextStyle textStyle,
+    TextStyle? textStyle,
     Axis scrollAxis = Axis.horizontal,
     double ratioOfBlankToScreen = 0.25,
   }) =>

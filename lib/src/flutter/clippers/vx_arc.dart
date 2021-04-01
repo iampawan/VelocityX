@@ -137,9 +137,9 @@ class VxArcClipper extends CustomClipper<Path> {
 
 class VxArc extends StatelessWidget {
   const VxArc(
-      {Key key,
-      @required this.height,
-      @required this.child,
+      {Key? key,
+      required this.height,
+      required this.child,
       this.edge = VxEdge.BOTTOM,
       this.arcType = VxArcType.CONVEX,
       this.clipShadows = const []})
@@ -198,5 +198,5 @@ class VxClipShadow {
   final Color color;
   final double elevation;
 
-  VxClipShadow({@required this.color, this.elevation = 5});
+  VxClipShadow({required this.color, this.elevation = 5});
 }

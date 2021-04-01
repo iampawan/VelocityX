@@ -42,11 +42,11 @@ class VxBlock extends Flex {
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
   VxBlock({
-    Key key,
+    Key? key,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
-    TextDirection textDirection,
+    TextDirection? textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
-    TextBaseline textBaseline,
+    TextBaseline? textBaseline,
     List<Widget> children = const <Widget>[],
   }) : super(
           children: children,
@@ -71,10 +71,10 @@ class VxInlineBlock extends Flex {
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
   VxInlineBlock({
-    Key key,
-    TextDirection textDirection,
+    Key? key,
+    TextDirection? textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
-    TextBaseline textBaseline,
+    TextBaseline? textBaseline,
     List<Widget> children = const <Widget>[],
   }) : super(
           children: children,
@@ -155,12 +155,11 @@ class VxInlineBlock extends Flex {
 /// {@end-tool}
 class VStack extends StatelessWidget {
   const VStack(this.children,
-      {Key key,
+      {Key? key,
       this.alignment = MainAxisAlignment.start,
       this.crossAlignment = CrossAxisAlignment.start,
       this.axisSize = MainAxisSize.min})
-      : assert(children != null),
-        super(key: key);
+      : super(key: key);
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -170,13 +169,13 @@ class VStack extends StatelessWidget {
   /// For example, [MainAxisAlignment.start], the default, places the children
   /// at the start (i.e., the left for a [HStack] or the top for a [VStack]) of the
   /// main axis.
-  final MainAxisAlignment alignment;
+  final MainAxisAlignment? alignment;
 
   /// How the children should be placed along the cross axis.
   ///
   /// For example, [CrossAxisAlignment.center], the default, centers the
   /// children in the cross axis (e.g., horizontally for a [VStack]).
-  final CrossAxisAlignment crossAlignment;
+  final CrossAxisAlignment? crossAlignment;
 
   /// How much space should be occupied in the main axis.
   ///
@@ -188,7 +187,7 @@ class VStack extends StatelessWidget {
   /// [FlexFit.loose]), they will expand to consume all the available space and
   /// there will be no remaining free space to maximize or minimize, making this
   /// value irrelevant to the final layout.
-  final MainAxisSize axisSize;
+  final MainAxisSize? axisSize;
 
   @override
   Widget build(BuildContext context) {
@@ -247,12 +246,11 @@ class VStack extends StatelessWidget {
 ///
 class HStack extends StatelessWidget {
   const HStack(this.children,
-      {Key key,
+      {Key? key,
       this.alignment = MainAxisAlignment.start,
       this.crossAlignment = CrossAxisAlignment.center,
       this.axisSize = MainAxisSize.min})
-      : assert(children != null),
-        super(key: key);
+      : super(key: key);
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -262,13 +260,13 @@ class HStack extends StatelessWidget {
   /// For example, [MainAxisAlignment.start], the default, places the children
   /// at the start (i.e., the left for a [HStack] or the top for a [VStack]) of the
   /// main axis.
-  final MainAxisAlignment alignment;
+  final MainAxisAlignment? alignment;
 
   /// How the children should be placed along the cross axis.
   ///
   /// For example, [CrossAxisAlignment.center], the default, centers the
   /// children in the cross axis (e.g., horizontally for a [VStack]).
-  final CrossAxisAlignment crossAlignment;
+  final CrossAxisAlignment? crossAlignment;
 
   /// How much space should be occupied in the main axis.
   ///
@@ -280,7 +278,7 @@ class HStack extends StatelessWidget {
   /// [FlexFit.loose]), they will expand to consume all the available space and
   /// there will be no remaining free space to maximize or minimize, making this
   /// value irrelevant to the final layout.
-  final MainAxisSize axisSize;
+  final MainAxisSize? axisSize;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -356,12 +354,11 @@ class HStack extends StatelessWidget {
 ///
 class ZStack extends StatelessWidget {
   const ZStack(this.children,
-      {Key key,
+      {Key? key,
       this.alignment = AlignmentDirectional.topStart,
       this.fit = StackFit.loose,
       this.clip = Clip.none})
-      : assert(children != null),
-        super(key: key);
+      : super(key: key);
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -387,19 +384,19 @@ class ZStack extends StatelessWidget {
   ///    specify an [AlignmentGeometry].
   ///  * [AlignmentDirectional], like [Alignment] for specifying alignments
   ///    relative to text direction.
-  final AlignmentGeometry alignment;
+  final AlignmentGeometry? alignment;
 
   /// How to size the non-positioned children in the stack.
   ///
   /// The constraints passed into the [ZStack] from its parent are either
   /// loosened ([StackFit.loose]) or tightened to their biggest size
   /// ([StackFit.expand]).
-  final StackFit fit;
+  final StackFit? fit;
 
   /// {@macro flutter.widgets.Clip}
   ///
   /// Defaults to [Clip.hardEdge].
-  final Clip clip;
+  final Clip? clip;
 
   @override
   Widget build(BuildContext context) {
@@ -409,5 +406,40 @@ class ZStack extends StatelessWidget {
         alignment: alignment ?? AlignmentDirectional.topStart,
         fit: fit ?? StackFit.loose,
         clipBehavior: clip ?? Clip.hardEdge);
+  }
+}
+
+class AStack extends StatelessWidget {
+  final Clip clipBehavior;
+  final OverflowBarAlignment overflowAlignment;
+  final VerticalDirection overflowDirection;
+  final double overflowSpacing;
+  final double spacing;
+  final TextDirection? textDirection;
+  final List<Widget> children;
+
+  const AStack(
+      {Key? key,
+      required this.children,
+      this.clipBehavior = Clip.none,
+      this.overflowAlignment = OverflowBarAlignment.start,
+      this.overflowDirection = VerticalDirection.down,
+      this.overflowSpacing = 0.0,
+      this.spacing = 0.0,
+      this.textDirection})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OverflowBar(
+      key: key,
+      children: children,
+      clipBehavior: clipBehavior,
+      overflowAlignment: overflowAlignment,
+      overflowDirection: overflowDirection,
+      overflowSpacing: overflowSpacing,
+      spacing: spacing,
+      textDirection: textDirection,
+    );
   }
 }

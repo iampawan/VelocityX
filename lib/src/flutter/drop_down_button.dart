@@ -41,10 +41,9 @@ import 'package:velocity_x/src/flutter/builder.dart';
 class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
   VxTextDropDown(
     this._items, {
-    @required this.selectedValue,
-    @required this.onChanged,
-  })  : assert(selectedValue != null),
-        assert(onChanged != null);
+    required String this.selectedValue,
+    required this.onChanged,
+  });
 
   /// The List<String> used to create [DropdownMenuItem].
   ///
@@ -52,45 +51,45 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
   final List<String> _items;
 
   /// The value used to define currently selected value of [VxTextDropDown].
-  String selectedValue;
+  String? selectedValue;
 
   /// Defines the [TextStyle] for [DropdownMenuItem].
   ///
   /// By default the value of `_textStyle` is [TextTheme.subtitle1]
   /// value of the current [ThemeData.textTheme].
-  TextStyle _textStyle;
+  TextStyle? _textStyle;
 
   ///  Defines the widget used to draw underline for [VxTextDropDown]
-  Widget _underLine;
+  Widget? _underLine;
 
   /// Defines the elevation for menu when drop down is open.
   ///
   /// By default, the value of `_elevation` is 8.
-  int _elevation;
+  int? _elevation;
 
   /// Defines the size of [VxTextDropDown] icon.
   ///
   /// By default, the value of `_iconSize` is 24.
-  double _iconSize;
+  double? _iconSize;
 
   /// The [Icon] used for [VxTextDropDown].
   ///
   /// By default, the icon is [Icons.arrow_drop_down]
-  Icon _dropDownIcon;
+  Icon? _dropDownIcon;
 
   /// Defines the drop down button icon color when button is disabled.
   ///
   /// By default, the color is `Colors.grey.shade400`.
-  Color _disabledIconColor;
+  Color? _disabledIconColor;
 
   /// Defines the drop down button icon color when button is enabled.
   ///
   /// By default, the color is `Colors.grey.shade700`  when the theme's [ThemeData.brightness]
   /// is [Brightness.light] and to [Colors.white70] when it is [Brightness.dark].
-  Color _enabledIconColor;
+  Color? _enabledIconColor;
 
   /// The color for the button's Material when it has the input focus.
-  Color _focusColor;
+  Color? _focusColor;
 
   /// If the `_autoFocus` is true, [VxTextDropDown] will be selected as the initial focus when no other node
   /// in its scope is currently focused.
@@ -105,7 +104,7 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
   bool _isDense = false;
 
   /// Called when user selects a value from drop down menu.
-  ValueChanged<String> onChanged;
+  ValueChanged<String?> onChanged;
 
   VxTextDropDown textStyle(TextStyle style) => this.._textStyle = style;
 
@@ -135,7 +134,7 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
 //      this..onChanged = function;
 
   @override
-  StatefulBuilder make({Key key}) {
+  StatefulBuilder make({Key? key}) {
     return StatefulBuilder(
       builder: (BuildContext context, StateSetter setState) {
         return DropdownButton<String>(
@@ -158,7 +157,7 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
                     child: item.text.make(),
                   ))
               .toList(),
-          onChanged: (String value) {
+          onChanged: (String? value) {
             setState(() {
               selectedValue = value;
             });
@@ -176,7 +175,7 @@ extension DropDownExtension on List<String> {
   ///
   /// The [selectedValue] should be a part of the list of strings.
   VxTextDropDown textDropDown(
-          {@required String selectedValue,
-          @required ValueChanged<String> onChanged}) =>
+          {required String selectedValue,
+          required ValueChanged<String?> onChanged}) =>
       VxTextDropDown(this, selectedValue: selectedValue, onChanged: onChanged);
 }

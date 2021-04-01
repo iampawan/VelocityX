@@ -27,14 +27,12 @@ import 'package:flutter/rendering.dart';
 ///
 class VxEnsureVisibleWhenFocused extends StatefulWidget {
   const VxEnsureVisibleWhenFocused({
-    Key key,
-    @required this.child,
-    @required this.focusNode,
+    Key? key,
+    required this.child,
+    required this.focusNode,
     this.curve = Curves.ease,
     this.duration = const Duration(milliseconds: 100),
-  })  : assert(child != null),
-        assert(focusNode != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// The node we will monitor to determine if the child is focused
   final FocusNode focusNode;
@@ -66,12 +64,12 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
   void initState() {
     super.initState();
     widget.focusNode.addListener(_ensureVisible);
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this);
     widget.focusNode.removeListener(_ensureVisible);
     super.dispose();
   }
@@ -121,8 +119,8 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     }
 
     // Find the object which has the focus
-    final RenderObject object = context.findRenderObject();
-    final RenderAbstractViewport viewport = RenderAbstractViewport.of(object);
+    final RenderObject? object = context.findRenderObject();
+    final RenderAbstractViewport? viewport = RenderAbstractViewport.of(object);
 
     // If we are not working in a Scrollable, skip this routine
     if (viewport == null) {
@@ -130,14 +128,13 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     }
 
     // Get the Scrollable state (in order to retrieve its offset)
-    final ScrollableState scrollableState = Scrollable.of(context);
-    assert(scrollableState != null);
+    final ScrollableState scrollableState = Scrollable.of(context)!;
 
     // Get its offset
     final ScrollPosition position = scrollableState.position;
     double alignment;
 
-    if (position.pixels > viewport.getOffsetToReveal(object, 0.0).offset) {
+    if (position.pixels > viewport.getOffsetToReveal(object!, 0.0).offset) {
       // Move down to the top of the viewport
       alignment = 0.0;
     } else if (position.pixels <

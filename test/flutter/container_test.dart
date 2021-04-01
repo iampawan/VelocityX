@@ -190,9 +190,9 @@ void main() {
       final decoration = tester
           .widget<Container>(find.byType(Container))
           .decoration as BoxDecoration;
-      expect(decoration.border.isUniform, true);
-      expect(decoration.border.top.width, 3);
-      expect(decoration.border.top.color, Vx.green100);
+      expect(decoration.border!.isUniform, true);
+      expect(decoration.border!.top.width, 3);
+      expect(decoration.border!.top.color, Vx.green100);
     });
   });
 }

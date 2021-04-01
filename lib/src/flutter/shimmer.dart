@@ -19,8 +19,8 @@ import 'package:velocity_x/src/velocity_xx.dart';
 /// [VxShimmer] widget can be used to provide shimmer effect to any widget.
 class VxShimmer extends StatefulWidget {
   const VxShimmer({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.gradient,
     this.duration = const Duration(seconds: 1),
     this.count = 10000,
@@ -39,7 +39,7 @@ class VxShimmer extends StatefulWidget {
 
   /// Controls the [child]'s shades of color using Linear gradient.
   /// Child [Widget] only takes gradient color, If [showGradient] is true.
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// Controls the animation shimmerEffectCount.
   /// The default value is '0', that displays child [Widget]'s shimmer effect forever.
@@ -60,7 +60,7 @@ class VxShimmer extends StatefulWidget {
   /// defines the secondary color of the [child]'s shimmer effect.
   /// Child [Widget] takes secondary color, only if [showGradient] is false.
   /// Default [showGradient] will be false.
-  final Color secondaryColor;
+  final Color? secondaryColor;
 
   @override
   _VxShimmerState createState() => _VxShimmerState();
@@ -68,8 +68,8 @@ class VxShimmer extends StatefulWidget {
 
 class _VxShimmerState extends State<VxShimmer>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  int _count;
+  late AnimationController _controller;
+  int? _count;
 
   @override
   void initState() {
@@ -80,10 +80,10 @@ class _VxShimmerState extends State<VxShimmer>
         if (status != AnimationStatus.completed) {
           return;
         }
-        _count++;
+        _count = _count! + 1;
         if (widget.count <= 0) {
           _controller.repeat();
-        } else if (_count < widget.count) {
+        } else if (_count! < widget.count) {
           _controller.forward(from: 0);
         }
       });
@@ -106,7 +106,7 @@ class _VxShimmerState extends State<VxShimmer>
   Widget build(BuildContext context) => AnimatedBuilder(
         animation: _controller,
         child: widget.child,
-        builder: (BuildContext context, Widget child) => _VxShimmer(
+        builder: (BuildContext context, Widget? child) => _VxShimmer(
           child: child,
           gradient: widget.showGradient
               ? widget.gradient
@@ -142,20 +142,20 @@ class _VxShimmerState extends State<VxShimmer>
 @immutable
 class _VxShimmer extends SingleChildRenderObjectWidget {
   const _VxShimmer({
-    Widget child,
+    Widget? child,
     this.controllerValue,
     this.gradient,
     this.showShimmerEffect,
   }) : super(child: child);
 
   /// value that controls the animation controller
-  final double controllerValue;
+  final double? controllerValue;
 
   /// Controls the [child]'s shades of color.
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// Controls animation effect, defaults true state that makes animation active.
-  final bool showShimmerEffect;
+  final bool? showShimmerEffect;
 
   @override
   _VxShimmerFilter createRenderObject(BuildContext context) => _VxShimmerFilter(
@@ -181,23 +181,23 @@ class _VxShimmerFilter extends RenderProxyBox {
   final Paint gradientPaint;
 
   /// Controls the [child]'s shades of color.
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// Controls animation effect, defaults true state that makes animation active.
-  bool showAnimation;
+  bool? showAnimation;
 
   /// value that controls the animation controller.
-  double value;
+  double? value;
 
   /// Construct a rectangle from its left, top, right, and bottom edges.
-  Rect _rect;
+  Rect? _rect;
 
   @override
   bool get alwaysNeedsCompositing => child != null;
 
-  double get controllerValue => value;
+  double? get controllerValue => value;
 
-  set controllerValue(double newValue) {
+  set controllerValue(double? newValue) {
     if (newValue == value) {
       return;
     }
@@ -212,18 +212,18 @@ class _VxShimmerFilter extends RenderProxyBox {
     }
     assert(needsCompositing);
 
-    context.canvas.saveLayer(offset & child.size, initialPaint);
-    context.paintChild(child, offset);
+    context.canvas.saveLayer(offset & child!.size, initialPaint);
+    context.paintChild(child!, offset);
     Rect rect;
     double dx, dy;
-    final double width = child.size.width;
-    final double height = child.size.height;
-    dx = _offset(-width, width, value);
+    final double width = child!.size.width;
+    final double height = child!.size.height;
+    dx = _offset(-width, width, value!);
     dy = 0.0;
     rect = Rect.fromLTWH(offset.dx - width, offset.dy, 3 * width, height);
 
     if (_rect != rect) {
-      gradientPaint.shader = gradient.createShader(rect);
+      gradientPaint.shader = gradient!.createShader(rect);
       _rect = rect;
     }
     context.canvas.translate(dx, dy);
@@ -241,14 +241,14 @@ extension ShimmerExtension on Widget {
   ///
   /// show shimmer extension
   Widget shimmer({
-    Key key,
-    Gradient gradient,
+    Key? key,
+    Gradient? gradient,
     Duration duration = const Duration(seconds: 1),
     int count = 10000,
     bool showAnimation = true,
     bool showGradient = false,
     Color primaryColor = Colors.grey,
-    Color secondaryColor,
+    Color? secondaryColor,
   }) =>
       VxShimmer(
         key: key,

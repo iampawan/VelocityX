@@ -23,18 +23,19 @@ enum VxBadgePosition { left, right, leftTop, rightTop, leftBottom, rightBottom }
 
 class VxBadge extends StatelessWidget {
   final VxBadgeType type;
-  final Color color;
-  final TextStyle textStyle;
-  final int count;
+  final Color? color;
+  final TextStyle? textStyle;
+  final int? count;
   final bool limit;
-  final Widget child;
-  final double size;
+  final Widget? child;
+  final double? size;
   final VxBadgePosition position;
 
   /// To provide an optional widget like an Icon
-  final Widget optionalWidget;
+  final Widget? optionalWidget;
+
   const VxBadge({
-    @required this.child,
+    required this.child,
     this.type = VxBadgeType.round,
     this.color,
     this.textStyle,
@@ -57,7 +58,7 @@ class VxBadge extends StatelessWidget {
   String getNumber() {
     if (count == null) {
       return "";
-    } else if (limit && count > 99) {
+    } else if (limit && count! > 99) {
       return '99+';
     }
     return '$count';
@@ -104,9 +105,7 @@ class VxBadge extends StatelessWidget {
   /// Get the position view
   Widget positionView() {
     final List<Widget> children = [];
-
-    children.add(child);
-
+    children.add(child!);
     if (position == VxBadgePosition.left) {
       children.insert(0, getVxRound());
     } else if (position == VxBadgePosition.right) {
@@ -159,12 +158,12 @@ extension BadgeExtension on Widget {
 
   Widget badge({
     VxBadgeType type = VxBadgeType.round,
-    Color color,
-    TextStyle textStyle,
-    int count,
+    Color? color,
+    TextStyle? textStyle,
+    int? count,
     bool limit = false,
-    double size,
-    Widget optionalWidget,
+    double? size,
+    Widget? optionalWidget,
     VxBadgePosition position = VxBadgePosition.rightTop,
   }) =>
       VxBadge(

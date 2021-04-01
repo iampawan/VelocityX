@@ -47,28 +47,27 @@ import 'velocityx_mixins/color_mixin.dart';
 @protected
 class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
     with VxColorMixin<VxSelectableTextBuilder> {
-  VxSelectableTextBuilder(this._text) : assert(_text != null) {
+  VxSelectableTextBuilder(String this._text) {
     setChildToColor(this);
   }
 
-  VxSelectableTextBuilder.existing(this._text, this._textStyle)
-      : assert(_text != null) {
+  VxSelectableTextBuilder.existing(String this._text, this._textStyle) {
     setChildToColor(this);
   }
 
-  String _text, _fontFamily;
-  FontWeight _fontWeight;
-  TextAlign _textAlign;
-  double _fontSize, _letterSpacing, _lineHeight, _scaleFactor, _wordSpacing;
-  int _maxLines;
-  FontStyle _fontStyle;
-  TextStyle _textStyle;
-  TextDecoration _decoration;
-  Function _onTap;
-  TextStyle _themedStyle;
-  StrutStyle _strutStyle;
-  bool _showCursor;
-  TextBaseline _textBaseline;
+  String? _text, _fontFamily;
+  FontWeight? _fontWeight;
+  TextAlign? _textAlign;
+  double? _fontSize, _letterSpacing, _lineHeight, _scaleFactor, _wordSpacing;
+  int? _maxLines;
+  FontStyle? _fontStyle;
+  TextStyle? _textStyle;
+  TextDecoration? _decoration;
+  Function? _onTap;
+  TextStyle? _themedStyle;
+  StrutStyle? _strutStyle;
+  bool? _showCursor;
+  TextBaseline? _textBaseline;
 
   /// Creates a selectable text widget.
   ///
@@ -170,7 +169,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   VxSelectableTextBuilder get justify => this.._textAlign = TextAlign.justify;
 
   /// To set fontSize of the text using [size]
-  VxSelectableTextBuilder size(double size) => this.._fontSize = size;
+  VxSelectableTextBuilder size(double? size) => this.._fontSize = size;
 
   /// Sets [textScaleFactor] to extra small i.e. 0.75
   VxSelectableTextBuilder get xs =>
@@ -213,7 +212,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       _fontSizedText(child: this, scaleFactor: 4);
 
   VxSelectableTextBuilder _fontSizedText(
-      {@required double scaleFactor, @required VxSelectableTextBuilder child}) {
+      {required double scaleFactor, required VxSelectableTextBuilder child}) {
     _scaleFactor = scaleFactor;
     return this;
   }
@@ -255,7 +254,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VxSelectableTextBuilder _fontWeightedText(
-      {@required FontWeight weight, @required VxSelectableTextBuilder child}) {
+      {required FontWeight weight, required VxSelectableTextBuilder child}) {
     _fontWeight = weight;
     return this;
   }
@@ -298,17 +297,17 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       this.._decoration = TextDecoration.overline;
 
   /// Converts the text to fully uppercase.
-  VxSelectableTextBuilder get uppercase => this.._text = _text.toUpperCase();
+  VxSelectableTextBuilder get uppercase => this.._text = _text!.toUpperCase();
 
   /// Converts the text to fully lowercase.
-  VxSelectableTextBuilder get lowercase => this.._text = _text.toLowerCase();
+  VxSelectableTextBuilder get lowercase => this.._text = _text!.toLowerCase();
 
   /// Converts the text to first letter of very word as uppercase.
   VxSelectableTextBuilder get capitalize =>
-      this.._text = _text.allWordsCapitilize();
+      this.._text = _text!.allWordsCapitilize();
 
   /// Converts the text to partially hideen text. Best for sensitive data.
-  VxSelectableTextBuilder get hidePartial => this.._text = _text.hidePartial();
+  VxSelectableTextBuilder get hidePartial => this.._text = _text!.hidePartial();
 
   /// Sets [lineHeight] to 0.75
   VxSelectableTextBuilder get heightTight => this.._lineHeight = 0.75;
@@ -343,7 +342,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   VxSelectableTextBuilder onTap(Function _tap) => this.._onTap = _tap;
 
   @override
-  SelectableText make({Key key}) {
+  SelectableText make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
@@ -357,13 +356,13 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       wordSpacing: _wordSpacing,
     );
     return SelectableText(
-      _text,
+      _text!,
       key: key,
       textAlign: _textAlign,
       maxLines: _maxLines,
       toolbarOptions: const ToolbarOptions(
           copy: true, cut: true, paste: true, selectAll: true),
-      onTap: _onTap,
+      onTap: _onTap as void Function()?,
       enableInteractiveSelection: true,
       showCursor: _showCursor ?? false,
       textScaleFactor: _scaleFactor,
@@ -378,5 +377,5 @@ extension SelectableTextExtensions on SelectableText {
   /// Extension method to directly access [VxSelectableTextBuilder] with any widget without wrapping or with dot operator.
   ///
   VxSelectableTextBuilder get selectableText =>
-      VxSelectableTextBuilder.existing(data, style);
+      VxSelectableTextBuilder.existing(data!, style);
 }

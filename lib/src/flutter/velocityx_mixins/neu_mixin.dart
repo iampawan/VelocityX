@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/common/velocity_curve.dart';
 
 mixin VxNeuMixin {
-  Gradient _gradient;
+  Gradient? _gradient;
 
   @protected
   VxNeumorph velocityDecoration(
@@ -120,6 +120,6 @@ mixin VxNeuMixin {
       }
       return MapEntry(key, (value + amount).floor());
     });
-    return Color.fromRGBO(colors['r'], colors['g'], colors['b'], 1);
+    return Color.fromRGBO(colors['r']!, colors['g']!, colors['b']!, 1);
   }
 }

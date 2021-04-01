@@ -12,8 +12,10 @@
  *  * limitations under the License.
  */
 
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import '../../velocity_x.dart';
 import 'clippers/vx_half.dart';
@@ -21,14 +23,14 @@ import 'clippers/vx_half.dart';
 extension WidgetsExtension on Widget {
   ///Tooltip as accessibility
   Widget tooltip(String message,
-          {Key key,
-          Decoration decoration,
-          double height,
-          bool preferBelow,
-          EdgeInsetsGeometry padding,
-          TextStyle textStyle,
-          Duration waitDuration,
-          EdgeInsetsGeometry margin}) =>
+          {Key? key,
+          Decoration? decoration,
+          double? height,
+          bool? preferBelow,
+          EdgeInsetsGeometry? padding,
+          TextStyle? textStyle,
+          Duration? waitDuration,
+          EdgeInsetsGeometry? margin}) =>
       Tooltip(
         key: key,
         message: message,
@@ -43,7 +45,7 @@ extension WidgetsExtension on Widget {
       );
 
   ///Hides a widget
-  Widget hide({Key key, bool isVisible = false, bool maintainSize = false}) =>
+  Widget hide({Key? key, bool isVisible = false, bool maintainSize = false}) =>
       Visibility(
         key: key,
         child: this,
@@ -56,8 +58,8 @@ extension WidgetsExtension on Widget {
   ///Hides a widget
   Widget popupMenu(
     MenuBuilderCallback menuBuilder, {
-    Key key,
-    VxPopupMenuController controller,
+    Key? key,
+    VxPopupMenuController? controller,
     Color arrowColor = const Color(0xFF4C4C4C),
     double arrowSize = 10.0,
     Color barrierColor = Colors.black12,
@@ -84,7 +86,7 @@ extension WidgetsExtension on Widget {
   Widget errorWidget(Object ex) => ErrorWidget(ex);
 
   /// Extension for [Expanded]
-  Expanded expand({Key key, int flex = 1}) {
+  Expanded expand({Key? key, int flex = 1}) {
     return Expanded(
       key: key,
       flex: flex,
@@ -94,12 +96,12 @@ extension WidgetsExtension on Widget {
 
   /// Extension for Stack [Positioned]
   Widget positioned(
-      {double top,
-      double bottom,
-      double left,
-      double right,
-      double height,
-      double width,
+      {double? top,
+      double? bottom,
+      double? left,
+      double? right,
+      double? height,
+      double? width,
       bool isFilled = false}) {
     return isFilled
         ? Positioned.fill(
@@ -196,17 +198,17 @@ extension WidgetsExtension on Widget {
 
   /// Extension method for [Material] Widget
   Widget material(
-          {Key key,
+          {Key? key,
           MaterialType type = MaterialType.canvas,
           Duration animationDuration = kThemeAnimationDuration,
           bool borderOnForeground = true,
-          BorderRadiusGeometry borderRadius,
+          BorderRadiusGeometry? borderRadius,
           Clip clipBehavior = Clip.none,
-          Color color,
+          Color? color,
           double elevation = 0.0,
-          Color shadowColor,
-          ShapeBorder shape,
-          TextStyle textStyle}) =>
+          Color? shadowColor,
+          ShapeBorder? shape,
+          TextStyle? textStyle}) =>
       Material(
         key: key,
         type: type,
@@ -221,15 +223,29 @@ extension WidgetsExtension on Widget {
         textStyle: textStyle,
         child: this,
       );
+
+  Widget innerShadow({
+    Key? key,
+    double blur = 2.0,
+    Color color = Colors.black38,
+    Offset offset = const Offset(2, 2),
+  }) =>
+      VxInnerShadow(
+        key: key,
+        blur: blur,
+        child: this,
+        color: color,
+        offset: offset,
+      );
 }
 
 extension StringWidgetsExtension on String {
   Widget circularAssetImage(
-          {Key key,
+          {Key? key,
           double radius = 35.0,
           Color bgColor = Colors.white,
-          Color fgColor,
-          Widget child}) =>
+          Color? fgColor,
+          Widget? child}) =>
       CircleAvatar(
         key: key,
         radius: radius,
@@ -240,11 +256,11 @@ extension StringWidgetsExtension on String {
       );
 
   Widget circularNetworkImage(
-          {Key key,
+          {Key? key,
           double radius = 65.0,
           Color bgColor = Colors.white,
-          Color fgColor,
-          Widget child}) =>
+          Color? fgColor,
+          Widget? child}) =>
       CircleAvatar(
         key: key,
         radius: radius,
@@ -257,7 +273,7 @@ extension StringWidgetsExtension on String {
       );
 
   Widget circularAssetShadowImage({
-    Key key,
+    Key? key,
     EdgeInsets margin = const EdgeInsets.all(0.0),
     EdgeInsets padding = const EdgeInsets.all(0.0),
     double width = 40.0,
@@ -316,13 +332,13 @@ typedef AnimationUpdateCallBack<T> = Function(
 
 /// To perform forward animation in a simpler way
 AnimationController withAnimation<T>(
-    {@required TickerProvider vsync,
-    @required Tween<T> tween,
-    @required AnimationUpdateCallBack<T> callBack,
+    {required TickerProvider vsync,
+    required Tween<T> tween,
+    required AnimationUpdateCallBack<T?> callBack,
     Duration duration = const Duration(seconds: 1),
     double initialValue = 0.0,
     Curve curve = Curves.linear,
-    Animation customAnimation}) {
+    Animation? customAnimation}) {
   final AnimationController controller = AnimationController(
     vsync: vsync,
     duration: duration,
@@ -331,7 +347,7 @@ AnimationController withAnimation<T>(
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
   final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
-    callBack?.call(animation.value, controller.value);
+    callBack.call(animation.value, controller.value);
   });
 
   controller.forward().whenCompleteOrCancel(() {
@@ -343,23 +359,23 @@ AnimationController withAnimation<T>(
 
 /// To perform repeat animation in a simpler way
 AnimationController withRepeatAnimation<T>(
-    {@required TickerProvider vsync,
-    @required Tween<T> tween,
-    @required AnimationUpdateCallBack<T> callBack,
+    {required TickerProvider vsync,
+    required Tween<T> tween,
+    required AnimationUpdateCallBack<T?> callBack,
     Duration duration = const Duration(seconds: 1),
     double initialValue = 0.0,
     Curve curve = Curves.linear,
-    double lowerBound,
-    double upperBound,
+    double? lowerBound,
+    double? upperBound,
     bool isRepeatReversed = false,
-    Duration repeatPeriod,
-    Animation customAnimation}) {
+    Duration? repeatPeriod,
+    Animation? customAnimation}) {
   final AnimationController controller = AnimationController(
       vsync: vsync, duration: duration, value: initialValue);
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
   final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
-    callBack?.call(animation.value, controller.value);
+    callBack.call(animation.value, controller.value);
   });
 
   controller
@@ -373,4 +389,70 @@ AnimationController withRepeatAnimation<T>(
   });
 
   return controller;
+}
+
+class VxInnerShadow extends SingleChildRenderObjectWidget {
+  const VxInnerShadow({
+    Key? key,
+    this.blur = 10,
+    this.color = Colors.black38,
+    this.offset = const Offset(10, 10),
+    Widget? child,
+  }) : super(key: key, child: child);
+
+  final double blur;
+  final Color color;
+  final Offset offset;
+
+  @override
+  RenderObject createRenderObject(BuildContext context) {
+    final _RenderInnerShadow renderObject = _RenderInnerShadow();
+    updateRenderObject(context, renderObject);
+    return renderObject;
+  }
+
+  @override
+  void updateRenderObject(
+      BuildContext context, _RenderInnerShadow renderObject) {
+    renderObject
+      ..color = color
+      ..blur = blur
+      ..dx = offset.dx
+      ..dy = offset.dy;
+  }
+}
+
+class _RenderInnerShadow extends RenderProxyBox {
+  late double blur;
+  late Color color;
+  late double dx;
+  late double dy;
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    if (child == null) {
+      return;
+    }
+
+    final Rect rectOuter = offset & size;
+    final Rect rectInner = Rect.fromLTWH(
+      offset.dx,
+      offset.dy,
+      size.width - dx,
+      size.height - dy,
+    );
+    final Canvas canvas = context.canvas..saveLayer(rectOuter, Paint());
+    context.paintChild(child as RenderObject, offset);
+    final Paint shadowPaint = Paint()
+      ..blendMode = BlendMode.srcATop
+      ..imageFilter = ImageFilter.blur(sigmaX: blur, sigmaY: blur)
+      ..colorFilter = ColorFilter.mode(color, BlendMode.srcOut);
+
+    canvas
+      ..saveLayer(rectOuter, shadowPaint)
+      ..saveLayer(rectInner, Paint())
+      ..translate(dx, dy);
+    context.paintChild(child as RenderObject, offset);
+    context.canvas..restore()..restore()..restore();
+  }
 }

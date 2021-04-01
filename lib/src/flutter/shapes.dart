@@ -10,7 +10,7 @@ import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
   /// Creates a circle that represents a shape.
   VxCircle({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.radius,
@@ -26,7 +26,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
 
   /// The widget below this widget in the tree.
 
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the circle. Changing the background
   /// color will cause the avatar to animate to the new color.
@@ -34,38 +34,38 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The size of the circle, expressed as the radius (half the diameter).
   ///
 
   /// Changes to the [radius] are animated (including changing from an explicit
   /// [radius] to a [minRadius]/[maxRadius] pair or vice versa).
-  final double radius;
+  final double? radius;
 
   /// Border to provide stroke.
-  final BoxBorder border;
+  final BoxBorder? border;
 
   /// To fully provide custom decoration
-  final BoxDecoration customDecoration;
+  final BoxDecoration? customDecoration;
 
   /// To provide gradient
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// To provide background image
-  final DecorationImage backgroundImage;
+  final DecorationImage? backgroundImage;
 
   /// To provide blend mode
-  final BlendMode blendMode;
+  final BlendMode? blendMode;
 
-  /// To provide blend mode
-  final List<BoxShadow> shadows;
+  /// To give shadow effect
+  final List<BoxShadow>? shadows;
 
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -100,7 +100,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
 class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
   /// Creates a capsule that represents a shape.
   VxCapsule({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.width,
@@ -116,44 +116,44 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
   }
 
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the circle.
   ///
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The width of the capsule.
-  final double width;
+  final double? width;
 
   /// The height of the capsule.
-  final double height;
+  final double? height;
 
   /// Border to provide stroke.
-  final BoxBorder border;
+  final BoxBorder? border;
 
   /// To fully provide custom decoration
-  final BoxDecoration customDecoration;
+  final BoxDecoration? customDecoration;
 
   /// To provide gradient
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// To provide background image
-  final DecorationImage backgroundImage;
+  final DecorationImage? backgroundImage;
 
   /// To provide blend mode
-  final BlendMode blendMode;
+  final BlendMode? blendMode;
 
   /// To provide blend mode
-  final List<BoxShadow> shadows;
+  final List<BoxShadow>? shadows;
 
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -189,7 +189,7 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
 class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
   /// Creates a ellipse that represents a shape.
   VxEllipse({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.width,
@@ -205,38 +205,38 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
   }
 
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the ellipse.
   ///
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The width of the ellipse.
-  final double width;
+  final double? width;
 
   /// The height of the ellipse.
-  final double height;
+  final double? height;
 
   /// Border to provide stroke.
-  final BoxBorder border;
+  final BoxBorder? border;
 
   /// To fully provide custom decoration
-  final BoxDecoration customDecoration;
+  final BoxDecoration? customDecoration;
 
   /// To provide gradient
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// To provide background image
-  final DecorationImage backgroundImage;
+  final DecorationImage? backgroundImage;
 
   /// To provide blend mode
-  final BlendMode blendMode;
+  final BlendMode? blendMode;
 
   /// To provide blend mode
-  final List<BoxShadow> shadows;
+  final List<BoxShadow>? shadows;
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +244,7 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
     final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -280,7 +280,7 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
 class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
   /// Creates a bevel that represents a shape.
   VxBevel({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.radius,
@@ -295,35 +295,35 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
   }
 
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the bevel.
   ///
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The radius of the bevel.
-  final double radius;
+  final double? radius;
 
   /// The width of the bevel.
-  final double width;
+  final double? width;
 
   /// The height of the bevel.
-  final double height;
+  final double? height;
 
   /// Border to provide stroke.
-  final BorderSide borderSide;
+  final BorderSide? borderSide;
 
   /// To provide gradient
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// To provide background image
-  final DecorationImage backgroundImage;
+  final DecorationImage? backgroundImage;
 
   /// To provide blend mode
-  final List<BoxShadow> shadows;
+  final List<BoxShadow>? shadows;
 
   @override
   Widget build(BuildContext context) {
@@ -331,7 +331,7 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
     final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -370,7 +370,7 @@ class VxContinuousRectangle extends StatelessWidget
     with VxShadowMixin<VxContinuousRectangle> {
   /// Creates a continuous rectangle that represents a shape.
   VxContinuousRectangle({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.radius,
@@ -385,34 +385,34 @@ class VxContinuousRectangle extends StatelessWidget
   }
 
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the rectangle.
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The radius of the rectangle.
-  final double radius;
+  final double? radius;
 
   /// The width of the rectangle.
-  final double width;
+  final double? width;
 
   /// The height of the rectangle.
-  final double height;
+  final double? height;
 
   /// Border to provide stroke.
-  final BorderSide borderSide;
+  final BorderSide? borderSide;
 
   /// To provide gradient
-  final Gradient gradient;
+  final Gradient? gradient;
 
   /// To provide background image
-  final DecorationImage backgroundImage;
+  final DecorationImage? backgroundImage;
 
   /// To provide blend mode
-  final List<BoxShadow> shadows;
+  final List<BoxShadow>? shadows;
 
   @override
   Widget build(BuildContext context) {
@@ -420,7 +420,7 @@ class VxContinuousRectangle extends StatelessWidget
     final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -455,7 +455,7 @@ class VxContinuousRectangle extends StatelessWidget
 class VxTriangle extends StatelessWidget {
   /// Creates a triangle that represents a shape.
   const VxTriangle({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.width,
@@ -464,23 +464,23 @@ class VxTriangle extends StatelessWidget {
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the triangle.
   ///
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The width of the triangle.
-  final double width;
+  final double? width;
 
   /// The height of the triangle.
-  final double height;
+  final double? height;
 
   /// Width to provide stroke.
-  final double strokeWidth;
+  final double? strokeWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -488,7 +488,7 @@ class VxTriangle extends StatelessWidget {
     final _height = height ?? MediaQuery.of(context).size.shortestSide / 2;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -515,9 +515,9 @@ class VxTriangle extends StatelessWidget {
 }
 
 class VxTicket extends StatelessWidget {
-  /// Creates a continous rectangle that represents a shape.
+  /// Creates a VxTicket that represents a shape.
   const VxTicket({
-    Key key,
+    Key? key,
     this.child,
     this.backgroundColor,
     this.width,
@@ -527,25 +527,25 @@ class VxTicket extends StatelessWidget {
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
-  final Widget child;
+  final Widget? child;
 
   /// The color with which to fill the rectangle.
   /// If a [backgroundColor] is not specified, the theme's
   /// [ThemeData.primaryColorLight] is used with dark foreground colors, and
   /// [ThemeData.primaryColorDark] with light foreground colors.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// The width of the rectangle.
-  final double width;
+  final double? width;
 
   /// The height of the rectangle.
-  final double height;
+  final double? height;
 
   /// The ticket type is by default curvish. If isHardEdged is true then it will be pointed edged.
-  final bool isHardEdged;
+  final bool? isHardEdged;
 
   /// Ticket style both sides
-  final bool isTwoSided;
+  final bool? isTwoSided;
 
   @override
   Widget build(BuildContext context) {
@@ -553,7 +553,7 @@ class VxTicket extends StatelessWidget {
     final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
-    Color effectiveBackgroundColor = backgroundColor;
+    Color? effectiveBackgroundColor = backgroundColor;
     if (effectiveBackgroundColor == null) {
       switch (theme.brightness) {
         case Brightness.dark:
@@ -573,14 +573,15 @@ class VxTicket extends StatelessWidget {
         color: effectiveBackgroundColor,
         child: child,
       ),
-      clipper: _VxTicketClipper(isTwoSide: isTwoSided, isHardEdge: isHardEdged),
+      clipper:
+          _VxTicketClipper(isTwoSide: isTwoSided!, isHardEdge: isHardEdged!),
     );
   }
 }
 
 class _VxTriangle extends CustomPainter {
-  final Color color;
-  final double strokeWidth;
+  final Color? color;
+  final double? strokeWidth;
 
   final bool isStroke;
 
@@ -599,9 +600,9 @@ class _VxTriangle extends CustomPainter {
 
     final paint = Paint()
       ..style = isStroke ? PaintingStyle.stroke : PaintingStyle.fill
-      ..color = color;
+      ..color = color!;
     if (strokeWidth != null) {
-      paint.strokeWidth = strokeWidth;
+      paint.strokeWidth = strokeWidth!;
     }
 
     canvas.drawPath(path, paint);
@@ -666,16 +667,16 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxCircle] with any widget without wrapping or with dot operator.
   ///
   VxCircle circle({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double radius,
-    BoxBorder border,
-    BoxDecoration customDecoration,
-    DecorationImage backgroundImage,
-    BlendMode blendMode,
-    Gradient gradient,
-    List<BoxShadow> shadows,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? radius,
+    BoxBorder? border,
+    BoxDecoration? customDecoration,
+    DecorationImage? backgroundImage,
+    BlendMode? blendMode,
+    Gradient? gradient,
+    List<BoxShadow>? shadows,
   }) =>
       VxCircle(
         key: key,
@@ -694,17 +695,17 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxCapsule] with any widget without wrapping or with dot operator.
   ///
   VxCapsule capsule({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double width,
-    double height,
-    BoxBorder border,
-    BoxDecoration customDecoration,
-    DecorationImage backgroundImage,
-    BlendMode blendMode,
-    Gradient gradient,
-    List<BoxShadow> shadows,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? width,
+    double? height,
+    BoxBorder? border,
+    BoxDecoration? customDecoration,
+    DecorationImage? backgroundImage,
+    BlendMode? blendMode,
+    Gradient? gradient,
+    List<BoxShadow>? shadows,
   }) =>
       VxCapsule(
         key: key,
@@ -724,17 +725,17 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxEllipse] with any widget without wrapping or with dot operator.
   ///
   VxEllipse ellipse({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double width,
-    double height,
-    BoxBorder border,
-    BoxDecoration customDecoration,
-    DecorationImage backgroundImage,
-    BlendMode blendMode,
-    Gradient gradient,
-    List<BoxShadow> shadows,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? width,
+    double? height,
+    BoxBorder? border,
+    BoxDecoration? customDecoration,
+    DecorationImage? backgroundImage,
+    BlendMode? blendMode,
+    Gradient? gradient,
+    List<BoxShadow>? shadows,
   }) =>
       VxEllipse(
         key: key,
@@ -754,16 +755,16 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxBevel] with any widget without wrapping or with dot operator.
   ///
   VxBevel bevel({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double radius,
-    double width,
-    double height,
-    BorderSide borderSide,
-    DecorationImage backgroundImage,
-    Gradient gradient,
-    List<BoxShadow> shadows,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? radius,
+    double? width,
+    double? height,
+    BorderSide? borderSide,
+    DecorationImage? backgroundImage,
+    Gradient? gradient,
+    List<BoxShadow>? shadows,
   }) =>
       VxBevel(
         key: key,
@@ -782,16 +783,16 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxContinuousRectangle] with any widget without wrapping or with dot operator.
   ///
   VxContinuousRectangle continuousRectangle({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double radius,
-    double width,
-    double height,
-    BorderSide borderSide,
-    DecorationImage backgroundImage,
-    Gradient gradient,
-    List<BoxShadow> shadows,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? radius,
+    double? width,
+    double? height,
+    BorderSide? borderSide,
+    DecorationImage? backgroundImage,
+    Gradient? gradient,
+    List<BoxShadow>? shadows,
   }) =>
       VxContinuousRectangle(
         key: key,
@@ -810,12 +811,12 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxTriangle] with any widget without wrapping or with dot operator.
   ///
   VxTriangle triangle({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double width,
-    double height,
-    double strokeWidth,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? width,
+    double? height,
+    double? strokeWidth,
   }) =>
       VxTriangle(
         key: key,
@@ -830,13 +831,13 @@ extension ShapesExtension on Widget {
   /// Extension method to directly access [VxTicket] with any widget without wrapping or with dot operator.
   ///
   VxTicket ticket({
-    Key key,
-    Widget child,
-    Color backgroundColor,
-    double width,
-    double height,
-    bool isHardEdged,
-    bool isTwoSided,
+    Key? key,
+    Widget? child,
+    Color? backgroundColor,
+    double? width,
+    double? height,
+    bool? isHardEdged,
+    bool? isTwoSided,
   }) =>
       VxTicket(
         key: key,

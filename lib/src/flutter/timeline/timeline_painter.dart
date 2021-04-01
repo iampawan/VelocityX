@@ -24,11 +24,11 @@ class VxTimelinePainter extends CustomPainter {
   final Animation<double> height;
 
   VxTimelinePainter(
-      {@required this.lineColor,
-      @required this.backgroundColor,
+      {required this.lineColor,
+      required this.backgroundColor,
       this.firstElement = false,
       this.lastElement = false,
-      this.controller})
+      required this.controller})
       : height = Tween(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,

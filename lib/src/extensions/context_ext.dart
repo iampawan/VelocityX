@@ -21,6 +21,8 @@ extension ContextExtensions on BuildContext {
   MaterialResponsiveUiData get _mdResponsive =>
       MaterialResponsiveUiData.of(this);
 
+  VxNavConfig get vxNav => VxNavigator.of(this);
+
   /// Screen Sizes Extensions for responsive UI
 
   /// Returns Material no. of Columns as per Material Design Guidlines.
@@ -36,10 +38,10 @@ extension ContextExtensions on BuildContext {
   MobileDeviceSize get mdDeviceSize => _mdResponsive.deviceInfo.deviceSize;
 
   /// Returns the current window size as per Material Design Guidlines.
-  MobileWindowSize get mdWindowSize => _mdResponsive.windowSize;
+  VxWindowSize get mdWindowSize => _mdResponsive.windowSize;
 
   /// Check if the window size is of Mobile Type as per Material Design Guidlines.
-  bool get isMobile => mdWindowSize == MobileWindowSize.xsmall;
+  bool get isMobile => mdWindowSize == VxWindowSize.xsmall;
 
   /// Returns if it's a handset as per Material Design Guidlines.
   bool get isMobileTypeHandset => mdDeviceType == MobileDeviceType.handset;
@@ -91,7 +93,7 @@ extension ContextExtensions on BuildContext {
 
   /// Extension for getting NavigatorState. Use [navigator] now.
   @Deprecated('Use [navigator] instead. It will be removed soon.')
-  NavigatorState get nav => Navigator.of(this);
+  NavigatorState? get nav => Navigator.of(this);
 
   /// Extension for getting Theme
   ThemeData get theme => Theme.of(this);
@@ -100,7 +102,7 @@ extension ContextExtensions on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   /// Extension for getting textTheme
-  TextStyle get captionStyle => Theme.of(this).textTheme.caption;
+  TextStyle? get captionStyle => Theme.of(this).textTheme.caption;
 
   ///
   /// The foreground color for widgets (knobs, text, overscroll edge effect, etc).
@@ -139,15 +141,15 @@ extension ContextExtensions on BuildContext {
   ///
   /// It is used for routing in flutter
   ///
-  NavigatorState get navigator => Navigator.of(this);
+  NavigatorState? get navigator => Navigator.of(this);
 
   ///
   /// Pushes the built widget to the screen using the material fade in animation
   ///
   /// Will return a value when the built widget calls [pop]
   ///
-  Future<T> push<T>(WidgetBuilder builder) async {
-    return await navigator.push<T>(MaterialPageRoute(builder: builder));
+  Future<T?> push<T>(WidgetBuilder builder) async {
+    return await navigator!.push<T>(MaterialPageRoute(builder: builder));
   }
 
   ///
@@ -155,7 +157,7 @@ extension ContextExtensions on BuildContext {
   ///
   /// Will return the [result] to the caller of [push]
   ///
-  void pop<T>([T result]) => navigator.pop<T>(result);
+  void pop<T>([T? result]) => navigator!.pop<T>(result);
 
   ///
   /// Pushes the built widget to the screen using the material fade in animation
@@ -173,22 +175,22 @@ extension ContextExtensions on BuildContext {
       _nextAndRemoveUntilPage(context: this, page: page);
 
   /// Action Extension
-  bool invokeAction(Intent intent) => Actions.invoke(this, intent);
+  bool? invokeAction(Intent intent) => Actions.invoke(this, intent) as bool?;
 
   /// Returns The state from the closest instance of this class that encloses the given context.
   /// It is used for validating forms
-  FormState get form => Form.of(this);
+  FormState? get form => Form.of(this);
 
   ///
   /// Returns The current [Locale] of the app as specified in the [Localizations] widget.
   ///
-  Locale get locale => Localizations.localeOf(this);
+  Locale? get locale => Localizations.localeOf(this);
 
   /// Returns The state from the closest instance of this class that encloses the given context.
   ///
   /// It is used for showing widgets on top of everything.
   ///
-  OverlayState get overlay => Overlay.of(this);
+  OverlayState? get overlay => Overlay.of(this);
 
   ///
   /// Insert the given widget into the overlay.
@@ -196,7 +198,7 @@ extension ContextExtensions on BuildContext {
   ///
   OverlayEntry addOverlay(WidgetBuilder builder) {
     final entry = OverlayEntry(builder: builder);
-    overlay.insert(entry);
+    overlay!.insert(entry);
     return entry;
   }
 
@@ -210,8 +212,8 @@ extension ContextExtensions on BuildContext {
 }
 
 Future<void> _nextPage(
-        {@required BuildContext context,
-        @required Widget page,
+        {required BuildContext context,
+        required Widget page,
         bool maintainState = true}) async =>
     await Navigator.push(
         context,
@@ -220,8 +222,8 @@ Future<void> _nextPage(
           maintainState: maintainState,
         ));
 Future<void> _nextReplacementPage(
-        {@required BuildContext context,
-        @required Widget page,
+        {required BuildContext context,
+        required Widget page,
         bool maintainState = true}) async =>
     await Navigator.pushReplacement(
         context,
@@ -230,6 +232,6 @@ Future<void> _nextReplacementPage(
           maintainState: maintainState,
         ));
 Future<void> _nextAndRemoveUntilPage(
-        {@required BuildContext context, @required Widget page}) async =>
+        {required BuildContext context, required Widget page}) async =>
     await Navigator.pushAndRemoveUntil(context,
         MaterialPageRoute(builder: (context) => page), (route) => false);

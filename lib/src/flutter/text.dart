@@ -11,8 +11,9 @@
  * limitations under the License.
  */
 
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
 
@@ -27,17 +28,17 @@ import 'velocityx_mixins/color_mixin.dart';
 @protected
 class VxTextBuilder extends VxWidgetBuilder<Widget>
     with VxColorMixin<VxTextBuilder> {
-  VxTextBuilder(this._text) : assert(_text != null) {
+  VxTextBuilder(String this._text) {
     setChildToColor(this);
   }
 
-  VxTextBuilder.existing(this._text, this._textStyle) : assert(_text != null) {
+  VxTextBuilder.existing(String this._text, this._textStyle) {
     setChildToColor(this);
   }
 
-  String _text, _fontFamily;
+  String? _text, _fontFamily;
 
-  double _scaleFactor,
+  double? _scaleFactor,
       _fontSize,
       _minFontSize,
       _letterSpacing,
@@ -45,17 +46,17 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
       _maxFontSize,
       _stepGranularity,
       _wordSpacing;
-  int _maxLines;
-  FontWeight _fontWeight;
-  TextAlign _textAlign;
-  FontStyle _fontStyle;
-  TextDecoration _decoration;
-  TextStyle _textStyle, _themedStyle;
-  StrutStyle _strutStyle;
-  TextOverflow _overflow;
-  TextBaseline _textBaseline;
-  Widget _replacement;
-  bool _softWrap, _wrapWords;
+  int? _maxLines;
+  FontWeight? _fontWeight;
+  TextAlign? _textAlign;
+  FontStyle? _fontStyle;
+  TextDecoration? _decoration;
+  TextStyle? _textStyle, _themedStyle;
+  StrutStyle? _strutStyle;
+  TextOverflow? _overflow;
+  TextBaseline? _textBaseline;
+  Widget? _replacement;
+  bool? _softWrap, _wrapWords;
 
   bool _isIntrinsic = false;
 
@@ -238,7 +239,85 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder get visible => this.._overflow = TextOverflow.visible;
 
   /// To set fontSize of the text using [size]
-  VxTextBuilder size(double size) => this.._fontSize = size;
+  VxTextBuilder size(double? size) => this.._fontSize = size;
+
+  /// Sets [TextTheme] headline 1
+  VxTextBuilder headline1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline1;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 2
+  VxTextBuilder headline2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline2;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 3
+  VxTextBuilder headline3(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline3;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 4
+  VxTextBuilder headline4(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline4;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 5
+  VxTextBuilder headline5(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline5;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 6
+  VxTextBuilder headline6(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline6;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText1
+  VxTextBuilder bodyText1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText2
+  VxTextBuilder bodyText2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    return this;
+  }
+
+  /// Sets [TextTheme] caption
+  VxTextBuilder caption(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.caption;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle1
+  VxTextBuilder subtitle1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle2
+  VxTextBuilder subtitle2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    return this;
+  }
+
+  /// Sets [TextTheme] overline
+  VxTextBuilder overlineText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.overline;
+    return this;
+  }
+
+  /// Sets [TextTheme] button
+  VxTextBuilder buttonText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.button;
+    return this;
+  }
 
   /// Sets [textScaleFactor] to extra small i.e. 0.75
   VxTextBuilder get xs => _fontSizedText(child: this, scaleFactor: 0.75);
@@ -271,7 +350,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
   VxTextBuilder _fontSizedText(
-      {@required double scaleFactor, @required VxTextBuilder child}) {
+      {required double scaleFactor, required VxTextBuilder child}) {
     _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
@@ -314,7 +393,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VxTextBuilder _fontWeightedText(
-      {@required FontWeight weight, @required VxTextBuilder child}) {
+      {required FontWeight weight, required VxTextBuilder child}) {
     _fontWeight = weight;
     return this;
   }
@@ -354,16 +433,16 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder get overline => this.._decoration = TextDecoration.overline;
 
   /// Converts the text to fully uppercase.
-  VxTextBuilder get uppercase => this.._text = _text.toUpperCase();
+  VxTextBuilder get uppercase => this.._text = _text!.toUpperCase();
 
   /// Converts the text to fully lowercase.
-  VxTextBuilder get lowercase => this.._text = _text.toLowerCase();
+  VxTextBuilder get lowercase => this.._text = _text!.toLowerCase();
 
   /// Converts the text to first letter of very word as uppercase.
-  VxTextBuilder get capitalize => this.._text = _text.allWordsCapitilize();
+  VxTextBuilder get capitalize => this.._text = _text!.allWordsCapitilize();
 
   /// Converts the text to partially hideen text. Best for sensitive data.
-  VxTextBuilder get hidePartial => this.._text = _text.hidePartial();
+  VxTextBuilder get hidePartial => this.._text = _text!.hidePartial();
 
   /// Sets [lineHeight] to 0.75
   VxTextBuilder get heightTight => this.._lineHeight = 0.75;
@@ -381,7 +460,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
@@ -396,7 +475,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
     );
     return _isIntrinsic
         ? Text(
-            _text,
+            _text!,
             key: key,
             textAlign: _textAlign,
             maxLines: _maxLines,
@@ -407,7 +486,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
             strutStyle: _strutStyle,
           )
         : AutoSizeText(
-            _text,
+            _text!,
             key: key,
             textAlign: _textAlign,
             maxLines: _maxLines,
@@ -429,5 +508,5 @@ extension TextExtensions on Text {
   ///
   /// Extension method to directly access [VxTextBuilder] with any widget without wrapping or with dot operator.
   ///
-  VxTextBuilder get text => VxTextBuilder.existing(data, style);
+  VxTextBuilder get text => VxTextBuilder.existing(data!, style);
 }

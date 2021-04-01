@@ -1,3 +1,4 @@
+import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,15 +8,19 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
-import 'new/vx_demo.dart';
 import 'widgets/draw_android.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      home: Material(child: SafeArea(child: VxDemo())),
+    MaterialApp.router(
+      routeInformationParser: VxInformationParser(),
+      routerDelegate: VxNavigator(routes: {
+        "/": (uri, param) => MaterialPage(child: DemoList()),
+        "/demo": (uri, param) => MaterialPage(child: Demo()),
+      }),
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.blue,
+        primaryColor: Vx.blue500,
         brightness: Brightness.light,
       ),
       debugShowCheckedModeBanner: false,
@@ -53,16 +58,16 @@ class _DemoState extends State<Demo> {
         // TimelineExample(),
         // AnimatedBoxExample(),
         // VxAnimationExample(),
-        VxAnimator<double>(
-          builder: (context, animState, child) {
-            return VxBox()
-                .rounded
-                .alignCenter
-                .pink400
-                .square(animState.value)
-                .makeCentered();
-          },
-        ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
+        // VxAnimator<double>(
+        //   builder: (context, animState, child) {
+        //     return VxBox()
+        //         .rounded
+        //         .alignCenter
+        //         .pink400
+        //         .square(animState.value)
+        //         .makeCentered();
+        //   },
+        // ).easeInCubic.doubleTween(10.0, 200.0).seconds(sec: 10).infinite.make(),
         20.heightBox,
         "Hello"
             .text
@@ -285,7 +290,7 @@ class _DemoState extends State<Demo> {
             .textDropDown(
               selectedValue: "Item 1",
               onChanged: (value) {
-                Vx.log(value);
+                Vx.log(value!);
               },
             )
             .make(),
@@ -308,7 +313,7 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator.push(const SecondPage("assets/vxbox.png")
+      context.navigator!.push(const SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
   }

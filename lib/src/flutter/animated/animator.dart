@@ -14,7 +14,6 @@ import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/curves_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/duration_mixin.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../builder.dart';
 
@@ -24,7 +23,7 @@ typedef AnimatorCallBack<T> = Function(
 class VxAnimator<T> extends VxWidgetBuilder<Widget>
     with VxCurvesMixin<VxAnimator>, VxDurationMixin<VxAnimator> {
   VxAnimator({
-    @required this.builder,
+    required this.builder,
     this.animatorKey,
     this.child,
     this.key,
@@ -45,58 +44,62 @@ class VxAnimator<T> extends VxWidgetBuilder<Widget>
     setChildForDuration(this);
   }
 
-  final Key key;
+  final Key? key;
 
   ///A linear interpolation between a beginning and ending value.
   ///
   ///`tween` argument is used for one Tween animation.
-  final Tween<T> tween;
+  final Tween<T>? tween;
 
   ///The number of forward and backward periods the animation
   ///performs before stopping
-  final int cycles;
+  final int? cycles;
 
   ///The number of forward periods the animation performs before stopping
-  final int repeats;
+  final int? repeats;
 
   ///Whether the animation settings are reset when Animator widget
   ///is rebuilt. The default value is false.
   ///
   ///Animation settings are defined by the tween, duration and curve argument.
-  final bool resetAnimationOnRebuild;
+  final bool? resetAnimationOnRebuild;
 
   ///Whether to start the animation when the Animator widget
   ///is inserted into the tree.
-  final bool triggerOnInit;
+  final bool? triggerOnInit;
 
   ///Function to be called every time the animation value changes.
   ///
   ///The customListener is provided with an [Animation] object.
-  final Function(AnimatorState<T>) customListener;
+  final Function(AnimatorState<T>)? customListener;
 
   ///VoidCallback to be called when animation is finished.
-  final Function(AnimatorState<T>) endAnimationListener;
+  final Function(AnimatorState<T>)? endAnimationListener;
 
   ///Function to be called every time the status of the animation changes.
   ///
   ///The customListener is provided with an [AnimationStatus, AnimationSetup]
   ///object.
-  final Function(AnimationStatus, AnimatorState<T>) statusListener;
+  final Function(AnimationStatus, AnimatorState<T>)? statusListener;
 
   ///The build strategy currently used for one Tween. Animator widget rebuilds
   ///itself every time the animation changes value.
   ///
   ///The builder is provided with an [Animation] object.
-  AnimatorCallBack<T> builder;
+  final Widget Function(
+    BuildContext context,
+    AnimatorState<T> animatorState,
+    Widget? child,
+  ) builder;
 
   ///Widget that you do not want to animate.
   ///It is the static part of the animated Widget.
-  final Widget child;
+  final Widget? child;
 
   ///A linear interpolation between a beginning and ending value.
   ///
   ///`tweenMap` argument is used for multi-Tween animation.
-  final Map<String, Tween<dynamic>> tweenMap;
+  final Map<String, Tween<dynamic>>? tweenMap;
 
   ///The name of your Animator widget.
   ///Many widgets can have the same name.
@@ -107,25 +110,25 @@ class VxAnimator<T> extends VxWidgetBuilder<Widget>
   /// The list of your logic classes you want to rebuild this widget from.
   // final List<StatesRebuilder> blocs;
 
-  final AnimatorKey animatorKey;
+  final AnimatorKey<T>? animatorKey;
 
   ///For performance reason the default tickerProvider is of type
   ///`singleTickerProviderStateMixin`.
   ///
   ///use `tickerProviderStateMixin` if many controllers use the same ticker.
-  final TickerMixin tickerMixin;
+  final TickerMixin? tickerMixin;
 
   ///A span of time, such as 27 days, 4 hours, 12 minutes, and 3 seconds
-  final Duration duration;
+  final Duration? duration;
 
   ///An easing curve, i.e. a mapping of the unit interval to the unit interval.
-  final Curve curve;
+  final Curve? curve;
 
-  Tween<int> _intTween;
-  Tween<double> _doubleTween;
-  Tween<Color> _colorTween;
+  Tween<int>? _intTween;
+  Tween<double>? _doubleTween;
+  ColorTween? _colorTween;
 
-  int _infiniteCycles;
+  int? _infiniteCycles;
 
   VxAnimator<T> intTween(int begin, int end) {
     _intTween = IntTween(begin: begin, end: end);
@@ -148,13 +151,16 @@ class VxAnimator<T> extends VxWidgetBuilder<Widget>
   }
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return Animator<T>(
       key: key,
       animatorKey: animatorKey,
       builder: builder,
       child: child,
-      tween: _doubleTween ?? _intTween ?? _colorTween ?? tween,
+      tween: _doubleTween as Tween<T?>? ??
+          _intTween as Tween<T?>? ??
+          _colorTween as Tween<T?>? ??
+          tween as Tween<T?>,
       triggerOnInit: triggerOnInit,
       repeats: repeats,
       customListener: customListener,

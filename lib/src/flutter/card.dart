@@ -13,7 +13,6 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
@@ -39,18 +38,18 @@ class VxCard extends VxWidgetBuilder<Widget>
   ///
   VxCard(
     this._child,
-  ) : assert(_child != null) {
+  ) {
     setChildToColor(this);
     setChildToPad(this);
     setChildToRound(this);
   }
   final Widget _child;
 
-  Color _shadowColor;
+  Color? _shadowColor;
   double _elevation = 1.0;
-  ShapeBorder _shape;
-  Clip _clip;
-  bool _borderOnForeground;
+  ShapeBorder? _shape;
+  Clip? _clip;
+  bool? _borderOnForeground;
 
   /// The card's background color.
   ///
@@ -124,7 +123,7 @@ class VxCard extends VxWidgetBuilder<Widget>
   VxCard get disableBorderOnForeground => this.._borderOnForeground = false;
 
   @override
-  Widget make({Key key}) {
+  Widget make({Key? key}) {
     return Card(
       key: key,
       margin: velocityPadding,
@@ -133,9 +132,9 @@ class VxCard extends VxWidgetBuilder<Widget>
       clipBehavior: _clip ?? Clip.antiAlias,
       borderOnForeground: _borderOnForeground ?? true,
       elevation: _elevation,
-      shape: roundedValue.isNotNull
+      shape: (roundedValue != null)
           ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(roundedValue))
+              borderRadius: BorderRadius.circular(roundedValue!))
           : _shape,
       shadowColor: _shadowColor,
     );

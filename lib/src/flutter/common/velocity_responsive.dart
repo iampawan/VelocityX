@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/extensions/context_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -19,18 +20,16 @@ class VxDevice extends StatelessWidget {
   ///
   final Widget web;
 
-  const VxDevice({Key key, @required this.mobile, @required this.web})
-      : assert(mobile != null),
-        assert(web != null),
-        super(key: key);
+  const VxDevice({Key? key, required this.mobile, required this.web})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return VxConditionalSwitch.single(
       context: context,
       valueBuilder: (context) => context.mdWindowSize,
-      caseBuilders: {MobileWindowSize.xsmall: (context) => mobile},
+      caseBuilders: {VxWindowSize.xsmall: (context) => mobile},
       fallbackBuilder: (context) => web,
-    );
+    )!;
   }
 }
 
@@ -41,35 +40,35 @@ class VxResponsive extends StatelessWidget {
   ///
   /// For window size as extra small
   ///
-  final Widget xsmall;
+  final Widget? xsmall;
 
   ///
   /// For window size as small
   ///
-  final Widget small;
+  final Widget? small;
 
   ///
   /// For window size as medium
   ///
-  final Widget medium;
+  final Widget? medium;
 
   ///
   /// For window size as large
   ///
-  final Widget large;
+  final Widget? large;
 
   ///
   /// For window size as extra large
   ///
-  final Widget xlarge;
+  final Widget? xlarge;
 
   ///
   /// if none of the above props are specified then [fallback] is used
   ///
-  final Widget fallback;
+  final Widget? fallback;
 
   const VxResponsive(
-      {Key key,
+      {Key? key,
       this.xsmall,
       this.small,
       this.medium,
@@ -83,13 +82,62 @@ class VxResponsive extends StatelessWidget {
       context: context,
       valueBuilder: (context) => context.mdWindowSize,
       caseBuilders: {
-        MobileWindowSize.xsmall: (context) => xsmall ?? fallback,
-        MobileWindowSize.small: (context) => small ?? fallback,
-        MobileWindowSize.medium: (context) => medium ?? fallback,
-        MobileWindowSize.large: (context) => large ?? fallback,
-        MobileWindowSize.xlarge: (context) => xlarge ?? fallback,
+        VxWindowSize.xsmall: (context) => xsmall ?? fallback,
+        VxWindowSize.small: (context) => small ?? fallback,
+        VxWindowSize.medium: (context) => medium ?? fallback,
+        VxWindowSize.large: (context) => large ?? fallback,
+        VxWindowSize.xlarge: (context) => xlarge ?? fallback,
       },
       fallbackBuilder: (context) => fallback,
-    );
+    )!;
   }
+}
+
+/// [VxLayout] is a type of [LayoutBuilder] with some additional power
+///
+class VxLayout extends StatelessWidget {
+  final Widget Function(
+    BuildContext context,
+    VxWindowSize window,
+    BoxConstraints constraints,
+  ) builder;
+
+  final VxSizeConfig? sizeConfig;
+
+  const VxLayout({
+    Key? key,
+    required this.builder,
+    this.sizeConfig,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, boxConstraints) {
+      VxWindowSize windowSize = VxWindowSize.small;
+      if (boxConstraints.maxWidth < (sizeConfig?.xsmall ?? 600)) {
+        windowSize = VxWindowSize.xsmall;
+      } else if (boxConstraints.maxWidth < (sizeConfig?.small ?? 1024)) {
+        windowSize = VxWindowSize.small;
+      } else if (boxConstraints.maxWidth < (sizeConfig?.medium ?? 1440)) {
+        windowSize = VxWindowSize.medium;
+      } else if (boxConstraints.maxWidth < (sizeConfig?.large ?? 1920)) {
+        windowSize = VxWindowSize.large;
+      } else if (boxConstraints.maxWidth < (sizeConfig?.xlarge ?? 4096)) {
+        windowSize = VxWindowSize.xlarge;
+      } else {
+        windowSize = VxWindowSize.xlarge;
+      }
+      return builder(context, windowSize, boxConstraints);
+    });
+  }
+}
+
+class VxSizeConfig {
+  final double? xsmall;
+  final double? small;
+  final double? medium;
+  final double? large;
+  final double? xlarge;
+
+  VxSizeConfig({this.xsmall, this.small, this.medium, this.large, this.xlarge});
 }

@@ -28,7 +28,7 @@ extension RoutesWidgetsExtension on Widget {
   ///  Example:
   /// Navigator.push(context, YourPage().vxRoute());
   ///
-  Route vxPreviewRoute({@required BuildContext parentContext}) {
+  Route vxPreviewRoute({required BuildContext parentContext}) {
     return PageRouteBuilder<void>(
       pageBuilder: (context, animation, secondaryAnimation) {
         return this;

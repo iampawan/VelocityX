@@ -110,9 +110,9 @@ class VxDiagonalClipper extends CustomClipper<Path> {
 
 class VxDiagonal extends StatelessWidget {
   const VxDiagonal(
-      {Key key,
-      @required this.child,
-      @required this.clipHeight,
+      {Key? key,
+      required this.child,
+      required this.clipHeight,
       this.position = VxDiagonalPosition.BOTTOM_LEFT,
       this.axis = Axis.horizontal,
       this.clipShadows = const []})

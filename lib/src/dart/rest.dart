@@ -1,5 +1,6 @@
 // import 'dart:convert';
 // import 'dart:io';
+
 // import 'package:mime/mime.dart';
 
 // import '../../velocity_x.dart';
@@ -21,23 +22,23 @@
 
 //   VxRest(this.req);
 
-//   static HttpServer _currentServer;
+//   static HttpServer? _currentServer;
 
-//   HttpRequest req;
+//   HttpRequest? req;
 
 //   bool get isPost => method == 'POST';
 
 //   bool get isGet => method == 'GET';
 
-//   Uri get uri => req.requestedUri;
+//   Uri get uri => req!.requestedUri;
 
-//   String get ip => req.connectionInfo.remoteAddress.host;
+//   String get ip => req!.connectionInfo!.remoteAddress.host;
 
-//   int get port => req.connectionInfo.remotePort;
+//   int get port => req!.connectionInfo!.remotePort;
 
-//   String get method => req.method;
+//   String get method => req!.method;
 
-//   HttpResponse get res => req.response;
+//   HttpResponse get res => req!.response;
 
 //   Future<void> handle() async {
 //     try {
@@ -122,9 +123,9 @@
 //     } else if (body is Function(Uri)) {
 //       return await body(uri);
 //     } else if (body is Function(HttpRequest, HttpResponse)) {
-//       return await body(req, res);
+//       return await body(req!, res);
 //     } else if (body is Function(HttpRequest)) {
-//       return await body(req);
+//       return await body(req!);
 //     } else if (body is Function(HttpResponse)) {
 //       return await body(res);
 //     } else if (body is File) {
@@ -152,7 +153,7 @@
 
 //   static Future<void> closeServer() async {
 //     if (_currentServer != null) {
-//       _currentServer.close(force: true);
+//       _currentServer!.close(force: true);
 //     }
 //   }
 

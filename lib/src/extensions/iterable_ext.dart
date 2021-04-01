@@ -83,7 +83,7 @@ extension IterableBasics<E> on Iterable<E> {
 
     for (final element in otherElementCounts.keys) {
       final countInThis = thisElementCounts[element] ?? 0;
-      if (countInThis < otherElementCounts[element]) {
+      if (countInThis < otherElementCounts[element]!) {
         return false;
       }
     }
@@ -141,7 +141,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [1, 2, 3].averageBy((n) => n);               // 2.0
   /// ['cat', 'horse'].averageBy((s) => s.length); // 4.0
   /// ```
-  double averageBy(num Function(T) selector) {
+  double? averageBy(num Function(T) selector) {
     ArgumentError.checkNotNull(selector, 'selector');
     if (isEmpty) {
       return null;
@@ -161,7 +161,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [1, 2, 3].chunked(2);                 // [[1, 2], [3]]
   /// [1, 2, 3].chunked(2, fill: () => 99); // [[1, 2], [3, 99]]
   /// ```
-  Iterable<List<T>> chunked(int size, {T Function() fill}) {
+  Iterable<List<T>> chunked(int size, {T Function()? fill}) {
     ArgumentError.checkNotNull(size, 'chunkSize');
     if (size <= 0) {
       throw ArgumentError('chunkSize must be positive integer greater than 0.');
@@ -195,14 +195,14 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [1, 2, 3, 13, 14, 15].count();             // 6
   /// [1, 2, 3, 13, 14, 15].count((n) => n > 9); // 3
   /// ```
-  int count([bool Function(T element) test]) {
+  int count([bool Function(T element)? test]) {
     test ??= (_) => true;
 
     if (isEmpty) {
       return 0;
     }
 
-    return map((element) => test(element) ? 1 : 0)
+    return map((element) => test!(element) ? 1 : 0)
         .reduce((value, element) => value + element);
   }
 
@@ -266,7 +266,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// ['a', 'b'].elementAtOrNull(2); // null
   /// ```
   T elementAtOrNull(int index) {
-    return elementAtOrElse(index, () => null);
+    return elementAtOrElse(index, () => null as T);
   }
 
   /// Returns the first element. If there is no first element the [orElse]
@@ -291,7 +291,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [].firstOrNull();         // null
   /// ```
   T firstOrNull() {
-    return firstOrElse(() => null);
+    return firstOrElse(() => null as T);
   }
 
   /// Returns the last element. If there is no last element the [orElse]
@@ -316,7 +316,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [].lastOrElse();         // null
   /// ```
   T lastOrNull() {
-    return lastOrElse(() => null);
+    return lastOrElse(() => null as T);
   }
 
   /// Groups the elements of the list into a map by a key
@@ -343,7 +343,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// // map = {'young': ['John', 'Carl'], 'old': ['Peter', 'Sarah']}
   /// ```
   Map<K, List<V>> groupBy<K, V>(K Function(T element) keySelector,
-      {V Function(T element) valueTransform}) {
+      {V Function(T element)? valueTransform}) {
     ArgumentError.checkNotNull(keySelector);
 
     valueTransform ??= (element) => element as V;
@@ -356,7 +356,7 @@ extension IterableBasics2<T> on Iterable<T> {
       if (!map.containsKey(key)) {
         map[key] = [];
       }
-      map[key].add(valueTransform(element));
+      map[key]!.add(valueTransform!(element));
     });
 
     return map;
@@ -417,7 +417,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [1, 0, 2].minBy((a, b) => a.compareTo(b));       // 0
   /// persons.minBy((a, b) => a.age.compareTo(b.age)); // the youngest person
   /// ```
-  T minimumBy(Comparator<T> comparator) {
+  T? minimumBy(Comparator<T> comparator) {
     ArgumentError.checkNotNull(comparator, 'comparator');
     if (isEmpty) {
       return null;
@@ -433,7 +433,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// [90, 10, 20, 30].maxBy((a, b) => a.compareTo(b)); // 90
   /// persons.maxBy((a, b) => a.age.compareTo(b.age));  // the oldest person
   /// ```
-  T maximumBy(Comparator<T> comparator) {
+  T? maximumBy(Comparator<T> comparator) {
     ArgumentError.checkNotNull(comparator, 'comparator');
     if (isEmpty) {
       return null;
@@ -490,7 +490,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// list.lastIndex; // 2
   /// list[list.lastIndex]; // 'c'
   /// ```
-  int get lastIndex {
+  int? get lastIndex {
     if (isNotEmpty) {
       return length - 1;
     } else {
@@ -642,7 +642,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// ```dart
   /// [1, 2, 3].pickOne(); // 2 (or 1 or 3)
   /// ```
-  T pickOne([Random random]) {
+  T pickOne([Random? random]) {
     final list = toList();
     list.shuffle(random);
     return list.first;
@@ -655,7 +655,7 @@ extension IterableBasics2<T> on Iterable<T> {
   /// ```dart
   /// [1, 2, 3].pickSome(2); // [1, 2] or [3, 2] and so on...
   /// ```
-  List<T> pickSome(int count, [Random random]) {
+  List<T> pickSome(int count, [Random? random]) {
     ArgumentError.checkNotNull(count, 'count');
     final list = toList();
     list.shuffle(random);
@@ -680,7 +680,7 @@ extension IterableOfIntSC on Iterable<int> {
   /// ```dart
   /// [2, 4, 6, 8].average(); // 5.0
   /// ```
-  double average() {
+  double? average() {
     return averageBy((n) => n);
   }
 
@@ -690,7 +690,7 @@ extension IterableOfIntSC on Iterable<int> {
   /// ```dart
   /// [9, 42, 3].max(); // 42
   /// ```
-  int max() {
+  int? max() {
     return maximumBy((a, b) => a.compareTo(b));
   }
 
@@ -700,7 +700,7 @@ extension IterableOfIntSC on Iterable<int> {
   /// ```dart
   /// [17, 13, 92].min(); // 13
   /// ```
-  int min() {
+  int? min() {
     return minimumBy((a, b) => a.compareTo(b));
   }
 }
@@ -722,7 +722,7 @@ extension IterableOfDoubleSC on Iterable<double> {
   /// ```dart
   /// [2.0, 4.0, 6.0, 8.0].average(); // 5.0
   /// ```
-  double average() {
+  double? average() {
     return averageBy((n) => n);
   }
 
@@ -732,7 +732,7 @@ extension IterableOfDoubleSC on Iterable<double> {
   /// ```dart
   /// [9.0, 42.0, 3.0].max(); // 42.0
   /// ```
-  double max() {
+  double? max() {
     return maximumBy((a, b) => a.compareTo(b));
   }
 
@@ -742,7 +742,7 @@ extension IterableOfDoubleSC on Iterable<double> {
   /// ```dart
   /// [17.0, 13.0, 92.0].min(); // 13.0
   /// ```
-  double min() {
+  double? min() {
     return minimumBy((a, b) => a.compareTo(b));
   }
 }
@@ -762,12 +762,12 @@ extension NumIterableBasics<E extends num> on Iterable<E> {
   /// [1, 2, 3].sum((i) => i * 3); // 18.
   /// [].sum() // 0.
   /// ```
-  num sum([num Function(E) addend]) {
+  num sum([num Function(E)? addend]) {
     if (isEmpty) {
       return 0;
     }
     return addend == null
-        ? reduce((a, b) => a + b)
+        ? reduce((a, b) => a + b as E)
         : fold(0, (prev, element) => prev + addend(element));
   }
 }

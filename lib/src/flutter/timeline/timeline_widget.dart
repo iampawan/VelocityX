@@ -7,21 +7,21 @@ import 'timeline_view.dart';
 class VxTimeline extends StatefulWidget {
   final List<VxTimelineModel> timelineList;
 
-  final Color lineColor;
+  final Color? lineColor;
 
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
-  final Color headingColor;
+  final Color? headingColor;
 
-  final Color descriptionColor;
-  final ValueSetter<VxTimelineModel> onItemTap;
-  final Duration animationDuration;
+  final Color? descriptionColor;
+  final ValueSetter<VxTimelineModel>? onItemTap;
+  final Duration? animationDuration;
   final bool showTrailing;
-  final Widget customTrailing;
+  final Widget? customTrailing;
 
   const VxTimeline(
-      {Key key,
-      @required this.timelineList,
+      {Key? key,
+      required this.timelineList,
       this.lineColor,
       this.backgroundColor,
       this.headingColor,
@@ -40,8 +40,8 @@ class VxTimeline extends StatefulWidget {
 
 class _VxTimelineState extends State<VxTimeline>
     with SingleTickerProviderStateMixin {
-  Animation<double> animation;
-  AnimationController controller;
+  Animation<double>? animation;
+  AnimationController? controller;
   double fraction = 0.0;
 
   @override
@@ -49,9 +49,9 @@ class _VxTimelineState extends State<VxTimeline>
     super.initState();
     controller = AnimationController(
         duration:
-            widget?.animationDuration ?? const Duration(milliseconds: 1000),
+            widget.animationDuration ?? const Duration(milliseconds: 1000),
         vsync: this);
-    controller.forward();
+    controller!.forward();
   }
 
   @override
@@ -63,7 +63,7 @@ class _VxTimelineState extends State<VxTimeline>
         itemCount: widget.timelineList.length,
         itemBuilder: (_, index) {
           return InkWell(
-            onTap: () => widget.onItemTap(widget.timelineList[index]),
+            onTap: () => widget.onItemTap!(widget.timelineList[index]),
             child: VxTimelineView(
               lineColor: widget.lineColor ?? Theme.of(context).accentColor,
               backgroundColor: widget.backgroundColor ?? Colors.white,
@@ -84,7 +84,7 @@ class _VxTimelineState extends State<VxTimeline>
 
   @override
   void dispose() {
-    controller.dispose();
+    controller!.dispose();
     super.dispose();
   }
 }

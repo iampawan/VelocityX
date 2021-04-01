@@ -1,9 +1,26 @@
-## [1.4.1] - February 12, 2021
+## [2.6.1] - March 31, 2020
 
-- Enhancements
+- Fixed issue with ZStack.
+- Fixed issue with isEmptyOrNull String.
 
-## [1.4.0] - February 10, 2021
+## [2.6.0] - March 16, 2020
 
+- VxNavigator (Navigator 2.0) support added.
+- AStack widget added.
+
+## [2.5.0] - March 13, 2020
+
+- VxAnimator added.
+- VxLayout added for responsiveness.
+
+## [2.4.0-nullsafety.0] - March 11, 2020
+
+- Direct Text Themes support
+- Extended & Improved Color Pallete
+- New Demo Added
+- Added more gradient options
+- size percentage widget added for sizedbox and container
+- Flat button changed to Material button
 - Fixed nullOK issues
 - Added more clippers
 - Added align() method for text and richtext
@@ -11,11 +28,10 @@
 - Added VxState
 - Minor bug fixes and improvements
 
-## [1.3.1] - Decemeber 29, 2020
+## [2.3.1-nullsafety.0] - Decemeber 29, 2020
 
 - Introducing VxShapes with ext: VxCircle -> .circle(), VxEllipse -> .ellipse(), VxCapsule -> .capsule(), VxContinuousRectangle -> .continuousRectangle(), VxBevel -> .bevel(), VxTriangle -> .triangle() and VxTicket -> .ticket()
 - VxPlatform added to create a common widget for different platforms.
-- VxAnimator added exposing the animator package.
 - Added widget support to badge and new positions.
 - Added isIntrinsic prop for some widgets like DataTable which doesn't support layout builder.
 - Vx.getColorFromHex() added to convert hex to color.
@@ -25,6 +41,12 @@
 - Widget Extensions - stroke(), fractionalBox(), px(val), py(val), rotate60(), rotateN60(), clipHalf(), aspectRatio(), and positioned().
 - withAnimation returns AnimationController to control and dispose it manually.
 - Many Bug Fixes.
+
+## [2.0.0-nullsafety.1] - November 22, 2020
+
+- BREAKING: opt into null safety
+- upgrade Dart SDK constraints to >=2.12.0-0 <3.0.0
+- upgrade Flutter SDK constraints to >=1.24.0-0 <2.0.0
 
 ## [1.0.1] - November 21, 2020
 

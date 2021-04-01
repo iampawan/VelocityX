@@ -11,14 +11,15 @@
  * limitations under the License.
  */
 
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  Directionality directionalityWidget({Widget child}) => Directionality(
+  Directionality directionalityWidget({required Widget child}) =>
+      Directionality(
         child: child,
         textDirection: TextDirection.ltr,
       );
@@ -32,7 +33,7 @@ void main() {
       expect(find.byKey(key), findsOneWidget);
       // The rich text is type of AutoSizeText const
       expect(tester.widget(find.byKey(key)).runtimeType, AutoSizeText);
-      expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan.text,
+      expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.text,
           'VelocityX');
     });
 
@@ -50,7 +51,7 @@ void main() {
       //   'VelocityX Hey ',
       // );
 
-      expect(autoSizeText.textSpan.children.length, 1);
+      expect(autoSizeText.textSpan!.children!.length, 1);
     });
 
     testWidgets('VelocityXRichTextBuilder responds to onTap',
@@ -94,8 +95,8 @@ void main() {
       expect(
           tester
               .widget<AutoSizeText>(find.byKey(key))
-              .textSpan
-              .style
+              .textSpan!
+              .style!
               .decoration,
           TextDecoration.underline);
     });
@@ -106,7 +107,8 @@ void main() {
       await tester.pumpWidget(directionalityWidget(
           child: 'VelocityX'.richText.green100.make(key: key)));
 
-      expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan.style.color,
+      expect(
+          tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.color,
           Vx.green100);
     });
 
@@ -116,7 +118,8 @@ void main() {
       await tester.pumpWidget(directionalityWidget(
           child: 'VelocityX'.richText.green100.make(key: key)));
 
-      expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan.style.color,
+      expect(
+          tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.color,
           Vx.green100);
     });
 
@@ -127,7 +130,11 @@ void main() {
           child: 'VelocityX'.richText.size(20).make(key: key)));
 
       expect(
-          tester.widget<AutoSizeText>(find.byKey(key)).textSpan.style.fontSize,
+          tester
+              .widget<AutoSizeText>(find.byKey(key))
+              .textSpan!
+              .style!
+              .fontSize,
           20);
     });
 
@@ -140,8 +147,8 @@ void main() {
       expect(
           tester
               .widget<AutoSizeText>(find.byKey(key))
-              .textSpan
-              .style
+              .textSpan!
+              .style!
               .letterSpacing,
           4);
     });
@@ -153,7 +160,8 @@ void main() {
           child: 'VelocityX'.richText.heightSnug.make(key: key)));
 
       // The value of heightSnug is 0.875
-      expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan.style.height,
+      expect(
+          tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.height,
           0.875);
     });
   });

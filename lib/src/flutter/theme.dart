@@ -21,7 +21,7 @@ extension ThemeExtension on Widget {
   ///
   /// Extension method to directly access dark [Theme] with any widget without wrapping or with dot operator.
   ///
-  Theme darkTheme({Key key}) => Theme(
+  Theme darkTheme({Key? key}) => Theme(
         data: ThemeData.dark(),
         child: this,
       );
@@ -29,7 +29,7 @@ extension ThemeExtension on Widget {
   ///
   /// Extension method to directly access light [Theme] with any widget without wrapping or with dot operator.
   ///
-  Theme lightTheme({Key key}) => Theme(
+  Theme lightTheme({Key? key}) => Theme(
         data: ThemeData.light(),
         child: this,
       );
@@ -37,8 +37,8 @@ extension ThemeExtension on Widget {
   ///
   /// Extension method to directly access [Theme] with custom [ThemeData] with any widget without wrapping or with dot operator.
   ///
-  Theme customTheme({Key key, @required ThemeData themeData}) => Theme(
-        data: themeData,
+  Theme customTheme({Key? key, required ThemeData? themeData}) => Theme(
+        data: themeData!,
         child: this,
       );
 }

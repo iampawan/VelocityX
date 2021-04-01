@@ -30,7 +30,7 @@ extension StringExtension on String {
   String get eliminateLast => length > 1 ? "${substring(0, length - 1)}" : "";
 
   /// Return a bool if the string is null or empty
-  bool get isEmptyOrNull => this == null || isEmpty;
+  bool get isEmpty => trimLeft().isEmpty;
 
   ///
   /// Uses regex to check if the provided string is a valid email address or not
@@ -53,7 +53,7 @@ extension StringExtension on String {
   }
 
   /// Returns the string if it is not `null`, or the empty string otherwise
-  String get orEmpty => this ?? "";
+  String get orEmpty => this;
 
 // if the string is empty perform an action
   String ifEmpty(Function action) => isEmpty ? action() : this;
@@ -63,7 +63,7 @@ extension StringExtension on String {
   String removeAllWhiteSpace() => replaceAll(RegExp(r"\s+\b|\b\s"), "");
 
   /// Returns true if s is neither null, empty nor is solely made of whitespace characters.
-  bool get isNotBlank => this != null && trim().isNotEmpty;
+  bool get isNotBlank => trim().isNotEmpty;
 
   ///
   /// Replaces chars of the given String [s] with [replace].
@@ -78,7 +78,7 @@ extension StringExtension on String {
   /// 1234567890 with begin 2 and end 6 => 12****7890
   /// 1234567890 with begin 1 => 1****67890
   ///
-  String hidePartial({int begin = 0, int end, String replace = '*'}) {
+  String? hidePartial({int begin = 0, int? end, String replace = '*'}) {
     final buffer = StringBuffer();
     if (length <= 1) {
       return null;
@@ -108,13 +108,13 @@ extension StringExtension on String {
   String get numCurrency =>
       intl.NumberFormat.currency(customPattern: "#,##0.00")
           .format(double.tryParse(this))
-          ?.toString();
+          .toString();
 
   /// Format numeric currency with provided locale
   String numCurrencyWithLocale({String locale = "en_US"}) =>
       intl.NumberFormat.currency(
         locale: locale,
-      ).format(double.tryParse(this))?.toString();
+      ).format(double.tryParse(this)).toString();
 
   ///Capitalize all words inside a string
   String allWordsCapitilize() {
@@ -236,4 +236,13 @@ extension StringExtension on String {
 
   /// Get RichText Widget for the String
   VxRichText get richText => VxRichText(this);
+}
+
+extension NullableStringIsEmptyOrNullExtension on String? {
+  /// Returns `true` if the String is either null or empty.
+  bool get isEmptyOrNull => this?.isEmpty ?? true;
+}
+
+extension NullableStringIsEmptyOrNotNullExtension on String? {
+  bool get isEmptyOrNotNull => !isEmptyOrNull;
 }

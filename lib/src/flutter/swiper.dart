@@ -14,13 +14,12 @@ furnished to do so, subject to the following conditions:
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 /// Use this widget [VxSwiper] to give your list a swipeable effect with full customization.
 class VxSwiper extends StatefulWidget {
   VxSwiper(
-      {@required this.items,
+      {required List<Widget> this.items,
       this.height,
       this.aspectRatio = 16 / 9,
       this.viewportFraction = 0.8,
@@ -42,14 +41,15 @@ class VxSwiper extends StatefulWidget {
         itemCount = items.length,
         itemBuilder = null,
         pageController = PageController(
-          viewportFraction: viewportFraction,
-          initialPage:
-              enableInfiniteScroll ? realPage + initialPage : initialPage,
+          viewportFraction: viewportFraction as double,
+          initialPage: enableInfiniteScroll
+              ? realPage + (initialPage as int)
+              : initialPage as int,
         );
 
   VxSwiper.builder(
-      {@required this.itemCount,
-      @required this.itemBuilder,
+      {required this.itemCount,
+      required this.itemBuilder,
       this.height,
       this.aspectRatio = 16 / 9,
       this.viewportFraction = 0.8,
@@ -70,22 +70,23 @@ class VxSwiper extends StatefulWidget {
       : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
         items = null,
         pageController = PageController(
-          viewportFraction: viewportFraction,
-          initialPage:
-              enableInfiniteScroll ? realPage + initialPage : initialPage,
+          viewportFraction: viewportFraction as double,
+          initialPage: enableInfiniteScroll
+              ? realPage + (initialPage as int)
+              : initialPage as int,
         );
 
   /// The widgets to be shown in the carousel of default constructor
-  final List<Widget> items;
+  final List<Widget>? items;
 
   /// The widget item builder that will be used to build item on demand
-  final IndexedWidgetBuilder itemBuilder;
+  final IndexedWidgetBuilder? itemBuilder;
 
   /// The widgets count that should be shown at carousel
   final int itemCount;
 
   /// Set carousel height and overrides any existing [aspectRatio].
-  final double height;
+  final double? height;
 
   /// Aspect ratio is used if no height have been declared.
   ///
@@ -145,13 +146,13 @@ class VxSwiper extends StatefulWidget {
   /// the given [Duration].
   ///
   /// Touch Detection is only active if [autoPlay] is true.
-  final Duration pauseAutoPlayOnTouch;
+  final Duration? pauseAutoPlayOnTouch;
 
   /// Determines if current page should be larger then the side images,
   /// creating a feeling of depth in the carousel.
   ///
   /// Defaults to false.
-  final bool enlargeCenterPage;
+  final bool? enlargeCenterPage;
 
   /// The axis along which the page view scrolls.
   ///
@@ -159,7 +160,7 @@ class VxSwiper extends StatefulWidget {
   final Axis scrollDirection;
 
   /// Called whenever the page in the center of the viewport changes.
-  final Function(int index) onPageChanged;
+  final Function(int index)? onPageChanged;
 
   /// How the carousel should respond to user input.
   ///
@@ -170,7 +171,7 @@ class VxSwiper extends StatefulWidget {
   /// [PageScrollPhysics] prior to being used.
   ///
   /// Defaults to matching platform conventions.
-  final ScrollPhysics scrollPhysics;
+  final ScrollPhysics? scrollPhysics;
 
   /// [pageController] is created using the properties passed to the constructor
   /// and can be used to control the [PageView] it is passed to.
@@ -184,7 +185,7 @@ class VxSwiper extends StatefulWidget {
   ///
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
-  Future<void> nextPage({Duration duration, Curve curve}) {
+  Future<void> nextPage({required Duration duration, required Curve curve}) {
     return pageController.nextPage(duration: duration, curve: curve);
   }
 
@@ -192,7 +193,8 @@ class VxSwiper extends StatefulWidget {
   ///
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
-  Future<void> previousPage({Duration duration, Curve curve}) {
+  Future<void> previousPage(
+      {required Duration duration, required Curve curve}) {
     return pageController.previousPage(duration: duration, curve: curve);
   }
 
@@ -202,20 +204,21 @@ class VxSwiper extends StatefulWidget {
   /// without animation, and without checking if the new value is in range.
   void jumpToPage(int page) {
     final index = _getRealIndex(
-        pageController.page.toInt(), realPage - initialPage, itemCount);
+        pageController.page!.toInt(), realPage - initialPage as int, itemCount);
     return pageController
-        .jumpToPage(pageController.page.toInt() + page - index);
+        .jumpToPage(pageController.page!.toInt() + page - index);
   }
 
   /// Animates the controlled [VxSwiper] from the current page to the given page.
   ///
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
-  Future<void> animateToPage(int page, {Duration duration, Curve curve}) {
+  Future<void> animateToPage(int page,
+      {required Duration duration, required Curve curve}) {
     final index = _getRealIndex(
-        pageController.page.toInt(), realPage - initialPage, itemCount);
+        pageController.page!.toInt(), realPage - initialPage as int, itemCount);
     return pageController.animateToPage(
-        pageController.page.toInt() + page - index,
+        pageController.page!.toInt() + page - index,
         duration: duration,
         curve: curve);
   }
@@ -225,7 +228,7 @@ class VxSwiper extends StatefulWidget {
 }
 
 class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
-  Timer timer;
+  Timer? timer;
 
   @override
   void initState() {
@@ -233,7 +236,7 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
     timer = getTimer();
   }
 
-  Timer getTimer() {
+  Timer? getTimer() {
     return widget.autoPlay
         ? Timer.periodic(widget.autoPlayInterval, (_) {
             widget.pageController.nextPage(
@@ -244,32 +247,32 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
   }
 
   void pauseOnTouch() {
-    timer.cancel();
-    timer = Timer(widget.pauseAutoPlayOnTouch, () {
+    timer!.cancel();
+    timer = Timer(widget.pauseAutoPlayOnTouch!, () {
       timer = getTimer();
     });
   }
 
   Widget fastScrollWidget(Widget child) {
-    int t; //Tid
-    double p; //Position
+    int? t; //Tid
+    late double p; //Position
     return Listener(
         onPointerMove: (pos) {
           //Get pointer position when pointer moves
           //If time since last scroll is undefined or over 100 milliseconds
-          if (t == null || DateTime.now().millisecondsSinceEpoch - t > 100) {
+          if (t == null || DateTime.now().millisecondsSinceEpoch - t! > 100) {
             t = DateTime.now().millisecondsSinceEpoch;
             p = pos.position.dx; //x position
           } else {
             //Calculate velocity
             final double v = (p - pos.position.dx) /
-                (DateTime.now().millisecondsSinceEpoch - t);
+                (DateTime.now().millisecondsSinceEpoch - t!);
             if (v < -2 || v > 2) {
               final vx = (v * 1.2).isFinite ? (v * 1.2).round() : 0;
               //Don't run if velocity is to low
               //Move to page based on velocity (increase velocity multiplier to scroll further)
               widget.pageController.animateToPage(
-                  widget.pageController.page.toInt() + vx,
+                  widget.pageController.page!.toInt() + vx,
                   duration: const Duration(milliseconds: 400),
                   curve: Curves.easeOutCubic);
             }
@@ -318,22 +321,24 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
       itemCount: widget.enableInfiniteScroll ? null : widget.itemCount,
       onPageChanged: (int index) {
         final int currentPage = _getRealIndex(
-            index + widget.initialPage, widget.realPage, widget.itemCount);
+            index + (widget.initialPage as int),
+            widget.realPage as int,
+            widget.itemCount);
         if (widget.onPageChanged != null) {
-          widget.onPageChanged(currentPage);
+          widget.onPageChanged!(currentPage);
         }
       },
       itemBuilder: (BuildContext context, int i) {
-        final int index = _getRealIndex(
-            i + widget.initialPage, widget.realPage, widget.itemCount);
+        final int index = _getRealIndex(i + (widget.initialPage as int),
+            widget.realPage as int, widget.itemCount);
 
         return AnimatedBuilder(
           animation: widget.pageController,
           child: (widget.items != null)
-              ? widget.items[index]
-              : widget.itemBuilder(context, index),
+              ? widget.items![index]
+              : widget.itemBuilder!(context, index),
           builder: (BuildContext context, child) {
-            double distortionValue = 1.0;
+            double? distortionValue = 1.0;
             // if `enlargeCenterPage` is true, we must calculate the carousel item's height
             // to display the visual effect
             if (widget.enlargeCenterPage != null &&
@@ -342,13 +347,13 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
               // pageController.page can only be accessed after the first build,
               // so in the first build we calculate the itemoffset manually
               try {
-                itemOffset = widget.pageController.page - i;
+                itemOffset = widget.pageController.page! - i;
               } catch (e) {
                 final BuildContext storageContext =
                     widget.pageController.position.context.storageContext;
-                final double previousSavedPosition =
+                final double? previousSavedPosition =
                     PageStorage.of(storageContext)?.readState(storageContext)
-                        as double;
+                        as double?;
                 if (previousSavedPosition != null) {
                   itemOffset = previousSavedPosition - i.toDouble();
                 } else {
@@ -359,7 +364,6 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
                   (1 - (itemOffset.abs() * 0.3)).clamp(0.0, 1.0);
               distortionValue = Curves.easeOut.transform(distortionRatio);
             }
-
             final double height = widget.height ??
                 MediaQuery.of(context).size.width * (1 / widget.aspectRatio);
 

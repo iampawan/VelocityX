@@ -11,8 +11,9 @@
  * limitations under the License.
  */
 
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
@@ -21,21 +22,20 @@ import 'package:velocity_x/src/velocity_xx.dart';
 
 /// Creates a [AutoSizeText] widget with a [TextSpan].
 @protected
-class VxRichText extends VxWidgetBuilder<AutoSizeText>
-    with VxColorMixin<VxRichText> {
-  VxRichText(this._text) : assert(_text != null) {
+class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
+  VxRichText(String this._text) {
     setChildToColor(this);
   }
 
-  VxRichText.existing(this._text, this._textStyle) : assert(_text != null) {
+  VxRichText.existing(String this._text, this._textStyle) {
     setChildToColor(this);
   }
 
-  String _text, _fontFamily;
-  List<TextSpan> _textSpanChildren;
-  FontWeight _fontWeight;
-  TextAlign _textAlign;
-  double _scaleFactor,
+  String? _text, _fontFamily;
+  List<TextSpan>? _textSpanChildren;
+  FontWeight? _fontWeight;
+  TextAlign? _textAlign;
+  double? _scaleFactor,
       _wordSpacing,
       _fontSize,
       _letterSpacing,
@@ -43,33 +43,35 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
       _maxFontSize,
       _stepGranularity,
       _minFontSize;
-  int _maxLines;
-  FontStyle _fontStyle;
-  TextDecoration _decoration;
-  GestureRecognizer _gestureRecognizer;
-  TextStyle _textStyle, _themedStyle;
-  StrutStyle _strutStyle;
-  TextOverflow _overflow;
-  TextBaseline _textBaseline;
-  Widget _replacement;
-  bool _softWrap, _wrapWords;
+  int? _maxLines;
+  FontStyle? _fontStyle;
+  TextDecoration? _decoration;
+  GestureRecognizer? _gestureRecognizer;
+  TextStyle? _textStyle, _themedStyle;
+  StrutStyle? _strutStyle;
+  TextOverflow? _overflow;
+  TextBaseline? _textBaseline;
+  Widget? _replacement;
+  bool? _softWrap, _wrapWords;
   bool _isIntrinsic = false;
 
   /// Set tap func
   VxRichText tap(Function function) {
-    final recognizer = TapGestureRecognizer()..onTap = function;
+    final recognizer = TapGestureRecognizer()
+      ..onTap = function as void Function()?;
     return this.._gestureRecognizer = recognizer;
   }
 
   /// Set doubleTap func
   VxRichText doubleTap(Function function) {
-    final recognizer = DoubleTapGestureRecognizer()..onDoubleTap = function;
+    final recognizer = DoubleTapGestureRecognizer()
+      ..onDoubleTap = function as void Function()?;
     return this.._gestureRecognizer = recognizer;
   }
 
   /// Set children with list of text spans
   VxRichText withTextSpanChildren(List<TextSpan> children) {
-    _textSpanChildren = children ?? <TextSpan>[];
+    _textSpanChildren = children;
     return this;
   }
 
@@ -200,6 +202,84 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   /// To set fontSize of the text using [size]
   VxRichText size(double size) => this.._fontSize = size;
 
+  /// Sets [TextTheme] headline 1
+  VxRichText headline1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline1;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 2
+  VxRichText headline2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline2;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 3
+  VxRichText headline3(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline3;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 4
+  VxRichText headline4(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline4;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 5
+  VxRichText headline5(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline5;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 6
+  VxRichText headline6(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline6;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText1
+  VxRichText bodyText1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText2
+  VxRichText bodyText2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    return this;
+  }
+
+  /// Sets [TextTheme] caption
+  VxRichText caption(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.caption;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle1
+  VxRichText subtitle1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle2
+  VxRichText subtitle2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    return this;
+  }
+
+  /// Sets [TextTheme] overline
+  VxRichText overlineText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.overline;
+    return this;
+  }
+
+  /// Sets [TextTheme] button
+  VxRichText buttonText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.button;
+    return this;
+  }
+
   /// Sets [textScaleFactor] to extra small i.e. 0.75
   VxRichText get xs => _fontSizedText(child: this, scaleFactor: 0.75);
 
@@ -231,7 +311,7 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   VxRichText get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
   VxRichText _fontSizedText(
-      {@required double scaleFactor, @required VxRichText child}) {
+      {required double scaleFactor, required VxRichText child}) {
     _scaleFactor = scaleFactor;
     return this;
   }
@@ -279,7 +359,7 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VxRichText _fontWeightedText(
-      {@required FontWeight weight, @required VxRichText child}) {
+      {required FontWeight weight, required VxRichText child}) {
     _fontWeight = weight;
     return this;
   }
@@ -318,16 +398,16 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   VxRichText get overline => this.._decoration = TextDecoration.overline;
 
   /// Converts the text to fully uppercase.
-  VxRichText get uppercase => this.._text = _text.toUpperCase();
+  VxRichText get uppercase => this.._text = _text!.toUpperCase();
 
   /// Converts the text to fully lowercase.
-  VxRichText get lowercase => this.._text = _text.toLowerCase();
+  VxRichText get lowercase => this.._text = _text!.toLowerCase();
 
   /// Converts the text to first letter of very word as uppercase.
-  VxRichText get capitalize => this.._text = _text.allWordsCapitilize();
+  VxRichText get capitalize => this.._text = _text!.allWordsCapitilize();
 
   /// Converts the text to partially hideen text. Best for sensitive data.
-  VxRichText get hidePartial => this.._text = _text.hidePartial();
+  VxRichText get hidePartial => this.._text = _text!.hidePartial();
 
   /// Sets [lineHeight] to 0.75
   VxRichText get heightTight => this.._lineHeight = 0.75;
@@ -345,7 +425,7 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
   VxRichText lineHeight(double val) => this.._lineHeight = val;
 
   @override
-  AutoSizeText make({Key key}) {
+  Widget make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
@@ -399,35 +479,37 @@ class VxRichText extends VxWidgetBuilder<AutoSizeText>
 
 class VelocityXTextSpan extends VxTextSpanBuilder
     with VxColorMixin<VelocityXTextSpan> {
-  VelocityXTextSpan(this._text) : assert(_text != null) {
+  VelocityXTextSpan(String this._text) {
     setChildToColor(this);
   }
 
-  String _text, _fontFamily;
-  GestureRecognizer _gestureRecognizer;
-  TextDecoration _decoration;
-  FontWeight _fontWeight;
-  double _fontSize, _letterSpacing, _lineHeight, _wordSpacing;
-  FontStyle _fontStyle;
-  List<TextSpan> _textSpanChildren;
-  TextStyle _textStyle, _themedStyle;
-  TextBaseline _textBaseline;
+  String? _text, _fontFamily;
+  GestureRecognizer? _gestureRecognizer;
+  TextDecoration? _decoration;
+  FontWeight? _fontWeight;
+  double? _fontSize, _letterSpacing, _lineHeight, _wordSpacing;
+  FontStyle? _fontStyle;
+  List<TextSpan>? _textSpanChildren;
+  TextStyle? _textStyle, _themedStyle;
+  TextBaseline? _textBaseline;
 
   /// Set tap func
   VelocityXTextSpan tap(Function function) {
-    final recognizer = TapGestureRecognizer()..onTap = function;
+    final recognizer = TapGestureRecognizer()
+      ..onTap = function as void Function()?;
     return this.._gestureRecognizer = recognizer;
   }
 
   /// Set doubleTap func
   VelocityXTextSpan doubleTap(Function function) {
-    final recognizer = DoubleTapGestureRecognizer()..onDoubleTap = function;
+    final recognizer = DoubleTapGestureRecognizer()
+      ..onDoubleTap = function as void Function()?;
     return this.._gestureRecognizer = recognizer;
   }
 
   /// Set children with list of text spans
   VelocityXTextSpan withChildren(List<TextSpan> children) {
-    return this.._textSpanChildren = children ?? <TextSpan>[];
+    return this.._textSpanChildren = children;
   }
 
   /// Set [color] of the text
@@ -511,7 +593,7 @@ class VelocityXTextSpan extends VxTextSpanBuilder
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
   VelocityXTextSpan _fontWeightedText(
-      {@required FontWeight weight, @required VelocityXTextSpan child}) {
+      {required FontWeight weight, required VelocityXTextSpan child}) {
     _fontWeight = weight;
     return this;
   }
@@ -552,16 +634,16 @@ class VelocityXTextSpan extends VxTextSpanBuilder
   VelocityXTextSpan get overline => this.._decoration = TextDecoration.overline;
 
   /// Converts the text to fully uppercase.
-  VelocityXTextSpan get uppercase => this.._text = _text.toUpperCase();
+  VelocityXTextSpan get uppercase => this.._text = _text!.toUpperCase();
 
   /// Converts the text to fully lowercase.
-  VelocityXTextSpan get lowercase => this.._text = _text.toLowerCase();
+  VelocityXTextSpan get lowercase => this.._text = _text!.toLowerCase();
 
   /// Converts the text to first letter of very word as uppercase.
-  VelocityXTextSpan get capitalize => this.._text = _text.allWordsCapitilize();
+  VelocityXTextSpan get capitalize => this.._text = _text!.allWordsCapitilize();
 
   /// Converts the text to partially hideen text. Best for sensitive data.
-  VelocityXTextSpan get hidePartial => this.._text = _text.hidePartial();
+  VelocityXTextSpan get hidePartial => this.._text = _text!.hidePartial();
 
   /// Sets [lineHeight] to 0.75
   VelocityXTextSpan get heightTight => this.._lineHeight = 0.75;
@@ -579,7 +661,7 @@ class VelocityXTextSpan extends VxTextSpanBuilder
   VelocityXTextSpan lineHeight(double val) => this.._lineHeight = val;
 
   @override
-  TextSpan make({Key key}) {
+  TextSpan make({Key? key}) {
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
@@ -604,10 +686,10 @@ class VelocityXTextSpan extends VxTextSpanBuilder
 extension VelocityXRichTextExtension on RichText {
   /// Get RichText Widget for the String
   VxRichText get richText =>
-      VxRichText.existing((text as TextSpan).text, text.style);
+      VxRichText.existing((text as TextSpan).text!, text.style);
 }
 
 extension VelocityXTextSpanExtension on TextSpan {
   /// Get TextSpan for the String
-  VelocityXTextSpan get textSpan => VelocityXTextSpan(text);
+  VelocityXTextSpan get textSpan => VelocityXTextSpan(text!);
 }

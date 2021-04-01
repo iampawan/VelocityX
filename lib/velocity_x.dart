@@ -2,6 +2,7 @@ library velocity_x;
 
 export 'package:animator/animator.dart';
 export 'package:vxstate/vxstate.dart';
+
 export 'src/dart/guard.dart';
 export 'src/dart/timeline.dart';
 export 'src/extensions/bool_ext.dart';
@@ -60,5 +61,8 @@ export 'src/flutter/timeline/timeline_widget.dart';
 export 'src/flutter/toast.dart';
 export 'src/flutter/transform.dart';
 export 'src/flutter/widgets.dart';
+export 'src/nav/vx_delegate.dart';
+export 'src/nav/vx_information_parser.dart';
+export 'src/nav/vx_nav.dart';
 export 'src/responsive_ui.dart';
 export 'src/velocity_xx.dart';

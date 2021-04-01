@@ -19,7 +19,7 @@ extension DateTimeExtension on DateTime {
   ///Helps in converting the [DateTime] to readable Time Ago format of String.
   ///
   String timeAgo(
-      {DateTime clock, bool enableFromNow, bool useShortForm = false}) {
+      {DateTime? clock, bool? enableFromNow, bool useShortForm = false}) {
     final mIsFromNowEnabled = enableFromNow ?? false;
     final mLanguage = English(shortForm: useShortForm);
     final mClock = clock ?? DateTime.now();
@@ -68,7 +68,7 @@ extension DateTimeExtension on DateTime {
       res = mLanguage.years(years.round());
     }
     return [pfx, res, sfx]
-        .where((s) => s != null && s.isNotEmpty)
+        .where((s) => s.isNotEmpty)
         .join(mLanguage.delimiter());
   }
 }
