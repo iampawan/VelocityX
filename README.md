@@ -10,22 +10,10 @@
 [![GitHub issues](https://img.shields.io/github/issues/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx/issues)
 [![GitHub top language](https://img.shields.io/github/languages/top/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
-
-[**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
-
-## Inspired from Tailwindcss and SwiftUI.
-
-```dart
-"Web".text.white.xl4.bold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered();
-```
-
----
-
-## Why use VelocityX?
-
-<img src="https://i.imgur.com/UNf4fE6.png" width="300">
-<img src="https://i.imgur.com/UAzM6iT.png" width="290">
-<img src="https://i.imgur.com/rE46nEL.png" width="245">
+[![Likes](https://badges.bar/velocity_x/likes)](https://pub.dev/packages/velocity_x/score)
+[![Popularity](https://badges.bar/velocity_x/popularity)](https://pub.dev/packages/velocity_x/score)
+[![Pub points](https://badges.bar/flutter_week_view/pub%20points)](https://pub.dev/packages/velocity_x/score)
+<a href="https://discord.gg/9tXYvNq"><img src="https://img.shields.io/discord/746087597759004835.svg?logo=discord&color=blue" alt="Discord"></a>
 
 ### Show some :heart: and star the repo.
 
@@ -33,6 +21,45 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/imthepk.svg?style=social)](https://twitter.com/imthepk)
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
+
+[**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
+
+## Inspired from Tailwindcss and SwiftUI.
+
+```dart
+"Welcome to VelocityX".text.white.xl4.bold.center.makeCentered().box.roundedLg.red500.shadow2xl.make().whHalf(context).centered();
+```
+
+---
+
+### 📌 &nbsp; Bulletin
+
+- Now supports null-safety
+- [Video Tutorials on YouTube](https://www.youtube.com/watch?v=IOhJCN4T1V4&list=PLR2qQy0Zxs_UHLXSYbK50jEapx0ORmLYv) for updates & walk through videos.
+- [Join the discord](https://discord.gg/9tXYvNq)
+
+## Why use VelocityX?
+
+VelocityX is
+
+|                                    |                             |
+| :--------------------------------- | :-------------------------- |
+| 100% fast, performant & compatible | 100% free & open-source     |
+| 100% ready for production          | 200% faster for writing UIs |
+
+---
+
+## Features
+
+✅ &nbsp; [State Management](https://velocityx.dev/docs/vxstate/getting_started)
+✅ &nbsp; [Navigator 2.0](https://velocityx.dev/docs/vxnavigator/getting_started)  
+✅ &nbsp; [Animations](https://velocityx.dev/docs/supervx/vxanimator)  
+✅ &nbsp; [Custom UIs](https://velocityx.dev/docs/install)  
+✅ &nbsp; [Custom Shapes](https://velocityx.dev/docs/shapes/vxcircle)  
+✅ &nbsp; [Super VX](https://velocityx.dev/docs/supervx/vxswiper)  
+✅ &nbsp; [Extension Methods](https://velocityx.dev/docs/extensions/context)  
+✅ &nbsp; [Responsive Layout](https://velocityx.dev/docs/features/responsive)  
+✅ &nbsp; [Color Palette](https://velocityx.dev/docs/colors)
 
 # Quick start
 
@@ -44,25 +71,24 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 
 ---
 
-<a href="https://www.buymeacoffee.com/mtechviral"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=mtechviral&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00"></a>
+<a href="https://www.buymeacoffee.com/mtechviral"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"></a>
 
 ---
 
-## Some popular Vx widgets
+## Some popular Super Vx widgets
 
-| [VxTimeline]()                                                                  | [VxAnimation]()                                                                         | [VxSwiper]()                                                                          | [VxResponsive]()                                                                      |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| <img src="https://imagizer.imageshack.com/img922/3315/lYf8pd.png"  width="400"> | <img src="https://imagizer.imageshack.com/img924/6697/M7az7V.png" width="400" />        | <img src="https://imagizer.imageshack.com/img923/4109/Mmsi87.png" width="400">        | <img src="https://imagizer.imageshack.com/img924/1754/lry31m.png" width="400">        |
-| Demo 1                                                                          | Demo 2                                                                                  | Demo 3                                                                                | Demo 4                                                                                |
-| <img src="https://i.imgur.com/xtUOjiV.gif"  width="400">                        | <img src="https://imagizer.imageshack.com/v2/1024x768q90/922/YgXVGd.png" width="400" /> | <img src="https://imagizer.imageshack.com/v2/1024x768q90/924/u5VAhU.png" width="400"> | <img src="https://imagizer.imageshack.com/v2/1024x768q90/922/kNs9eC.png" width="400"> |
+| [VxAnimation](https://velocityx.dev/docs/supervx/vxanimator) | [VxSwiper](https://velocityx.dev/docs/supervx/vxswiper) | [VxResponsive](https://velocityx.dev/docs/features/responsive) | [VxPlatform](https://velocityx.dev/docs/supervx/vxplatform) | [VxToast](https://velocityx.dev/docs/supervx/vxtoast) | [VxRating](https://velocityx.dev/docs/supervx/vxrating) | [VxStepper](https://velocityx.dev/docs/supervx/vxstepper) |
 
 ## Some quick UIs made using VelocityX
 
-| Demo                                                      | Demo2                                                     |
-| --------------------------------------------------------- | --------------------------------------------------------- |
-| <img src="https://i.imgur.com/Uk28KcB.png" width="300"/>  | <img src="https://i.imgur.com/V0mr3S9.png" width="300"/>  |
-| <img src="https://i.imgur.com/50tJKqU.png"  width="300"/> | <img src="https://i.imgur.com/vNPjDMs.png"  width="300"/> |
-| <img src="https://i.imgur.com/cWlCo6P.png" width="300"/>  | <img src= "https://i.imgur.com/Xpdx9UP.png" width="300">  |
+<p float="left">
+<img src="https://i.imgur.com/DlSuaOG.png" width="500"/>
+<img src="https://i.imgur.com/JZ9tOoy.png" width="500"/>
+<img src="https://i.imgur.com/JFpw795.png" width="500"/>
+<img src="https://i.imgur.com/nuGnpG1.png" width="500"/>
+<img src="https://i.imgur.com/DlSuaOG.png" width="500"/>
+<img src="https://i.imgur.com/41kZ4Hd.png" width="500"/>
+</p>
 
 ## Contributing
 

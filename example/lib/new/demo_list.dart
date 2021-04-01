@@ -7,13 +7,14 @@ class DemoList extends StatelessWidget {
   final String? x = null;
   @override
   Widget build(BuildContext context) {
+    print(16.132888073086020647);
     final VxPopupMenuController _controller = VxPopupMenuController();
     return Scaffold(
       backgroundColor: Vx.white,
       appBar: AppBar(
         title: "VxDemo".text.make(),
       ),
-      body: ZStack([
+      body: VStack([
         ExpansionTile(
           title: "VxText With Box".text.make(),
           childrenPadding: Vx.m32,
