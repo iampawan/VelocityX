@@ -3,6 +3,7 @@
     <img src="https://i.imgur.com/GcsbeIW.png"  width="800" alt="VelocityX">
   </a>
 </p>
+<a href="https://www.producthunt.com/posts/velocityx?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-velocityx" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=289488&theme=light" alt="VelocityX - A minimalist Flutter framework | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
 [![VelocityX](https://img.shields.io/badge/velocityx-fast-red)](https://github.com/iampawan/velocityx)
 [![Pub release](https://img.shields.io/pub/v/velocity_x.svg?style=flat-square)](https://pub.dev/packages/velocity_x)
@@ -42,7 +43,7 @@
 
 VelocityX is known for :
 
-|      Vx                              |          Vx                   |
+| Vx                                 | Vx                          |
 | :--------------------------------- | :-------------------------- |
 | 100% fast, performant & compatible | 100% free & open-source     |
 | 100% ready for production          | 200% faster for writing UIs |
