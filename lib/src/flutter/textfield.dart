@@ -247,6 +247,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// Clear the controller value
   void clear() {
+    onChanged('');
     controller?.clear();
     notify();
   }
