@@ -105,6 +105,148 @@ class DemoList extends StatelessWidget {
           ],
         ),
         ExpansionTile(
+            title: "VxDialog".text.make(),
+            childrenPadding: Vx.m32,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  VxDialog.showAlert(
+                    context,
+                    content: 'Welcome to VxDialog',
+                    title: 'Hello Alert',
+                    showClose: true,
+                    onPressed: () {
+                      VxToast.show(context, msg: 'Alert toast');
+                    },
+                  );
+                },
+                child: "Alert with Title & X button".text.make(),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  VxDialog.showConfirmation(
+                    context,
+                    content: 'This might erase everything.',
+                    title: 'Are you sure?',
+                    onCancelPress: () {
+                      VxToast.show(context, msg: 'Cancelled');
+                    },
+                    onConfirmPress: () {
+                      VxToast.show(context, msg: 'Confirmed');
+                    },
+                  );
+                },
+                child: "Confirmation Dialog".text.make(),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  VxDialog.showTicker(
+                    context,
+                    content:
+                        'Action will be enabled after a particular given time',
+                    title: 'Ticker Dialog',
+                    secondsToAction: 5,
+                    barrierDismissible: false,
+                    onConfirmPress: () {
+                      VxToast.show(context, msg: 'Confirmed');
+                    },
+                  );
+                },
+                child: "Ticker Dialog".text.make(),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  VxDialog.showConfirmation(
+                    context,
+                    content: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          const Text('Name'),
+                          const TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Enter name',
+                            ),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Checkbox(
+                                value: false,
+                                onChanged: (value) {},
+                              ),
+                              const Expanded(child: Text('I agree')),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Radio(
+                                value: true,
+                                groupValue: '1',
+                                onChanged: (value) {},
+                              ),
+                              const Expanded(child: Text('Got it')),
+                            ],
+                          ),
+                          Container(
+                            height: 50,
+                            color: Colors.blue,
+                          ),
+                          Container(
+                            height: 100,
+                            color: Colors.red,
+                          ),
+                        ],
+                      ),
+                    ),
+                    title: 'Custom Content Dialog',
+                    showClose: true,
+                    cancel: 'Cancel',
+                    confirm: 'Confirm',
+                    cancelBgColor: Colors.red,
+                    cancelTextColor: Colors.white,
+                    confirmBgColor: Colors.blue,
+                    confirmTextColor: Colors.red,
+                    onCancelPress: () {
+                      VxToast.show(context, msg: 'Cancelled');
+                    },
+                    onConfirmPress: () {
+                      VxToast.show(context, msg: 'Confirmed');
+                    },
+                  );
+                },
+                child: "Custom Content Dialog".text.make(),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  VxDialog.showCustom(
+                    context,
+                    barrierDismissible: false,
+                    child: Material(
+                      child: Container(
+                        width: context.screenWidth * 0.5,
+                        color: Vx.gray200,
+                        child: IntrinsicHeight(
+                          child: Column(children: [
+                            Image.asset('assets/vxbox.png'),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                height: 60,
+                                alignment: Alignment.center,
+                                child: const Text('Cancel'),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                child: "Custom Dialog".text.make(),
+              ),
+            ]),
+        ExpansionTile(
           title: "VxLayout".text.make(),
           childrenPadding: Vx.m32,
           children: [

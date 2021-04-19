@@ -30,6 +30,8 @@ export 'src/flutter/common/velocity_two.dart';
 export 'src/flutter/common/velocity_zero.dart';
 export 'src/flutter/container.dart';
 export 'src/flutter/dash.dart';
+export 'src/flutter/dialog.dart';
+export 'src/flutter/divider.dart';
 export 'src/flutter/drop_down_button.dart';
 export 'src/flutter/flex.dart';
 export 'src/flutter/gesture.dart';
