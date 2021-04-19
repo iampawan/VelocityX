@@ -376,6 +376,66 @@ class DemoList extends StatelessWidget {
           }).map((e) => e).toList(),
         ),
         ExpansionTile(
+          title: "VxDrawer".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  VxDrawer.showTopNotification(
+                    context,
+                    child: "Hi VelocityX"
+                        .text
+                        .semiBold
+                        .xl
+                        .makeCentered()
+                        .p16()
+                        .box
+                        .alignCenter
+                        .height(150)
+                        .green400
+                        .make(),
+                  );
+                },
+                child: "Show Top Drawer".text.make()),
+            ElevatedButton(
+                onPressed: () {
+                  VxDrawer.showBottomNotification(
+                    context,
+                    child: "Hi VelocityX"
+                        .text
+                        .semiBold
+                        .xl
+                        .makeCentered()
+                        .p16()
+                        .box
+                        .alignCenter
+                        .height(150)
+                        .red400
+                        .make(),
+                  );
+                },
+                child: "Show Bottom Drawer".text.make()),
+            ElevatedButton(
+                onPressed: () {
+                  VxDrawer.show(
+                    context,
+                    type: VxDrawerType.left,
+                    child: const MyDrawer(),
+                  );
+                },
+                child: "Show Left Drawer".text.make()),
+            ElevatedButton(
+                onPressed: () {
+                  VxDrawer.show(
+                    context,
+                    type: VxDrawerType.right,
+                    child: const MyDrawer(),
+                  );
+                },
+                child: "Show Right Drawer".text.make())
+          ],
+        ),
+        ExpansionTile(
           title: "VxLayout".text.make(),
           childrenPadding: Vx.m32,
           children: [
@@ -673,6 +733,39 @@ class DemoList extends StatelessWidget {
           ],
         ),
       ]).scrollVertical(),
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  const MyDrawer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: Vx.m0,
+        children: [
+          UserAccountsDrawerHeader(
+            accountName: "Pawan".text.make(),
+            accountEmail: "mtechviral@gmail.com".text.make(),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: "Home".text.make(),
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: "Account".text.make(),
+          ),
+          ListTile(
+            leading: const Icon(Icons.mail),
+            title: "Email".text.make(),
+          )
+        ],
+      ),
     );
   }
 }
