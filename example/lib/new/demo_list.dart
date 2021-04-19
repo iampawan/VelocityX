@@ -5,6 +5,20 @@ import 'package:velocity_x/velocity_x.dart';
 
 class DemoList extends StatelessWidget {
   final String? x = null;
+  final List<String> list = [
+    'Dart',
+    'Flutter',
+    'iOS',
+    'Kotlin',
+    'Android',
+    'Java',
+    'Swift',
+    'SQL',
+    'NodeJS',
+    'Python',
+    'JS'
+  ];
+
   @override
   Widget build(BuildContext context) {
     final y = guard(() => x, "No value found");
@@ -246,6 +260,92 @@ class DemoList extends StatelessWidget {
                 child: "Custom Dialog".text.make(),
               ),
             ]),
+        ExpansionTile(
+          title: "VxBottomSheet".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                VxBottomSheet.bottomSheetOptions(
+                  context,
+                  option: list,
+                  defaultData: 'Flutter',
+                  backgroundColor: Colors.white,
+                  roundedFromTop: true,
+                  enableDrag: false,
+                  isSafeAreaFromBottom: true,
+                  onSelect: (index, value) {
+                    VxToast.show(context, msg: 'index=$index value=$value');
+                  },
+                ).then((data) {
+                  print('Test data=$data');
+                });
+              },
+              child: "Menu Options View".text.make(),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                VxBottomSheet.bottomSheetView(context,
+                    roundedFromTop: true,
+                    isDismissible: false,
+                    backgroundColor: Colors.white,
+                    isSafeAreaFromBottom: true,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              const SizedBox(width: 40),
+                              const Expanded(
+                                child: Text('Sheet View',
+                                    textAlign: TextAlign.center),
+                              ),
+                              IconButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, 'hello'),
+                                icon: const Icon(Icons.clear, size: 24),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                const ListTile(
+                                    leading: Icon(Icons.add),
+                                    title: Text('Add')),
+                                const ListTile(
+                                    leading: Icon(Icons.email),
+                                    title: Text('Email')),
+                                const ListTile(
+                                    leading: Icon(Icons.phone),
+                                    title: Text('Phone')),
+                                const ListTile(
+                                    leading: Icon(Icons.cloud_upload),
+                                    title: Text('Upload')),
+                                const TextField(
+                                        decoration: InputDecoration(
+                                            hintText: 'Enter something'))
+                                    .p16(),
+                                const SizedBox(height: 16),
+                                ElevatedButton(
+                                    child: const Text("Close"),
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'sure'))
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )).then((data) {
+                  print('Test data=$data');
+                });
+              },
+              child: "Bottom Sheet View".text.make(),
+            ),
+          ],
+        ),
         ExpansionTile(
           title: "VxLayout".text.make(),
           childrenPadding: Vx.m32,

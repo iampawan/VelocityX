@@ -17,6 +17,7 @@ export 'src/flutter/animated/animated_height.dart';
 export 'src/flutter/animated/animator.dart';
 export 'src/flutter/appbar.dart';
 export 'src/flutter/badge.dart';
+export 'src/flutter/bottom_sheet.dart';
 export 'src/flutter/card.dart';
 export 'src/flutter/center.dart';
 export 'src/flutter/clippers/vx_arc.dart';
