@@ -1,3 +1,13 @@
+## [3.0.0] - April 19, 2021
+
+- New Widget - VxPinView
+- New Dialogs - VxDialogs
+- New BottomSheets - VxBottomSheet
+- New Preview Widget - VxPreview
+- New Drawers - VxDrawer
+- Added cursor and other props to VxTextField
+- Minor Bug Fixes
+
 ## [2.6.1] - April 01, 2021
 
 - Fixed issue with ZStack.
