@@ -45,6 +45,7 @@ export 'src/flutter/padding.dart';
 export 'src/flutter/pinview.dart';
 export 'src/flutter/platforms.dart';
 export 'src/flutter/popup_menu.dart';
+export 'src/flutter/preview.dart';
 export 'src/flutter/random.dart';
 export 'src/flutter/rating.dart';
 export 'src/flutter/rich_text.dart';

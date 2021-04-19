@@ -19,6 +19,13 @@ class DemoList extends StatelessWidget {
     'JS'
   ];
 
+  final List<String> imagePath = [
+    'https://images.unsplash.com/photo-1601933470096-0e34634ffcde?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+    'https://images.unsplash.com/photo-1593642532009-6ba71e22f468?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+    'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+    'https://images.unsplash.com/photo-1618572195571-1fdd75cd7add?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+  ];
+
   @override
   Widget build(BuildContext context) {
     final y = guard(() => x, "No value found");
@@ -345,6 +352,28 @@ class DemoList extends StatelessWidget {
               child: "Bottom Sheet View".text.make(),
             ),
           ],
+        ),
+        ExpansionTile(
+          title: "VxPreview".text.make(),
+          childrenPadding: Vx.m32,
+          children: List.generate(imagePath.length, (index) {
+            return GestureDetector(
+              onTap: () {
+                VxPreview.show(
+                  context,
+                  itemCount: imagePath.length,
+                  defaultIndex: index,
+                  itemBuilder: (int temp) => GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.network(imagePath[temp]),
+                  ),
+                );
+              },
+              child: Image.network(imagePath[index]),
+            );
+          }).map((e) => e).toList(),
         ),
         ExpansionTile(
           title: "VxLayout".text.make(),
