@@ -7,7 +7,8 @@ class DemoList extends StatelessWidget {
   final String? x = null;
   @override
   Widget build(BuildContext context) {
-    print(16.132888073086020647);
+    final y = guard(() => x, "No value found");
+    print(y);
     final VxPopupMenuController _controller = VxPopupMenuController();
     return Scaffold(
       backgroundColor: Vx.white,
@@ -21,14 +22,14 @@ class DemoList extends StatelessWidget {
           children: [
             "Vx Demo"
                 .text
-                .blue600
+                .white
                 .makeCentered()
                 .box
                 .p32
-                .white
-                // .shadow5xl
+                .red700
+                .rounded
+                .outerShadow2Xl
                 .make()
-                .innerShadow()
                 .onTap(() {
               VxNavigator.of(context).push(Uri(path: "/demo"));
             }),
@@ -57,8 +58,50 @@ class DemoList extends StatelessWidget {
                     type: VxBadgeType.round)
                 .onInkTap(() {
               // Show Toast
-              context.showToast(msg: "Hello Vx", position: VxToastPosition.top);
+              context.showToast(
+                  msg: "Hello Vx",
+                  position: VxToastPosition.top,
+                  showTime: 3000);
             }),
+          ],
+        ),
+        ExpansionTile(
+          title: "VxPinView".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            const VxPinView(
+              type: VxPinBorderType.underline,
+            ),
+            20.heightBox,
+            const VxPinView(
+              type: VxPinBorderType.underline,
+              count: 8,
+              size: 30,
+            ),
+            20.heightBox,
+            VxPinView(
+              type: VxPinBorderType.round,
+              keyboardType: TextInputType.number,
+              obscureText: false,
+              onChanged: (value) {
+                print('Test value=$value');
+              },
+            ),
+            20.heightBox,
+            const VxPinView(
+              type: VxPinBorderType.round,
+              obscureText: false,
+              color: Colors.red,
+              contentColor: Colors.blue,
+            ),
+            20.heightBox,
+            const VxPinView(
+              type: VxPinBorderType.round,
+              obscureText: false,
+              color: Colors.green,
+              contentColor: Colors.white,
+              fill: true,
+            ),
           ],
         ),
         ExpansionTile(

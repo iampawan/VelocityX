@@ -32,6 +32,8 @@ class VxToast {
   static void show(
     BuildContext context, {
     required String msg,
+
+    /// show duration in ms
     int showTime = 2000,
     Color? bgColor,
     Color? textColor,
@@ -301,6 +303,8 @@ extension ToastExtension on BuildContext {
   ///Show toast
   void showToast({
     required String msg,
+
+    /// show duration in ms
     int showTime = 2000,
     Color? bgColor,
     Color? textColor,
