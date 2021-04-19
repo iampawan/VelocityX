@@ -295,7 +295,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// After the completion of editing
   void onEditingComplete() {
-//    FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
     if (widget.onEditingComplete != null) {
       widget.onEditingComplete!();
     }
@@ -303,7 +303,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// After submitting the textfield
   void onSubmitted(String value) {
-//    FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
     if (widget.onSubmitted != null) {
       widget.onSubmitted!(value);
     }

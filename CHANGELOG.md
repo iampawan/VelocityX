@@ -6,6 +6,8 @@
 - New Preview Widget - VxPreview
 - New Drawers - VxDrawer
 - Added cursor and other props to VxTextField
+- Bug Fixes for VxTextField
+- Breaking - Desktop support added for VxPlatform
 - Minor Bug Fixes
 - Examples updated
 

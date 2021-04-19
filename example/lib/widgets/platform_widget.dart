@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class PlatformBar
-    extends VxPlatform<AppBar, CupertinoNavigationBar, BottomAppBar> {
+    extends VxPlatform<AppBar, CupertinoNavigationBar, BottomAppBar, AppBar> {
   @override
   AppBar createAndroidWidget(BuildContext context) {
     return AppBar(
@@ -33,6 +33,13 @@ class PlatformBar
           )
         ],
       ),
+    );
+  }
+
+  @override
+  AppBar createDesktopWidget(BuildContext context) {
+    return AppBar(
+      title: "Hello World".text.make(),
     );
   }
 }
