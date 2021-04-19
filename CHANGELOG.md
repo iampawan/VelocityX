@@ -7,6 +7,7 @@
 - New Drawers - VxDrawer
 - Added cursor and other props to VxTextField
 - Minor Bug Fixes
+- Examples updated
 
 ## [2.6.1] - April 01, 2021
 
