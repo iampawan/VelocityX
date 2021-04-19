@@ -125,10 +125,13 @@ class DemoList extends StatelessWidget {
           title: "VxTextField".text.make(),
           childrenPadding: Vx.m32,
           children: [
-            const VxTextField(
+            VxTextField(
               obscureText: true,
               borderType: VxTextFieldBorderType.roundLine,
               isPassword: true,
+              onChanged: (s) {
+                print(s);
+              },
             ),
           ],
         ),

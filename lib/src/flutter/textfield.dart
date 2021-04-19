@@ -37,6 +37,15 @@ class VxTextField extends StatefulWidget {
   final TextStyle? style;
   final String? labelText;
   final TextStyle? labelStyle;
+  final Color? cursorColor;
+  final bool autocorrect;
+  final double? cursorHeight;
+  final double cursorWidth;
+  final Radius? cursorRadius;
+  final bool enableSuggestions;
+  final bool? enabled;
+  final bool? showCursor;
+  final ToolbarOptions? toolbarOptions;
 
   const VxTextField(
       {Key? key,
@@ -69,7 +78,16 @@ class VxTextField extends StatefulWidget {
       this.autofocus = false,
       this.style,
       this.labelText,
-      this.labelStyle})
+      this.labelStyle,
+      this.cursorColor,
+      this.autocorrect = true,
+      this.cursorHeight,
+      this.cursorRadius,
+      this.cursorWidth = 2.0,
+      this.enableSuggestions = true,
+      this.enabled,
+      this.showCursor,
+      this.toolbarOptions})
       : super(key: key);
 
   @override
@@ -93,6 +111,7 @@ class _VxTextFieldState extends State<VxTextField> {
   @override
   Widget build(BuildContext context) {
     final Widget textField = TextField(
+      key: widget.key,
       controller: controller,
       obscureText: obscureText,
       textAlign: widget.textAlign,
@@ -100,6 +119,15 @@ class _VxTextFieldState extends State<VxTextField> {
       textInputAction: widget.textInputAction,
       focusNode: focusNode,
       autofocus: widget.autofocus,
+      cursorColor: widget.cursorColor,
+      autocorrect: widget.autocorrect,
+      cursorHeight: widget.cursorHeight,
+      cursorRadius: widget.cursorRadius,
+      cursorWidth: widget.cursorWidth,
+      enableSuggestions: widget.enableSuggestions,
+      enabled: widget.enabled,
+      showCursor: widget.showCursor,
+      toolbarOptions: widget.toolbarOptions,
       inputFormatters: widget.inputFormatters,
       decoration: InputDecoration(
         icon: widget.icon,
@@ -247,9 +275,8 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// Clear the controller value
   void clear() {
-    onChanged('');
     controller?.clear();
-    notify();
+    onChanged('');
   }
 
   /// Toggling the password
