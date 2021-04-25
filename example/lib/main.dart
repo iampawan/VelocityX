@@ -1,4 +1,5 @@
 import 'package:example/new/demo_list.dart';
+import 'package:example/new/vx_navigation.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,6 +18,13 @@ void main() {
       routerDelegate: VxNavigator(routes: {
         "/": (uri, param) => MaterialPage(child: DemoList()),
         "/demo": (uri, param) => MaterialPage(child: Demo()),
+        "/nav": (uri, param) => const MaterialPage(child: VxNavigation()),
+        RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
+              child: VxNavigation(
+                pathParam: uri.pathSegments[1],
+                queryParams: uri.queryParametersAll,
+              ),
+            ),
       }),
       theme: ThemeData(
         primarySwatch: Colors.blue,
