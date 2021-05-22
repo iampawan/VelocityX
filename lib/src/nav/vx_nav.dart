@@ -22,7 +22,7 @@ class VxNavConfig extends ChangeNotifier {
   /// give you a read only access
   /// to the [List] of [Uri] you have in your navigator
   List<Uri> get uris => UnmodifiableListView(_uris);
-  late Completer<dynamic> _boolResultCompleter;
+  Completer<dynamic>? _boolResultCompleter;
 
   Future<void> _setNewRoutePath(Uri uri, dynamic params) {
     bool _findRoute = false;
@@ -89,7 +89,7 @@ class VxNavConfig extends ChangeNotifier {
   Future<void> pushAll(List<Uri> uris, {List<dynamic>? params}) async {
     int index = 0;
     for (final uri in uris) {
-      if (params is List) {
+      if (params != null && params is List) {
         await push(uri, params: params[index]);
       } else {
         await push(uri);
@@ -128,7 +128,7 @@ class VxNavConfig extends ChangeNotifier {
     _boolResultCompleter = Completer<dynamic>();
     await push(uri, params: params);
     notifyListeners();
-    return _boolResultCompleter.future;
+    return _boolResultCompleter!.future;
   }
 
   /// This is custom method to pass returning value
@@ -136,7 +136,7 @@ class VxNavConfig extends ChangeNotifier {
   void returnAndPush(dynamic value) {
     _pages.removeLast();
     _uris.removeLast();
-    _boolResultCompleter.complete(value);
+    _boolResultCompleter!.complete(value);
     notifyListeners();
   }
 
