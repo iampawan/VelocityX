@@ -22,7 +22,9 @@ class VxNavigator extends RouterDelegate<Uri>
     routeManager.addListener(notifyListeners);
 
     // ignore: prefer_foreach
-    for (final uri in [Uri(path: '/')]) {
+    for (final uri in routes.keys.isNotEmpty
+        ? [Uri(path: routes.keys.first.toString())]
+        : [Uri(path: '/')]) {
       routeManager.push(uri);
     }
   }
