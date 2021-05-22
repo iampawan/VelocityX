@@ -553,6 +553,84 @@ class VelocityXTextSpan extends VxTextSpanBuilder
     return this;
   }
 
+  /// Sets [TextTheme] headline 1
+  VelocityXTextSpan headline1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline1;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 2
+  VelocityXTextSpan headline2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline2;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 3
+  VelocityXTextSpan headline3(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline3;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 4
+  VelocityXTextSpan headline4(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline4;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 5
+  VelocityXTextSpan headline5(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline5;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 6
+  VelocityXTextSpan headline6(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline6;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText1
+  VelocityXTextSpan bodyText1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText2
+  VelocityXTextSpan bodyText2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    return this;
+  }
+
+  /// Sets [TextTheme] caption
+  VelocityXTextSpan caption(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.caption;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle1
+  VelocityXTextSpan subtitle1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle2
+  VelocityXTextSpan subtitle2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    return this;
+  }
+
+  /// Sets [TextTheme] overline
+  VelocityXTextSpan overlineText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.overline;
+    return this;
+  }
+
+  /// Sets [TextTheme] button
+  VelocityXTextSpan buttonText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.button;
+    return this;
+  }
+
   /// Sets fontsize of the text
   VelocityXTextSpan size(double size) => this.._fontSize = size;
 
