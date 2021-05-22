@@ -13,7 +13,7 @@ class VxNavigator extends RouterDelegate<Uri>
   final navigatorKey = GlobalKey<NavigatorState>();
   late VxNavConfig routeManager;
   VxNavigator(
-      {required Map<String, VxPageBuilder> routes,
+      {required Map<Pattern, VxPageBuilder> routes,
       VxPageBuilder? notFoundPage}) {
     routeManager = VxNavConfig(
       routes: routes,

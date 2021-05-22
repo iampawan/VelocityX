@@ -779,6 +779,16 @@ class DemoList extends StatelessWidget {
             DateTime.now().subtract(10.minutes).timeAgo().text.make(),
           ],
         ),
+        ListTile(
+          title: "VxNavigator".text.make(),
+          onTap: () => context.vxNav.push(Uri(
+            path: '/nav/path123',
+            queryParameters: {
+              'query': 'xyz',
+              'qlist': ['List', 'of', 'values']
+            },
+          )),
+        ),
       ]).scrollVertical(),
     );
   }

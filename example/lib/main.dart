@@ -1,4 +1,5 @@
 import 'package:example/new/demo_list.dart';
+import 'package:example/new/vx_navigation.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +22,13 @@ void main() {
         "/nav1": (uri, param) => MaterialPage(child: Nav1()),
         "/nav2": (uri, param) => MaterialPage(child: Nav2()),
         "/nav3": (uri, param) => MaterialPage(child: Nav3()),
+        "/nav4": (uri, param) => const MaterialPage(child: VxNavigation()),
+        RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
+              child: VxNavigation(
+                pathParam: uri.pathSegments[1],
+                queryParams: uri.queryParametersAll,
+              ),
+            ),
       }),
       theme: ThemeData(
         primarySwatch: Colors.blue,

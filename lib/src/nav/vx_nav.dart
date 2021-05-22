@@ -9,7 +9,7 @@ import 'package:velocity_x/src/nav/vx_delegate.dart';
 class VxNavConfig extends ChangeNotifier {
   VxNavConfig({required this.routes, this.pageNotFound});
 
-  final Map<String, VxPageBuilder> routes;
+  final Map<Pattern, VxPageBuilder> routes;
   final VxPageBuilder? pageNotFound;
 
   final _pages = <Page>[];
@@ -28,7 +28,7 @@ class VxNavConfig extends ChangeNotifier {
     bool _findRoute = false;
     for (var i = 0; i < routes.keys.length; i++) {
       final key = routes.keys.elementAt(i);
-      if (key == uri.path) {
+      if (key.matchAsPrefix(uri.path)?.group(0) == uri.path) {
         if (_uris.contains(uri)) {
           final position = _uris.indexOf(uri);
           final _urisLengh = _uris.length;
