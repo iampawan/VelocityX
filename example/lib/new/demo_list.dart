@@ -38,6 +38,53 @@ class DemoList extends StatelessWidget {
       ),
       body: VStack([
         ExpansionTile(
+          title: "VxNav 2.0".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            TextButton(
+              onPressed: () {
+                VxNavigator.of(context).push(Uri(path: "/nav1"));
+              },
+              child: "Push Page".text.make(),
+            ),
+            TextButton(
+              onPressed: () {
+                VxNavigator.of(context).replace(Uri(path: "/nav1"));
+              },
+              child: "Replace Page".text.make(),
+            ),
+            TextButton(
+              onPressed: () {
+                VxNavigator.of(context).pushAll([
+                  Uri(path: "/nav1"),
+                  Uri(path: "/nav2"),
+                  Uri(path: "/nav3")
+                ]);
+              },
+              child: "Push All".text.make(),
+            ),
+            TextButton(
+              onPressed: () {
+                VxNavigator.of(context).clearAndPushAll([
+                  Uri(path: "/nav1"),
+                  Uri(path: "/nav2"),
+                  Uri(path: "/nav3")
+                ]);
+              },
+              child: "Clear & Push All".text.make(),
+            ),
+            TextButton(
+              onPressed: () async {
+                final x = await VxNavigator.of(context)
+                    .waitAndPush(Uri(path: "/nav1"));
+
+                print(x);
+              },
+              child: "Wait & Push".text.make(),
+            ),
+          ],
+        ),
+        ExpansionTile(
           title: "VxText With Box".text.make(),
           childrenPadding: Vx.m32,
           children: [

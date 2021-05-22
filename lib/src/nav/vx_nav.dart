@@ -92,7 +92,7 @@ class VxNavConfig extends ChangeNotifier {
   }
 
   /// Push multiple [Uri] at once
-  Future<void> pushAll(List<Uri> uris, {required List<dynamic> params}) async {
+  Future<void> pushAll(List<Uri> uris, {List<dynamic>? params}) async {
     int index = 0;
     for (final uri in uris) {
       if (params is List) {
@@ -105,8 +105,7 @@ class VxNavConfig extends ChangeNotifier {
   }
 
   /// clear the list of [pages] and then push multiple [Uri] at once
-  Future<void> clearAndPushAll(List<Uri> uris,
-      {required List<dynamic> params}) {
+  Future<void> clearAndPushAll(List<Uri> uris, {List<dynamic>? params}) {
     _pages.clear();
     _uris.clear();
     return pushAll(uris, params: params);

@@ -8,6 +8,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
+import 'new/nav_example.dart';
 import 'widgets/draw_android.dart';
 
 void main() {
@@ -17,6 +18,9 @@ void main() {
       routerDelegate: VxNavigator(routes: {
         "/": (uri, param) => MaterialPage(child: DemoList()),
         "/demo": (uri, param) => MaterialPage(child: Demo()),
+        "/nav1": (uri, param) => MaterialPage(child: Nav1()),
+        "/nav2": (uri, param) => MaterialPage(child: Nav2()),
+        "/nav3": (uri, param) => MaterialPage(child: Nav3()),
       }),
       theme: ThemeData(
         primarySwatch: Colors.blue,
