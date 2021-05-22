@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 Map<String?, int> _navigatorManagerPageMap = {};
 ValueKey _createPageKey(String? name) {
+  name = name ?? "";
   if (_navigatorManagerPageMap[name] != null) {
     _navigatorManagerPageMap[name] = _navigatorManagerPageMap[name]! + 1;
-    name = name! + '-${_navigatorManagerPageMap[name]}';
+    name = name + '-${_navigatorManagerPageMap[name]}';
   } else {
     _navigatorManagerPageMap[name] = 0;
-    name = name! + '-${_navigatorManagerPageMap[name]}';
+    name = name + '-${_navigatorManagerPageMap[name]}';
   }
   return ValueKey(name);
 }

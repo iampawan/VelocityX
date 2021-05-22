@@ -39,6 +39,11 @@ class VxNavigator extends RouterDelegate<Uri>
   @override
   Future<void> setNewRoutePath(Uri uri) => routeManager.push(uri);
 
+  // @override
+  // Future<bool> popRoute() {
+  //   return Future.value(true);
+  // }
+
   /// Build method to set [Navigator] widget
   @override
   Widget build(BuildContext context) {

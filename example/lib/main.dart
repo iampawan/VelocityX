@@ -12,38 +12,40 @@ import 'new/nav_example.dart';
 import 'widgets/draw_android.dart';
 
 void main() {
+  final _navigator = VxNavigator(routes: {
+    "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: DemoList()),
+    "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: Demo()),
+    "/nav1": (uri, param) => VxRoutePage(
+        child: Nav1(),
+        pageName: "Nav1",
+        transition: (animation, child) => ScaleTransition(
+              alignment: Alignment.bottomLeft,
+              scale: Tween(
+                begin: 0.0,
+                end: 1.0,
+              ).animate(
+                CurvedAnimation(
+                  parent: animation,
+                  curve: Curves.easeInOut,
+                ),
+              ),
+              child: child,
+            )),
+    "/nav2": (uri, param) => VxRoutePage(pageName: "Nav2", child: Nav2()),
+    "/nav3": (uri, param) => VxRoutePage(pageName: "Nav3", child: Nav3()),
+    "/nav4": (uri, param) => VxRoutePage(pageName: "Nav4", child: const Nav4()),
+    RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
+          child: Nav4(
+            pathParam: uri.pathSegments[1],
+            queryParams: uri.queryParametersAll,
+          ),
+        ),
+  });
   runApp(
     MaterialApp.router(
       routeInformationParser: VxInformationParser(),
-      routerDelegate: VxNavigator(routes: {
-        "/": (uri, param) => MaterialPage(child: DemoList()),
-        "/demo": (uri, param) => MaterialPage(child: Demo()),
-        "/nav1": (uri, param) => VxRoutePage(
-            child: Nav1(),
-            pageName: "Nav1",
-            transition: (animation, child) => ScaleTransition(
-                  alignment: Alignment.bottomLeft,
-                  scale: Tween(
-                    begin: 0.0,
-                    end: 1.0,
-                  ).animate(
-                    CurvedAnimation(
-                      parent: animation,
-                      curve: Curves.easeInOut,
-                    ),
-                  ),
-                  child: child,
-                )),
-        "/nav2": (uri, param) => MaterialPage(child: Nav2()),
-        "/nav3": (uri, param) => MaterialPage(child: Nav3()),
-        "/nav4": (uri, param) => const MaterialPage(child: Nav4()),
-        RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
-              child: Nav4(
-                pathParam: uri.pathSegments[1],
-                queryParams: uri.queryParametersAll,
-              ),
-            ),
-      }),
+      routerDelegate: _navigator,
+      backButtonDispatcher: RootBackButtonDispatcher(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Vx.blue500,
