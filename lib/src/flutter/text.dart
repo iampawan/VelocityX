@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
-
 import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
@@ -462,7 +461,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   @override
   Widget make({Key? key}) {
     final ts = TextStyle(
-      color: velocityColor,
+      // color: velocityColor,
       fontSize: _fontSize,
       fontStyle: _fontStyle,
       fontFamily: _fontFamily,
@@ -473,6 +472,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
       textBaseline: _textBaseline ?? TextBaseline.alphabetic,
       wordSpacing: _wordSpacing,
     );
+
     return _isIntrinsic
         ? Text(
             _text!,

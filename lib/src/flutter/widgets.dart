@@ -244,6 +244,21 @@ extension WidgetsExtension on Widget {
         right: right,
       );
 
+  /// Extension method for [ShaderMask] Widget
+  Widget shaderMask({
+    required Gradient gradient,
+    Key? key,
+    BlendMode blendMode = BlendMode.modulate,
+  }) =>
+      ShaderMask(
+        blendMode: blendMode,
+        child: this,
+        key: key,
+        shaderCallback: (bounds) => gradient.createShader(
+          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+        ),
+      );
+
   /// Extension method for [VxInnerShadow] Widget
   Widget innerShadow({
     Key? key,
