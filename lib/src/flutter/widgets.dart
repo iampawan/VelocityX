@@ -224,6 +224,27 @@ extension WidgetsExtension on Widget {
         child: this,
       );
 
+  /// Extension method for [SafeArea] Widget
+  Widget safeArea(
+          {Key? key,
+          EdgeInsets minimum = EdgeInsets.zero,
+          bool maintainBottomViewPadding = false,
+          bool top = true,
+          bool bottom = true,
+          bool left = true,
+          bool right = true}) =>
+      SafeArea(
+        key: key,
+        child: this,
+        minimum: minimum,
+        maintainBottomViewPadding: maintainBottomViewPadding,
+        top: top,
+        bottom: bottom,
+        left: left,
+        right: right,
+      );
+
+  /// Extension method for [VxInnerShadow] Widget
   Widget innerShadow({
     Key? key,
     double blur = 2.0,
