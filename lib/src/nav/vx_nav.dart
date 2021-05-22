@@ -29,13 +29,7 @@ class VxNavConfig extends ChangeNotifier {
     for (var i = 0; i < routes.keys.length; i++) {
       final key = routes.keys.elementAt(i);
       if (key.matchAsPrefix(uri.path)?.group(0) == uri.path) {
-        if (_uris.contains(uri)) {
-          final position = _uris.indexOf(uri);
-          final _urisLengh = _uris.length;
-          for (var start = position; start < _urisLengh - 1; start++) {
-            _pages.removeLast();
-            _uris.removeLast();
-          }
+        if (_uris.contains(uri) && key == routes.keys.first) {
           _findRoute = true;
           break;
         }
@@ -114,9 +108,11 @@ class VxNavConfig extends ChangeNotifier {
   /// remove a specific [Uri] and the corresponding [Page]
   void removeUri(Uri uri) {
     final index = _uris.indexOf(uri);
-    _pages.removeAt(index);
-    _uris.removeAt(index);
-    notifyListeners();
+    if (index != -1) {
+      _pages.removeAt(index);
+      _uris.removeAt(index);
+      notifyListeners();
+    }
   }
 
   /// remove the last [Uri] and the corresponding [Page]

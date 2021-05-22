@@ -18,7 +18,22 @@ void main() {
       routerDelegate: VxNavigator(routes: {
         "/": (uri, param) => MaterialPage(child: DemoList()),
         "/demo": (uri, param) => MaterialPage(child: Demo()),
-        "/nav1": (uri, param) => MaterialPage(child: Nav1()),
+        "/nav1": (uri, param) => VxRoutePage(
+            child: Nav1(),
+            pageName: "Nav1",
+            transition: (animation, child) => ScaleTransition(
+                  alignment: Alignment.bottomLeft,
+                  scale: Tween(
+                    begin: 0.0,
+                    end: 1.0,
+                  ).animate(
+                    CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeInOut,
+                    ),
+                  ),
+                  child: child,
+                )),
         "/nav2": (uri, param) => MaterialPage(child: Nav2()),
         "/nav3": (uri, param) => MaterialPage(child: Nav3()),
         "/nav4": (uri, param) => const MaterialPage(child: Nav4()),

@@ -70,5 +70,6 @@ export 'src/flutter/widgets.dart';
 export 'src/nav/vx_delegate.dart';
 export 'src/nav/vx_information_parser.dart';
 export 'src/nav/vx_nav.dart';
+export 'src/nav/vx_route_page.dart';
 export 'src/responsive_ui.dart';
 export 'src/velocity_xx.dart';
