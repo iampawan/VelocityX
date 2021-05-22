@@ -42,6 +42,17 @@ class DemoList extends StatelessWidget {
           childrenPadding: Vx.m32,
           children: [
             TextButton(
+                onPressed: () {
+                  context.vxNav.push(Uri(
+                    path: '/nav/path123',
+                    queryParameters: {
+                      'query': 'xyz',
+                      'qlist': ['List', 'of', 'values']
+                    },
+                  ));
+                },
+                child: "Test Nav4".text.make()),
+            TextButton(
               onPressed: () {
                 VxNavigator.of(context).push(Uri(path: "/nav1"));
               },
@@ -778,16 +789,6 @@ class DemoList extends StatelessWidget {
           children: [
             DateTime.now().subtract(10.minutes).timeAgo().text.make(),
           ],
-        ),
-        ListTile(
-          title: "VxNavigator".text.make(),
-          onTap: () => context.vxNav.push(Uri(
-            path: '/nav/path123',
-            queryParameters: {
-              'query': 'xyz',
-              'qlist': ['List', 'of', 'values']
-            },
-          )),
         ),
       ]).scrollVertical(),
     );
