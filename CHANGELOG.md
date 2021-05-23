@@ -1,3 +1,26 @@
+## [3.1.0] - April 19, 2021
+
+- New Extensions - .shaderMask() and .safeArea()
+- Added text theme support to textspan
+- Gradient field exposed for VxSkeleton
+- VxTextField now uses TextFormField
+- Examples updated
+- Bug Fixes
+
+### VxNavigator 2.0 Updates
+
+- Regex support added for URIs
+- VxRoutePage for transitions
+- VxObserver added for checking route changes
+- Bug Fixes
+
+### VxState Updates
+
+- [Breaking] VxBuilder & VxConsumer now returns store.
+- Store can be directly accessed as MyStore store - VxState.store
+- Status for all async operations
+- Bug Fixes
+
 ## [3.0.0] - April 19, 2021
 
 - New Widget - VxPinView

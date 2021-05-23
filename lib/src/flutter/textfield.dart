@@ -46,49 +46,53 @@ class VxTextField extends StatefulWidget {
   final bool? enabled;
   final bool? showCursor;
   final ToolbarOptions? toolbarOptions;
+  final Function(String?)? onSaved;
+  final String? Function(String?)? validator;
 
-  const VxTextField(
-      {Key? key,
-      this.controller,
-      this.hint,
-      this.value,
-      this.clear = true,
-      this.isPassword = false,
-      this.obscureText = false,
-      this.borderType = VxTextFieldBorderType.underLine,
-      this.maxLine = 1,
-      this.maxLength,
-      this.textAlign = TextAlign.left,
-      this.fillColor,
-      this.borderColor,
-      this.prefixIcon,
-      this.height = 40,
-      this.icon,
-      this.borderRadius,
-      this.contentPaddingLeft,
-      this.contentPaddingTop,
-      this.keyboardType,
-      this.textInputAction,
-      this.inputFormatters,
-      this.onChanged,
-      this.onSubmitted,
-      this.onEditingComplete,
-      this.focusNode,
-      this.counterText,
-      this.autofocus = false,
-      this.style,
-      this.labelText,
-      this.labelStyle,
-      this.cursorColor,
-      this.autocorrect = true,
-      this.cursorHeight,
-      this.cursorRadius,
-      this.cursorWidth = 2.0,
-      this.enableSuggestions = true,
-      this.enabled,
-      this.showCursor,
-      this.toolbarOptions})
-      : super(key: key);
+  const VxTextField({
+    Key? key,
+    this.controller,
+    this.hint,
+    this.value,
+    this.clear = true,
+    this.isPassword = false,
+    this.obscureText = false,
+    this.borderType = VxTextFieldBorderType.underLine,
+    this.maxLine = 1,
+    this.maxLength,
+    this.textAlign = TextAlign.left,
+    this.fillColor,
+    this.borderColor,
+    this.prefixIcon,
+    this.height = 40,
+    this.icon,
+    this.borderRadius,
+    this.contentPaddingLeft,
+    this.contentPaddingTop,
+    this.keyboardType,
+    this.textInputAction,
+    this.inputFormatters,
+    this.onChanged,
+    this.onSubmitted,
+    this.onEditingComplete,
+    this.focusNode,
+    this.counterText,
+    this.autofocus = false,
+    this.style,
+    this.labelText,
+    this.labelStyle,
+    this.cursorColor,
+    this.autocorrect = true,
+    this.cursorHeight,
+    this.cursorRadius,
+    this.cursorWidth = 2.0,
+    this.enableSuggestions = true,
+    this.enabled,
+    this.showCursor,
+    this.toolbarOptions,
+    this.onSaved,
+    this.validator,
+  }) : super(key: key);
 
   @override
   _VxTextFieldState createState() => _VxTextFieldState();
@@ -110,7 +114,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget textField = TextField(
+    final Widget textField = TextFormField(
       key: widget.key,
       controller: controller,
       obscureText: obscureText,
@@ -147,7 +151,9 @@ class _VxTextFieldState extends State<VxTextField> {
       maxLines: widget.maxLine,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
-      onSubmitted: onSubmitted,
+      onFieldSubmitted: onSubmitted,
+      onSaved: widget.onSaved,
+      validator: widget.validator,
       style: widget.style,
     );
 

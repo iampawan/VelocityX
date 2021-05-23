@@ -23,7 +23,13 @@
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 
+---
+
 ## [Demo App](https://vx-demo.web.app/)
+
+## [Subscribe to Codepur](https://codepur.dev/)
+
+---
 
 [**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
 
