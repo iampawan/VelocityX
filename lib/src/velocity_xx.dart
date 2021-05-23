@@ -18,6 +18,8 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'nav/i_vx_nav.dart';
+
 /// Mixin [Vx] provides basic operations and utilities
 mixin Vx {
   /// Pixel Values
@@ -709,18 +711,19 @@ mixin Vx {
   static Color get randomColor => Color.fromARGB(
       100, Random().nextInt(255), Random().nextInt(255), Random().nextInt(255));
 
-  // /// Check if connected to internet
-  // static Future<bool> isConnectedToInternet() async {
-  //   try {
-  //     final result = await InternetAddress.lookup('google.com');
-  //     if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-  //       print('Connected to internet');
-  //       return true;
-  //     }
-  //   } on SocketException catch (_) {
-  //     print('Not connected to internet');
-  //     return false;
-  //   }
-  //   return false;
-  // }
+  /// Uses [PathUrlStrategy] on the web, which removes hashes from URLs. This
+  /// must be called at app startup, before `runApp` is called.
+  ///
+  /// Calling this method does nothing when not running on the web.
+  static void setPathUrlStrategy() {
+    if (kIsWeb) {
+      VxNav.setPathUrlStrategy(); // coverage:ignore-line
+    }
+  }
+
+  static void setHashUrlStrategy() {
+    if (kIsWeb) {
+      VxNav.setHashUrlStrategy(); // coverage:ignore-line
+    }
+  }
 }

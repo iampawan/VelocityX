@@ -28,7 +28,7 @@ class DemoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final y = guard(() => x, "No value found");
+    final y = guard(() => x, "Guard - No value found");
     print(y);
     final VxPopupMenuController _controller = VxPopupMenuController();
     return Scaffold(
@@ -86,10 +86,10 @@ class DemoList extends StatelessWidget {
             ),
             TextButton(
               onPressed: () async {
-                final x = await VxNavigator.of(context)
+                final path = await VxNavigator.of(context)
                     .waitAndPush(Uri(path: "/nav1"));
 
-                print(x);
+                print("Returned $path");
               },
               child: "Wait & Push".text.make(),
             ),

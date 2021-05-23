@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/nav/vx_nav.dart';
+import 'package:velocity_x/src/nav/vx_nav_config.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 typedef VxPageBuilder = Page Function(Uri uri, dynamic params);
 
@@ -11,13 +12,18 @@ class VxNavigator extends RouterDelegate<Uri>
 
   @override
   final navigatorKey = GlobalKey<NavigatorState>();
+
+  final List<VxObserver>? observers;
   late VxNavConfig routeManager;
-  VxNavigator(
-      {required Map<Pattern, VxPageBuilder> routes,
-      VxPageBuilder? notFoundPage}) {
+  VxNavigator({
+    required Map<Pattern, VxPageBuilder> routes,
+    VxPageBuilder? notFoundPage,
+    this.observers,
+  }) {
     routeManager = VxNavConfig(
       routes: routes,
       pageNotFound: notFoundPage,
+      observers: observers,
     );
     routeManager.addListener(notifyListeners);
 
@@ -62,7 +68,16 @@ class VxNavigator extends RouterDelegate<Uri>
         }
         return false;
       },
-      observers: [HeroController()],
+      observers: observers != null
+          ? [
+              HeroController(),
+              VxRelayingNavigatorObserver(
+                () sync* {
+                  yield* observers!;
+                },
+              )
+            ]
+          : [HeroController()],
     );
   }
 }

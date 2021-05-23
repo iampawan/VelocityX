@@ -11,8 +11,30 @@ import 'models/dummy.dart';
 import 'new/nav_example.dart';
 import 'widgets/draw_android.dart';
 
+// First way to monitor changes in the routing stack:
+class MyObs extends VxObserver {
+  @override
+  void didChangeRoute(Uri route, Page page, String pushOrPop) {
+    print("${route.path} - $pushOrPop");
+  }
+
+  @override
+  void didPush(Route route, Route? previousRoute) {
+    print('Pushed a route');
+  }
+
+  @override
+  void didPop(Route route, Route? previousRoute) {
+    print('Popped a route');
+  }
+}
+
 void main() {
-  final _navigator = VxNavigator(routes: {
+  Vx.setPathUrlStrategy();
+
+  final _navigator = VxNavigator(observers: [
+    MyObs()
+  ], routes: {
     "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: DemoList()),
     "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: Demo()),
     "/nav1": (uri, param) => VxRoutePage(
@@ -41,6 +63,20 @@ void main() {
           ),
         ),
   });
+
+  // Second way to monitor changes in the routing stack:
+  _navigator.addListener(() {
+    print(_navigator.currentConfiguration!.path);
+  });
+
+  // Using Safe route
+  /*
+  '/safe_route': (uri,_) {
+  if (!isLoggedIn()) return VxRoutePage(pageName: "Home", child: HomePage());
+  return LoginPage();
+}
+  */
+
   runApp(
     MaterialApp.router(
       routeInformationParser: VxInformationParser(),

@@ -14,6 +14,8 @@ dependencies:
   auto_size_text_pk: ^3.0.0
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   intl: ^0.17.0
   vxstate: ^2.0.1
 

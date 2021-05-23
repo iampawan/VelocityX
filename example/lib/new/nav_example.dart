@@ -30,6 +30,12 @@ class _Nav1State extends State<Nav1> {
           },
           child: "Clear & Push Nav2".text.make(),
         ),
+        TextButton(
+          onPressed: () {
+            VxNavigator.of(context).returnAndPush(Uri(path: "/"));
+          },
+          child: "Return result".text.make(),
+        ),
       ].vStack().centered(),
     );
   }
@@ -50,11 +56,18 @@ class Nav3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: "Nav3".text.make()),
-      body: "Nav3".text.makeCentered(),
+      body: [
+        "Nav3".text.makeCentered(),
+        TextButton(
+          onPressed: () {
+            VxNavigator.of(context).popToRoot();
+          },
+          child: "Pop to root".text.make(),
+        ),
+      ].vStack(),
     );
   }
 }
-
 
 class Nav4 extends StatelessWidget {
   final String pathParam;
