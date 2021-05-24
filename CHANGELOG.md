@@ -1,4 +1,4 @@
-## [3.1.0] - April 19, 2021
+## [3.1.0] - May 23, 2021
 
 - New Extensions - .shaderMask() and .safeArea()
 - Added text theme support to textspan
