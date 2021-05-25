@@ -120,6 +120,7 @@ class DemoList extends StatelessWidget {
           children: [
             "Hello"
                 .text
+                .yellow500
                 .make()
                 .box
                 .p8

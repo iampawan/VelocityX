@@ -1,3 +1,6 @@
+## [3.1.1] - May 25, 2021
+VxText color issue fixed.
+
 ## [3.1.0] - May 23, 2021
 
 - New Extensions - .shaderMask() and .safeArea()

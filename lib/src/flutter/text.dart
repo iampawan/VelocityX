@@ -461,7 +461,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   @override
   Widget make({Key? key}) {
     final ts = TextStyle(
-      // color: velocityColor,
+      color: velocityColor,
       fontSize: _fontSize,
       fontStyle: _fontStyle,
       fontFamily: _fontFamily,
