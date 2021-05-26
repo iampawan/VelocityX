@@ -37,7 +37,6 @@ class DemoList extends StatelessWidget {
         title: "VxDemo".text.make(),
       ),
       body: VStack([
-        "Glaass Experiment".text.make().p32().card.make().p16(),
         ExpansionTile(
           title: "VxNav 2.0".text.make(),
           childrenPadding: Vx.m32,
@@ -507,6 +506,27 @@ class DemoList extends StatelessWidget {
                 ).w(200).p16();
               },
             ),
+          ],
+        ),
+        ExpansionTile(
+          title: "VxGlassMorphic".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            VxGlassmorphic(
+              blur: 30,
+              shadowStrength: 10,
+              opacity: 0.1,
+              border: Border.all(color: Colors.white),
+              child: "Pawan Kumar".text.center.makeCentered(),
+              borderRadius: BorderRadius.circular(15),
+            )
+                .wh(300, 100)
+                .p16()
+                .box
+                .p16
+                .rounded
+                .gradientFromTo(from: Vx.warmGray600, to: Vx.emerald400)
+                .make(),
           ],
         ),
         ExpansionTile(

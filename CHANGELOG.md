@@ -1,4 +1,10 @@
+## [3.2.0] - May 26, 2021
+
+- Added VxGlassmorphic widget.
+- Added customRounded, topLeftRounded,topRightRounded,bottomLeftRounded etc for VxBox.
+
 ## [3.1.1] - May 25, 2021
+
 VxText color issue fixed.
 
 ## [3.1.0] - May 23, 2021
