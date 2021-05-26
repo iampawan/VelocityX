@@ -37,6 +37,7 @@ class DemoList extends StatelessWidget {
         title: "VxDemo".text.make(),
       ),
       body: VStack([
+        "Glaass Experiment".text.make().p32().card.make().p16(),
         ExpansionTile(
           title: "VxNav 2.0".text.make(),
           childrenPadding: Vx.m32,
