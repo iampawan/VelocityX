@@ -48,6 +48,7 @@ class VxTextField extends StatefulWidget {
   final ToolbarOptions? toolbarOptions;
   final Function(String?)? onSaved;
   final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
 
   const VxTextField({
     Key? key,
@@ -92,6 +93,7 @@ class VxTextField extends StatefulWidget {
     this.toolbarOptions,
     this.onSaved,
     this.validator,
+    this.autovalidateMode,
   }) : super(key: key);
 
   @override
@@ -133,6 +135,7 @@ class _VxTextFieldState extends State<VxTextField> {
       showCursor: widget.showCursor,
       toolbarOptions: widget.toolbarOptions,
       inputFormatters: widget.inputFormatters,
+      autovalidateMode: widget.autovalidateMode,
       decoration: InputDecoration(
         icon: widget.icon,
         prefixIcon: widget.prefixIcon,
