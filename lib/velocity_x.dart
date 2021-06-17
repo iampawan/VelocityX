@@ -1,6 +1,5 @@
 library velocity_x;
 
-export 'package:animator/animator.dart';
 export 'package:vxstate/vxstate.dart';
 
 export 'src/dart/guard.dart';
@@ -14,7 +13,6 @@ export 'src/extensions/num_ext.dart';
 export 'src/extensions/string_ext.dart';
 export 'src/flutter/animated/animated_container.dart';
 export 'src/flutter/animated/animated_height.dart';
-export 'src/flutter/animated/animator.dart';
 export 'src/flutter/appbar.dart';
 export 'src/flutter/badge.dart';
 export 'src/flutter/bottom_sheet.dart';

@@ -538,21 +538,21 @@ class DemoList extends StatelessWidget {
             }),
           ],
         ),
-        ExpansionTile(
-          title: "VxAnimator".text.make(),
-          childrenPadding: Vx.m32,
-          children: [
-            VxAnimator<Color>(
-              builder: (_, state, child) {
-                return VxAnimatedBox()
-                    .color(state.value)
-                    .sizePCT(context: context, widthPCT: 50, heightPCT: 10)
-                    .make();
-              },
-              child: "VelocityX".text.make(),
-            ).colorTween(Vx.teal200, Vx.blue600).infinite.easeInOut.make(),
-          ],
-        ),
+        // ExpansionTile(
+        //   title: "VxAnimator".text.make(),
+        //   childrenPadding: Vx.m32,
+        //   children: [
+        //     VxAnimator<double>(
+        //       builder: (_, state, child) {
+        //         return VxBox()
+        //             .square(state.value)
+        //             .color(Vx.cyan600)
+        //             .makeCentered();
+        //       },
+        //       child: "VelocityX".text.make(),
+        //     ).doubleTween(10, 100).infinite.easeInOut.make(),
+        //   ],
+        // ),
         ExpansionTile(
           title: "VxMarquee".text.make(),
           childrenPadding: Vx.m32,

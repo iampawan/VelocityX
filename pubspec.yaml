@@ -10,7 +10,6 @@ environment:
   flutter: ">=2.0.0"
 
 dependencies:
-  animator: ^3.0.0
   auto_size_text_pk: ^3.0.0
   flutter:
     sdk: flutter
