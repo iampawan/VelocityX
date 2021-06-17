@@ -32,11 +32,31 @@ class DemoList extends StatelessWidget {
     final _ = guard(() => x, "Guard - No value found");
     final VxPopupMenuController _controller = VxPopupMenuController();
     return Scaffold(
-      backgroundColor: Vx.white,
       appBar: AppBar(
         title: "VxDemo".text.make(),
       ),
       body: VStack([
+        [
+          TableRow(
+            children: [
+              "Mywebsite".text.make().p16(),
+              "Mywebsite 2".text.make(),
+            ],
+          ),
+          TableRow(
+            children: [
+              "Mywebsite".text.make(),
+              "Mywebsite 2".text.make(),
+            ],
+          ),
+          TableRow(
+            children: [
+              "Mywebsite".text.make(),
+              "Mywebsite 2".text.make(),
+            ],
+          )
+        ].table.blue500.simpleBorder.withFixedFactor(100).make(),
+
         ExpansionTile(
           title: "VxNav 2.0".text.make(),
           childrenPadding: Vx.m32,

@@ -79,7 +79,9 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
 
   /// [LayoutBuilder] does not support using IntrinsicWidth or IntrinsicHeight.
   ///
-  /// Note: Use it only for few widgets like [DataTable] which doesn't work well with Vx but using [isIntrinsic] will disable [AutoSizeText].
+  /// Note: Use it only for few widgets like [DataTable], [IntrinsicWidth] or
+  /// [IntrinsicHeight] etc which doesn't work well with Vx
+  /// but using [isIntrinsic] will disable [AutoSizeText].
   VxTextBuilder get isIntrinsic => this.._isIntrinsic = true;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
