@@ -11,6 +11,7 @@
  * limitations under the License.
  */
 
+import 'package:flutter/cupertino.dart' show CupertinoTheme, CupertinoThemeData;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/responsive_ui.dart';
@@ -97,6 +98,9 @@ extension ContextExtensions on BuildContext {
 
   /// Extension for getting Theme
   ThemeData get theme => Theme.of(this);
+
+  /// Extension for getting [CupertinoThemeData]
+  CupertinoThemeData get cupertinoTheme => CupertinoTheme.of(this);
 
   /// Extension for getting textTheme
   TextTheme get textTheme => Theme.of(this).textTheme;
