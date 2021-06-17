@@ -62,7 +62,6 @@ VelocityX is known for :
 
 ✅ &nbsp; [State Management](https://velocityx.dev/docs/vxstate/getting_started) </br>
 ✅ &nbsp; [Navigator 2.0](https://velocityx.dev/docs/vxnavigator/getting_started)  
-✅ &nbsp; [Animations](https://velocityx.dev/docs/supervx/vxanimator)  
 ✅ &nbsp; [Custom UIs](https://velocityx.dev/docs/install)  
 ✅ &nbsp; [Custom Shapes](https://velocityx.dev/docs/shapes/vxcircle)  
 ✅ &nbsp; [Super VX](https://velocityx.dev/docs/supervx/vxswiper)  
