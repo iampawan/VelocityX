@@ -310,6 +310,10 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
   /// Sets [textScaleFactor] to six times extra large i.e. 4
   VxRichText get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
+  /// Sets [textScaleFactor] to custom value
+  VxRichText scale(double value) =>
+      _fontSizedText(child: this, scaleFactor: value);
+
   VxRichText _fontSizedText(
       {required double scaleFactor, required VxRichText child}) {
     _scaleFactor = scaleFactor;

@@ -348,6 +348,10 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// Sets [textScaleFactor] to six times extra large i.e. 4
   VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
+  /// Sets [textScaleFactor] to custom value
+  VxTextBuilder scale(double value) =>
+      _fontSizedText(child: this, scaleFactor: value);
+
   VxTextBuilder _fontSizedText(
       {required double scaleFactor, required VxTextBuilder child}) {
     _fontSize = _fontSize ?? 14.0;
