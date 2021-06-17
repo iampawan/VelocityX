@@ -36,27 +36,6 @@ class DemoList extends StatelessWidget {
         title: "VxDemo".text.make(),
       ),
       body: VStack([
-        [
-          TableRow(
-            children: [
-              "Mywebsite".text.make().p16(),
-              "Mywebsite 2".text.make(),
-            ],
-          ),
-          TableRow(
-            children: [
-              "Mywebsite".text.make(),
-              "Mywebsite 2".text.make(),
-            ],
-          ),
-          TableRow(
-            children: [
-              "Mywebsite".text.make(),
-              "Mywebsite 2".text.make(),
-            ],
-          )
-        ].table.blue500.simpleBorder.withFixedFactor(100).make(),
-
         ExpansionTile(
           title: "VxNav 2.0".text.make(),
           childrenPadding: Vx.m32,
@@ -514,6 +493,7 @@ class DemoList extends StatelessWidget {
                 child: "Show Right Drawer".text.make())
           ],
         ),
+
         ExpansionTile(
           title: "VxLayout".text.make(),
           childrenPadding: Vx.m32,
@@ -528,6 +508,33 @@ class DemoList extends StatelessWidget {
             ),
           ],
         ),
+        ExpansionTile(
+          title: "VxTable".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            [
+              TableRow(
+                children: [
+                  "Mywebsite".text.make(),
+                  "Mywebsite 2".text.make(),
+                ],
+              ),
+              TableRow(
+                children: [
+                  "Mywebsite".text.make(),
+                  "Mywebsite 2".text.make(),
+                ],
+              ),
+              TableRow(
+                children: [
+                  "Mywebsite".text.make(),
+                  "Mywebsite 2".text.make(),
+                ],
+              )
+            ].table.blue500.simpleBorder.withFixedFactor(100).make(),
+          ],
+        ),
+
         ExpansionTile(
           title: "VxGlassMorphic".text.make(),
           childrenPadding: Vx.m32,
