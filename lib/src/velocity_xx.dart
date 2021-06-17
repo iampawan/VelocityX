@@ -11,12 +11,19 @@
  * limitations under the License.
  */
 
-import 'dart:async';
+import 'dart:async' show Zone;
 import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        Colors,
+        EdgeInsets,
+        RoundedRectangleBorder,
+        ShapeBorder,
+        BorderRadius,
+        Color;
 
 import 'nav/i_vx_nav.dart';
 
@@ -683,6 +690,17 @@ mixin Vx {
 
   ///Checks whether android or not
   static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
+
+  /// Get ascii from the hex value
+  static String hexToAscii(String hex) {
+    final List<String> _splitted = [];
+    for (int i = 0; i < hex.length; i = i + 2) {
+      _splitted.add(hex.substring(i, i + 2));
+    }
+    final String _asciiText = List.generate(_splitted.length,
+        (i) => String.fromCharCode(int.parse(_splitted[i], radix: 16))).join();
+    return _asciiText;
+  }
 
   /// Get color from the hex value
   static Color hexToColor(String code) {
