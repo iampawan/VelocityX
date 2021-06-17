@@ -1,3 +1,12 @@
+## [3.3.0] - June 17, 2021
+
+- New: VxTable & .table extension.
+- .scale() method added for text.
+- hexToAscii utility added.
+- [Breaking] VxAnimator is now removed. Use animator package rather.
+- Ticker Mixin issue fixed.
+- Minor bug fixes.
+
 ## [3.2.0] - May 26, 2021
 
 - Added VxGlassmorphic widget.

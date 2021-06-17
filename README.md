@@ -10,10 +10,8 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
 [![GitHub issues](https://img.shields.io/github/issues/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx/issues)
 [![GitHub top language](https://img.shields.io/github/languages/top/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/iampawan/velocityx.svg?style=flat-square)](https://github.com/iampawan/velocityx)
 [![Likes](https://badges.bar/velocity_x/likes)](https://pub.dev/packages/velocity_x/score)
 [![Popularity](https://badges.bar/velocity_x/popularity)](https://pub.dev/packages/velocity_x/score)
-[![Pub points](https://badges.bar/flutter_week_view/pub%20points)](https://pub.dev/packages/velocity_x/score)
 <a href="https://discord.gg/9tXYvNq"><img src="https://img.shields.io/discord/746087597759004835.svg?logo=discord&color=blue" alt="Discord"></a>
 
 ### Show some :heart: and star the repo.
@@ -85,7 +83,7 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 
 ## Some popular Super Vx widgets
 
-| [VxAnimation](https://velocityx.dev/docs/supervx/vxanimator) | [VxSwiper](https://velocityx.dev/docs/supervx/vxswiper) | [VxResponsive](https://velocityx.dev/docs/features/responsive) | [VxPlatform](https://velocityx.dev/docs/supervx/vxplatform) | [VxToast](https://velocityx.dev/docs/supervx/vxtoast) | [VxRating](https://velocityx.dev/docs/supervx/vxrating) | [VxStepper](https://velocityx.dev/docs/supervx/vxstepper) |
+| [VxShapes](https://velocityx.dev/docs/shapes/vxcircle) | [VxSwiper](https://velocityx.dev/docs/supervx/vxswiper) | [VxResponsive](https://velocityx.dev/docs/features/responsive) | [VxPlatform](https://velocityx.dev/docs/supervx/vxplatform) | [VxToast](https://velocityx.dev/docs/supervx/vxtoast) | [VxRating](https://velocityx.dev/docs/supervx/vxrating) | [VxStepper](https://velocityx.dev/docs/supervx/vxstepper) |
 
 ## Some Quick UIs made using VelocityX
 
