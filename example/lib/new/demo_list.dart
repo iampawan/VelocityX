@@ -28,11 +28,6 @@ class DemoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String hexString =
-        "687474703A2F2F65727063727033752E706F61732E636F6D2E74723A383030302F4F415F48544D4C2F58787063417070536572766C65742E6A7370";
-
-    print(Vx.hexToAscii(hexString));
-
     // Guard Example
     final _ = guard(() => x, "Guard - No value found");
     final VxPopupMenuController _controller = VxPopupMenuController();
