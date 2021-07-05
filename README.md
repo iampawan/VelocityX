@@ -39,6 +39,26 @@
 
 ---
 
+## Getting started
+
+In the `pubspec.yaml` of your flutter project, add the following dependency:
+
+```yaml
+dependencies:
+  ...
+  velocity_x: <latest_version>
+```
+
+In your library add the following import:
+
+```dart
+import 'package:velocity_x/velocity_x.dart';
+```
+
+For help getting started with Flutter, view the online [documentation](https://velocityx.dev/docs/install).
+
+---
+
 ### 📌 &nbsp; Bulletin
 
 - Now supports null-safety
