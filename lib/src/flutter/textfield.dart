@@ -147,6 +147,7 @@ class _VxTextFieldState extends State<VxTextField> {
         labelText: widget.labelText,
         labelStyle: widget.labelStyle,
         contentPadding: getContentPadding(),
+        border: getInputBorder(),
         enabledBorder: getInputBorder(),
         focusedBorder: getInputBorder(),
       ),
