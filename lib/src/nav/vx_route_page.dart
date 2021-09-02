@@ -18,19 +18,22 @@ class VxRoutePage extends Page {
   final Widget? child;
   final bool maintainState;
   final bool fullscreenDialog;
+  final bool isTransparent;
   final Widget Function(Animation<double> animation, Widget child)? transition;
-  VxRoutePage(
-      {this.pageName,
-      this.child,
-      this.maintainState = true,
-      this.fullscreenDialog = false,
-      this.transition})
-      : super(key: _createPageKey(pageName));
+  VxRoutePage({
+    this.pageName,
+    this.child,
+    this.maintainState = true,
+    this.fullscreenDialog = false,
+    this.transition,
+    this.isTransparent = false,
+  }) : super(key: _createPageKey(pageName));
 
   @override
   Route createRoute(BuildContext context) {
     if (transition != null) {
       return PageRouteBuilder(
+        opaque: !isTransparent,
         settings: this,
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
@@ -40,13 +43,12 @@ class VxRoutePage extends Page {
         },
       );
     } else {
-      return MaterialPageRoute(
+      return PageRouteBuilder(
+        opaque: !isTransparent,
         settings: this,
         maintainState: maintainState,
         fullscreenDialog: fullscreenDialog,
-        builder: (context) {
-          return child!;
-        },
+        pageBuilder: (context, animation, secondaryAnimation) => child!,
       );
     }
   }
