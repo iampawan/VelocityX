@@ -25,8 +25,7 @@ import 'velocityx_mixins/color_mixin.dart';
 /// overflows anyway, you should check if the parent widget actually constraints
 /// the size of this widget.
 @protected
-class VxTextBuilder extends VxWidgetBuilder<Widget>
-    with VxColorMixin<VxTextBuilder> {
+class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuilder> {
   VxTextBuilder(String this._text) {
     setChildToColor(this);
   }
@@ -74,8 +73,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   }
 
   /// Set [color] of the text using hexvalue
-  VxTextBuilder hexColor(String colorHex) =>
-      this..velocityColor = Vx.hexToColor(colorHex);
+  VxTextBuilder hexColor(String colorHex) => this..velocityColor = Vx.hexToColor(colorHex);
 
   /// [LayoutBuilder] does not support using IntrinsicWidth or IntrinsicHeight.
   ///
@@ -351,54 +349,42 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
   /// Sets [textScaleFactor] to custom value
-  VxTextBuilder scale(double value) =>
-      _fontSizedText(child: this, scaleFactor: value);
+  VxTextBuilder scale(double value) => _fontSizedText(child: this, scaleFactor: value);
 
-  VxTextBuilder _fontSizedText(
-      {required double scaleFactor, required VxTextBuilder child}) {
+  VxTextBuilder _fontSizedText({required double scaleFactor, required VxTextBuilder child}) {
     _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
   }
 
   /// Sets [FontWeight] to [FontWeight.w100]
-  VxTextBuilder get hairLine =>
-      _fontWeightedText(child: this, weight: FontWeight.w100);
+  VxTextBuilder get hairLine => _fontWeightedText(weight: FontWeight.w100);
 
   /// Sets [FontWeight] to [FontWeight.w200]
-  VxTextBuilder get thin =>
-      _fontWeightedText(child: this, weight: FontWeight.w200);
+  VxTextBuilder get thin => _fontWeightedText(weight: FontWeight.w200);
 
   /// Sets [FontWeight] to [FontWeight.w300]
-  VxTextBuilder get light =>
-      _fontWeightedText(child: this, weight: FontWeight.w300);
+  VxTextBuilder get light => _fontWeightedText(weight: FontWeight.w300);
 
   /// Sets [FontWeight] to [FontWeight.w400]
-  VxTextBuilder get normal =>
-      _fontWeightedText(child: this, weight: FontWeight.w400);
+  VxTextBuilder get normal => _fontWeightedText(weight: FontWeight.w400);
 
   /// Sets [FontWeight] to [FontWeight.w500]
-  VxTextBuilder get medium =>
-      _fontWeightedText(child: this, weight: FontWeight.w500);
+  VxTextBuilder get medium => _fontWeightedText(weight: FontWeight.w500);
 
   /// Sets [FontWeight] to [FontWeight.w600]
-  VxTextBuilder get semiBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w600);
+  VxTextBuilder get semiBold => _fontWeightedText(weight: FontWeight.w600);
 
   /// Sets [FontWeight] to [FontWeight.w700]
-  VxTextBuilder get bold =>
-      _fontWeightedText(child: this, weight: FontWeight.w700);
+  VxTextBuilder get bold => _fontWeightedText(weight: FontWeight.w700);
 
   /// Sets [FontWeight] to [FontWeight.w800]
-  VxTextBuilder get extraBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w800);
+  VxTextBuilder get extraBold => _fontWeightedText(weight: FontWeight.w800);
 
   /// Sets [FontWeight] to [FontWeight.w900]
-  VxTextBuilder get extraBlack =>
-      _fontWeightedText(child: this, weight: FontWeight.w900);
+  VxTextBuilder get extraBlack => _fontWeightedText(weight: FontWeight.w900);
 
-  VxTextBuilder _fontWeightedText(
-      {required FontWeight weight, required VxTextBuilder child}) {
+  VxTextBuilder _fontWeightedText({required FontWeight weight}) {
     _fontWeight = weight;
     return this;
   }
@@ -431,8 +417,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder get underline => this.._decoration = TextDecoration.underline;
 
   /// Sets [TextDecoration] as [TextDecoration.lineThrough]
-  VxTextBuilder get lineThrough =>
-      this.._decoration = TextDecoration.lineThrough;
+  VxTextBuilder get lineThrough => this.._decoration = TextDecoration.lineThrough;
 
   /// Sets [TextDecoration] as [TextDecoration.overline]
   VxTextBuilder get overline => this.._decoration = TextDecoration.overline;
