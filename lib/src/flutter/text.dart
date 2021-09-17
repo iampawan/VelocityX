@@ -55,6 +55,9 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   TextBaseline? _textBaseline;
   Widget? _replacement;
   bool? _softWrap, _wrapWords;
+  double _shadowBlur = 0.0;
+  Color _shadowColor = const Color(0xFF000000);
+  Offset _shadowOffset = Offset.zero;
 
   bool _isIntrinsic = false;
 
@@ -449,20 +452,37 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   /// Sets custom [lineHeight] with [val]
   VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
+  /// Sets [Shadow] as specified in request *#127*
+  VxTextBuilder shadow(double offsetX, double offsetY, double blurRadius, Color color) => this
+    .._shadowBlur = blurRadius
+    .._shadowColor = color
+    .._shadowOffset = Offset(offsetX, offsetY);
+
+  /// Sets [Shadow] blur
+  VxTextBuilder shadowBlur(double blur) => this.._shadowBlur = blur;
+
+  /// Sets [Shadow] color
+  VxTextBuilder shadowColor(Color color) => this.._shadowColor = color;
+
+  /// Sets [Shadow] offset
+  VxTextBuilder shadowOffset(double dx, double dy) => this.._shadowOffset = Offset(dx, dy);
+
   @override
   Widget make({Key? key}) {
+    final sdw = [Shadow(blurRadius: _shadowBlur, color: _shadowColor, offset: _shadowOffset)];
+
     final ts = TextStyle(
-      color: velocityColor,
-      fontSize: _fontSize,
-      fontStyle: _fontStyle,
-      fontFamily: _fontFamily,
-      fontWeight: _fontWeight,
-      letterSpacing: _letterSpacing,
-      decoration: _decoration,
-      height: _lineHeight,
-      textBaseline: _textBaseline ?? TextBaseline.alphabetic,
-      wordSpacing: _wordSpacing,
-    );
+        color: velocityColor,
+        fontSize: _fontSize,
+        fontStyle: _fontStyle,
+        fontFamily: _fontFamily,
+        fontWeight: _fontWeight,
+        letterSpacing: _letterSpacing,
+        decoration: _decoration,
+        height: _lineHeight,
+        textBaseline: _textBaseline ?? TextBaseline.alphabetic,
+        wordSpacing: _wordSpacing,
+        shadows: _shadowBlur > 0 ? sdw : null);
 
     return _isIntrinsic
         ? Text(
