@@ -55,7 +55,7 @@ extension WidgetsExtension on Widget {
         maintainState: maintainSize,
       );
 
-  ///Hides a widget
+  ///Popup Menu Extensions
   Widget popupMenu(
     MenuBuilderCallback menuBuilder, {
     Key? key,
