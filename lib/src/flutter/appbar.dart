@@ -551,7 +551,7 @@ class _VxAppBarState extends State<VxAppBar> {
     }
 
     final Brightness brightness = widget.brightness ??
-        appBarTheme.systemOverlayStyle!.statusBarBrightness ??
+        appBarTheme.systemOverlayStyle?.statusBarBrightness ??
         theme.primaryColorBrightness;
     final SystemUiOverlayStyle overlayStyle = brightness == Brightness.dark
         ? SystemUiOverlayStyle.light
