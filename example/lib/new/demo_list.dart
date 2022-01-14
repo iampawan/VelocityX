@@ -119,22 +119,22 @@ class DemoList extends StatelessWidget {
           children: [
             "Hello"
                 .text
-                .yellow500
+                .yellow100
                 .make()
                 .box
                 .p8
                 .rounded
-                .lime200
+                .lime800
                 .alignCenter
                 .withConstraints(
                     const BoxConstraints(maxWidth: 100, minWidth: 50))
                 .make()
                 .badge(
                     size: 20,
-                    count: 200,
+                    count: 1,
                     limit: false,
                     color: Colors.black,
-                    type: VxBadgeType.round)
+                    type: VxBadgeType.ellipse)
                 .onInkTap(() {
               // Show Toast
               context.showToast(
