@@ -140,6 +140,9 @@ extension ContextExtensions on BuildContext {
   ///
   Brightness get brightness => theme.brightness;
 
+  /// If the [ThemeData] of the current [BuildContext] is dark
+  bool get isDarkMode => theme.brightness == Brightness.dark;
+
   /// Extension for navigation to next page
   /// Returns The state from the closest instance of this class that encloses the given context.
   ///
