@@ -11,6 +11,8 @@
  * limitations under the License.
  */
 
+import 'dart:convert';
+
 import 'package:velocity_x/src/flutter/rich_text.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
@@ -19,9 +21,8 @@ import 'package:intl/intl.dart' as intl;
 /// Extension Methods & Widgets for the strings
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
-  String firstLetterUpperCase() => length > 1
-      ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}"
-      : this;
+  String firstLetterUpperCase() =>
+      length > 1 ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}" : this;
 
   ///Removes first element
   String get eliminateFirst => length > 1 ? "${substring(1, length)}" : "";
@@ -35,9 +36,8 @@ extension StringExtension on String {
   ///
   /// Uses regex to check if the provided string is a valid email address or not
   ///
-  bool validateEmail() => RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-      .hasMatch(this);
+  bool validateEmail() =>
+      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this);
 
   /// Check if String is Right to Left Language
   bool isRtlLanguage() {
@@ -105,22 +105,19 @@ extension StringExtension on String {
   }
 
   /// Format numeric currency
-  String get numCurrency =>
-      intl.NumberFormat.currency(customPattern: "#,##0.00")
-          .format(double.tryParse(this))
-          .toString();
+  String get numCurrency => intl.NumberFormat.currency(customPattern: "#,##0.00")
+      .format(double.tryParse(this))
+      .toString();
 
   /// Format numeric currency with provided locale
-  String numCurrencyWithLocale({String locale = "en_US"}) =>
-      intl.NumberFormat.currency(
+  String numCurrencyWithLocale({String locale = "en_US"}) => intl.NumberFormat.currency(
         locale: locale,
       ).format(double.tryParse(this)).toString();
 
   ///Capitalize all words inside a string
   String allWordsCapitilize() {
     return toLowerCase().split(' ').map((word) {
-      final String leftText =
-          (word.length > 1) ? word.substring(1, word.length) : '';
+      final String leftText = (word.length > 1) ? word.substring(1, word.length) : '';
       return word[0].toUpperCase() + leftText;
     }).join(' ');
   }
@@ -138,8 +135,7 @@ extension StringExtension on String {
   /// NOTE: This implementation relies on [String].`toLowerCase`, which is not
   /// locale aware. Therefore, this method is likely to exhibit unexpected
   /// behavior for non-ASCII characters.
-  int compareToIgnoringCase(String other) =>
-      toLowerCase().compareTo(other.toLowerCase());
+  int compareToIgnoringCase(String other) => toLowerCase().compareTo(other.toLowerCase());
 
   /// Returns a copy of [this] with [other] inserted starting at [index].
   ///
@@ -223,6 +219,47 @@ extension StringExtension on String {
       }
     }
     return false;
+  }
+
+  /// Check if string is json decodable
+  bool get isJsonDecodable {
+    try {
+      jsonDecode(this) as Map<String, dynamic>;
+      // ignore: unused_catch_clause
+    } on FormatException catch (e) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // Remove non Alpha-Numeric characters from string
+  String filterChars() {
+    return replaceAll(RegExp(r'[^\w\s]+'), '');
+  }
+
+  /// Convert DateString to DateTime Object
+  DateTime? toDate() {
+    try {
+      final DateTime st = DateTime.parse(this);
+      return st;
+      // ignore: unused_catch_clause
+    } on FormatException catch (e) {
+      return null;
+    }
+  }
+
+  /// Converts [YYMMDD HH:MM] Date to a fully DateString representation,
+  /// if you need to use locale, dont forget to use [initializeDateFormatting]
+  /// in your main() function.
+  ///
+  /// **Example**
+  ///
+  /// **Input:** 2021-70-16
+  ///
+  /// **Output:** Friday, October 16
+  String toDateString([String? locale]) {
+    return intl.DateFormat.MMMMEEEEd(locale).format(toDate()!);
   }
 
   /// Get Text Widget for the String
