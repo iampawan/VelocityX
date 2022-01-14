@@ -13,10 +13,10 @@
  */
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/flex.dart';
 
 /// The VxAppBar displays the toolbar widgets, [leading], [title], and [actions],
@@ -332,10 +332,10 @@ class _VxAppBarState extends State<VxAppBar> {
         appBarTheme.actionsIconTheme ??
         overallIconTheme;
     TextStyle? centerStyle = widget.textTheme?.headline5 ??
-        appBarTheme.textTheme?.headline5 ??
+        appBarTheme.toolbarTextStyle ??
         theme.primaryTextTheme.headline5;
     TextStyle? sideStyle = widget.textTheme?.bodyText2 ??
-        appBarTheme.textTheme?.bodyText2 ??
+        appBarTheme.toolbarTextStyle ??
         theme.primaryTextTheme.bodyText2;
 
     if (widget.toolbarOpacity != 1.0) {
@@ -551,7 +551,7 @@ class _VxAppBarState extends State<VxAppBar> {
     }
 
     final Brightness brightness = widget.brightness ??
-        appBarTheme.brightness ??
+        appBarTheme.systemOverlayStyle!.statusBarBrightness ??
         theme.primaryColorBrightness;
     final SystemUiOverlayStyle overlayStyle = brightness == Brightness.dark
         ? SystemUiOverlayStyle.light
@@ -562,8 +562,9 @@ class _VxAppBarState extends State<VxAppBar> {
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: overlayStyle,
         child: Material(
-          color:
-              widget.backgroundColor ?? appBarTheme.color ?? theme.primaryColor,
+          color: widget.backgroundColor ??
+              appBarTheme.backgroundColor ??
+              theme.primaryColor,
           elevation:
               widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
           shape: widget.shape,

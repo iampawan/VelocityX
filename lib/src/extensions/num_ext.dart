@@ -14,8 +14,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/flutter/text.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:velocity_x/src/flutter/text.dart';
 
 /// Extension Methods & Widgets for the numbers
 extension NumExtension on num {

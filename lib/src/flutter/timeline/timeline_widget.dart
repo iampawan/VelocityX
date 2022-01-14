@@ -65,7 +65,8 @@ class _VxTimelineState extends State<VxTimeline>
           return InkWell(
             onTap: () => widget.onItemTap!(widget.timelineList[index]),
             child: VxTimelineView(
-              lineColor: widget.lineColor ?? Theme.of(context).accentColor,
+              lineColor:
+                  widget.lineColor ?? Theme.of(context).colorScheme.secondary,
               backgroundColor: widget.backgroundColor ?? Colors.white,
               model: widget.timelineList[index],
               firstElement: index == 0,

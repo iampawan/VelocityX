@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/divider.dart';
 
-class VxBottomSheet {
+mixin VxBottomSheet {
   static Future bottomSheetOptions(BuildContext context,
       {List<String>? option,
       String? defaultData,

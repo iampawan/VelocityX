@@ -6,7 +6,7 @@ import 'common/velocity_round.dart';
 
 enum VxPreviewIndicatorAxis { horizontal, vertical }
 
-class VxPreview {
+mixin VxPreview {
   static void show(
     BuildContext context, {
     GlobalKey? key,

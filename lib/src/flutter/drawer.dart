@@ -9,7 +9,7 @@ enum VxDrawerType {
   bottom,
 }
 
-class VxDrawer {
+mixin VxDrawer {
   static VoidCallback showTopNotification(
     BuildContext context, {
     required Widget child,

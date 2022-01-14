@@ -11,10 +11,10 @@
  * limitations under the License.
  */
 
+import 'package:intl/intl.dart' as intl;
 import 'package:velocity_x/src/flutter/rich_text.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
-import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the strings
 extension StringExtension on String {

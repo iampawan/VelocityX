@@ -15,7 +15,7 @@ Widget getView(dynamic child) {
   return const SizedBox.shrink();
 }
 
-class VxDialog {
+mixin VxDialog {
   static void showAlert(
     BuildContext context, {
     String? title,

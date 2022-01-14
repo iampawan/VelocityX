@@ -28,7 +28,7 @@ enum VxToastType {
   loading,
 }
 
-class VxToast {
+mixin VxToast {
   static void show(
     BuildContext context, {
     required String msg,
@@ -222,7 +222,7 @@ class _VxToastViewState extends State<_VxToastView>
               style: TextStyle(
                 fontSize: widget.textSize,
                 color: widget.textColor ??
-                    Theme.of(context).accentTextTheme.bodyText1!.color,
+                    Theme.of(context).textTheme.bodyText1!.color,
               ),
             ),
           ),
@@ -253,7 +253,7 @@ class _VxToastViewState extends State<_VxToastView>
                   style: TextStyle(
                     fontSize: widget.textSize,
                     color: widget.textColor ??
-                        Theme.of(context).accentTextTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyText1!.color,
                   ),
                 )
               ],

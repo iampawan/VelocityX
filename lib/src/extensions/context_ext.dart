@@ -113,7 +113,7 @@ extension ContextExtensions on BuildContext {
   ///
   /// Accent color is also known as the secondary color.
   ///
-  Color get accentColor => theme.accentColor;
+  Color get accentColor => theme.colorScheme.secondary;
 
   ///
   /// The background color for major parts of the app (toolbars, tab bars, etc).
