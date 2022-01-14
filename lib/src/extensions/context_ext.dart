@@ -188,7 +188,7 @@ extension ContextExtensions on BuildContext {
   ///
   /// Returns The current [Locale] of the app as specified in the [Localizations] widget.
   ///
-  Locale? get locale => Localizations.localeOf(this);
+  Locale? get vxlocale => Localizations.localeOf(this);
 
   /// Returns The state from the closest instance of this class that encloses the given context.
   ///
