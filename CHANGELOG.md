@@ -1,3 +1,12 @@
+## [3.4.0] - Jan 14, 2022
+
+- New: .disabled & .clipOval widget extension added & isDarkMode context extension added.
+- context.locale is now context.vxlocale.
+- VxText got shadow support.
+- More string extensions added for json etc.
+- Many issues solved (Check closed github issues).
+- Minor bug fixes.
+
 ## [3.3.0] - June 17, 2021
 
 - New: VxTable & .table extension.
