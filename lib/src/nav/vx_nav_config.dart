@@ -131,7 +131,7 @@ class VxNavConfig extends ChangeNotifier {
 
   /// remove a specific [Uri] and the corresponding [Page]
   void removeUri(Uri uri) {
-    final index = _uris.indexOf(uri);
+    final index = _uris.lastIndexOf(uri);
     if (index != -1) {
       final page = _pages.removeAt(index);
       final uri = _uris.removeAt(index);
