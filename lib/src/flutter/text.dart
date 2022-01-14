@@ -25,7 +25,8 @@ import 'velocityx_mixins/color_mixin.dart';
 /// overflows anyway, you should check if the parent widget actually constraints
 /// the size of this widget.
 @protected
-class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuilder> {
+class VxTextBuilder extends VxWidgetBuilder<Widget>
+    with VxColorMixin<VxTextBuilder> {
   VxTextBuilder(String this._text) {
     setChildToColor(this);
   }
@@ -76,7 +77,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   }
 
   /// Set [color] of the text using hexvalue
-  VxTextBuilder hexColor(String colorHex) => this..velocityColor = Vx.hexToColor(colorHex);
+  VxTextBuilder hexColor(String colorHex) =>
+      this..velocityColor = Vx.hexToColor(colorHex);
 
   /// [LayoutBuilder] does not support using IntrinsicWidth or IntrinsicHeight.
   ///
@@ -352,9 +354,11 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
   /// Sets [textScaleFactor] to custom value
-  VxTextBuilder scale(double value) => _fontSizedText(child: this, scaleFactor: value);
+  VxTextBuilder scale(double value) =>
+      _fontSizedText(child: this, scaleFactor: value);
 
-  VxTextBuilder _fontSizedText({required double scaleFactor, required VxTextBuilder child}) {
+  VxTextBuilder _fontSizedText(
+      {required double scaleFactor, required VxTextBuilder child}) {
     _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
@@ -420,7 +424,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   VxTextBuilder get underline => this.._decoration = TextDecoration.underline;
 
   /// Sets [TextDecoration] as [TextDecoration.lineThrough]
-  VxTextBuilder get lineThrough => this.._decoration = TextDecoration.lineThrough;
+  VxTextBuilder get lineThrough =>
+      this.._decoration = TextDecoration.lineThrough;
 
   /// Sets [TextDecoration] as [TextDecoration.overline]
   VxTextBuilder get overline => this.._decoration = TextDecoration.overline;
@@ -453,10 +458,12 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
   /// Sets [Shadow] as specified in request *#127*
-  VxTextBuilder shadow(double offsetX, double offsetY, double blurRadius, Color color) => this
-    .._shadowBlur = blurRadius
-    .._shadowColor = color
-    .._shadowOffset = Offset(offsetX, offsetY);
+  VxTextBuilder shadow(
+          double offsetX, double offsetY, double blurRadius, Color color) =>
+      this
+        .._shadowBlur = blurRadius
+        .._shadowColor = color
+        .._shadowOffset = Offset(offsetX, offsetY);
 
   /// Sets [Shadow] blur
   VxTextBuilder shadowBlur(double blur) => this.._shadowBlur = blur;
@@ -465,11 +472,15 @@ class VxTextBuilder extends VxWidgetBuilder<Widget> with VxColorMixin<VxTextBuil
   VxTextBuilder shadowColor(Color color) => this.._shadowColor = color;
 
   /// Sets [Shadow] offset
-  VxTextBuilder shadowOffset(double dx, double dy) => this.._shadowOffset = Offset(dx, dy);
+  VxTextBuilder shadowOffset(double dx, double dy) =>
+      this.._shadowOffset = Offset(dx, dy);
 
   @override
   Widget make({Key? key}) {
-    final sdw = [Shadow(blurRadius: _shadowBlur, color: _shadowColor, offset: _shadowOffset)];
+    final sdw = [
+      Shadow(
+          blurRadius: _shadowBlur, color: _shadowColor, offset: _shadowOffset)
+    ];
 
     final ts = TextStyle(
         color: velocityColor,

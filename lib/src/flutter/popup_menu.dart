@@ -209,23 +209,23 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
         child: widget.child,
         onTap: () {
           if (widget.clickType == VxClickType.singleClick) {
-             if(!_controller!.menuIsShowing){
-               _showMenu();
-               _controller!.menuIsShowing = true;
-            }else{
+            if (!_controller!.menuIsShowing) {
+              _showMenu();
+              _controller!.menuIsShowing = true;
+            } else {
               _hideMenu();
-               _controller!.menuIsShowing = false;
+              _controller!.menuIsShowing = false;
             }
           }
         },
         onLongPress: () {
           if (widget.clickType == VxClickType.longClick) {
-             if(!_controller!.menuIsShowing){
-               _showMenu();
-               _controller!.menuIsShowing = true;
-            }else{
+            if (!_controller!.menuIsShowing) {
+              _showMenu();
+              _controller!.menuIsShowing = true;
+            } else {
               _hideMenu();
-               _controller!.menuIsShowing = false;
+              _controller!.menuIsShowing = false;
             }
           }
         },
