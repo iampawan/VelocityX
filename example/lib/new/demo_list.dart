@@ -141,7 +141,7 @@ class DemoList extends StatelessWidget {
                   msg: "Hello Vx",
                   position: VxToastPosition.top,
                   showTime: 3000);
-            }),
+            }).disabled(false),
           ],
         ),
         ExpansionTile(

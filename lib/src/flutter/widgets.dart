@@ -171,6 +171,24 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for creating a oval shape using [ClipOval]
+  Widget clipOval(
+      {Clip clipBehavior = Clip.antiAlias, CustomClipper<Rect>? clipper}) {
+    return ClipOval(
+      key: key,
+      clipBehavior: clipBehavior,
+      clipper: clipper,
+      child: this,
+    );
+  }
+
+  Widget disabled(bool disable) {
+    return IgnorePointer(
+      child: opacity(value: disable ? 0.3 : 1.0),
+      ignoring: disable,
+    );
+  }
+
   /// Extension for keepAlive
   Widget keepAlive() {
     return _KeepAliveWidget(this);
@@ -489,6 +507,9 @@ class _RenderInnerShadow extends RenderProxyBox {
       ..saveLayer(rectInner, Paint())
       ..translate(dx, dy);
     context.paintChild(child as RenderObject, offset);
-    context.canvas..restore()..restore()..restore();
+    context.canvas
+      ..restore()
+      ..restore()
+      ..restore();
   }
 }
