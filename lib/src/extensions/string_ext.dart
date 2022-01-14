@@ -12,7 +12,7 @@
  */
 
 import 'dart:convert';
-
+import 'package:intl/intl.dart' as intl;
 import 'package:velocity_x/src/flutter/rich_text.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
@@ -20,8 +20,9 @@ import 'package:velocity_x/src/flutter/text.dart';
 /// Extension Methods & Widgets for the strings
 extension StringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
-  String firstLetterUpperCase() =>
-      length > 1 ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}" : this;
+  String firstLetterUpperCase() => length > 1
+      ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}"
+      : this;
 
   ///Removes first element
   String get eliminateFirst => length > 1 ? "${substring(1, length)}" : "";
@@ -35,8 +36,9 @@ extension StringExtension on String {
   ///
   /// Uses regex to check if the provided string is a valid email address or not
   ///
-  bool validateEmail() =>
-      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(this);
+  bool validateEmail() => RegExp(
+          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+      .hasMatch(this);
 
   /// Check if String is Right to Left Language
   bool isRtlLanguage() {
@@ -104,19 +106,22 @@ extension StringExtension on String {
   }
 
   /// Format numeric currency
-  String get numCurrency => intl.NumberFormat.currency(customPattern: "#,##0.00")
-      .format(double.tryParse(this))
-      .toString();
+  String get numCurrency =>
+      intl.NumberFormat.currency(customPattern: "#,##0.00")
+          .format(double.tryParse(this))
+          .toString();
 
   /// Format numeric currency with provided locale
-  String numCurrencyWithLocale({String locale = "en_US"}) => intl.NumberFormat.currency(
+  String numCurrencyWithLocale({String locale = "en_US"}) =>
+      intl.NumberFormat.currency(
         locale: locale,
       ).format(double.tryParse(this)).toString();
 
   ///Capitalize all words inside a string
   String allWordsCapitilize() {
     return toLowerCase().split(' ').map((word) {
-      final String leftText = (word.length > 1) ? word.substring(1, word.length) : '';
+      final String leftText =
+          (word.length > 1) ? word.substring(1, word.length) : '';
       return word[0].toUpperCase() + leftText;
     }).join(' ');
   }
@@ -134,7 +139,8 @@ extension StringExtension on String {
   /// NOTE: This implementation relies on [String].`toLowerCase`, which is not
   /// locale aware. Therefore, this method is likely to exhibit unexpected
   /// behavior for non-ASCII characters.
-  int compareToIgnoringCase(String other) => toLowerCase().compareTo(other.toLowerCase());
+  int compareToIgnoringCase(String other) =>
+      toLowerCase().compareTo(other.toLowerCase());
 
   /// Returns a copy of [this] with [other] inserted starting at [index].
   ///
