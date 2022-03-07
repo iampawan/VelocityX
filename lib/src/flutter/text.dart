@@ -71,7 +71,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   }
 
   /// Set [color] of the text
-  VxTextBuilder color(Color color) {
+  VxTextBuilder color(Color? color) {
     velocityColor = color;
     return this;
   }

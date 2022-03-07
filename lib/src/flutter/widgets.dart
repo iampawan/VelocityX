@@ -125,7 +125,7 @@ extension WidgetsExtension on Widget {
   }
 
   /// Extension for coloring a widget with [DecoratedBox]
-  DecoratedBox backgroundColor(Color color) {
+  DecoratedBox backgroundColor(Color? color) {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: color,
