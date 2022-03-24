@@ -196,7 +196,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// If the style's 'inherit' property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  VxTextBuilder textStyle(TextStyle _style) {
+  VxTextBuilder textStyle(TextStyle? _style) {
     _themedStyle = _style;
     return this;
   }
