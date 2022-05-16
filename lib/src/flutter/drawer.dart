@@ -147,7 +147,7 @@ class _VxDrawerState extends State<_VxDrawer> with TickerProviderStateMixin {
       ),
     );
 
-    WidgetsBinding.instance?.addPostFrameCallback(getBoxHeight);
+    WidgetsBinding.instance.addPostFrameCallback(getBoxHeight);
   }
 
   void getBoxHeight(Duration time) {

@@ -48,7 +48,7 @@ class VxMarqueeState extends State<VxMarquee>
   void initState() {
     super.initState();
     scrollController = ScrollController();
-    WidgetsBinding.instance!.addPostFrameCallback((callback) {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
       startTimer();
     });
   }

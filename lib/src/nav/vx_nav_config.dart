@@ -3,7 +3,6 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/nav/vx_delegate.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'i_vx_nav.dart';

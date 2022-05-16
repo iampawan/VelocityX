@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../velocity_x.dart';
-import 'clippers/vx_half.dart';
 
 extension WidgetsExtension on Widget {
   ///Tooltip as accessibility
