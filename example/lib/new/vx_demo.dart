@@ -1,7 +1,6 @@
 import 'package:example/new/vx_browser.dart';
 import 'package:example/utils/coolors.dart';
 import 'package:example/widgets/draw_android.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 

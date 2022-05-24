@@ -3,7 +3,6 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/nav/vx_delegate.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'i_vx_nav.dart';
@@ -110,6 +109,7 @@ class VxNavConfig extends ChangeNotifier {
   Future<void> pushAll(List<Uri> uris, {List<dynamic>? params}) async {
     int index = 0;
     for (final uri in uris) {
+      // ignore: unnecessary_type_check
       if (params != null && params is List) {
         await push(uri, params: params[index]);
       } else {

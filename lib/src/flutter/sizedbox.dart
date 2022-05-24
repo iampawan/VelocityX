@@ -48,7 +48,7 @@ import 'package:velocity_x/src/extensions/context_ext.dart';
 /// specified height and width as possible given the parent's constraints. If
 /// [height] or [width] is null or unspecified, it will be treated as zero.
 ///
-/// The [new SizedBox.expand] constructor can be used to make a [SizedBox] that
+/// The [SizedBox.expand] constructor can be used to make a [SizedBox] that
 /// sizes itself to fit the parent. It is equivalent to setting [width] and
 /// [height] to [double.infinity].
 ///

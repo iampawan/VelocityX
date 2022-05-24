@@ -12,11 +12,9 @@
  *  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velocity_x/src/flutter/flex.dart';
 
 /// The VxAppBar displays the toolbar widgets, [leading], [title], and [actions],
@@ -144,7 +142,7 @@ class VxAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// with [backgroundColor], [iconTheme], [textTheme].
   ///
   /// If this property is null, then [ThemeData.appBarTheme.brightness] is used,
-  /// if that is also null, then [ThemeData.primaryColorBrightness] is used.
+  /// if that is also null, then [ThemeData.estimateBrightnessForColor(color)] is used.
   final Brightness? brightness;
 
   /// The color, opacity, and size to use for app bar icons. Typically this
@@ -552,7 +550,7 @@ class _VxAppBarState extends State<VxAppBar> {
 
     final Brightness brightness = widget.brightness ??
         appBarTheme.systemOverlayStyle?.statusBarBrightness ??
-        theme.primaryColorBrightness;
+        theme.brightness;
     final SystemUiOverlayStyle overlayStyle = brightness == Brightness.dark
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark;

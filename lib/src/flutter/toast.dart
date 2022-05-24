@@ -14,7 +14,6 @@
 
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// Toast position
@@ -23,6 +22,7 @@ enum VxToastPosition {
   center,
   bottom,
 }
+
 enum VxToastType {
   text,
   loading,
@@ -149,8 +149,6 @@ class _VxToastView extends StatefulWidget {
   /// Toast type. It can be [VxToastType.text] or [VxToastType.loading]
   final VxToastType? type;
 
-  final VoidCallback? close;
-
   const _VxToastView(
     this.msg, {
     Key? key,
@@ -161,7 +159,6 @@ class _VxToastView extends StatefulWidget {
     this.pdHorizontal,
     this.pdVertical,
     this.type,
-    this.close,
   }) : super(key: key);
 
   @override

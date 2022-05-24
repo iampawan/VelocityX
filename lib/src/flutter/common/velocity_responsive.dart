@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:velocity_x/src/extensions/context_ext.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import 'velocity_conditional.dart';
 
 /// VxDevice widget can be used for making responsive apps based on if it's mobile or web.
 /// In case, if you want more options based on window size, use [VxResponsive].

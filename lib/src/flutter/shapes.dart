@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 
 // ignore: must_be_immutable

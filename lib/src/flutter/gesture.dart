@@ -13,7 +13,6 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 import 'builder.dart';
@@ -213,6 +212,8 @@ extension GestureExtensions on Widget {
       onTap: onTap,
       needHaptic: touchFeedBack,
       hitTestBehavior: hitTestBehavior,
+      normalColor: Colors.transparent,
+      pressedColor: Colors.black12,
     );
   }
 
@@ -281,8 +282,8 @@ extension GestureExtensions on Widget {
 class _CallbackButton extends StatefulWidget {
   final VoidCallback? onTap;
   final Widget? child;
-  final Color normalColor;
-  final Color pressedColor;
+  final Color? normalColor;
+  final Color? pressedColor;
   final bool needHaptic;
   final HitTestBehavior? hitTestBehavior;
 
