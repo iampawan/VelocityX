@@ -31,6 +31,14 @@ class _Nav1State extends State<Nav1> {
           child: "Clear & Push Nav2".text.make(),
         ),
         TextButton(
+          onPressed: () async {
+            final path =
+                await VxNavigator.of(context).waitAndPush(Uri(path: "/nav3"));
+            print("Returned $path");
+          },
+          child: "Wait & Push Nav3".text.make(),
+        ),
+        TextButton(
           onPressed: () {
             VxNavigator.of(context).returnAndPush(Uri(path: "/"));
           },
@@ -63,6 +71,12 @@ class Nav3 extends StatelessWidget {
             VxNavigator.of(context).popToRoot();
           },
           child: "Pop to root".text.make(),
+        ),
+        TextButton(
+          onPressed: () {
+            VxNavigator.of(context).returnAndPush(Uri(path: "/nav1"));
+          },
+          child: "Return result".text.make(),
         ),
       ].vStack(),
     );

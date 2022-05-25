@@ -174,10 +174,14 @@ class VxNavConfig extends ChangeNotifier {
   /// This is custom method to pass returning value
   /// while popping the page. It can be considered as an example
   void returnAndPush(dynamic value) {
-    _pages.removeLast();
-    _uris.removeLast();
-    _boolResultCompleter!.complete(value);
-    notifyListeners();
+    if (_boolResultCompleter != null) {
+      _pages.removeLast();
+      _uris.removeLast();
+      if (_uris.length == 1) {
+        _boolResultCompleter!.complete(value);
+      }
+      notifyListeners();
+    }
   }
 
   /// remove the pages and go root page
