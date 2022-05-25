@@ -19,6 +19,7 @@ environment:
   flutter: ">=2.0.0"
 
 dependencies:
+  device_preview: ^1.1.0
   flutter:
     sdk: flutter
   velocity_x:

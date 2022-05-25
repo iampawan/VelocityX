@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
@@ -77,16 +78,25 @@ void main() {
   */
 
   runApp(
-    MaterialApp.router(
-      routeInformationParser: VxInformationParser(),
-      routerDelegate: _navigator,
-      backButtonDispatcher: RootBackButtonDispatcher(),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Vx.blue500,
-        brightness: Brightness.light,
+    DevicePreview(
+      // data: DevicePreviewData(
+      //   deviceIdentifier: Devices.ios.iPad.toString(),
+      //   isFrameVisible: true,
+      // ),
+      builder: (context) => MaterialApp.router(
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        routeInformationParser: VxInformationParser(),
+        routerDelegate: _navigator,
+        backButtonDispatcher: RootBackButtonDispatcher(),
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          primaryColor: Vx.blue500,
+          brightness: Brightness.light,
+        ),
+        debugShowCheckedModeBanner: false,
       ),
-      debugShowCheckedModeBanner: false,
     ),
   );
 }
@@ -106,7 +116,6 @@ class _DemoState extends State<Demo> {
 
   @override
   Widget build(BuildContext context) {
-    Vx.inspect("message");
     return Scaffold(
       appBar: VxAppBar(
         searchBar: true,
