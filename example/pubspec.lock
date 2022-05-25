@@ -333,14 +333,14 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "3.4.0"
+    version: "3.5.0"
   vxstate:
     dependency: transitive
     description:
       name: vxstate
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.0"
   win32:
     dependency: transitive
     description:

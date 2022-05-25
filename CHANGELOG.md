@@ -1,3 +1,13 @@
+## [3.5.0] - May 25, 2022
+
+- [Breaking] Colors renamed as per Tailwind BlueGray -> Slate, TrueGray -> Neutral, CoolGray -> Gray, Gray -> Zinc, WarmGray -> Stone, LightBlue -> Sky.
+- [New] VxStateSwitcher widget added.
+- [New] Web3 utils added. Check VxWeb3 and some new extension methods.
+- VxResponsive improved.
+- VxState updated.
+- Compatible with Flutter 3.
+- Minor bug fixes.
+
 ## [3.4.0] - Jan 14, 2022
 
 - New: .disabled & .clipOval widget extension added & isDarkMode context extension added.

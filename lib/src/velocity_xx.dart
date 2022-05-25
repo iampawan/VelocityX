@@ -58,119 +58,119 @@ mixin Vx {
   static const Color white = Color(0xFFFFFFFF);
 
   ///Gray Colors
-  static const String grayHex50 = "#FAFAFA";
-  static const String grayHex100 = "#F4F4F5";
-  static const String grayHex200 = "#E4E4E7";
-  static const String grayHex300 = "#D4D4D8";
-  static const String grayHex400 = "#A1A1AA";
-  static const String grayHex500 = "#71717A";
-  static const String grayHex600 = "#52525B";
-  static const String grayHex700 = "#3F3F46";
-  static const String grayHex800 = "#27272A";
-  static const String grayHex900 = "#18181B";
+  static const String grayHex50 = "#f9fafb";
+  static const String grayHex100 = "#f3f4f6";
+  static const String grayHex200 = "#e5e7eb";
+  static const String grayHex300 = "#d1d5db";
+  static const String grayHex400 = "#9ca3af";
+  static const String grayHex500 = "#6b7280";
+  static const String grayHex600 = "#4b5563";
+  static const String grayHex700 = "#374151";
+  static const String grayHex800 = "#1f2937";
+  static const String grayHex900 = "#111827";
 
-  static const Color gray50 = Color(0xFFFAFAFA);
-  static const Color gray100 = Color(0xFFF4F4F5);
-  static const Color gray200 = Color(0xFFE4E4E7);
-  static const Color gray300 = Color(0xFFD4D4D8);
-  static const Color gray400 = Color(0xFFA1A1AA);
-  static const Color gray500 = Color(0xFF71717A);
-  static const Color gray600 = Color(0xFF52525B);
-  static const Color gray700 = Color(0xFF3F3F46);
-  static const Color gray800 = Color(0xFF27272A);
-  static const Color gray900 = Color(0xFF18181B);
+  static const Color gray50 = Color(0xFFf9fafb);
+  static const Color gray100 = Color(0xFFf3f4f6);
+  static const Color gray200 = Color(0xFFe5e7eb);
+  static const Color gray300 = Color(0xFFd1d5db);
+  static const Color gray400 = Color(0xFF9ca3af);
+  static const Color gray500 = Color(0xFF6b7280);
+  static const Color gray600 = Color(0xFF4b5563);
+  static const Color gray700 = Color(0xFF374151);
+  static const Color gray800 = Color(0xFF1f2937);
+  static const Color gray900 = Color(0xFF111827);
 
-  ///BlueGray Colors
-  static const String blueGrayHex50 = "#F8FAFC";
-  static const String blueGrayHex100 = "#F1F5F9";
-  static const String blueGrayHex200 = "#E2E8F0";
-  static const String blueGrayHex300 = "#CBD5E1";
-  static const String blueGrayHex400 = "#94A3B8";
-  static const String blueGrayHex500 = "#64748B";
-  static const String blueGrayHex600 = "#475569";
-  static const String blueGrayHex700 = "#334155";
-  static const String blueGrayHex800 = "#1E293B";
-  static const String blueGrayHex900 = "#0F172A";
+  // Slate Colors
+  static const String slateHex50 = "#f8fafc";
+  static const String slateHex100 = "#f1f5f9";
+  static const String slateHex200 = "#e2e8f0";
+  static const String slateHex300 = "#cbd5e1";
+  static const String slateHex400 = "#94a3b8";
+  static const String slateHex500 = "#64748b";
+  static const String slateHex600 = "#475569";
+  static const String slateHex700 = "#334155";
+  static const String slateHex800 = "#1e293b";
+  static const String slateHex900 = "#0f172a";
 
-  static const Color blueGray50 = Color(0xFFF8FAFC);
-  static const Color blueGray100 = Color(0xFFF1F5F9);
-  static const Color blueGray200 = Color(0xFFE2E8F0);
-  static const Color blueGray300 = Color(0xFFCBD5E1);
-  static const Color blueGray400 = Color(0xFF94A3B8);
-  static const Color blueGray500 = Color(0xFF64748B);
-  static const Color blueGray600 = Color(0xFF475569);
-  static const Color blueGray700 = Color(0xFF334155);
-  static const Color blueGray800 = Color(0xFF1E293B);
-  static const Color blueGray900 = Color(0xFF0F172A);
+  static const Color slate50 = Color(0xFFf8fafc);
+  static const Color slate100 = Color(0xFFf1f5f9);
+  static const Color slate200 = Color(0xFFe2e8f0);
+  static const Color slate300 = Color(0xFFcbd5e1);
+  static const Color slate400 = Color(0xFF94a3b8);
+  static const Color slate500 = Color(0xFF64748b);
+  static const Color slate600 = Color(0xFF475569);
+  static const Color slate700 = Color(0xFF334155);
+  static const Color slate800 = Color(0xFF1e293b);
+  static const Color slate900 = Color(0xFF0f172a);
 
-  // Cool Gray Colors
-  static const String coolGrayHex50 = "#F9FAFB";
-  static const String coolGrayHex100 = "#F3F4F6";
-  static const String coolGrayHex200 = "#E5E7EB";
-  static const String coolGrayHex300 = "#D1D5DB";
-  static const String coolGrayHex400 = "#9CA3AF";
-  static const String coolGrayHex500 = "#6B7280";
-  static const String coolGrayHex600 = "#4B5563";
-  static const String coolGrayHex700 = "#4B5563";
-  static const String coolGrayHex800 = "#1F2937";
-  static const String coolGrayHex900 = "#111827";
+  // Zinc Colors
+  static const String zincHex50 = "#fafafa";
+  static const String zincHex100 = "#f4f4f5";
+  static const String zincHex200 = "#e4e4e7";
+  static const String zincHex300 = "#d4d4d8";
+  static const String zincHex400 = "#a1a1aa";
+  static const String zincHex500 = "#71717a";
+  static const String zincHex600 = "#52525b";
+  static const String zincHex700 = "#3f3f46";
+  static const String zincHex800 = "#27272a";
+  static const String zincHex900 = "#18181b";
 
-  static const Color coolGray50 = Color(0xFFF9FAFB);
-  static const Color coolGray100 = Color(0xFFF3F4F6);
-  static const Color coolGray200 = Color(0xFFE5E7EB);
-  static const Color coolGray300 = Color(0xFFD1D5DB);
-  static const Color coolGray400 = Color(0xFF9CA3AF);
-  static const Color coolGray500 = Color(0xFF6B7280);
-  static const Color coolGray600 = Color(0xFF4B5563);
-  static const Color coolGray700 = Color(0xFF4B5563);
-  static const Color coolGray800 = Color(0xFF1F2937);
-  static const Color coolGray900 = Color(0xFF111827);
+  static const Color zinc50 = Color(0xFFfafafa);
+  static const Color zinc100 = Color(0xFFf4f4f5);
+  static const Color zinc200 = Color(0xFFe4e4e7);
+  static const Color zinc300 = Color(0xFFd4d4d8);
+  static const Color zinc400 = Color(0xFFa1a1aa);
+  static const Color zinc500 = Color(0xFF71717a);
+  static const Color zinc600 = Color(0xFF52525b);
+  static const Color zinc700 = Color(0xFF3f3f46);
+  static const Color zinc800 = Color(0xFF27272a);
+  static const Color zinc900 = Color(0xFF18181b);
 
-  // True Gray Colors
-  static const String trueGrayHex50 = "#FAFAFA";
-  static const String trueGrayHex100 = "#F5F5F5";
-  static const String trueGrayHex200 = "#E5E5E5";
-  static const String trueGrayHex300 = "#D4D4D4";
-  static const String trueGrayHex400 = "#A3A3A3";
-  static const String trueGrayHex500 = "#737373";
-  static const String trueGrayHex600 = "#525252";
-  static const String trueGrayHex700 = "#404040";
-  static const String trueGrayHex800 = "#262626";
-  static const String trueGrayHex900 = "#171717";
+  // Stone Colors
+  static const String stoneHex50 = "#FAFAF9";
+  static const String stoneHex100 = "#F5F5F4";
+  static const String stoneHex200 = "#E7E5E4";
+  static const String stoneHex300 = "#D6D3D1";
+  static const String stoneHex400 = "#A8A29E";
+  static const String stoneHex500 = "#78716C";
+  static const String stoneHex600 = "#57534E";
+  static const String stoneHex700 = "#44403C";
+  static const String stoneHex800 = "#292524";
+  static const String stoneHex900 = "#1C1917";
 
-  static const Color trueGray50 = Color(0xFFFAFAFA);
-  static const Color trueGray100 = Color(0xFFF5F5F5);
-  static const Color trueGray200 = Color(0xFFE5E5E5);
-  static const Color trueGray300 = Color(0xFFD4D4D4);
-  static const Color trueGray400 = Color(0xFFA3A3A3);
-  static const Color trueGray500 = Color(0xFF737373);
-  static const Color trueGray600 = Color(0xFF525252);
-  static const Color trueGray700 = Color(0xFF404040);
-  static const Color trueGray800 = Color(0xFF262626);
-  static const Color trueGray900 = Color(0xFF171717);
+  static const Color stone50 = Color(0xFFFAFAF9);
+  static const Color stone100 = Color(0xFFF5F5F4);
+  static const Color stone200 = Color(0xFFE7E5E4);
+  static const Color stone300 = Color(0xFFD6D3D1);
+  static const Color stone400 = Color(0xFFA8A29E);
+  static const Color stone500 = Color(0xFF78716C);
+  static const Color stone600 = Color(0xFF57534E);
+  static const Color stone700 = Color(0xFF44403C);
+  static const Color stone800 = Color(0xFF292524);
+  static const Color stone900 = Color(0xFF1C1917);
 
-  // Warm Gray Colors
-  static const String warmGrayHex50 = "#FAFAF9";
-  static const String warmGrayHex100 = "#F5F5F4";
-  static const String warmGrayHex200 = "#E7E5E4";
-  static const String warmGrayHex300 = "#D6D3D1";
-  static const String warmGrayHex400 = "#A8A29E";
-  static const String warmGrayHex500 = "#78716C";
-  static const String warmGrayHex600 = "#57534E";
-  static const String warmGrayHex700 = "#44403C";
-  static const String warmGrayHex800 = "#292524";
-  static const String warmGrayHex900 = "#1C1917";
+  // Neutral Colors
+  static const String neutralHex50 = "#fafafa";
+  static const String neutralHex100 = "#f5f5f5";
+  static const String neutralHex200 = "#e5e5e5";
+  static const String neutralHex300 = "#d4d4d4";
+  static const String neutralHex400 = "#a3a3a3";
+  static const String neutralHex500 = "#737373";
+  static const String neutralHex600 = "#525252";
+  static const String neutralHex700 = "#404040";
+  static const String neutralHex800 = "#262626";
+  static const String neutralHex900 = "#171717";
 
-  static const Color warmGray50 = Color(0xFFFAFAF9);
-  static const Color warmGray100 = Color(0xFFF5F5F4);
-  static const Color warmGray200 = Color(0xFFE7E5E4);
-  static const Color warmGray300 = Color(0xFFD6D3D1);
-  static const Color warmGray400 = Color(0xFFA8A29E);
-  static const Color warmGray500 = Color(0xFF78716C);
-  static const Color warmGray600 = Color(0xFF57534E);
-  static const Color warmGray700 = Color(0xFF44403C);
-  static const Color warmGray800 = Color(0xFF292524);
-  static const Color warmGray900 = Color(0xFF1C1917);
+  static const Color neutral50 = Color(0xFFfafafa);
+  static const Color neutral100 = Color(0xFFf5f5f5);
+  static const Color neutral200 = Color(0xFFe5e5e5);
+  static const Color neutral300 = Color(0xFFd4d4d4);
+  static const Color neutral400 = Color(0xFFa3a3a3);
+  static const Color neutral500 = Color(0xFF737373);
+  static const Color neutral600 = Color(0xFF525252);
+  static const Color neutral700 = Color(0xFF404040);
+  static const Color neutral800 = Color(0xFF262626);
+  static const Color neutral900 = Color(0xFF171717);
 
   ///Red Colors
   static const String redHex50 = "#FEF2F2";
@@ -379,28 +379,28 @@ mixin Vx {
   static const Color cyan800 = Color(0xFF155E75);
   static const Color cyan900 = Color(0xFF164E63);
 
-  ///Light Blue Colors
-  static const String lightBlueHex50 = "#F0F9FF";
-  static const String lightBlueHex100 = "#E0F2FE";
-  static const String lightBlueHex200 = "#BAE6FD";
-  static const String lightBlueHex300 = "#7DD3FC";
-  static const String lightBlueHex400 = "#38BDF8";
-  static const String lightBlueHex500 = "#0EA5E9";
-  static const String lightBlueHex600 = "#0284C7";
-  static const String lightBlueHex700 = "#0369A1";
-  static const String lightBlueHex800 = "#075985";
-  static const String lightBlueHex900 = "#0C4A6E";
+  ///Sky Colors
+  static const String skyHex50 = "#F0F9FF";
+  static const String skyHex100 = "#E0F2FE";
+  static const String skyHex200 = "#BAE6FD";
+  static const String skyHex300 = "#7DD3FC";
+  static const String skyHex400 = "#38BDF8";
+  static const String skyHex500 = "#0EA5E9";
+  static const String skyHex600 = "#0284C7";
+  static const String skyHex700 = "#0369A1";
+  static const String skyHex800 = "#075985";
+  static const String skyHex900 = "#0C4A6E";
 
-  static const Color lightBlue50 = Color(0xFFF0F9FF);
-  static const Color lightBlue100 = Color(0xFFE0F2FE);
-  static const Color lightBlue200 = Color(0xFFBAE6FD);
-  static const Color lightBlue300 = Color(0xFF7DD3FC);
-  static const Color lightBlue400 = Color(0xFF38BDF8);
-  static const Color lightBlue500 = Color(0xFF0EA5E9);
-  static const Color lightBlue600 = Color(0xFF0284C7);
-  static const Color lightBlue700 = Color(0xFF0369A1);
-  static const Color lightBlue800 = Color(0xFF075985);
-  static const Color lightBlue900 = Color(0xFF0C4A6E);
+  static const Color sky50 = Color(0xFFF0F9FF);
+  static const Color sky100 = Color(0xFFE0F2FE);
+  static const Color sky200 = Color(0xFFBAE6FD);
+  static const Color sky300 = Color(0xFF7DD3FC);
+  static const Color sky400 = Color(0xFF38BDF8);
+  static const Color sky500 = Color(0xFF0EA5E9);
+  static const Color sky600 = Color(0xFF0284C7);
+  static const Color sky700 = Color(0xFF0369A1);
+  static const Color sky800 = Color(0xFF075985);
+  static const Color sky900 = Color(0xFF0C4A6E);
 
   ///Blue Colors
   static const String blueHex50 = "#EFF6FF";

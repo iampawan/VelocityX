@@ -588,7 +588,7 @@ class _DemoListState extends State<DemoList> {
                 .box
                 .p16
                 .rounded
-                .gradientFromTo(from: Vx.warmGray600, to: Vx.emerald400)
+                .gradientFromTo(from: Vx.stone600, to: Vx.emerald400)
                 .make(),
           ],
         ),
