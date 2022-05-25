@@ -146,7 +146,7 @@ extension GestureExtensions on Widget {
   _VelocityXInkWellBuilder mdLongClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder.mdLongClick(this, onClick);
 
-  GestureDetector onTap(VoidCallback onTap,
+  GestureDetector onTap(VoidCallback? onTap,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
     return GestureDetector(
       behavior: hitTestBehavior,
@@ -156,7 +156,7 @@ extension GestureExtensions on Widget {
   }
 
   InkWell onInkTap(
-    VoidCallback onTap,
+    VoidCallback? onTap,
   ) {
     return InkWell(
       onTap: onTap,
@@ -164,7 +164,7 @@ extension GestureExtensions on Widget {
     );
   }
 
-  GestureDetector onDoubleTap(VoidCallback onDoubleTap,
+  GestureDetector onDoubleTap(VoidCallback? onDoubleTap,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
     return GestureDetector(
       behavior: hitTestBehavior,
@@ -174,7 +174,7 @@ extension GestureExtensions on Widget {
   }
 
   InkWell onInkDoubleTap(
-    VoidCallback onDoubleTap,
+    VoidCallback? onDoubleTap,
   ) {
     return InkWell(
       onDoubleTap: onDoubleTap,
@@ -182,7 +182,7 @@ extension GestureExtensions on Widget {
     );
   }
 
-  GestureDetector onLongPress(VoidCallback onLongPress,
+  GestureDetector onLongPress(VoidCallback? onLongPress,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
     return GestureDetector(
       behavior: hitTestBehavior,
@@ -192,7 +192,7 @@ extension GestureExtensions on Widget {
   }
 
   InkWell onInkLongPress(
-    VoidCallback onLongPress,
+    VoidCallback? onLongPress,
   ) {
     return InkWell(
       onLongPress: onLongPress,
@@ -204,7 +204,7 @@ extension GestureExtensions on Widget {
   ///and you can decide that whether it will have a touchFeedBack (vibration on your phone)
   ///
 
-  Widget onFeedBackTap(VoidCallback onTap,
+  Widget onFeedBackTap(VoidCallback? onTap,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild,
       bool touchFeedBack = false}) {
     return _CallbackButton(
@@ -219,7 +219,7 @@ extension GestureExtensions on Widget {
 
   /// Mouse Region Hover
   MouseRegion onMouseHover(
-    PointerHoverEventListener onHover,
+    PointerHoverEventListener? onHover,
   ) {
     return MouseRegion(
       onHover: onHover,
@@ -229,7 +229,7 @@ extension GestureExtensions on Widget {
 
   /// Mouse Region Enter
   MouseRegion onMouseEnter(
-    PointerEnterEventListener onEnter,
+    PointerEnterEventListener? onEnter,
   ) {
     return MouseRegion(
       onEnter: onEnter,
@@ -239,7 +239,7 @@ extension GestureExtensions on Widget {
 
   /// Mouse Region Exit
   MouseRegion onMouseExit(
-    PointerExitEventListener onExit,
+    PointerExitEventListener? onExit,
   ) {
     return MouseRegion(
       onExit: onExit,
@@ -249,8 +249,8 @@ extension GestureExtensions on Widget {
 
   /// Mouse Region Enter & Exit
   MouseRegion onMouseEnterExit({
-    required PointerEnterEventListener onEnter,
-    required PointerExitEventListener onExit,
+    PointerEnterEventListener? onEnter,
+    PointerExitEventListener? onExit,
   }) {
     return MouseRegion(
       onEnter: onEnter,
