@@ -139,8 +139,8 @@ If you found this project useful, then please consider giving it a :star: on Git
 
 ### YouTube Channel
 
-[mtechviral](https://www.youtube.com/mtechviral) </br>
-[codepur](https://www.youtube.com/codepur)
+[Codepur](https://www.youtube.com/hellocodepur) </br>
+[Codepur Hindi](https://www.youtube.com/hindicodepur)
 
 ### Facebook Group
 
