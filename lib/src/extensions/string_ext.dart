@@ -319,6 +319,6 @@ extension NullableStringIsEmptyOrNullExtension on String? {
   bool get isEmptyOrNull => this?.isEmpty ?? true;
 }
 
-extension NullableStringIsEmptyOrNotNullExtension on String? {
-  bool get isEmptyOrNotNull => !isEmptyOrNull;
+extension NullableStringIsNotEmptyAndNotNullExtension on String? {
+  bool get isNotEmptyAndNotNull => this!=null && this!.isNotEmpty;
 }
