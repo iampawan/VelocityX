@@ -1,7 +1,6 @@
 import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 

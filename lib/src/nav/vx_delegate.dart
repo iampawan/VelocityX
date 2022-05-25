@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/src/nav/vx_nav_config.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 typedef VxPageBuilder = Page Function(Uri uri, dynamic params);

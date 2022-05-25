@@ -13,8 +13,6 @@
 
 import 'package:flutter/cupertino.dart' show CupertinoTheme, CupertinoThemeData;
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 /// Extensions for general basic [Context]
