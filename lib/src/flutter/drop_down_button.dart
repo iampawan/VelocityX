@@ -169,7 +169,7 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
   }
 }
 
-extension DropDownExtension on List<String> {
+extension VxDropDownExtension on List<String> {
   ///
   /// Extension method to directly access [VxTextDropDown] with any widget without wrapping or with dot operator.
   ///

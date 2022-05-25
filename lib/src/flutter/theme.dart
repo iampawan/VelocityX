@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 ///
 /// Extension method to directly access material [Theme] with any widget without wrapping or with dot operator.
 ///
-extension ThemeExtension on Widget {
+extension VxThemeExtension on Widget {
   ///
   /// Extension method to directly access dark [Theme] with any widget without wrapping or with dot operator.
   ///

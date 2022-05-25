@@ -525,7 +525,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   }
 }
 
-extension TextExtensions on Text {
+extension VxTextExtensions on Text {
   ///
   /// Extension method to directly access [VxTextBuilder] with any widget without wrapping or with dot operator.
   ///

@@ -81,7 +81,7 @@ import 'package:velocity_x/src/extensions/context_ext.dart';
 ///  * [FittedBox], which sizes and positions its child widget to fit the parent
 ///    according to a given [BoxFit] discipline.
 ///  * The [catalog of layout widgets](https://flutter.dev/widgets/layout/).
-extension SizedBoxExtension on Widget {
+extension VxSizedBoxExtension on Widget {
   ///All available widths
   ///
   /// [SizedBox] widget with a specified [width]

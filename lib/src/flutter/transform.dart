@@ -21,7 +21,7 @@ double _degreeToRad(double degrees) => degrees / 180.0 * math.pi;
 ///
 /// Extension method to directly transform any widget without wrapping or with dot operator.
 ///
-extension TransformExtension on Widget {
+extension VxTransformExtension on Widget {
   ///
   /// Extension method to give 3D look to any widget without wrapping or with dot operator.
   ///

@@ -260,7 +260,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   }
 }
 
-extension AnimatedContainerWidgetExtension on Widget {
+extension VxAnimatedContainerWidgetExtension on Widget {
   ///
   /// Extension method to directly access [VxAnimatedBox] with any widget without wrapping or with dot operator.
   ///

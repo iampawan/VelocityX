@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 /// Extensions for general basic [Context]
-extension ContextExtensions on BuildContext {
+extension VxContextExtensions on BuildContext {
   MaterialResponsiveUiData get _mdResponsive =>
       MaterialResponsiveUiData.of(this);
 

@@ -294,7 +294,7 @@ class _VxToastViewState extends State<_VxToastView>
   }
 }
 
-extension ToastExtension on BuildContext {
+extension VxToastExtension on BuildContext {
   ///
   /// Extension method to directly access [VxToast] with context.
   ///

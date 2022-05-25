@@ -132,7 +132,7 @@ class VxTable extends VxWidgetBuilder<Widget> with VxColorMixin<VxTable> {
   }
 }
 
-extension TableExtensions on List<TableRow> {
+extension VxTableExtensions on List<TableRow> {
   ///
   /// Extension method to directly access [VxTable]
   ///

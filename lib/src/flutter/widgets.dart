@@ -19,7 +19,7 @@ import 'package:flutter/rendering.dart';
 
 import '../../velocity_x.dart';
 
-extension WidgetsExtension on Widget {
+extension VxWidgetsExtension on Widget {
   ///Tooltip as accessibility
   Widget tooltip(String message,
           {Key? key,

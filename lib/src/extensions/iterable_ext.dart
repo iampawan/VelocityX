@@ -5,7 +5,7 @@
 import 'dart:math';
 
 /// Utility extension methods for the native [Iterable] class.
-extension IterableBasics<E> on Iterable<E> {
+extension VxIterableBasics<E> on Iterable<E> {
   /// Alias for [Iterable]`.every`.
   bool all(bool test(E element)) => every(test);
 

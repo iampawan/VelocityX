@@ -18,7 +18,7 @@ import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
 
 /// Extension Methods & Widgets for the strings
-extension StringExtension on String {
+extension VxStringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
   String firstLetterUpperCase() => length > 1
       ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}"
@@ -314,11 +314,11 @@ extension StringExtension on String {
   VxRichText get richText => VxRichText(this);
 }
 
-extension NullableStringIsEmptyOrNullExtension on String? {
+extension VxNullableStringIsEmptyOrNullExtension on String? {
   /// Returns `true` if the String is either null or empty.
   bool get isEmptyOrNull => this?.isEmpty ?? true;
 }
 
-extension NullableStringIsNotEmptyAndNotNullExtension on String? {
-  bool get isNotEmptyAndNotNull => this!=null && this!.isNotEmpty;
+extension VxNullableStringIsNotEmptyAndNotNullExtension on String? {
+  bool get isNotEmptyAndNotNull => this != null && this!.isNotEmpty;
 }

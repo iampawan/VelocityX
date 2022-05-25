@@ -62,7 +62,7 @@ mixin VxWeb3 {
   }
 }
 
-extension Web3Extension on String {
+extension VxWeb3Extension on String {
   /// Takes Ethereum BigDecimal value in String and convert it
   double get getEtherValue {
     final weiBigInt = BigInt.parse(this);

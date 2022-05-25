@@ -169,7 +169,7 @@ class _PaintShadow extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
-extension GlassWidgetExtension on Widget {
+extension VxGlassWidgetExtension on Widget {
   ///
   /// Extension method to directly access  [VxGlassmorphic] with any widget without wrapping or with dot operator.
   ///

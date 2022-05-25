@@ -18,7 +18,7 @@ import 'package:intl/intl.dart' as intl;
 import 'package:velocity_x/src/flutter/text.dart';
 
 /// Extension Methods & Widgets for the numbers
-extension NumExtension on num {
+extension VxNumExtension on num {
   /// This ext will be removed soon. Use [toDoubleStringAsFixed] instead.
   @Deprecated('Use [toDoubleStringAsFixed] instead. It will be removed soon.')
   String toDollarAsFixed({int digit = 2}) {
@@ -105,7 +105,7 @@ extension NumExtension on num {
 }
 
 /// Extension method for integers.
-extension IntExtension on int {
+extension VxIntExtension on int {
   /// Returns an iterable from `0` up to but not including [this].
   /// Example:
   /// ```dart

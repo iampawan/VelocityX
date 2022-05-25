@@ -153,7 +153,7 @@ class VxMarqueeState extends State<VxMarquee>
   }
 }
 
-extension MarqueeExtension on String {
+extension VxMarqueeExtension on String {
   ///
   /// Extension method to directly access [VxMarquee] with any widget without wrapping or with dot operator.
   ///

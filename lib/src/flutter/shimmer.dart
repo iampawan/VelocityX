@@ -235,7 +235,7 @@ class _VxShimmerFilter extends RenderProxyBox {
       start + (end - start) * controllerValue;
 }
 
-extension ShimmerExtension on Widget {
+extension VxShimmerExtension on Widget {
   ///
   /// Extension method to directly access [VxShimmer] with any widget without wrapping or with dot operator.
   ///

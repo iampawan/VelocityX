@@ -372,7 +372,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   }
 }
 
-extension SelectableTextExtensions on SelectableText {
+extension VxSelectableTextExtensions on SelectableText {
   ///
   /// Extension method to directly access [VxSelectableTextBuilder] with any widget without wrapping or with dot operator.
   ///

@@ -142,7 +142,7 @@ class VxCard extends VxWidgetBuilder<Widget>
   }
 }
 
-extension CardExtension on Widget {
+extension VxCardExtension on Widget {
   ///
   /// Extension method to directly access [VxCard] with any widget without wrapping or with dot operator.
   ///

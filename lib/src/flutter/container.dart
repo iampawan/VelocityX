@@ -342,7 +342,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   }
 }
 
-extension ContainerWidgetExtension on Widget {
+extension VxContainerWidgetExtension on Widget {
   ///
   /// Extension method to directly access material [VxBox] with any widget without wrapping or with dot operator.
   ///

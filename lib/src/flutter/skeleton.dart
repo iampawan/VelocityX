@@ -197,7 +197,7 @@ class VxSkeletonState extends State<VxSkeleton>
   }
 }
 
-extension SkeletonExtension on Widget {
+extension VxSkeletonExtension on Widget {
   ///
   /// Extension method to directly access [VxSkeleton] with any widget without wrapping or with dot operator.
   ///

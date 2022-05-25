@@ -661,7 +661,7 @@ class _VxTicketClipper extends CustomClipper<Path> {
   }
 }
 
-extension ShapesExtension on Widget {
+extension VxShapesExtension on Widget {
   ///
   /// Extension method to directly access [VxCircle] with any widget without wrapping or with dot operator.
   ///

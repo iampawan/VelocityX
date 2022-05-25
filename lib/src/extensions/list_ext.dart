@@ -18,7 +18,7 @@ import 'package:velocity_x/src/flutter/list.dart';
 import 'package:velocity_x/src/flutter/swiper.dart';
 
 /// Extension Methods for List of widgets.
-extension ListWidgetExtension on List<Widget> {
+extension VxListWidgetExtension on List<Widget> {
   ///
   /// Extension for using [VStack] directly with list of widgets
   ///
@@ -196,7 +196,7 @@ extension ListWidgetExtension on List<Widget> {
       );
 }
 
-extension ListStringExtension on List<String> {
+extension VxListStringExtension on List<String> {
   ///
   /// Extension for using [VxDiscList] directly with list of strings.
   ///

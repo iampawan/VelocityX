@@ -15,7 +15,7 @@
 import 'package:flutter/material.dart';
 
 /// Extension method for providing opacity on the top of widgets
-extension OpacityExtension on Widget {
+extension VxOpacityExtension on Widget {
   ///
   /// Provide a custom opacity to any widget by using [value]
   ///

@@ -64,7 +64,7 @@ class _VxPaddingBuilder extends VxWidgetBuilder<Widget>
 ///
 /// Extension to provide [Padding] to any widget.
 ///
-extension PaddingExtensions on Widget {
+extension VxPaddingExtensions on Widget {
   _VxPaddingBuilder get pad => _VxPaddingBuilder(this);
 
   /// Gives 0 padding from all sides.
