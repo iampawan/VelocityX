@@ -267,6 +267,40 @@ extension StringExtension on String {
     return intl.DateFormat.MMMMEEEEd(locale).format(toDate()!);
   }
 
+  static final _camelCaseMatcher = RegExp('[A-Z][a-z]*');
+
+  /// From 'foo_bar' to 'fooBar'
+  String get lowerCamelCase {
+    final out = StringBuffer();
+    final parts = split('_');
+    for (var i = 0; i < parts.length; i++) {
+      final part = parts[i];
+      if (part.isNotEmpty)
+        out.write(i == 0 ? part.toLowerCase() : part.capitalized);
+    }
+    return out.toString();
+  }
+
+  /// from 'foo_bar' to 'FooBar'
+  String get upperCamelCase {
+    final out = StringBuffer();
+    final parts = split('_');
+    for (var i = 0; i < parts.length; i++) {
+      final part = parts[i];
+      if (part.isNotEmpty) {
+        out.write(part.capitalized);
+      }
+    }
+    return out.toString();
+  }
+
+  /// from 'foo' to 'Foo'
+  String get capitalized => this[0].toUpperCase() + substring(1);
+
+  /// from fooBar to foo_bar
+  String get snakeCase => replaceAllMapped(_camelCaseMatcher,
+      (match) => '${match.start == 0 ? '' : '_'}${match[0]!.toLowerCase()}');
+
   /// Get Text Widget for the String
   VxTextBuilder get text => VxTextBuilder(this);
 
