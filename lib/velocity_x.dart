@@ -59,6 +59,7 @@ export 'src/flutter/sizedbox.dart';
 export 'src/flutter/skeleton.dart';
 export 'src/flutter/stepper.dart';
 export 'src/flutter/swiper.dart';
+export 'src/flutter/switcher.dart';
 export 'src/flutter/table.dart';
 export 'src/flutter/text.dart';
 export 'src/flutter/textfield.dart';

@@ -94,6 +94,7 @@ void main() {
           primarySwatch: Colors.blue,
           primaryColor: Vx.blue500,
           brightness: Brightness.light,
+          useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
       ),

@@ -3,8 +3,17 @@ import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class DemoList extends StatelessWidget {
+class DemoList extends StatefulWidget {
+  @override
+  State<DemoList> createState() => _DemoListState();
+}
+
+class _DemoListState extends State<DemoList> {
   final String? x = null;
+
+  VxPageState pageState = VxPageState.error;
+  int currentPage = 1;
+
   final List<String> list = [
     'Dart',
     'Flutter',
@@ -92,6 +101,33 @@ class DemoList extends StatelessWidget {
               },
               child: "Wait & Push".text.make(),
             ),
+          ],
+        ),
+        ExpansionTile(
+          title: "VxSwitcher".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            VxStateSwitcher(
+                child: const Text("Change State"),
+                // emptyView: Text("Empty"),
+                // errorView: Text("Error"),
+                // skeleton: Text("Skeleton"),
+                pageState: pageState,
+                onRetry: () {
+                  if (currentPage == 1) {
+                    Future.delayed(const Duration(seconds: 2), () {
+                      pageState = VxPageState.empty;
+                      currentPage = 2;
+                      setState(() {});
+                    });
+                  } else if (currentPage == 2) {
+                    Future.delayed(const Duration(seconds: 2), () {
+                      pageState = VxPageState.content;
+                      currentPage = 3;
+                      setState(() {});
+                    });
+                  }
+                })
           ],
         ),
         ExpansionTile(
