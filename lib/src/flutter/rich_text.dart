@@ -116,7 +116,7 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
   /// If the style's 'inherit' property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  VxRichText textStyle(TextStyle _style) {
+  VxRichText textStyle(TextStyle? _style) {
     _themedStyle = _style;
     return this;
   }
@@ -167,7 +167,7 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
   /// font size.
   ///
   /// See [StrutStyle] for details.
-  VxRichText strutStyle(StrutStyle _style) {
+  VxRichText strutStyle(StrutStyle? _style) {
     _strutStyle = _style;
     return this;
   }

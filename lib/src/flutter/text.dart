@@ -210,7 +210,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// font size.
   ///
   /// See [StrutStyle] for details.
-  VxTextBuilder strutStyle(StrutStyle _style) {
+  VxTextBuilder strutStyle(StrutStyle? _style) {
     _strutStyle = _style;
     return this;
   }
