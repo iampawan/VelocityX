@@ -620,10 +620,6 @@ class DemoList extends StatelessWidget {
           title: "Mobile Or Web".text.make(),
           childrenPadding: Vx.m32,
           children: [
-            const VxResponsive(
-              xsmall: Text("Hello"),
-              fallback: Text("Hi"),
-            ),
             "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
                 .selectableText
                 .bold

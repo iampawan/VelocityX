@@ -78,11 +78,16 @@ class VxResponsive extends StatelessWidget {
       context: context,
       valueBuilder: (context) => context.mdWindowSize,
       caseBuilders: {
-        VxWindowSize.xsmall: (context) => xsmall ?? fallback,
-        VxWindowSize.small: (context) => small ?? fallback,
-        VxWindowSize.medium: (context) => medium ?? fallback,
-        VxWindowSize.large: (context) => large ?? fallback,
-        VxWindowSize.xlarge: (context) => xlarge ?? fallback,
+        VxWindowSize.xsmall: (context) =>
+            xsmall ?? fallback ?? small ?? medium ?? large ?? xlarge,
+        VxWindowSize.small: (context) =>
+            small ?? xsmall ?? fallback ?? medium ?? large ?? xlarge,
+        VxWindowSize.medium: (context) =>
+            medium ?? small ?? xsmall ?? fallback ?? large ?? xlarge,
+        VxWindowSize.large: (context) =>
+            large ?? medium ?? small ?? xsmall ?? fallback ?? xlarge,
+        VxWindowSize.xlarge: (context) =>
+            xlarge ?? large ?? medium ?? small ?? xsmall ?? fallback,
       },
       fallbackBuilder: (context) => fallback,
     )!;
