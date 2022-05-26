@@ -1,4 +1,4 @@
-## [3.5.0] - May 25, 2022
+## [3.5.1] - May 25, 2022
 
 - [Breaking] Colors renamed as per Tailwind BlueGray -> Slate, TrueGray -> Neutral, CoolGray -> Gray, Gray -> Zinc, WarmGray -> Stone, LightBlue -> Sky.
 - [New] VxStateSwitcher widget added.
