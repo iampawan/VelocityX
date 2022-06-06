@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -10,7 +12,7 @@ class TimelineExample extends StatelessWidget {
         animationDuration: 5.seconds,
         showTrailing: true,
         onItemTap: (value) {
-          print(value.heading);
+          log(value.heading);
         },
         timelineList: List.generate(
           3,

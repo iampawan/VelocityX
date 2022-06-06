@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -36,7 +38,7 @@ class _Nav1State extends State<Nav1> {
           onPressed: () async {
             final path =
                 await VxNavigator.of(context).waitAndPush(Uri(path: "/nav3"));
-            print("Returned $path");
+            log("Returned $path");
           },
           child: "Wait & Push Nav3".text.make(),
         ),

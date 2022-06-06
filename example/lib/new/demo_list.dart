@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:example/models/dummy.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
@@ -40,8 +42,7 @@ class _DemoListState extends State<DemoList> {
   @override
   Widget build(BuildContext context) {
     // Guard Example
-    final _ = guard(() => x, "Guard - No value found");
-    final VxPopupMenuController _controller = VxPopupMenuController();
+    final VxPopupMenuController vxpopupmenucontroller = VxPopupMenuController();
     return Scaffold(
       appBar: AppBar(
         title: "VxDemo".text.make(),
@@ -99,7 +100,7 @@ class _DemoListState extends State<DemoList> {
                 final path = await VxNavigator.of(context)
                     .waitAndPush(Uri(path: "/nav1"));
 
-                print("Returned $path");
+                log("Returned $path");
               },
               child: "Wait & Push".text.make(),
             ),
@@ -198,7 +199,7 @@ class _DemoListState extends State<DemoList> {
               keyboardType: TextInputType.number,
               obscureText: false,
               onChanged: (value) {
-                print('Test value=$value');
+                log('Test value=$value');
               },
             ),
             20.heightBox,
@@ -378,7 +379,7 @@ class _DemoListState extends State<DemoList> {
                     VxToast.show(context, msg: 'index=$index value=$value');
                   },
                 ).then((data) {
-                  print('Test data=$data');
+                  log('Test data=$data');
                 });
               },
               child: "Menu Options View".text.make(),
@@ -400,8 +401,7 @@ class _DemoListState extends State<DemoList> {
                                   textAlign: TextAlign.center),
                             ),
                             IconButton(
-                              onPressed: () =>
-                                  Navigator.pop(context, 'hello'),
+                              onPressed: () => Navigator.pop(context, 'hello'),
                               icon: const Icon(Icons.clear, size: 24),
                             ),
                           ],
@@ -437,7 +437,7 @@ class _DemoListState extends State<DemoList> {
                         ),
                       ],
                     )).then((data) {
-                  print('Test data=$data');
+                  log('Test data=$data');
                 });
               },
               child: "Bottom Sheet View".text.make(),
@@ -594,7 +594,7 @@ class _DemoListState extends State<DemoList> {
           childrenPadding: Vx.m32,
           children: [
             VxStepper(onChange: (value) {
-              print(value);
+              log(value.toString());
             }),
           ],
         ),
@@ -644,7 +644,7 @@ class _DemoListState extends State<DemoList> {
               borderType: VxTextFieldBorderType.roundLine,
               isPassword: true,
               onChanged: (s) {
-                print(s);
+                log(s);
               },
             ),
           ],
@@ -692,7 +692,7 @@ class _DemoListState extends State<DemoList> {
                 enlargeCenterPage: true,
                 autoPlay: false,
                 onPageChanged: (index) {
-                  print(index);
+                  log(index.toString());
                 },
                 isFastScrollingEnabled: true,
                 scrollDirection:
@@ -731,9 +731,9 @@ class _DemoListState extends State<DemoList> {
                 .make()
                 .h10(context)
                 .onMouseHover((event) {
-              print(event.distance);
+              log(event.distance.toString());
             }).onMouseEnter((event) {
-              print(event.delta);
+              log(event.delta.toString());
             }),
           ],
         ),
@@ -780,7 +780,7 @@ class _DemoListState extends State<DemoList> {
                           (item) => GestureDetector(
                             behavior: HitTestBehavior.translucent,
                             onTap: () {
-                              print(item.title);
+                              log(item.title);
                             },
                             child: HStack(
                               [
@@ -822,7 +822,7 @@ class _DemoListState extends State<DemoList> {
               ),
               clickType: VxClickType.singleClick,
               verticalMargin: -10,
-              controller: _controller,
+              controller: vxpopupmenucontroller,
             ),
           ],
         ),

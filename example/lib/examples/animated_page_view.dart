@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -44,7 +46,7 @@ class _AnimatedPageViewState extends State<AnimatedPageView> {
           final double h = w * calculateImgScale(index);
           return GestureDetector(
             onTap: () {
-              print("tap img index is $index");
+              log("tap img index is $index");
             },
             child: Image.network(imgUrl,
                 width: w,

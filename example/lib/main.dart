@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
@@ -15,24 +17,24 @@ import 'widgets/draw_android.dart';
 class MyObs extends VxObserver {
   @override
   void didChangeRoute(Uri route, Page page, String pushOrPop) {
-    print("${route.path} - $pushOrPop");
+    log("${route.path} - $pushOrPop");
   }
 
   @override
   void didPush(Route route, Route? previousRoute) {
-    print('Pushed a route');
+    log('Pushed a route');
   }
 
   @override
   void didPop(Route route, Route? previousRoute) {
-    print('Popped a route');
+    log('Popped a route');
   }
 }
 
 void main() {
   Vx.setPathUrlStrategy();
 
-  final _navigator = VxNavigator(observers: [
+  final navigator = VxNavigator(observers: [
     MyObs()
   ], routes: {
     "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: const DemoList()),
@@ -65,8 +67,8 @@ void main() {
   });
 
   // Second way to monitor changes in the routing stack:
-  _navigator.addListener(() {
-    print(_navigator.currentConfiguration!.path);
+  navigator.addListener(() {
+    log(navigator.currentConfiguration!.path);
   });
 
   // Using Safe route
@@ -88,7 +90,7 @@ void main() {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         routeInformationParser: VxInformationParser(),
-        routerDelegate: _navigator,
+        routerDelegate: navigator,
         backButtonDispatcher: RootBackButtonDispatcher(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -184,7 +186,7 @@ class _DemoState extends State<Demo> {
         const TapMeWidget(),
         10.heightBox,
         VxStepper(onChange: (value) {
-          print(value);
+          log(value.toString());
         }),
         10.heightBox,
         VxRating(
@@ -235,7 +237,7 @@ class _DemoState extends State<Demo> {
             enlargeCenterPage: true,
             autoPlay: false,
             onPageChanged: (index) {
-              print(index);
+              log(index.toString());
             },
             isFastScrollingEnabled: true,
             scrollDirection:
@@ -258,9 +260,9 @@ class _DemoState extends State<Demo> {
             .make()
             .h10(context)
             .onMouseHover((event) {
-          print(event.distance);
+          log(event.distance.toString());
         }).onMouseEnter((event) {
-          print(event.delta);
+          log(event.delta.toString());
         }),
         20.heightBox,
         "100100.1546".numCurrency.text.make(),
@@ -298,7 +300,7 @@ class _DemoState extends State<Demo> {
                       (item) => GestureDetector(
                         behavior: HitTestBehavior.translucent,
                         onTap: () {
-                          print(item.title);
+                          log(item.title);
                         },
                         child: HStack(
                           [
