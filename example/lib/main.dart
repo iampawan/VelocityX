@@ -35,10 +35,10 @@ void main() {
   final _navigator = VxNavigator(observers: [
     MyObs()
   ], routes: {
-    "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: DemoList()),
-    "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: Demo()),
+    "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: const DemoList()),
+    "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: const Demo()),
     "/nav1": (uri, param) => VxRoutePage(
-        child: Nav1(),
+        child: const Nav1(),
         pageName: "Nav1",
         transition: (animation, child) => ScaleTransition(
               alignment: Alignment.bottomLeft,
@@ -53,8 +53,8 @@ void main() {
               ),
               child: child,
             )),
-    "/nav2": (uri, param) => VxRoutePage(pageName: "Nav2", child: Nav2()),
-    "/nav3": (uri, param) => VxRoutePage(pageName: "Nav3", child: Nav3()),
+    "/nav2": (uri, param) => VxRoutePage(pageName: "Nav2", child: const Nav2()),
+    "/nav3": (uri, param) => VxRoutePage(pageName: "Nav3", child: const Nav3()),
     "/nav4": (uri, param) => VxRoutePage(pageName: "Nav4", child: const Nav4()),
     RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
           child: Nav4(
@@ -103,8 +103,10 @@ void main() {
 }
 
 class Demo extends StatefulWidget {
+  const Demo({Key? key}) : super(key: key);
+
   @override
-  _DemoState createState() => _DemoState();
+  State<Demo> createState() => _DemoState();
 }
 
 class _DemoState extends State<Demo> {
@@ -123,7 +125,7 @@ class _DemoState extends State<Demo> {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
-        PlatformBar(),
+        const PlatformBar(),
         "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
         10.heightBox,
         DrawAndroid(),
@@ -179,7 +181,7 @@ class _DemoState extends State<Demo> {
         }),
         10.heightBox,
         "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
-        TapMeWidget(),
+        const TapMeWidget(),
         10.heightBox,
         VxStepper(onChange: (value) {
           print(value);
@@ -199,7 +201,7 @@ class _DemoState extends State<Demo> {
           isPassword: true,
         ),
         20.heightBox,
-        "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
+        (context.isMobile ? 'We are on mobile' : 'We are on Web')
             .selectableText
             .bold
             .white
@@ -272,11 +274,11 @@ class _DemoState extends State<Demo> {
         ),
         10.heightBox,
         DateTime.now().subtract(10.minutes).timeAgo().text.make(),
-        VxShapes(),
+        const VxShapes(),
         20.heightBox,
         Container(
-          child: const Icon(Icons.menu),
           padding: Vx.m20,
+          child: const Icon(Icons.menu),
         ).popupMenu(
           () => ClipRRect(
             borderRadius: BorderRadius.circular(5),
@@ -337,7 +339,7 @@ class _DemoState extends State<Demo> {
           controller: _controller,
         ),
         20.heightBox,
-        AnimatedPageView(),
+        const AnimatedPageView(),
         20.heightBox,
         "Neumorphic"
             .text
@@ -373,6 +375,8 @@ class _DemoState extends State<Demo> {
 }
 
 class TapMeWidget extends StatelessWidget {
+  const TapMeWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return [
@@ -386,8 +390,9 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator!.push(const SecondPage("assets/vxbox.png")
-          .vxPreviewRoute(parentContext: context));
+      context.navigator!.push(
+          const SecondPage(imageAssetName: "assets/vxbox.png")
+              .vxPreviewRoute(parentContext: context));
     });
   }
 }

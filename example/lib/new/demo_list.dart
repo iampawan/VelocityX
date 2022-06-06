@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class DemoList extends StatefulWidget {
+  const DemoList({Key? key}) : super(key: key);
+
   @override
   State<DemoList> createState() => _DemoListState();
 }
@@ -108,10 +110,6 @@ class _DemoListState extends State<DemoList> {
           childrenPadding: Vx.m32,
           children: [
             VxStateSwitcher(
-                child: const Text("Change State"),
-                // emptyView: Text("Empty"),
-                // errorView: Text("Error"),
-                // skeleton: Text("Skeleton"),
                 pageState: pageState,
                 onRetry: () {
                   if (currentPage == 1) {
@@ -127,7 +125,8 @@ class _DemoListState extends State<DemoList> {
                       setState(() {});
                     });
                   }
-                })
+                },
+                child: const Text("Change State"))
           ],
         ),
         ExpansionTile(
@@ -393,21 +392,19 @@ class _DemoListState extends State<DemoList> {
                     isSafeAreaFromBottom: true,
                     child: Column(
                       children: <Widget>[
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              const SizedBox(width: 40),
-                              const Expanded(
-                                child: Text('Sheet View',
-                                    textAlign: TextAlign.center),
-                              ),
-                              IconButton(
-                                onPressed: () =>
-                                    Navigator.pop(context, 'hello'),
-                                icon: const Icon(Icons.clear, size: 24),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: <Widget>[
+                            const SizedBox(width: 40),
+                            const Expanded(
+                              child: Text('Sheet View',
+                                  textAlign: TextAlign.center),
+                            ),
+                            IconButton(
+                              onPressed: () =>
+                                  Navigator.pop(context, 'hello'),
+                              icon: const Icon(Icons.clear, size: 24),
+                            ),
+                          ],
                         ),
                         Expanded(
                           child: SingleChildScrollView(
@@ -580,8 +577,8 @@ class _DemoListState extends State<DemoList> {
               shadowStrength: 10,
               opacity: 0.1,
               border: Border.all(color: Colors.white),
-              child: "Pawan Kumar".text.center.makeCentered(),
               borderRadius: BorderRadius.circular(15),
+              child: "Pawan Kumar".text.center.makeCentered(),
             )
                 .wh(300, 100)
                 .p16()
@@ -656,7 +653,7 @@ class _DemoListState extends State<DemoList> {
           title: "Mobile Or Web".text.make(),
           childrenPadding: Vx.m32,
           children: [
-            "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
+            (context.isMobile ? 'We are on mobile' : 'We are on Web')
                 .selectableText
                 .bold
                 .white
@@ -705,15 +702,15 @@ class _DemoListState extends State<DemoList> {
         ExpansionTile(
           title: "VxDevice".text.make(),
           childrenPadding: Vx.m32,
-          children: [
-            const VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
+          children: const [
+            VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
           ],
         ),
         ExpansionTile(
           title: "VxResponsive".text.make(),
           childrenPadding: Vx.m32,
-          children: [
-            const VxResponsive(
+          children: const [
+            VxResponsive(
               xsmall: Text("Hi Extra Small"),
               small: Text("Hi Small"),
               medium: Text("Hi Medium"),
@@ -762,8 +759,8 @@ class _DemoListState extends State<DemoList> {
           childrenPadding: Vx.m32,
           children: [
             Container(
-              child: const Icon(Icons.menu),
               padding: Vx.m20,
+              child: const Icon(Icons.menu),
             ).popupMenu(
               () => ClipRRect(
                 borderRadius: BorderRadius.circular(5),
@@ -832,7 +829,7 @@ class _DemoListState extends State<DemoList> {
         ExpansionTile(
           title: "VxShapes".text.make(),
           childrenPadding: Vx.m32,
-          children: [
+          children: const [
             VxShapes(),
           ],
         ),
@@ -862,8 +859,8 @@ class _DemoListState extends State<DemoList> {
         ExpansionTile(
           title: "VxDash".text.make(),
           childrenPadding: Vx.m32,
-          children: [
-            const VxDash(
+          children: const [
+            VxDash(
               dashColor: Colors.red,
             ),
           ],

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class VxDemo extends StatelessWidget {
+  const VxDemo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final childHeight = context.mdColumns * (context.isMobile ? 14.0 : 15.0);

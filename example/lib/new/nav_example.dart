@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Nav1 extends StatefulWidget {
+  const Nav1({Key? key}) : super(key: key);
+
   @override
-  _Nav1State createState() => _Nav1State();
+  State<Nav1> createState() => _Nav1State();
 }
 
 class _Nav1State extends State<Nav1> {
@@ -50,6 +52,8 @@ class _Nav1State extends State<Nav1> {
 }
 
 class Nav2 extends StatelessWidget {
+  const Nav2({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +64,8 @@ class Nav2 extends StatelessWidget {
 }
 
 class Nav3 extends StatelessWidget {
+  const Nav3({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
