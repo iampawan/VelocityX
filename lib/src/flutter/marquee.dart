@@ -14,6 +14,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/dart/typedefs.dart';
 import '../extensions/context_ext.dart';
 
 class VxMarquee extends StatefulWidget {
@@ -48,7 +49,7 @@ class VxMarqueeState extends State<VxMarquee>
   void initState() {
     super.initState();
     scrollController = ScrollController();
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
+    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((callback) {
       startTimer();
     });
   }
