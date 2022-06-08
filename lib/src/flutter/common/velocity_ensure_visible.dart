@@ -64,12 +64,12 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
   void initState() {
     super.initState();
     widget.focusNode.addListener(_ensureVisible);
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsFlutterBinding.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsFlutterBinding.removeObserver(this);
     widget.focusNode.removeListener(_ensureVisible);
     super.dispose();
   }
