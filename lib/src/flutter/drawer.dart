@@ -147,7 +147,6 @@ class _VxDrawerState extends State<_VxDrawer> with TickerProviderStateMixin {
         curve: Curves.ease,
       ),
     );
-
     ambiguate(WidgetsBinding.instance)?.addPostFrameCallback(getBoxHeight);
   }
 
