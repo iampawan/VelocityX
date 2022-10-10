@@ -79,6 +79,7 @@ void main() {
 
   runApp(
     DevicePreview(
+      enabled: false,
       // data: DevicePreviewData(
       //   deviceIdentifier: Devices.ios.iPad.toString(),
       //   isFrameVisible: true,

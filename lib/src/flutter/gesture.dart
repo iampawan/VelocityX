@@ -146,12 +146,15 @@ extension GestureExtensions on Widget {
   _VelocityXInkWellBuilder mdLongClick(FnBuilderCallback onClick) =>
       _VelocityXInkWellBuilder.mdLongClick(this, onClick);
 
-  GestureDetector onTap(VoidCallback? onTap,
+  Widget onTap(VoidCallback? onTap,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
-    return GestureDetector(
-      behavior: hitTestBehavior,
-      onTap: onTap,
-      child: this,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        behavior: hitTestBehavior,
+        onTap: onTap,
+        child: this,
+      ),
     );
   }
 
@@ -164,12 +167,15 @@ extension GestureExtensions on Widget {
     );
   }
 
-  GestureDetector onDoubleTap(VoidCallback? onDoubleTap,
+  Widget onDoubleTap(VoidCallback? onDoubleTap,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
-    return GestureDetector(
-      behavior: hitTestBehavior,
-      onDoubleTap: onDoubleTap,
-      child: this,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        behavior: hitTestBehavior,
+        onDoubleTap: onDoubleTap,
+        child: this,
+      ),
     );
   }
 
@@ -182,12 +188,15 @@ extension GestureExtensions on Widget {
     );
   }
 
-  GestureDetector onLongPress(VoidCallback? onLongPress,
+  Widget onLongPress(VoidCallback? onLongPress,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
-    return GestureDetector(
-      behavior: hitTestBehavior,
-      onLongPress: onLongPress,
-      child: this,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        behavior: hitTestBehavior,
+        onLongPress: onLongPress,
+        child: this,
+      ),
     );
   }
 
@@ -306,15 +315,18 @@ class _CallbackButtonState extends State<_CallbackButton> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: widget.hitTestBehavior,
-      onTap: widget.onTap,
-      onTapDown: handleTapDown,
-      onTapUp: handleTapUp,
-      onTapCancel: handleCancel,
-      child: Container(
-        color: bgColor,
-        child: widget.child,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        behavior: widget.hitTestBehavior,
+        onTap: widget.onTap,
+        onTapDown: handleTapDown,
+        onTapUp: handleTapUp,
+        onTapCancel: handleCancel,
+        child: Container(
+          color: bgColor,
+          child: widget.child,
+        ),
       ),
     );
   }
