@@ -219,6 +219,18 @@ class _DemoListState extends State<DemoList> {
             ),
           ],
         ),
+        if (Vx.isDesktop)
+          ExpansionTile(
+            title: "VxHoverToggle".text.make(),
+            childrenPadding: Vx.m32,
+            children: [
+              const VxHoverToggle(
+                child: Icon(Icons.heart_broken),
+                hoverChild: Icon(Icons.favorite),
+                size: Size.square(100),
+              ),
+            ],
+          ),
         ExpansionTile(
             title: "VxDialog".text.make(),
             childrenPadding: Vx.m32,

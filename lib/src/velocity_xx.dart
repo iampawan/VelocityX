@@ -691,6 +691,12 @@ mixin Vx {
   ///Checks whether android or not
   static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
 
+  ///Checks whether desktop or not
+  static bool get isDesktop =>
+      defaultTargetPlatform == TargetPlatform.linux ||
+      defaultTargetPlatform == TargetPlatform.macOS ||
+      defaultTargetPlatform == TargetPlatform.windows;
+
   /// Get ascii from the hex value
   static String hexToAscii(String hex) {
     final List<String> _splitted = [];

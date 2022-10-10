@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/velocity_xx.dart';
 
 typedef OnRetry = void Function();
 typedef OnStateChanged = Widget Function(VxPageState state);
@@ -147,5 +148,27 @@ class _VxStateSwitcherState extends State<VxStateSwitcher> {
         ],
       ),
     );
+  }
+}
+
+/// VxSwitcher can be used for Desktop and mobile platforms to change the state using AnimatedSwitcher in case of using mobile.
+class VxSwitcher extends StatelessWidget {
+  final Widget child;
+
+  const VxSwitcher({
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Vx.isDesktop
+        ? child
+        : AnimatedSwitcher(
+            key: key,
+            duration: const Duration(milliseconds: 200),
+            switchInCurve: Curves.easeInOut,
+            switchOutCurve: Curves.easeInOut,
+            child: child,
+          );
   }
 }
