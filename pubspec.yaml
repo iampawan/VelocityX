@@ -16,7 +16,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   intl: ^0.17.0
-  vxstate: ^2.2.0
+  vxstate: ^2.3.0
 
 dev_dependencies:
   flutter_test:
