@@ -9,6 +9,9 @@ enum VxTextFieldBorderType { none, roundLine, underLine }
 class VxTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String? hint;
+
+  ///[TextStyle] or hints
+  final TextStyle? hintStyle;
   final String? value;
   final bool clear;
   final bool isPassword;
@@ -38,6 +41,9 @@ class VxTextField extends StatefulWidget {
   final String? labelText;
   final TextStyle? labelStyle;
   final Color? cursorColor;
+
+  /// The color of the [suffixIcon].
+  final Color? suffixColor;
   final bool autocorrect;
   final double? cursorHeight;
   final double cursorWidth;
@@ -54,6 +60,7 @@ class VxTextField extends StatefulWidget {
     Key? key,
     this.controller,
     this.hint,
+    this.hintStyle,
     this.value,
     this.clear = true,
     this.isPassword = false,
@@ -83,6 +90,7 @@ class VxTextField extends StatefulWidget {
     this.labelText,
     this.labelStyle,
     this.cursorColor,
+    this.suffixColor,
     this.autocorrect = true,
     this.cursorHeight,
     this.cursorRadius,
@@ -140,7 +148,9 @@ class _VxTextFieldState extends State<VxTextField> {
         icon: widget.icon,
         prefixIcon: widget.prefixIcon,
         suffixIcon: suffixView(),
+        suffixIconColor: widget.suffixColor,
         hintText: widget.hint,
+        hintStyle: widget.hintStyle,
         fillColor: widget.fillColor,
         counterText: widget.counterText,
         filled: true,
@@ -179,12 +189,17 @@ class _VxTextFieldState extends State<VxTextField> {
     final List<Widget> children = [];
     final String tempValue = controller!.text;
     final double tempSize = math.min(widget.height / 2, 24);
+    final Color tempColor = widget.suffixColor ?? Colors.black;
 
     // Clear Button
     if (widget.clear && focusNode!.hasFocus && (tempValue.isNotEmpty)) {
       children.add(GestureDetector(
         onTap: clear,
-        child: Icon(Icons.clear, size: tempSize),
+        child: Icon(
+          Icons.clear,
+          size: tempSize,
+          color: tempColor,
+        ),
       ));
     }
 
@@ -198,6 +213,7 @@ class _VxTextFieldState extends State<VxTextField> {
         child: Icon(
           obscureText ? Icons.visibility : Icons.visibility_off,
           size: tempSize,
+          color: tempColor,
         ),
       ));
     }
