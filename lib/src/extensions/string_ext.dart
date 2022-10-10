@@ -217,6 +217,19 @@ extension VxStringExtension on String {
     return isMatch;
   }
 
+  /// Check  whether a string is digit or not
+  /// ```dart
+  /// '123'.isDigit(); // false
+  /// '123.456'.isDigit(); // false
+  /// 'abc'.isDigit(); // false
+  /// '123abc'.isDigit(); // false
+  /// ```
+
+  bool isDigit() {
+    final isMatch = RegExp(r'\d').hasMatch(this);
+    return isMatch && length == 1;
+  }
+
   bool isLetter() {
     final isMatch = RegExp("[A-Za-z]").hasMatch(this);
     return isMatch;

@@ -19,5 +19,21 @@ void main() {
       expect("-65464444.65464444".isNumber(), true);
       expect('abc'.isNumber(), false);
     });
+    test('isDigit', () {
+      expect("0".isDigit(), true);
+      expect("1".isDigit(), true);
+      expect("2".isDigit(), true);
+      expect("3".isDigit(), true);
+      expect("4".isDigit(), true);
+      expect("5".isDigit(), true);
+      expect("6".isDigit(), true);
+      expect("7".isDigit(), true);
+      expect("8".isDigit(), true);
+      expect("9".isDigit(), true);
+      expect("10".isDigit(), false);
+      expect("-9".isDigit(), false);
+      expect("-10".isDigit(), false);
+      expect("abc".isDigit(), false);
+    });
   });
 }
