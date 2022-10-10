@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class VxAnimationExample extends StatefulWidget {
+  const VxAnimationExample({Key? key}) : super(key: key);
+
   @override
-  _VxAnimationExampleState createState() => _VxAnimationExampleState();
+  State<VxAnimationExample> createState() => _VxAnimationExampleState();
 }
 
 class _VxAnimationExampleState extends State<VxAnimationExample>

@@ -26,7 +26,7 @@ void main() {
 
     test('Hexify', () {
       final value = VxWeb3.hexify(BigInt.from(1000000000000000));
-      expect(0x038d7ea4c68000, value);
+      expect('0x038d7ea4c68000', value);
     });
 
     test('toEther', () {

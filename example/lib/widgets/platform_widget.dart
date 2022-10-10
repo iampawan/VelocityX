@@ -4,6 +4,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 class PlatformBar
     extends VxPlatform<AppBar, CupertinoNavigationBar, BottomAppBar, AppBar> {
+  const PlatformBar({Key? key}) : super(key: key);
+
   @override
   AppBar createAndroidWidget(BuildContext context) {
     return AppBar(
@@ -22,12 +24,12 @@ class PlatformBar
   BottomAppBar createWebWidget(BuildContext context) {
     return BottomAppBar(
       child: BottomNavigationBar(
-        items: [
-          const BottomNavigationBarItem(
+        items: const [
+          BottomNavigationBarItem(
             label: "Chat",
             icon: Icon(Icons.chat),
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             label: "History",
             icon: Icon(Icons.history),
           )

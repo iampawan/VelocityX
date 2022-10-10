@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:example/models/dummy.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class DemoList extends StatefulWidget {
+  const DemoList({Key? key}) : super(key: key);
+
   @override
   State<DemoList> createState() => _DemoListState();
 }
@@ -38,8 +42,7 @@ class _DemoListState extends State<DemoList> {
   @override
   Widget build(BuildContext context) {
     // Guard Example
-    final _ = guard(() => x, "Guard - No value found");
-    final VxPopupMenuController _controller = VxPopupMenuController();
+    final VxPopupMenuController vxpopupmenucontroller = VxPopupMenuController();
     return Scaffold(
       appBar: AppBar(
         title: "VxDemo".text.make(),
@@ -97,7 +100,7 @@ class _DemoListState extends State<DemoList> {
                 final path = await VxNavigator.of(context)
                     .waitAndPush(Uri(path: "/nav1"));
 
-                print("Returned $path");
+                log("Returned $path");
               },
               child: "Wait & Push".text.make(),
             ),
@@ -108,10 +111,6 @@ class _DemoListState extends State<DemoList> {
           childrenPadding: Vx.m32,
           children: [
             VxStateSwitcher(
-                child: const Text("Change State"),
-                // emptyView: Text("Empty"),
-                // errorView: Text("Error"),
-                // skeleton: Text("Skeleton"),
                 pageState: pageState,
                 onRetry: () {
                   if (currentPage == 1) {
@@ -127,7 +126,8 @@ class _DemoListState extends State<DemoList> {
                       setState(() {});
                     });
                   }
-                })
+                },
+                child: const Text("Change State"))
           ],
         ),
         ExpansionTile(
@@ -199,7 +199,7 @@ class _DemoListState extends State<DemoList> {
               keyboardType: TextInputType.number,
               obscureText: false,
               onChanged: (value) {
-                print('Test value=$value');
+                log('Test value=$value');
               },
             ),
             20.heightBox,
@@ -379,7 +379,7 @@ class _DemoListState extends State<DemoList> {
                     VxToast.show(context, msg: 'index=$index value=$value');
                   },
                 ).then((data) {
-                  print('Test data=$data');
+                  log('Test data=$data');
                 });
               },
               child: "Menu Options View".text.make(),
@@ -393,21 +393,18 @@ class _DemoListState extends State<DemoList> {
                     isSafeAreaFromBottom: true,
                     child: Column(
                       children: <Widget>[
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              const SizedBox(width: 40),
-                              const Expanded(
-                                child: Text('Sheet View',
-                                    textAlign: TextAlign.center),
-                              ),
-                              IconButton(
-                                onPressed: () =>
-                                    Navigator.pop(context, 'hello'),
-                                icon: const Icon(Icons.clear, size: 24),
-                              ),
-                            ],
-                          ),
+                        Row(
+                          children: <Widget>[
+                            const SizedBox(width: 40),
+                            const Expanded(
+                              child: Text('Sheet View',
+                                  textAlign: TextAlign.center),
+                            ),
+                            IconButton(
+                              onPressed: () => Navigator.pop(context, 'hello'),
+                              icon: const Icon(Icons.clear, size: 24),
+                            ),
+                          ],
                         ),
                         Expanded(
                           child: SingleChildScrollView(
@@ -440,7 +437,7 @@ class _DemoListState extends State<DemoList> {
                         ),
                       ],
                     )).then((data) {
-                  print('Test data=$data');
+                  log('Test data=$data');
                 });
               },
               child: "Bottom Sheet View".text.make(),
@@ -580,8 +577,8 @@ class _DemoListState extends State<DemoList> {
               shadowStrength: 10,
               opacity: 0.1,
               border: Border.all(color: Colors.white),
-              child: "Pawan Kumar".text.center.makeCentered(),
               borderRadius: BorderRadius.circular(15),
+              child: "Pawan Kumar".text.center.makeCentered(),
             )
                 .wh(300, 100)
                 .p16()
@@ -597,7 +594,7 @@ class _DemoListState extends State<DemoList> {
           childrenPadding: Vx.m32,
           children: [
             VxStepper(onChange: (value) {
-              print(value);
+              log(value.toString());
             }),
           ],
         ),
@@ -647,7 +644,7 @@ class _DemoListState extends State<DemoList> {
               borderType: VxTextFieldBorderType.roundLine,
               isPassword: true,
               onChanged: (s) {
-                print(s);
+                log(s);
               },
             ),
           ],
@@ -656,7 +653,7 @@ class _DemoListState extends State<DemoList> {
           title: "Mobile Or Web".text.make(),
           childrenPadding: Vx.m32,
           children: [
-            "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
+            (context.isMobile ? 'We are on mobile' : 'We are on Web')
                 .selectableText
                 .bold
                 .white
@@ -695,7 +692,7 @@ class _DemoListState extends State<DemoList> {
                 enlargeCenterPage: true,
                 autoPlay: false,
                 onPageChanged: (index) {
-                  print(index);
+                  log(index.toString());
                 },
                 isFastScrollingEnabled: true,
                 scrollDirection:
@@ -705,15 +702,15 @@ class _DemoListState extends State<DemoList> {
         ExpansionTile(
           title: "VxDevice".text.make(),
           childrenPadding: Vx.m32,
-          children: [
-            const VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
+          children: const [
+            VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
           ],
         ),
         ExpansionTile(
           title: "VxResponsive".text.make(),
           childrenPadding: Vx.m32,
-          children: [
-            const VxResponsive(
+          children: const [
+            VxResponsive(
               xsmall: Text("Hi Extra Small"),
               small: Text("Hi Small"),
               medium: Text("Hi Medium"),
@@ -734,9 +731,9 @@ class _DemoListState extends State<DemoList> {
                 .make()
                 .h10(context)
                 .onMouseHover((event) {
-              print(event.distance);
+              log(event.distance.toString());
             }).onMouseEnter((event) {
-              print(event.delta);
+              log(event.delta.toString());
             }),
           ],
         ),
@@ -762,8 +759,8 @@ class _DemoListState extends State<DemoList> {
           childrenPadding: Vx.m32,
           children: [
             Container(
-              child: const Icon(Icons.menu),
               padding: Vx.m20,
+              child: const Icon(Icons.menu),
             ).popupMenu(
               () => ClipRRect(
                 borderRadius: BorderRadius.circular(5),
@@ -783,7 +780,7 @@ class _DemoListState extends State<DemoList> {
                           (item) => GestureDetector(
                             behavior: HitTestBehavior.translucent,
                             onTap: () {
-                              print(item.title);
+                              log(item.title);
                             },
                             child: HStack(
                               [
@@ -825,14 +822,14 @@ class _DemoListState extends State<DemoList> {
               ),
               clickType: VxClickType.singleClick,
               verticalMargin: -10,
-              controller: _controller,
+              controller: vxpopupmenucontroller,
             ),
           ],
         ),
         ExpansionTile(
           title: "VxShapes".text.make(),
           childrenPadding: Vx.m32,
-          children: [
+          children: const [
             VxShapes(),
           ],
         ),
@@ -862,8 +859,8 @@ class _DemoListState extends State<DemoList> {
         ExpansionTile(
           title: "VxDash".text.make(),
           childrenPadding: Vx.m32,
-          children: [
-            const VxDash(
+          children: const [
+            VxDash(
               dashColor: Colors.red,
             ),
           ],

@@ -39,6 +39,7 @@ import 'package:flutter/material.dart';
 ///
 abstract class VxPlatform<A extends Widget, I extends Widget, W extends Widget,
     D extends Widget> extends StatelessWidget {
+  const VxPlatform({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) {

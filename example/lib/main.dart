@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
@@ -15,30 +17,30 @@ import 'widgets/draw_android.dart';
 class MyObs extends VxObserver {
   @override
   void didChangeRoute(Uri route, Page page, String pushOrPop) {
-    print("${route.path} - $pushOrPop");
+    log("${route.path} - $pushOrPop");
   }
 
   @override
   void didPush(Route route, Route? previousRoute) {
-    print('Pushed a route');
+    log('Pushed a route');
   }
 
   @override
   void didPop(Route route, Route? previousRoute) {
-    print('Popped a route');
+    log('Popped a route');
   }
 }
 
 void main() {
   Vx.setPathUrlStrategy();
 
-  final _navigator = VxNavigator(observers: [
+  final navigator = VxNavigator(observers: [
     MyObs()
   ], routes: {
-    "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: DemoList()),
-    "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: Demo()),
+    "/": (uri, param) => VxRoutePage(pageName: "DemoList", child: const DemoList()),
+    "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: const Demo()),
     "/nav1": (uri, param) => VxRoutePage(
-        child: Nav1(),
+        child: const Nav1(),
         pageName: "Nav1",
         transition: (animation, child) => ScaleTransition(
               alignment: Alignment.bottomLeft,
@@ -53,8 +55,8 @@ void main() {
               ),
               child: child,
             )),
-    "/nav2": (uri, param) => VxRoutePage(pageName: "Nav2", child: Nav2()),
-    "/nav3": (uri, param) => VxRoutePage(pageName: "Nav3", child: Nav3()),
+    "/nav2": (uri, param) => VxRoutePage(pageName: "Nav2", child: const Nav2()),
+    "/nav3": (uri, param) => VxRoutePage(pageName: "Nav3", child: const Nav3()),
     "/nav4": (uri, param) => VxRoutePage(pageName: "Nav4", child: const Nav4()),
     RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
           child: Nav4(
@@ -65,8 +67,8 @@ void main() {
   });
 
   // Second way to monitor changes in the routing stack:
-  _navigator.addListener(() {
-    print(_navigator.currentConfiguration!.path);
+  navigator.addListener(() {
+    log(navigator.currentConfiguration!.path);
   });
 
   // Using Safe route
@@ -88,7 +90,7 @@ void main() {
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         routeInformationParser: VxInformationParser(),
-        routerDelegate: _navigator,
+        routerDelegate: navigator,
         backButtonDispatcher: RootBackButtonDispatcher(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -103,8 +105,10 @@ void main() {
 }
 
 class Demo extends StatefulWidget {
+  const Demo({Key? key}) : super(key: key);
+
   @override
-  _DemoState createState() => _DemoState();
+  State<Demo> createState() => _DemoState();
 }
 
 class _DemoState extends State<Demo> {
@@ -123,7 +127,7 @@ class _DemoState extends State<Demo> {
         title: "Vx Demo".text.make(),
       ),
       body: VStack([
-        PlatformBar(),
+        const PlatformBar(),
         "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
         10.heightBox,
         DrawAndroid(),
@@ -179,10 +183,10 @@ class _DemoState extends State<Demo> {
         }),
         10.heightBox,
         "Breaking news from VelocityX - v1.0.0 Released".marquee().h10(context),
-        TapMeWidget(),
+        const TapMeWidget(),
         10.heightBox,
         VxStepper(onChange: (value) {
-          print(value);
+          log(value.toString());
         }),
         10.heightBox,
         VxRating(
@@ -199,7 +203,7 @@ class _DemoState extends State<Demo> {
           isPassword: true,
         ),
         20.heightBox,
-        "${context.isMobile ? 'We are on mobile' : 'We are on Web'}"
+        (context.isMobile ? 'We are on mobile' : 'We are on Web')
             .selectableText
             .bold
             .white
@@ -233,7 +237,7 @@ class _DemoState extends State<Demo> {
             enlargeCenterPage: true,
             autoPlay: false,
             onPageChanged: (index) {
-              print(index);
+              log(index.toString());
             },
             isFastScrollingEnabled: true,
             scrollDirection:
@@ -256,9 +260,9 @@ class _DemoState extends State<Demo> {
             .make()
             .h10(context)
             .onMouseHover((event) {
-          print(event.distance);
+          log(event.distance.toString());
         }).onMouseEnter((event) {
-          print(event.delta);
+          log(event.delta.toString());
         }),
         20.heightBox,
         "100100.1546".numCurrency.text.make(),
@@ -272,11 +276,11 @@ class _DemoState extends State<Demo> {
         ),
         10.heightBox,
         DateTime.now().subtract(10.minutes).timeAgo().text.make(),
-        VxShapes(),
+        const VxShapes(),
         20.heightBox,
         Container(
-          child: const Icon(Icons.menu),
           padding: Vx.m20,
+          child: const Icon(Icons.menu),
         ).popupMenu(
           () => ClipRRect(
             borderRadius: BorderRadius.circular(5),
@@ -296,7 +300,7 @@ class _DemoState extends State<Demo> {
                       (item) => GestureDetector(
                         behavior: HitTestBehavior.translucent,
                         onTap: () {
-                          print(item.title);
+                          log(item.title);
                         },
                         child: HStack(
                           [
@@ -337,7 +341,7 @@ class _DemoState extends State<Demo> {
           controller: _controller,
         ),
         20.heightBox,
-        AnimatedPageView(),
+        const AnimatedPageView(),
         20.heightBox,
         "Neumorphic"
             .text
@@ -373,6 +377,8 @@ class _DemoState extends State<Demo> {
 }
 
 class TapMeWidget extends StatelessWidget {
+  const TapMeWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return [
@@ -386,8 +392,9 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator!.push(const SecondPage("assets/vxbox.png")
-          .vxPreviewRoute(parentContext: context));
+      context.navigator!.push(
+          const SecondPage(imageAssetName: "assets/vxbox.png")
+              .vxPreviewRoute(parentContext: context));
     });
   }
 }

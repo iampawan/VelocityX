@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/dart/typedefs.dart';
 
 /// Provide click type either [longClick] or [singleClick]
 enum VxClickType {
@@ -183,7 +184,7 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
     _controller = widget.controller;
     _controller ??= VxPopupMenuController();
     _controller!.addListener(_updateView);
-    WidgetsBinding.instance?.addPostFrameCallback((call) {
+    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback((call) {
       _childBox = context.findRenderObject() as RenderBox?;
       _parentBox =
           Overlay.of(context)!.context.findRenderObject() as RenderBox?;

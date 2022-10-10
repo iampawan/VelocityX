@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/dart/typedefs.dart';
 
 enum VxDrawerType {
   left,
@@ -146,8 +147,7 @@ class _VxDrawerState extends State<_VxDrawer> with TickerProviderStateMixin {
         curve: Curves.ease,
       ),
     );
-
-    WidgetsBinding.instance?.addPostFrameCallback(getBoxHeight);
+    ambiguate(WidgetsBinding.instance)?.addPostFrameCallback(getBoxHeight);
   }
 
   void getBoxHeight(Duration time) {

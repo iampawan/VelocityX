@@ -124,16 +124,20 @@ void main() {
       // box shadow defined for shadowLg
       final shadow = [
         const BoxShadow(
-          color: Color.fromRGBO(0, 0, 0, 0.1),
-          blurRadius: 15.0,
-          spreadRadius: -3.0,
-          offset: Offset(0.0, 10.0),
+          offset: Offset(0.0, 2.0),
+          blurRadius: 4.0,
+          spreadRadius: -1.0,
+          color: Color(0x33000000),
         ),
         const BoxShadow(
-          color: Color.fromRGBO(0, 0, 0, 0.05),
-          blurRadius: 6.0,
-          spreadRadius: -2.0,
           offset: Offset(0.0, 4.0),
+          blurRadius: 5.0,
+          color: Color(0x24000000),
+        ),
+        const BoxShadow(
+          offset: Offset(0.0, 1.0),
+          blurRadius: 10.0,
+          color: Color(0x1f000000),
         ),
       ];
 
