@@ -205,9 +205,29 @@ extension VxStringExtension on String {
     return _sum % 10 == 0;
   }
 
+  /// Check whether a string is a number or not
+  /// ```dart
+  /// '123'.isNumber(); // true
+  /// '123.456'.isNumber(); // true
+  /// 'abc'.isNumber(); // false
+  /// '123abc'.isNumber(); // false
+  /// ```
   bool isNumber() {
-    final isMatch = RegExp("[1-9]").hasMatch(this);
+    final isMatch = RegExp("[0-9]").hasMatch(this);
     return isMatch;
+  }
+
+  /// Check  whether a string is digit or not
+  /// ```dart
+  /// '123'.isDigit(); // false
+  /// '123.456'.isDigit(); // false
+  /// 'abc'.isDigit(); // false
+  /// '123abc'.isDigit(); // false
+  /// ```
+
+  bool isDigit() {
+    final isMatch = RegExp(r'\d').hasMatch(this);
+    return isMatch && length == 1;
   }
 
   bool isLetter() {

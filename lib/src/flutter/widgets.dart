@@ -93,6 +93,15 @@ extension VxWidgetsExtension on Widget {
     );
   }
 
+  /// Extension for [Flexible]
+  Flexible flexible({Key? key, int flex = 1}) {
+    return Flexible(
+      key: key,
+      flex: flex,
+      child: this,
+    );
+  }
+
   /// Extension for Stack [Positioned]
   Widget positioned(
       {double? top,
