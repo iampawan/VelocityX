@@ -183,7 +183,7 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
     _controller = widget.controller;
     _controller ??= VxPopupMenuController();
     _controller!.addListener(_updateView);
-    WidgetsBinding.instance?.addPostFrameCallback((call) {
+    WidgetsBinding.instance.addPostFrameCallback((call) {
       _childBox = context.findRenderObject() as RenderBox?;
       _parentBox =
           Overlay.of(context)!.context.findRenderObject() as RenderBox?;
