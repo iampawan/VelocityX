@@ -246,6 +246,7 @@ mixin VxColorMixin<T> {
   T get violet900 => _colorIt(child: _childToColor, color: Vx.violet900);
 
   ///Purple
+  T get purple50 => _colorIt(child: _childToColor, color: Vx.purple50);
   T get purple100 => _colorIt(child: _childToColor, color: Vx.purple100);
   T get purple200 => _colorIt(child: _childToColor, color: Vx.purple200);
   T get purple300 => _colorIt(child: _childToColor, color: Vx.purple300);
@@ -269,6 +270,7 @@ mixin VxColorMixin<T> {
   T get fuchsia900 => _colorIt(child: _childToColor, color: Vx.fuchsia900);
 
   ///Pink
+  T get pink50 => _colorIt(child: _childToColor, color: Vx.pink50);
   T get pink100 => _colorIt(child: _childToColor, color: Vx.pink100);
   T get pink200 => _colorIt(child: _childToColor, color: Vx.pink200);
   T get pink300 => _colorIt(child: _childToColor, color: Vx.pink300);
