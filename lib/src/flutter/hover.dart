@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// VxHoverToggle widget can help you for Desktop/Web apps to toggle between two widgets on hover.
+/// VxHoverToggle widget can help you for Desktop/Web apps to toggle between
+/// two widgets on hover.
+///
 class VxHoverToggle extends StatefulWidget {
   const VxHoverToggle({
     super.key,

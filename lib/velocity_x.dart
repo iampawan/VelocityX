@@ -42,6 +42,7 @@ export 'src/flutter/hover.dart';
 export 'src/flutter/icon.dart';
 export 'src/flutter/list.dart';
 export 'src/flutter/marquee.dart';
+export 'src/flutter/navigation.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';

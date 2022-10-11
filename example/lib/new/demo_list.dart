@@ -40,11 +40,20 @@ class _DemoListState extends State<DemoList> {
     // Guard Example
     final _ = guard(() => x, "Guard - No value found");
     final VxPopupMenuController _controller = VxPopupMenuController();
-    return Scaffold(
-      appBar: AppBar(
-        title: "VxDemo".text.make(),
-      ),
-      body: VStack([
+    return VxAdaptiveNavigation(
+      destinations: [
+        const NavigationDestination(
+          icon: Icon(Icons.home),
+          label: "Home",
+        ),
+        const NavigationDestination(
+          icon: Icon(Icons.favorite),
+          label: "Fav",
+        ),
+      ],
+      selectedIndex: 0,
+      onDestinationSelected: (index) {},
+      child: VStack([
         ExpansionTile(
           title: "VxNav 2.0".text.make(),
           childrenPadding: Vx.m32,
