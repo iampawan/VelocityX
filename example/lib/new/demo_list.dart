@@ -240,6 +240,17 @@ class _DemoListState extends State<DemoList> {
               ),
             ],
           ),
+
+        ExpansionTile(
+          title: "VxZoom".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            const Icon(
+              Icons.zoom_in,
+              size: 100,
+            ).zoom(),
+          ],
+        ),
         ExpansionTile(
             title: "VxDialog".text.make(),
             childrenPadding: Vx.m32,

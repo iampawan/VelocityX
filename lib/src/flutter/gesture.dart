@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vector_math/vector_math_64.dart' as v3;
 
 import 'builder.dart';
 
@@ -109,7 +110,7 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
   }
 }
 
-extension GestureExtensions on Widget {
+extension VxGestureExtensions on Widget {
   ///
   /// Note - For single prop use [onTap]. Extension method to directly access [_VxGestureBuilder] single click with any widget without wrapping or with dot operator.
   ///
@@ -147,8 +148,10 @@ extension GestureExtensions on Widget {
       _VelocityXInkWellBuilder.mdLongClick(this, onClick);
 
   Widget onTap(VoidCallback? onTap,
-      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
+      {Key? key,
+      HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
     return MouseRegion(
+      key: key,
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         behavior: hitTestBehavior,
@@ -158,18 +161,19 @@ extension GestureExtensions on Widget {
     );
   }
 
-  InkWell onInkTap(
-    VoidCallback? onTap,
-  ) {
+  InkWell onInkTap(VoidCallback? onTap, {Key? key}) {
     return InkWell(
+      key: key,
       onTap: onTap,
       child: this,
     );
   }
 
   Widget onDoubleTap(VoidCallback? onDoubleTap,
-      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
+      {Key? key,
+      HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
     return MouseRegion(
+      key: key,
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         behavior: hitTestBehavior,
@@ -179,18 +183,18 @@ extension GestureExtensions on Widget {
     );
   }
 
-  InkWell onInkDoubleTap(
-    VoidCallback? onDoubleTap,
-  ) {
+  InkWell onInkDoubleTap(VoidCallback? onDoubleTap, {Key? key}) {
     return InkWell(
+      key: key,
       onDoubleTap: onDoubleTap,
       child: this,
     );
   }
 
-  Widget onLongPress(VoidCallback? onLongPress,
+  Widget onLongPress(VoidCallback? onLongPress, Key? key,
       {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild}) {
     return MouseRegion(
+      key: key,
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         behavior: hitTestBehavior,
@@ -200,10 +204,9 @@ extension GestureExtensions on Widget {
     );
   }
 
-  InkWell onInkLongPress(
-    VoidCallback? onLongPress,
-  ) {
+  InkWell onInkLongPress(VoidCallback? onLongPress, {Key? key}) {
     return InkWell(
+      key: key,
       onLongPress: onLongPress,
       child: this,
     );
@@ -214,9 +217,11 @@ extension GestureExtensions on Widget {
   ///
 
   Widget onFeedBackTap(VoidCallback? onTap,
-      {HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild,
+      {Key? key,
+      HitTestBehavior hitTestBehavior = HitTestBehavior.deferToChild,
       bool touchFeedBack = false}) {
     return _CallbackButton(
+      key: key,
       child: this,
       onTap: onTap,
       needHaptic: touchFeedBack,
@@ -227,30 +232,27 @@ extension GestureExtensions on Widget {
   }
 
   /// Mouse Region Hover
-  MouseRegion onMouseHover(
-    PointerHoverEventListener? onHover,
-  ) {
+  MouseRegion onMouseHover(PointerHoverEventListener? onHover, {Key? key}) {
     return MouseRegion(
+      key: key,
       onHover: onHover,
       child: this,
     );
   }
 
   /// Mouse Region Enter
-  MouseRegion onMouseEnter(
-    PointerEnterEventListener? onEnter,
-  ) {
+  MouseRegion onMouseEnter(PointerEnterEventListener? onEnter, {Key? key}) {
     return MouseRegion(
+      key: key,
       onEnter: onEnter,
       child: this,
     );
   }
 
   /// Mouse Region Exit
-  MouseRegion onMouseExit(
-    PointerExitEventListener? onExit,
-  ) {
+  MouseRegion onMouseExit(PointerExitEventListener? onExit, {Key? key}) {
     return MouseRegion(
+      key: key,
       onExit: onExit,
       child: this,
     );
@@ -258,10 +260,12 @@ extension GestureExtensions on Widget {
 
   /// Mouse Region Enter & Exit
   MouseRegion onMouseEnterExit({
+    Key? key,
     PointerEnterEventListener? onEnter,
     PointerExitEventListener? onExit,
   }) {
     return MouseRegion(
+      key: key,
       onEnter: onEnter,
       onExit: onExit,
       child: this,
@@ -351,4 +355,280 @@ class _CallbackButtonState extends State<_CallbackButton> {
       bgColor = widget.normalColor;
     });
   }
+}
+
+//
+// Transform widget enables the overlay to be updated dynamically
+//
+class _VxTransformWidget extends StatefulWidget {
+  const _VxTransformWidget({
+    Key? key,
+    required this.child,
+    required this.matrix,
+  }) : super(key: key);
+
+  final Widget child;
+  final Matrix4 matrix;
+
+  @override
+  _VxTransformWidgetState createState() => _VxTransformWidgetState();
+}
+
+class _VxTransformWidgetState extends State<_VxTransformWidget> {
+  Matrix4? _matrix = Matrix4.identity();
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform(
+      transform: widget.matrix * _matrix,
+      child: widget.child,
+    );
+  }
+
+  void setMatrix(Matrix4? matrix) {
+    setState(() {
+      _matrix = matrix;
+    });
+  }
+}
+
+///
+/// VxZoom widget allows a widget to pinch and zoom on top of current context
+/// by inserting a [OverlayEntry].
+///
+class VxZoom extends StatefulWidget {
+  const VxZoom({
+    Key? key,
+    this.twoTouchOnly = false,
+    required this.child,
+    this.minScale,
+    this.maxScale,
+    this.animationDuration = const Duration(milliseconds: 100),
+    this.animationCurve = Curves.fastOutSlowIn,
+    this.modalBarrierColor,
+  }) : super(key: key);
+
+  /// A widget to make zoomable.
+  final Widget child;
+
+  ///  Specifies the minimum multiplier it can scale outwards.
+  final double? minScale;
+
+  ///  Specifies the maximum multiplier the user can zoom inwards.
+  final double? maxScale;
+
+  /// Specifies wither the zoom is enabled only with two fingers on the screen.
+  ///  Defaults to false.
+  final bool twoTouchOnly;
+
+  /// Specifies the animation duartion when the widget zoom has ended and is
+  /// animating back to the original place.
+  final Duration animationDuration;
+
+  /// Specifies the animation curve when the widget zoom has ended and is
+  /// animating back to the original place.
+  final Curve animationCurve;
+
+  /// Specifies the color of the modal barrier that shows in the background.
+  final Color? modalBarrierColor;
+
+  @override
+  _VxZoomState createState() => _VxZoomState();
+}
+
+class _VxZoomState extends State<VxZoom> with TickerProviderStateMixin {
+  Matrix4? _matrix = Matrix4.identity();
+  late Offset _startFocalPoint;
+  late Animation<Matrix4> _animationReset;
+  late AnimationController _controllerReset;
+  OverlayEntry? _overlayEntry;
+  bool _isZooming = false;
+  int _touchCount = 0;
+  Matrix4 _transformMatrix = Matrix4.identity();
+
+  final _transformWidget = GlobalKey<_VxTransformWidgetState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controllerReset = AnimationController(
+      vsync: this,
+      duration: widget.animationDuration,
+    );
+
+    _controllerReset
+      ..addListener(() {
+        _transformWidget.currentState!.setMatrix(_animationReset.value);
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          hide();
+        }
+      });
+  }
+
+  @override
+  void dispose() {
+    _controllerReset.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerDown: _incrementEnter,
+      onPointerUp: _incrementExit,
+      onPointerCancel: _incrementExit,
+      child: GestureDetector(
+        onScaleStart: onScaleStart,
+        onScaleUpdate: onScaleUpdate,
+        onScaleEnd: onScaleEnd,
+        child: Opacity(opacity: _isZooming ? 0 : 1, child: widget.child),
+      ),
+    );
+  }
+
+  void onScaleStart(ScaleStartDetails details) {
+    //Dont start the effect if the image havent reset complete.
+    if (_controllerReset.isAnimating) {
+      return;
+    }
+    if (widget.twoTouchOnly && _touchCount < 2) {
+      return;
+    }
+    _startFocalPoint = details.focalPoint;
+
+    _matrix = Matrix4.identity();
+
+    // create an matrix of where the image is on the screen for the overlay
+    final renderBox = context.findRenderObject() as RenderBox;
+    final position = renderBox.localToGlobal(Offset.zero);
+
+    _transformMatrix = Matrix4.translation(
+      v3.Vector3(position.dx, position.dy, 0),
+    );
+
+    show();
+
+    setState(() {
+      _isZooming = true;
+    });
+  }
+
+  void onScaleUpdate(ScaleUpdateDetails details) {
+    if (!_isZooming || _controllerReset.isAnimating) {
+      return;
+    }
+
+    final translationDelta = details.focalPoint - _startFocalPoint;
+
+    final translate = Matrix4.translation(
+      v3.Vector3(translationDelta.dx, translationDelta.dy, 0),
+    );
+
+    final renderBox = context.findRenderObject() as RenderBox;
+    final focalPoint = renderBox.globalToLocal(
+      details.focalPoint - translationDelta,
+    );
+
+    var scaleby = details.scale;
+    if (widget.minScale != null && scaleby < widget.minScale!) {
+      scaleby = widget.minScale ?? 0;
+    }
+
+    if (widget.maxScale != null && scaleby > widget.maxScale!) {
+      scaleby = widget.maxScale ?? 0;
+    }
+
+    final dx = (1 - scaleby) * focalPoint.dx;
+    final dy = (1 - scaleby) * focalPoint.dy;
+
+    final scale =
+        Matrix4(scaleby, 0, 0, 0, 0, scaleby, 0, 0, 0, 0, 1, 0, dx, dy, 0, 1);
+
+    _matrix = translate * scale;
+
+    if (_transformWidget.currentState != null) {
+      _transformWidget.currentState!.setMatrix(_matrix);
+    }
+  }
+
+  void onScaleEnd(ScaleEndDetails details) {
+    if (!_isZooming || _controllerReset.isAnimating) {
+      return;
+    }
+    _animationReset = Matrix4Tween(
+      begin: _matrix,
+      end: Matrix4.identity(),
+    ).animate(
+      CurvedAnimation(
+        parent: _controllerReset,
+        curve: widget.animationCurve,
+      ),
+    );
+    _controllerReset
+      ..reset()
+      ..forward();
+  }
+
+  Widget _build(BuildContext context) {
+    return IgnorePointer(
+      child: Stack(
+        children: [
+          ModalBarrier(
+            color: widget.modalBarrierColor,
+          ),
+          _VxTransformWidget(
+            key: _transformWidget,
+            matrix: _transformMatrix,
+            child: widget.child,
+          )
+        ],
+      ),
+    );
+  }
+
+  Future<void> show() async {
+    if (!_isZooming) {
+      final overlayState = Overlay.of(context);
+      _overlayEntry = OverlayEntry(builder: _build);
+      overlayState?.insert(_overlayEntry!);
+    }
+  }
+
+  Future<void> hide() async {
+    setState(() {
+      _isZooming = false;
+    });
+
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+  }
+
+  void _incrementEnter(PointerEvent details) => _touchCount++;
+
+  void _incrementExit(PointerEvent details) => _touchCount--;
+}
+
+extension VxZoomExtensions on Widget {
+  Widget zoom({
+    Key? key,
+    double? minScale,
+    double? maxScale,
+    bool twoTouchOnly = false,
+    Duration animationDuration = const Duration(milliseconds: 200),
+    Curve animationCurve = Curves.easeOut,
+    Color? modalBarrierColor,
+  }) =>
+      VxZoom(
+        key: key,
+        child: this,
+        minScale: minScale,
+        maxScale: maxScale,
+        twoTouchOnly: twoTouchOnly,
+        animationDuration: animationDuration,
+        animationCurve: animationCurve,
+        modalBarrierColor: modalBarrierColor,
+      );
 }
