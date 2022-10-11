@@ -37,6 +37,9 @@ class VxTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final String? counterText;
   final bool autofocus;
+
+  ///[readOnly]
+  final bool readOnly;
   final TextStyle? style;
   final String? labelText;
   final TextStyle? labelStyle;
@@ -86,6 +89,7 @@ class VxTextField extends StatefulWidget {
     this.focusNode,
     this.counterText,
     this.autofocus = false,
+    this.readOnly = false,
     this.style,
     this.labelText,
     this.labelStyle,
@@ -133,6 +137,7 @@ class _VxTextFieldState extends State<VxTextField> {
       textInputAction: widget.textInputAction,
       focusNode: focusNode,
       autofocus: widget.autofocus,
+      readOnly: widget.readOnly,
       cursorColor: widget.cursorColor,
       autocorrect: widget.autocorrect,
       cursorHeight: widget.cursorHeight,
