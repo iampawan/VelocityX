@@ -780,3 +780,39 @@ Map<E, int> _elementCountsIn<E>(Iterable<E> iterable) {
   }
   return counts;
 }
+
+extension VxExtensionMap<K, V> on Map<K, V> {
+  List<K> keysList({bool growable = true}) => keys.toList(growable: growable);
+
+  List<V> valuesList({bool growable = true}) =>
+      values.toList(growable: growable);
+
+  List<E> builderEntry<E>(E Function(MapEntry<K, V>) builder) =>
+      entries.map((MapEntry<K, V> entry) => builder(entry)).toList();
+
+  /// addAll map and return new map
+  Map<K, V> addAllT(Map<K, V> iterable, {bool isAdd = true}) {
+    if (isAdd) {
+      addAll(iterable);
+    }
+    return this;
+  }
+
+  /// update map and return new map
+  Map<K, V> updateAllT(V Function(K key, V value) update,
+      {bool isUpdate = true}) {
+    if (isUpdate) {
+      updateAll(update);
+    }
+    return this;
+  }
+
+  /// update map and return new map
+  Map<K, V> updateT(K key, V Function(V value) update,
+      {V Function()? ifAbsent, bool isUpdate = true}) {
+    if (isUpdate) {
+      this.update(key, update, ifAbsent: ifAbsent);
+    }
+    return this;
+  }
+}

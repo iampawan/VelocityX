@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:example/models/dummy.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,14 @@ class _DemoListState extends State<DemoList> {
     'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
     'https://images.unsplash.com/photo-1618572195571-1fdd75cd7add?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
   ];
+
+  final Map<dynamic, dynamic> json = jsonDecode(
+      '{"name":"JSONView","url":"http://www.jsonview.com",'
+      '"page":10,"num":88.88,"isNonProfit":true,"address":'
+      '{"street":"Science and Technology Park Road.","city":"Delhi","country":"India"},'
+      '"links":[{"name":"Google","url":"https://www.google.com"},'
+      '{"name":"VelocityX","url":"https://velocityx.dev"},'
+      '{"name":"Codepur","url":"https://codepur.dev"}]}') as Map<dynamic, dynamic>;
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +121,14 @@ class _DemoListState extends State<DemoList> {
               },
               child: "Wait & Push".text.make(),
             ),
+          ],
+        ),
+
+        ExpansionTile(
+          title: "VxJson".text.make(),
+          childrenPadding: Vx.m32,
+          children: [
+            VxJson(json),
           ],
         ),
         ExpansionTile(

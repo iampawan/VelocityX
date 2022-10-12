@@ -15,8 +15,137 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/flutter/gesture.dart';
 
 double _degreeToRad(double degrees) => degrees / 180.0 * math.pi;
+
+typedef VxToggleBuilder = Widget Function(Widget child);
+
+/// VxToggleRotate to rotate and animate any widget
+class VxToggleRotate extends StatefulWidget {
+  const VxToggleRotate(
+      {super.key,
+      required this.child,
+      this.onTap,
+      this.rad = math.pi / 2,
+      this.clockwise = true,
+      this.duration = const Duration(milliseconds: 200),
+      this.curve = Curves.fastOutSlowIn,
+      this.toggleBuilder,
+      this.isRotate = false});
+
+  final Widget child;
+
+  /// Whether to rotate
+  final bool isRotate;
+
+  /// Click event
+  final GestureTapCallback? onTap;
+
+  /// Rotation angle pi / 2
+  /// 1=180℃  2=90℃
+  final double rad;
+
+  /// animation duration
+  final Duration duration;
+
+  /// Whether to rotate clockwise
+  final bool clockwise;
+
+  /// animation curve
+  final Curve curve;
+
+  /// Custom non-rotation area
+  final VxToggleBuilder? toggleBuilder;
+
+  @override
+  State<VxToggleRotate> createState() => _VxToggleRotateState();
+}
+
+class _VxToggleRotateState extends State<VxToggleRotate>
+    with SingleTickerProviderStateMixin {
+  double _rad = 0;
+  bool _rotated = false;
+  late AnimationController _controller;
+  late Animation<double> _rotate;
+
+  @override
+  void initState() {
+    _controller = AnimationController(duration: widget.duration, vsync: this)
+      ..addListener(listener)
+      ..addStatusListener(statusListener);
+    _rotate = CurvedAnimation(parent: _controller, curve: widget.curve);
+    super.initState();
+  }
+
+  void statusListener(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      _rotated = !_rotated;
+    }
+  }
+
+  void listener() {
+    if (mounted) {
+      setState(() =>
+          _rad = (_rotated ? (1 - _rotate.value) : _rotate.value) * widget.rad);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(listener);
+    _controller.removeStatusListener(statusListener);
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant VxToggleRotate oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isRotate != widget.isRotate) {
+      _controller.reset();
+      _controller.forward();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget current = Transform(
+        transform: Matrix4.rotationZ(widget.clockwise ? _rad : -_rad),
+        alignment: Alignment.center,
+        child: widget.child);
+    if (widget.toggleBuilder != null) {
+      current = widget.toggleBuilder!(current);
+    }
+    if (widget.onTap != null) {
+      current = current.onTap(widget.onTap!);
+    }
+    return current;
+  }
+}
+
+extension VxToggleExtension on Widget {
+  Widget toggleRotate(
+          {Key? key,
+          GestureTapCallback? onTap,
+          double rad = math.pi / 2,
+          bool clockwise = true,
+          Duration duration = const Duration(milliseconds: 200),
+          Curve curve = Curves.fastOutSlowIn,
+          VxToggleBuilder? toggleBuilder,
+          bool isRotate = false}) =>
+      VxToggleRotate(
+        key: key,
+        child: this,
+        clockwise: clockwise,
+        curve: curve,
+        duration: duration,
+        isRotate: isRotate,
+        onTap: onTap,
+        rad: rad,
+        toggleBuilder: toggleBuilder,
+      );
+}
 
 ///
 /// Extension method to directly transform any widget without wrapping or with dot operator.
