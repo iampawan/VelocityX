@@ -41,6 +41,7 @@ class VxTextField extends StatefulWidget {
   final String? labelText;
   final TextStyle? labelStyle;
   final Color? cursorColor;
+  final bool readOnly;
 
   /// The color of the [suffixIcon].
   final Color? suffixColor;
@@ -55,6 +56,7 @@ class VxTextField extends StatefulWidget {
   final Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final AutovalidateMode? autovalidateMode;
+  final String? initialValue;
 
   const VxTextField({
     Key? key,
@@ -102,7 +104,10 @@ class VxTextField extends StatefulWidget {
     this.onSaved,
     this.validator,
     this.autovalidateMode,
-  }) : super(key: key);
+    this.readOnly = false,
+    this.initialValue,
+  })  : assert(initialValue == null || controller == null),
+        super(key: key);
 
   @override
   _VxTextFieldState createState() => _VxTextFieldState();
@@ -126,6 +131,7 @@ class _VxTextFieldState extends State<VxTextField> {
   Widget build(BuildContext context) {
     final Widget textField = TextFormField(
       key: widget.key,
+      initialValue: widget.initialValue,
       controller: controller,
       obscureText: obscureText,
       textAlign: widget.textAlign,
@@ -144,6 +150,7 @@ class _VxTextFieldState extends State<VxTextField> {
       toolbarOptions: widget.toolbarOptions,
       inputFormatters: widget.inputFormatters,
       autovalidateMode: widget.autovalidateMode,
+      readOnly: widget.readOnly,
       decoration: InputDecoration(
         icon: widget.icon,
         prefixIcon: widget.prefixIcon,
