@@ -11,7 +11,6 @@
  * limitations under the License.
  */
 
-import 'dart:async' show Zone;
 import 'dart:developer' as dev;
 import 'dart:math';
 
@@ -655,22 +654,42 @@ mixin Vx {
   /// - [zone] (optional) the zone where the log was emitted
   /// - [error] (optional) an error object associated with this log event
   /// - [stackTrace] (optional) a stack trace associated with this log event
-  static void log(String message,
-          {DateTime? time,
-          int? sequenceNumber,
-          int level = 0,
-          String name = '',
-          Zone? zone,
-          Object? error,
-          StackTrace? stackTrace}) =>
-      dev.log(message,
-          error: error,
-          level: level,
-          name: name,
-          sequenceNumber: sequenceNumber,
-          stackTrace: stackTrace,
-          time: time,
-          zone: zone);
+
+  static void log(dynamic msg, {bool? hasDottedLine}) {
+    hasDottedLine ??= true;
+    if (!(kDebugMode || kProfileMode)) {
+      return;
+    }
+    final String message = msg.toString();
+    if (hasDottedLine) {
+      debugPrint(
+          '┌------------------------------------------------------------------------------');
+    }
+    const int limitLength = 800;
+    if (message.length < limitLength) {
+      debugPrint('$msg');
+    } else {
+      final StringBuffer outStr = StringBuffer();
+      for (int index = 0; index < message.length; index++) {
+        outStr.write(message[index]);
+        if (index % limitLength == 0 && index != 0) {
+          debugPrint(outStr.toString());
+          outStr.clear();
+          final int lastIndex = index + 1;
+          if (message.length - lastIndex < limitLength) {
+            final String remainderStr =
+                message.substring(lastIndex, message.length);
+            debugPrint(remainderStr);
+            break;
+          }
+        }
+      }
+    }
+    if (hasDottedLine) {
+      debugPrint(
+          '└------------------------------------------------------------------------------');
+    }
+  }
 
   /// Send a reference to [object] to any attached debuggers.
   ///
@@ -753,6 +772,6 @@ mixin Vx {
   }
 
   /// Copy to pasteboard
-  Future<void> toClipboard(String data) async =>
+  static Future<void> toClipboard(String data) async =>
       await Clipboard.setData(ClipboardData(text: data));
 }

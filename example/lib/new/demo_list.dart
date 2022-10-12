@@ -37,6 +37,7 @@ class _DemoListState extends State<DemoList> {
 
   @override
   Widget build(BuildContext context) {
+    Vx.log("Logging using Vx");
     // Guard Example
     final _ = guard(() => x, "Guard - No value found");
     final VxPopupMenuController _controller = VxPopupMenuController();
