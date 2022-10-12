@@ -1,3 +1,13 @@
+## [3.6.0] - Oct 12, 2022
+
+- New Widgets - VxJson (Json tree widget), VxZoom (Instagram like pinch to zoom), VxAdaptiveNavigation (Navigation rail on large device & Nav Bar for phones), VxSwitcher, VxUniversal (Super widget for everything), VxToggleRotate and VxHoverToggle (Change widget on Hover).
+- New extension methods are added for List, String, Num, Context, Map, Widgets, BoxConstraints and Global Key etc.
+- Added a method to copy data to the clipboard.
+- onTap now has a Mouse Region for better UX on Web & Desktop.
+- Vx.log now has a better UI for displaying logs only on debug mode.
+- Example app is improved.
+- Bug Fixes and more improvements.
+
 ## [3.5.1] - May 25, 2022
 
 - [Breaking] Colors renamed as per Tailwind BlueGray -> Slate, TrueGray -> Neutral, CoolGray -> Gray, Gray -> Zinc, WarmGray -> Stone, LightBlue -> Sky.
