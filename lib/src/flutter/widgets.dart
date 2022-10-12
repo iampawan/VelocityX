@@ -13,6 +13,7 @@
  */
 
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -202,13 +203,6 @@ extension VxWidgetsExtension on Widget {
     return _KeepAliveWidget(this);
   }
 
-  /// Extension for SliverToBox
-  SliverToBoxAdapter sliverBoxAdapter() {
-    return SliverToBoxAdapter(
-      child: this,
-    );
-  }
-
   ///Maybe often use this when you want to make your own AppBar or NavigationBar with your custom UI
   ///
   /// tip:the size of ios navigation bar is Size.fromHeight(44.0) [kMinInteractiveDimensionCupertino],
@@ -299,6 +293,57 @@ extension VxWidgetsExtension on Widget {
         color: color,
         offset: offset,
       );
+
+  /// Extension method for [SliverToBoxAdapter] Widget
+  Widget toSliverBox({Key? key}) => SliverToBoxAdapter(key: key, child: this);
+
+  SliverToBoxAdapter sliverToBoxAdapter({Key? key}) =>
+      SliverToBoxAdapter(key: key, child: this);
+
+  BackdropFilter backdropFilter(
+          {Key? key, ImageFilter? filter, double fuzzyDegree = 4}) =>
+      BackdropFilter(
+          key: key,
+          filter: filter ??
+              ImageFilter.blur(sigmaX: fuzzyDegree, sigmaY: fuzzyDegree),
+          child: this);
+
+  FittedBox fittedBox(
+          {Key? key,
+          BoxFit fit = BoxFit.contain,
+          AlignmentGeometry alignment = Alignment.center,
+          Clip clipBehavior = Clip.none}) =>
+      FittedBox(
+          key: key,
+          fit: fit,
+          alignment: alignment,
+          clipBehavior: clipBehavior,
+          child: this);
+
+  ColoredBox color(Color color, {Key? key}) =>
+      ColoredBox(key: key, color: color, child: this);
+
+  ConstrainedBox constrainedBox(BoxConstraints constraints, {Key? key}) =>
+      ConstrainedBox(key: key, constraints: constraints, child: this);
+
+  Hero hero(
+    Object tag, {
+    Key? key,
+    CreateRectTween? createRectTween,
+    HeroFlightShuttleBuilder? flightShuttleBuilder,
+    HeroPlaceholderBuilder? placeholderBuilder,
+    bool transitionOnUserGestures = false,
+  }) =>
+      Hero(
+          key: key,
+          createRectTween: createRectTween,
+          flightShuttleBuilder: flightShuttleBuilder,
+          placeholderBuilder: placeholderBuilder,
+          transitionOnUserGestures: transitionOnUserGestures,
+          tag: tag,
+          child: this);
+
+  List<Widget> asList() => <Widget>[this];
 }
 
 extension StringWidgetsExtension on String {
