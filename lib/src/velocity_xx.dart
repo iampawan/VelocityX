@@ -24,6 +24,7 @@ import 'package:flutter/material.dart'
         ShapeBorder,
         BorderRadius,
         Color;
+import 'package:flutter/services.dart';
 
 import 'nav/i_vx_nav.dart';
 
@@ -750,4 +751,8 @@ mixin Vx {
       VxNav.setHashUrlStrategy(); // coverage:ignore-line
     }
   }
+
+  /// Copy to pasteboard
+  Future<void> toClipboard(String data) async =>
+      await Clipboard.setData(ClipboardData(text: data));
 }

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
@@ -19,11 +19,29 @@ import 'package:velocity_x/src/flutter/text.dart';
 
 /// Extension Methods & Widgets for the numbers
 extension VxNumExtension on num {
-  /// This ext will be removed soon. Use [toDoubleStringAsFixed] instead.
-  @Deprecated('Use [toDoubleStringAsFixed] instead. It will be removed soon.')
-  String toDollarAsFixed({int digit = 2}) {
-    return toStringAsFixed(truncateToDouble() == this ? 0 : digit);
-  }
+  /// Does it contain [other]
+  bool contains(Pattern other, [int startIndex = 0]) =>
+      toString().contains(other);
+
+  T max<T extends num>(T value) => math.max(this as T, value);
+
+  T min<T extends num>(T value) => math.min(this as T, value);
+
+  double get cos => math.cos(this);
+
+  double get tan => math.tan(this);
+
+  double get acos => math.acos(this);
+
+  double get asin => math.asin(this);
+
+  double get sqrt => math.sqrt(this);
+
+  double get exp => math.exp(this);
+
+  double get log => math.log(this);
+
+  double atan2(num value) => math.atan2(this, value);
 
   ///
   /// Use this extension method to get fixed values after decimal with defined length.
@@ -35,9 +53,22 @@ extension VxNumExtension on num {
   /// Use this extension method to get precised values after decimal with defined length.
   ///
   String toDoubleStringAsPrecised({int length = 4}) {
-    return ((this * pow(10, length)).truncateToDouble() / pow(10, length))
+    return ((this * math.pow(10, length)).truncateToDouble() /
+            math.pow(10, length))
         .toString();
   }
+
+  /// Create a List of the specified length
+  List<T> generate<T>(T Function(int index) generator,
+          {bool growable = true}) =>
+      List<T>.generate(toInt(), (int index) => generator(index),
+          growable: growable);
+
+  String padLeft(int width, [String padding = ' ']) =>
+      toString().padLeft(width, padding);
+
+  /// num long
+  int get length => toString().length;
 
   ///
   /// Check if the number is null

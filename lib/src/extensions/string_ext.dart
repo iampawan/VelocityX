@@ -14,6 +14,7 @@
 import 'dart:convert';
 
 import 'package:intl/intl.dart' as intl;
+import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/rich_text.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
@@ -321,6 +322,45 @@ extension VxStringExtension on String {
   /// from fooBar to foo_bar
   String get snakeCase => replaceAllMapped(_camelCaseMatcher,
       (match) => '${match.start == 0 ? '' : '_'}${match[0]!.toLowerCase()}');
+
+  /// Base64 encryption
+  String get toEncodedBase64 => base64Encode(utf8.encode(this));
+
+  /// Base64 decryption
+  String get toDecodedBase64 => String.fromCharCodes(base64Decode(this));
+
+  /// utf8ToList
+  List<int> get utf8ToList {
+    final List<int> words = length.generate((_) => 0);
+    for (int i = 0; i < length; i++) {
+      words[i >> 2] |= (codeUnitAt(i) & 0xff).toSigned(32) <<
+          (24 - (i % 4) * 8).toSigned(32);
+    }
+    return words;
+  }
+
+  /// Perform utf8 encoding
+  List<int> get utf8Encode => utf8.encode(this);
+
+  /// Add pattern every x bits
+  String formatDigitPattern({int digit = 4, String pattern = ' '}) {
+    String text = this;
+    text = text.replaceAllMapped(
+        RegExp('(.{$digit})'), (Match match) => '${match.group(0)}$pattern');
+    if (text.endsWith(pattern)) {
+      text = text.substring(0, text.length - 1);
+    }
+    return text;
+  }
+
+  /// Add pattern every x bits, starting from the end
+  String formatDigitPatternEnd(String text,
+      {int digit = 4, String pattern = ' '}) {
+    String temp = reverse();
+    temp = formatDigitPattern(digit: digit, pattern: pattern);
+    temp = reverse();
+    return temp;
+  }
 
   /// Get Text Widget for the String
   VxTextBuilder get text => VxTextBuilder(this);
