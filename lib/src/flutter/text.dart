@@ -13,10 +13,8 @@
 
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
-
 import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
@@ -57,6 +55,9 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   TextBaseline? _textBaseline;
   Widget? _replacement;
   bool? _softWrap, _wrapWords;
+  double _shadowBlur = 0.0;
+  Color _shadowColor = const Color(0xFF000000);
+  Offset _shadowOffset = Offset.zero;
 
   bool _isIntrinsic = false;
 
@@ -69,7 +70,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   }
 
   /// Set [color] of the text
-  VxTextBuilder color(Color color) {
+  VxTextBuilder color(Color? color) {
     velocityColor = color;
     return this;
   }
@@ -80,7 +81,9 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
 
   /// [LayoutBuilder] does not support using IntrinsicWidth or IntrinsicHeight.
   ///
-  /// Note: Use it only for few widgets like [DataTable] which doesn't work well with Vx but using [isIntrinsic] will disable [AutoSizeText].
+  /// Note: Use it only for few widgets like [DataTable], [IntrinsicWidth] or
+  /// [IntrinsicHeight] etc which doesn't work well with Vx
+  /// but using [isIntrinsic] will disable [AutoSizeText].
   VxTextBuilder get isIntrinsic => this.._isIntrinsic = true;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
@@ -192,7 +195,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// If the style's 'inherit' property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  VxTextBuilder textStyle(TextStyle _style) {
+  VxTextBuilder textStyle(TextStyle? _style) {
     _themedStyle = _style;
     return this;
   }
@@ -207,7 +210,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// font size.
   ///
   /// See [StrutStyle] for details.
-  VxTextBuilder strutStyle(StrutStyle _style) {
+  VxTextBuilder strutStyle(StrutStyle? _style) {
     _strutStyle = _style;
     return this;
   }
@@ -349,6 +352,10 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// Sets [textScaleFactor] to six times extra large i.e. 4
   VxTextBuilder get xl6 => _fontSizedText(child: this, scaleFactor: 4);
 
+  /// Sets [textScaleFactor] to custom value
+  VxTextBuilder scale(double value) =>
+      _fontSizedText(child: this, scaleFactor: value);
+
   VxTextBuilder _fontSizedText(
       {required double scaleFactor, required VxTextBuilder child}) {
     _fontSize = _fontSize ?? 14.0;
@@ -357,43 +364,33 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   }
 
   /// Sets [FontWeight] to [FontWeight.w100]
-  VxTextBuilder get hairLine =>
-      _fontWeightedText(child: this, weight: FontWeight.w100);
+  VxTextBuilder get hairLine => _fontWeightedText(weight: FontWeight.w100);
 
   /// Sets [FontWeight] to [FontWeight.w200]
-  VxTextBuilder get thin =>
-      _fontWeightedText(child: this, weight: FontWeight.w200);
+  VxTextBuilder get thin => _fontWeightedText(weight: FontWeight.w200);
 
   /// Sets [FontWeight] to [FontWeight.w300]
-  VxTextBuilder get light =>
-      _fontWeightedText(child: this, weight: FontWeight.w300);
+  VxTextBuilder get light => _fontWeightedText(weight: FontWeight.w300);
 
   /// Sets [FontWeight] to [FontWeight.w400]
-  VxTextBuilder get normal =>
-      _fontWeightedText(child: this, weight: FontWeight.w400);
+  VxTextBuilder get normal => _fontWeightedText(weight: FontWeight.w400);
 
   /// Sets [FontWeight] to [FontWeight.w500]
-  VxTextBuilder get medium =>
-      _fontWeightedText(child: this, weight: FontWeight.w500);
+  VxTextBuilder get medium => _fontWeightedText(weight: FontWeight.w500);
 
   /// Sets [FontWeight] to [FontWeight.w600]
-  VxTextBuilder get semiBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w600);
+  VxTextBuilder get semiBold => _fontWeightedText(weight: FontWeight.w600);
 
   /// Sets [FontWeight] to [FontWeight.w700]
-  VxTextBuilder get bold =>
-      _fontWeightedText(child: this, weight: FontWeight.w700);
+  VxTextBuilder get bold => _fontWeightedText(weight: FontWeight.w700);
 
   /// Sets [FontWeight] to [FontWeight.w800]
-  VxTextBuilder get extraBold =>
-      _fontWeightedText(child: this, weight: FontWeight.w800);
+  VxTextBuilder get extraBold => _fontWeightedText(weight: FontWeight.w800);
 
   /// Sets [FontWeight] to [FontWeight.w900]
-  VxTextBuilder get extraBlack =>
-      _fontWeightedText(child: this, weight: FontWeight.w900);
+  VxTextBuilder get extraBlack => _fontWeightedText(weight: FontWeight.w900);
 
-  VxTextBuilder _fontWeightedText(
-      {required FontWeight weight, required VxTextBuilder child}) {
+  VxTextBuilder _fontWeightedText({required FontWeight weight}) {
     _fontWeight = weight;
     return this;
   }
@@ -459,20 +456,44 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// Sets custom [lineHeight] with [val]
   VxTextBuilder lineHeight(double val) => this.._lineHeight = val;
 
+  /// Sets [Shadow] as specified in request *#127*
+  VxTextBuilder shadow(
+          double offsetX, double offsetY, double blurRadius, Color color) =>
+      this
+        .._shadowBlur = blurRadius
+        .._shadowColor = color
+        .._shadowOffset = Offset(offsetX, offsetY);
+
+  /// Sets [Shadow] blur
+  VxTextBuilder shadowBlur(double blur) => this.._shadowBlur = blur;
+
+  /// Sets [Shadow] color
+  VxTextBuilder shadowColor(Color color) => this.._shadowColor = color;
+
+  /// Sets [Shadow] offset
+  VxTextBuilder shadowOffset(double dx, double dy) =>
+      this.._shadowOffset = Offset(dx, dy);
+
   @override
   Widget make({Key? key}) {
+    final sdw = [
+      Shadow(
+          blurRadius: _shadowBlur, color: _shadowColor, offset: _shadowOffset)
+    ];
+
     final ts = TextStyle(
-      color: velocityColor,
-      fontSize: _fontSize,
-      fontStyle: _fontStyle,
-      fontFamily: _fontFamily,
-      fontWeight: _fontWeight,
-      letterSpacing: _letterSpacing,
-      decoration: _decoration,
-      height: _lineHeight,
-      textBaseline: _textBaseline ?? TextBaseline.alphabetic,
-      wordSpacing: _wordSpacing,
-    );
+        color: velocityColor,
+        fontSize: _fontSize,
+        fontStyle: _fontStyle,
+        fontFamily: _fontFamily,
+        fontWeight: _fontWeight,
+        letterSpacing: _letterSpacing,
+        decoration: _decoration,
+        height: _lineHeight,
+        textBaseline: _textBaseline ?? TextBaseline.alphabetic,
+        wordSpacing: _wordSpacing,
+        shadows: _shadowBlur > 0 ? sdw : null);
+
     return _isIntrinsic
         ? Text(
             _text!,
@@ -504,7 +525,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   }
 }
 
-extension TextExtensions on Text {
+extension VxTextExtensions on Text {
   ///
   /// Extension method to directly access [VxTextBuilder] with any widget without wrapping or with dot operator.
   ///

@@ -13,7 +13,9 @@
  */
 
 import 'dart:async';
+
 import 'package:flutter/material.dart';
+
 import '../extensions/context_ext.dart';
 
 class VxMarquee extends StatefulWidget {
@@ -48,7 +50,7 @@ class VxMarqueeState extends State<VxMarquee>
   void initState() {
     super.initState();
     scrollController = ScrollController();
-    WidgetsBinding.instance!.addPostFrameCallback((callback) {
+    WidgetsBinding.instance.addPostFrameCallback((callback) {
       startTimer();
     });
   }
@@ -153,7 +155,7 @@ class VxMarqueeState extends State<VxMarquee>
   }
 }
 
-extension MarqueeExtension on String {
+extension VxMarqueeExtension on String {
   ///
   /// Extension method to directly access [VxMarquee] with any widget without wrapping or with dot operator.
   ///

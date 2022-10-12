@@ -1,3 +1,3 @@
-extension BoolExtension on bool {
+extension VxBoolExtension on bool {
   bool toggle() => !this;
 }

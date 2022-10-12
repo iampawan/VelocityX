@@ -41,53 +41,53 @@ mixin VxColorMixin<T> {
   T get gray800 => _colorIt(child: _childToColor, color: Vx.gray800);
   T get gray900 => _colorIt(child: _childToColor, color: Vx.gray900);
 
-  ///Bluegray
-  T get blueGray50 => _colorIt(child: _childToColor, color: Vx.blueGray50);
-  T get blueGray100 => _colorIt(child: _childToColor, color: Vx.blueGray100);
-  T get blueGray200 => _colorIt(child: _childToColor, color: Vx.blueGray200);
-  T get blueGray300 => _colorIt(child: _childToColor, color: Vx.blueGray300);
-  T get blueGray400 => _colorIt(child: _childToColor, color: Vx.blueGray400);
-  T get blueGray500 => _colorIt(child: _childToColor, color: Vx.blueGray500);
-  T get blueGray600 => _colorIt(child: _childToColor, color: Vx.blueGray600);
-  T get blueGray700 => _colorIt(child: _childToColor, color: Vx.blueGray700);
-  T get blueGray800 => _colorIt(child: _childToColor, color: Vx.blueGray800);
-  T get blueGray900 => _colorIt(child: _childToColor, color: Vx.blueGray900);
+  ///Slate
+  T get slate50 => _colorIt(child: _childToColor, color: Vx.slate50);
+  T get slate100 => _colorIt(child: _childToColor, color: Vx.slate100);
+  T get slate200 => _colorIt(child: _childToColor, color: Vx.slate200);
+  T get slate300 => _colorIt(child: _childToColor, color: Vx.slate300);
+  T get slate400 => _colorIt(child: _childToColor, color: Vx.slate400);
+  T get slate500 => _colorIt(child: _childToColor, color: Vx.slate500);
+  T get slate600 => _colorIt(child: _childToColor, color: Vx.slate600);
+  T get slate700 => _colorIt(child: _childToColor, color: Vx.slate700);
+  T get slate800 => _colorIt(child: _childToColor, color: Vx.slate800);
+  T get slate900 => _colorIt(child: _childToColor, color: Vx.slate900);
 
-  ///Cool Gray
-  T get coolGray50 => _colorIt(child: _childToColor, color: Vx.coolGray50);
-  T get coolGray100 => _colorIt(child: _childToColor, color: Vx.coolGray100);
-  T get coolGray200 => _colorIt(child: _childToColor, color: Vx.coolGray200);
-  T get coolGray300 => _colorIt(child: _childToColor, color: Vx.coolGray300);
-  T get coolGray400 => _colorIt(child: _childToColor, color: Vx.coolGray400);
-  T get coolGray500 => _colorIt(child: _childToColor, color: Vx.coolGray500);
-  T get coolGray600 => _colorIt(child: _childToColor, color: Vx.coolGray600);
-  T get coolGray700 => _colorIt(child: _childToColor, color: Vx.coolGray700);
-  T get coolGray800 => _colorIt(child: _childToColor, color: Vx.coolGray800);
-  T get coolGray900 => _colorIt(child: _childToColor, color: Vx.coolGray900);
+  ///Zinc
+  T get zinc50 => _colorIt(child: _childToColor, color: Vx.zinc50);
+  T get zinc100 => _colorIt(child: _childToColor, color: Vx.zinc100);
+  T get zinc200 => _colorIt(child: _childToColor, color: Vx.zinc200);
+  T get zinc300 => _colorIt(child: _childToColor, color: Vx.zinc300);
+  T get zinc400 => _colorIt(child: _childToColor, color: Vx.zinc400);
+  T get zinc500 => _colorIt(child: _childToColor, color: Vx.zinc500);
+  T get zinc600 => _colorIt(child: _childToColor, color: Vx.zinc600);
+  T get zinc700 => _colorIt(child: _childToColor, color: Vx.zinc700);
+  T get zinc800 => _colorIt(child: _childToColor, color: Vx.zinc800);
+  T get zinc900 => _colorIt(child: _childToColor, color: Vx.zinc900);
 
-  ///True Gray
-  T get trueGray50 => _colorIt(child: _childToColor, color: Vx.trueGray50);
-  T get trueGray100 => _colorIt(child: _childToColor, color: Vx.trueGray100);
-  T get trueGray200 => _colorIt(child: _childToColor, color: Vx.trueGray200);
-  T get trueGray300 => _colorIt(child: _childToColor, color: Vx.trueGray300);
-  T get trueGray400 => _colorIt(child: _childToColor, color: Vx.trueGray400);
-  T get trueGray500 => _colorIt(child: _childToColor, color: Vx.trueGray500);
-  T get trueGray600 => _colorIt(child: _childToColor, color: Vx.trueGray600);
-  T get trueGray700 => _colorIt(child: _childToColor, color: Vx.trueGray700);
-  T get trueGray800 => _colorIt(child: _childToColor, color: Vx.trueGray800);
-  T get trueGray900 => _colorIt(child: _childToColor, color: Vx.trueGray900);
+  ///Neutral
+  T get neutral50 => _colorIt(child: _childToColor, color: Vx.neutral50);
+  T get neutral100 => _colorIt(child: _childToColor, color: Vx.neutral100);
+  T get neutral200 => _colorIt(child: _childToColor, color: Vx.neutral200);
+  T get neutral300 => _colorIt(child: _childToColor, color: Vx.neutral300);
+  T get neutral400 => _colorIt(child: _childToColor, color: Vx.neutral400);
+  T get neutral500 => _colorIt(child: _childToColor, color: Vx.neutral500);
+  T get neutral600 => _colorIt(child: _childToColor, color: Vx.neutral600);
+  T get neutral700 => _colorIt(child: _childToColor, color: Vx.neutral700);
+  T get neutral800 => _colorIt(child: _childToColor, color: Vx.neutral800);
+  T get neutral900 => _colorIt(child: _childToColor, color: Vx.neutral900);
 
-  ///Warm Gray
-  T get warmGray50 => _colorIt(child: _childToColor, color: Vx.warmGray50);
-  T get warmGray100 => _colorIt(child: _childToColor, color: Vx.warmGray100);
-  T get warmGray200 => _colorIt(child: _childToColor, color: Vx.warmGray200);
-  T get warmGray300 => _colorIt(child: _childToColor, color: Vx.warmGray300);
-  T get warmGray400 => _colorIt(child: _childToColor, color: Vx.warmGray400);
-  T get warmGray500 => _colorIt(child: _childToColor, color: Vx.warmGray500);
-  T get warmGray600 => _colorIt(child: _childToColor, color: Vx.warmGray600);
-  T get warmGray700 => _colorIt(child: _childToColor, color: Vx.warmGray700);
-  T get warmGray800 => _colorIt(child: _childToColor, color: Vx.warmGray800);
-  T get warmGray900 => _colorIt(child: _childToColor, color: Vx.warmGray900);
+  ///Stone
+  T get stone50 => _colorIt(child: _childToColor, color: Vx.stone50);
+  T get stone100 => _colorIt(child: _childToColor, color: Vx.stone100);
+  T get stone200 => _colorIt(child: _childToColor, color: Vx.stone200);
+  T get stone300 => _colorIt(child: _childToColor, color: Vx.stone300);
+  T get stone400 => _colorIt(child: _childToColor, color: Vx.stone400);
+  T get stone500 => _colorIt(child: _childToColor, color: Vx.stone500);
+  T get stone600 => _colorIt(child: _childToColor, color: Vx.stone600);
+  T get stone700 => _colorIt(child: _childToColor, color: Vx.stone700);
+  T get stone800 => _colorIt(child: _childToColor, color: Vx.stone800);
+  T get stone900 => _colorIt(child: _childToColor, color: Vx.stone900);
 
   ///Red
   T get red50 => _colorIt(child: _childToColor, color: Vx.red50);
@@ -197,17 +197,17 @@ mixin VxColorMixin<T> {
   T get cyan800 => _colorIt(child: _childToColor, color: Vx.cyan800);
   T get cyan900 => _colorIt(child: _childToColor, color: Vx.cyan900);
 
-  ///Light blue
-  T get lightBlue50 => _colorIt(child: _childToColor, color: Vx.lightBlue50);
-  T get lightBlue100 => _colorIt(child: _childToColor, color: Vx.lightBlue100);
-  T get lightBlue200 => _colorIt(child: _childToColor, color: Vx.lightBlue200);
-  T get lightBlue300 => _colorIt(child: _childToColor, color: Vx.lightBlue300);
-  T get lightBlue400 => _colorIt(child: _childToColor, color: Vx.lightBlue400);
-  T get lightBlue500 => _colorIt(child: _childToColor, color: Vx.lightBlue500);
-  T get lightBlue600 => _colorIt(child: _childToColor, color: Vx.lightBlue600);
-  T get lightBlue700 => _colorIt(child: _childToColor, color: Vx.lightBlue700);
-  T get lightBlue800 => _colorIt(child: _childToColor, color: Vx.lightBlue800);
-  T get lightBlue900 => _colorIt(child: _childToColor, color: Vx.lightBlue900);
+  ///Sky
+  T get sky50 => _colorIt(child: _childToColor, color: Vx.sky50);
+  T get sky100 => _colorIt(child: _childToColor, color: Vx.sky100);
+  T get sky200 => _colorIt(child: _childToColor, color: Vx.sky200);
+  T get sky300 => _colorIt(child: _childToColor, color: Vx.sky300);
+  T get sky400 => _colorIt(child: _childToColor, color: Vx.sky400);
+  T get sky500 => _colorIt(child: _childToColor, color: Vx.sky500);
+  T get sky600 => _colorIt(child: _childToColor, color: Vx.sky600);
+  T get sky700 => _colorIt(child: _childToColor, color: Vx.sky700);
+  T get sky800 => _colorIt(child: _childToColor, color: Vx.sky800);
+  T get sky900 => _colorIt(child: _childToColor, color: Vx.sky900);
 
   ///Blue
   T get blue50 => _colorIt(child: _childToColor, color: Vx.blue50);
@@ -246,6 +246,7 @@ mixin VxColorMixin<T> {
   T get violet900 => _colorIt(child: _childToColor, color: Vx.violet900);
 
   ///Purple
+  T get purple50 => _colorIt(child: _childToColor, color: Vx.purple50);
   T get purple100 => _colorIt(child: _childToColor, color: Vx.purple100);
   T get purple200 => _colorIt(child: _childToColor, color: Vx.purple200);
   T get purple300 => _colorIt(child: _childToColor, color: Vx.purple300);
@@ -269,6 +270,7 @@ mixin VxColorMixin<T> {
   T get fuchsia900 => _colorIt(child: _childToColor, color: Vx.fuchsia900);
 
   ///Pink
+  T get pink50 => _colorIt(child: _childToColor, color: Vx.pink50);
   T get pink100 => _colorIt(child: _childToColor, color: Vx.pink100);
   T get pink200 => _colorIt(child: _childToColor, color: Vx.pink200);
   T get pink300 => _colorIt(child: _childToColor, color: Vx.pink300);

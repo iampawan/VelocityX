@@ -361,7 +361,7 @@ class ZStack extends StatelessWidget {
       : super(key: key);
 
   /// List of widgets in the stack.
-  final List<Widget?> children;
+  final List<Widget> children;
 
   /// How to align the non-positioned and partially-positioned children in the
   /// stack.
@@ -402,9 +402,44 @@ class ZStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
         key: key,
-        children: children as List<Widget>,
+        children: children,
         alignment: alignment ?? AlignmentDirectional.topStart,
         fit: fit ?? StackFit.loose,
         clipBehavior: clip ?? Clip.hardEdge);
+  }
+}
+
+class AStack extends StatelessWidget {
+  final Clip clipBehavior;
+  final OverflowBarAlignment overflowAlignment;
+  final VerticalDirection overflowDirection;
+  final double overflowSpacing;
+  final double spacing;
+  final TextDirection? textDirection;
+  final List<Widget> children;
+
+  const AStack(
+      {Key? key,
+      required this.children,
+      this.clipBehavior = Clip.none,
+      this.overflowAlignment = OverflowBarAlignment.start,
+      this.overflowDirection = VerticalDirection.down,
+      this.overflowSpacing = 0.0,
+      this.spacing = 0.0,
+      this.textDirection})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OverflowBar(
+      key: key,
+      children: children,
+      clipBehavior: clipBehavior,
+      overflowAlignment: overflowAlignment,
+      overflowDirection: overflowDirection,
+      overflowSpacing: overflowSpacing,
+      spacing: spacing,
+      textDirection: textDirection,
+    );
   }
 }

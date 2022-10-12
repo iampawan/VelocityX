@@ -14,7 +14,6 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
@@ -117,7 +116,7 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
   /// If the style's 'inherit' property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  VxRichText textStyle(TextStyle _style) {
+  VxRichText textStyle(TextStyle? _style) {
     _themedStyle = _style;
     return this;
   }
@@ -168,7 +167,7 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
   /// font size.
   ///
   /// See [StrutStyle] for details.
-  VxRichText strutStyle(StrutStyle _style) {
+  VxRichText strutStyle(StrutStyle? _style) {
     _strutStyle = _style;
     return this;
   }
@@ -309,6 +308,10 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
 
   /// Sets [textScaleFactor] to six times extra large i.e. 4
   VxRichText get xl6 => _fontSizedText(child: this, scaleFactor: 4);
+
+  /// Sets [textScaleFactor] to custom value
+  VxRichText scale(double value) =>
+      _fontSizedText(child: this, scaleFactor: value);
 
   VxRichText _fontSizedText(
       {required double scaleFactor, required VxRichText child}) {
@@ -550,6 +553,84 @@ class VelocityXTextSpan extends VxTextSpanBuilder
   /// replace the closest enclosing [DefaultTextStyle].
   VelocityXTextSpan textStyle(TextStyle _style) {
     _themedStyle = _style;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 1
+  VelocityXTextSpan headline1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline1;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 2
+  VelocityXTextSpan headline2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline2;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 3
+  VelocityXTextSpan headline3(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline3;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 4
+  VelocityXTextSpan headline4(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline4;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 5
+  VelocityXTextSpan headline5(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline5;
+    return this;
+  }
+
+  /// Sets [TextTheme] headline 6
+  VelocityXTextSpan headline6(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.headline6;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText1
+  VelocityXTextSpan bodyText1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    return this;
+  }
+
+  /// Sets [TextTheme] bodyText2
+  VelocityXTextSpan bodyText2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    return this;
+  }
+
+  /// Sets [TextTheme] caption
+  VelocityXTextSpan caption(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.caption;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle1
+  VelocityXTextSpan subtitle1(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    return this;
+  }
+
+  /// Sets [TextTheme] subtitle2
+  VelocityXTextSpan subtitle2(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    return this;
+  }
+
+  /// Sets [TextTheme] overline
+  VelocityXTextSpan overlineText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.overline;
+    return this;
+  }
+
+  /// Sets [TextTheme] button
+  VelocityXTextSpan buttonText(BuildContext context) {
+    _themedStyle = Theme.of(context).textTheme.button;
     return this;
   }
 

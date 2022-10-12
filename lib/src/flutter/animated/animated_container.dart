@@ -30,7 +30,7 @@ import '../builder.dart';
 ///
 class VxAnimatedBox extends VxWidgetBuilder<Widget>
     with
-        VxAlignmentMixing<VxAnimatedBox>,
+        VxAlignmentMixin<VxAnimatedBox>,
         VxDurationMixin<VxAnimatedBox>,
         VxCurvesMixin<VxAnimatedBox>,
         VxColorMixin<VxAnimatedBox>,
@@ -236,7 +236,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
             ? BoxDecoration(
                 borderRadius: _isCircleRounded || (roundedValue == null)
                     ? null
-                    : BorderRadius.circular(roundedValue!),
+                    : (radiusGeometry ?? BorderRadius.circular(roundedValue!)),
                 shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
                 boxShadow: _velocityNeumorph!.shadows,
                 border: _border,
@@ -248,7 +248,8 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
                   color: velocityColor,
                   borderRadius: _isCircleRounded || (roundedValue == null)
                       ? null
-                      : BorderRadius.circular(roundedValue!),
+                      : (radiusGeometry ??
+                          BorderRadius.circular(roundedValue!)),
                   shape:
                       _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
                   boxShadow: velocityShadow ?? _boxShadow ?? [],
@@ -259,7 +260,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   }
 }
 
-extension AnimatedContainerWidgetExtension on Widget {
+extension VxAnimatedContainerWidgetExtension on Widget {
   ///
   /// Extension method to directly access [VxAnimatedBox] with any widget without wrapping or with dot operator.
   ///

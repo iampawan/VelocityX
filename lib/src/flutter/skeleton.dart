@@ -32,6 +32,7 @@ class VxSkeleton extends StatefulWidget {
   final EdgeInsetsGeometry? margin;
   final BorderRadiusGeometry? borderRadius;
   final Duration? duration;
+  final Gradient? gradient;
   final bool active;
 
   /// [stretchWidth] required for using stretch
@@ -46,6 +47,7 @@ class VxSkeleton extends StatefulWidget {
       this.padding,
       this.color,
       this.shimmerColor,
+      this.gradient,
       this.width,
       this.height,
       this.margin,
@@ -150,8 +152,8 @@ class VxSkeletonState extends State<VxSkeleton>
           final Color color = widget.color ?? const Color(0xFFE8E8E8);
           final Color shimmerColor =
               widget.shimmerColor ?? const Color(0xFFEDEDED);
-          final Gradient? gradient =
-              widget.type == VxSkeletonAnimationType.shimmer
+          final Gradient? gradient = widget.gradient ??
+              (widget.type == VxSkeletonAnimationType.shimmer
                   ? LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -165,7 +167,8 @@ class VxSkeletonState extends State<VxSkeleton>
                           _animation.value,
                           _animation.value + 0.4
                         ])
-                  : null;
+                  : null);
+
           final double? width = widget.type == VxSkeletonAnimationType.shimmer
               ? widget.width
               : _animation.value;
@@ -194,7 +197,7 @@ class VxSkeletonState extends State<VxSkeleton>
   }
 }
 
-extension SkeletonExtension on Widget {
+extension VxSkeletonExtension on Widget {
   ///
   /// Extension method to directly access [VxSkeleton] with any widget without wrapping or with dot operator.
   ///
@@ -205,6 +208,7 @@ extension SkeletonExtension on Widget {
           EdgeInsetsGeometry? padding,
           Color? color,
           Color? shimmerColor,
+          Gradient? gradient,
           double? width,
           double? height,
           EdgeInsetsGeometry? margin,
@@ -217,6 +221,7 @@ extension SkeletonExtension on Widget {
         key: key,
         active: active,
         color: color,
+        gradient: gradient,
         borderRadius: borderRadius,
         duration: duration,
         height: height,

@@ -20,7 +20,6 @@ import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
-import 'common/velocity_curve.dart';
 import 'velocityx_mixins/color_mixin.dart';
 import 'velocityx_mixins/padding_mixin.dart';
 import 'velocityx_mixins/round_mixin.dart';
@@ -55,7 +54,7 @@ import 'velocityx_mixins/round_mixin.dart';
 
 class VxBox extends VxWidgetBuilder<Widget>
     with
-        VxAlignmentMixing<VxBox>,
+        VxAlignmentMixin<VxBox>,
         VxColorMixin<VxBox>,
         VxGradientMixin<VxBox>,
         VxPaddingMixin<VxBox>,
@@ -320,7 +319,7 @@ class VxBox extends VxWidgetBuilder<Widget>
           ? BoxDecoration(
               borderRadius: _isCircleRounded || (roundedValue == null)
                   ? null
-                  : BorderRadius.circular(roundedValue!),
+                  : (radiusGeometry ?? BorderRadius.circular(roundedValue!)),
               shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
               boxShadow: _velocityNeumorph!.shadows,
               border: _border,
@@ -332,7 +331,7 @@ class VxBox extends VxWidgetBuilder<Widget>
                 color: velocityColor,
                 borderRadius: _isCircleRounded || (roundedValue == null)
                     ? null
-                    : BorderRadius.circular(roundedValue!),
+                    : (radiusGeometry ?? BorderRadius.circular(roundedValue!)),
                 shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
                 boxShadow: velocityShadow ?? _boxShadow ?? [],
                 border: _border,
@@ -343,7 +342,7 @@ class VxBox extends VxWidgetBuilder<Widget>
   }
 }
 
-extension ContainerWidgetExtension on Widget {
+extension VxContainerWidgetExtension on Widget {
   ///
   /// Extension method to directly access material [VxBox] with any widget without wrapping or with dot operator.
   ///

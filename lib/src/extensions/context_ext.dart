@@ -11,15 +11,20 @@
  * limitations under the License.
  */
 
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+
+import 'package:flutter/cupertino.dart' show CupertinoTheme, CupertinoThemeData;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:velocity_x/src/responsive_ui.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 /// Extensions for general basic [Context]
-extension ContextExtensions on BuildContext {
+extension VxContextExtensions on BuildContext {
   MaterialResponsiveUiData get _mdResponsive =>
       MaterialResponsiveUiData.of(this);
+
+  VxNavConfig get vxNav => VxNavigator.of(this);
 
   /// Screen Sizes Extensions for responsive UI
 
@@ -96,18 +101,68 @@ extension ContextExtensions on BuildContext {
   /// Extension for getting Theme
   ThemeData get theme => Theme.of(this);
 
+  /// Extension for getting [CupertinoThemeData]
+  CupertinoThemeData get cupertinoTheme => CupertinoTheme.of(this);
+
   /// Extension for getting textTheme
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   /// Extension for getting textTheme
   TextStyle? get captionStyle => Theme.of(this).textTheme.caption;
 
+  ColorScheme get colors => theme.colorScheme;
+  TextStyle? get displayLarge => textTheme.displayLarge?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get displayMedium => textTheme.displayMedium?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get displaySmall => textTheme.displaySmall?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get headlineLarge => textTheme.headlineLarge?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get headlineMedium => textTheme.headlineMedium?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get headlineSmall => textTheme.headlineSmall?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get titleLarge => textTheme.titleLarge?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get titleMedium => textTheme.titleMedium?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get titleSmall => textTheme.titleSmall?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get labelLarge => textTheme.labelLarge?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get labelMedium => textTheme.labelMedium?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get labelSmall => textTheme.labelSmall?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get bodyLarge => textTheme.bodyLarge?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get bodyMedium => textTheme.bodyMedium?.copyWith(
+        color: colors.onSurface,
+      );
+  TextStyle? get bodySmall => textTheme.bodySmall?.copyWith(
+        color: colors.onSurface,
+      );
+
   ///
   /// The foreground color for widgets (knobs, text, overscroll edge effect, etc).
   ///
   /// Accent color is also known as the secondary color.
   ///
-  Color get accentColor => theme.accentColor;
+  Color get accentColor => theme.colorScheme.secondary;
 
   ///
   /// The background color for major parts of the app (toolbars, tab bars, etc).
@@ -133,6 +188,9 @@ extension ContextExtensions on BuildContext {
   /// The default brightness of the [Theme].
   ///
   Brightness get brightness => theme.brightness;
+
+  /// If the [ThemeData] of the current [BuildContext] is dark
+  bool get isDarkMode => theme.brightness == Brightness.dark;
 
   /// Extension for navigation to next page
   /// Returns The state from the closest instance of this class that encloses the given context.
@@ -182,7 +240,7 @@ extension ContextExtensions on BuildContext {
   ///
   /// Returns The current [Locale] of the app as specified in the [Localizations] widget.
   ///
-  Locale? get locale => Localizations.localeOf(this);
+  Locale? get vxlocale => Localizations.localeOf(this);
 
   /// Returns The state from the closest instance of this class that encloses the given context.
   ///
@@ -233,3 +291,21 @@ Future<void> _nextAndRemoveUntilPage(
         {required BuildContext context, required Widget page}) async =>
     await Navigator.pushAndRemoveUntil(context,
         MaterialPageRoute(builder: (context) => page), (route) => false);
+
+extension VxExtensionGlobalKey on GlobalKey {
+  /// screenshot
+  /// format image format
+  /// pixelRatio screenshot resolution ratio
+  Future<ByteData?> screenshots(
+      {ui.ImageByteFormat? format, double? pixelRatio}) async {
+    final RenderRepaintBoundary boundary =
+        currentContext!.findRenderObject() as RenderRepaintBoundary;
+    final ui.Image image = await boundary.toImage(
+        pixelRatio: pixelRatio ?? ui.window.devicePixelRatio);
+    final ByteData? byteData =
+        await image.toByteData(format: format ?? ui.ImageByteFormat.rawRgba);
+
+    /// Uint8List uint8list = byteData.buffer.asUint8List();
+    return byteData;
+  }
+}

@@ -60,7 +60,8 @@ class VxRound extends StatelessWidget {
       final double tempSize = size ?? 16;
       final Radius radius = Radius.circular(tempSize / 2);
       return Container(
-        height: tempSize,
+        constraints: BoxConstraints(
+            maxHeight: tempSize, minHeight: tempSize, minWidth: tempSize),
         padding: const EdgeInsets.symmetric(horizontal: 4),
         decoration: BoxDecoration(
           color: color ?? Theme.of(context).primaryColorLight,

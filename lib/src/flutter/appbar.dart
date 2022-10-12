@@ -12,11 +12,9 @@
  *  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/flex.dart';
 
 /// The VxAppBar displays the toolbar widgets, [leading], [title], and [actions],
@@ -144,7 +142,7 @@ class VxAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// with [backgroundColor], [iconTheme], [textTheme].
   ///
   /// If this property is null, then [ThemeData.appBarTheme.brightness] is used,
-  /// if that is also null, then [ThemeData.primaryColorBrightness] is used.
+  /// if that is also null, then [ThemeData.estimateBrightnessForColor(color)] is used.
   final Brightness? brightness;
 
   /// The color, opacity, and size to use for app bar icons. Typically this
@@ -332,10 +330,10 @@ class _VxAppBarState extends State<VxAppBar> {
         appBarTheme.actionsIconTheme ??
         overallIconTheme;
     TextStyle? centerStyle = widget.textTheme?.headline5 ??
-        appBarTheme.textTheme?.headline5 ??
+        appBarTheme.toolbarTextStyle ??
         theme.primaryTextTheme.headline5;
     TextStyle? sideStyle = widget.textTheme?.bodyText2 ??
-        appBarTheme.textTheme?.bodyText2 ??
+        appBarTheme.toolbarTextStyle ??
         theme.primaryTextTheme.bodyText2;
 
     if (widget.toolbarOpacity != 1.0) {
@@ -543,7 +541,7 @@ class _VxAppBarState extends State<VxAppBar> {
     if (widget.flexibleSpace != null) {
       appBar = ZStack(
         [
-          widget.flexibleSpace,
+          widget.flexibleSpace!,
           appBar,
         ],
         fit: StackFit.passthrough,
@@ -551,8 +549,8 @@ class _VxAppBarState extends State<VxAppBar> {
     }
 
     final Brightness brightness = widget.brightness ??
-        appBarTheme.brightness ??
-        theme.primaryColorBrightness;
+        appBarTheme.systemOverlayStyle?.statusBarBrightness ??
+        theme.brightness;
     final SystemUiOverlayStyle overlayStyle = brightness == Brightness.dark
         ? SystemUiOverlayStyle.light
         : SystemUiOverlayStyle.dark;
@@ -562,8 +560,9 @@ class _VxAppBarState extends State<VxAppBar> {
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: overlayStyle,
         child: Material(
-          color:
-              widget.backgroundColor ?? appBarTheme.color ?? theme.primaryColor,
+          color: widget.backgroundColor ??
+              appBarTheme.backgroundColor ??
+              theme.primaryColor,
           elevation:
               widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
           shape: widget.shape,

@@ -48,7 +48,7 @@ import 'package:velocity_x/src/extensions/context_ext.dart';
 /// specified height and width as possible given the parent's constraints. If
 /// [height] or [width] is null or unspecified, it will be treated as zero.
 ///
-/// The [new SizedBox.expand] constructor can be used to make a [SizedBox] that
+/// The [SizedBox.expand] constructor can be used to make a [SizedBox] that
 /// sizes itself to fit the parent. It is equivalent to setting [width] and
 /// [height] to [double.infinity].
 ///
@@ -81,7 +81,7 @@ import 'package:velocity_x/src/extensions/context_ext.dart';
 ///  * [FittedBox], which sizes and positions its child widget to fit the parent
 ///    according to a given [BoxFit] discipline.
 ///  * The [catalog of layout widgets](https://flutter.dev/widgets/layout/).
-extension SizedBoxExtension on Widget {
+extension VxSizedBoxExtension on Widget {
   ///All available widths
   ///
   /// [SizedBox] widget with a specified [width]

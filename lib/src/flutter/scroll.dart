@@ -49,7 +49,7 @@ extension ScrollExtension on Widget {
 }
 
 /// Extensions for ScrollController
-extension ScrollControllerExtension on ScrollController {
+extension VxScrollControllerExtension on ScrollController {
   void animToTop() {
     animateTo(0,
         duration: const Duration(milliseconds: 300), curve: Curves.decelerate);

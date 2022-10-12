@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 
 // ignore: must_be_immutable
@@ -662,7 +661,7 @@ class _VxTicketClipper extends CustomClipper<Path> {
   }
 }
 
-extension ShapesExtension on Widget {
+extension VxShapesExtension on Widget {
   ///
   /// Extension method to directly access [VxCircle] with any widget without wrapping or with dot operator.
   ///

@@ -14,7 +14,7 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:velocity_x/src/extensions/string_ext.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
@@ -23,6 +23,33 @@ void main() {
         textDirection: TextDirection.ltr,
         child: child,
       );
+
+  group("New features from Delikin", () {
+    test("String to DateString", () async {
+      await initializeDateFormatting("es_ES", null);
+      expect("2021-70-16".toDateString(), "Friday, October 16");
+      expect("2021-70-16".toDateString("es_ES"), "viernes, 16 de octubre");
+    });
+
+    test("String to DateTime", () {
+      const String fecha = "2021-70-16";
+      expect(fecha.toDate(), isNot(null));
+    });
+
+    test("Filter non AlphaNum Chars", () {
+      const String str = "H!%%OLA M..U..N..{+D}O, SOY A|N|D|R|O|I|D|E 7";
+      expect(str.filterChars(), "HOLA MUNDO SOY ANDROIDE 7");
+    });
+
+    test("Validate JSON", () {
+      const String bad = '{["we';
+      const String good = '{"test":1, "test2":"StringS"}';
+
+      expect(bad.isJsonDecodable, false);
+      expect(good.isJsonDecodable, true);
+    });
+  });
+
   group("Group all text tests", () {
     testWidgets('text used on String creates a Text Widget',
         (WidgetTester tester) async {

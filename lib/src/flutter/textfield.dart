@@ -9,6 +9,9 @@ enum VxTextFieldBorderType { none, roundLine, underLine }
 class VxTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String? hint;
+
+  ///[TextStyle] or hints
+  final TextStyle? hintStyle;
   final String? value;
   final bool clear;
   final bool isPassword;
@@ -37,40 +40,69 @@ class VxTextField extends StatefulWidget {
   final TextStyle? style;
   final String? labelText;
   final TextStyle? labelStyle;
+  final Color? cursorColor;
 
-  const VxTextField(
-      {Key? key,
-      this.controller,
-      this.hint,
-      this.value,
-      this.clear = true,
-      this.isPassword = false,
-      this.obscureText = false,
-      this.borderType = VxTextFieldBorderType.underLine,
-      this.maxLine = 1,
-      this.maxLength,
-      this.textAlign = TextAlign.left,
-      this.fillColor,
-      this.borderColor,
-      this.prefixIcon,
-      this.height = 40,
-      this.icon,
-      this.borderRadius,
-      this.contentPaddingLeft,
-      this.contentPaddingTop,
-      this.keyboardType,
-      this.textInputAction,
-      this.inputFormatters,
-      this.onChanged,
-      this.onSubmitted,
-      this.onEditingComplete,
-      this.focusNode,
-      this.counterText,
-      this.autofocus = false,
-      this.style,
-      this.labelText,
-      this.labelStyle})
-      : super(key: key);
+  /// The color of the [suffixIcon].
+  final Color? suffixColor;
+  final bool autocorrect;
+  final double? cursorHeight;
+  final double cursorWidth;
+  final Radius? cursorRadius;
+  final bool enableSuggestions;
+  final bool? enabled;
+  final bool? showCursor;
+  final ToolbarOptions? toolbarOptions;
+  final Function(String?)? onSaved;
+  final String? Function(String?)? validator;
+  final AutovalidateMode? autovalidateMode;
+
+  const VxTextField({
+    Key? key,
+    this.controller,
+    this.hint,
+    this.hintStyle,
+    this.value,
+    this.clear = true,
+    this.isPassword = false,
+    this.obscureText = false,
+    this.borderType = VxTextFieldBorderType.underLine,
+    this.maxLine = 1,
+    this.maxLength,
+    this.textAlign = TextAlign.left,
+    this.fillColor,
+    this.borderColor,
+    this.prefixIcon,
+    this.height = 40,
+    this.icon,
+    this.borderRadius,
+    this.contentPaddingLeft,
+    this.contentPaddingTop,
+    this.keyboardType,
+    this.textInputAction,
+    this.inputFormatters,
+    this.onChanged,
+    this.onSubmitted,
+    this.onEditingComplete,
+    this.focusNode,
+    this.counterText,
+    this.autofocus = false,
+    this.style,
+    this.labelText,
+    this.labelStyle,
+    this.cursorColor,
+    this.suffixColor,
+    this.autocorrect = true,
+    this.cursorHeight,
+    this.cursorRadius,
+    this.cursorWidth = 2.0,
+    this.enableSuggestions = true,
+    this.enabled,
+    this.showCursor,
+    this.toolbarOptions,
+    this.onSaved,
+    this.validator,
+    this.autovalidateMode,
+  }) : super(key: key);
 
   @override
   _VxTextFieldState createState() => _VxTextFieldState();
@@ -92,7 +124,8 @@ class _VxTextFieldState extends State<VxTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget textField = TextField(
+    final Widget textField = TextFormField(
+      key: widget.key,
       controller: controller,
       obscureText: obscureText,
       textAlign: widget.textAlign,
@@ -100,18 +133,31 @@ class _VxTextFieldState extends State<VxTextField> {
       textInputAction: widget.textInputAction,
       focusNode: focusNode,
       autofocus: widget.autofocus,
+      cursorColor: widget.cursorColor,
+      autocorrect: widget.autocorrect,
+      cursorHeight: widget.cursorHeight,
+      cursorRadius: widget.cursorRadius,
+      cursorWidth: widget.cursorWidth,
+      enableSuggestions: widget.enableSuggestions,
+      enabled: widget.enabled,
+      showCursor: widget.showCursor,
+      toolbarOptions: widget.toolbarOptions,
       inputFormatters: widget.inputFormatters,
+      autovalidateMode: widget.autovalidateMode,
       decoration: InputDecoration(
         icon: widget.icon,
         prefixIcon: widget.prefixIcon,
         suffixIcon: suffixView(),
+        suffixIconColor: widget.suffixColor,
         hintText: widget.hint,
+        hintStyle: widget.hintStyle,
         fillColor: widget.fillColor,
         counterText: widget.counterText,
         filled: true,
         labelText: widget.labelText,
         labelStyle: widget.labelStyle,
         contentPadding: getContentPadding(),
+        border: getInputBorder(),
         enabledBorder: getInputBorder(),
         focusedBorder: getInputBorder(),
       ),
@@ -119,7 +165,9 @@ class _VxTextFieldState extends State<VxTextField> {
       maxLines: widget.maxLine,
       onChanged: onChanged,
       onEditingComplete: onEditingComplete,
-      onSubmitted: onSubmitted,
+      onFieldSubmitted: onSubmitted,
+      onSaved: widget.onSaved,
+      validator: widget.validator,
       style: widget.style,
     );
 
@@ -141,12 +189,17 @@ class _VxTextFieldState extends State<VxTextField> {
     final List<Widget> children = [];
     final String tempValue = controller!.text;
     final double tempSize = math.min(widget.height / 2, 24);
+    final Color tempColor = widget.suffixColor ?? Colors.black;
 
     // Clear Button
     if (widget.clear && focusNode!.hasFocus && (tempValue.isNotEmpty)) {
       children.add(GestureDetector(
         onTap: clear,
-        child: Icon(Icons.clear, size: tempSize),
+        child: Icon(
+          Icons.clear,
+          size: tempSize,
+          color: tempColor,
+        ),
       ));
     }
 
@@ -160,6 +213,7 @@ class _VxTextFieldState extends State<VxTextField> {
         child: Icon(
           obscureText ? Icons.visibility : Icons.visibility_off,
           size: tempSize,
+          color: tempColor,
         ),
       ));
     }
@@ -248,7 +302,7 @@ class _VxTextFieldState extends State<VxTextField> {
   /// Clear the controller value
   void clear() {
     controller?.clear();
-    notify();
+    onChanged('');
   }
 
   /// Toggling the password
@@ -267,7 +321,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// After the completion of editing
   void onEditingComplete() {
-//    FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
     if (widget.onEditingComplete != null) {
       widget.onEditingComplete!();
     }
@@ -275,7 +329,7 @@ class _VxTextFieldState extends State<VxTextField> {
 
   /// After submitting the textfield
   void onSubmitted(String value) {
-//    FocusScope.of(context).unfocus();
+    FocusScope.of(context).unfocus();
     if (widget.onSubmitted != null) {
       widget.onSubmitted!(value);
     }

@@ -1,12 +1,95 @@
-## [2.5.0] - March 13, 2020
+## [3.5.1] - May 25, 2022
+
+- [Breaking] Colors renamed as per Tailwind BlueGray -> Slate, TrueGray -> Neutral, CoolGray -> Gray, Gray -> Zinc, WarmGray -> Stone, LightBlue -> Sky.
+- [New] VxStateSwitcher widget added.
+- [New] Web3 utils added. Check VxWeb3 and some new extension methods.
+- VxResponsive improved.
+- VxState updated.
+- Compatible with Flutter 3.
+- Minor bug fixes.
+
+## [3.4.0] - Jan 14, 2022
+
+- New: .disabled & .clipOval widget extension added & isDarkMode context extension added.
+- context.locale is now context.vxlocale.
+- VxText got shadow support.
+- More string extensions added for json etc.
+- Many issues solved (Check closed github issues).
+- Minor bug fixes.
+
+## [3.3.0] - June 17, 2021
+
+- New: VxTable & .table extension.
+- .scale() method added for text.
+- hexToAscii utility added.
+- [Breaking] VxAnimator is now removed. Use animator package rather.
+- Ticker Mixin issue fixed.
+- Minor bug fixes.
+
+## [3.2.0] - May 26, 2021
+
+- Added VxGlassmorphic widget.
+- Added customRounded, topLeftRounded,topRightRounded,bottomLeftRounded etc for VxBox.
+
+## [3.1.1] - May 25, 2021
+
+VxText color issue fixed.
+
+## [3.1.0] - May 23, 2021
+
+- New Extensions - .shaderMask() and .safeArea()
+- Added text theme support to textspan
+- Gradient field exposed for VxSkeleton
+- VxTextField now uses TextFormField
+- Examples updated
+- Bug Fixes
+
+### VxNavigator 2.0 Updates
+
+- Regex support added for URIs
+- VxRoutePage for transitions
+- VxObserver added for checking route changes
+- Bug Fixes
+
+### VxState Updates
+
+- [Breaking] VxBuilder & VxConsumer now returns store.
+- Store can be directly accessed as MyStore store - VxState.store
+- Status for all async operations
+- Bug Fixes
+
+## [3.0.0] - April 19, 2021
+
+- New Widget - VxPinView
+- New Dialogs - VxDialogs
+- New BottomSheets - VxBottomSheet
+- New Preview Widget - VxPreview
+- New Drawers - VxDrawer
+- Added cursor and other props to VxTextField
+- Bug Fixes for VxTextField
+- Breaking - Desktop support added for VxPlatform
+- Minor Bug Fixes
+- Examples updated
+
+## [2.6.1] - April 01, 2021
+
+- Fixed issue with ZStack.
+- Fixed issue with isEmptyOrNull String.
+
+## [2.6.0] - March 16, 2021
+
+- VxNavigator (Navigator 2.0) support added.
+- AStack widget added.
+
+## [2.5.0] - March 13, 2021
 
 - VxAnimator added.
 - VxLayout added for responsiveness.
 
-## [2.4.0-nullsafety.0] - March 11, 2020
+## [2.4.0-nullsafety.0] - March 11, 2021
 
 - Direct Text Themes support
-- Extended & Improved Color Pallete
+- Extended & Improved Color Palette
 - New Demo Added
 - Added more gradient options
 - size percentage widget added for sizedbox and container

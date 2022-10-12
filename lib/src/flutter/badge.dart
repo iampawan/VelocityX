@@ -150,7 +150,7 @@ class VxBadge extends StatelessWidget {
   }
 }
 
-extension BadgeExtension on Widget {
+extension VxBadgeExtension on Widget {
   ///
   /// Extension method to directly access [VxBadge] with any widget without wrapping or with dot operator.
   ///

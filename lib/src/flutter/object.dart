@@ -83,7 +83,7 @@ import 'package:flutter/material.dart';
 // }
 
 /// Extension Methods for Alignment of the objects.
-extension ObjectExtensions on Widget {
+extension VxObjectExtensions on Widget {
   // ObjectFitBuilder  objectCover => ObjectFitBuilder.cover(this);
   // ObjectFitBuilder  objectContain => ObjectFitBuilder.contain(this);
   // ObjectFitBuilder  objectFill => ObjectFitBuilder.fill(this);

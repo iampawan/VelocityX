@@ -69,7 +69,7 @@ class VxShifter extends StatelessWidget {
   }
 }
 
-extension ShiftWidgetExt on Widget {
+extension VxShiftWidgetExt on Widget {
   Widget shift(
     double shift, {
     Key? key,

@@ -25,7 +25,7 @@ extension CenterExtension on Widget {
   // _MyPaddingCallable get padding => _MyPaddingCallable(build());
 }
 
-extension CenterBuilderExtension on VxWidgetBuilder<Widget> {
+extension VxCenterBuilderExtension on VxWidgetBuilder<Widget> {
   ///
   /// Extension method to directly access [Center] with any Vx widget without wrapping or with dot operator.
   ///

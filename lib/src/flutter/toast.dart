@@ -14,7 +14,6 @@
 
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// Toast position
@@ -23,15 +22,18 @@ enum VxToastPosition {
   center,
   bottom,
 }
+
 enum VxToastType {
   text,
   loading,
 }
 
-class VxToast {
+mixin VxToast {
   static void show(
     BuildContext context, {
     required String msg,
+
+    /// show duration in ms
     int showTime = 2000,
     Color? bgColor,
     Color? textColor,
@@ -147,8 +149,6 @@ class _VxToastView extends StatefulWidget {
   /// Toast type. It can be [VxToastType.text] or [VxToastType.loading]
   final VxToastType? type;
 
-  final VoidCallback? close;
-
   const _VxToastView(
     this.msg, {
     Key? key,
@@ -159,7 +159,6 @@ class _VxToastView extends StatefulWidget {
     this.pdHorizontal,
     this.pdVertical,
     this.type,
-    this.close,
   }) : super(key: key);
 
   @override
@@ -206,10 +205,11 @@ class _VxToastViewState extends State<_VxToastView>
 
   /// Building the toast widget
   Widget _buildToastWidget() {
+    print(Theme.of(context).textTheme.headline6!.color);
     if (widget.type == VxToastType.text) {
       return Center(
         child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6!.color,
+          color: widget.bgColor ?? Theme.of(context).cardColor,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: widget.pdHorizontal!,
@@ -220,7 +220,7 @@ class _VxToastViewState extends State<_VxToastView>
               style: TextStyle(
                 fontSize: widget.textSize,
                 color: widget.textColor ??
-                    Theme.of(context).accentTextTheme.bodyText1!.color,
+                    Theme.of(context).textTheme.bodyText1!.color,
               ),
             ),
           ),
@@ -251,7 +251,7 @@ class _VxToastViewState extends State<_VxToastView>
                   style: TextStyle(
                     fontSize: widget.textSize,
                     color: widget.textColor ??
-                        Theme.of(context).accentTextTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyText1!.color,
                   ),
                 )
               ],
@@ -294,13 +294,15 @@ class _VxToastViewState extends State<_VxToastView>
   }
 }
 
-extension ToastExtension on BuildContext {
+extension VxToastExtension on BuildContext {
   ///
   /// Extension method to directly access [VxToast] with context.
   ///
   ///Show toast
   void showToast({
     required String msg,
+
+    /// show duration in ms
     int showTime = 2000,
     Color? bgColor,
     Color? textColor,

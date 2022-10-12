@@ -13,14 +13,14 @@
  */
 
 import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../../velocity_x.dart';
-import 'clippers/vx_half.dart';
 
-extension WidgetsExtension on Widget {
+extension VxWidgetsExtension on Widget {
   ///Tooltip as accessibility
   Widget tooltip(String message,
           {Key? key,
@@ -55,7 +55,7 @@ extension WidgetsExtension on Widget {
         maintainState: maintainSize,
       );
 
-  ///Hides a widget
+  ///Popup Menu Extensions
   Widget popupMenu(
     MenuBuilderCallback menuBuilder, {
     Key? key,
@@ -94,6 +94,15 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for [Flexible]
+  Flexible flexible({Key? key, int flex = 1}) {
+    return Flexible(
+      key: key,
+      flex: flex,
+      child: this,
+    );
+  }
+
   /// Extension for Stack [Positioned]
   Widget positioned(
       {double? top,
@@ -125,7 +134,7 @@ extension WidgetsExtension on Widget {
   }
 
   /// Extension for coloring a widget with [DecoratedBox]
-  DecoratedBox backgroundColor(Color color) {
+  DecoratedBox backgroundColor(Color? color) {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: color,
@@ -171,16 +180,27 @@ extension WidgetsExtension on Widget {
     );
   }
 
+  /// Extension for creating a oval shape using [ClipOval]
+  Widget clipOval(
+      {Clip clipBehavior = Clip.antiAlias, CustomClipper<Rect>? clipper}) {
+    return ClipOval(
+      key: key,
+      clipBehavior: clipBehavior,
+      clipper: clipper,
+      child: this,
+    );
+  }
+
+  Widget disabled(bool disable) {
+    return IgnorePointer(
+      child: opacity(value: disable ? 0.3 : 1.0),
+      ignoring: disable,
+    );
+  }
+
   /// Extension for keepAlive
   Widget keepAlive() {
     return _KeepAliveWidget(this);
-  }
-
-  /// Extension for SliverToBox
-  SliverToBoxAdapter sliverBoxAdapter() {
-    return SliverToBoxAdapter(
-      child: this,
-    );
   }
 
   ///Maybe often use this when you want to make your own AppBar or NavigationBar with your custom UI
@@ -224,6 +244,42 @@ extension WidgetsExtension on Widget {
         child: this,
       );
 
+  /// Extension method for [SafeArea] Widget
+  Widget safeArea(
+          {Key? key,
+          EdgeInsets minimum = EdgeInsets.zero,
+          bool maintainBottomViewPadding = false,
+          bool top = true,
+          bool bottom = true,
+          bool left = true,
+          bool right = true}) =>
+      SafeArea(
+        key: key,
+        child: this,
+        minimum: minimum,
+        maintainBottomViewPadding: maintainBottomViewPadding,
+        top: top,
+        bottom: bottom,
+        left: left,
+        right: right,
+      );
+
+  /// Extension method for [ShaderMask] Widget
+  Widget shaderMask({
+    required Gradient gradient,
+    Key? key,
+    BlendMode blendMode = BlendMode.modulate,
+  }) =>
+      ShaderMask(
+        blendMode: blendMode,
+        child: this,
+        key: key,
+        shaderCallback: (bounds) => gradient.createShader(
+          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+        ),
+      );
+
+  /// Extension method for [VxInnerShadow] Widget
   Widget innerShadow({
     Key? key,
     double blur = 2.0,
@@ -237,6 +293,57 @@ extension WidgetsExtension on Widget {
         color: color,
         offset: offset,
       );
+
+  /// Extension method for [SliverToBoxAdapter] Widget
+  Widget toSliverBox({Key? key}) => SliverToBoxAdapter(key: key, child: this);
+
+  SliverToBoxAdapter sliverToBoxAdapter({Key? key}) =>
+      SliverToBoxAdapter(key: key, child: this);
+
+  BackdropFilter backdropFilter(
+          {Key? key, ImageFilter? filter, double fuzzyDegree = 4}) =>
+      BackdropFilter(
+          key: key,
+          filter: filter ??
+              ImageFilter.blur(sigmaX: fuzzyDegree, sigmaY: fuzzyDegree),
+          child: this);
+
+  FittedBox fittedBox(
+          {Key? key,
+          BoxFit fit = BoxFit.contain,
+          AlignmentGeometry alignment = Alignment.center,
+          Clip clipBehavior = Clip.none}) =>
+      FittedBox(
+          key: key,
+          fit: fit,
+          alignment: alignment,
+          clipBehavior: clipBehavior,
+          child: this);
+
+  ColoredBox color(Color color, {Key? key}) =>
+      ColoredBox(key: key, color: color, child: this);
+
+  ConstrainedBox constrainedBox(BoxConstraints constraints, {Key? key}) =>
+      ConstrainedBox(key: key, constraints: constraints, child: this);
+
+  Hero hero(
+    Object tag, {
+    Key? key,
+    CreateRectTween? createRectTween,
+    HeroFlightShuttleBuilder? flightShuttleBuilder,
+    HeroPlaceholderBuilder? placeholderBuilder,
+    bool transitionOnUserGestures = false,
+  }) =>
+      Hero(
+          key: key,
+          createRectTween: createRectTween,
+          flightShuttleBuilder: flightShuttleBuilder,
+          placeholderBuilder: placeholderBuilder,
+          transitionOnUserGestures: transitionOnUserGestures,
+          tag: tag,
+          child: this);
+
+  List<Widget> asList() => <Widget>[this];
 }
 
 extension StringWidgetsExtension on String {
@@ -453,6 +560,9 @@ class _RenderInnerShadow extends RenderProxyBox {
       ..saveLayer(rectInner, Paint())
       ..translate(dx, dy);
     context.paintChild(child as RenderObject, offset);
-    context.canvas..restore()..restore()..restore();
+    context.canvas
+      ..restore()
+      ..restore()
+      ..restore();
   }
 }

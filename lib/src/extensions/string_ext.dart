@@ -11,13 +11,16 @@
  * limitations under the License.
  */
 
+import 'dart:convert';
+
+import 'package:intl/intl.dart' as intl;
+import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/rich_text.dart';
 import 'package:velocity_x/src/flutter/selectable_text.dart';
 import 'package:velocity_x/src/flutter/text.dart';
-import 'package:intl/intl.dart' as intl;
 
 /// Extension Methods & Widgets for the strings
-extension StringExtension on String {
+extension VxStringExtension on String {
   ///Returns first letter of the string as Caps eg -> Flutter
   String firstLetterUpperCase() => length > 1
       ? "${this[0].toUpperCase()}${substring(1).toLowerCase()}"
@@ -30,7 +33,7 @@ extension StringExtension on String {
   String get eliminateLast => length > 1 ? "${substring(0, length - 1)}" : "";
 
   /// Return a bool if the string is null or empty
-  bool get isEmptyOrNull => isEmpty;
+  bool get isEmpty => trimLeft().isEmpty;
 
   ///
   /// Uses regex to check if the provided string is a valid email address or not
@@ -204,9 +207,29 @@ extension StringExtension on String {
     return _sum % 10 == 0;
   }
 
+  /// Check whether a string is a number or not
+  /// ```dart
+  /// '123'.isNumber(); // true
+  /// '123.456'.isNumber(); // true
+  /// 'abc'.isNumber(); // false
+  /// '123abc'.isNumber(); // false
+  /// ```
   bool isNumber() {
-    final isMatch = RegExp("[1-9]").hasMatch(this);
+    final isMatch = RegExp("[0-9]").hasMatch(this);
     return isMatch;
+  }
+
+  /// Check  whether a string is digit or not
+  /// ```dart
+  /// '123'.isDigit(); // false
+  /// '123.456'.isDigit(); // false
+  /// 'abc'.isDigit(); // false
+  /// '123abc'.isDigit(); // false
+  /// ```
+
+  bool isDigit() {
+    final isMatch = RegExp(r'\d').hasMatch(this);
+    return isMatch && length == 1;
   }
 
   bool isLetter() {
@@ -225,6 +248,120 @@ extension StringExtension on String {
     return false;
   }
 
+  /// Check if string is json decodable
+  bool get isJsonDecodable {
+    try {
+      jsonDecode(this) as Map<String, dynamic>;
+      // ignore: unused_catch_clause
+    } on FormatException catch (e) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // Remove non Alpha-Numeric characters from string
+  String filterChars() {
+    return replaceAll(RegExp(r'[^\w\s]+'), '');
+  }
+
+  /// Convert DateString to DateTime Object
+  DateTime? toDate() {
+    try {
+      final DateTime st = DateTime.parse(this);
+      return st;
+      // ignore: unused_catch_clause
+    } on FormatException catch (e) {
+      return null;
+    }
+  }
+
+  /// Converts [YYMMDD HH:MM] Date to a fully DateString representation,
+  /// if you need to use locale, dont forget to use [initializeDateFormatting]
+  /// in your main() function.
+  ///
+  /// **Example**
+  ///
+  /// **Input:** 2021-70-16
+  ///
+  /// **Output:** Friday, October 16
+  String toDateString([String? locale]) {
+    return intl.DateFormat.MMMMEEEEd(locale).format(toDate()!);
+  }
+
+  static final _camelCaseMatcher = RegExp('[A-Z][a-z]*');
+
+  /// From 'foo_bar' to 'fooBar'
+  String get lowerCamelCase {
+    final out = StringBuffer();
+    final parts = split('_');
+    for (var i = 0; i < parts.length; i++) {
+      final part = parts[i];
+      if (part.isNotEmpty)
+        out.write(i == 0 ? part.toLowerCase() : part.capitalized);
+    }
+    return out.toString();
+  }
+
+  /// from 'foo_bar' to 'FooBar'
+  String get upperCamelCase {
+    final out = StringBuffer();
+    final parts = split('_');
+    for (var i = 0; i < parts.length; i++) {
+      final part = parts[i];
+      if (part.isNotEmpty) {
+        out.write(part.capitalized);
+      }
+    }
+    return out.toString();
+  }
+
+  /// from 'foo' to 'Foo'
+  String get capitalized => this[0].toUpperCase() + substring(1);
+
+  /// from fooBar to foo_bar
+  String get snakeCase => replaceAllMapped(_camelCaseMatcher,
+      (match) => '${match.start == 0 ? '' : '_'}${match[0]!.toLowerCase()}');
+
+  /// Base64 encryption
+  String get toEncodedBase64 => base64Encode(utf8.encode(this));
+
+  /// Base64 decryption
+  String get toDecodedBase64 => String.fromCharCodes(base64Decode(this));
+
+  /// utf8ToList
+  List<int> get utf8ToList {
+    final List<int> words = length.generate((_) => 0);
+    for (int i = 0; i < length; i++) {
+      words[i >> 2] |= (codeUnitAt(i) & 0xff).toSigned(32) <<
+          (24 - (i % 4) * 8).toSigned(32);
+    }
+    return words;
+  }
+
+  /// Perform utf8 encoding
+  List<int> get utf8Encode => utf8.encode(this);
+
+  /// Add pattern every x bits
+  String formatDigitPattern({int digit = 4, String pattern = ' '}) {
+    String text = this;
+    text = text.replaceAllMapped(
+        RegExp('(.{$digit})'), (Match match) => '${match.group(0)}$pattern');
+    if (text.endsWith(pattern)) {
+      text = text.substring(0, text.length - 1);
+    }
+    return text;
+  }
+
+  /// Add pattern every x bits, starting from the end
+  String formatDigitPatternEnd(String text,
+      {int digit = 4, String pattern = ' '}) {
+    String temp = reverse();
+    temp = formatDigitPattern(digit: digit, pattern: pattern);
+    temp = reverse();
+    return temp;
+  }
+
   /// Get Text Widget for the String
   VxTextBuilder get text => VxTextBuilder(this);
 
@@ -236,4 +373,36 @@ extension StringExtension on String {
 
   /// Get RichText Widget for the String
   VxRichText get richText => VxRichText(this);
+}
+
+extension VxNullableStringIsEmptyOrNullExtension on String? {
+  /// Returns `true` if the String is either null or empty.
+  bool get isEmptyOrNull => this?.isEmpty ?? true;
+}
+
+extension VxNullableStringIsNotEmptyAndNotNullExtension on String? {
+  bool get isNotEmptyAndNotNull => this != null && this!.isNotEmpty;
+}
+
+extension VxDurationString on String {
+  /// Assumes a string (roughly) of the format '\d{1,2}:\d{2}'
+  Duration toDuration() {
+    final chunks = split(':');
+    if (chunks.length == 1) {
+      throw Exception('Invalid duration string: $this');
+    } else if (chunks.length == 2) {
+      return Duration(
+        minutes: int.parse(chunks[0].trim()),
+        seconds: int.parse(chunks[1].trim()),
+      );
+    } else if (chunks.length == 3) {
+      return Duration(
+        hours: int.parse(chunks[0].trim()),
+        minutes: int.parse(chunks[1].trim()),
+        seconds: int.parse(chunks[2].trim()),
+      );
+    } else {
+      throw Exception('Invalid duration string: $this');
+    }
+  }
 }

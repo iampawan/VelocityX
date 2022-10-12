@@ -134,14 +134,15 @@ class VxCard extends VxWidgetBuilder<Widget>
       elevation: _elevation,
       shape: (roundedValue != null)
           ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(roundedValue!))
+              borderRadius:
+                  radiusGeometry ?? BorderRadius.circular(roundedValue!))
           : _shape,
       shadowColor: _shadowColor,
     );
   }
 }
 
-extension CardExtension on Widget {
+extension VxCardExtension on Widget {
   ///
   /// Extension method to directly access [VxCard] with any widget without wrapping or with dot operator.
   ///
