@@ -13,6 +13,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/services.dart' show Clipboard, ClipboardData;
 import 'package:intl/intl.dart' as intl;
 import 'package:velocity_x/src/extensions/num_ext.dart';
 import 'package:velocity_x/src/flutter/rich_text.dart';
@@ -361,6 +362,17 @@ extension VxStringExtension on String {
     temp = reverse();
     return temp;
   }
+
+  /// copy a string to clipboard.
+  /// This is how you can use it:
+  /// ```dart
+  /// String text = "The beautiful thing with Dart is that you  can create your own extensions.";
+  ///  TextButton(
+  ///     child: const Text('Copy to clipboard'),
+  ///     onPressed: () => text.copyToClipboard(),
+  ///    );
+  /// ```
+  void copyToClipboard() => Clipboard.setData(ClipboardData(text: this));
 
   /// Get Text Widget for the String
   VxTextBuilder get text => VxTextBuilder(this);
