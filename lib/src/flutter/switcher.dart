@@ -73,7 +73,6 @@ class _VxStateSwitcherState extends State<VxStateSwitcher> {
   /// Render the corresponding page according to the state value
   Widget? renderStatePage(VxPageState? pageState) {
     switch (pageState) {
-
       /// Loading...
       case VxPageState.loading:
         if (widget.skeleton != null) {
