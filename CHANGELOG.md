@@ -1,3 +1,8 @@
+## [4.0.0] - Apr 25, 2023
+- Upgraded to flutter 3
+
+
+
 ## [3.6.1] - Apr 25, 2023
 - Upgraded intl version to 0.18.0
 
