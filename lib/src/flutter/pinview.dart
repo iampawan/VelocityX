@@ -88,9 +88,9 @@ class VxPinViewState extends State<VxPinView> {
     final double tempHeight = widget.size;
     return CustomPaint(
       foregroundPainter: VxPasswordPainter(
-        color: widget.color ?? Theme.of(context).textTheme.headline6?.color,
+        color: widget.color ?? Theme.of(context).textTheme.titleLarge?.color,
         contentColor:
-            widget.contentColor ?? Theme.of(context).textTheme.headline6?.color,
+            widget.contentColor ?? Theme.of(context).textTheme.titleLarge?.color,
         radius: widget.radius,
         type: widget.type,
         count: widget.count,

@@ -159,7 +159,7 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
         );
       },
     );
-    Overlay.of(context)!.insert(_overlayEntry!);
+    Overlay.of(context).insert(_overlayEntry!);
   }
 
   void _hideMenu() {
@@ -186,7 +186,7 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
     WidgetsBinding.instance.addPostFrameCallback((call) {
       _childBox = context.findRenderObject() as RenderBox?;
       _parentBox =
-          Overlay.of(context)!.context.findRenderObject() as RenderBox?;
+          Overlay.of(context).context.findRenderObject() as RenderBox?;
     });
   }
 

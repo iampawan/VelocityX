@@ -352,7 +352,7 @@ class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
                 final BuildContext storageContext =
                     widget.pageController.position.context.storageContext;
                 final double? previousSavedPosition =
-                    PageStorage.of(storageContext)?.readState(storageContext)
+                    PageStorage.of(storageContext).readState(storageContext)
                         as double?;
                 if (previousSavedPosition != null) {
                   itemOffset = previousSavedPosition - i.toDouble();
