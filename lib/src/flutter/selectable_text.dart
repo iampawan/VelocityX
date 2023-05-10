@@ -64,6 +64,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   TextStyle? _textStyle;
   TextDecoration? _decoration;
   Function? _onTap;
+  Widget Function(BuildContext, EditableTextState)? _contextMenuBuilder;
   TextStyle? _themedStyle;
   StrutStyle? _strutStyle;
   bool? _showCursor;
@@ -341,6 +342,11 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   /// selectable text's internal gesture detector, use a [Listener].
   VxSelectableTextBuilder onTap(Function _tap) => this.._onTap = _tap;
 
+  //Added context menu builder
+  VxSelectableTextBuilder contextMenuBuilder(
+          Widget Function(BuildContext, EditableTextState) menuBuilder) =>
+      this.._contextMenuBuilder = menuBuilder;
+
   @override
   SelectableText make({Key? key}) {
     final ts = TextStyle(
@@ -360,14 +366,13 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       key: key,
       textAlign: _textAlign,
       maxLines: _maxLines,
-      toolbarOptions: const ToolbarOptions(
-          copy: true, cut: true, paste: true, selectAll: true),
       onTap: _onTap as void Function()?,
       enableInteractiveSelection: true,
       showCursor: _showCursor ?? false,
       textScaleFactor: _scaleFactor,
       style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
       strutStyle: _strutStyle,
+      contextMenuBuilder: _contextMenuBuilder,
     );
   }
 }

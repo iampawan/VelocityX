@@ -52,7 +52,7 @@ class VxTextField extends StatefulWidget {
   final bool enableSuggestions;
   final bool? enabled;
   final bool? showCursor;
-  final ToolbarOptions? toolbarOptions;
+  final Widget Function(BuildContext, EditableTextState)? contextMenuBuilder;
   final Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final AutovalidateMode? autovalidateMode;
@@ -100,7 +100,7 @@ class VxTextField extends StatefulWidget {
     this.enableSuggestions = true,
     this.enabled,
     this.showCursor,
-    this.toolbarOptions,
+    this.contextMenuBuilder,
     this.onSaved,
     this.validator,
     this.autovalidateMode,
@@ -147,7 +147,7 @@ class _VxTextFieldState extends State<VxTextField> {
       enableSuggestions: widget.enableSuggestions,
       enabled: widget.enabled,
       showCursor: widget.showCursor,
-      toolbarOptions: widget.toolbarOptions,
+      contextMenuBuilder: widget.contextMenuBuilder,
       inputFormatters: widget.inputFormatters,
       autovalidateMode: widget.autovalidateMode,
       readOnly: widget.readOnly,
