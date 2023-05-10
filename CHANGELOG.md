@@ -1,3 +1,6 @@
+## [4.0.1] - Apr 25, 2023
+- revert intl plugin to support older projects
+
 ## [4.0.0] - Apr 25, 2023
 - [Breaking] Upgraded to flutter 3
 - fix tests
