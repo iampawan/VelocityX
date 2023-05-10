@@ -3,6 +3,7 @@
 - removed unnecessary_non_null_assertion,unnecessary_null_comparison
 - removed useInheritedMediaQuery as depreceated
 - window' replaced with PlatformDispatcher as depreceated
+- 'toolbarOptions' is deprecated and replaced with `contextMenuBuilder`. 
 
 
 ## [4.0.1] - Apr 25, 2023
