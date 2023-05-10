@@ -1,3 +1,10 @@
+## [4.0.2] - Apr 25, 2023
+- add const contructor to flex
+- removed unnecessary_non_null_assertion,unnecessary_null_comparison
+- removed useInheritedMediaQuery as depreceated
+- window' replaced with PlatformDispatcher as depreceated
+
+
 ## [4.0.1] - Apr 25, 2023
 - revert intl plugin to support older projects
 
