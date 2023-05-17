@@ -219,7 +219,7 @@ class _VxToastViewState extends State<_VxToastView>
               style: TextStyle(
                 fontSize: widget.textSize,
                 color: widget.textColor ??
-                    Theme.of(context).textTheme.bodyText1!.color,
+                    Theme.of(context).textTheme.bodyLarge!.color,
               ),
             ),
           ),
@@ -228,7 +228,8 @@ class _VxToastViewState extends State<_VxToastView>
     } else if (widget.type == VxToastType.loading) {
       return Center(
         child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6!.color,
+          color:
+              widget.bgColor ?? Theme.of(context).textTheme.titleLarge!.color,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: widget.pdHorizontal!,
@@ -241,7 +242,7 @@ class _VxToastViewState extends State<_VxToastView>
                 CircularProgressIndicator(
                   strokeWidth: 3.0,
                   valueColor: AlwaysStoppedAnimation(
-                    Theme.of(context).backgroundColor,
+                    Theme.of(context).colorScheme.background,
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -250,7 +251,7 @@ class _VxToastViewState extends State<_VxToastView>
                   style: TextStyle(
                     fontSize: widget.textSize,
                     color: widget.textColor ??
-                        Theme.of(context).textTheme.bodyText1!.color,
+                        Theme.of(context).textTheme.bodyLarge!.color,
                   ),
                 )
               ],

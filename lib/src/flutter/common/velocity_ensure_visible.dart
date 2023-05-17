@@ -128,7 +128,7 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     }
 
     // Get the Scrollable state (in order to retrieve its offset)
-    final ScrollableState scrollableState = Scrollable.of(context)!;
+    final ScrollableState scrollableState = Scrollable.of(context);
 
     // Get its offset
     final ScrollPosition position = scrollableState.position;

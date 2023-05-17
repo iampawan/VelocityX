@@ -593,7 +593,7 @@ class _VxZoomState extends State<VxZoom> with TickerProviderStateMixin {
     if (!_isZooming) {
       final overlayState = Overlay.of(context);
       _overlayEntry = OverlayEntry(builder: _build);
-      overlayState?.insert(_overlayEntry!);
+      overlayState.insert(_overlayEntry!);
     }
   }
 

@@ -1,3 +1,22 @@
+## [4.0.2] - Apr 25, 2023
+- add const contructor to flex
+- removed unnecessary_non_null_assertion,unnecessary_null_comparison
+- removed useInheritedMediaQuery as depreceated
+- window' replaced with PlatformDispatcher as depreceated
+- 'toolbarOptions' is deprecated and replaced with `contextMenuBuilder`. 
+
+
+## [4.0.1] - Apr 25, 2023
+- revert intl plugin to support older projects
+
+## [4.0.0] - Apr 25, 2023
+- [Breaking] Upgraded to flutter 3
+- fix tests
+
+## [3.6.1] - Apr 25, 2023
+- Upgraded intl version to 0.18.0
+
+
 ## [3.6.0] - Oct 12, 2022
 
 - New Widgets - VxJson (Json tree widget), VxZoom (Instagram like pinch to zoom), VxAdaptiveNavigation (Navigation rail on large device & Nav Bar for phones), VxSwitcher, VxUniversal (Super widget for everything), VxToggleRotate and VxHoverToggle (Change widget on Hover).

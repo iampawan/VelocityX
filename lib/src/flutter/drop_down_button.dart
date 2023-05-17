@@ -55,7 +55,7 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
 
   /// Defines the [TextStyle] for [DropdownMenuItem].
   ///
-  /// By default the value of `_textStyle` is [TextTheme.subtitle1]
+  /// By default the value of `_textStyle` is [TextTheme.titleMedium]
   /// value of the current [ThemeData.textTheme].
   TextStyle? _textStyle;
 

@@ -329,12 +329,12 @@ class _VxAppBarState extends State<VxAppBar> {
     IconThemeData actionsIconTheme = widget.actionsIconTheme ??
         appBarTheme.actionsIconTheme ??
         overallIconTheme;
-    TextStyle? centerStyle = widget.textTheme?.headline5 ??
+    TextStyle? centerStyle = widget.textTheme?.headlineSmall ??
         appBarTheme.toolbarTextStyle ??
-        theme.primaryTextTheme.headline5;
-    TextStyle? sideStyle = widget.textTheme?.bodyText2 ??
+        theme.primaryTextTheme.headlineSmall;
+    TextStyle? sideStyle = widget.textTheme?.bodyMedium ??
         appBarTheme.toolbarTextStyle ??
-        theme.primaryTextTheme.bodyText2;
+        theme.primaryTextTheme.bodyMedium;
 
     if (widget.toolbarOpacity != 1.0) {
       final double opacity = const Interval(

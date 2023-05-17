@@ -85,7 +85,6 @@ void main() {
       //   isFrameVisible: true,
       // ),
       builder: (context) => MaterialApp.router(
-        useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         routeInformationParser: VxInformationParser(),
