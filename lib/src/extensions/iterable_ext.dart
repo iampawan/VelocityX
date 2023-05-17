@@ -7,7 +7,7 @@ import 'dart:math';
 /// Utility extension methods for the native [Iterable] class.
 extension VxIterableBasics<E> on Iterable<E> {
   /// Alias for [Iterable]`.every`.
-  bool all(bool test(E element)) => every(test);
+  bool all(bool Function(E element) test) => every(test);
 
   /// Returns `true` if no element of [this] satisfies [test].
   ///
@@ -16,7 +16,7 @@ extension VxIterableBasics<E> on Iterable<E> {
   /// [1, 2, 3].none((e) => e > 4); // true
   /// [1, 2, 3].none((e) => e > 2); // false
   /// ```
-  bool none(bool test(E element)) => !any(test);
+  bool none(bool Function(E element) test) => !any(test);
 
   /// Returns `true` if there is exactly one element of [this] which satisfies
   /// [test].
@@ -27,7 +27,7 @@ extension VxIterableBasics<E> on Iterable<E> {
   /// [1, 2, 3].one((e) => e > 4); // No element satisfies. Returns false.
   /// [1, 2, 3].one((e) => e > 1); // >1 element satisfies. Returns false.
   /// ```
-  bool one(bool test(E element)) {
+  bool one(bool Function(E element) test) {
     bool foundOne = false;
     for (final e in this) {
       if (test(e)) {

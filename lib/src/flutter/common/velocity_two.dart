@@ -49,7 +49,7 @@ class VxTwo extends StatelessWidget {
   final int maxLinesSubtitle;
 
   const VxTwo({
-    Key? key,
+    super.key,
     required this.title,
     this.titleFontSize = 16.0,
     this.titleColor = Colors.black,
@@ -64,7 +64,7 @@ class VxTwo extends StatelessWidget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.min,
     this.maxLinesSubtitle = 1,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     final list = [
@@ -119,8 +119,7 @@ class VxTwoColumn extends StatelessWidget {
   final Widget top;
   final Widget bottom;
 
-  const VxTwoColumn({Key? key, required this.top, required this.bottom})
-      : super(key: key);
+  const VxTwoColumn({super.key, required this.top, required this.bottom});
 
   @override
   Widget build(BuildContext context) {
@@ -143,8 +142,7 @@ class VxTwoRow extends StatelessWidget {
   final Widget left;
   final Widget right;
 
-  const VxTwoRow({Key? key, required this.left, required this.right})
-      : super(key: key);
+  const VxTwoRow({super.key, required this.left, required this.right});
 
   @override
   Widget build(BuildContext context) {
@@ -170,8 +168,7 @@ class VelocityTwoIconColumn extends StatelessWidget {
   final Widget icon;
 
   const VelocityTwoIconColumn(
-      {Key? key, required this.top, required this.bottom, required this.icon})
-      : super(key: key);
+      {super.key, required this.top, required this.bottom, required this.icon});
 
   @override
   Widget build(BuildContext context) {

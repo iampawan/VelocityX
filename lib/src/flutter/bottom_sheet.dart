@@ -86,9 +86,9 @@ mixin VxBottomSheet {
             padding: MediaQuery.of(context).viewInsets,
             duration: const Duration(milliseconds: 100),
             child: _VxBottomSheetView(
-              child: child,
               maxHeight: maxHeight,
               minHeight: minHeight,
+              child: child,
             ),
           ),
         );
@@ -156,8 +156,8 @@ class _VxBottomSheetOptions extends StatelessWidget {
       onTap: () => close(context),
       child: Container(
         height: 42,
-        child: const Text('Close'),
         alignment: Alignment.center,
+        child: const Text('Close'),
       ),
     ));
 

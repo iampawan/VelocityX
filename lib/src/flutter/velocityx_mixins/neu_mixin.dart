@@ -20,23 +20,23 @@ mixin VxNeuMixin {
 
   @protected
   VxNeumorph velocityDecoration(
-    Color _color,
+    Color color,
     VxCurve curveType,
     double elevation,
   ) {
-    final color = _color;
+    final color0 = color;
     final emboss = curveType == VxCurve.emboss;
 
-    Color colorValue = color;
+    Color colorValue = color0;
 
     List<BoxShadow> shadowList = [
       BoxShadow(
-        color: _getNeuColor(color, emboss ? 0 - elevation : elevation - 30),
+        color: _getNeuColor(color0, emboss ? 0 - elevation : elevation - 30),
         offset: Offset(0 - elevation, 0 - elevation),
         blurRadius: elevation,
       ),
       BoxShadow(
-        color: _getNeuColor(color, emboss ? elevation : 0 - elevation),
+        color: _getNeuColor(color0, emboss ? elevation : 0 - elevation),
         offset: Offset(elevation, elevation),
         blurRadius: elevation,
       )
@@ -45,12 +45,12 @@ mixin VxNeuMixin {
     if (emboss) {
       shadowList = [
         BoxShadow(
-          color: _getNeuColor(color, elevation - 30),
+          color: _getNeuColor(color0, elevation - 30),
           offset: Offset(elevation / 4, elevation / 4),
           blurRadius: elevation / 4,
         ),
         BoxShadow(
-          color: _getNeuColor(color, 0 - elevation),
+          color: _getNeuColor(color0, 0 - elevation),
           offset: Offset(0 - elevation / 6, 0 - elevation / 6),
           blurRadius: elevation / 6,
         ),

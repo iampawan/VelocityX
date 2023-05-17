@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Nav1 extends StatefulWidget {
+  const Nav1({super.key});
+
   @override
   _Nav1State createState() => _Nav1State();
 }
@@ -50,6 +52,8 @@ class _Nav1State extends State<Nav1> {
 }
 
 class Nav2 extends StatelessWidget {
+  const Nav2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +64,8 @@ class Nav2 extends StatelessWidget {
 }
 
 class Nav3 extends StatelessWidget {
+  const Nav3({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,10 +94,10 @@ class Nav4 extends StatelessWidget {
   final Map<String, List<String>> queryParams;
 
   const Nav4({
-    Key? key,
+    super.key,
     this.pathParam = '',
     this.queryParams = const {},
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

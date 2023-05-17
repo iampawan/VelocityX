@@ -129,8 +129,8 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   /// If the style's 'inherit' property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  VxSelectableTextBuilder textStyle(TextStyle _style) {
-    _themedStyle = _style;
+  VxSelectableTextBuilder textStyle(TextStyle style) {
+    _themedStyle = style;
     return this;
   }
 
@@ -144,8 +144,8 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   /// font size.
   ///
   /// See [StrutStyle] for details.
-  VxSelectableTextBuilder strutStyle(StrutStyle _style) {
-    _strutStyle = _style;
+  VxSelectableTextBuilder strutStyle(StrutStyle style) {
+    _strutStyle = style;
     return this;
   }
 
@@ -340,7 +340,7 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   ///
   /// To listen to arbitrary pointer events without competing with the
   /// selectable text's internal gesture detector, use a [Listener].
-  VxSelectableTextBuilder onTap(Function _tap) => this.._onTap = _tap;
+  VxSelectableTextBuilder onTap(Function tap) => this.._onTap = tap;
 
   //Added context menu builder
   VxSelectableTextBuilder contextMenuBuilder(

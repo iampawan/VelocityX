@@ -27,12 +27,12 @@ import 'package:flutter/rendering.dart';
 ///
 class VxEnsureVisibleWhenFocused extends StatefulWidget {
   const VxEnsureVisibleWhenFocused({
-    Key? key,
+    super.key,
     required this.child,
     required this.focusNode,
     this.curve = Curves.ease,
     this.duration = const Duration(milliseconds: 100),
-  }) : super(key: key);
+  });
 
   /// The node we will monitor to determine if the child is focused
   final FocusNode focusNode;
@@ -120,7 +120,7 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
 
     // Find the object which has the focus
     final RenderObject? object = context.findRenderObject();
-    final RenderAbstractViewport? viewport = RenderAbstractViewport.of(object);
+    final RenderAbstractViewport viewport = RenderAbstractViewport.of(object);
 
     // If we are not working in a Scrollable, skip this routine
     if (viewport == null) {
@@ -146,7 +146,7 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
       return;
     }
 
-    position.ensureVisible(
+    await position.ensureVisible(
       object,
       alignment: alignment,
       duration: widget.duration,

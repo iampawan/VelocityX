@@ -34,7 +34,7 @@ class VxBadge extends StatelessWidget {
   /// To provide an optional widget like an Icon
   final Widget? optionalWidget;
 
-  const VxBadge({
+  const VxBadge({super.key, 
     required this.child,
     this.type = VxBadgeType.round,
     this.color,
@@ -138,9 +138,9 @@ class VxBadge extends StatelessWidget {
 
     if (position == VxBadgePosition.left || position == VxBadgePosition.right) {
       return Row(
-        children: children,
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
+        children: children,
       );
     } else {
       return Stack(
@@ -167,7 +167,6 @@ extension VxBadgeExtension on Widget {
     VxBadgePosition position = VxBadgePosition.rightTop,
   }) =>
       VxBadge(
-        child: this,
         textStyle: textStyle,
         color: color,
         limit: limit,
@@ -176,5 +175,6 @@ extension VxBadgeExtension on Widget {
         size: size,
         type: type,
         optionalWidget: optionalWidget,
+        child: this,
       );
 }

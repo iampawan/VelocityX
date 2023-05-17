@@ -28,10 +28,6 @@ void main() {
       await tester.pumpWidget(MaterialApp(
           home: VxPopupMenu(
         key: key,
-        child: Container(
-          child: const Icon(Icons.menu),
-          padding: Vx.m20,
-        ),
         menuBuilder: () => ClipRRect(
           borderRadius: BorderRadius.circular(5),
           child: IntrinsicWidth(
@@ -88,6 +84,10 @@ void main() {
         ),
         clickType: VxClickType.singleClick,
         verticalMargin: -10,
+        child: Container(
+          padding: Vx.m20,
+          child: const Icon(Icons.menu),
+        ),
       )));
 
       expect(find.byKey(key), findsOneWidget);

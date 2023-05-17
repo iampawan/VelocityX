@@ -48,11 +48,11 @@ extension VxWidgetsExtension on Widget {
   Widget hide({Key? key, bool isVisible = false, bool maintainSize = false}) =>
       Visibility(
         key: key,
-        child: this,
         visible: isVisible,
         maintainSize: maintainSize,
         maintainAnimation: maintainSize,
         maintainState: maintainSize,
+        child: this,
       );
 
   ///Popup Menu Extensions
@@ -70,7 +70,6 @@ extension VxWidgetsExtension on Widget {
   }) =>
       VxPopupMenu(
         key: key,
-        child: this,
         clickType: clickType,
         controller: controller,
         arrowColor: arrowColor,
@@ -80,6 +79,7 @@ extension VxWidgetsExtension on Widget {
         showArrow: showArrow,
         verticalMargin: verticalMargin,
         menuBuilder: menuBuilder,
+        child: this,
       );
 
   /// Widget to show exception
@@ -193,8 +193,8 @@ extension VxWidgetsExtension on Widget {
 
   Widget disabled(bool disable) {
     return IgnorePointer(
-      child: opacity(value: disable ? 0.3 : 1.0),
       ignoring: disable,
+      child: opacity(value: disable ? 0.3 : 1.0),
     );
   }
 
@@ -213,7 +213,7 @@ extension VxWidgetsExtension on Widget {
   ///   child: Text("hello"),
   /// ).preferredSize(Size.fromHeight(44.0)),
   PreferredSize preferredSize(Size size) {
-    return PreferredSize(child: this, preferredSize: size);
+    return PreferredSize(preferredSize: size, child: this);
   }
 
   /// Extension method for [Material] Widget
@@ -255,13 +255,13 @@ extension VxWidgetsExtension on Widget {
           bool right = true}) =>
       SafeArea(
         key: key,
-        child: this,
         minimum: minimum,
         maintainBottomViewPadding: maintainBottomViewPadding,
         top: top,
         bottom: bottom,
         left: left,
         right: right,
+        child: this,
       );
 
   /// Extension method for [ShaderMask] Widget
@@ -272,11 +272,11 @@ extension VxWidgetsExtension on Widget {
   }) =>
       ShaderMask(
         blendMode: blendMode,
-        child: this,
         key: key,
         shaderCallback: (bounds) => gradient.createShader(
           Rect.fromLTWH(0, 0, bounds.width, bounds.height),
         ),
+        child: this,
       );
 
   /// Extension method for [VxInnerShadow] Widget
@@ -289,9 +289,9 @@ extension VxWidgetsExtension on Widget {
       VxInnerShadow(
         key: key,
         blur: blur,
-        child: this,
         color: color,
         offset: offset,
+        child: this,
       );
 
   /// Extension method for [SliverToBoxAdapter] Widget
@@ -357,9 +357,9 @@ extension StringWidgetsExtension on String {
         key: key,
         radius: radius,
         backgroundColor: bgColor,
-        child: child,
         foregroundColor: fgColor,
         backgroundImage: AssetImage(this),
+        child: child,
       );
 
   Widget circularNetworkImage(
@@ -372,11 +372,11 @@ extension StringWidgetsExtension on String {
         key: key,
         radius: radius,
         backgroundColor: bgColor,
-        child: child,
         foregroundColor: fgColor,
         backgroundImage: NetworkImage(
           this,
         ),
+        child: child,
       );
 
   Widget circularAssetShadowImage({
@@ -500,12 +500,12 @@ AnimationController withRepeatAnimation<T>(
 
 class VxInnerShadow extends SingleChildRenderObjectWidget {
   const VxInnerShadow({
-    Key? key,
+    super.key,
     this.blur = 10,
     this.color = Colors.black38,
     this.offset = const Offset(10, 10),
-    Widget? child,
-  }) : super(key: key, child: child);
+    super.child,
+  });
 
   final double blur;
   final Color color;

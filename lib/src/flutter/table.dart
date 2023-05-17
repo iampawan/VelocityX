@@ -36,8 +36,8 @@ class VxTable extends VxWidgetBuilder<Widget> with VxColorMixin<VxTable> {
   TextDirection? textDirection;
   final List<TableRow> children;
 
-  VxTable border(TableBorder? _tableBorder) {
-    tableBorder = _tableBorder;
+  VxTable border(TableBorder? tableBorder) {
+    tableBorder = tableBorder;
     return this;
   }
 
@@ -48,8 +48,8 @@ class VxTable extends VxWidgetBuilder<Widget> with VxColorMixin<VxTable> {
     return this;
   }
 
-  VxTable setColumnWidths(Map<int, TableColumnWidth>? _columnWidths) {
-    columnWidths = _columnWidths;
+  VxTable setColumnWidths(Map<int, TableColumnWidth>? columnWidths) {
+    columnWidths = columnWidths;
     return this;
   }
 
@@ -72,8 +72,8 @@ class VxTable extends VxWidgetBuilder<Widget> with VxColorMixin<VxTable> {
     return this;
   }
 
-  VxTable setDefaultColumnWidth(TableColumnWidth _tableColumnWidth) {
-    defaultColumnWidth = _tableColumnWidth;
+  VxTable setDefaultColumnWidth(TableColumnWidth tableColumnWidth) {
+    defaultColumnWidth = tableColumnWidth;
     return this;
   }
 
@@ -102,18 +102,18 @@ class VxTable extends VxWidgetBuilder<Widget> with VxColorMixin<VxTable> {
     return this;
   }
 
-  VxTable setVerticalAlignment(TableCellVerticalAlignment _alignment) {
-    defaultVerticalAlignment = _alignment;
+  VxTable setVerticalAlignment(TableCellVerticalAlignment alignment) {
+    defaultVerticalAlignment = alignment;
     return this;
   }
 
-  VxTable setTextDirection(TextDirection _direction) {
-    textDirection = _direction;
+  VxTable setTextDirection(TextDirection direction) {
+    textDirection = direction;
     return this;
   }
 
-  VxTable setTextBaseline(TextBaseline _baseline) {
-    textBaseline = _baseline;
+  VxTable setTextBaseline(TextBaseline baseline) {
+    textBaseline = baseline;
     return this;
   }
 

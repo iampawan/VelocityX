@@ -3,6 +3,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 class DrawAndroid extends StatelessWidget {
   final _androidColor = Vx.hexToColor("#30D780");
+
+  DrawAndroid({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(

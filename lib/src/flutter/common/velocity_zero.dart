@@ -49,7 +49,7 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
 ///
 class VxZeroCard extends StatefulWidget {
   const VxZeroCard(
-      {this.isCircularImage = true,
+      {super.key, this.isCircularImage = true,
       this.isBottomLinesActive = true,
       this.isDark = false});
 
@@ -126,7 +126,7 @@ class _VxZeroCardState extends State<VxZeroCard>
                     const SizedBox(
                       width: 20,
                     ),
-                    Container(
+                    SizedBox(
                       height: context.percentWidth * 10,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -138,7 +138,7 @@ class _VxZeroCardState extends State<VxZeroCard>
                       ),
                     ),
                     const Spacer(),
-                    Container(
+                    SizedBox(
                       height: context.percentWidth * 10,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -185,9 +185,7 @@ class _VxLine extends StatelessWidget {
     this.widthRatio,
     this.heightRatio,
     this.animation,
-    this.isDark, {
-    Key? key,
-  }) : super(key: key);
+    this.isDark);
 
   final Animation<double>? animation;
   final double widthRatio;
@@ -209,12 +207,11 @@ class _VxLine extends StatelessWidget {
 ///
 class VxZeroList extends StatelessWidget {
   const VxZeroList(
-      {Key? key,
+      {super.key,
       this.isCircularImage = true,
       this.length = 10,
       this.isBottomLinesActive = true,
-      this.isDark = false})
-      : super(key: key);
+      this.isDark = false});
 
   /// if the image should be circular? By default it is true
   final bool isCircularImage;
@@ -251,7 +248,7 @@ class VxZeroList extends StatelessWidget {
 ///
 class PKCardProfileSkeleton extends StatefulWidget {
   const PKCardProfileSkeleton(
-      {this.isCircularImage = true, this.isBottomLinesActive = true});
+      {super.key, this.isCircularImage = true, this.isBottomLinesActive = true});
 
   /// if the image is circule. Default is true,
   final bool isCircularImage;
@@ -336,7 +333,7 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
                           const SizedBox(
                             width: 20,
                           ),
-                          Container(
+                          SizedBox(
                             height: width * 0.13,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -405,7 +402,7 @@ class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
 /// [PKCardPageSkeleton] can be used to provide a Card Page loading card with PKSkeleton cool animation.
 ///
 class PKCardPageSkeleton extends StatefulWidget {
-  const PKCardPageSkeleton({this.totalLines = 5});
+  const PKCardPageSkeleton({super.key, this.totalLines = 5});
 
   /// No. of total line. By default it is 5.
   final int totalLines;

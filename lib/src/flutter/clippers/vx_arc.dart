@@ -137,13 +137,12 @@ class VxArcClipper extends CustomClipper<Path> {
 
 class VxArc extends StatelessWidget {
   const VxArc(
-      {Key? key,
+      {super.key,
       required this.height,
       required this.child,
       this.edge = VxEdge.BOTTOM,
       this.arcType = VxArcType.CONVEX,
-      this.clipShadows = const []})
-      : super(key: key);
+      this.clipShadows = const []});
 
   /// The widget which one of [edge]s is going to be clippddddded as arc
   final Widget child;

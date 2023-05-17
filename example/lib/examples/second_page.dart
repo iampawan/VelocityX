@@ -4,7 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 class SecondPage extends StatelessWidget {
   final String imageAssetName;
 
-  const SecondPage(this.imageAssetName);
+  const SecondPage(this.imageAssetName, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -40,7 +40,7 @@ class VxPopupMenu extends StatefulWidget {
     required this.child,
     required this.menuBuilder,
     required this.clickType,
-    Key? key,
+    super.key,
     this.controller,
     this.arrowColor = const Color(0xFF4C4C4C),
     this.showArrow = true,
@@ -48,7 +48,7 @@ class VxPopupMenu extends StatefulWidget {
     this.arrowSize = 10.0,
     this.horizontalMargin = 10.0,
     this.verticalMargin = 10.0,
-  }) : super(key: key);
+  });
 
   /// Child for the [VxPopupMenu] which can be clicked
   final Widget child;
@@ -91,12 +91,12 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
 
   void _showMenu() {
     final Widget arrow = ClipPath(
+      clipper: _ArrowClipper(),
       child: Container(
         width: widget.arrowSize,
         height: widget.arrowSize,
         color: widget.arrowColor,
       ),
-      clipper: _ArrowClipper(),
     );
 
     _overlayEntry = OverlayEntry(
@@ -145,8 +145,8 @@ class _VxPopupMenuState extends State<VxPopupMenu> {
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Material(
-                            child: widget.menuBuilder(),
                             color: Colors.transparent,
+                            child: widget.menuBuilder(),
                           ),
                         ],
                       ),

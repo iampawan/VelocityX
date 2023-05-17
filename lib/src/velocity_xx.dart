@@ -719,13 +719,13 @@ mixin Vx {
 
   /// Get ascii from the hex value
   static String hexToAscii(String hex) {
-    final List<String> _splitted = [];
+    final List<String> splitted = [];
     for (int i = 0; i < hex.length; i = i + 2) {
-      _splitted.add(hex.substring(i, i + 2));
+      splitted.add(hex.substring(i, i + 2));
     }
-    final String _asciiText = List.generate(_splitted.length,
-        (i) => String.fromCharCode(int.parse(_splitted[i], radix: 16))).join();
-    return _asciiText;
+    final String asciiText = List.generate(splitted.length,
+        (i) => String.fromCharCode(int.parse(splitted[i], radix: 16))).join();
+    return asciiText;
   }
 
   /// Get color from the hex value
@@ -738,7 +738,7 @@ mixin Vx {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");
     hexColor = hexColor.replaceAll('0X', '');
     if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
+      hexColor = "FF$hexColor";
     }
     return int.parse(hexColor, radix: 16);
   }

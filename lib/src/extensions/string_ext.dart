@@ -27,10 +27,10 @@ extension VxStringExtension on String {
       : this;
 
   ///Removes first element
-  String get eliminateFirst => length > 1 ? "${substring(1, length)}" : "";
+  String get eliminateFirst => length > 1 ? substring(1, length) : "";
 
   ///Removes last element
-  String get eliminateLast => length > 1 ? "${substring(0, length - 1)}" : "";
+  String get eliminateLast => length > 1 ? substring(0, length - 1) : "";
 
   /// Return a bool if the string is null or empty
   bool get isEmpty => trimLeft().isEmpty;
@@ -44,15 +44,15 @@ extension VxStringExtension on String {
 
   /// Check if String is Right to Left Language
   bool isRtlLanguage() {
-    final _rtlLocaleRegex = RegExp(
+    final rtlLocaleRegex = RegExp(
         r'^(ar|dv|he|iw|fa|nqo|ps|sd|ug|ur|yi|.*[-_]'
         r'(Arab|Hebr|Thaa|Nkoo|Tfng))(?!.*[-_](Latn|Cyrl)($|-|_))'
         r'($|-|_)',
         caseSensitive: false);
 
-    final bool _rtlCheck = _rtlLocaleRegex.hasMatch(this);
+    final bool rtlCheck = rtlLocaleRegex.hasMatch(this);
 
-    return _rtlCheck;
+    return rtlCheck;
   }
 
   /// Returns the string if it is not `null`, or the empty string otherwise
@@ -186,25 +186,25 @@ extension VxStringExtension on String {
 
   /// Checks the validity of the credit/debit card number using the Luhn algorithm.
   bool isCreditCardValid() {
-    int _sum = 0;
-    bool _alternate = false;
+    int sum = 0;
+    bool alternate = false;
 
     for (int i = length - 1; i >= 0; i--) {
       int digit = int.parse(this[i]);
 
-      if (_alternate) {
+      if (alternate) {
         digit *= 2;
         if (digit > 9) {
           digit = (digit % 10) + 1;
         }
       }
 
-      _sum += digit;
+      sum += digit;
 
-      _alternate = !_alternate;
+      alternate = !alternate;
     }
 
-    return _sum % 10 == 0;
+    return sum % 10 == 0;
   }
 
   /// Check whether a string is a number or not
@@ -239,7 +239,7 @@ extension VxStringExtension on String {
 
   bool isSymbol() {
     const String pattern =
-        "[`~!@#\$%^&*()_\-+=<>?:\"{}|,.//\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]";
+        "[`~!@#\$%^&*()_-+=<>?:\"{}|,.///;'\\[]·~！@#￥%……&*（）——-+={}|《》？：“”【】、；‘’，。、]";
     for (int i = 0; i < length; i++) {
       if (pattern.contains(this[i])) {
         return true;
@@ -297,8 +297,9 @@ extension VxStringExtension on String {
     final parts = split('_');
     for (var i = 0; i < parts.length; i++) {
       final part = parts[i];
-      if (part.isNotEmpty)
+      if (part.isNotEmpty) {
         out.write(i == 0 ? part.toLowerCase() : part.capitalized);
+      }
     }
     return out.toString();
   }

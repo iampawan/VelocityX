@@ -34,14 +34,14 @@ class VxStateSwitcher extends StatefulWidget {
   final Widget? child;
 
   const VxStateSwitcher({
-    Key? key,
+    super.key,
     this.pageState,
     this.onRetry,
     this.skeleton,
     this.emptyView,
     this.errorView,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   _VxStateSwitcherState createState() => _VxStateSwitcherState();
@@ -154,7 +154,7 @@ class _VxStateSwitcherState extends State<VxStateSwitcher> {
 class VxSwitcher extends StatelessWidget {
   final Widget child;
 
-  const VxSwitcher({
+  const VxSwitcher({super.key, 
     required this.child,
   });
 

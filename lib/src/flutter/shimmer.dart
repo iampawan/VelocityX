@@ -19,7 +19,7 @@ import 'package:velocity_x/src/velocity_xx.dart';
 /// [VxShimmer] widget can be used to provide shimmer effect to any widget.
 class VxShimmer extends StatefulWidget {
   const VxShimmer({
-    Key? key,
+    super.key,
     required this.child,
     this.gradient,
     this.duration = const Duration(seconds: 1),
@@ -28,7 +28,7 @@ class VxShimmer extends StatefulWidget {
     this.showGradient = false,
     this.primaryColor = Colors.grey,
     this.secondaryColor,
-  }) : super(key: key);
+  });
 
   /// The child of type [Widget] to display shimmer effect.
   final Widget child;
@@ -107,7 +107,6 @@ class _VxShimmerState extends State<VxShimmer>
         animation: _controller,
         child: widget.child,
         builder: (BuildContext context, Widget? child) => _VxShimmer(
-          child: child,
           gradient: widget.showGradient
               ? widget.gradient
               : LinearGradient(
@@ -129,6 +128,7 @@ class _VxShimmerState extends State<VxShimmer>
                     ]),
           controllerValue: _controller.value,
           showShimmerEffect: widget.showAnimation,
+          child: child,
         ),
       );
 
@@ -142,11 +142,11 @@ class _VxShimmerState extends State<VxShimmer>
 @immutable
 class _VxShimmer extends SingleChildRenderObjectWidget {
   const _VxShimmer({
-    Widget? child,
+    super.child,
     this.controllerValue,
     this.gradient,
     this.showShimmerEffect,
-  }) : super(child: child);
+  });
 
   /// value that controls the animation controller
   final double? controllerValue;
@@ -252,7 +252,6 @@ extension VxShimmerExtension on Widget {
   }) =>
       VxShimmer(
         key: key,
-        child: this,
         count: count,
         duration: duration,
         gradient: gradient,
@@ -260,5 +259,6 @@ extension VxShimmerExtension on Widget {
         secondaryColor: secondaryColor,
         showAnimation: showAnimation,
         showGradient: showGradient,
+        child: this,
       );
 }

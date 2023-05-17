@@ -669,8 +669,8 @@ extension VxSizedBoxExtension on Widget {
 class WidthBox extends StatelessWidget {
   const WidthBox(
     this.width, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Give [width] of the [SizedBox]
   final double width;
@@ -690,8 +690,8 @@ class WidthBox extends StatelessWidget {
 class HeightBox extends StatelessWidget {
   const HeightBox(
     this.height, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Give [height] of the [SizedBox]
   final double height;
@@ -711,8 +711,8 @@ class HeightBox extends StatelessWidget {
 class SquareBox extends StatelessWidget {
   const SquareBox(
     this.size, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   /// Give [size] of the [SizedBox]
   final double size;

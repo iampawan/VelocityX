@@ -127,7 +127,6 @@ class VxCard extends VxWidgetBuilder<Widget>
     return Card(
       key: key,
       margin: velocityPadding,
-      child: _child,
       color: velocityColor,
       clipBehavior: _clip ?? Clip.antiAlias,
       borderOnForeground: _borderOnForeground ?? true,
@@ -138,6 +137,7 @@ class VxCard extends VxWidgetBuilder<Widget>
                   radiusGeometry ?? BorderRadius.circular(roundedValue!))
           : _shape,
       shadowColor: _shadowColor,
+      child: _child,
     );
   }
 }

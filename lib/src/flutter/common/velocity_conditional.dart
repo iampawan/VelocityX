@@ -59,11 +59,11 @@ class VxConditional extends StatelessWidget {
   final WidgetBuilder? fallback;
 
   const VxConditional({
-    Key? key,
+    super.key,
     required this.condition,
     required this.builder,
     this.fallback,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => condition

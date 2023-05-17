@@ -82,7 +82,6 @@ extension VxListWidgetExtension on List<Widget> {
           double spacing = 0.0,
           TextDirection? textDirection}) =>
       AStack(
-        children: this,
         key: key,
         clipBehavior: clipBehavior,
         overflowAlignment: overflowAlignment,
@@ -90,6 +89,7 @@ extension VxListWidgetExtension on List<Widget> {
         overflowSpacing: overflowSpacing,
         spacing: spacing,
         textDirection: textDirection,
+        children: this,
       );
 
   /// Same as [hStack]. Added just for ease who are familiar with Flutter widgets.

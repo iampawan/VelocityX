@@ -24,7 +24,7 @@ class VxRound extends StatelessWidget {
   final dynamic child;
   final TextStyle? textStyle;
 
-  const VxRound({
+  const VxRound({super.key, 
     this.type = VxRoundType.point,
     this.size,
     this.color,
@@ -68,9 +68,9 @@ class VxRound extends StatelessWidget {
           borderRadius: BorderRadius.horizontal(left: radius, right: radius),
         ),
         child: Row(
-          children: [getContent()!],
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
+          children: [getContent()!],
         ),
       );
     }

@@ -20,7 +20,7 @@ class VxTimeline extends StatefulWidget {
   final Widget? customTrailing;
 
   const VxTimeline(
-      {Key? key,
+      {super.key,
       required this.timelineList,
       this.lineColor,
       this.backgroundColor,
@@ -29,8 +29,7 @@ class VxTimeline extends StatefulWidget {
       this.onItemTap,
       this.animationDuration,
       this.showTrailing = false,
-      this.customTrailing})
-      : super(key: key);
+      this.customTrailing});
 
   @override
   _VxTimelineState createState() {

@@ -91,11 +91,11 @@ Function _showToast(
   VxToastType type = VxToastType.text,
 }) {
   /// Overlay state for showing toast as overlay
-  final OverlayState? overlayState = Overlay.of(context);
+  final OverlayState overlayState = Overlay.of(context);
 
   final GlobalKey<_VxToastViewState> key = GlobalKey();
 
-  final OverlayEntry _overlayEntry = OverlayEntry(
+  final OverlayEntry overlayEntry = OverlayEntry(
       builder: (BuildContext context) => _VxToastView(
             msg,
             key: key,
@@ -109,18 +109,18 @@ Function _showToast(
           ));
 
   /// Inserting the overlay entry to the state
-  overlayState?.insert(_overlayEntry);
+  overlayState.insert(overlayEntry);
 
   if (type == VxToastType.text) {
     Future.delayed(Duration(milliseconds: showTime), () {
       key.currentState?._hide();
-      _overlayEntry.remove();
+      overlayEntry.remove();
     });
   }
 
   return () {
     key.currentState?._hide();
-    _overlayEntry.remove();
+    overlayEntry.remove();
   };
 }
 
@@ -151,7 +151,7 @@ class _VxToastView extends StatefulWidget {
 
   const _VxToastView(
     this.msg, {
-    Key? key,
+    super.key,
     this.bgColor,
     this.textColor,
     this.textSize,
@@ -159,7 +159,7 @@ class _VxToastView extends StatefulWidget {
     this.pdHorizontal,
     this.pdVertical,
     this.type,
-  }) : super(key: key);
+  });
 
   @override
   _VxToastViewState createState() => _VxToastViewState();

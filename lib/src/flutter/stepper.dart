@@ -35,7 +35,7 @@ class VxStepper extends StatefulWidget {
       actionIconColor;
 
   const VxStepper({
-    Key? key,
+    super.key,
     this.defaultValue = 0,
     this.min = 0,
     this.max = 999,
@@ -47,8 +47,7 @@ class VxStepper extends StatefulWidget {
     this.actionButtonColor,
     this.actionIconColor,
   })  : assert(max >= min),
-        assert(step >= 1),
-        super(key: key);
+        assert(step >= 1);
 
   @override
   VxStepperState createState() => VxStepperState();
@@ -76,7 +75,7 @@ class VxStepperState extends State<VxStepper> {
   Widget build(BuildContext context) {
     final List<Widget> children = [];
 
-    children.add(Container(
+    children.add(SizedBox(
       height: _KDefaultButtonSize,
       width: _KDefaultButtonSize,
       child: MaterialButton(
@@ -124,7 +123,7 @@ class VxStepperState extends State<VxStepper> {
     ));
 
     children.add(const SizedBox(width: _KDefaultSpace));
-    children.add(Container(
+    children.add(SizedBox(
       height: _KDefaultButtonSize,
       width: _KDefaultButtonSize,
       child: MaterialButton(
@@ -140,9 +139,9 @@ class VxStepperState extends State<VxStepper> {
     ));
 
     return Row(
-      children: children,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
+      children: children,
     );
   }
 

@@ -55,7 +55,7 @@ class VxPinView extends StatefulWidget {
   final FocusNode? focusNode;
 
   const VxPinView({
-    Key? key,
+    super.key,
     this.size = 40,
     this.contentColor,
     this.color,
@@ -71,8 +71,7 @@ class VxPinView extends StatefulWidget {
     this.onEditingComplete,
     this.onSubmitted,
     this.focusNode,
-  })  : assert(count > 0),
-        super(key: key);
+  })  : assert(count > 0);
 
   @override
   VxPinViewState createState() => VxPinViewState();
@@ -100,7 +99,7 @@ class VxPinViewState extends State<VxPinView> {
         obscureText: widget.obscureText,
         fill: widget.fill,
       ),
-      child: Container(
+      child: SizedBox(
         width: tempWidth,
         height: tempHeight,
         child: TextField(

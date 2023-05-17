@@ -195,8 +195,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// If the style's 'inherit' property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  VxTextBuilder textStyle(TextStyle? _style) {
-    _themedStyle = _style;
+  VxTextBuilder textStyle(TextStyle? style) {
+    _themedStyle = style;
     return this;
   }
 
@@ -210,8 +210,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// font size.
   ///
   /// See [StrutStyle] for details.
-  VxTextBuilder strutStyle(StrutStyle? _style) {
-    _strutStyle = _style;
+  VxTextBuilder strutStyle(StrutStyle? style) {
+    _strutStyle = style;
     return this;
   }
 

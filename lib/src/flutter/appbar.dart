@@ -33,7 +33,7 @@ class VxAppBar extends StatefulWidget implements PreferredSizeWidget {
   ///
   /// Typically used in the [Scaffold.appBar] property.
   VxAppBar({
-    Key? key,
+    super.key,
     this.leading,
     this.automaticallyImplyLeading = true,
     this.title,
@@ -69,8 +69,7 @@ class VxAppBar extends StatefulWidget implements PreferredSizeWidget {
   })  : assert(elevation == null || elevation >= 0.0),
         preferredSize = Size.fromHeight(
           kToolbarHeight + (bottom?.preferredSize.height ?? 0),
-        ),
-        super(key: key);
+        );
 
   /// A widget to display before the [title].
   final Widget? leading;
@@ -400,8 +399,8 @@ class _VxAppBarState extends State<VxAppBar> {
         overflow: TextOverflow.ellipsis,
         child: Semantics(
           namesRoute: namesRoute,
-          child: VxAppBarTitleBar(child: title),
           header: true,
+          child: VxAppBarTitleBar(child: title),
         ),
       );
     }
@@ -605,8 +604,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
 // center it within its (NavigationToolbar) parent, and allow the
 // parent to constrain the title's actual height.
 class VxAppBarTitleBar extends SingleChildRenderObjectWidget {
-  const VxAppBarTitleBar({Key? key, required Widget child})
-      : super(key: key, child: child);
+  const VxAppBarTitleBar({super.key, required Widget super.child});
 
   @override
   RenderVxAppBarTitleBar createRenderObject(BuildContext context) =>
@@ -623,12 +621,10 @@ class VxAppBarTitleBar extends SingleChildRenderObjectWidget {
 
 class RenderVxAppBarTitleBar extends RenderAligningShiftedBox {
   RenderVxAppBarTitleBar({
-    RenderBox? child,
-    TextDirection? textDirection,
+    super.child,
+    super.textDirection,
   }) : super(
-          child: child,
           alignment: Alignment.center,
-          textDirection: textDirection,
         );
 
   @override

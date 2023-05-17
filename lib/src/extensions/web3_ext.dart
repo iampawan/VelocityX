@@ -12,7 +12,7 @@ mixin VxWeb3 {
   // Conversion to a hexadecimal string along with 0x0
   static String hexify(BigInt dec, {bool isWithPrefix = true}) {
     final res = dec.toRadixString(16);
-    return isWithPrefix ? '0x0' + res : res;
+    return isWithPrefix ? '0x0$res' : res;
   }
 
   /// Unit conversion: wei -> ether

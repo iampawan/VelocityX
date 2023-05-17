@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class AnimatedPageView extends StatefulWidget {
+  const AnimatedPageView({super.key});
+
   @override
   _AnimatedPageViewState createState() => _AnimatedPageViewState();
 }
@@ -37,7 +39,7 @@ class _AnimatedPageViewState extends State<AnimatedPageView> {
         itemCount: pics.length,
         controller: PageController(),
         itemBuilder: (context, index) {
-          final String? imgUrl = pics.elementAt(index);
+          final String imgUrl = pics.elementAt(index);
           final double w = context.screenWidth;
           final double h = w * calculateImgScale(index);
           return GestureDetector(

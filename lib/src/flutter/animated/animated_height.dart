@@ -14,7 +14,7 @@ class VxAnimatedHeightView<T extends Widget> extends StatefulWidget {
   final int? currentPageIndex;
 
   const VxAnimatedHeightView(
-      {required this.pageViewChild,
+      {super.key, required this.pageViewChild,
       required this.computeAspectRadio,
       this.notifyScroll,
       required this.itemCount,
@@ -67,8 +67,9 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
         if (widget.notifyScroll != null) {
           widget.notifyScroll!(scrollNotification);
         }
-        if (scrollNotification.depth == 0)
+        if (scrollNotification.depth == 0) {
           _computeRadioToRadio(scrollNotification);
+        }
         return true;
       },
     );
@@ -86,13 +87,13 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
     int nextIndex;
 
     // Selected left margin
-    final double _currentLeftPixels =
+    final double currentLeftPixels =
         beforeIndex * scroll.metrics.viewportDimension;
 
     //Swipe right
-    if (scroll.metrics.pixels > _currentLeftPixels) {
+    if (scroll.metrics.pixels > currentLeftPixels) {
       nextIndex = beforeIndex + 1;
-    } else if (scroll.metrics.pixels < _currentLeftPixels) {
+    } else if (scroll.metrics.pixels < currentLeftPixels) {
       //Swipe left
       nextIndex = beforeIndex - 1;
     } else {

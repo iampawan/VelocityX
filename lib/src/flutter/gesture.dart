@@ -63,9 +63,9 @@ class _VxGestureBuilder extends VxWidgetBuilder<Widget> {
     return GestureDetector(
       key: key,
       onTap: _onClick as void Function()?,
-      child: _child,
       onDoubleTap: _onDoubleClick as void Function()?,
       onLongPress: _onLongClick as void Function()?,
+      child: _child,
     );
   }
 }
@@ -102,10 +102,10 @@ class _VelocityXInkWellBuilder extends VxWidgetBuilder<Widget> {
     return InkWell(
       key: key,
       onTap: _onClick,
-      child: _child,
       splashColor: _splashColor,
       onDoubleTap: _onDoubleClick,
       onLongPress: _onLongClick,
+      child: _child,
     );
   }
 }
@@ -222,12 +222,12 @@ extension VxGestureExtensions on Widget {
       bool touchFeedBack = false}) {
     return _CallbackButton(
       key: key,
-      child: this,
       onTap: onTap,
       needHaptic: touchFeedBack,
       hitTestBehavior: hitTestBehavior,
       normalColor: Colors.transparent,
       pressedColor: Colors.black12,
+      child: this,
     );
   }
 
@@ -301,14 +301,13 @@ class _CallbackButton extends StatefulWidget {
   final HitTestBehavior? hitTestBehavior;
 
   const _CallbackButton(
-      {Key? key,
+      {super.key,
       this.onTap,
       this.child,
       this.normalColor = Colors.transparent,
       this.pressedColor = Colors.black12,
       this.needHaptic = false,
-      this.hitTestBehavior})
-      : super(key: key);
+      this.hitTestBehavior});
 
   @override
   _CallbackButtonState createState() => _CallbackButtonState();
@@ -362,10 +361,10 @@ class _CallbackButtonState extends State<_CallbackButton> {
 //
 class _VxTransformWidget extends StatefulWidget {
   const _VxTransformWidget({
-    Key? key,
+    super.key,
     required this.child,
     required this.matrix,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Matrix4 matrix;
@@ -398,7 +397,7 @@ class _VxTransformWidgetState extends State<_VxTransformWidget> {
 ///
 class VxZoom extends StatefulWidget {
   const VxZoom({
-    Key? key,
+    super.key,
     this.twoTouchOnly = false,
     required this.child,
     this.minScale,
@@ -406,7 +405,7 @@ class VxZoom extends StatefulWidget {
     this.animationDuration = const Duration(milliseconds: 100),
     this.animationCurve = Curves.fastOutSlowIn,
     this.modalBarrierColor,
-  }) : super(key: key);
+  });
 
   /// A widget to make zoomable.
   final Widget child;
@@ -623,12 +622,12 @@ extension VxZoomExtensions on Widget {
   }) =>
       VxZoom(
         key: key,
-        child: this,
         minScale: minScale,
         maxScale: maxScale,
         twoTouchOnly: twoTouchOnly,
         animationDuration: animationDuration,
         animationCurve: animationCurve,
         modalBarrierColor: modalBarrierColor,
+        child: this,
       );
 }

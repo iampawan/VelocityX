@@ -254,9 +254,9 @@ class _VxDialog extends StatelessWidget {
         ),
       ),
     ));
-    children.add(Container(
+    children.add(const SizedBox(
       height: 16,
-      child: const VxDivider(type: VxDividerType.vertical),
+      child: VxDivider(type: VxDividerType.vertical),
     ));
     children.add(Expanded(
       child: InkWell(
@@ -306,7 +306,7 @@ class VxTimerButton extends StatefulWidget {
   final dynamic button;
   final VoidCallback? tap;
 
-  const VxTimerButton({
+  const VxTimerButton({super.key, 
     this.second,
     this.bgColor,
     this.button,
@@ -389,6 +389,6 @@ class _VxCustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> children = [];
     children.add(child);
-    return Stack(children: children, alignment: Alignment.center);
+    return Stack(alignment: Alignment.center, children: children);
   }
 }

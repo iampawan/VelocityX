@@ -7,8 +7,7 @@ class VxBrowser extends StatelessWidget {
   final Widget? child;
 
   const VxBrowser(
-      {Key? key, required this.colorSet, this.title = "VxShapes", this.child})
-      : super(key: key);
+      {super.key, required this.colorSet, this.title = "VxShapes", this.child});
   @override
   Widget build(BuildContext context) {
     return Material(

@@ -18,16 +18,16 @@ import 'package:velocity_x/velocity_x.dart';
 void main() {
   testWidgets('user is able to select value from drop down',
       (WidgetTester tester) async {
-    String? _value = 'HEY';
+    String? value = 'HEY';
     await tester.pumpWidget(Directionality(
       textDirection: TextDirection.ltr,
       child: MaterialApp(
         home: Material(
           child: ['HELLO', 'HEY', 'HOLA']
               .textDropDown(
-                selectedValue: _value,
+                selectedValue: value,
                 onChanged: (value) {
-                  _value = value;
+                  value = value;
                 },
               )
               .make()
@@ -48,6 +48,6 @@ void main() {
     await tester.pumpAndSettle();
 
     // The value of _value should be changed to HELLO
-    expect(_value, 'HELLO');
+    expect(value, 'HELLO');
   });
 }

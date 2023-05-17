@@ -24,7 +24,7 @@ class VxMarquee extends StatefulWidget {
   final Axis scrollAxis;
   final double ratioOfBlankToScreen;
 
-  const VxMarquee({
+  const VxMarquee({super.key, 
     required this.text,
     this.textStyle,
     this.scrollAxis = Axis.horizontal,

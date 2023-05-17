@@ -114,7 +114,7 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
 
   VxTextDropDown iconSize(double val) => this.._iconSize = val;
 
-  VxTextDropDown icon(Icon _icon) => this.._dropDownIcon = _icon;
+  VxTextDropDown icon(Icon icon) => this.._dropDownIcon = icon;
 
   VxTextDropDown disabledIconColor(Color color) =>
       this.._disabledIconColor = color;

@@ -6,10 +6,10 @@ class VxNavigation extends StatelessWidget {
   final Map<String, List<String>> queryParams;
 
   const VxNavigation({
-    Key? key,
+    super.key,
     this.pathParam = '',
     this.queryParams = const {},
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

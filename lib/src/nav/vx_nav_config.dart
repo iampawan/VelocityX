@@ -28,12 +28,12 @@ class VxNavConfig extends ChangeNotifier {
   Completer<dynamic>? _boolResultCompleter;
 
   Future<void> _setNewRoutePath(Uri uri, dynamic params) {
-    bool _findRoute = false;
+    bool findRoute = false;
     for (var i = 0; i < routes.keys.length; i++) {
       final key = routes.keys.elementAt(i);
       if (key.matchAsPrefix(uri.path)?.group(0) == uri.path) {
         if (_uris.contains(uri) && key == routes.keys.first) {
-          _findRoute = true;
+          findRoute = true;
           break;
         }
         _pages.add(routes[key]!(uri, params));
@@ -43,11 +43,11 @@ class VxNavConfig extends ChangeNotifier {
             observer.didChangeRoute(uri, routes[key]!(uri, params), "push");
           }
         }
-        _findRoute = true;
+        findRoute = true;
         break;
       }
     }
-    if (!_findRoute) {
+    if (!findRoute) {
       var page = pageNotFound?.call(uri, params);
       page ??= MaterialPage(
         child: Scaffold(

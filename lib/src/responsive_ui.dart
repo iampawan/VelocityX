@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 /// A class that can be queried for breakpoints based on the guidelines in
@@ -98,7 +99,7 @@ abstract class MobileDeviceInfo {
 }
 
 class _PortraitDeviceInfo extends MobileDeviceInfo {
-  _PortraitDeviceInfo(double width) : super._(width);
+  _PortraitDeviceInfo(super.width) : super._();
 
   @override
   MobileDeviceType get deviceType =>
@@ -128,7 +129,7 @@ class _PortraitDeviceInfo extends MobileDeviceInfo {
 }
 
 class _LandscapeDeviceInfo extends MobileDeviceInfo {
-  _LandscapeDeviceInfo(double width) : super._(width);
+  _LandscapeDeviceInfo(super.width) : super._();
 
   @override
   MobileDeviceType get deviceType =>

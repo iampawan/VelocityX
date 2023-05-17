@@ -5,15 +5,14 @@ import 'package:flutter/material.dart';
 ///
 class VxDash extends StatelessWidget {
   const VxDash(
-      {Key? key,
+      {super.key,
       this.direction = Axis.horizontal,
       this.dashColor = Colors.black,
       this.length = 200,
       this.dashGap = 3,
       this.dashLength = 6,
       this.dashThickness = 1,
-      this.dashBorderRadius = 0})
-      : super(key: key);
+      this.dashBorderRadius = 0});
 
   /// Direction of the dash. Default is horizontal
   final Axis direction;

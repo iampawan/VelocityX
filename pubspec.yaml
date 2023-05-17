@@ -15,14 +15,13 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  intl: ^0.18.0
-  vector_math: ^2.1.2
+  intl:
   vxstate: ^2.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.11.1
+  flutter_lints:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class VxShapes extends StatelessWidget {
+  const VxShapes({super.key});
+
   @override
   Widget build(BuildContext context) {
     return VStack([

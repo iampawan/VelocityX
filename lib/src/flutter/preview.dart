@@ -63,7 +63,7 @@ class _VxPreview extends StatefulWidget {
   final Color selectPointColor;
 
   const _VxPreview(
-      {Key? key,
+      {super.key,
       required this.itemCount,
       required this.itemBuilder,
       this.scrollDirection = Axis.horizontal,
@@ -77,8 +77,7 @@ class _VxPreview extends StatefulWidget {
       this.fPreviewIndicatorAxis = VxPreviewIndicatorAxis.horizontal,
       this.onChanged})
       : assert(itemCount >= 1),
-        assert(defaultIndex >= 0),
-        super(key: key);
+        assert(defaultIndex >= 0);
 
   @override
   _VxPreviewState createState() => _VxPreviewState();
@@ -111,7 +110,7 @@ class _VxPreviewState extends State<_VxPreview> {
         child: _indicatorView(),
       ));
     }
-    return Stack(children: children, alignment: Alignment.center);
+    return Stack(alignment: Alignment.center, children: children);
   }
 
   Widget _pageView() {
@@ -136,16 +135,16 @@ class _VxPreviewState extends State<_VxPreview> {
     double paddingVertical;
     if (widget.fPreviewIndicatorAxis == VxPreviewIndicatorAxis.horizontal) {
       child = Row(
-        children: children,
         mainAxisSize: MainAxisSize.min,
+        children: children,
       );
       paddingHorizontal = pointPaddingSpace! * 2;
       paddingVertical = pointPaddingSpace!;
       pointPaddingHorizontal = pointPaddingSpace!;
     } else {
       child = Column(
-        children: children,
         mainAxisSize: MainAxisSize.min,
+        children: children,
       );
       paddingHorizontal = pointPaddingSpace!;
       paddingVertical = pointPaddingSpace! * 2;

@@ -20,7 +20,7 @@ class VxRandomBox extends StatefulWidget {
   final bool changeOnRedraw;
 
   const VxRandomBox(
-      {this.width, this.height, this.child, this.changeOnRedraw = true});
+      {super.key, this.width, this.height, this.child, this.changeOnRedraw = true});
 
   @override
   _VxRandomBoxState createState() => _VxRandomBoxState();
@@ -51,9 +51,9 @@ extension VxRandomContainerWidgetExtension on Widget {
   VxRandomBox randomBox(
           {double? width, double? height, bool changeOnRedraw = true}) =>
       VxRandomBox(
-        child: this,
         height: height,
         width: width,
         changeOnRedraw: changeOnRedraw,
+        child: this,
       );
 }

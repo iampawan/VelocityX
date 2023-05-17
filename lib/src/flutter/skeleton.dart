@@ -42,7 +42,7 @@ class VxSkeleton extends StatefulWidget {
   final double? stretchWidth;
 
   const VxSkeleton(
-      {Key? key,
+      {super.key,
       this.shape,
       this.padding,
       this.color,
@@ -55,8 +55,7 @@ class VxSkeleton extends StatefulWidget {
       this.duration,
       this.active = true,
       this.type = VxSkeletonAnimationType.shimmer,
-      this.stretchWidth})
-      : super(key: key);
+      this.stretchWidth});
 
   @override
   VxSkeletonState createState() => VxSkeletonState();
@@ -93,10 +92,11 @@ class VxSkeletonState extends State<VxSkeleton>
       ),
     );
 
-    if (widget.type == VxSkeletonAnimationType.shimmer)
+    if (widget.type == VxSkeletonAnimationType.shimmer) {
       _animation.addStatusListener(_handleShimmerAnimationStatus);
-    else
+    } else {
       _animation.addStatusListener(_handleStretchAnimationStatus);
+    }
 
     _controllerForward();
   }

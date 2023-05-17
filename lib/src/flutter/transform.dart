@@ -136,7 +136,6 @@ extension VxToggleExtension on Widget {
           bool isRotate = false}) =>
       VxToggleRotate(
         key: key,
-        child: this,
         clockwise: clockwise,
         curve: curve,
         duration: duration,
@@ -144,6 +143,7 @@ extension VxToggleExtension on Widget {
         onTap: onTap,
         rad: rad,
         toggleBuilder: toggleBuilder,
+        child: this,
       );
 }
 

@@ -41,14 +41,14 @@ class VxDiscList extends StatelessWidget {
 
   const VxDiscList(
     this._items, {
-    Key? key,
+    super.key,
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
     this.primary = false,
     this.shrinkWrap = true,
     this.physics,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -108,14 +108,14 @@ class VxDecimalList extends StatelessWidget {
 
   const VxDecimalList(
     this._items, {
-    Key? key,
+    super.key,
     this.padding,
     this.color = Colors.black,
     this.fontSize = 14.0,
     this.primary = false,
     this.shrinkWrap = true,
     this.physics,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

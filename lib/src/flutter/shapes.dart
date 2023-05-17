@@ -9,7 +9,7 @@ import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
   /// Creates a circle that represents a shape.
   VxCircle({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.radius,
@@ -19,7 +19,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
     this.backgroundImage,
     this.blendMode,
     this.shadows,
-  }) : super(key: key) {
+  }) {
     setChildForShadow(this);
   }
 
@@ -99,7 +99,7 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
 class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
   /// Creates a capsule that represents a shape.
   VxCapsule({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.width,
@@ -110,7 +110,7 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
     this.backgroundImage,
     this.blendMode,
     this.shadows,
-  }) : super(key: key) {
+  }) {
     setChildForShadow(this);
   }
 
@@ -188,7 +188,7 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
 class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
   /// Creates a ellipse that represents a shape.
   VxEllipse({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.width,
@@ -199,7 +199,7 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
     this.backgroundImage,
     this.blendMode,
     this.shadows,
-  }) : super(key: key) {
+  }) {
     setChildForShadow(this);
   }
 
@@ -239,8 +239,8 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
 
   @override
   Widget build(BuildContext context) {
-    final _width = width ?? MediaQuery.of(context).size.shortestSide;
-    final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
+    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -256,13 +256,13 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
     }
 
     return AnimatedContainer(
-      height: _height,
-      width: _width,
+      height: height0,
+      width: width0,
       duration: kThemeChangeDuration,
       decoration: customDecoration ??
           BoxDecoration(
             border: border,
-            borderRadius: BorderRadius.all(Radius.elliptical(_width, _height)),
+            borderRadius: BorderRadius.all(Radius.elliptical(width0, height0)),
             color: effectiveBackgroundColor,
             shape: BoxShape.rectangle,
             boxShadow: velocityShadow ?? shadows ?? kElevationToShadow[0],
@@ -279,7 +279,7 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
 class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
   /// Creates a bevel that represents a shape.
   VxBevel({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.radius,
@@ -289,7 +289,7 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
     this.gradient,
     this.backgroundImage,
     this.shadows,
-  }) : super(key: key) {
+  }) {
     setChildForShadow(this);
   }
 
@@ -326,8 +326,8 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
 
   @override
   Widget build(BuildContext context) {
-    final _width = width ?? MediaQuery.of(context).size.shortestSide;
-    final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
+    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -343,8 +343,8 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
     }
 
     return AnimatedContainer(
-      height: _height,
-      width: _width,
+      height: height0,
+      width: width0,
       duration: kThemeChangeDuration,
       decoration: ShapeDecoration(
         shape: BeveledRectangleBorder(
@@ -369,7 +369,7 @@ class VxContinuousRectangle extends StatelessWidget
     with VxShadowMixin<VxContinuousRectangle> {
   /// Creates a continuous rectangle that represents a shape.
   VxContinuousRectangle({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.radius,
@@ -379,7 +379,7 @@ class VxContinuousRectangle extends StatelessWidget
     this.gradient,
     this.backgroundImage,
     this.shadows,
-  }) : super(key: key) {
+  }) {
     setChildForShadow(this);
   }
 
@@ -415,8 +415,8 @@ class VxContinuousRectangle extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final _width = width ?? MediaQuery.of(context).size.shortestSide;
-    final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
+    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -432,8 +432,8 @@ class VxContinuousRectangle extends StatelessWidget
     }
 
     return AnimatedContainer(
-      height: _height,
-      width: _width,
+      height: height0,
+      width: width0,
       duration: kThemeChangeDuration,
       decoration: ShapeDecoration(
         shape: ContinuousRectangleBorder(
@@ -454,13 +454,13 @@ class VxContinuousRectangle extends StatelessWidget
 class VxTriangle extends StatelessWidget {
   /// Creates a triangle that represents a shape.
   const VxTriangle({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.width,
     this.height,
     this.strokeWidth,
-  }) : super(key: key);
+  });
 
   /// The widget below this widget in the tree.
   final Widget? child;
@@ -483,8 +483,8 @@ class VxTriangle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _width = width ?? MediaQuery.of(context).size.shortestSide / 2;
-    final _height = height ?? MediaQuery.of(context).size.shortestSide / 2;
+    final width0 = width ?? MediaQuery.of(context).size.shortestSide / 2;
+    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 2;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -500,14 +500,14 @@ class VxTriangle extends StatelessWidget {
     }
 
     return AnimatedContainer(
-      height: _height,
-      width: _width,
+      height: height0,
+      width: width0,
       duration: kThemeChangeDuration,
       child: CustomPaint(
-        child: child,
-        size: Size(_width, _height),
+        size: Size(width0, height0),
         painter: _VxTriangle(effectiveBackgroundColor,
             strokeWidth: strokeWidth, isStroke: strokeWidth != null),
+        child: child,
       ),
     );
   }
@@ -516,14 +516,14 @@ class VxTriangle extends StatelessWidget {
 class VxTicket extends StatelessWidget {
   /// Creates a VxTicket that represents a shape.
   const VxTicket({
-    Key? key,
+    super.key,
     this.child,
     this.backgroundColor,
     this.width,
     this.height,
     this.isHardEdged = false,
     this.isTwoSided = false,
-  }) : super(key: key);
+  });
 
   /// The widget below this widget in the tree.
   final Widget? child;
@@ -548,8 +548,8 @@ class VxTicket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _width = width ?? MediaQuery.of(context).size.shortestSide;
-    final _height = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
+    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -565,15 +565,15 @@ class VxTicket extends StatelessWidget {
     }
 
     return ClipPath(
+      clipper:
+          _VxTicketClipper(isTwoSide: isTwoSided!, isHardEdge: isHardEdged!),
       child: AnimatedContainer(
-        height: _height,
-        width: _width,
+        height: height0,
+        width: width0,
         duration: kThemeChangeDuration,
         color: effectiveBackgroundColor,
         child: child,
       ),
-      clipper:
-          _VxTicketClipper(isTwoSide: isTwoSided!, isHardEdge: isHardEdged!),
     );
   }
 }
@@ -679,7 +679,6 @@ extension VxShapesExtension on Widget {
   }) =>
       VxCircle(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         border: border,
         customDecoration: customDecoration,
@@ -688,6 +687,7 @@ extension VxShapesExtension on Widget {
         blendMode: blendMode,
         gradient: gradient,
         shadows: shadows,
+        child: this,
       );
 
   ///
@@ -708,7 +708,6 @@ extension VxShapesExtension on Widget {
   }) =>
       VxCapsule(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         border: border,
         customDecoration: customDecoration,
@@ -718,6 +717,7 @@ extension VxShapesExtension on Widget {
         blendMode: blendMode,
         gradient: gradient,
         shadows: shadows,
+        child: this,
       );
 
   ///
@@ -738,7 +738,6 @@ extension VxShapesExtension on Widget {
   }) =>
       VxEllipse(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         border: border,
         customDecoration: customDecoration,
@@ -748,6 +747,7 @@ extension VxShapesExtension on Widget {
         blendMode: blendMode,
         gradient: gradient,
         shadows: shadows,
+        child: this,
       );
 
   ///
@@ -767,7 +767,6 @@ extension VxShapesExtension on Widget {
   }) =>
       VxBevel(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         borderSide: borderSide,
         radius: radius,
@@ -776,6 +775,7 @@ extension VxShapesExtension on Widget {
         backgroundImage: backgroundImage,
         gradient: gradient,
         shadows: shadows,
+        child: this,
       );
 
   ///
@@ -795,7 +795,6 @@ extension VxShapesExtension on Widget {
   }) =>
       VxContinuousRectangle(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         borderSide: borderSide,
         radius: radius,
@@ -804,6 +803,7 @@ extension VxShapesExtension on Widget {
         backgroundImage: backgroundImage,
         gradient: gradient,
         shadows: shadows,
+        child: this,
       );
 
   ///
@@ -819,11 +819,11 @@ extension VxShapesExtension on Widget {
   }) =>
       VxTriangle(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         width: width,
         height: height,
         strokeWidth: strokeWidth,
+        child: this,
       );
 
   ///
@@ -840,11 +840,11 @@ extension VxShapesExtension on Widget {
   }) =>
       VxTicket(
         key: key,
-        child: this,
         backgroundColor: backgroundColor,
         width: width,
         height: height,
         isHardEdged: isHardEdged,
         isTwoSided: isTwoSided,
+        child: this,
       );
 }

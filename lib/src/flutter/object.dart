@@ -108,40 +108,40 @@ extension VxObjectExtensions on Widget {
   Widget objectCover({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.cover,
-        child: this,
         alignment: Alignment.center,
+        child: this,
       );
 
   /// Can be used to wrap as a contain fit of the FittedBox.
   Widget objectContain({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.contain,
-        child: this,
         alignment: Alignment.center,
+        child: this,
       );
 
   /// Can be used to wrap as a fill fit of the FittedBox.
   Widget objectFill({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.fill,
-        child: this,
         alignment: Alignment.center,
+        child: this,
       );
 
   /// Can be used to wrap as a scaledown fit of the FittedBox.
   Widget objectScaleDown({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.scaleDown,
-        child: this,
         alignment: Alignment.center,
+        child: this,
       );
 
   /// Can be used to wrap as a none fit of the FittedBox.
   Widget objectNone({Key? key}) => FittedBox(
         key: key,
         fit: BoxFit.none,
-        child: this,
         alignment: Alignment.center,
+        child: this,
       );
 
   /// Can be used to align a widget to topleft.
@@ -152,10 +152,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.topLeft,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to topcenter.
@@ -166,10 +166,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.topCenter,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to topright.
@@ -180,10 +180,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.topRight,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to bottomleft.
@@ -194,10 +194,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.bottomLeft,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to bottomcenter.
@@ -208,10 +208,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.bottomCenter,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to bottomright.
@@ -222,10 +222,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.bottomRight,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to centerleft.
@@ -236,10 +236,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.centerLeft,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to center.
@@ -250,10 +250,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.center,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to centerright.
@@ -264,10 +264,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.centerRight,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to specified alignment.
@@ -281,10 +281,10 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment.lerp(a, b, t)!,
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 
   /// Can be used to align a widget to specified [x] & [y].
@@ -297,9 +297,9 @@ extension VxObjectExtensions on Widget {
   }) =>
       Align(
         key: key,
-        child: this,
         alignment: Alignment(x, y),
         heightFactor: heightFactor,
         widthFactor: widthFactor,
+        child: this,
       );
 }

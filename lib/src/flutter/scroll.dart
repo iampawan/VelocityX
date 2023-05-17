@@ -26,12 +26,12 @@ extension ScrollExtension on Widget {
           ScrollPhysics? physics,
           EdgeInsetsGeometry? padding}) =>
       SingleChildScrollView(
-          child: this,
           key: key,
           scrollDirection: Axis.vertical,
           controller: controller,
           physics: physics,
-          padding: padding);
+          padding: padding,
+          child: this);
 
   ///
   /// Extension method to directly access [SingleChildScrollView] horizontally with any widget without wrapping or with dot operator.
@@ -43,8 +43,8 @@ extension ScrollExtension on Widget {
           EdgeInsetsGeometry? padding}) =>
       SingleChildScrollView(
         key: key,
-        child: this,
         scrollDirection: Axis.horizontal,
+        child: this,
       );
 }
 
@@ -79,22 +79,22 @@ class VxScrollVertical extends StatelessWidget {
   final Widget? child;
 
   const VxScrollVertical({
-    Key? key,
+    super.key,
     this.controller,
     this.physics,
     this.padding,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       key: key,
-      child: child,
       scrollDirection: Axis.vertical,
       controller: controller,
       physics: physics,
       padding: padding,
+      child: child,
     );
   }
 }
@@ -109,22 +109,22 @@ class VxScrollHorizontal extends StatelessWidget {
   final Widget? child;
 
   const VxScrollHorizontal({
-    Key? key,
+    super.key,
     this.controller,
     this.physics,
     this.padding,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       key: key,
-      child: child,
       scrollDirection: Axis.horizontal,
       controller: controller,
       physics: physics,
       padding: padding,
+      child: child,
     );
   }
 }

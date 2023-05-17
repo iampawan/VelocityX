@@ -223,7 +223,6 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   @override
   Widget make({Key? key}) {
     return AnimatedContainer(
-        child: child,
         curve: velocityCurve ?? Curves.linear,
         duration: velocityDuration ?? const Duration(seconds: 100),
         height: _height,
@@ -256,7 +255,8 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
                   border: _border,
                   gradient: velocityGradient ?? _gradient,
                   image: _bgImage,
-                ));
+                ),
+        child: child);
   }
 }
 

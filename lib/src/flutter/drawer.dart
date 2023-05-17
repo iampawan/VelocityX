@@ -63,36 +63,36 @@ mixin VxDrawer {
     bool showMask = false,
     bool autoHide = true,
   }) {
-    final OverlayState? overlayState = Overlay.of(context);
+    final OverlayState overlayState = Overlay.of(context);
 
     final GlobalKey<_VxDrawerState> key = GlobalKey();
 
     VoidCallback? hide;
 
-    OverlayEntry? _overlayEntry = OverlayEntry(
+    OverlayEntry? overlayEntry = OverlayEntry(
       builder: (BuildContext context) => _VxDrawer(
         key: key,
         type: type,
-        child: child,
         maskTap: hide,
         showMask: showMask,
+        child: child,
       ),
     );
-    overlayState?.insert(_overlayEntry);
+    overlayState.insert(overlayEntry);
 
-    final ModalRoute? _route = ModalRoute.of(context);
+    final ModalRoute? route = ModalRoute.of(context);
     Future<bool> backClose() {
       hide!();
       return Future.value(false);
     }
 
-    _route?.addScopedWillPopCallback(backClose);
+    route?.addScopedWillPopCallback(backClose);
 
     hide = () async {
-      _route?.removeScopedWillPopCallback(backClose);
+      route?.removeScopedWillPopCallback(backClose);
       await key.currentState?.reverseAnimation();
-      _overlayEntry?.remove();
-      _overlayEntry = null;
+      overlayEntry?.remove();
+      overlayEntry = null;
     };
 
     if (autoHide) {
@@ -113,12 +113,12 @@ class _VxDrawer extends StatefulWidget {
   final bool? showMask;
 
   const _VxDrawer({
-    Key? key,
+    super.key,
     this.type,
     this.child,
     this.maskTap,
     this.showMask,
-  }) : super(key: key);
+  });
 
   @override
   _VxDrawerState createState() => _VxDrawerState();

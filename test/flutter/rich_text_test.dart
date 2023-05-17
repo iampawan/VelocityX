@@ -19,8 +19,8 @@ import 'package:velocity_x/velocity_x.dart';
 void main() {
   Directionality directionalityWidget({required Widget child}) =>
       Directionality(
-        child: child,
         textDirection: TextDirection.ltr,
+        child: child,
       );
   group("Group all rich text tests", () {
     testWidgets('richText creates RichText Widget',

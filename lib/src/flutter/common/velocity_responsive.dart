@@ -16,8 +16,7 @@ class VxDevice extends StatelessWidget {
   ///
   final Widget web;
 
-  const VxDevice({Key? key, required this.mobile, required this.web})
-      : super(key: key);
+  const VxDevice({super.key, required this.mobile, required this.web});
   @override
   Widget build(BuildContext context) {
     return VxConditionalSwitch.single(
@@ -64,14 +63,13 @@ class VxResponsive extends StatelessWidget {
   final Widget? fallback;
 
   const VxResponsive(
-      {Key? key,
+      {super.key,
       this.xsmall,
       this.small,
       this.medium,
       this.large,
       this.xlarge,
-      this.fallback})
-      : super(key: key);
+      this.fallback});
   @override
   Widget build(BuildContext context) {
     return VxConditionalSwitch.single(
@@ -106,10 +104,10 @@ class VxLayout extends StatelessWidget {
   final VxSizeConfig? sizeConfig;
 
   const VxLayout({
-    Key? key,
+    super.key,
     required this.builder,
     this.sizeConfig,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

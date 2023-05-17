@@ -313,7 +313,6 @@ class VxBox extends VxWidgetBuilder<Widget>
       margin: _margin,
       alignment: velocityAlignment,
       transform: _transform,
-      child: child,
       foregroundDecoration: _foregroundDecoration,
       decoration: _velocityNeumorph != null
           ? BoxDecoration(
@@ -338,6 +337,7 @@ class VxBox extends VxWidgetBuilder<Widget>
                 gradient: velocityGradient ?? _gradient,
                 image: _bgImage,
               ),
+      child: child,
     );
   }
 }

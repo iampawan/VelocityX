@@ -55,8 +55,8 @@ class _VxPaddingBuilder extends VxWidgetBuilder<Widget>
   Widget make({Key? key}) {
     return Padding(
       key: key,
-      child: _child,
       padding: velocityPadding!,
+      child: _child,
     );
   }
 }

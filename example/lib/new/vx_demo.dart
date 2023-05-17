@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class VxDemo extends StatelessWidget {
+  const VxDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     final childHeight = context.mdColumns * (context.isMobile ? 14.0 : 15.0);
@@ -130,7 +132,7 @@ class VxDemo extends StatelessWidget {
 class MadeWithVx extends StatelessWidget {
   final Color color;
 
-  const MadeWithVx({Key? key, required this.color}) : super(key: key);
+  const MadeWithVx({super.key, required this.color});
   @override
   Widget build(BuildContext context) {
     return "Made With VelocityX"

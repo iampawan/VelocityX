@@ -51,7 +51,7 @@ class VxRating extends StatefulWidget {
   /// Use onRatingUpdate to get the selected value.
   final ValueChanged<String> onRatingUpdate;
 
-  const VxRating({
+  const VxRating({super.key, 
     this.maxRating = 10.0,
     this.count = 5,
     this.value = 10.0,
@@ -82,7 +82,6 @@ class _VxRatingState extends State<VxRating> {
   @override
   Widget build(BuildContext context) {
     return Listener(
-      child: buildRowRating(),
       onPointerDown: (PointerDownEvent event) {
         double x = event.localPosition.dx;
         if (x < 0) {
@@ -99,6 +98,7 @@ class _VxRatingState extends State<VxRating> {
       },
       onPointerUp: (_) {},
       behavior: HitTestBehavior.deferToChild,
+      child: buildRowRating(),
     );
   }
 
@@ -236,7 +236,7 @@ class _VxRatingState extends State<VxRating> {
         children: buildRow(),
       ),
     );
-    return Container(
+    return SizedBox(
       width: widget.count * widget.size + (widget.count - 1) * widget.padding,
       child: Stack(
         children: children,

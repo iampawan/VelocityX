@@ -59,7 +59,7 @@ class VxTextField extends StatefulWidget {
   final String? initialValue;
 
   const VxTextField({
-    Key? key,
+    super.key,
     this.controller,
     this.hint,
     this.hintStyle,
@@ -106,8 +106,7 @@ class VxTextField extends StatefulWidget {
     this.autovalidateMode,
     this.readOnly = false,
     this.initialValue,
-  })  : assert(initialValue == null || controller == null),
-        super(key: key);
+  }) : assert(initialValue == null || controller == null);
 
   @override
   _VxTextFieldState createState() => _VxTextFieldState();
@@ -231,9 +230,9 @@ class _VxTextFieldState extends State<VxTextField> {
       }
       return Container(
         child: Row(
-          children: children,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.end,
+          children: children,
         ),
       );
     }

@@ -21,7 +21,7 @@ import 'timeline_painter.dart';
 
 class VxTimelineView extends StatelessWidget {
   const VxTimelineView(
-      {required this.lineColor,
+      {super.key, required this.lineColor,
       required this.backgroundColor,
       required this.model,
       this.firstElement = false,
@@ -43,7 +43,7 @@ class VxTimelineView extends StatelessWidget {
   final Widget? trailing;
 
   Widget _buildLine(BuildContext context, Widget? child) {
-    return Container(
+    return SizedBox(
       width: 40.0,
       child: CustomPaint(
         painter: VxTimelinePainter(
@@ -65,7 +65,7 @@ class VxTimelineView extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 8.0, top: 8.0),
           child: Text(
             model.heading.length > 47
-                ? model.heading.substring(0, 47) + "..."
+                ? "${model.heading.substring(0, 47)}..."
                 : model.heading,
             style: TextStyle(
               fontSize: 14,
@@ -76,7 +76,7 @@ class VxTimelineView extends StatelessWidget {
         Expanded(
           child: Text(
             model.description.length > 50
-                ? model.description.substring(0, 50) + "..."
+                ? "${model.description.substring(0, 50)}..."
                 : model
                     .description, // To prevent overflowing of text to the next element, the text is truncated if greater than 75 characters
             style: TextStyle(

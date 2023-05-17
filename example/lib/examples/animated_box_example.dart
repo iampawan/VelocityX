@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class AnimatedBoxExample extends StatefulWidget {
+  const AnimatedBoxExample({super.key});
+
   @override
   _AnimatedBoxExampleState createState() => _AnimatedBoxExampleState();
 }

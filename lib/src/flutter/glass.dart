@@ -63,7 +63,7 @@ class VxGlassmorphic extends StatelessWidget {
   final BoxBorder? border;
 
   const VxGlassmorphic(
-      {Key? key,
+      {super.key,
       this.opacity = 0.05,
       this.child,
       this.blur = 5,
@@ -72,8 +72,7 @@ class VxGlassmorphic extends StatelessWidget {
       this.width,
       this.borderRadius,
       this.circularRadius = 10.0,
-      this.shadowStrength = 4})
-      : super(key: key);
+      this.shadowStrength = 4});
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +184,6 @@ extension VxGlassWidgetExtension on Widget {
     double? blur = 5,
   }) =>
       VxGlassmorphic(
-        child: this,
         blur: blur,
         border: border,
         borderRadius: borderRadius,
@@ -195,5 +193,6 @@ extension VxGlassWidgetExtension on Widget {
         opacity: opacity,
         shadowStrength: shadowStrength,
         circularRadius: circularRadius,
+        child: this,
       );
 }

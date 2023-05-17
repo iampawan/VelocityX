@@ -42,22 +42,16 @@ class VxBlock extends Flex {
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
   const VxBlock({
-    Key? key,
-    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
-    TextDirection? textDirection,
-    VerticalDirection verticalDirection = VerticalDirection.down,
-    TextBaseline? textBaseline,
-    List<Widget> children = const <Widget>[],
+    super.key,
+    super.mainAxisAlignment,
+    super.textDirection,
+    super.verticalDirection,
+    super.textBaseline,
+    super.children,
   }) : super(
-          children: children,
-          key: key,
           direction: Axis.vertical,
-          mainAxisAlignment: mainAxisAlignment,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          textDirection: textDirection,
-          verticalDirection: verticalDirection,
-          textBaseline: textBaseline,
         );
 }
 
@@ -71,21 +65,16 @@ class VxInlineBlock extends Flex {
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
   const VxInlineBlock({
-    Key? key,
-    TextDirection? textDirection,
-    VerticalDirection verticalDirection = VerticalDirection.down,
-    TextBaseline? textBaseline,
-    List<Widget> children = const <Widget>[],
+    super.key,
+    super.textDirection,
+    super.verticalDirection,
+    super.textBaseline,
+    super.children,
   }) : super(
-          children: children,
-          key: key,
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
-          textDirection: textDirection,
-          verticalDirection: verticalDirection,
-          textBaseline: textBaseline,
         );
 }
 
@@ -155,11 +144,10 @@ class VxInlineBlock extends Flex {
 /// {@end-tool}
 class VStack extends StatelessWidget {
   const VStack(this.children,
-      {Key? key,
+      {super.key,
       this.alignment = MainAxisAlignment.start,
       this.crossAlignment = CrossAxisAlignment.start,
-      this.axisSize = MainAxisSize.min})
-      : super(key: key);
+      this.axisSize = MainAxisSize.min});
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -193,10 +181,10 @@ class VStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       key: key,
-      children: children,
       mainAxisAlignment: alignment ?? MainAxisAlignment.start,
       crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.center,
       mainAxisSize: axisSize ?? MainAxisSize.min,
+      children: children,
     );
   }
 }
@@ -246,11 +234,10 @@ class VStack extends StatelessWidget {
 ///
 class HStack extends StatelessWidget {
   const HStack(this.children,
-      {Key? key,
+      {super.key,
       this.alignment = MainAxisAlignment.start,
       this.crossAlignment = CrossAxisAlignment.center,
-      this.axisSize = MainAxisSize.min})
-      : super(key: key);
+      this.axisSize = MainAxisSize.min});
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -283,10 +270,10 @@ class HStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       key: key,
-      children: children,
       mainAxisAlignment: alignment ?? MainAxisAlignment.start,
       crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.center,
       mainAxisSize: axisSize ?? MainAxisSize.min,
+      children: children,
     );
   }
 }
@@ -354,11 +341,10 @@ class HStack extends StatelessWidget {
 ///
 class ZStack extends StatelessWidget {
   const ZStack(this.children,
-      {Key? key,
+      {super.key,
       this.alignment = AlignmentDirectional.topStart,
       this.fit = StackFit.loose,
-      this.clip = Clip.none})
-      : super(key: key);
+      this.clip = Clip.none});
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -402,10 +388,10 @@ class ZStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
         key: key,
-        children: children,
         alignment: alignment ?? AlignmentDirectional.topStart,
         fit: fit ?? StackFit.loose,
-        clipBehavior: clip ?? Clip.hardEdge);
+        clipBehavior: clip ?? Clip.hardEdge,
+        children: children);
   }
 }
 
@@ -419,27 +405,26 @@ class AStack extends StatelessWidget {
   final List<Widget> children;
 
   const AStack(
-      {Key? key,
+      {super.key,
       required this.children,
       this.clipBehavior = Clip.none,
       this.overflowAlignment = OverflowBarAlignment.start,
       this.overflowDirection = VerticalDirection.down,
       this.overflowSpacing = 0.0,
       this.spacing = 0.0,
-      this.textDirection})
-      : super(key: key);
+      this.textDirection});
 
   @override
   Widget build(BuildContext context) {
     return OverflowBar(
       key: key,
-      children: children,
       clipBehavior: clipBehavior,
       overflowAlignment: overflowAlignment,
       overflowDirection: overflowDirection,
       overflowSpacing: overflowSpacing,
       spacing: spacing,
       textDirection: textDirection,
+      children: children,
     );
   }
 }

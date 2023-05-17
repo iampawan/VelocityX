@@ -12,7 +12,7 @@ class VxDivider extends StatelessWidget {
   final double? indent;
   final double? endIndent;
 
-  const VxDivider({
+  const VxDivider({super.key, 
     this.type = VxDividerType.horizontal,
     this.color,
     this.width = 1,
