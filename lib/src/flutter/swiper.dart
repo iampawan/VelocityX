@@ -19,7 +19,8 @@ import 'package:flutter/material.dart';
 /// Use this widget [VxSwiper] to give your list a swipeable effect with full customization.
 class VxSwiper extends StatefulWidget {
   VxSwiper(
-      {super.key, required List<Widget> this.items,
+      {super.key,
+      required List<Widget> this.items,
       this.height,
       this.aspectRatio = 16 / 9,
       this.viewportFraction = 0.8,
@@ -48,7 +49,8 @@ class VxSwiper extends StatefulWidget {
         );
 
   VxSwiper.builder(
-      {super.key, required this.itemCount,
+      {super.key,
+      required this.itemCount,
       required this.itemBuilder,
       this.height,
       this.aspectRatio = 16 / 9,
@@ -224,10 +226,10 @@ class VxSwiper extends StatefulWidget {
   }
 
   @override
-  _VxSwiperState createState() => _VxSwiperState();
+  VxSwiperState createState() => VxSwiperState();
 }
 
-class _VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
+class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
   Timer? timer;
 
   @override

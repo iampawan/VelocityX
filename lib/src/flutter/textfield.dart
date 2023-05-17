@@ -109,10 +109,10 @@ class VxTextField extends StatefulWidget {
   }) : assert(initialValue == null || controller == null);
 
   @override
-  _VxTextFieldState createState() => _VxTextFieldState();
+  VxTextFieldState createState() => VxTextFieldState();
 }
 
-class _VxTextFieldState extends State<VxTextField> {
+class VxTextFieldState extends State<VxTextField> {
   TextEditingController? controller;
   bool obscureText = false;
   FocusNode? focusNode;
@@ -228,12 +228,10 @@ class _VxTextFieldState extends State<VxTextField> {
       if (widget.borderType == VxTextFieldBorderType.roundLine) {
         children.add(const SizedBox(width: 8));
       }
-      return Container(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: children,
-        ),
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: children,
       );
     }
     return null;

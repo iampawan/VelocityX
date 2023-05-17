@@ -67,10 +67,10 @@ class VxRating extends StatefulWidget {
   });
 
   @override
-  _VxRatingState createState() => _VxRatingState();
+  VxRatingState createState() => VxRatingState();
 }
 
-class _VxRatingState extends State<VxRating> {
+class VxRatingState extends State<VxRating> {
   num? value;
 
   @override

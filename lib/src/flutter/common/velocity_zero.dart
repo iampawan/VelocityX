@@ -49,7 +49,8 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
 ///
 class VxZeroCard extends StatefulWidget {
   const VxZeroCard(
-      {super.key, this.isCircularImage = true,
+      {super.key,
+      this.isCircularImage = true,
       this.isBottomLinesActive = true,
       this.isDark = false});
 
@@ -63,10 +64,10 @@ class VxZeroCard extends StatefulWidget {
   final bool isDark;
 
   @override
-  _VxZeroCardState createState() => _VxZeroCardState();
+  VxZeroCardState createState() => VxZeroCardState();
 }
 
-class _VxZeroCardState extends State<VxZeroCard>
+class VxZeroCardState extends State<VxZeroCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   Animation<double>? animation;
@@ -181,11 +182,7 @@ class _VxZeroCardState extends State<VxZeroCard>
 }
 
 class _VxLine extends StatelessWidget {
-  const _VxLine(
-    this.widthRatio,
-    this.heightRatio,
-    this.animation,
-    this.isDark);
+  const _VxLine(this.widthRatio, this.heightRatio, this.animation, this.isDark);
 
   final Animation<double>? animation;
   final double widthRatio;
@@ -248,7 +245,9 @@ class VxZeroList extends StatelessWidget {
 ///
 class PKCardProfileSkeleton extends StatefulWidget {
   const PKCardProfileSkeleton(
-      {super.key, this.isCircularImage = true, this.isBottomLinesActive = true});
+      {super.key,
+      this.isCircularImage = true,
+      this.isBottomLinesActive = true});
 
   /// if the image is circule. Default is true,
   final bool isCircularImage;
@@ -257,10 +256,10 @@ class PKCardProfileSkeleton extends StatefulWidget {
   final bool isBottomLinesActive;
 
   @override
-  _PKCardProfileSkeletonState createState() => _PKCardProfileSkeletonState();
+  PKCardProfileSkeletonState createState() => PKCardProfileSkeletonState();
 }
 
-class _PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
+class PKCardProfileSkeletonState extends State<PKCardProfileSkeleton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> animation;
@@ -408,10 +407,10 @@ class PKCardPageSkeleton extends StatefulWidget {
   final int totalLines;
 
   @override
-  _PKCardPageSkeletonState createState() => _PKCardPageSkeletonState();
+  PKCardPageSkeletonState createState() => PKCardPageSkeletonState();
 }
 
-class _PKCardPageSkeletonState extends State<PKCardPageSkeleton>
+class PKCardPageSkeletonState extends State<PKCardPageSkeleton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> animation;

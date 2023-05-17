@@ -5,10 +5,10 @@ class VxAnimationExample extends StatefulWidget {
   const VxAnimationExample({super.key});
 
   @override
-  _VxAnimationExampleState createState() => _VxAnimationExampleState();
+  VxAnimationExampleState createState() => VxAnimationExampleState();
 }
 
-class _VxAnimationExampleState extends State<VxAnimationExample>
+class VxAnimationExampleState extends State<VxAnimationExample>
     with SingleTickerProviderStateMixin {
   num anim = 1.0;
 

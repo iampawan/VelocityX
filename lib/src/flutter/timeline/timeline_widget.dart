@@ -32,12 +32,12 @@ class VxTimeline extends StatefulWidget {
       this.customTrailing});
 
   @override
-  _VxTimelineState createState() {
-    return _VxTimelineState();
+  VxTimelineState createState() {
+    return VxTimelineState();
   }
 }
 
-class _VxTimelineState extends State<VxTimeline>
+class VxTimelineState extends State<VxTimeline>
     with SingleTickerProviderStateMixin {
   Animation<double>? animation;
   AnimationController? controller;
@@ -55,30 +55,28 @@ class _VxTimelineState extends State<VxTimeline>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: widget.timelineList.length,
-        itemBuilder: (_, index) {
-          return InkWell(
-            onTap: () => widget.onItemTap!(widget.timelineList[index]),
-            child: VxTimelineView(
-              lineColor:
-                  widget.lineColor ?? Theme.of(context).colorScheme.secondary,
-              backgroundColor: widget.backgroundColor ?? Colors.white,
-              model: widget.timelineList[index],
-              firstElement: index == 0,
-              lastElement: widget.timelineList.length == index + 1,
-              controller: controller,
-              headingColor: widget.headingColor,
-              descriptionColor: widget.descriptionColor,
-              hideLauncher: !widget.showTrailing,
-              trailing: widget.customTrailing,
-            ),
-          );
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: widget.timelineList.length,
+      itemBuilder: (_, index) {
+        return InkWell(
+          onTap: () => widget.onItemTap!(widget.timelineList[index]),
+          child: VxTimelineView(
+            lineColor:
+                widget.lineColor ?? Theme.of(context).colorScheme.secondary,
+            backgroundColor: widget.backgroundColor ?? Colors.white,
+            model: widget.timelineList[index],
+            firstElement: index == 0,
+            lastElement: widget.timelineList.length == index + 1,
+            controller: controller,
+            headingColor: widget.headingColor,
+            descriptionColor: widget.descriptionColor,
+            hideLauncher: !widget.showTrailing,
+            trailing: widget.customTrailing,
+          ),
+        );
+      },
     );
   }
 

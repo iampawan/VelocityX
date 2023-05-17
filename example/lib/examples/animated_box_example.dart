@@ -8,10 +8,10 @@ class AnimatedBoxExample extends StatefulWidget {
   const AnimatedBoxExample({super.key});
 
   @override
-  _AnimatedBoxExampleState createState() => _AnimatedBoxExampleState();
+  AnimatedBoxExampleState createState() => AnimatedBoxExampleState();
 }
 
-class _AnimatedBoxExampleState extends State<AnimatedBoxExample> {
+class AnimatedBoxExampleState extends State<AnimatedBoxExample> {
   double? _width, _height, _radius;
   Color? _color;
 

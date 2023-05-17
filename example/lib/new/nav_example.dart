@@ -5,10 +5,10 @@ class Nav1 extends StatefulWidget {
   const Nav1({super.key});
 
   @override
-  _Nav1State createState() => _Nav1State();
+  Nav1State createState() => Nav1State();
 }
 
-class _Nav1State extends State<Nav1> {
+class Nav1State extends State<Nav1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class _Nav1State extends State<Nav1> {
           onPressed: () async {
             final path =
                 await VxNavigator.of(context).waitAndPush(Uri(path: "/nav3"));
-            print("Returned $path");
+            Vx.log("Returned $path");
           },
           child: "Wait & Push Nav3".text.make(),
         ),

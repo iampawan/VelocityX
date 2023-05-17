@@ -513,14 +513,14 @@ class VxInnerShadow extends SingleChildRenderObjectWidget {
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    final _RenderInnerShadow renderObject = _RenderInnerShadow();
+    final RenderInnerShadow renderObject = RenderInnerShadow();
     updateRenderObject(context, renderObject);
     return renderObject;
   }
 
   @override
   void updateRenderObject(
-      BuildContext context, _RenderInnerShadow renderObject) {
+      BuildContext context, RenderInnerShadow renderObject) {
     renderObject
       ..color = color
       ..blur = blur
@@ -529,7 +529,7 @@ class VxInnerShadow extends SingleChildRenderObjectWidget {
   }
 }
 
-class _RenderInnerShadow extends RenderProxyBox {
+class RenderInnerShadow extends RenderProxyBox {
   late double blur;
   late Color color;
   late double dx;

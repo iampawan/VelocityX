@@ -15,11 +15,12 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../extensions/context_ext.dart';
 
-const double _KDefaultButtonSize = 30;
-const double _KDefaultSpace = 8;
-const double _KDefaultTextFontSize = 14;
+const double _kDefaultButtonSize = 30;
+const double _kDefaultSpace = 8;
+const double _kDefaultTextFontSize = 14;
 
 /// VxStepper widget to have a input enabled counter with 2 buttons, one for addition and one for subtraction with good level of customization.
 class VxStepper extends StatefulWidget {
@@ -76,8 +77,8 @@ class VxStepperState extends State<VxStepper> {
     final List<Widget> children = [];
 
     children.add(SizedBox(
-      height: _KDefaultButtonSize,
-      width: _KDefaultButtonSize,
+      height: _kDefaultButtonSize,
+      width: _kDefaultButtonSize,
       child: MaterialButton(
         shape: const CircleBorder(),
         color: widget.actionButtonColor,
@@ -90,10 +91,10 @@ class VxStepperState extends State<VxStepper> {
       ),
     ));
 
-    children.add(const SizedBox(width: _KDefaultSpace));
+    children.add(const SizedBox(width: _kDefaultSpace));
 
     children.add(Container(
-      height: _KDefaultButtonSize,
+      height: _kDefaultButtonSize,
       width: 36,
       decoration: BoxDecoration(
         color: widget.inputBoxColor ??
@@ -107,7 +108,7 @@ class VxStepperState extends State<VxStepper> {
         textAlignVertical: TextAlignVertical.center,
         enabled: !widget.disableInput,
         style: TextStyle(
-            fontSize: _KDefaultTextFontSize, color: widget.inputTextColor),
+            fontSize: _kDefaultTextFontSize, color: widget.inputTextColor),
         keyboardType: TextInputType.number,
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
@@ -122,10 +123,10 @@ class VxStepperState extends State<VxStepper> {
       ),
     ));
 
-    children.add(const SizedBox(width: _KDefaultSpace));
+    children.add(const SizedBox(width: _kDefaultSpace));
     children.add(SizedBox(
-      height: _KDefaultButtonSize,
-      width: _KDefaultButtonSize,
+      height: _kDefaultButtonSize,
+      width: _kDefaultButtonSize,
       child: MaterialButton(
         shape: const CircleBorder(),
         color: widget.actionButtonColor,

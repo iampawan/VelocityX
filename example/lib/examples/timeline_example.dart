@@ -9,9 +9,7 @@ class TimelineExample extends StatelessWidget {
     return VxTimeline(
         animationDuration: 5.seconds,
         showTrailing: true,
-        onItemTap: (value) {
-          print(value.heading);
-        },
+        onItemTap: (value) {},
         timelineList: List.generate(
           3,
           (index) => VxTimelineModel(

@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'vx_arc.dart';
 
 /// Defines the corners of the child widget
-enum VxDiagonalPosition { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT }
+enum VxDiagonalPosition { topLeft, topRight, bottomLeft, bottomRight }
 
 /// A widget that clips its child diagonally.
 
@@ -24,13 +24,13 @@ class VxDiagonalClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     switch (position) {
-      case VxDiagonalPosition.TOP_LEFT:
+      case VxDiagonalPosition.topLeft:
         return _getTopLeftPath(size);
-      case VxDiagonalPosition.TOP_RIGHT:
+      case VxDiagonalPosition.topRight:
         return _getTopRightPath(size);
-      case VxDiagonalPosition.BOTTOM_LEFT:
+      case VxDiagonalPosition.bottomLeft:
         return _getBottomLeftPath(size);
-      case VxDiagonalPosition.BOTTOM_RIGHT:
+      case VxDiagonalPosition.bottomRight:
         return _getBottomRightPath(size);
       default:
         return _getBottomLeftPath(size);
@@ -113,7 +113,7 @@ class VxDiagonal extends StatelessWidget {
       {super.key,
       required this.child,
       required this.clipHeight,
-      this.position = VxDiagonalPosition.BOTTOM_LEFT,
+      this.position = VxDiagonalPosition.bottomLeft,
       this.axis = Axis.horizontal,
       this.clipShadows = const []});
 

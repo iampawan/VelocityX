@@ -46,7 +46,7 @@ void main() {
                     (item) => GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        print(item.title);
+                        Vx.log(item.title);
                       },
                       child: HStack(
                         [

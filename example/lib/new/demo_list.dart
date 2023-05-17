@@ -126,7 +126,7 @@ class _DemoListState extends State<DemoList> {
                         final path = await VxNavigator.of(context)
                             .waitAndPush(Uri(path: "/nav1"));
 
-                        print("Returned $path");
+                        Vx.log("Returned $path");
                       },
                       child: "Wait & Push".text.make(),
                     ),
@@ -233,7 +233,7 @@ class _DemoListState extends State<DemoList> {
                       keyboardType: TextInputType.number,
                       obscureText: false,
                       onChanged: (value) {
-                        print('Test value=$value');
+                        Vx.log('Test value=$value');
                       },
                     ),
                     20.heightBox,
@@ -437,7 +437,7 @@ class _DemoListState extends State<DemoList> {
                                 msg: 'index=$index value=$value');
                           },
                         ).then((data) {
-                          print('Test data=$data');
+                          Vx.log('Test data=$data');
                         });
                       },
                       child: "Menu Options View".text.make(),
@@ -451,21 +451,19 @@ class _DemoListState extends State<DemoList> {
                             isSafeAreaFromBottom: true,
                             child: Column(
                               children: <Widget>[
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      const SizedBox(width: 40),
-                                      const Expanded(
-                                        child: Text('Sheet View',
-                                            textAlign: TextAlign.center),
-                                      ),
-                                      IconButton(
-                                        onPressed: () =>
-                                            Navigator.pop(context, 'hello'),
-                                        icon: const Icon(Icons.clear, size: 24),
-                                      ),
-                                    ],
-                                  ),
+                                Row(
+                                  children: <Widget>[
+                                    const SizedBox(width: 40),
+                                    const Expanded(
+                                      child: Text('Sheet View',
+                                          textAlign: TextAlign.center),
+                                    ),
+                                    IconButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'hello'),
+                                      icon: const Icon(Icons.clear, size: 24),
+                                    ),
+                                  ],
                                 ),
                                 Expanded(
                                   child: SingleChildScrollView(
@@ -499,7 +497,7 @@ class _DemoListState extends State<DemoList> {
                                 ),
                               ],
                             )).then((data) {
-                          print('Test data=$data');
+                          Vx.log('Test data=$data');
                         });
                       },
                       child: "Bottom Sheet View".text.make(),
@@ -656,7 +654,7 @@ class _DemoListState extends State<DemoList> {
                   childrenPadding: Vx.m32,
                   children: [
                     VxStepper(onChange: (value) {
-                      print(value);
+                      Vx.log(value);
                     }),
                   ],
                 ),
@@ -706,7 +704,7 @@ class _DemoListState extends State<DemoList> {
                       borderType: VxTextFieldBorderType.roundLine,
                       isPassword: true,
                       onChanged: (s) {
-                        print(s);
+                        Vx.log(s);
                       },
                     ),
                   ],
@@ -755,7 +753,7 @@ class _DemoListState extends State<DemoList> {
                         enlargeCenterPage: true,
                         autoPlay: false,
                         onPageChanged: (index) {
-                          print(index);
+                          Vx.log(index);
                         },
                         isFastScrollingEnabled: true,
                         scrollDirection: context.isMobile
@@ -767,8 +765,7 @@ class _DemoListState extends State<DemoList> {
                   title: "VxDevice".text.make(),
                   childrenPadding: Vx.m32,
                   children: const [
-                    VxDevice(
-                        mobile: Text("Hi Mobile"), web: Text("Hi Web")),
+                    VxDevice(mobile: Text("Hi Mobile"), web: Text("Hi Web")),
                   ],
                 ),
                 ExpansionTile(
@@ -796,9 +793,9 @@ class _DemoListState extends State<DemoList> {
                         .make()
                         .h10(context)
                         .onMouseHover((event) {
-                      print(event.distance);
+                      Vx.log(event.distance);
                     }).onMouseEnter((event) {
-                      print(event.delta);
+                      Vx.log(event.delta);
                     }),
                   ],
                 ),
@@ -845,7 +842,7 @@ class _DemoListState extends State<DemoList> {
                                   (item) => GestureDetector(
                                     behavior: HitTestBehavior.translucent,
                                     onTap: () {
-                                      print(item.title);
+                                      Vx.log(item.title);
                                     },
                                     child: HStack(
                                       [

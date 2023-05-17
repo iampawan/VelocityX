@@ -23,10 +23,10 @@ class VxRandomBox extends StatefulWidget {
       {super.key, this.width, this.height, this.child, this.changeOnRedraw = true});
 
   @override
-  _VxRandomBoxState createState() => _VxRandomBoxState();
+  VxRandomBoxState createState() => VxRandomBoxState();
 }
 
-class _VxRandomBoxState extends State<VxRandomBox> {
+class VxRandomBoxState extends State<VxRandomBox> {
   Color? _randomColor;
 
   @override

@@ -15,17 +15,17 @@ import 'widgets/draw_android.dart';
 class MyObs extends VxObserver {
   @override
   void didChangeRoute(Uri route, Page page, String pushOrPop) {
-    print("${route.path} - $pushOrPop");
+    Vx.log("${route.path} - $pushOrPop");
   }
 
   @override
   void didPush(Route route, Route? previousRoute) {
-    print('Pushed a route');
+    Vx.log('Pushed a route');
   }
 
   @override
   void didPop(Route route, Route? previousRoute) {
-    print('Popped a route');
+    Vx.log('Popped a route');
   }
 }
 
@@ -67,7 +67,7 @@ void main() {
 
   // Second way to monitor changes in the routing stack:
   navigator.addListener(() {
-    print(navigator.currentConfiguration!.path);
+    Vx.log(navigator.currentConfiguration!.path);
   });
 
   // Using Safe route
@@ -107,10 +107,10 @@ class Demo extends StatefulWidget {
   const Demo({super.key});
 
   @override
-  _DemoState createState() => _DemoState();
+  DemoState createState() => DemoState();
 }
 
-class _DemoState extends State<Demo> {
+class DemoState extends State<Demo> {
   final VxPopupMenuController _controller = VxPopupMenuController();
 
   @override
@@ -185,7 +185,7 @@ class _DemoState extends State<Demo> {
         const TapMeWidget(),
         10.heightBox,
         VxStepper(onChange: (value) {
-          print(value);
+          Vx.log(value);
         }),
         10.heightBox,
         VxRating(
@@ -236,7 +236,7 @@ class _DemoState extends State<Demo> {
             enlargeCenterPage: true,
             autoPlay: false,
             onPageChanged: (index) {
-              print(index);
+              Vx.log(index);
             },
             isFastScrollingEnabled: true,
             scrollDirection:
@@ -259,9 +259,9 @@ class _DemoState extends State<Demo> {
             .make()
             .h10(context)
             .onMouseHover((event) {
-          print(event.distance);
+          Vx.log(event.distance);
         }).onMouseEnter((event) {
-          print(event.delta);
+          Vx.log(event.delta);
         }),
         20.heightBox,
         "100100.1546".numCurrency.text.make(),
@@ -299,7 +299,7 @@ class _DemoState extends State<Demo> {
                       (item) => GestureDetector(
                         behavior: HitTestBehavior.translucent,
                         onTap: () {
-                          print(item.title);
+                          Vx.log(item.title);
                         },
                         child: HStack(
                           [

@@ -44,9 +44,9 @@ import 'velocityx_mixins/padding_mixin.dart';
 /// ```
 /// {@end-tool}
 ///
-class _VxPaddingBuilder extends VxWidgetBuilder<Widget>
-    with VxPaddingMixin<_VxPaddingBuilder> {
-  _VxPaddingBuilder(this._child) {
+class VxPaddingBuilder extends VxWidgetBuilder<Widget>
+    with VxPaddingMixin<VxPaddingBuilder> {
+  VxPaddingBuilder(this._child) {
     setChildToPad(this);
   }
   final Widget _child;
@@ -65,7 +65,7 @@ class _VxPaddingBuilder extends VxWidgetBuilder<Widget>
 /// Extension to provide [Padding] to any widget.
 ///
 extension VxPaddingExtensions on Widget {
-  _VxPaddingBuilder get pad => _VxPaddingBuilder(this);
+  VxPaddingBuilder get pad => VxPaddingBuilder(this);
 
   /// Gives 0 padding from all sides.
   Padding p0({Key? key}) => Padding(

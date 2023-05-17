@@ -80,10 +80,10 @@ class VxPopupMenu extends StatefulWidget {
   /// Compulsory to build a menu to show in the popup.
   final MenuBuilderCallback menuBuilder;
   @override
-  _VxPopupMenuState createState() => _VxPopupMenuState();
+  VxPopupMenuState createState() => VxPopupMenuState();
 }
 
-class _VxPopupMenuState extends State<VxPopupMenu> {
+class VxPopupMenuState extends State<VxPopupMenu> {
   RenderBox? _childBox;
   RenderBox? _parentBox;
   OverlayEntry? _overlayEntry;

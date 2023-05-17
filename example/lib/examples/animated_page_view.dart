@@ -5,10 +5,10 @@ class AnimatedPageView extends StatefulWidget {
   const AnimatedPageView({super.key});
 
   @override
-  _AnimatedPageViewState createState() => _AnimatedPageViewState();
+  AnimatedPageViewState createState() => AnimatedPageViewState();
 }
 
-class _AnimatedPageViewState extends State<AnimatedPageView> {
+class AnimatedPageViewState extends State<AnimatedPageView> {
   final List<double> _imgScaleMap = [0.8, 0.7, 1.0, 0.9, 1.2, 1.5];
   int _currentIndex = 0;
 
@@ -44,9 +44,9 @@ class _AnimatedPageViewState extends State<AnimatedPageView> {
           final double h = w * calculateImgScale(index);
           return GestureDetector(
             onTap: () {
-              print("tap img index is $index");
+              Vx.log("tap img index is $index");
             },
-            child: Image.network(imgUrl ?? "",
+            child: Image.network(imgUrl,
                 width: w,
                 height: h,
                 fit: BoxFit.cover,

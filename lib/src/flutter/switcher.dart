@@ -44,10 +44,10 @@ class VxStateSwitcher extends StatefulWidget {
   });
 
   @override
-  _VxStateSwitcherState createState() => _VxStateSwitcherState();
+  VxStateSwitcherState createState() => VxStateSwitcherState();
 }
 
-class _VxStateSwitcherState extends State<VxStateSwitcher> {
+class VxStateSwitcherState extends State<VxStateSwitcher> {
   VxPageState? _pageState = VxPageState.none;
 
   @override
@@ -154,7 +154,8 @@ class _VxStateSwitcherState extends State<VxStateSwitcher> {
 class VxSwitcher extends StatelessWidget {
   final Widget child;
 
-  const VxSwitcher({super.key, 
+  const VxSwitcher({
+    super.key,
     required this.child,
   });
 

@@ -49,12 +49,10 @@ class VxNavConfig extends ChangeNotifier {
     }
     if (!findRoute) {
       var page = pageNotFound?.call(uri, params);
-      page ??= MaterialPage(
+      page ??= const MaterialPage(
         child: Scaffold(
-          body: Container(
-            child: const Center(
-              child: Text('Page not found'),
-            ),
+          body: Center(
+            child: Text('Page not found'),
           ),
         ),
       );
@@ -91,7 +89,7 @@ class VxNavConfig extends ChangeNotifier {
     if (_pages.length > 1) {
       removeLastUri();
     } else {
-      print('Cannot pop');
+      Vx.log('Cannot pop');
     }
   }
 

@@ -51,14 +51,14 @@ class VxEnsureVisibleWhenFocused extends StatefulWidget {
   final Duration duration;
 
   @override
-  _VxEnsureVisibleWhenFocusedState createState() =>
-      _VxEnsureVisibleWhenFocusedState();
+  VxEnsureVisibleWhenFocusedState createState() =>
+      VxEnsureVisibleWhenFocusedState();
 }
 
 ///
 /// We implement the WidgetsBindingObserver to be notified of any change to the window metrics
 ///
-class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
+class VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     with WidgetsBindingObserver {
   @override
   void initState() {
@@ -119,15 +119,18 @@ class _VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     }
 
     // Find the object which has the focus
+    // ignore: use_build_context_synchronously
     final RenderObject? object = context.findRenderObject();
     final RenderAbstractViewport viewport = RenderAbstractViewport.of(object);
 
     // If we are not working in a Scrollable, skip this routine
+    // ignore: unnecessary_null_comparison
     if (viewport == null) {
       return;
     }
 
     // Get the Scrollable state (in order to retrieve its offset)
+    // ignore: use_build_context_synchronously
     final ScrollableState scrollableState = Scrollable.of(context);
 
     // Get its offset

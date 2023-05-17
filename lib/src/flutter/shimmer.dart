@@ -63,10 +63,10 @@ class VxShimmer extends StatefulWidget {
   final Color? secondaryColor;
 
   @override
-  _VxShimmerState createState() => _VxShimmerState();
+  VxShimmerState createState() => VxShimmerState();
 }
 
-class _VxShimmerState extends State<VxShimmer>
+class VxShimmerState extends State<VxShimmer>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   int? _count;

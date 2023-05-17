@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-enum VxEdge { TOP, RIGHT, BOTTOM, LEFT }
+enum VxEdge { top, right, bottom, left }
 
-enum VxArcType { CONVEY, CONVEX }
+enum VxArcType { convey, convex }
 
 class VxArcClipper extends CustomClipper<Path> {
   VxArcClipper(this.height, this.edge, this.arcType);
@@ -19,13 +19,13 @@ class VxArcClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     switch (edge) {
-      case VxEdge.TOP:
+      case VxEdge.top:
         return _getTopPath(size);
-      case VxEdge.RIGHT:
+      case VxEdge.right:
         return _getRightPath(size);
-      case VxEdge.BOTTOM:
+      case VxEdge.bottom:
         return _getBottomPath(size);
-      case VxEdge.LEFT:
+      case VxEdge.left:
         return _getLeftPath(size);
       default:
         return _getRightPath(size);
@@ -34,7 +34,7 @@ class VxArcClipper extends CustomClipper<Path> {
 
   Path _getBottomPath(Size size) {
     final path = Path();
-    if (arcType == VxArcType.CONVEX) {
+    if (arcType == VxArcType.convex) {
       path.lineTo(0.0, size.height - height);
       //Adds a quadratic bezier segment that curves from the current point
       //to the given point (x2,y2), using the control point (x1,y1).
@@ -60,7 +60,7 @@ class VxArcClipper extends CustomClipper<Path> {
 
   Path _getTopPath(Size size) {
     final path = Path();
-    if (arcType == VxArcType.CONVEX) {
+    if (arcType == VxArcType.convex) {
       path.moveTo(0.0, height);
 
       path.quadraticBezierTo(size.width / 4, 0.0, size.width / 2, 0.0);
@@ -81,7 +81,7 @@ class VxArcClipper extends CustomClipper<Path> {
 
   Path _getLeftPath(Size size) {
     final path = Path();
-    if (arcType == VxArcType.CONVEX) {
+    if (arcType == VxArcType.convex) {
       path.moveTo(height, 0.0);
 
       path.quadraticBezierTo(0.0, size.height / 4, 0.0, size.height / 2);
@@ -102,7 +102,7 @@ class VxArcClipper extends CustomClipper<Path> {
 
   Path _getRightPath(Size size) {
     final path = Path();
-    if (arcType == VxArcType.CONVEX) {
+    if (arcType == VxArcType.convex) {
       path.moveTo(size.width - height, 0.0);
 
       path.quadraticBezierTo(
@@ -140,8 +140,8 @@ class VxArc extends StatelessWidget {
       {super.key,
       required this.height,
       required this.child,
-      this.edge = VxEdge.BOTTOM,
-      this.arcType = VxArcType.CONVEX,
+      this.edge = VxEdge.bottom,
+      this.arcType = VxArcType.convex,
       this.clipShadows = const []});
 
   /// The widget which one of [edge]s is going to be clippddddded as arc

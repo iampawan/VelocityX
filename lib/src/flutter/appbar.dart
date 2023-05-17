@@ -288,10 +288,10 @@ class VxAppBar extends StatefulWidget implements PreferredSizeWidget {
   }
 
   @override
-  _VxAppBarState createState() => _VxAppBarState();
+  VxAppBarState createState() => VxAppBarState();
 }
 
-class _VxAppBarState extends State<VxAppBar> {
+class VxAppBarState extends State<VxAppBar> {
   static const double _defaultElevation = 4;
   Widget? searchBar;
   bool showSearchBar = false;
