@@ -19,6 +19,7 @@ import 'package:velocity_x/src/flutter/velocityx_mixins/duration_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/gradient_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/padding_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/render_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/round_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -38,6 +39,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
         VxPaddingMixin<VxAnimatedBox>,
         VxRoundMixin<VxAnimatedBox>,
         VxShadowMixin<VxAnimatedBox>,
+        VxRenderMixin<VxAnimatedBox>,
         VxNeuMixin {
   VxAnimatedBox({this.child}) {
     setChildToColor(this);
@@ -48,6 +50,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
     setChildForCurve(this);
     setChildForDuration(this);
     setChildForAlignment(this);
+    setChildForRender(this);
   }
 
   final Widget? child;
@@ -222,6 +225,7 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
 
   @override
   Widget make({Key? key}) {
+    if (!willRender) return const VxNone();
     return AnimatedContainer(
         curve: velocityCurve ?? Curves.linear,
         duration: velocityDuration ?? const Duration(seconds: 100),

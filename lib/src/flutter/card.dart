@@ -13,6 +13,7 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/render_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'builder.dart';
@@ -33,7 +34,11 @@ import 'velocityx_mixins/round_mixin.dart';
 /// tickets or listening to the show.](https://flutter.github.io/assets-for-api-docs/assets/material/card.png)
 ///
 class VxCard extends VxWidgetBuilder<Widget>
-    with VxColorMixin<VxCard>, VxPaddingMixin<VxCard>, VxRoundMixin<VxCard> {
+    with
+        VxColorMixin<VxCard>,
+        VxPaddingMixin<VxCard>,
+        VxRoundMixin<VxCard>,
+        VxRenderMixin<VxCard> {
   /// Creates a material design card.
   ///
   VxCard(
@@ -42,6 +47,7 @@ class VxCard extends VxWidgetBuilder<Widget>
     setChildToColor(this);
     setChildToPad(this);
     setChildToRound(this);
+    setChildForRender(this);
   }
   final Widget _child;
 
@@ -124,6 +130,7 @@ class VxCard extends VxWidgetBuilder<Widget>
 
   @override
   Widget make({Key? key}) {
+    if (!willRender) return const VxNone();
     return Card(
       key: key,
       margin: velocityPadding,

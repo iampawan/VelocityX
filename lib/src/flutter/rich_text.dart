@@ -17,13 +17,18 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/render_mixin.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
+
+import 'nothing.dart';
 
 /// Creates a [AutoSizeText] widget with a [TextSpan].
 @protected
-class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
+class VxRichText extends VxWidgetBuilder<Widget>
+    with VxColorMixin<VxRichText>, VxRenderMixin<VxRichText> {
   VxRichText(String this._text) {
     setChildToColor(this);
+    setChildForRender(this);
   }
 
   VxRichText.existing(String this._text, this._textStyle) {
@@ -429,6 +434,7 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
 
   @override
   Widget make({Key? key}) {
+    if (!willRender) return const VxNone();
     final ts = TextStyle(
       color: velocityColor,
       fontSize: _fontSize,
