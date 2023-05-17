@@ -205,7 +205,6 @@ class _VxToastViewState extends State<_VxToastView>
 
   /// Building the toast widget
   Widget _buildToastWidget() {
-    print(Theme.of(context).textTheme.titleLarge!.color);
     if (widget.type == VxToastType.text) {
       return Center(
         child: Card(
