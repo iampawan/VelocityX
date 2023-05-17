@@ -108,7 +108,7 @@ extension VxContextExtensions on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   /// Extension for getting textTheme
-  TextStyle? get captionStyle => Theme.of(this).textTheme.caption;
+  TextStyle? get captionStyle => Theme.of(this).textTheme.bodySmall;
 
   ColorScheme get colors => theme.colorScheme;
   TextStyle? get displayLarge => textTheme.displayLarge?.copyWith(
@@ -172,7 +172,7 @@ extension VxContextExtensions on BuildContext {
   ///
   /// A color that contrasts with the [primaryColor].
   ///
-  Color get backgroundColor => theme.backgroundColor;
+  Color get backgroundColor => theme.colorScheme.background;
 
   ///
   /// The default color of [MaterialType.canvas] [Material].

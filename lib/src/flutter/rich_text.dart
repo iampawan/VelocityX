@@ -203,79 +203,79 @@ class VxRichText extends VxWidgetBuilder<Widget> with VxColorMixin<VxRichText> {
 
   /// Sets [TextTheme] headline 1
   VxRichText headline1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline1;
+    _themedStyle = Theme.of(context).textTheme.displayLarge;
     return this;
   }
 
   /// Sets [TextTheme] headline 2
   VxRichText headline2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline2;
+    _themedStyle = Theme.of(context).textTheme.displayMedium;
     return this;
   }
 
   /// Sets [TextTheme] headline 3
   VxRichText headline3(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline3;
+    _themedStyle = Theme.of(context).textTheme.displaySmall;
     return this;
   }
 
   /// Sets [TextTheme] headline 4
   VxRichText headline4(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline4;
+    _themedStyle = Theme.of(context).textTheme.headlineMedium;
     return this;
   }
 
   /// Sets [TextTheme] headline 5
   VxRichText headline5(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline5;
+    _themedStyle = Theme.of(context).textTheme.headlineSmall;
     return this;
   }
 
   /// Sets [TextTheme] headline 6
   VxRichText headline6(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline6;
+    _themedStyle = Theme.of(context).textTheme.titleLarge;
     return this;
   }
 
   /// Sets [TextTheme] bodyText1
   VxRichText bodyText1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    _themedStyle = Theme.of(context).textTheme.bodyLarge;
     return this;
   }
 
   /// Sets [TextTheme] bodyText2
   VxRichText bodyText2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    _themedStyle = Theme.of(context).textTheme.bodyMedium;
     return this;
   }
 
   /// Sets [TextTheme] caption
   VxRichText caption(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.caption;
+    _themedStyle = Theme.of(context).textTheme.bodySmall;
     return this;
   }
 
   /// Sets [TextTheme] subtitle1
   VxRichText subtitle1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    _themedStyle = Theme.of(context).textTheme.titleMedium;
     return this;
   }
 
   /// Sets [TextTheme] subtitle2
   VxRichText subtitle2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    _themedStyle = Theme.of(context).textTheme.titleSmall;
     return this;
   }
 
   /// Sets [TextTheme] overline
   VxRichText overlineText(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.overline;
+    _themedStyle = Theme.of(context).textTheme.labelSmall;
     return this;
   }
 
   /// Sets [TextTheme] button
   VxRichText buttonText(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.button;
+    _themedStyle = Theme.of(context).textTheme.labelLarge;
     return this;
   }
 
@@ -558,79 +558,79 @@ class VelocityXTextSpan extends VxTextSpanBuilder
 
   /// Sets [TextTheme] headline 1
   VelocityXTextSpan headline1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline1;
+    _themedStyle = Theme.of(context).textTheme.displayLarge;
     return this;
   }
 
   /// Sets [TextTheme] headline 2
   VelocityXTextSpan headline2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline2;
+    _themedStyle = Theme.of(context).textTheme.displayMedium;
     return this;
   }
 
   /// Sets [TextTheme] headline 3
   VelocityXTextSpan headline3(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline3;
+    _themedStyle = Theme.of(context).textTheme.displaySmall;
     return this;
   }
 
   /// Sets [TextTheme] headline 4
   VelocityXTextSpan headline4(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline4;
+    _themedStyle = Theme.of(context).textTheme.headlineMedium;
     return this;
   }
 
   /// Sets [TextTheme] headline 5
   VelocityXTextSpan headline5(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline5;
+    _themedStyle = Theme.of(context).textTheme.headlineSmall;
     return this;
   }
 
   /// Sets [TextTheme] headline 6
   VelocityXTextSpan headline6(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headline6;
+    _themedStyle = Theme.of(context).textTheme.titleLarge;
     return this;
   }
 
   /// Sets [TextTheme] bodyText1
   VelocityXTextSpan bodyText1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyText1;
+    _themedStyle = Theme.of(context).textTheme.bodyLarge;
     return this;
   }
 
   /// Sets [TextTheme] bodyText2
   VelocityXTextSpan bodyText2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyText2;
+    _themedStyle = Theme.of(context).textTheme.bodyMedium;
     return this;
   }
 
   /// Sets [TextTheme] caption
   VelocityXTextSpan caption(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.caption;
+    _themedStyle = Theme.of(context).textTheme.bodySmall;
     return this;
   }
 
   /// Sets [TextTheme] subtitle1
   VelocityXTextSpan subtitle1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.subtitle1;
+    _themedStyle = Theme.of(context).textTheme.titleMedium;
     return this;
   }
 
   /// Sets [TextTheme] subtitle2
   VelocityXTextSpan subtitle2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.subtitle2;
+    _themedStyle = Theme.of(context).textTheme.titleSmall;
     return this;
   }
 
   /// Sets [TextTheme] overline
   VelocityXTextSpan overlineText(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.overline;
+    _themedStyle = Theme.of(context).textTheme.labelSmall;
     return this;
   }
 
   /// Sets [TextTheme] button
   VelocityXTextSpan buttonText(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.button;
+    _themedStyle = Theme.of(context).textTheme.labelLarge;
     return this;
   }
 
