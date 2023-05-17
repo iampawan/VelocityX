@@ -301,7 +301,9 @@ extension VxExtensionGlobalKey on GlobalKey {
     final RenderRepaintBoundary boundary =
         currentContext!.findRenderObject() as RenderRepaintBoundary;
     final ui.Image image = await boundary.toImage(
-        pixelRatio: pixelRatio ?? ui.window.devicePixelRatio);
+        pixelRatio: pixelRatio ??
+            WidgetsBinding
+                .instance.platformDispatcher.implicitView!.devicePixelRatio);
     final ByteData? byteData =
         await image.toByteData(format: format ?? ui.ImageByteFormat.rawRgba);
 

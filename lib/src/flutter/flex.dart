@@ -41,7 +41,7 @@ class VxBlock extends Flex {
   /// any. If there is no ambient directionality, and a text direction is going
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
-  VxBlock({
+  const VxBlock({
     Key? key,
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
     TextDirection? textDirection,
@@ -70,7 +70,7 @@ class VxInlineBlock extends Flex {
   /// any. If there is no ambient directionality, and a text direction is going
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
-  VxInlineBlock({
+  const VxInlineBlock({
     Key? key,
     TextDirection? textDirection,
     VerticalDirection verticalDirection = VerticalDirection.down,
