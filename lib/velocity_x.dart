@@ -44,6 +44,7 @@ export 'src/flutter/json.dart';
 export 'src/flutter/list.dart';
 export 'src/flutter/marquee.dart';
 export 'src/flutter/navigation.dart';
+export 'src/flutter/nothing.dart';
 export 'src/flutter/object.dart';
 export 'src/flutter/opacity.dart';
 export 'src/flutter/padding.dart';

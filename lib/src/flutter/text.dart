@@ -14,8 +14,11 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/render_mixin.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
+
 import 'builder.dart';
+import 'nothing.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
 /// Flutter widget that automatically resizes text to fit perfectly within its bounds.
@@ -25,9 +28,10 @@ import 'velocityx_mixins/color_mixin.dart';
 /// the size of this widget.
 @protected
 class VxTextBuilder extends VxWidgetBuilder<Widget>
-    with VxColorMixin<VxTextBuilder> {
+    with VxColorMixin<VxTextBuilder>, VxRenderMixin<VxTextBuilder> {
   VxTextBuilder(String this._text) {
     setChildToColor(this);
+    setChildForRender(this);
   }
 
   VxTextBuilder.existing(String this._text, this._textStyle) {
@@ -476,6 +480,9 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
 
   @override
   Widget make({Key? key}) {
+    if (!willRender) {
+      return const VxNone();
+    }
     final sdw = [
       Shadow(
           blurRadius: _shadowBlur, color: _shadowColor, offset: _shadowOffset)

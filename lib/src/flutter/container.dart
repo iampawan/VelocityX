@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/alignment_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/gradient_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/neu_mixin.dart';
+import 'package:velocity_x/src/flutter/velocityx_mixins/render_mixin.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/shadow_mixin.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -60,6 +61,7 @@ class VxBox extends VxWidgetBuilder<Widget>
         VxPaddingMixin<VxBox>,
         VxRoundMixin<VxBox>,
         VxShadowMixin<VxBox>,
+        VxRenderMixin<VxBox>,
         VxNeuMixin {
   VxBox({this.child}) {
     setChildForAlignment(this);
@@ -68,6 +70,7 @@ class VxBox extends VxWidgetBuilder<Widget>
     setChildToPad(this);
     setChildToRound(this);
     setChildForShadow(this);
+    setChildForRender(this);
   }
 
   final Widget? child;
@@ -303,6 +306,10 @@ class VxBox extends VxWidgetBuilder<Widget>
 
   @override
   Widget make({Key? key}) {
+    if (!willRender) {
+      return const VxNone();
+    }
+
     return Container(
       key: key,
       height: _height,
