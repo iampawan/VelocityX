@@ -17,13 +17,15 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart'
     show
+        BorderRadius,
+        BuildContext,
+        Color,
         Colors,
         EdgeInsets,
         RoundedRectangleBorder,
-        ShapeBorder,
-        BorderRadius,
-        Color;
+        ShapeBorder;
 import 'package:flutter/services.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'nav/i_vx_nav.dart';
 
@@ -772,6 +774,29 @@ mixin Vx {
   }
 
   /// Copy to pasteboard
-  static Future<void> toClipboard(String data) async =>
-      await Clipboard.setData(ClipboardData(text: data));
+  static Future<void> toClipboard(
+    BuildContext context,
+    String data, {
+    bool showData = true,
+    int showTime = 2000,
+    Color? bgColor,
+    Color? textColor,
+    double textSize = 14,
+    VxToastPosition position = VxToastPosition.bottom,
+    double pdHorizontal = 20,
+    double pdVertical = 10,
+  }) async =>
+      await Clipboard.setData(ClipboardData(text: data)).then(
+        (value) => VxToast.show(
+          context,
+          msg: showData ? "Copied $data" : "Copied",
+          showTime: showTime,
+          bgColor: bgColor,
+          textColor: textColor,
+          textSize: textSize,
+          position: position,
+          pdHorizontal: pdHorizontal,
+          pdVertical: pdVertical,
+        ),
+      );
 }

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/iterable_ext.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/gesture.dart';
-import 'package:velocity_x/src/flutter/toast.dart';
 import 'package:velocity_x/src/flutter/transform.dart';
 import 'package:velocity_x/src/flutter/universal.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 /// [VxJson] can be used to show json in tree view of widgets
 class VxJson extends StatefulWidget {
@@ -59,8 +59,7 @@ class _VxJsonState extends State<VxJson> {
             .color(content == null ? Vx.zinc500 : Vx.pink500)
             .make()
             .onDoubleTap(() {
-          Vx.toClipboard(key.toString());
-          VxToast.show(context, msg: 'Copied $key');
+          Vx.toClipboard(context, key.toString());
         }),
         const SizedBox(width: 4),
         getValueWidget(content)
@@ -117,12 +116,10 @@ class _VxJsonState extends State<VxJson> {
     return VxUniversal(
       expanded: true,
       onTap: () {
-        Vx.toClipboard(text);
-        VxToast.show(context, msg: 'Copied');
+        Vx.toClipboard(context, text, showData: false);
       },
       onLongPress: () {
-        Vx.toClipboard(text);
-        VxToast.show(context, msg: 'Copied');
+        Vx.toClipboard(context, text, showData: false);
       },
       child: text.text
           .color(color)
