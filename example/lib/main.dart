@@ -7,6 +7,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
+import 'new/demo_list.dart';
 import 'widgets/draw_android.dart';
 
 // First way to monitor changes in the routing stack:
@@ -21,16 +22,16 @@ void main() {
       //   deviceIdentifier: Devices.ios.iPad.toString(),
       //   isFrameVisible: true,
       // ),
-      builder: (context) => MaterialApp.router(
+      builder: (context) => MaterialApp(
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-        backButtonDispatcher: RootBackButtonDispatcher(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: Vx.blue500,
           brightness: Brightness.light,
           useMaterial3: true,
         ),
+        home: const DemoList(),
         debugShowCheckedModeBanner: false,
       ),
     ),
