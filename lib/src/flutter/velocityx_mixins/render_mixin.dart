@@ -13,7 +13,7 @@ mixin VxRenderMixin<T> {
     _child = child;
   }
 
-  /// Uses [When] clause to render the widget only when the condition is true.
+  /// Uses [when] clause to render the widget only when the condition is true.
   T when(bool condition) {
     willRender = condition;
     return _child;

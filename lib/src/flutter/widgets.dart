@@ -21,6 +21,9 @@ import 'package:flutter/rendering.dart';
 import '../../velocity_x.dart';
 
 extension VxWidgetsExtension on Widget {
+  /// Uses [when] clause to render the widget only when the condition is true.
+  Widget when(bool condition) => condition ? this : const VxNone();
+
   ///Tooltip as accessibility
   Widget tooltip(String message,
           {Key? key,
