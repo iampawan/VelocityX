@@ -25,7 +25,7 @@ import 'package:flutter/material.dart'
         Color;
 import 'package:flutter/services.dart';
 
-import 'nav/i_vx_nav.dart';
+import 'nav/vx_nav.dart';
 
 /// Mixin [Vx] provides basic operations and utilities
 mixin Vx {

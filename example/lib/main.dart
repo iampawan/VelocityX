@@ -1,5 +1,4 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:example/new/demo_list.dart';
 import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
@@ -8,75 +7,12 @@ import 'package:velocity_x/velocity_x.dart';
 import 'examples/animated_page_view.dart';
 import 'examples/second_page.dart';
 import 'models/dummy.dart';
-import 'new/nav_example.dart';
 import 'widgets/draw_android.dart';
 
 // First way to monitor changes in the routing stack:
-class MyObs extends VxObserver {
-  @override
-  void didChangeRoute(Uri route, Page page, String pushOrPop) {
-    Vx.log("${route.path} - $pushOrPop");
-  }
-
-  @override
-  void didPush(Route route, Route? previousRoute) {
-    Vx.log('Pushed a route');
-  }
-
-  @override
-  void didPop(Route route, Route? previousRoute) {
-    Vx.log('Popped a route');
-  }
-}
 
 void main() {
   Vx.setPathUrlStrategy();
-
-  final navigator = VxNavigator(observers: [
-    MyObs()
-  ], routes: {
-    "/": (uri, param) =>
-        VxRoutePage(pageName: "DemoList", child: const DemoList()),
-    "/demo": (uri, param) => VxRoutePage(pageName: "Demo", child: const Demo()),
-    "/nav1": (uri, param) => VxRoutePage(
-        child: const Nav1(),
-        pageName: "Nav1",
-        transition: (animation, child) => ScaleTransition(
-              alignment: Alignment.bottomLeft,
-              scale: Tween(
-                begin: 0.0,
-                end: 1.0,
-              ).animate(
-                CurvedAnimation(
-                  parent: animation,
-                  curve: Curves.easeInOut,
-                ),
-              ),
-              child: child,
-            )),
-    "/nav2": (uri, param) => VxRoutePage(pageName: "Nav2", child: const Nav2()),
-    "/nav3": (uri, param) => VxRoutePage(pageName: "Nav3", child: const Nav3()),
-    "/nav4": (uri, param) => VxRoutePage(pageName: "Nav4", child: const Nav4()),
-    RegExp(r"^\/nav\/[a-zA-Z0-9]+$"): (uri, param) => MaterialPage(
-          child: Nav4(
-            pathParam: uri.pathSegments[1],
-            queryParams: uri.queryParametersAll,
-          ),
-        ),
-  });
-
-  // Second way to monitor changes in the routing stack:
-  navigator.addListener(() {
-    Vx.log(navigator.currentConfiguration!.path);
-  });
-
-  // Using Safe route
-  /*
-  '/safe_route': (uri,_) {
-  if (!isLoggedIn()) return VxRoutePage(pageName: "Home", child: HomePage());
-  return LoginPage();
-}
-  */
 
   runApp(
     DevicePreview(
@@ -88,8 +24,6 @@ void main() {
       builder: (context) => MaterialApp.router(
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-        routeInformationParser: VxInformationParser(),
-        routerDelegate: navigator,
         backButtonDispatcher: RootBackButtonDispatcher(),
         theme: ThemeData(
           primarySwatch: Colors.blue,

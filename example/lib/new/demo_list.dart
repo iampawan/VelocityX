@@ -75,65 +75,6 @@ class _DemoListState extends State<DemoList> {
           ? SafeArea(
               child: VStack([
                 ExpansionTile(
-                  title: "VxNav 2.0".text.make(),
-                  childrenPadding: Vx.m32,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          context.vxNav.push(Uri(
-                            path: '/nav/path123',
-                            queryParameters: {
-                              'query': 'xyz',
-                              'qlist': ['List', 'of', 'values']
-                            },
-                          ));
-                        },
-                        child: "Test Nav4".text.make()),
-                    TextButton(
-                      onPressed: () {
-                        VxNavigator.of(context).push(Uri(path: "/nav1"));
-                      },
-                      child: "Push Page".text.make(),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        VxNavigator.of(context).replace(Uri(path: "/nav1"));
-                      },
-                      child: "Replace Page".text.make(),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        VxNavigator.of(context).pushAll([
-                          Uri(path: "/nav1"),
-                          Uri(path: "/nav2"),
-                          Uri(path: "/nav3")
-                        ]);
-                      },
-                      child: "Push All".text.make(),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        VxNavigator.of(context).clearAndPushAll([
-                          Uri(path: "/nav1"),
-                          Uri(path: "/nav2"),
-                          Uri(path: "/nav3")
-                        ]);
-                      },
-                      child: "Clear & Push All".text.make(),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        final path = await VxNavigator.of(context)
-                            .waitAndPush(Uri(path: "/nav1"));
-
-                        Vx.log("Returned $path");
-                      },
-                      child: "Wait & Push".text.make(),
-                    ),
-                  ],
-                ),
-
-                ExpansionTile(
                   title: "VxJson".text.make(),
                   childrenPadding: Vx.m32,
                   children: [
@@ -178,9 +119,6 @@ class _DemoListState extends State<DemoList> {
                         .rounded
                         .outerShadow2Xl
                         .make()
-                        .onTap(() {
-                      VxNavigator.of(context).push(Uri(path: "/demo"));
-                    }),
                   ],
                 ),
                 ExpansionTile(
