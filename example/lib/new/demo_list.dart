@@ -75,6 +75,24 @@ class _DemoListState extends State<DemoList> {
           ? SafeArea(
               child: VStack([
                 ExpansionTile(
+                  title: "Filters".text.make(),
+                  childrenPadding: Vx.m32,
+                  children: [
+                    ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        VxFilter(
+                          child: Image.asset(
+                            "assets/flutter_100.png",
+                            height: 200,
+                            width: 200,
+                          ),
+                        ).blackAndWhite.make(),
+                      ],
+                    ).h20(context)
+                  ],
+                ),
+                ExpansionTile(
                   title: "VxJson".text.make(),
                   childrenPadding: Vx.m32,
                   children: [

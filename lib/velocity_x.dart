@@ -35,6 +35,7 @@ export 'src/flutter/dialog.dart';
 export 'src/flutter/divider.dart';
 export 'src/flutter/drawer.dart';
 export 'src/flutter/drop_down_button.dart';
+export 'src/flutter/filters.dart';
 export 'src/flutter/flex.dart';
 export 'src/flutter/gesture.dart';
 export 'src/flutter/glass.dart';
