@@ -195,7 +195,8 @@ class VxTextFieldState extends State<VxTextField> {
     final List<Widget> children = [];
     final String tempValue = controller!.text;
     final double tempSize = math.min(widget.height / 2, 24);
-    final Color tempColor = widget.suffixColor ?? Colors.black;
+    final Color tempColor =
+        widget.suffixColor ?? Theme.of(context).iconTheme.color ?? Colors.black;
 
     // Clear Button
     if (widget.clear && focusNode!.hasFocus && (tempValue.isNotEmpty)) {
@@ -264,7 +265,7 @@ class VxTextFieldState extends State<VxTextField> {
 
   InputBorder? getInputBorder() {
     final Color tempColor =
-        widget.borderColor ?? Theme.of(context).primaryColor;
+        widget.borderColor ?? Theme.of(context).scaffoldBackgroundColor;
     if (widget.borderType == VxTextFieldBorderType.none) {
       return InputBorder.none;
     } else if (widget.borderType == VxTextFieldBorderType.roundLine) {
