@@ -22,17 +22,22 @@ void main() {
       //   deviceIdentifier: Devices.ios.iPad.toString(),
       //   isFrameVisible: true,
       // ),
-      builder: (context) => MaterialApp(
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Vx.blue500,
-          brightness: Brightness.light,
-          useMaterial3: true,
-        ),
-        home: const DemoList(),
-        debugShowCheckedModeBanner: false,
+      builder: (context) => VxApp(
+        store: MyStore(),
+        builder: (context, VxAppData data) {
+          return MaterialApp(
+            locale: DevicePreview.locale(context),
+            builder: DevicePreview.appBuilder,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              primaryColor: Vx.blue500,
+              brightness: data.isDarkMode ? Brightness.dark : Brightness.light,
+              useMaterial3: true,
+            ),
+            home: const DemoList(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     ),
   );
@@ -325,5 +330,18 @@ class TapMeWidget extends StatelessWidget {
       context.navigator!.push(const SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
+  }
+}
+
+class MyStore extends VxStore {
+  int count = 0;
+}
+
+class MyMutation extends VxMutation<MyStore> {
+  MyMutation();
+
+  @override
+  perform() {
+    store!.count++;
   }
 }

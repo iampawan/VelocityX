@@ -15,15 +15,9 @@ import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart'
-    show
-        Colors,
-        EdgeInsets,
-        RoundedRectangleBorder,
-        ShapeBorder,
-        BorderRadius,
-        Color;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'nav/i_vx_nav.dart';
 
@@ -777,4 +771,43 @@ mixin Vx {
   /// Copy to pasteboard
   static Future<void> toClipboard(String data) async =>
       await Clipboard.setData(ClipboardData(text: data));
+}
+
+/// [VxInternalStore] is the internal store for the app.
+
+typedef VxAppBuilder = Widget Function(BuildContext context, VxAppData vxData);
+
+class VxAppData {
+  static final VxAppData _singleton = VxAppData._internal();
+
+  factory VxAppData() {
+    return _singleton;
+  }
+  VxAppData._internal();
+
+  // Bool to check if dark mode is enabled or not
+  bool isDarkMode = false;
+}
+
+/// Wrap your app with [VxApp] to use [VxState] and [VxStore].
+class VxApp extends StatefulWidget {
+  const VxApp({super.key, required this.builder, required this.store});
+  final VxAppBuilder? builder;
+  final VxStore store;
+
+  @override
+  State<VxApp> createState() => _VxAppState();
+}
+
+class _VxAppState<T> extends State<VxApp> {
+  final appData = VxAppData();
+  @override
+  Widget build(BuildContext context) {
+    return VxState(
+      store: widget.store,
+      child: VxConsumer(
+          mutations: const {VxDarkModeMutation},
+          builder: (context, _, status) => widget.builder!(context, appData)),
+    );
+  }
 }

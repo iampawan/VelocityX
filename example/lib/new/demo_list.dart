@@ -74,6 +74,15 @@ class _DemoListState extends State<DemoList> {
       child: selectedIndex == 0
           ? SafeArea(
               child: VStack([
+                AppBar(
+                  title: "VelocityX Demo".text.make(),
+                  actions: [
+                    const VxDarkModeButton(
+                      showSingleIcon: false,
+                    ).px16(),
+                  ],
+                ),
+
                 ExpansionTile(
                   title: "VxFilter".text.make(),
                   childrenPadding: Vx.m32,
@@ -82,12 +91,22 @@ class _DemoListState extends State<DemoList> {
                       scrollDirection: Axis.horizontal,
                       padding: Vx.m12,
                       children: [
+                        VxConsumer(
+                          mutations: const {MyMutation},
+                          builder: (context, store, status) =>
+                              "Tap on the right image to increase me - ${(VxState.store as MyStore).count}"
+                                  .text
+                                  .makeCentered()
+                                  .w16(context),
+                        ),
                         VxFilter(
                           child: Image.asset(
                             "assets/flutter_100.png",
                             height: 200,
                             width: 200,
-                          ),
+                          ).onTap(() {
+                            MyMutation();
+                          }),
                         ).blackAndWhite.make(),
                         VxFilter(
                           child: Image.asset(
