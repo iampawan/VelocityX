@@ -14,7 +14,7 @@ class VxNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: VxAppBar(title: "Vx Navigation".text.make()),
+      appBar: AppBar(title: "Vx Navigation".text.make()),
       body: VStack(
         [
           VxTwoRow(

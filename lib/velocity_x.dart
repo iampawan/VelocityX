@@ -15,7 +15,6 @@ export 'src/extensions/string_ext.dart';
 export 'src/extensions/web3_ext.dart';
 export 'src/flutter/animated/animated_container.dart';
 export 'src/flutter/animated/animated_height.dart';
-export 'src/flutter/appbar.dart';
 export 'src/flutter/badge.dart';
 export 'src/flutter/bottom_sheet.dart';
 export 'src/flutter/card.dart';

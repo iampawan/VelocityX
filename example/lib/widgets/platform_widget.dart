@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class PlatformBar
-    extends VxPlatform<AppBar, CupertinoNavigationBar, BottomAppBar, AppBar> {
+    extends VxPlatform<AppBar, CupertinoNavigationBar, AppBar, AppBar> {
   const PlatformBar({super.key});
 
   @override
@@ -21,20 +21,9 @@ class PlatformBar
   }
 
   @override
-  BottomAppBar createWebWidget(BuildContext context) {
-    return BottomAppBar(
-      child: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            label: "Chat",
-            icon: Icon(Icons.chat),
-          ),
-          BottomNavigationBarItem(
-            label: "History",
-            icon: Icon(Icons.history),
-          )
-        ],
-      ),
+  AppBar createWebWidget(BuildContext context) {
+    return AppBar(
+      title: "Hello World from Web".text.make(),
     );
   }
 

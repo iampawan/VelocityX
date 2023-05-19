@@ -80,6 +80,7 @@ class _DemoListState extends State<DemoList> {
                   children: [
                     ListView(
                       scrollDirection: Axis.horizontal,
+                      padding: Vx.m12,
                       children: [
                         VxFilter(
                           child: Image.asset(

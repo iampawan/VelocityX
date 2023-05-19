@@ -56,10 +56,6 @@ class DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: VxAppBar(
-        searchBar: true,
-        title: "Vx Demo".text.make(),
-      ),
       body: VStack([
         const PlatformBar(),
         "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
