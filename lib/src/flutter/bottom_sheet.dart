@@ -10,6 +10,7 @@ mixin VxBottomSheet {
       Function(int index, String value)? onSelect,
       bool roundedFromTop = false,
       bool isDismissible = true,
+      bool showItemDivider = false,
       bool enableDrag = true,
       Color? barrierColor,
       Color? backgroundColor,
@@ -41,6 +42,7 @@ mixin VxBottomSheet {
               initData: defaultData,
               maxHeight: maxHeight,
               minHeight: minHeight,
+              showItemDivider: showItemDivider,
             ),
           ),
         );
@@ -102,12 +104,14 @@ class _VxBottomSheetOptions extends StatelessWidget {
   final String? initData;
   final double? maxHeight;
   final double? minHeight;
+  final bool? showItemDivider;
 
   const _VxBottomSheetOptions({
     this.list,
     this.initData,
     this.maxHeight,
     this.minHeight,
+    this.showItemDivider,
   });
 
   @override
@@ -123,8 +127,10 @@ class _VxBottomSheetOptions extends StatelessWidget {
     final List<Widget> children = [];
 
     for (int i = 0; i < list!.length; i++) {
-      if (children.isNotEmpty) {
-        children.add(const VxDivider());
+      if (children.isNotEmpty && showItemDivider!) {
+        children.add(const VxDivider(
+          width: 0.1,
+        ));
       }
       final String it = list![i];
       children.add(ListTile(
