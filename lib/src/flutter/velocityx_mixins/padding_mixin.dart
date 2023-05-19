@@ -37,6 +37,7 @@ mixin VxPaddingMixin<T> {
   T get p20 => _padIt(child: _childToPad, padding: Vx.m20);
   T get p24 => _padIt(child: _childToPad, padding: Vx.m24);
   T get p32 => _padIt(child: _childToPad, padding: Vx.m32);
+  T get p48 => _padIt(child: _childToPad, padding: Vx.m48);
   T get p64 => _padIt(child: _childToPad, padding: Vx.m64);
 
   T get px0 => _padIt(child: _childToPad, padding: Vx.mH0);
@@ -49,6 +50,7 @@ mixin VxPaddingMixin<T> {
   T get px20 => _padIt(child: _childToPad, padding: Vx.mH20);
   T get px24 => _padIt(child: _childToPad, padding: Vx.mH24);
   T get px32 => _padIt(child: _childToPad, padding: Vx.mH32);
+  T get px48 => _padIt(child: _childToPad, padding: Vx.mH48);
   T get px64 => _padIt(child: _childToPad, padding: Vx.mH64);
 
   T get py0 => _padIt(child: _childToPad, padding: Vx.mV0);
@@ -61,6 +63,7 @@ mixin VxPaddingMixin<T> {
   T get py20 => _padIt(child: _childToPad, padding: Vx.mV20);
   T get py24 => _padIt(child: _childToPad, padding: Vx.mV24);
   T get py32 => _padIt(child: _childToPad, padding: Vx.mV32);
+  T get py48 => _padIt(child: _childToPad, padding: Vx.mV48);
   T get py64 => _padIt(child: _childToPad, padding: Vx.mV64);
 
   T _padIt({required EdgeInsetsGeometry padding, required T child}) {

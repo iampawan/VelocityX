@@ -574,6 +574,7 @@ mixin Vx {
   static EdgeInsets m20 = const EdgeInsets.all(dp20);
   static EdgeInsets m24 = const EdgeInsets.all(dp24);
   static EdgeInsets m32 = const EdgeInsets.all(dp32);
+  static EdgeInsets m48 = const EdgeInsets.all(dp48);
   static EdgeInsets m64 = const EdgeInsets.all(dp64);
 
   /// Symmetric Fixed EdgeInsets
@@ -595,10 +596,12 @@ mixin Vx {
   static const mH20 = EdgeInsets.symmetric(horizontal: dp20);
   static const mV24 = EdgeInsets.symmetric(vertical: dp24);
   static const mH24 = EdgeInsets.symmetric(horizontal: dp24);
-  static const mV32 = EdgeInsets.symmetric(vertical: dp24);
+  static const mV32 = EdgeInsets.symmetric(vertical: dp32);
   static const mH32 = EdgeInsets.symmetric(horizontal: dp32);
-  static const mV64 = EdgeInsets.symmetric(vertical: dp24);
-  static const mH64 = EdgeInsets.symmetric(horizontal: dp32);
+  static const mH48 = EdgeInsets.symmetric(horizontal: dp48);
+  static const mV48 = EdgeInsets.symmetric(vertical: dp48);
+  static const mV64 = EdgeInsets.symmetric(vertical: dp64);
+  static const mH64 = EdgeInsets.symmetric(horizontal: dp64);
 
   /// [EdgeInsets] with custom [left], [right], [top] & [bottom] values
   static EdgeInsets mLTRB(
