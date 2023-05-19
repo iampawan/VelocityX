@@ -75,11 +75,18 @@ class _DemoListState extends State<DemoList> {
           ? Scaffold(
               appBar: AppBar(
                 title: "VelocityX Demo".text.make(),
+                actions: [
+                  const VxDarkModeButton(
+                    showSingleIcon: true,
+                  ).px16()
+                ],
               ),
               floatingActionButton: const VxDarkModeButton(
                 showSingleIcon: false,
               ),
               body: VStack([
+                FilledButton(onPressed: () {}, child: "Hi there".text.make())
+                    .p16(),
                 ExpansionTile(
                   title: "VxFilter".text.make(),
                   childrenPadding: Vx.m32,
