@@ -75,7 +75,7 @@ class _DemoListState extends State<DemoList> {
           ? SafeArea(
               child: VStack([
                 ExpansionTile(
-                  title: "Filters".text.make(),
+                  title: "VxFilter".text.make(),
                   childrenPadding: Vx.m32,
                   children: [
                     ListView(
@@ -88,6 +88,27 @@ class _DemoListState extends State<DemoList> {
                             width: 200,
                           ),
                         ).blackAndWhite.make(),
+                        VxFilter(
+                          child: Image.asset(
+                            "assets/flutter_100.png",
+                            height: 200,
+                            width: 200,
+                          ),
+                        ).polaroid.make(),
+                        VxFilter(
+                          child: Image.asset(
+                            "assets/flutter_100.png",
+                            height: 200,
+                            width: 200,
+                          ),
+                        ).milk.make(),
+                        VxFilter(
+                          child: Image.asset(
+                            "assets/flutter_100.png",
+                            height: 200,
+                            width: 200,
+                          ),
+                        ).setFilter(VxColorFilter.sepia).make(),
                       ],
                     ).h20(context)
                   ],
