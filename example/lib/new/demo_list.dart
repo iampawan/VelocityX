@@ -72,17 +72,14 @@ class _DemoListState extends State<DemoList> {
         setState(() {});
       },
       child: selectedIndex == 0
-          ? SafeArea(
-              child: VStack([
-                AppBar(
-                  title: "VelocityX Demo".text.make(),
-                  actions: [
-                    const VxDarkModeButton(
-                      showSingleIcon: false,
-                    ).px16(),
-                  ],
-                ),
-
+          ? Scaffold(
+              appBar: AppBar(
+                title: "VelocityX Demo".text.make(),
+              ),
+              floatingActionButton: const VxDarkModeButton(
+                showSingleIcon: false,
+              ),
+              body: VStack([
                 ExpansionTile(
                   title: "VxFilter".text.make(),
                   childrenPadding: Vx.m32,
