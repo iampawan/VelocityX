@@ -15,12 +15,11 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-import '../extensions/context_ext.dart';
-
-const double _kDefaultButtonSize = 30;
+const double _kDefaultButtonSize = 32;
 const double _kDefaultSpace = 8;
-const double _kDefaultTextFontSize = 14;
+const double _kDefaultTextFontSize = 16;
 
 /// VxStepper widget to have a input enabled counter with 2 buttons, one for addition and one for subtraction with good level of customization.
 class VxStepper extends StatefulWidget {
@@ -79,68 +78,61 @@ class VxStepperState extends State<VxStepper> {
     children.add(SizedBox(
       height: _kDefaultButtonSize,
       width: _kDefaultButtonSize,
-      child: MaterialButton(
-        shape: const CircleBorder(),
-        color: widget.actionButtonColor,
-        padding: EdgeInsets.zero,
+      child: FilledButton(
+        style: FilledButton.styleFrom(
+          shape: const CircleBorder(),
+          backgroundColor: widget.actionButtonColor,
+          padding: EdgeInsets.zero,
+        ),
         onPressed: enableMin ? onRemove : null,
         child: Icon(
           Icons.remove,
           color: widget.actionIconColor,
+          size: _kDefaultTextFontSize,
         ),
       ),
     ));
 
     children.add(const SizedBox(width: _kDefaultSpace));
 
-    children.add(Container(
-      height: _kDefaultButtonSize,
-      width: 36,
-      decoration: BoxDecoration(
-        color: widget.inputBoxColor ??
-            DividerTheme.of(context).color ??
-            Theme.of(context).dividerColor,
-        borderRadius: BorderRadius.circular(3),
+    children.add(TextField(
+      controller: controller,
+      textAlign: TextAlign.center,
+      enabled: !widget.disableInput,
+      style: TextStyle(color: widget.inputTextColor),
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
+        LengthLimitingTextInputFormatter(3),
+      ],
+      decoration: const InputDecoration(
+        border: InputBorder.none,
       ),
-      child: TextField(
-        controller: controller,
-        textAlign: TextAlign.center,
-        textAlignVertical: TextAlignVertical.center,
-        enabled: !widget.disableInput,
-        style: TextStyle(
-            fontSize: _kDefaultTextFontSize, color: widget.inputTextColor),
-        keyboardType: TextInputType.number,
-        inputFormatters: [
-          FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
-          LengthLimitingTextInputFormatter(3),
-        ],
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-              vertical: context.isMobile ? 14 : 16, horizontal: 0),
-        ),
-        onEditingComplete: inputComplete,
-      ),
-    ));
+      onEditingComplete: inputComplete,
+    ).wh(_kDefaultButtonSize, _kDefaultButtonSize * 1.7));
 
     children.add(const SizedBox(width: _kDefaultSpace));
     children.add(SizedBox(
       height: _kDefaultButtonSize,
       width: _kDefaultButtonSize,
-      child: MaterialButton(
-        shape: const CircleBorder(),
-        color: widget.actionButtonColor,
+      child: FilledButton(
+        style: FilledButton.styleFrom(
+          shape: const CircleBorder(),
+          backgroundColor: widget.actionButtonColor,
+          padding: EdgeInsets.zero,
+        ),
         onPressed: enableMax ? onAdd : null,
-        padding: EdgeInsets.zero,
         child: Icon(
           Icons.add,
           color: widget.actionIconColor,
+          size: _kDefaultTextFontSize,
         ),
       ),
     ));
 
     return Row(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: children,
     );
