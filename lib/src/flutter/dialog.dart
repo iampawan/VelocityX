@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/divider.dart';
 
@@ -255,7 +256,7 @@ class _VxDialog extends StatelessWidget {
       ),
     ));
     children.add(const SizedBox(
-      height: 16,
+      height: 42,
       child: VxDivider(type: VxDividerType.vertical),
     ));
     children.add(Expanded(
@@ -306,7 +307,8 @@ class VxTimerButton extends StatefulWidget {
   final dynamic button;
   final VoidCallback? tap;
 
-  const VxTimerButton({super.key, 
+  const VxTimerButton({
+    super.key,
     this.second,
     this.bgColor,
     this.button,
