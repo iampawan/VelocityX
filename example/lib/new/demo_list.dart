@@ -586,23 +586,23 @@ class _DemoListState extends State<DemoList> {
                     [
                       TableRow(
                         children: [
-                          "Mywebsite".text.make(),
-                          "Mywebsite 2".text.make(),
+                          "Mywebsite".text.make().p12(),
+                          "Mywebsite 2".text.make().p12(),
                         ],
                       ),
                       TableRow(
                         children: [
-                          "Mywebsite".text.make(),
-                          "Mywebsite 2".text.make(),
+                          "Mywebsite".text.make().p12(),
+                          "Mywebsite 2".text.make().p12(),
                         ],
                       ),
                       TableRow(
                         children: [
-                          "Mywebsite".text.make(),
-                          "Mywebsite 2".text.make(),
+                          "Mywebsite".text.make().p12(),
+                          "Mywebsite 2".text.make().p12(),
                         ],
                       )
-                    ].table.blue500.simpleBorder.withFixedFactor(100).make(),
+                    ].table.gray300.middleAligned.roundedBorder.make(),
                   ],
                 ),
 

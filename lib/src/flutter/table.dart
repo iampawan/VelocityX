@@ -12,6 +12,7 @@
  */
 
 import 'package:flutter/material.dart';
+
 import 'builder.dart';
 import 'velocityx_mixins/color_mixin.dart';
 
@@ -45,6 +46,13 @@ class VxTable extends VxWidgetBuilder<Widget> with VxColorMixin<VxTable> {
     tableBorder = TableBorder.all(
       color: velocityColor ?? Colors.black,
     );
+    return this;
+  }
+
+  VxTable get roundedBorder {
+    tableBorder = TableBorder.all(
+        color: velocityColor ?? Colors.black,
+        borderRadius: BorderRadius.circular(8.0));
     return this;
   }
 
