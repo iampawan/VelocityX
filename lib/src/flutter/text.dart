@@ -501,7 +501,7 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
         wordSpacing: _wordSpacing,
         shadows: _shadowBlur > 0 ? sdw : null);
 
-    return _isIntrinsic
+    final textWidget = _isIntrinsic
         ? Text(
             _text!,
             key: key,
@@ -529,6 +529,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
             strutStyle: _strutStyle,
             wrapWords: _wrapWords ?? true,
           );
+
+    return textWidget;
   }
 }
 

@@ -28,12 +28,9 @@ void main() {
           return MaterialApp(
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              primaryColor: Vx.blue500,
-              brightness: data.isDarkMode ? Brightness.dark : Brightness.light,
-              useMaterial3: true,
-            ),
+            theme: data.isDarkMode
+                ? ThemeData.dark(useMaterial3: true)
+                : ThemeData.light(useMaterial3: true),
             home: const DemoList(),
             debugShowCheckedModeBanner: false,
           );
