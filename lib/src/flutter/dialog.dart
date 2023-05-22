@@ -6,9 +6,13 @@ import 'package:velocity_x/src/flutter/divider.dart';
 double _circular = 5.0;
 BorderRadius _borderRadius = BorderRadius.circular(_circular);
 
-Widget getView(dynamic child) {
+Widget getView(dynamic child, Color? textColor) {
   if (child is String) {
-    return Text(child);
+    if (textColor == null) {
+      return Text(child);
+    } else {
+      return Text(child, style: TextStyle(color: textColor));
+    }
   } else if (child is Widget) {
     return child;
   }
@@ -22,7 +26,7 @@ mixin VxDialog {
     dynamic content,
     dynamic confirm = 'OK',
     Color? confirmBgColor,
-    Color? confirmTextColor,
+    Color? actionTextColor,
     bool showClose = false,
     VoidCallback? onPressed,
     bool barrierDismissible = true,
@@ -42,6 +46,7 @@ mixin VxDialog {
                 cancel: confirm,
                 cancelBgColor: confirmBgColor,
                 cancelOnPress: onPressed,
+                cancelTextColor: actionTextColor,
               ),
               shape: RoundedRectangleBorder(borderRadius: _borderRadius),
             ),
@@ -82,6 +87,8 @@ mixin VxDialog {
                 confirmBgColor: confirmBgColor,
                 cancelOnPress: onCancelPress,
                 confirmOnPress: onConfirmPress,
+                confirmTextColor: confirmTextColor,
+                cancelTextColor: cancelTextColor,
               ),
               shape: RoundedRectangleBorder(borderRadius: _borderRadius),
             ),
@@ -94,11 +101,11 @@ mixin VxDialog {
     String? title,
     bool showClose = false,
     dynamic content,
-    dynamic confirm = 'Confirm',
+    dynamic action = 'Confirm',
     int secondsToAction = 3,
-    Color? confirmBgColor,
-    Color? confirmTextColor,
-    VoidCallback? onConfirmPress,
+    Color? actionBgColor,
+    Color? actionTextColor,
+    VoidCallback? onActionPress,
     bool barrierDismissible = true,
   }) {
     showDialog(
@@ -113,9 +120,10 @@ mixin VxDialog {
                 title: title,
                 showClose: showClose,
                 content: content,
-                cancel: confirm,
-                cancelBgColor: confirmBgColor,
-                cancelOnPress: onConfirmPress,
+                cancel: action,
+                cancelBgColor: actionBgColor,
+                cancelOnPress: onActionPress,
+                cancelTextColor: actionTextColor,
                 second: secondsToAction,
               ),
               shape: RoundedRectangleBorder(borderRadius: _borderRadius),
@@ -146,6 +154,8 @@ class _VxDialog extends StatelessWidget {
   final dynamic confirm;
   final Color? cancelBgColor;
   final Color? confirmBgColor;
+  final Color? confirmTextColor;
+  final Color? cancelTextColor;
   final VoidCallback? cancelOnPress;
   final VoidCallback? confirmOnPress;
   final int? second;
@@ -160,6 +170,8 @@ class _VxDialog extends StatelessWidget {
     this.confirmBgColor,
     this.cancelOnPress,
     this.confirmOnPress,
+    this.confirmTextColor,
+    this.cancelTextColor,
     this.second,
   });
 
@@ -208,7 +220,7 @@ class _VxDialog extends StatelessWidget {
     assert(content != null);
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: getView(content),
+      child: getView(content, null),
     );
   }
 
@@ -218,6 +230,7 @@ class _VxDialog extends StatelessWidget {
         second: second,
         bgColor: cancelBgColor,
         button: cancel,
+        textColor: cancelTextColor,
         tap: () => onCancel(context),
       );
     }
@@ -234,7 +247,7 @@ class _VxDialog extends StatelessWidget {
             ),
           ),
           alignment: Alignment.center,
-          child: getView(cancel),
+          child: getView(cancel, cancelTextColor),
         ),
       );
     }
@@ -251,7 +264,7 @@ class _VxDialog extends StatelessWidget {
           ),
           height: 42,
           alignment: Alignment.center,
-          child: getView(cancel),
+          child: getView(cancel, cancelTextColor),
         ),
       ),
     ));
@@ -270,7 +283,7 @@ class _VxDialog extends StatelessWidget {
           ),
           alignment: Alignment.center,
           height: 42,
-          child: getView(confirm),
+          child: getView(confirm, confirmTextColor),
         ),
       ),
     ));
@@ -304,6 +317,7 @@ class _VxDialog extends StatelessWidget {
 class VxTimerButton extends StatefulWidget {
   final int? second;
   final Color? bgColor;
+  final Color? textColor;
   final dynamic button;
   final VoidCallback? tap;
 
@@ -311,6 +325,7 @@ class VxTimerButton extends StatefulWidget {
     super.key,
     this.second,
     this.bgColor,
+    this.textColor,
     this.button,
     this.tap,
   });
@@ -356,7 +371,7 @@ class VxTimerButtonState extends State<VxTimerButton> {
         ),
       ),
       alignment: Alignment.center,
-      child: getView(buttonValue),
+      child: getView(buttonValue, widget.textColor),
     );
 
     if (tempSecond! > 0) {

@@ -85,8 +85,6 @@ class _DemoListState extends State<DemoList> {
                 showSingleIcon: false,
               ),
               body: VStack([
-                FilledButton(onPressed: () {}, child: "Hi there".text.make())
-                    .p16(),
                 ExpansionTile(
                   title: "VxFilter".text.make(),
                   childrenPadding: Vx.m32,
@@ -288,6 +286,7 @@ class _DemoListState extends State<DemoList> {
                             content: 'Welcome to VxDialog',
                             title: 'Hello Alert',
                             showClose: true,
+                            actionTextColor: Colors.red,
                             onPressed: () {
                               VxToast.show(context, msg: 'Alert toast');
                             },
@@ -320,7 +319,8 @@ class _DemoListState extends State<DemoList> {
                             title: 'Ticker Dialog',
                             secondsToAction: 5,
                             barrierDismissible: false,
-                            onConfirmPress: () {
+                            action: "Do something",
+                            onActionPress: () {
                               VxToast.show(context, msg: 'Confirmed');
                             },
                           );
@@ -377,7 +377,7 @@ class _DemoListState extends State<DemoList> {
                             cancelBgColor: Colors.red,
                             cancelTextColor: Colors.white,
                             confirmBgColor: Colors.blue,
-                            confirmTextColor: Colors.red,
+                            confirmTextColor: Colors.white,
                             onCancelPress: () {
                               VxToast.show(context, msg: 'Cancelled');
                             },
