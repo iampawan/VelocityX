@@ -1,3 +1,18 @@
+## [4.0.0] - May 22, 2023
+
+- [New] VxFilter to support filters on your widgets.
+- [New] Dark Mode support added with VxApp.
+- [New] VxDarkModeButton widget added for one click dark mode.
+- [New] VxNone widget with when props for widgets.
+- [New] Padding & margin of 48 added.
+- [New] Vx Stepper is now Material 3.
+- [New] Upgraded for Flutter 3.10 and Material 3.
+- [Breaking] Saying bye to VxNavigator. Use go_router instead.
+- [Breaking] Saying bye to VxAppBar. Use material AppBar instead.
+- VxTable, VxDialog, BottomSheet, VxTextfield etc improved.
+- Demo updated.
+- Many bug fixes.
+
 ## [3.6.1] - Apr 25, 2023
 
 - Upgraded intl version to 0.18.1

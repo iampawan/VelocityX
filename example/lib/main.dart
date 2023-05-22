@@ -338,7 +338,7 @@ class MyMutation extends VxMutation<MyStore> {
   MyMutation();
 
   @override
-  perform() {
+  void perform() {
     store!.count++;
   }
 }

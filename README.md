@@ -31,6 +31,11 @@
 
 [**VelocityX**](https://velocityx.dev/) is a 100% free Flutter open-source minimalist UI Framework built with <a href="https://flutter.dev/" target="_blank">Flutter SDK</a> to make Flutter development easier and more joyful than ever.
 
+<img src="https://i.imgur.com/T5RROq1.png" width=200>
+<img src="https://i.imgur.com/MY9Isku.png" width=200>
+</n>
+<img src="https://i.imgur.com/mNwfOjj.png" width=400>
+
 ## Inspired from Tailwindcss and SwiftUI.
 
 ```dart
@@ -79,7 +84,6 @@ VelocityX is known for :
 ## Features
 
 ✅ &nbsp; [State Management](https://velocityx.dev/docs/vxstate/getting_started) </br>
-✅ &nbsp; [Navigator 2.0](https://velocityx.dev/docs/vxnavigator/getting_started)  
 ✅ &nbsp; [Custom UIs](https://velocityx.dev/docs/install)  
 ✅ &nbsp; [Custom Shapes](https://velocityx.dev/docs/shapes/vxcircle)  
 ✅ &nbsp; [Super VX](https://velocityx.dev/docs/supervx/vxswiper)  
@@ -108,12 +112,10 @@ Read the [Getting started page of VelocityX](https://velocityx.dev/docs/install)
 ## Some Quick UIs made using VelocityX
 
 <p float="left">
-<img src="https://i.imgur.com/DlSuaOG.png" width="500"/>
-<img src="https://i.imgur.com/JZ9tOoy.png" width="500"/>
-<img src="https://i.imgur.com/JFpw795.png" width="500"/>
-<img src="https://i.imgur.com/nuGnpG1.png" width="500"/>
-<img src="https://i.imgur.com/DlSuaOG.png" width="500"/>
-<img src="https://i.imgur.com/41kZ4Hd.png" width="500"/>
+<img src="https://i.imgur.com/DlSuaOG.png" width="200"/>
+<img src="https://i.imgur.com/JZ9tOoy.png" width="200"/>
+<img src="https://i.imgur.com/JFpw795.png" width="200"/>
+
 </p>
 
 ## Contributing
@@ -180,4 +182,4 @@ Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #E
 
 ## Copyright-and-license
 
-Code and documentation Copyright 2020 [Pawan Kumar](https://pawan.live). Code released under the [Apache License](./LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Code and documentation Copyright 2020 [Pawan Kumar](https://twitter.com/imthepk). Code released under the [Apache License](./LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
