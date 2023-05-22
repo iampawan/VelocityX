@@ -200,22 +200,6 @@ extension VxContextExtensions on BuildContext {
   ///
   /// Pushes the built widget to the screen using the material fade in animation
   ///
-  /// Will return a value when the built widget calls [pop]
-  ///
-  Future<T?> push<T>(WidgetBuilder builder) async {
-    return await navigator!.push<T>(MaterialPageRoute(builder: builder));
-  }
-
-  ///
-  /// Removes the top most Widget in the navigator's stack
-  ///
-  /// Will return the [result] to the caller of [push]
-  ///
-  void pop<T>([T? result]) => navigator!.pop<T>(result);
-
-  ///
-  /// Pushes the built widget to the screen using the material fade in animation
-  ///
   void nextPage(Widget page, {bool maintainState = true}) =>
       _nextPage(context: this, page: page, maintainState: maintainState);
 
