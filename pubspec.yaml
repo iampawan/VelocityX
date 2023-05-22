@@ -1,12 +1,12 @@
 name: velocity_x
 description: A minimalist Flutter framework for rapidly building custom designs.
-version: 3.6.1
+version: 4.0.0
 homepage: https://velocityx.dev
 repository: https://github.com/iampawan/VelocityX
 documentation: https://velocityx.dev
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=2.18.0 <4.0.0"
   flutter: ">=2.0.0"
 
 dependencies:
@@ -22,6 +22,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints:
+
+screenshots:
+  - description: "Examples of the Vx usage in light mode."
+    path: example/screenshots/ss1.png
+  - description: "Examples of the Vx usage in dark mode."
+    path: example/screenshots/ss2.png
+  - description: "Examples of the Vx usage on web."
+    path: example/screenshots/ss3.png
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
