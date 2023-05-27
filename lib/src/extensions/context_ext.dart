@@ -190,28 +190,6 @@ extension VxContextExtensions on BuildContext {
   /// If the [ThemeData] of the current [BuildContext] is dark
   bool get isDarkMode => theme.brightness == Brightness.dark;
 
-  /// Extension for navigation to next page
-  /// Returns The state from the closest instance of this class that encloses the given context.
-  ///
-  /// It is used for routing in flutter
-  ///
-  NavigatorState? get navigator => Navigator.of(this);
-
-  ///
-  /// Pushes the built widget to the screen using the material fade in animation
-  ///
-  void nextPage(Widget page, {bool maintainState = true}) =>
-      _nextPage(context: this, page: page, maintainState: maintainState);
-
-  /// Pushes and replacing the built widget to the screen using the material fade in animation
-  void nextReplacementPage(Widget page, {bool maintainState = true}) =>
-      _nextReplacementPage(
-          context: this, page: page, maintainState: maintainState);
-
-  /// Removing all the widgets till defined rule, and pushes the built widget to the screen using the material fade in animation
-  void nextAndRemoveUntilPage(Widget page) =>
-      _nextAndRemoveUntilPage(context: this, page: page);
-
   /// Action Extension
   bool? invokeAction(Intent intent) => Actions.invoke(this, intent) as bool?;
 
@@ -248,31 +226,6 @@ extension VxContextExtensions on BuildContext {
   ///
   ScaffoldState get scaffold => Scaffold.of(this);
 }
-
-Future<void> _nextPage(
-        {required BuildContext context,
-        required Widget page,
-        bool maintainState = true}) async =>
-    await Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => page,
-          maintainState: maintainState,
-        ));
-Future<void> _nextReplacementPage(
-        {required BuildContext context,
-        required Widget page,
-        bool maintainState = true}) async =>
-    await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => page,
-          maintainState: maintainState,
-        ));
-Future<void> _nextAndRemoveUntilPage(
-        {required BuildContext context, required Widget page}) async =>
-    await Navigator.pushAndRemoveUntil(context,
-        MaterialPageRoute(builder: (context) => page), (route) => false);
 
 extension VxExtensionGlobalKey on GlobalKey {
   /// screenshot
