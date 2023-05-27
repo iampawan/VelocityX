@@ -324,7 +324,7 @@ class TapMeWidget extends StatelessWidget {
           .make(),
       "assets/vxbox.png".circularAssetImage(radius: 50)
     ].row().onInkTap(() {
-      context.navigator!.push(const SecondPage("assets/vxbox.png")
+      context.vxnavigator!.push(const SecondPage("assets/vxbox.png")
           .vxPreviewRoute(parentContext: context));
     });
   }
