@@ -705,8 +705,26 @@ mixin Vx {
   ///Checks whether web or not
   static bool get isWeb => kIsWeb;
 
-  ///Checks whether android or not
+  ///Checks whether the device is android or not
   static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
+
+  ///Checks whether the device is iOS or not
+  static bool get isIOS => defaultTargetPlatform == TargetPlatform.iOS;
+
+  ///Checks whether the device is a mobile OS or not
+  static bool get isMobileOS => isAndroid || isIOS;
+
+  ///Checks whether the device is linux or not
+  static bool get isLinux => defaultTargetPlatform == TargetPlatform.linux;
+
+  ///Checks whether the device is macOS or not
+  static bool get isMacOS => defaultTargetPlatform == TargetPlatform.macOS;
+
+  ///Checks whether the device is windows or not
+  static bool get isWindows => defaultTargetPlatform == TargetPlatform.windows;
+
+  ///Checks whether the device is fuchsia or not
+  static bool get isFuchsia => defaultTargetPlatform == TargetPlatform.fuchsia;
 
   ///Checks whether desktop or not
   static bool get isDesktop =>
