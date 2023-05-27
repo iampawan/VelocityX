@@ -706,31 +706,38 @@ mixin Vx {
   static bool get isWeb => kIsWeb;
 
   ///Checks whether the device is android or not
-  static bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
+  static bool get isAndroid =>
+      !isWeb && defaultTargetPlatform == TargetPlatform.android;
 
   ///Checks whether the device is iOS or not
-  static bool get isIOS => defaultTargetPlatform == TargetPlatform.iOS;
+  static bool get isIOS =>
+      !isWeb && defaultTargetPlatform == TargetPlatform.iOS;
 
   ///Checks whether the device is a mobile OS or not
-  static bool get isMobileOS => isAndroid || isIOS;
+  static bool get isMobileOS => !isWeb && (isAndroid || isIOS);
 
   ///Checks whether the device is linux or not
-  static bool get isLinux => defaultTargetPlatform == TargetPlatform.linux;
+  static bool get isLinux =>
+      !isWeb && defaultTargetPlatform == TargetPlatform.linux;
 
   ///Checks whether the device is macOS or not
-  static bool get isMacOS => defaultTargetPlatform == TargetPlatform.macOS;
+  static bool get isMacOS =>
+      !isWeb && defaultTargetPlatform == TargetPlatform.macOS;
 
   ///Checks whether the device is windows or not
-  static bool get isWindows => defaultTargetPlatform == TargetPlatform.windows;
+  static bool get isWindows =>
+      !isWeb && defaultTargetPlatform == TargetPlatform.windows;
 
   ///Checks whether the device is fuchsia or not
-  static bool get isFuchsia => defaultTargetPlatform == TargetPlatform.fuchsia;
+  static bool get isFuchsia =>
+      !isWeb && defaultTargetPlatform == TargetPlatform.fuchsia;
 
   ///Checks whether desktop or not
   static bool get isDesktop =>
-      defaultTargetPlatform == TargetPlatform.linux ||
-      defaultTargetPlatform == TargetPlatform.macOS ||
-      defaultTargetPlatform == TargetPlatform.windows;
+      !isWeb &&
+      (defaultTargetPlatform == TargetPlatform.linux ||
+          defaultTargetPlatform == TargetPlatform.macOS ||
+          defaultTargetPlatform == TargetPlatform.windows);
 
   /// Get ascii from the hex value
   static String hexToAscii(String hex) {
