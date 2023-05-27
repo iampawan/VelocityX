@@ -92,10 +92,6 @@ extension VxContextExtensions on BuildContext {
   /// Returns if Orientation is landscape
   bool get isLandscape => orientation == Orientation.landscape;
 
-  /// Extension for getting NavigatorState. Use [navigator] now.
-  @Deprecated('Use [navigator] instead. It will be removed soon.')
-  NavigatorState? get nav => Navigator.of(this);
-
   /// Extension for getting Theme
   ThemeData get theme => Theme.of(this);
 
