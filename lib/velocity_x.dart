@@ -10,6 +10,7 @@ export 'src/extensions/context_ext.dart';
 export 'src/extensions/date_time_ext.dart';
 export 'src/extensions/iterable_ext.dart';
 export 'src/extensions/list_ext.dart';
+export 'src/extensions/misc_ext.dart';
 export 'src/extensions/num_ext.dart';
 export 'src/extensions/string_ext.dart';
 export 'src/extensions/web3_ext.dart';
