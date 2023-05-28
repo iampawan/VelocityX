@@ -323,8 +323,13 @@ extension VxWidgetsExtension on Widget {
           clipBehavior: clipBehavior,
           child: this);
 
+  /// Wrap widget with [ColoredBox]
   ColoredBox color(Color color, {Key? key}) =>
       ColoredBox(key: key, color: color, child: this);
+
+  /// Wrap widget with [VxFilter]
+  Widget foregroundColor(Color color, {Key? key}) =>
+      VxFilter(child: this).blend(color, BlendMode.color).make();
 
   ConstrainedBox constrainedBox(BoxConstraints constraints, {Key? key}) =>
       ConstrainedBox(key: key, constraints: constraints, child: this);

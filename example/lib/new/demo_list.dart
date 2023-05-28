@@ -86,6 +86,69 @@ class _DemoListState extends State<DemoList> {
               ),
               body: VStack([
                 ExpansionTile(
+                  title: "VxStat".text.make(),
+                  childrenPadding: Vx.m32,
+                  children: const [
+                    VxStat(
+                      label: 'Total Users',
+                      value: '1,000',
+                      icon: Icons.person,
+                      iconColor: Colors.red,
+                      labelColor: Vx.gray500,
+                      valueColor: Colors.black,
+                      labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                      valueStyle: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+
+                ExpansionTile(
+                    title: "VxOrdered & VxUnordered List".text.make(),
+                    childrenPadding: Vx.m16,
+                    children: [
+                      "Unordered List with Disc".text.start.make(),
+                      8.heightBox,
+                      const VxUnorderedList(
+                          ["Hello", "World", "Flutter", "VelocityX"]),
+                      "Ordered List with type Decimal".text.start.make(),
+                      8.heightBox,
+                      const VxOrderedList(
+                          ["Hello", "World", "Flutter", "VelocityX"]),
+                      "Ordered List with type Alphabetical lowercase"
+                          .text
+                          .start
+                          .make(),
+                      8.heightBox,
+                      const VxOrderedList(
+                          ["Hello", "World", "Flutter", "VelocityX"],
+                          type: VxListType.lowerAlpha),
+                      "Ordered List with type Alphabetical uppercase"
+                          .text
+                          .start
+                          .make(),
+                      8.heightBox,
+                      const VxOrderedList(
+                          ["Hello", "World", "Flutter", "VelocityX"],
+                          type: VxListType.upperAlpha),
+                      "Ordered List with type Roman lowercase"
+                          .text
+                          .start
+                          .make(),
+                      8.heightBox,
+                      const VxOrderedList(
+                          ["Hello", "World", "Flutter", "VelocityX"],
+                          type: VxListType.lowerRoman),
+                      "Ordered List with type Roman uppercase"
+                          .text
+                          .start
+                          .make(),
+                      8.heightBox,
+                      const VxOrderedList(
+                          ["Hello", "World", "Flutter", "VelocityX"],
+                          type: VxListType.upperRoman),
+                    ]),
+
+                ExpansionTile(
                   title: "VxFilter".text.make(),
                   childrenPadding: Vx.m32,
                   children: [

@@ -158,34 +158,3 @@ class VxTwoRow extends StatelessWidget {
     );
   }
 }
-
-///
-/// Can be used for two widgets and one icon together vertically .
-///
-class VelocityTwoIconColumn extends StatelessWidget {
-  final Widget top;
-  final Widget bottom;
-  final Widget icon;
-
-  const VelocityTwoIconColumn(
-      {super.key, required this.top, required this.bottom, required this.icon});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      key: key,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        top,
-        10.heightBox,
-        Row(
-          children: <Widget>[
-            icon,
-            10.widthBox,
-            bottom,
-          ],
-        ),
-      ],
-    );
-  }
-}
