@@ -201,9 +201,9 @@ extension VxListWidgetExtension on List<Widget> {
 
 extension VxListStringExtension on List<String> {
   ///
-  /// Extension for using [VxDiscList] directly with list of strings.
+  /// Extension for using [VxUnorderedList] directly with list of strings.
   ///
-  Widget discList({
+  Widget unorderedList({
     Key? key,
     Color color = Colors.black,
     double? fontSize,
@@ -212,7 +212,7 @@ extension VxListStringExtension on List<String> {
     bool? primary,
     bool shrinkWrap = true,
   }) =>
-      VxDiscList(
+      VxUnorderedList(
         this,
         key: key,
         padding: padding,
@@ -224,9 +224,9 @@ extension VxListStringExtension on List<String> {
       );
 
   ///
-  /// Extension for using [VxDecimalList] directly with list of strings.
+  /// Extension for using [VxOrderedList] directly with list of strings.
   ///
-  Widget decimalList({
+  Widget orderedList({
     Key? key,
     Color color = Colors.black,
     double? fontSize,
@@ -234,8 +234,9 @@ extension VxListStringExtension on List<String> {
     ScrollPhysics? physics,
     bool? primary,
     bool shrinkWrap = true,
+    VxListType type = VxListType.decimal,
   }) =>
-      VxDecimalList(
+      VxOrderedList(
         this,
         key: key,
         padding: padding,
@@ -244,6 +245,7 @@ extension VxListStringExtension on List<String> {
         physics: physics,
         primary: primary,
         shrinkWrap: shrinkWrap,
+        type: type,
       );
 }
 

@@ -1,5 +1,4 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:example/widgets/platform_widget.dart';
 import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -59,7 +58,18 @@ class DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: VStack([
-        const PlatformBar(),
+        const VxOrderedList(
+          [
+            "Hello",
+            "World",
+            "Flutter",
+            "Dart",
+            "VelocityX",
+          ],
+          type: VxListType.upperRoman,
+          color: Colors.blueAccent,
+        ),
+
         "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
         10.heightBox,
         DrawAndroid(),
@@ -287,11 +297,11 @@ class DemoState extends State<Demo> {
             .neumorphic(color: Colors.white, curve: VxCurve.flat)
             .make(),
         20.widthBox,
-        const VxDiscList(
+        const VxUnorderedList(
           ["Disc Item 1", "Disc Item 2"],
           primary: false,
         ),
-        const VxDecimalList(
+        const VxOrderedList(
           ["Decimal Item 1", "Decimal Item 2"],
           primary: false,
         ),

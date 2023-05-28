@@ -15,9 +15,9 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-/// [VxDiscList] is inspired from html where you can have a circular disk with an item (string)
-/// Use [VxDiscList] to have a list of strings with circular disk of boxes with a defined color.
-class VxDiscList extends StatelessWidget {
+/// [VxUnorderedList] is inspired from html where you can have a circular disk with an item (string)
+/// Use [VxUnorderedList] to have a list of strings with circular disk of boxes with a defined color.
+class VxUnorderedList extends StatelessWidget {
   /// List of strings
   final List<String> _items;
 
@@ -39,7 +39,10 @@ class VxDiscList extends StatelessWidget {
   /// Specify the [ScrollPhysics].
   final ScrollPhysics? physics;
 
-  const VxDiscList(
+  /// Specify the direction of the listview. Default is vertical.
+  final Axis direction;
+
+  const VxUnorderedList(
     this._items, {
     super.key,
     this.padding,
@@ -48,50 +51,56 @@ class VxDiscList extends StatelessWidget {
     this.primary = false,
     this.shrinkWrap = true,
     this.physics,
+    this.direction = Axis.vertical,
   });
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       key: key,
       shrinkWrap: shrinkWrap,
+      scrollDirection: direction,
       primary: primary,
       physics: physics,
+      itemCount: _items.length,
+      padding: padding,
       itemBuilder: (context, i) {
+        var children = [
+          VxBox()
+              .square(fontSize! / 2.8)
+              .color(color)
+              .roundedFull
+              .makeCentered(),
+          10.widthBox,
+          _items[i].selectableText.color(color).size(fontSize).make(),
+        ];
         return HStack(
-          [
-            VxBox()
-                .height(fontSize! / 2.8)
-                .width(fontSize! / 2.8)
-                .color(color)
-                .roundedFull
-                .makeCentered(),
-            10.widthBox,
-            Expanded(
-                child: _items[i]
-                    .selectableText
-                    .color(color)
-                    .size(fontSize)
-                    .make()),
-          ],
+          children,
           crossAlignment: CrossAxisAlignment.center,
         ).p8();
       },
-      itemCount: _items.length,
-      padding: padding,
     );
   }
 }
 
-/// [VxDecimalList] is inspired from html where you can have a numeric index with an item (string)
-/// Use [VxDecimalList] to have a list of strings with index.
-class VxDecimalList extends StatelessWidget {
-  /// List of strings
-  final List<String> _items;
+enum VxListType {
+  decimal,
+  upperAlpha,
+  lowerAlpha,
+  upperRoman,
+  lowerRoman,
+}
+
+class VxOrderedList extends StatelessWidget {
+  /// Specify the list of items
+  final List<String> items;
+
+  /// Specify the type of list. Default is decimal
+  final VxListType type;
 
   /// Add padding to the listview
   final EdgeInsetsGeometry? padding;
 
-  /// Specify color of the disc. Default is black
+  /// Specify color of the item. Default is black
   final Color color;
 
   /// Specify fontSize of the text. Default is 14. It also adjusts the disc size.
@@ -106,16 +115,20 @@ class VxDecimalList extends StatelessWidget {
   /// Specify the [ScrollPhysics].
   final ScrollPhysics? physics;
 
-  const VxDecimalList(
-    this._items, {
-    super.key,
-    this.padding,
-    this.color = Colors.black,
-    this.fontSize = 14.0,
-    this.primary = false,
-    this.shrinkWrap = true,
-    this.physics,
-  });
+  /// Specify the direction of the listview. Default is vertical.
+  final Axis direction;
+
+  const VxOrderedList(this.items,
+      {super.key,
+      this.type = VxListType.decimal,
+      this.padding,
+      this.color = Colors.black,
+      this.fontSize = 14.0,
+      this.primary = false,
+      this.shrinkWrap = true,
+      this.physics,
+      this.direction = Axis.vertical});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -123,23 +136,62 @@ class VxDecimalList extends StatelessWidget {
       shrinkWrap: shrinkWrap,
       primary: primary,
       physics: physics,
-      itemBuilder: (context, i) {
+      scrollDirection: direction,
+      padding: padding,
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        final formattedItem = _formatItem(index + 1);
         return HStack(
           [
-            (i + 1).text.color(color).size(fontSize).make(),
-            10.widthBox,
-            Expanded(
-                child: _items[i]
-                    .selectableText
-                    .color(color)
-                    .size(fontSize)
-                    .make()),
+            formattedItem.text.color(color).size(fontSize).make(),
+            8.widthBox,
+            item.selectableText.color(color).size(fontSize).make(),
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();
       },
-      itemCount: _items.length,
-      padding: padding,
     );
+  }
+
+  String _formatItem(int index) {
+    switch (type) {
+      case VxListType.decimal:
+        return '$index.';
+      case VxListType.upperAlpha:
+        return '${String.fromCharCode(65 + index - 1)}.';
+      case VxListType.lowerAlpha:
+        return '${String.fromCharCode(97 + index - 1)}.';
+      case VxListType.upperRoman:
+        return '${_toRomanNumeral(index)}.';
+      case VxListType.lowerRoman:
+        return '${_toRomanNumeral(index).toLowerCase()}.';
+      default:
+        return '$index.';
+    }
+  }
+
+  String _toRomanNumeral(int number) {
+    // Roman numeral conversion logic
+    // Implement the conversion algorithm according to your needs
+    // This is a simplified example
+    if (number == 1) return 'I';
+    if (number == 2) return 'II';
+    if (number == 3) return 'III';
+    if (number >= 1000) return 'M${_toRomanNumeral(number - 1000)}';
+    if (number >= 900) return 'CM${_toRomanNumeral(number - 900)}';
+    if (number >= 500) return 'D${_toRomanNumeral(number - 500)}';
+    if (number >= 400) return 'CD${_toRomanNumeral(number - 400)}';
+    if (number >= 100) return 'C${_toRomanNumeral(number - 100)}';
+    if (number >= 90) return 'XC${_toRomanNumeral(number - 90)}';
+    if (number >= 50) return 'L${_toRomanNumeral(number - 50)}';
+    if (number >= 40) return 'XL${_toRomanNumeral(number - 40)}';
+    if (number >= 10) return 'X${_toRomanNumeral(number - 10)}';
+    if (number >= 9) return 'IX${_toRomanNumeral(number - 9)}';
+    if (number >= 5) return 'V${_toRomanNumeral(number - 5)}';
+    if (number >= 4) return 'IV${_toRomanNumeral(number - 4)}';
+    if (number >= 1) return 'I${_toRomanNumeral(number - 1)}';
+
+    return '';
   }
 }
