@@ -19,7 +19,7 @@ class AnimatedBoxExampleState extends State<AnimatedBoxExample> {
   void initState() {
     super.initState();
 
-    Timer.periodic(5.seconds, (timer) {
+    Timer.periodic(2.seconds, (timer) {
       setState(() {});
     });
   }
@@ -43,7 +43,7 @@ class AnimatedBoxExampleState extends State<AnimatedBoxExample> {
     // Generate a random border radius.
     _radius = random.nextInt(100).toDouble();
     return VxAnimatedBox()
-        .seconds(sec: 5)
+        .seconds(sec: 2)
         .fastOutSlowIn
         .width(_width! + 50)
         .height(_height!)

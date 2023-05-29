@@ -6,6 +6,9 @@ import 'package:example/widgets/vx_shapes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../examples/animated_box_example.dart';
+import '../examples/timeline_example.dart';
+
 class DemoList extends StatefulWidget {
   const DemoList({super.key});
 
@@ -51,6 +54,7 @@ class _DemoListState extends State<DemoList> {
 
   @override
   Widget build(BuildContext context) {
+    Vx.isMobileOS ? Vx.log("Mobile") : Vx.log("Web");
     Vx.log("Logging using Vx");
     // Guard Example
     final _ = guard(() => x, "Guard - No value found");
@@ -270,6 +274,22 @@ class _DemoListState extends State<DemoList> {
                         ).setFilter(VxColorFilter.sepia).make(),
                       ],
                     ).h20(context)
+                  ],
+                ),
+
+                ExpansionTile(
+                  title: "VxTimeline".text.make(),
+                  childrenPadding: Vx.m32,
+                  children: const [
+                    TimelineExample(),
+                  ],
+                ),
+
+                ExpansionTile(
+                  title: "VxAnimatedBox".text.make(),
+                  childrenPadding: Vx.m32,
+                  children: const [
+                    AnimatedBoxExample(),
                   ],
                 ),
                 ExpansionTile(

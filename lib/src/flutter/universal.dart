@@ -1,5 +1,9 @@
 /*
-The VxUniversal widget is a versatile widget in Flutter that can be used for various purposes. It allows you to combine multiple Flutter widgets and apply different properties and behaviors to them using a single widget. The VxUniversal widget supports a wide range of properties and options, making it highly customizable.
+The VxUniversal widget is a versatile widget in Flutter that can be used for 
+various purposes. It allows you to combine multiple Flutter widgets and 
+apply different properties and behaviors to them using a single widget. 
+The VxUniversal widget supports a wide range of properties and options, 
+making it highly customizable.
 
 Here is a breakdown of the properties and their functionalities:
 
@@ -60,9 +64,7 @@ addCard: Wraps the child widget in a Card widget.
 elevation: Specifies the elevation of the Card widget.
 shadowColor: Specifies the shadow color of the Card widget.
 shape: Specifies the shape of the Card widget.
-
-
-
+and more....
 */
 
 import 'dart:ui';

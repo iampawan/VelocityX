@@ -10,6 +10,7 @@ class VxTimeline extends StatefulWidget {
   final Color? lineColor;
 
   final Color? backgroundColor;
+  final Color? trailingColor;
 
   final Color? headingColor;
 
@@ -24,6 +25,7 @@ class VxTimeline extends StatefulWidget {
       required this.timelineList,
       this.lineColor,
       this.backgroundColor,
+      this.trailingColor,
       this.headingColor,
       this.descriptionColor,
       this.onItemTap,
@@ -63,9 +65,11 @@ class VxTimelineState extends State<VxTimeline>
         return InkWell(
           onTap: () => widget.onItemTap!(widget.timelineList[index]),
           child: VxTimelineView(
-            lineColor:
-                widget.lineColor ?? Theme.of(context).colorScheme.secondary,
-            backgroundColor: widget.backgroundColor ?? Colors.white,
+            lineColor: widget.lineColor ?? Theme.of(context).primaryColor,
+            backgroundColor: widget.backgroundColor ??
+                Theme.of(context).scaffoldBackgroundColor,
+            trailingColor:
+                widget.trailingColor ?? Theme.of(context).primaryColor,
             model: widget.timelineList[index],
             firstElement: index == 0,
             lastElement: widget.timelineList.length == index + 1,

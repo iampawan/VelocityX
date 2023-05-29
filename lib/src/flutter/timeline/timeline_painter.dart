@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 class VxTimelinePainter extends CustomPainter {
   final Color lineColor;
   final Color backgroundColor;
+  final Color trailingColor;
   final bool firstElement;
   final bool lastElement;
   final Animation<double> controller;
@@ -25,6 +26,7 @@ class VxTimelinePainter extends CustomPainter {
   VxTimelinePainter(
       {required this.lineColor,
       required this.backgroundColor,
+      required this.trailingColor,
       this.firstElement = false,
       this.lastElement = false,
       required this.controller})
@@ -79,6 +81,7 @@ class VxTimelinePainter extends CustomPainter {
   @override
   bool shouldRepaint(VxTimelinePainter oldDelegate) {
     return oldDelegate.lineColor != lineColor ||
-        oldDelegate.backgroundColor != backgroundColor;
+        oldDelegate.backgroundColor != backgroundColor ||
+        oldDelegate.trailingColor != trailingColor;
   }
 }

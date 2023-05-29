@@ -21,8 +21,10 @@ import 'timeline_painter.dart';
 
 class VxTimelineView extends StatelessWidget {
   const VxTimelineView(
-      {super.key, required this.lineColor,
+      {super.key,
+      required this.lineColor,
       required this.backgroundColor,
+      required this.trailingColor,
       required this.model,
       this.firstElement = false,
       this.lastElement = false,
@@ -33,6 +35,7 @@ class VxTimelineView extends StatelessWidget {
       this.trailing});
   final Color lineColor;
   final Color backgroundColor;
+  final Color trailingColor;
   final VxTimelineModel model;
   final bool firstElement;
   final bool lastElement;
@@ -49,6 +52,7 @@ class VxTimelineView extends StatelessWidget {
         painter: VxTimelinePainter(
             lineColor: lineColor,
             backgroundColor: backgroundColor,
+            trailingColor: trailingColor,
             firstElement: firstElement,
             lastElement: lastElement,
             controller: controller!),
@@ -68,7 +72,6 @@ class VxTimelineView extends StatelessWidget {
                 ? "${model.heading.substring(0, 47)}..."
                 : model.heading,
             style: TextStyle(
-              fontSize: 14,
               color: headingColor ?? Colors.black,
             ),
           ),
@@ -80,9 +83,9 @@ class VxTimelineView extends StatelessWidget {
                 : model
                     .description, // To prevent overflowing of text to the next element, the text is truncated if greater than 75 characters
             style: TextStyle(
-              fontSize: 18,
               color: descriptionColor ?? Colors.black,
             ),
+            textScaleFactor: 1.25,
           ),
         )
       ],
@@ -110,7 +113,8 @@ class VxTimelineView extends StatelessWidget {
               else
                 Icon(
                   Icons.open_in_new,
-                  color: Theme.of(context).primaryColor,
+                  color: trailingColor,
+                  size: 20,
                 )
           ]),
     );
