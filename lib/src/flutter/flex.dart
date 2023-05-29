@@ -142,12 +142,16 @@ class VxInlineBlock extends Flex {
 /// )
 /// ```
 /// {@end-tool}
+
 class VStack extends StatelessWidget {
-  const VStack(this.children,
-      {super.key,
-      this.alignment = MainAxisAlignment.start,
-      this.crossAlignment = CrossAxisAlignment.start,
-      this.axisSize = MainAxisSize.min});
+  const VStack(
+    this.children, {
+    super.key,
+    this.alignment = MainAxisAlignment.start,
+    this.crossAlignment = CrossAxisAlignment.start,
+    this.axisSize = MainAxisSize.min,
+    this.spacing = 0.0,
+  });
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -155,8 +159,7 @@ class VStack extends StatelessWidget {
   /// How the children should be placed along the main axis.
   ///
   /// For example, [MainAxisAlignment.start], the default, places the children
-  /// at the start (i.e., the left for a [HStack] or the top for a [VStack]) of the
-  /// main axis.
+  /// at the start (i.e., the top for a [VStack]) of the main axis.
   final MainAxisAlignment? alignment;
 
   /// How the children should be placed along the cross axis.
@@ -177,15 +180,29 @@ class VStack extends StatelessWidget {
   /// value irrelevant to the final layout.
   final MainAxisSize? axisSize;
 
+  /// The spacing between each child widget in the stack.
+  final double? spacing;
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      key: key,
       mainAxisAlignment: alignment ?? MainAxisAlignment.start,
       crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.center,
-      mainAxisSize: axisSize ?? MainAxisSize.min,
-      children: children,
+      mainAxisSize: axisSize ?? MainAxisSize.max,
+      children: _addSpacingBetweenChildren(),
     );
+  }
+
+  List<Widget> _addSpacingBetweenChildren() {
+    List<Widget> spacedChildren = [];
+    final int totalChildren = children.length;
+    for (int i = 0; i < totalChildren; i++) {
+      spacedChildren.add(children[i]);
+      if (i != totalChildren - 1) {
+        spacedChildren.add(SizedBox(height: spacing));
+      }
+    }
+    return spacedChildren;
   }
 }
 
@@ -233,11 +250,14 @@ class VStack extends StatelessWidget {
 /// {@end-tool}
 ///
 class HStack extends StatelessWidget {
-  const HStack(this.children,
-      {super.key,
-      this.alignment = MainAxisAlignment.start,
-      this.crossAlignment = CrossAxisAlignment.center,
-      this.axisSize = MainAxisSize.min});
+  const HStack(
+    this.children, {
+    super.key,
+    this.alignment = MainAxisAlignment.start,
+    this.crossAlignment = CrossAxisAlignment.center,
+    this.axisSize = MainAxisSize.min,
+    this.spacing = 0.0,
+  });
 
   /// List of widgets in the stack.
   final List<Widget> children;
@@ -266,15 +286,30 @@ class HStack extends StatelessWidget {
   /// there will be no remaining free space to maximize or minimize, making this
   /// value irrelevant to the final layout.
   final MainAxisSize? axisSize;
+
+  /// The spacing between each child widget in the stack.
+  final double? spacing;
+
   @override
   Widget build(BuildContext context) {
     return Row(
-      key: key,
       mainAxisAlignment: alignment ?? MainAxisAlignment.start,
       crossAxisAlignment: crossAlignment ?? CrossAxisAlignment.center,
-      mainAxisSize: axisSize ?? MainAxisSize.min,
-      children: children,
+      mainAxisSize: axisSize ?? MainAxisSize.max,
+      children: _addSpacingBetweenChildren(),
     );
+  }
+
+  List<Widget> _addSpacingBetweenChildren() {
+    List<Widget> spacedChildren = [];
+    final int totalChildren = children.length;
+    for (int i = 0; i < totalChildren; i++) {
+      spacedChildren.add(children[i]);
+      if (i != totalChildren - 1) {
+        spacedChildren.add(SizedBox(width: spacing));
+      }
+    }
+    return spacedChildren;
   }
 }
 
