@@ -12,6 +12,7 @@
  */
 
 import 'dart:math' as math;
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
@@ -130,6 +131,40 @@ extension VxNumExtension on num {
         height: toDouble(),
         width: toDouble(),
       );
+
+  /// get file size for a number
+  String toFileSize() {
+    num size = this;
+    if (size < 1024) {
+      return '${size}B';
+    } else if (size >= 1024 && size < pow(1024, 2)) {
+      size = (size / 10.24).round();
+      return '${size / 100}KB';
+    } else if (size >= pow(1024, 2) && size < pow(1024, 3)) {
+      size = (size / (pow(1024, 2) * 0.01)).round();
+      return '${size / 100}MB';
+    } else if (size >= pow(1024, 3) && size < pow(1024, 4)) {
+      size = (size / (pow(1024, 3) * 0.01)).round();
+      return '${size / 100}GB';
+    }
+    return size.toString();
+  }
+
+  /// DateTime from microseconds
+  DateTime? fromMicrosecondsSinceEpoch({bool isUtc = false}) {
+    num n = this;
+    if (n is! int) n = n.toInt();
+    if (n.toString().length != 16) return null;
+    return DateTime.fromMicrosecondsSinceEpoch(n, isUtc: isUtc);
+  }
+
+  /// DateTime from milliseconds
+  DateTime? fromMillisecondsSinceEpoch({bool isUtc = false}) {
+    num n = this;
+    if (n is! int) n = n.toInt();
+    if (n.toString().length != 13) return null;
+    return DateTime.fromMillisecondsSinceEpoch(n, isUtc: isUtc);
+  }
 
   /// Get Text Widget for the String
   VxTextBuilder get text => VxTextBuilder(toString());

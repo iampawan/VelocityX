@@ -14,6 +14,46 @@ import 'widgets/draw_android.dart';
 void main() {
   Vx.setPathUrlStrategy();
 
+/*In this example, we define two functions: debouncedFunction and 
+  throttledFunction. 
+  We apply the debounce and throttle extension methods 
+  to these functions, respectively, with a delay of 2 seconds.
+  When we call debouncedFunction twice in quick succession, 
+  the function is not executed immediately. 
+  Instead, the delay time of 2 seconds is reset each time, 
+  and the function will only be executed after 2 seconds of inactivity.
+  On the other hand, when we call throttledFunction twice 
+  in quick succession, the function is executed immediately 
+  on the first call. However, the second call is ignored (throttled) 
+  because it occurs within the 2-second delay period. 
+  After the delay time of 2 seconds expires, subsequent calls to 
+  throttledFunction will execute the function immediately, 
+  resetting the delay time for each call. */
+
+  final debouncedFunction = () {
+    Vx.log("Debounced function executed");
+  }.debounce(const Duration(seconds: 2));
+
+  final throttledFunction = () {
+    Vx.log("Throttled function executed");
+  }.throttle(const Duration(seconds: 2));
+
+  // Simulating event triggers
+  debouncedFunction(); // Debounced function is not executed immediately
+  debouncedFunction(); // Debounced function is not executed immediately
+
+  throttledFunction(); // Throttled function is executed immediately
+  throttledFunction(); // Throttled function is ignored (throttled) within the delay time
+
+  // After 2 seconds...
+  // Output: Debounced function executed
+
+  // After another 2 seconds...
+  // Output: Throttled function executed
+
+  // After another 2 seconds...
+  // Output: Throttled function executed
+
   runApp(
     DevicePreview(
       enabled: true,
