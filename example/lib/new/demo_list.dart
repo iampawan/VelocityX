@@ -86,6 +86,80 @@ class _DemoListState extends State<DemoList> {
               ),
               body: VStack([
                 ExpansionTile(
+                  title: "VxFlip".text.make(),
+                  childrenPadding: Vx.m32,
+                  children: [
+                    VxFlip(
+                      front: Container(
+                        width: 200,
+                        height: 200,
+                        color: Colors.blue,
+                        child: const Center(
+                          child: Text(
+                            'Front',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      back: Container(
+                        width: 200,
+                        height: 200,
+                        color: Colors.red,
+                        child: const Center(
+                          child: Text(
+                            'Back',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      duration: const Duration(milliseconds: 500),
+                      touchFlip: true,
+                    )
+                  ],
+                ),
+                ExpansionTile(
+                  title: "VxUniversal".text.make(),
+                  childrenPadding: Vx.m32,
+                  children: [
+                    VxUniversal(
+                      color: Colors.blue,
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      borderRadius: BorderRadius.circular(10),
+                      shadowColor: Colors.black.withOpacity(0.3),
+                      onTap: () {
+                        Vx.log('Widget tapped!');
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          'Hello, VxUniversal!'.text.white.xl2.bold.make(),
+                          const SizedBox(height: 16),
+                          Container(
+                            width: 150,
+                            height: 150,
+                            color: Colors.yellow,
+                            child: Center(
+                              child: 'Child Widget'.text.xl2.bold.make(),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          'Tap Me!'.text.white.make(),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+
+                ExpansionTile(
                   title: "VxStat".text.make(),
                   childrenPadding: Vx.m32,
                   children: const [
