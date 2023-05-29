@@ -16,7 +16,7 @@ void main() {
 
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       // data: DevicePreviewData(
       //   deviceIdentifier: Devices.ios.iPad.toString(),
       //   isFrameVisible: true,
@@ -26,7 +26,15 @@ void main() {
         builder: (context, VxAppData data) {
           return MaterialApp(
             locale: DevicePreview.locale(context),
-            builder: DevicePreview.appBuilder,
+            builder: (context, child) {
+              Vx.log(context.screenWidth);
+              return VxAdaptive(
+                  designWidth: context.screenWidth,
+                  scaleType: VxAdaptiveScaleType.auto,
+                  builder: (context, scaled) {
+                    return DevicePreview.appBuilder(context, child);
+                  });
+            },
             theme: data.isDarkMode
                 ? ThemeData.dark(useMaterial3: true)
                 : ThemeData.light(useMaterial3: true),

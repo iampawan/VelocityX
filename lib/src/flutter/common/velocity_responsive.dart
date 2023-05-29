@@ -140,3 +140,153 @@ class VxSizeConfig {
 
   VxSizeConfig({this.xsmall, this.small, this.medium, this.large, this.xlarge});
 }
+
+/// A typedef representing a callback function used to build the UI based on the current screen adaptation settings.
+typedef VxAdaptiveChildBuilder = Widget Function(
+    BuildContext context, bool scaled);
+
+/// Defines the different scaling options for screen adaptation.
+enum VxAdaptiveScaleType {
+  none, // No scaling
+  auto, // Scale based on the screen's orientation and aspect ratio
+  width, // Scale based on the screen width
+}
+
+/// A widget that enables screen adaptation and scaling in Flutter applications.
+class VxAdaptive extends StatefulWidget {
+  /// Creates a `VxAdaptive` widget.
+  const VxAdaptive({
+    super.key,
+    required this.designWidth,
+    required this.builder,
+    this.scaleType = VxAdaptiveScaleType.auto,
+  });
+
+  /// The width (in pixels) used as the reference for screen adaptation.
+  final double designWidth;
+
+  /// The callback function used to build the UI based on the current screen adaptation settings.
+  final VxAdaptiveChildBuilder builder;
+
+  /// The scaling type to be used for screen adaptation. Defaults to `VxAdaptiveScaleType.auto`.
+  final VxAdaptiveScaleType scaleType;
+
+  @override
+  State<VxAdaptive> createState() => _VxAdaptiveState();
+}
+
+class _VxAdaptiveState extends State<VxAdaptive> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (View.of(context).physicalSize.isEmpty) {
+      // Fallback case when the view's size is not available
+      return VxAdaptiveScope._(
+        designWidth: widget.designWidth,
+        scaleType: widget.scaleType,
+        scaleRatio: 1,
+        child: const SizedBox(),
+      );
+    }
+
+    final Size sceneSize =
+        View.of(context).physicalSize / View.of(context).devicePixelRatio;
+    if (widget.scaleType == VxAdaptiveScaleType.none ||
+        (widget.scaleType == VxAdaptiveScaleType.auto &&
+            sceneSize.width >= sceneSize.height * 1.1)) {
+      // No scaling or scaling based on aspect ratio
+      return VxAdaptiveScope._(
+        designWidth: widget.designWidth,
+        scaleType: widget.scaleType,
+        scaleRatio: 1,
+        child: Builder(
+          builder: (BuildContext context) => widget.builder(context, false),
+        ),
+      );
+    }
+
+    final double scale = sceneSize.width / widget.designWidth;
+
+    // Apply scaling to the UI based on the scale factor
+    return FractionallySizedBox(
+      widthFactor: 1 / scale,
+      heightFactor: 1 / scale,
+      child: Transform.scale(
+        scale: scale,
+        child: VxAdaptiveScope._(
+          designWidth: widget.designWidth,
+          scaleType: widget.scaleType,
+          scaleRatio: scale,
+          child: widget.builder(context, true),
+        ),
+      ),
+    );
+  }
+}
+
+class VxAdaptiveScope extends InheritedWidget {
+  VxAdaptiveScope._({
+    required this.designWidth,
+    required this.scaleType,
+    required this.scaleRatio,
+    required Widget child,
+  }) : super(child: _MediaQueryDataProvider(child: child));
+
+  final double designWidth;
+  final VxAdaptiveScaleType scaleType;
+  final double scaleRatio;
+
+  static VxAdaptiveScope of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<VxAdaptiveScope>()!;
+
+  static VxAdaptiveScope? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<VxAdaptiveScope>();
+
+  @override
+  bool updateShouldNotify(covariant VxAdaptiveScope oldWidget) =>
+      oldWidget.designWidth != designWidth ||
+      oldWidget.scaleType != scaleType ||
+      oldWidget.scaleRatio != scaleRatio;
+}
+
+class _MediaQueryDataProvider extends StatelessWidget {
+  const _MediaQueryDataProvider({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final VxAdaptiveScope data = VxAdaptiveScope.of(context);
+    final MediaQueryData parent = context.mq;
+    return MediaQuery(
+      data: parent.copyWith(
+        size: parent.size / data.scaleRatio,
+        devicePixelRatio: parent.devicePixelRatio * data.scaleRatio,
+        padding: parent.padding / data.scaleRatio,
+        viewPadding: parent.viewPadding / data.scaleRatio,
+        viewInsets: parent.viewInsets / data.scaleRatio,
+        systemGestureInsets: parent.systemGestureInsets / data.scaleRatio,
+      ),
+      child: child,
+    );
+  }
+}
