@@ -1,3 +1,16 @@
+## [4.1.0] - May 29, 2023
+
+- [New] VxAdaptive widget for responsive screen adaption and scaling.
+- [New] VxFlip widget for flipping effect.
+- [New] VxStat widget for common stats view.
+- [New] New extension methods for context, color, duration, and function etc.
+- [New] debounce() and throttle() extension methods added along with .foregroundColor().
+- [New] More boolean for device and OS checks.
+- [Breaking] VxDiscList and VxDecimalList are now VxUnorderedList and VxOrderedList with more options.
+- VStack, HStack, VxTimeline, VxUniversal etc improved.
+- Demo updated.
+- Many Bug Fixes.
+
 ## [4.0.0] - May 22, 2023
 
 - [New] VxFilter to support filters on your widgets.

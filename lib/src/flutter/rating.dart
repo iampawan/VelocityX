@@ -51,7 +51,8 @@ class VxRating extends StatefulWidget {
   /// Use onRatingUpdate to get the selected value.
   final ValueChanged<String> onRatingUpdate;
 
-  const VxRating({super.key, 
+  const VxRating({
+    super.key,
     this.maxRating = 10.0,
     this.count = 5,
     this.value = 10.0,

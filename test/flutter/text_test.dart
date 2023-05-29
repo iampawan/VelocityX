@@ -51,8 +51,7 @@ void main() {
   });
 
   group("Group all text tests", () {
-    testWidgets('text used on String creates a Text Widget',
-        (tester) async {
+    testWidgets('text used on String creates a Text Widget', (tester) async {
       await tester.pumpWidget(
         getDirectionalityWidget(
           child: 'VelocityX'.text.make(),
@@ -65,8 +64,7 @@ void main() {
       );
     });
 
-    testWidgets('Text widget responds to Font Scale',
-        (tester) async {
+    testWidgets('Text widget responds to Font Scale', (tester) async {
       await tester.pumpWidget(
         getDirectionalityWidget(
           child: 'VelocityX'.text.xs.make(),
@@ -80,8 +78,7 @@ void main() {
       );
     });
 
-    testWidgets('Text widget responds to fontSize',
-        (tester) async {
+    testWidgets('Text widget responds to fontSize', (tester) async {
       await tester.pumpWidget(
         getDirectionalityWidget(
           child: "VelocityX".text.size(24).make(),
@@ -94,8 +91,7 @@ void main() {
       );
     });
 
-    testWidgets('Text widget responds to FontWeight',
-        (tester) async {
+    testWidgets('Text widget responds to FontWeight', (tester) async {
       await tester.pumpWidget(
         getDirectionalityWidget(
           child: 'VelocityX'.text.medium.make(),
@@ -112,8 +108,7 @@ void main() {
       );
     });
 
-    testWidgets('Text widget responds to FontStyle',
-        (tester) async {
+    testWidgets('Text widget responds to FontStyle', (tester) async {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.italic.make()));
 
@@ -123,8 +118,7 @@ void main() {
       );
     });
 
-    testWidgets('Text widget responds to alignment',
-        (tester) async {
+    testWidgets('Text widget responds to alignment', (tester) async {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.start.make()));
 
@@ -132,8 +126,7 @@ void main() {
           TextAlign.start);
     });
 
-    testWidgets('Text widget responds to letter spacing',
-        (tester) async {
+    testWidgets('Text widget responds to letter spacing', (tester) async {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.tightest.make()));
 
@@ -158,8 +151,7 @@ void main() {
           4.0);
     });
 
-    testWidgets('Text widget responds to TextDecoration',
-        (tester) async {
+    testWidgets('Text widget responds to TextDecoration', (tester) async {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.underline.make()));
 
@@ -171,8 +163,7 @@ void main() {
           TextDecoration.underline);
     });
 
-    testWidgets('Text widget responds to line height',
-        (tester) async {
+    testWidgets('Text widget responds to line height', (tester) async {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.heightSnug.make()));
 
@@ -182,8 +173,7 @@ void main() {
           0.875);
     });
 
-    testWidgets('Text widget responds to text utilities',
-        (tester) async {
+    testWidgets('Text widget responds to text utilities', (tester) async {
       await tester.pumpWidget(
           getDirectionalityWidget(child: 'VelocityX'.text.uppercase.make()));
 

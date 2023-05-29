@@ -34,7 +34,8 @@ class VxBadge extends StatelessWidget {
   /// To provide an optional widget like an Icon
   final Widget? optionalWidget;
 
-  const VxBadge({super.key, 
+  const VxBadge({
+    super.key,
     required this.child,
     this.type = VxBadgeType.round,
     this.color,

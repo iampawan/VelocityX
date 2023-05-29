@@ -71,7 +71,7 @@ class VxPinView extends StatefulWidget {
     this.onEditingComplete,
     this.onSubmitted,
     this.focusNode,
-  })  : assert(count > 0);
+  }) : assert(count > 0);
 
   @override
   VxPinViewState createState() => VxPinViewState();

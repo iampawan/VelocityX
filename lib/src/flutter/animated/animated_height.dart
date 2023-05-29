@@ -14,7 +14,8 @@ class VxAnimatedHeightView<T extends Widget> extends StatefulWidget {
   final int? currentPageIndex;
 
   const VxAnimatedHeightView(
-      {super.key, required this.pageViewChild,
+      {super.key,
+      required this.pageViewChild,
       required this.computeAspectRadio,
       this.notifyScroll,
       required this.itemCount,
