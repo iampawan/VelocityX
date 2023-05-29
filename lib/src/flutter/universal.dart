@@ -1,3 +1,70 @@
+/*
+The VxUniversal widget is a versatile widget in Flutter that can be used for various purposes. It allows you to combine multiple Flutter widgets and apply different properties and behaviors to them using a single widget. The VxUniversal widget supports a wide range of properties and options, making it highly customizable.
+
+Here is a breakdown of the properties and their functionalities:
+
+Common Properties:
+
+key: A unique identifier for the widget.
+visible: Controls the visibility of the widget.
+constraints: Specifies the constraints for the widget's size.
+borderRadius: Specifies the border radius for clipping the widget.
+color: Sets the background color of the widget.
+alignment: Aligns the child widget within its parent.
+child: The main child widget of the VxUniversal.
+padding: Adds padding around the child widget.
+margin: Adds margin around the widget.
+decoration: Adds decoration to the widget.
+width: Specifies the width of the widget.
+height: Specifies the height of the widget.
+onTap: Callback function triggered when the widget is tapped.
+onDoubleTap: Callback function triggered when the widget is double-tapped.
+onLongPress: Callback function triggered when the widget is long-pressed.
+
+Layout Properties:
+
+isWrap: Wraps the child widgets in a Wrap widget.
+wrapAlignment: Specifies the alignment of wrapped child widgets in a Wrap.
+wrapSpacing: Specifies the spacing between wrapped child widgets in a Wrap.
+runAlignment: Specifies the alignment of the run of wrapped child widgets in a Wrap.
+runSpacing: Specifies the spacing between runs of wrapped child widgets in a Wrap.
+wrapCrossAlignment: Specifies the cross-axis alignment of wrapped child widgets in a Wrap.
+flex: Specifies the flex value for the widget within a Flex widget.
+expanded: Adds an Expanded widget around the child.
+mainAxisAlignment: Aligns the child widgets horizontally within a Flex.
+crossAxisAlignment: Aligns the child widgets vertically within a Flex.
+direction: Specifies the direction of the child widgets within a Flex.
+textBaseline: Specifies the text baseline within a Flex.
+verticalDirection: Specifies the vertical direction of the child widgets within a Flex.
+textDirection: Specifies the text direction within a Flex.
+mainAxisSize: Specifies the main axis size within a Flex.
+
+Clip Properties:
+
+clipBehavior: Controls the clipping behavior of the child widget.
+isOval: Clips the child widget in an oval shape using ClipOval.
+isClipRRect: Clips the child widget with rounded corners using ClipRRect.
+isClipRect: Clips the child widget with a rectangular shape using ClipRect.
+clipper: Provides a custom clipper for clipping the child widget.
+Scrollable Properties:
+useSingleChildScrollView: Wraps the child widget with a SingleChildScrollView.
+noScrollBehavior: Removes the default scroll shadows of SingleChildScrollView.
+physics: Specifies the physics for the scrolling behavior.
+scrollController: Specifies a custom scroll controller.
+scrollDirection: Specifies the direction of scrolling.
+reverse: Reverses the scrolling direction.
+
+Other Properties:
+
+addCard: Wraps the child widget in a Card widget.
+elevation: Specifies the elevation of the Card widget.
+shadowColor: Specifies the shadow color of the Card widget.
+shape: Specifies the shape of the Card widget.
+
+
+
+*/
+
 import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
