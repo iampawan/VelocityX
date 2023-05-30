@@ -28,7 +28,7 @@ extension VxGlobalKeyExtension on GlobalKey {
 
 Map<int, bool> _vxfuncThrottle = {};
 
-extension VxFutureFunctioExtensionn on Future Function() {
+extension VxFutureFunctionExtension on Future Function() {
   /// Throttle function
   /// When an event is triggered, the target operation is executed immediately, and then the event is only responded to after the asynchronous method completes execution.
   Function throttle() {
