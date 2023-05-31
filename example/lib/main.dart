@@ -69,8 +69,8 @@ void main() {
             builder: (context, child) {
               Vx.log(context.screenWidth);
               return VxAdaptive(
-                  designWidth: context.screenWidth,
-                  scaleType: VxAdaptiveScaleType.auto,
+                  designWidth: context.isMobile ? context.screenWidth : 800,
+                  scaleType: VxAdaptiveScaleType.width,
                   builder: (context, scaled) {
                     return DevicePreview.appBuilder(context, child);
                   });

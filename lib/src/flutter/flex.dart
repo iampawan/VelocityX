@@ -41,18 +41,17 @@ class VxBlock extends Flex {
   /// any. If there is no ambient directionality, and a text direction is going
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
-  const VxBlock({
-    super.key,
-    super.mainAxisAlignment,
-    super.textDirection,
-    super.verticalDirection,
-    super.textBaseline,
-    super.children,
-  }) : super(
-          direction: Axis.vertical,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-        );
+  // ignore: prefer_const_constructors_in_immutables
+  VxBlock(
+      {super.key,
+      super.mainAxisAlignment,
+      super.textDirection,
+      super.verticalDirection,
+      super.textBaseline,
+      super.children,
+      super.direction = Axis.vertical,
+      super.mainAxisSize = MainAxisSize.min,
+      super.crossAxisAlignment = CrossAxisAlignment.stretch});
 }
 
 class VxInlineBlock extends Flex {
@@ -64,18 +63,17 @@ class VxInlineBlock extends Flex {
   /// any. If there is no ambient directionality, and a text direction is going
   /// to be necessary to disambiguate `start` or `end` values for the
   /// [crossAxisAlignment], the [textDirection] must not be null.
-  const VxInlineBlock({
-    super.key,
-    super.textDirection,
-    super.verticalDirection,
-    super.textBaseline,
-    super.children,
-  }) : super(
-          direction: Axis.horizontal,
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-        );
+  // ignore: prefer_const_constructors_in_immutables
+  VxInlineBlock(
+      {super.key,
+      super.textDirection,
+      super.verticalDirection,
+      super.textBaseline,
+      super.children,
+      super.direction = Axis.horizontal,
+      super.mainAxisSize = MainAxisSize.max,
+      super.mainAxisAlignment = MainAxisAlignment.start,
+      super.crossAxisAlignment = CrossAxisAlignment.start});
 }
 
 /// A widget that displays its children in a vertical array.

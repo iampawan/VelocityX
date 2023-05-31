@@ -561,11 +561,12 @@ class VxUniversal extends StatelessWidget {
     if (decoration == null) {
       return padding;
     }
-    final EdgeInsetsGeometry decorationPadding = decoration!.padding;
+    // ignore: unnecessary_nullable_for_final_variable_declarations
+    final EdgeInsetsGeometry? decorationPadding = decoration!.padding;
     if (padding == null) {
       return decorationPadding;
     }
-    return padding!.add(decorationPadding);
+    return padding!.add(decorationPadding!);
   }
 
   @override

@@ -14,10 +14,8 @@ extension VxGlobalKeyExtension on GlobalKey {
       {ui.ImageByteFormat? format, double? pixelRatio}) async {
     final RenderRepaintBoundary boundary =
         currentContext!.findRenderObject() as RenderRepaintBoundary;
-    final ui.Image image = await boundary.toImage(
-        pixelRatio: pixelRatio ??
-            WidgetsBinding
-                .instance.platformDispatcher.implicitView!.devicePixelRatio);
+    final ui.Image image =
+        await boundary.toImage(pixelRatio: pixelRatio ?? 1.0);
     final ByteData? byteData =
         await image.toByteData(format: format ?? ui.ImageByteFormat.rawRgba);
 
