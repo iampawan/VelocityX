@@ -367,7 +367,7 @@ class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
               distortionValue = Curves.easeOut.transform(distortionRatio);
             }
             final double height = widget.height ??
-                MediaQuery.of(context).size.width * (1 / widget.aspectRatio);
+                MediaQuery.sizeOf(context).width * (1 / widget.aspectRatio);
 
             if (widget.scrollDirection == Axis.horizontal) {
               return Center(
@@ -376,8 +376,7 @@ class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
             } else {
               return Center(
                   child: SizedBox(
-                      width:
-                          distortionValue * MediaQuery.of(context).size.width,
+                      width: distortionValue * MediaQuery.sizeOf(context).width,
                       child: child));
             }
           },
