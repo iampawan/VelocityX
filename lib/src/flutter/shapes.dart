@@ -77,8 +77,8 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
     }
 
     return AnimatedContainer(
-      height: radius ?? MediaQuery.of(context).size.shortestSide / 2,
-      width: radius ?? MediaQuery.of(context).size.shortestSide / 2,
+      height: radius ?? MediaQuery.sizeOf(context).shortestSide / 2,
+      width: radius ?? MediaQuery.sizeOf(context).shortestSide / 2,
       duration: kThemeChangeDuration,
       decoration: customDecoration ??
           BoxDecoration(
@@ -165,14 +165,14 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
     }
 
     return AnimatedContainer(
-      height: height ?? MediaQuery.of(context).size.shortestSide / 4,
-      width: width ?? MediaQuery.of(context).size.shortestSide,
+      height: height ?? MediaQuery.sizeOf(context).shortestSide / 4,
+      width: width ?? MediaQuery.sizeOf(context).shortestSide,
       duration: kThemeChangeDuration,
       decoration: customDecoration ??
           BoxDecoration(
               border: border,
               borderRadius: BorderRadius.circular(
-                  MediaQuery.of(context).size.shortestSide / 2),
+                  MediaQuery.sizeOf(context).shortestSide / 2),
               color: effectiveBackgroundColor,
               shape: BoxShape.rectangle,
               gradient: gradient,
@@ -239,8 +239,8 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
 
   @override
   Widget build(BuildContext context) {
-    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
-    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.sizeOf(context).shortestSide;
+    final height0 = height ?? MediaQuery.sizeOf(context).shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -326,8 +326,8 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
 
   @override
   Widget build(BuildContext context) {
-    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
-    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.sizeOf(context).shortestSide;
+    final height0 = height ?? MediaQuery.sizeOf(context).shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -415,8 +415,8 @@ class VxContinuousRectangle extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
-    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.sizeOf(context).shortestSide;
+    final height0 = height ?? MediaQuery.sizeOf(context).shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -483,8 +483,8 @@ class VxTriangle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width0 = width ?? MediaQuery.of(context).size.shortestSide / 2;
-    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 2;
+    final width0 = width ?? MediaQuery.sizeOf(context).shortestSide / 2;
+    final height0 = height ?? MediaQuery.sizeOf(context).shortestSide / 2;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
@@ -548,8 +548,8 @@ class VxTicket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width0 = width ?? MediaQuery.of(context).size.shortestSide;
-    final height0 = height ?? MediaQuery.of(context).size.shortestSide / 4;
+    final width0 = width ?? MediaQuery.sizeOf(context).shortestSide;
+    final height0 = height ?? MediaQuery.sizeOf(context).shortestSide / 4;
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;

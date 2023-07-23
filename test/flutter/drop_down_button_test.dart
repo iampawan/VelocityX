@@ -26,8 +26,8 @@ void main() {
           child: ['HELLO', 'HEY', 'HOLA']
               .textDropDown(
                 selectedValue: value,
-                onChanged: (value) {
-                  value = value;
+                onChanged: (cvalue) {
+                  value = cvalue;
                 },
               )
               .make()
@@ -38,11 +38,13 @@ void main() {
 
     // Expects one widget with Text HEY
     expect(find.text('HEY'), findsOneWidget);
-
+    await tester.pumpAndSettle(const Duration(seconds: 1));
     // Tap at the HEY to open drop down
     await tester.tap(find.text('HEY'));
     await tester.pumpAndSettle(const Duration(seconds: 1));
 
+    // Expects one widget with Text HEY
+    expect(find.text('HELLO'), findsOneWidget);
     // Select the value by tapping HELLO
     await tester.tap(find.text('HELLO').last);
     await tester.pumpAndSettle();

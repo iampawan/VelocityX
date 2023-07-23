@@ -52,19 +52,19 @@ extension VxContextExtensions on BuildContext {
   MediaQueryData get mq => MediaQuery.of(this);
 
   /// Get MediaQuery Screen Size
-  Size get screenSize => mq.size;
+  Size get screenSize => MediaQuery.sizeOf(this);
 
   /// Get MediaQuery Screen Density
-  double get screenDensity => mq.devicePixelRatio;
+  double get screenDensity => MediaQuery.devicePixelRatioOf(this);
 
   /// Get MediaQuery Screen Padding
-  EdgeInsets get screenPadding => mq.padding;
+  EdgeInsets get screenPadding => MediaQuery.paddingOf(this);
 
   /// Get MediaQuery Screen Width
-  double get screenWidth => mq.size.width;
+  double get screenWidth => screenSize.width;
 
   /// Get MediaQuery Screen Height
-  double get screenHeight => mq.size.height;
+  double get screenHeight => screenSize.height;
 
   /// Get MediaQuery Screen Width in percentage
   double get percentWidth => screenWidth / 100;
@@ -73,10 +73,10 @@ extension VxContextExtensions on BuildContext {
   double get percentHeight => screenHeight / 100;
 
   /// Get MediaQuery safearea padding horizontally
-  double get _safeAreaHorizontal => mq.padding.left + mq.padding.right;
+  double get _safeAreaHorizontal => screenPadding.left + screenPadding.right;
 
   /// Get MediaQuery safearea padding vertically
-  double get _safeAreaVertical => mq.padding.top + mq.padding.bottom;
+  double get _safeAreaVertical => screenPadding.top + screenPadding.bottom;
 
   /// Get MediaQuery Screen Width in percentage including safe area calculation.
   double get safePercentWidth => (screenWidth - _safeAreaHorizontal) / 100;
@@ -123,7 +123,7 @@ extension VxContextExtensions on BuildContext {
   FlutterView? get maybeView => View.maybeOf(this);
 
   ///Returns Orientation using [MediaQuery]
-  Orientation get orientation => mq.orientation;
+  Orientation get orientation => MediaQuery.orientationOf(this);
 
   /// Returns if Orientation is landscape
   bool get isLandscape => orientation == Orientation.landscape;

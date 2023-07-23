@@ -1,3 +1,10 @@
+## [4.1.1] - July 05, 2023
+- Optimized rebuild for MediaQuery property dependent widgets
+- Replaced MediaQuery.of(context).size with MediaQuery.sizeOf(context)
+- Replaced MediaQuery.of(context).viewInsets with MediaQuery.viewInsetsOf(context)
+- Fix dropdown button test
+- Replace properties of mediaquery data of context extension
+
 ## [4.1.0] - May 29, 2023
 
 - [New] VxAdaptive widget for responsive screen adaption and scaling.
