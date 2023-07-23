@@ -35,7 +35,7 @@ mixin VxBottomSheet {
         return SafeArea(
           bottom: isSafeAreaFromBottom,
           child: AnimatedPadding(
-            padding: MediaQuery.of(context).viewInsets,
+            padding: MediaQuery.viewInsetsOf(context),
             duration: const Duration(milliseconds: 100),
             child: _VxBottomSheetOptions(
               list: option,
@@ -85,7 +85,7 @@ mixin VxBottomSheet {
         return SafeArea(
           bottom: isSafeAreaFromBottom,
           child: AnimatedPadding(
-            padding: MediaQuery.of(context).viewInsets,
+            padding: MediaQuery.viewInsetsOf(context),
             duration: const Duration(milliseconds: 100),
             child: _VxBottomSheetView(
               maxHeight: maxHeight,
@@ -142,8 +142,8 @@ class _VxBottomSheetOptions extends StatelessWidget {
 
     return Container(
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * (maxHeight ?? 0.8),
-        minHeight: MediaQuery.of(context).size.height * (minHeight ?? 0.1),
+        maxHeight: MediaQuery.sizeOf(context).height * (maxHeight ?? 0.8),
+        minHeight: MediaQuery.sizeOf(context).height * (minHeight ?? 0.1),
       ),
       child: SingleChildScrollView(
         child: Column(children: children),
@@ -194,8 +194,8 @@ class _VxBottomSheetView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * (maxHeight ?? 0.8),
-        minHeight: MediaQuery.of(context).size.height * (minHeight ?? 0.1),
+        maxHeight: MediaQuery.sizeOf(context).height * (maxHeight ?? 0.8),
+        minHeight: MediaQuery.sizeOf(context).height * (minHeight ?? 0.1),
       ),
       child: IntrinsicHeight(child: child),
     );

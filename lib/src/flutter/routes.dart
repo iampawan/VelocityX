@@ -48,7 +48,7 @@ extension VxRoutesWidgetsExtension on Widget {
   }
 
   Tween<RelativeRect> _createTween(BuildContext context) {
-    final windowSize = MediaQuery.of(context).size;
+    final windowSize = MediaQuery.sizeOf(context);
     final box = context.findRenderObject() as RenderBox;
     final rect = box.localToGlobal(Offset.zero) & box.size;
     final relativeRect = RelativeRect.fromSize(rect, windowSize);

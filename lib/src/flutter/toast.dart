@@ -188,7 +188,7 @@ class _VxToastViewState extends State<_VxToastView>
       opacity: _controller!,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 40),
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.sizeOf(context).width,
         alignment: Alignment.center,
         child: _buildToastWidget(),
       ),
@@ -267,11 +267,11 @@ class _VxToastViewState extends State<_VxToastView>
   dynamic buildToastPosition(context) {
     dynamic backResult;
     if (widget.toastPosition == VxToastPosition.top) {
-      backResult = MediaQuery.of(context).size.height * 1 / 6;
+      backResult = MediaQuery.sizeOf(context).height * 1 / 6;
     } else if (widget.toastPosition == VxToastPosition.center) {
-      backResult = MediaQuery.of(context).size.height * 1 / 2;
+      backResult = MediaQuery.sizeOf(context).height * 1 / 2;
     } else {
-      backResult = MediaQuery.of(context).size.height * 0.9;
+      backResult = MediaQuery.sizeOf(context).height * 0.9;
     }
     return backResult;
   }
