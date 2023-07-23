@@ -11,6 +11,8 @@
  * limitations under the License.
  */
 
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart' show CupertinoTheme, CupertinoThemeData;
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -117,12 +119,11 @@ extension VxContextExtensions on BuildContext {
       heightTransformer(dividedBy: dividedBy, reducedBy: reducedByH) /
       widthTransformer(dividedBy: dividedBy, reducedBy: reducedByW);
 
-  /// Will be enabled later in future versions when dart sdk >= 3.0.0
-  // /// Returns the [FlutterView] that the provided `context` will render into.
-  // FlutterView get view => VxView.of(this);
+  /// Returns the [FlutterView] that the provided `context` will render into.
+  FlutterView get view => View.of(this);
 
-  // /// Returns the [FlutterView] that the provided `context` will render into.
-  // FlutterView? get maybeView => View.maybeOf(this);
+  /// Returns the [FlutterView] that the provided `context` will render into.
+  FlutterView? get maybeView => View.maybeOf(this);
 
   ///Returns Orientation using [MediaQuery]
   Orientation get orientation => mq.orientation;

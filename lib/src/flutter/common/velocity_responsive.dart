@@ -198,9 +198,7 @@ class _VxAdaptiveState extends State<VxAdaptive> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final phySize = Size(context.screenWidth * context.devicePixelRatio,
-        context.screenHeight * context.mq.devicePixelRatio);
-    if (phySize.isEmpty) {
+    if (context.view.physicalSize.isEmpty) {
       // Fallback case when the view's size is not available
       return VxAdaptiveScope._(
         designWidth: widget.designWidth,
@@ -210,7 +208,8 @@ class _VxAdaptiveState extends State<VxAdaptive> with WidgetsBindingObserver {
       );
     }
 
-    final Size sceneSize = phySize / context.devicePixelRatio;
+    final Size sceneSize =
+        context.view.physicalSize / context.view.devicePixelRatio;
     if (widget.scaleType == VxAdaptiveScaleType.none ||
         (widget.scaleType == VxAdaptiveScaleType.auto &&
             sceneSize.width >= sceneSize.height * 1.1)) {
