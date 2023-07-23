@@ -42,6 +42,21 @@ extension VxContextExtensions on BuildContext {
   /// Check if the window size is of Mobile Type as per Material Design Guidlines.
   bool get isMobile => mdWindowSize == VxWindowSize.xsmall;
 
+  /// Check if the window size is xsmall.
+  bool get isXSmallSize => screenWidth < 600;
+
+  /// Check if the window size is small.
+  bool get isSmallSize => screenWidth >= 600 && screenWidth < 1024;
+
+  /// Check if the window size is medium.
+  bool get isMediumSize => screenWidth >= 1024 && screenWidth < 1440;
+
+  /// Check if the window size is large.
+  bool get isLargeSize => screenWidth >= 1440 && screenWidth < 1920;
+
+  /// Check if the window size is xlarge.
+  bool get isXLargeSize => screenWidth >= 1920;
+
   /// Returns if it's a handset as per Material Design Guidlines.
   bool get isMobileTypeHandset => mdDeviceType == MobileDeviceType.handset;
 
@@ -234,22 +249,6 @@ extension VxContextExtensions on BuildContext {
   /// It is used for routing in flutter
   ///
   NavigatorState? get vxnavigator => Navigator.of(this);
-
-  ///
-  /// Pushes the built widget to the screen using the material fade in animation
-  ///
-  /// Will return a value when the built widget calls [pop]
-  ///
-  Future<T?> push<T>(WidgetBuilder builder) async {
-    return await vxnavigator!.push<T>(MaterialPageRoute(builder: builder));
-  }
-
-  ///
-  /// Removes the top most Widget in the navigator's stack
-  ///
-  /// Will return the [result] to the caller of [push]
-  ///
-  void pop<T>([T? result]) => vxnavigator!.pop<T>(result);
 
   ///
   /// Pushes the built widget to the screen using the material fade in animation
