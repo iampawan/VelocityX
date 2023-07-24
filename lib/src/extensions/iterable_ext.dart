@@ -258,17 +258,6 @@ extension IterableBasics2<T> on Iterable<T> {
     }
   }
 
-  /// Returns the [index]th element. If the index is out of bounds it will
-  /// return [null].
-  ///
-  /// Example:
-  /// ```dart
-  /// ['a', 'b'].elementAtOrNull(2); // null
-  /// ```
-  T elementAtOrNull(int index) {
-    return elementAtOrElse(index, () => null as T);
-  }
-
   /// Returns the first element. If there is no first element the [orElse]
   /// supplier function is called to provide a value.
   ///
