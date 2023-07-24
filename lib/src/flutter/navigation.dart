@@ -10,12 +10,22 @@ class VxAdaptiveNavigation extends StatelessWidget {
     required this.selectedIndex,
     required this.onDestinationSelected,
     required this.child,
+    this.backgroundColor,
+    this.elevation,
+    this.useIndicator,
+    this.indicatorColor,
+    this.indicatorShape,
   });
 
   final List<NavigationDestination> destinations;
   final int selectedIndex;
   final void Function(int index) onDestinationSelected;
   final Widget child;
+  final Color? backgroundColor;
+  final double? elevation;
+  final bool? useIndicator;
+  final Color? indicatorColor;
+  final ShapeBorder? indicatorShape;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +37,12 @@ class VxAdaptiveNavigation extends StatelessWidget {
             body: Row(
               children: [
                 NavigationRail(
+                  key: key,
+                  backgroundColor: backgroundColor,
+                  indicatorShape: indicatorShape,
+                  elevation: elevation,
+                  useIndicator: useIndicator,
+                  indicatorColor: indicatorColor,
                   extended: dimens.maxWidth >= 800,
                   minExtendedWidth: 180,
                   destinations: destinations
@@ -47,6 +63,11 @@ class VxAdaptiveNavigation extends StatelessWidget {
         return Scaffold(
           body: child,
           bottomNavigationBar: NavigationBar(
+            key: key,
+            backgroundColor: backgroundColor,
+            indicatorColor: indicatorColor,
+            indicatorShape: indicatorShape,
+            elevation: elevation,
             destinations: destinations,
             selectedIndex: selectedIndex,
             onDestinationSelected: onDestinationSelected,

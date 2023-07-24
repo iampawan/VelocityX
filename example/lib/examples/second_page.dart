@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class SecondPage extends StatelessWidget {
   final String imageAssetName;
@@ -13,7 +12,7 @@ class SecondPage extends StatelessWidget {
       body: Center(
         child: Material(
           child: InkWell(
-            onTap: () => context.pop(),
+            onTap: () => Navigator.pop(context),
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.asset(

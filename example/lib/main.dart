@@ -56,7 +56,7 @@ void main() {
 
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       // data: DevicePreviewData(
       //   deviceIdentifier: Devices.ios.iPad.toString(),
       //   isFrameVisible: true,
@@ -69,7 +69,7 @@ void main() {
             builder: (context, child) {
               Vx.log(context.screenWidth);
               return VxAdaptive(
-                  designWidth: context.isMobile ? context.screenWidth : 800,
+                  designWidth: context.isMobile ? context.screenWidth : 1200,
                   scaleType: VxAdaptiveScaleType.width,
                   builder: (context, scaled) {
                     return DevicePreview.appBuilder(context, child);
@@ -119,7 +119,8 @@ class DemoState extends State<Demo> {
             type: VxListType.upperRoman,
             color: Colors.blueAccent,
             direction: Axis.horizontal,
-          ).h(50),
+            shrinkWrap: false,
+          ).wh(300, 50),
 
           "Vx Demo".text.white.makeCentered().circle(radius: 100).shadow4xl,
           10.heightBox,

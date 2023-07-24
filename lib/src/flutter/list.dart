@@ -42,6 +42,9 @@ class VxUnorderedList extends StatelessWidget {
   /// Specify the direction of the listview. Default is vertical.
   final Axis direction;
 
+  /// If the children is wrapped with expanded widget. Default is false.
+  final bool isExpandedChild;
+
   const VxUnorderedList(
     this._items, {
     super.key,
@@ -52,6 +55,7 @@ class VxUnorderedList extends StatelessWidget {
     this.shrinkWrap = true,
     this.physics,
     this.direction = Axis.vertical,
+    this.isExpandedChild = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -64,6 +68,12 @@ class VxUnorderedList extends StatelessWidget {
       itemCount: _items.length,
       padding: padding,
       itemBuilder: (context, i) {
+        final mainChild = _items[i]
+            .selectableText
+            .color(color)
+            .size(fontSize)
+            .make()
+            .expand();
         var children = [
           VxBox()
               .square(fontSize! / 2.8)
@@ -71,7 +81,7 @@ class VxUnorderedList extends StatelessWidget {
               .roundedFull
               .makeCentered(),
           10.widthBox,
-          _items[i].selectableText.color(color).size(fontSize).make(),
+          if (isExpandedChild) mainChild.expand() else mainChild,
         ];
         return HStack(
           children,
@@ -118,16 +128,22 @@ class VxOrderedList extends StatelessWidget {
   /// Specify the direction of the listview. Default is vertical.
   final Axis direction;
 
-  const VxOrderedList(this.items,
-      {super.key,
-      this.type = VxListType.decimal,
-      this.padding,
-      this.color = Colors.black,
-      this.fontSize = 14.0,
-      this.primary = false,
-      this.shrinkWrap = true,
-      this.physics,
-      this.direction = Axis.vertical});
+  /// If the children is wrapped with expanded widget. Default is false.
+  final bool isExpandedChild;
+
+  const VxOrderedList(
+    this.items, {
+    super.key,
+    this.type = VxListType.decimal,
+    this.padding,
+    this.color = Colors.black,
+    this.fontSize = 14.0,
+    this.primary = false,
+    this.shrinkWrap = true,
+    this.physics,
+    this.direction = Axis.vertical,
+    this.isExpandedChild = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -142,11 +158,13 @@ class VxOrderedList extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = items[index];
         final formattedItem = _formatItem(index + 1);
+        final mainChild =
+            item.selectableText.color(color).size(fontSize).make();
         return HStack(
           [
             formattedItem.text.color(color).size(fontSize).make(),
             8.widthBox,
-            item.selectableText.color(color).size(fontSize).make(),
+            if (isExpandedChild) mainChild.expand() else mainChild,
           ],
           crossAlignment: CrossAxisAlignment.center,
         ).p8();
