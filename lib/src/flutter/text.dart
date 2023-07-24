@@ -440,7 +440,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder get lowercase => this.._text = _text!.toLowerCase();
 
   /// Converts the text to first letter of very word as uppercase.
-  VxTextBuilder get capitalize => this.._text = _text!.allWordsCapitilize();
+  VxTextBuilder get capitalize =>
+      this.._text = _text!.trim().allWordsCapitilize();
 
   /// Converts the text to partially hideen text. Best for sensitive data.
   VxTextBuilder get hidePartial => this.._text = _text!.hidePartial();
