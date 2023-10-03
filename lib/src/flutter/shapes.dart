@@ -379,7 +379,7 @@ class VxContinuousRectangle extends StatelessWidget
     this.gradient,
     this.backgroundImage,
     this.shadows,
-  }) : assert(!(backgroundColor != null && gradient != null),) {
+  }) : assert(!(backgroundColor != null && gradient != null)) {
     setChildForShadow(this);
   }
 
