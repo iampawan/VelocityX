@@ -379,7 +379,7 @@ class VxContinuousRectangle extends StatelessWidget
     this.gradient,
     this.backgroundImage,
     this.shadows,
-  }) {
+  }) : assert(!(backgroundColor != null && gradient != null)) {
     setChildForShadow(this);
   }
 
@@ -420,7 +420,7 @@ class VxContinuousRectangle extends StatelessWidget
     assert(debugCheckHasMediaQuery(context));
     final ThemeData theme = Theme.of(context);
     Color? effectiveBackgroundColor = backgroundColor;
-    if (effectiveBackgroundColor == null) {
+    if (effectiveBackgroundColor == null && gradient == null) {
       switch (theme.brightness) {
         case Brightness.dark:
           effectiveBackgroundColor = theme.primaryColorLight;
