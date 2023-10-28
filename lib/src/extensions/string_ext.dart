@@ -215,7 +215,7 @@ extension VxStringExtension on String {
   /// '123abc'.isNumber(); // false
   /// ```
   bool isNumber() {
-    final isMatch = RegExp("[0-9]").hasMatch(this);
+    final isMatch = RegExp(r'^-?\d*\.?\d+$').hasMatch(this);
     return isMatch;
   }
 
