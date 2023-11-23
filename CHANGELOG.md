@@ -1,3 +1,7 @@
+## [4.1.2] - Nov 23, 2023
+
+- Bug Fixes
+
 ## [4.1.1] - July 24, 2023
 
 - Optimized rebuild for MediaQuery property dependent widgets
