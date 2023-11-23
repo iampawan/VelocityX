@@ -840,9 +840,14 @@ class VxAppData {
 
 /// Wrap your app with [VxApp] to use [VxState] and [VxStore].
 class VxApp extends StatefulWidget {
-  const VxApp({super.key, required this.builder, required this.store});
+  const VxApp(
+      {super.key,
+      required this.builder,
+      required this.store,
+      this.interceptors = const []});
   final VxAppBuilder? builder;
   final VxStore store;
+  final List<VxInterceptor>? interceptors;
 
   @override
   State<VxApp> createState() => _VxAppState();
@@ -854,6 +859,7 @@ class _VxAppState<T> extends State<VxApp> {
   Widget build(BuildContext context) {
     return VxState(
       store: widget.store,
+      interceptors: widget.interceptors!,
       child: VxConsumer(
           mutations: const {VxDarkModeMutation},
           builder: (context, _, status) => widget.builder!(context, appData)),
