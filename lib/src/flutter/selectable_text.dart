@@ -369,7 +369,8 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       onTap: _onTap as void Function()?,
       enableInteractiveSelection: true,
       showCursor: _showCursor ?? false,
-      textScaleFactor: _scaleFactor,
+      textScaler:
+          _scaleFactor == null ? null : TextScaler.linear(_scaleFactor!),
       style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
       strutStyle: _strutStyle,
       contextMenuBuilder: _contextMenuBuilder,

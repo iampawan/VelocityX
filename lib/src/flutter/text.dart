@@ -508,7 +508,8 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
             key: key,
             textAlign: _textAlign,
             maxLines: _maxLines,
-            textScaleFactor: _scaleFactor,
+            textScaler:
+                _scaleFactor == null ? null : TextScaler.linear(_scaleFactor!),
             style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
             softWrap: _softWrap ?? true,
             overflow: _overflow ?? TextOverflow.clip,
