@@ -15,6 +15,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/context_ext.dart';
 
 /// Toast position
 enum VxToastPosition {
@@ -218,8 +219,7 @@ class _VxToastViewState extends State<_VxToastView>
               widget.msg!,
               style: TextStyle(
                 fontSize: widget.textSize,
-                color: widget.textColor ??
-                    Theme.of(context).textTheme.bodyLarge!.color,
+                color: widget.textColor ?? context.textTheme.bodyLarge!.color,
               ),
             ),
           ),
@@ -228,8 +228,7 @@ class _VxToastViewState extends State<_VxToastView>
     } else if (widget.type == VxToastType.loading) {
       return Center(
         child: Card(
-          color:
-              widget.bgColor ?? Theme.of(context).textTheme.titleLarge!.color,
+          color: widget.bgColor ?? context.textTheme.titleLarge!.color,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: widget.pdHorizontal!,
@@ -250,8 +249,8 @@ class _VxToastViewState extends State<_VxToastView>
                   widget.msg!,
                   style: TextStyle(
                     fontSize: widget.textSize,
-                    color: widget.textColor ??
-                        Theme.of(context).textTheme.bodyLarge!.color,
+                    color:
+                        widget.textColor ?? context.textTheme.bodyLarge!.color,
                   ),
                 )
               ],

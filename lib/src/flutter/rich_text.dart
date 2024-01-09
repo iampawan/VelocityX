@@ -14,6 +14,7 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/context_ext.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/builder.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/color_mixin.dart';
@@ -208,91 +209,91 @@ class VxRichText extends VxWidgetBuilder<Widget>
 
   /// Sets [TextTheme] display large
   VxRichText displayLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displayLarge;
+    _themedStyle = context.textTheme.displayLarge;
     return this;
   }
 
   /// Sets [TextTheme] display medium
   VxRichText displayMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displayMedium;
+    _themedStyle = context.textTheme.displayMedium;
     return this;
   }
 
   /// Sets [TextTheme] display small
   VxRichText displaySmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displaySmall;
+    _themedStyle = context.textTheme.displaySmall;
     return this;
   }
 
   /// Sets [TextTheme] headline large
   VxRichText headlineLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineLarge;
+    _themedStyle = context.textTheme.headlineLarge;
     return this;
   }
 
   /// Sets [TextTheme] headline medium
   VxRichText headlineMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineMedium;
+    _themedStyle = context.textTheme.headlineMedium;
     return this;
   }
 
   /// Sets [TextTheme] headline small
   VxRichText headlineSmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineSmall;
+    _themedStyle = context.textTheme.headlineSmall;
     return this;
   }
 
   /// Sets [TextTheme] title large
   VxRichText titleLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleLarge;
+    _themedStyle = context.textTheme.titleLarge;
     return this;
   }
 
   /// Sets [TextTheme] title medium
   VxRichText titleMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleMedium;
+    _themedStyle = context.textTheme.titleMedium;
     return this;
   }
 
   /// Sets [TextTheme] title small
   VxRichText titleSmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleSmall;
+    _themedStyle = context.textTheme.titleSmall;
     return this;
   }
 
   /// Sets [TextTheme] body large
   VxRichText bodyLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyLarge;
+    _themedStyle = context.textTheme.bodyLarge;
     return this;
   }
 
   /// Sets [TextTheme] body medium
   VxRichText bodyMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyMedium;
+    _themedStyle = context.textTheme.bodyMedium;
     return this;
   }
 
   /// Sets [TextTheme] body small
   VxRichText bodySmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodySmall;
+    _themedStyle = context.textTheme.bodySmall;
     return this;
   }
 
   /// Sets [TextTheme] label large
   VxRichText labelLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelLarge;
+    _themedStyle = context.textTheme.labelLarge;
     return this;
   }
 
   /// Sets [TextTheme] label medium
   VxRichText labelMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelMedium;
+    _themedStyle = context.textTheme.labelMedium;
     return this;
   }
 
   /// Sets [TextTheme] label small
   VxRichText labelSmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelSmall;
+    _themedStyle = context.textTheme.labelSmall;
     return this;
   }
 
@@ -576,91 +577,91 @@ class VelocityXTextSpan extends VxTextSpanBuilder
 
   /// Sets [TextTheme] display large
   VelocityXTextSpan displayLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displayLarge;
+    _themedStyle = context.textTheme.displayLarge;
     return this;
   }
 
   /// Sets [TextTheme] display medium
   VelocityXTextSpan displayMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displayMedium;
+    _themedStyle = context.textTheme.displayMedium;
     return this;
   }
 
   /// Sets [TextTheme] display small
   VelocityXTextSpan displaySmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displaySmall;
+    _themedStyle = context.textTheme.displaySmall;
     return this;
   }
 
   /// Sets [TextTheme] headline large
   VelocityXTextSpan headlineLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineLarge;
+    _themedStyle = context.textTheme.headlineLarge;
     return this;
   }
 
   /// Sets [TextTheme] headline medium
   VelocityXTextSpan headlineMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineMedium;
+    _themedStyle = context.textTheme.headlineMedium;
     return this;
   }
 
   /// Sets [TextTheme] headline small
   VelocityXTextSpan headlineSmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineSmall;
+    _themedStyle = context.textTheme.headlineSmall;
     return this;
   }
 
   /// Sets [TextTheme] title large
   VelocityXTextSpan titleLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleLarge;
+    _themedStyle = context.textTheme.titleLarge;
     return this;
   }
 
   /// Sets [TextTheme] title medium
   VelocityXTextSpan titleMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleMedium;
+    _themedStyle = context.textTheme.titleMedium;
     return this;
   }
 
   /// Sets [TextTheme] title small
   VelocityXTextSpan titleSmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleSmall;
+    _themedStyle = context.textTheme.titleSmall;
     return this;
   }
 
   /// Sets [TextTheme] body large
   VelocityXTextSpan bodyLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyLarge;
+    _themedStyle = context.textTheme.bodyLarge;
     return this;
   }
 
   /// Sets [TextTheme] body medium
   VelocityXTextSpan bodyMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyMedium;
+    _themedStyle = context.textTheme.bodyMedium;
     return this;
   }
 
   /// Sets [TextTheme] body small
   VelocityXTextSpan bodySmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodySmall;
+    _themedStyle = context.textTheme.bodySmall;
     return this;
   }
 
   /// Sets [TextTheme] label large
   VelocityXTextSpan labelLarge(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelLarge;
+    _themedStyle = context.textTheme.labelLarge;
     return this;
   }
 
   /// Sets [TextTheme] label medium
   VelocityXTextSpan labelMedium(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelMedium;
+    _themedStyle = context.textTheme.labelMedium;
     return this;
   }
 
   /// Sets [TextTheme] label small
   VelocityXTextSpan labelSmall(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelSmall;
+    _themedStyle = context.textTheme.labelSmall;
     return this;
   }
 
