@@ -86,9 +86,11 @@ mixin VxDrawer {
       return Future.value(false);
     }
 
+    // TODO(iampawan): Not sure how to change it to use `PopEntry`
     route?.addScopedWillPopCallback(backClose);
 
     hide = () async {
+      // TODO(iampawan): Not sure how to change it to use `PopEntry`
       route?.removeScopedWillPopCallback(backClose);
       await key.currentState?.reverseAnimation();
       overlayEntry?.remove();
