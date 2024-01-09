@@ -35,8 +35,8 @@ mixin VxDialog {
         context: context,
         barrierDismissible: barrierDismissible,
         builder: (context) {
-          return WillPopScope(
-            onWillPop: () async => barrierDismissible,
+          return PopScope(
+            canPop: barrierDismissible,
             child: AlertDialog(
               contentPadding: EdgeInsets.zero,
               content: _VxDialog(
@@ -73,8 +73,8 @@ mixin VxDialog {
         context: context,
         barrierDismissible: barrierDismissible,
         builder: (context) {
-          return WillPopScope(
-            onWillPop: () async => barrierDismissible,
+          return PopScope(
+            canPop: barrierDismissible,
             child: AlertDialog(
               contentPadding: EdgeInsets.zero,
               content: _VxDialog(
@@ -112,8 +112,8 @@ mixin VxDialog {
         context: context,
         barrierDismissible: barrierDismissible,
         builder: (context) {
-          return WillPopScope(
-            onWillPop: () async => barrierDismissible,
+          return PopScope(
+            canPop: barrierDismissible,
             child: AlertDialog(
               contentPadding: EdgeInsets.zero,
               content: _VxDialog(

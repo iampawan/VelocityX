@@ -198,11 +198,9 @@ class VxPopupMenuState extends State<VxPopupMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        _hideMenu();
-        return Future.value(true);
-      },
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (_) => _hideMenu(),
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         child: widget.child,
