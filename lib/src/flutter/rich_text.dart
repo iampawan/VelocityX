@@ -471,7 +471,8 @@ class VxRichText extends VxWidgetBuilder<Widget>
             key: key,
             textAlign: _textAlign,
             maxLines: _maxLines,
-            textScaleFactor: _scaleFactor,
+            textScaler:
+                _scaleFactor == null ? null : TextScaler.linear(_scaleFactor!),
             softWrap: _softWrap ?? true,
             overflow: _overflow ?? TextOverflow.clip,
             strutStyle: _strutStyle,
