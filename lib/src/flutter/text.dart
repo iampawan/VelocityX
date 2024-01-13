@@ -13,6 +13,7 @@
 
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/src/extensions/context_ext.dart';
 import 'package:velocity_x/src/extensions/string_ext.dart';
 import 'package:velocity_x/src/flutter/velocityx_mixins/render_mixin.dart';
 import 'package:velocity_x/src/velocity_xx.dart';
@@ -248,81 +249,93 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   /// To set fontSize of the text using [size]
   VxTextBuilder size(double? size) => this.._fontSize = size;
 
-  /// Sets [TextTheme] headline 1
-  VxTextBuilder headline1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displayLarge;
+  /// Sets [TextTheme] display large
+  VxTextBuilder displayLarge(BuildContext context) {
+    _themedStyle = context.textTheme.displayLarge;
     return this;
   }
 
-  /// Sets [TextTheme] headline 2
-  VxTextBuilder headline2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displayMedium;
+  /// Sets [TextTheme] display medium
+  VxTextBuilder displayMedium(BuildContext context) {
+    _themedStyle = context.textTheme.displayMedium;
     return this;
   }
 
-  /// Sets [TextTheme] headline 3
-  VxTextBuilder headline3(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.displaySmall;
+  /// Sets [TextTheme] display small
+  VxTextBuilder displaySmall(BuildContext context) {
+    _themedStyle = context.textTheme.displaySmall;
     return this;
   }
 
-  /// Sets [TextTheme] headline 4
-  VxTextBuilder headline4(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineMedium;
+  /// Sets [TextTheme] headline large
+  VxTextBuilder headlineLarge(BuildContext context) {
+    _themedStyle = context.textTheme.headlineLarge;
     return this;
   }
 
-  /// Sets [TextTheme] headline 5
-  VxTextBuilder headline5(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.headlineSmall;
+  /// Sets [TextTheme] headline medium
+  VxTextBuilder headlineMedium(BuildContext context) {
+    _themedStyle = context.textTheme.headlineMedium;
     return this;
   }
 
-  /// Sets [TextTheme] headline 6
-  VxTextBuilder headline6(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleLarge;
+  /// Sets [TextTheme] headline small
+  VxTextBuilder headlineSmall(BuildContext context) {
+    _themedStyle = context.textTheme.headlineSmall;
     return this;
   }
 
-  /// Sets [TextTheme] bodyText1
-  VxTextBuilder bodyText1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyLarge;
+  /// Sets [TextTheme] title large
+  VxTextBuilder titleLarge(BuildContext context) {
+    _themedStyle = context.textTheme.titleLarge;
     return this;
   }
 
-  /// Sets [TextTheme] bodyText2
-  VxTextBuilder bodyText2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodyMedium;
+  /// Sets [TextTheme] title medium
+  VxTextBuilder titleMedium(BuildContext context) {
+    _themedStyle = context.textTheme.titleMedium;
     return this;
   }
 
-  /// Sets [TextTheme] caption
-  VxTextBuilder caption(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.bodySmall;
+  /// Sets [TextTheme] title small
+  VxTextBuilder titleSmall(BuildContext context) {
+    _themedStyle = context.textTheme.titleSmall;
     return this;
   }
 
-  /// Sets [TextTheme] subtitle1
-  VxTextBuilder subtitle1(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleMedium;
+  /// Sets [TextTheme] body large
+  VxTextBuilder bodyLarge(BuildContext context) {
+    _themedStyle = context.textTheme.bodyLarge;
     return this;
   }
 
-  /// Sets [TextTheme] subtitle2
-  VxTextBuilder subtitle2(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.titleSmall;
+  /// Sets [TextTheme] body medium
+  VxTextBuilder bodyMedium(BuildContext context) {
+    _themedStyle = context.textTheme.bodyMedium;
     return this;
   }
 
-  /// Sets [TextTheme] overline
-  VxTextBuilder overlineText(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelSmall;
+  /// Sets [TextTheme] body small
+  VxTextBuilder bodySmall(BuildContext context) {
+    _themedStyle = context.textTheme.bodySmall;
     return this;
   }
 
-  /// Sets [TextTheme] button
-  VxTextBuilder buttonText(BuildContext context) {
-    _themedStyle = Theme.of(context).textTheme.labelLarge;
+  /// Sets [TextTheme] label large
+  VxTextBuilder labelLarge(BuildContext context) {
+    _themedStyle = context.textTheme.labelLarge;
+    return this;
+  }
+
+  /// Sets [TextTheme] label medium
+  VxTextBuilder labelMedium(BuildContext context) {
+    _themedStyle = context.textTheme.labelMedium;
+    return this;
+  }
+
+  /// Sets [TextTheme] label small
+  VxTextBuilder labelSmall(BuildContext context) {
+    _themedStyle = context.textTheme.labelSmall;
     return this;
   }
 
