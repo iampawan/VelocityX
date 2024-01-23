@@ -93,7 +93,7 @@ class VxInlineBlock extends Flex {
 ///
 /// {@tool snippet}
 ///
-a/// {@end-tool}
+/// {@end-tool}
 /// This example uses a [VStack] to arrange three widgets vertically, the last
 /// being made to fill all the remaining space.
 ///
