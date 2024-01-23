@@ -1,0 +1,29 @@
+name: vx_example
+version: 0.0.1
+description: A velocity x example app.
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.2.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  json_annotation: ^4.8.1
+  velocity_x: ^4.1.2
+  vxstate: ^2.3.0
+
+dev_dependencies:
+  alchemist: ^0.7.0
+  build_runner: ^2.4.8
+  flutter_lints: ^3.0.1
+  flutter_test:
+    sdk: flutter
+  golden_toolkit: ^0.15.0
+  json_serializable: ^6.7.1
+  melos: ^4.0.0
+  very_good_analysis: ^5.1.0
+
+flutter:
+  uses-material-design: true
+
