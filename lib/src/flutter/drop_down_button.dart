@@ -32,6 +32,7 @@ import 'package:velocity_x/src/flutter/builder.dart';
 ///
 /// {@tool dartpad --template=stateful_widget_scaffold_center}
 ///
+/// {@end-tool}
 /// This sample shows a `DropdownButton` with a large arrow icon,
 /// purple text style, and bold purple underline, whose value is one of "One",
 /// "Two", "Free", or "Four".
