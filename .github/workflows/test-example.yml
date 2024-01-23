@@ -1,0 +1,19 @@
+name: Test Example App
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: 'test-example-app'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          cache-key: 'flutter-:os:-:channel:-:version:-:arch:-:hash:'
+      - run: dart pub global activate melos
+      - run: cd example && melos all
