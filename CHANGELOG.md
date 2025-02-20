@@ -1,5 +1,7 @@
 ## [4.3.1] -
 - Fix enableFeedback default value in VxUniversal in Flutter 3.29
+- Fix clipBehavior for aStack
+- Fix TextSpan with the recognizer initialization
 
 ## [4.3.0] - Jan 23, 2025
 
