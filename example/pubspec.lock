@@ -356,10 +356,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: "53385261521cc4a0c4658fd0ad07a7d14591cf8fc33abbceae306ddb974888dc"
+      sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.2"
+    version: "0.7.1"
   json_annotation:
     dependency: "direct main"
     description:
@@ -683,7 +683,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.3.0"
+    version: "4.3.1"
   very_good_analysis:
     dependency: "direct dev"
     description:

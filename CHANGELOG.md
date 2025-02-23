@@ -1,3 +1,6 @@
+## [4.3.1] - Feb 23, 2025
+- Fixed enableFeedback bug with VxUniversal
+
 ## [4.3.0] - Jan 23, 2025
 
 - Flutter 3.27 compatibility added
