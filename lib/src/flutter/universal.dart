@@ -858,7 +858,7 @@ class VxUniversal extends StatelessWidget {
           radius: radius,
           borderRadius: borderRadius,
           customBorder: customBorder,
-          enableFeedback: enableFeedback,
+          enableFeedback: enableFeedback ?? true,
           excludeFromSemantics: excludeFromSemantics,
           focusNode: focusNode,
           canRequestFocus: canRequestFocus,

@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: 'Home page'.text.make(),
         actions: [
@@ -23,6 +24,16 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: [
+        'Hello World'
+            .text
+            .xl
+            .bold
+            .make()
+            .box
+            .p16
+            .neumorphic(color: Colors.orange)
+            .make(),
+
         /// Shows the user's name.
         /// Listens to the [GetUser] mutation.
         VxBuilder<BaseStore>(

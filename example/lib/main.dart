@@ -16,13 +16,13 @@ class VxExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // Styles for the AppBar
-        appBarTheme: const AppBarTheme(),
+      // theme: ThemeData(
+      //   // Styles for the AppBar
+      //   appBarTheme: const AppBarTheme(),
 
-        // Styles for the BottomNavigationBar
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
-      ),
+      //   // Styles for the BottomNavigationBar
+      //   bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
+      // ),
       home: VxBuilder<BaseStore>(
         mutations: const {SetCurrentIndex},
         builder: (context, store, status) {
