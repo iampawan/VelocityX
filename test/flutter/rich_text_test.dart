@@ -65,6 +65,7 @@ void main() {
 
       expect(didTap, isFalse);
       await tester.tap(find.byKey(key));
+      await tester.pumpAndSettle();
       expect(didTap, isTrue);
     });
 
