@@ -51,15 +51,13 @@ class VxEnsureVisibleWhenFocused extends StatefulWidget {
   final Duration duration;
 
   @override
-  VxEnsureVisibleWhenFocusedState createState() =>
-      VxEnsureVisibleWhenFocusedState();
+  VxEnsureVisibleWhenFocusedState createState() => VxEnsureVisibleWhenFocusedState();
 }
 
 ///
 /// We implement the WidgetsBindingObserver to be notified of any change to the window metrics
 ///
-class VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
-    with WidgetsBindingObserver {
+class VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
@@ -121,7 +119,7 @@ class VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     // Find the object which has the focus
     // ignore: use_build_context_synchronously
     final RenderObject? object = context.findRenderObject();
-    final RenderAbstractViewport viewport = RenderAbstractViewport.of(object);
+    final RenderAbstractViewport? viewport = RenderAbstractViewport.maybeOf(object);
 
     // If we are not working in a Scrollable, skip this routine
     // ignore: unnecessary_null_comparison
@@ -140,8 +138,7 @@ class VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     if (position.pixels > viewport.getOffsetToReveal(object!, 0.0).offset) {
       // Move down to the top of the viewport
       alignment = 0.0;
-    } else if (position.pixels <
-        viewport.getOffsetToReveal(object, 1.0).offset) {
+    } else if (position.pixels < viewport.getOffsetToReveal(object, 1.0).offset) {
       // Move up to the bottom of the viewport
       alignment = 1.0;
     } else {
