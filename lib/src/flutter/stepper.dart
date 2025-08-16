@@ -46,8 +46,8 @@ class VxStepper extends StatefulWidget {
     this.inputTextColor,
     this.actionButtonColor,
     this.actionIconColor,
-  })  : assert(max >= min),
-        assert(step >= 1);
+  }) : assert(max >= min),
+       assert(step >= 1);
 
   @override
   VxStepperState createState() => VxStepperState();
@@ -63,8 +63,10 @@ class VxStepperState extends State<VxStepper> {
   @override
   void initState() {
     super.initState();
-    recordNumber =
-        math.min(widget.max, math.max(widget.defaultValue, widget.min));
+    recordNumber = math.min(
+      widget.max,
+      math.max(widget.defaultValue, widget.min),
+    );
     controller = TextEditingController(text: '$recordNumber');
     controller!.addListener(valueChange);
 
@@ -75,60 +77,64 @@ class VxStepperState extends State<VxStepper> {
   Widget build(BuildContext context) {
     final List<Widget> children = [];
 
-    children.add(SizedBox(
-      height: _kDefaultButtonSize,
-      width: _kDefaultButtonSize,
-      child: FilledButton(
-        style: FilledButton.styleFrom(
-          shape: const CircleBorder(),
-          backgroundColor: widget.actionButtonColor,
-          padding: EdgeInsets.zero,
-        ),
-        onPressed: enableMin ? onRemove : null,
-        child: Icon(
-          Icons.remove,
-          color: widget.actionIconColor,
-          size: _kDefaultTextFontSize,
+    children.add(
+      SizedBox(
+        height: _kDefaultButtonSize,
+        width: _kDefaultButtonSize,
+        child: FilledButton(
+          style: FilledButton.styleFrom(
+            shape: const CircleBorder(),
+            backgroundColor: widget.actionButtonColor,
+            padding: EdgeInsets.zero,
+          ),
+          onPressed: enableMin ? onRemove : null,
+          child: Icon(
+            Icons.remove,
+            color: widget.actionIconColor,
+            size: _kDefaultTextFontSize,
+          ),
         ),
       ),
-    ));
+    );
 
     children.add(const SizedBox(width: _kDefaultSpace));
 
-    children.add(TextField(
-      controller: controller,
-      textAlign: TextAlign.center,
-      enabled: !widget.disableInput,
-      style: TextStyle(color: widget.inputTextColor),
-      keyboardType: TextInputType.number,
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
-        LengthLimitingTextInputFormatter(3),
-      ],
-      decoration: const InputDecoration(
-        border: InputBorder.none,
-      ),
-      onEditingComplete: inputComplete,
-    ).wh(_kDefaultButtonSize, _kDefaultButtonSize * 1.7));
+    children.add(
+      TextField(
+        controller: controller,
+        textAlign: TextAlign.center,
+        enabled: !widget.disableInput,
+        style: TextStyle(color: widget.inputTextColor),
+        keyboardType: TextInputType.number,
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
+          LengthLimitingTextInputFormatter(3),
+        ],
+        decoration: const InputDecoration(border: InputBorder.none),
+        onEditingComplete: inputComplete,
+      ).wh(_kDefaultButtonSize, _kDefaultButtonSize * 1.7),
+    );
 
     children.add(const SizedBox(width: _kDefaultSpace));
-    children.add(SizedBox(
-      height: _kDefaultButtonSize,
-      width: _kDefaultButtonSize,
-      child: FilledButton(
-        style: FilledButton.styleFrom(
-          shape: const CircleBorder(),
-          backgroundColor: widget.actionButtonColor,
-          padding: EdgeInsets.zero,
-        ),
-        onPressed: enableMax ? onAdd : null,
-        child: Icon(
-          Icons.add,
-          color: widget.actionIconColor,
-          size: _kDefaultTextFontSize,
+    children.add(
+      SizedBox(
+        height: _kDefaultButtonSize,
+        width: _kDefaultButtonSize,
+        child: FilledButton(
+          style: FilledButton.styleFrom(
+            shape: const CircleBorder(),
+            backgroundColor: widget.actionButtonColor,
+            padding: EdgeInsets.zero,
+          ),
+          onPressed: enableMax ? onAdd : null,
+          child: Icon(
+            Icons.add,
+            color: widget.actionIconColor,
+            size: _kDefaultTextFontSize,
+          ),
         ),
       ),
-    ));
+    );
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -147,10 +153,7 @@ class VxStepperState extends State<VxStepper> {
   void onRemove() {
     unFocus();
     int number = getNumber();
-    number = math.max(
-      widget.min,
-      number - widget.step,
-    );
+    number = math.max(widget.min, number - widget.step);
     if (number != recordNumber) {
       updateControllerValue(number);
     }
@@ -159,10 +162,7 @@ class VxStepperState extends State<VxStepper> {
   void onAdd() {
     unFocus();
     int number = getNumber();
-    number = math.min(
-      widget.max,
-      number + widget.step,
-    );
+    number = math.min(widget.max, number + widget.step);
     if (number != recordNumber) {
       updateControllerValue(number);
     }

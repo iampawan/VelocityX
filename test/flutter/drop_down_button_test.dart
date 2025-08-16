@@ -16,25 +16,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 void main() {
-  testWidgets('user is able to select value from drop down',
-      (WidgetTester tester) async {
+  testWidgets('user is able to select value from drop down', (
+    WidgetTester tester,
+  ) async {
     String? value = 'HEY';
-    await tester.pumpWidget(Directionality(
-      textDirection: TextDirection.ltr,
-      child: MaterialApp(
-        home: Material(
-          child: ['HELLO', 'HEY', 'HOLA']
-              .textDropDown(
-                selectedValue: value,
-                onChanged: (cvalue) {
-                  value = cvalue;
-                },
-              )
-              .make()
-              .centered(),
+    await tester.pumpWidget(
+      Directionality(
+        textDirection: TextDirection.ltr,
+        child: MaterialApp(
+          home: Material(
+            child: ['HELLO', 'HEY', 'HOLA']
+                .textDropDown(
+                  selectedValue: value,
+                  onChanged: (cvalue) {
+                    value = cvalue;
+                  },
+                )
+                .make()
+                .centered(),
+          ),
         ),
       ),
-    ));
+    );
 
     // Expects one widget with Text HEY
     expect(find.text('HEY'), findsOneWidget);

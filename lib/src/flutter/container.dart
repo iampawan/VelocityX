@@ -112,13 +112,13 @@ class VxBox extends VxWidgetBuilder<Widget>
   ///
   /// Sets the size (width & height in percentage) property of the box.
   ///
-  VxBox sizePCT(
-          {required BuildContext context,
-          required double widthPCT,
-          required double heightPCT}) =>
-      this
-        .._width = context.percentWidth * widthPCT
-        .._height = context.percentHeight * heightPCT;
+  VxBox sizePCT({
+    required BuildContext context,
+    required double widthPCT,
+    required double heightPCT,
+  }) => this
+    .._width = context.percentWidth * widthPCT
+    .._height = context.percentHeight * heightPCT;
 
   ///
   /// Sets the height and width as square of the box.
@@ -197,7 +197,8 @@ class VxBox extends VxWidgetBuilder<Widget>
   VxBox shadowOutline({Color? outlineColor}) {
     _boxShadow = [
       BoxShadow(
-        color: outlineColor?.withValues(alpha: 0.5) ??
+        color:
+            outlineColor?.withValues(alpha: 0.5) ??
             const Color.fromRGBO(66, 153, 225, 0.5),
         blurRadius: 0.0,
         spreadRadius: 3.0,
@@ -211,10 +212,11 @@ class VxBox extends VxWidgetBuilder<Widget>
   /// Bordering
   /// Sets the border of the Box.
   ///
-  VxBox border(
-      {Color color = Colors.black,
-      double width = 1.0,
-      BorderStyle style = BorderStyle.solid}) {
+  VxBox border({
+    Color color = Colors.black,
+    double width = 1.0,
+    BorderStyle style = BorderStyle.solid,
+  }) {
     _border = Border.all(color: color, width: width, style: style);
     return this;
   }
@@ -222,69 +224,75 @@ class VxBox extends VxWidgetBuilder<Widget>
   /// Gradienting
   /// Sets the linear gradient to the decorated box.
   ///
-  VxBox linearGradient(List<Color> colors,
-          {AlignmentGeometry begin = Alignment.centerLeft,
-          AlignmentGeometry end = Alignment.centerRight,
-          List<double>? stops,
-          TileMode tileMode = TileMode.clamp,
-          GradientTransform? transform}) =>
-      this
-        .._gradient = LinearGradient(
-            colors: colors,
-            begin: begin,
-            stops: stops,
-            end: end,
-            tileMode: tileMode,
-            transform: transform);
+  VxBox linearGradient(
+    List<Color> colors, {
+    AlignmentGeometry begin = Alignment.centerLeft,
+    AlignmentGeometry end = Alignment.centerRight,
+    List<double>? stops,
+    TileMode tileMode = TileMode.clamp,
+    GradientTransform? transform,
+  }) => this
+    .._gradient = LinearGradient(
+      colors: colors,
+      begin: begin,
+      stops: stops,
+      end: end,
+      tileMode: tileMode,
+      transform: transform,
+    );
 
   ///
   /// Sets the radial gradient to the decorated box.
   ///
-  VxBox radialGradient(List<Color> colors,
-          {AlignmentGeometry center = Alignment.center,
-          double radius = 0.5,
-          List<double>? stops,
-          TileMode tileMode = TileMode.clamp,
-          AlignmentGeometry? focal,
-          double focalRadius = 0.0,
-          GradientTransform? transform}) =>
-      this
-        .._gradient = RadialGradient(
-            colors: colors,
-            center: center,
-            radius: radius,
-            focalRadius: focalRadius,
-            stops: stops,
-            focal: focal,
-            tileMode: tileMode,
-            transform: transform);
+  VxBox radialGradient(
+    List<Color> colors, {
+    AlignmentGeometry center = Alignment.center,
+    double radius = 0.5,
+    List<double>? stops,
+    TileMode tileMode = TileMode.clamp,
+    AlignmentGeometry? focal,
+    double focalRadius = 0.0,
+    GradientTransform? transform,
+  }) => this
+    .._gradient = RadialGradient(
+      colors: colors,
+      center: center,
+      radius: radius,
+      focalRadius: focalRadius,
+      stops: stops,
+      focal: focal,
+      tileMode: tileMode,
+      transform: transform,
+    );
 
   ///
   /// Sets the sweep gradient to the decorated box.
   ///
-  VxBox sweepGradient(List<Color> colors,
-          {AlignmentGeometry center = Alignment.center,
-          double startAngle = 0.0,
-          double endAngle = pi * 2,
-          List<double>? stops,
-          TileMode tileMode = TileMode.clamp,
-          GradientTransform? transform}) =>
-      this
-        .._gradient = SweepGradient(
-            colors: colors,
-            center: center,
-            endAngle: endAngle,
-            startAngle: startAngle,
-            stops: stops,
-            tileMode: tileMode,
-            transform: transform);
+  VxBox sweepGradient(
+    List<Color> colors, {
+    AlignmentGeometry center = Alignment.center,
+    double startAngle = 0.0,
+    double endAngle = pi * 2,
+    List<double>? stops,
+    TileMode tileMode = TileMode.clamp,
+    GradientTransform? transform,
+  }) => this
+    .._gradient = SweepGradient(
+      colors: colors,
+      center: center,
+      endAngle: endAngle,
+      startAngle: startAngle,
+      stops: stops,
+      tileMode: tileMode,
+      transform: transform,
+    );
 
   ///
   /// Sets the defined gradient to the decorated box.
   ///
   VxBox withGradient(Gradient gradient) => this.._gradient = gradient;
 
-// DecorationImage BoxDecoration
+  // DecorationImage BoxDecoration
   ///
   /// Sets the background image to the decorated box.
   ///
@@ -293,16 +301,16 @@ class VxBox extends VxWidgetBuilder<Widget>
   ///
   /// Use this to convert your box to the neumorphic design. Use it wisely.
   ///
-  VxBox neumorphic(
-          {Color? color,
-          VxCurve curve = VxCurve.concave,
-          double elevation = 12.0}) =>
-      this
-        .._velocityNeumorph = velocityDecoration(
-          (color ?? velocityColor)!,
-          curve,
-          elevation,
-        );
+  VxBox neumorphic({
+    Color? color,
+    VxCurve curve = VxCurve.concave,
+    double elevation = 12.0,
+  }) => this
+    .._velocityNeumorph = velocityDecoration(
+      (color ?? velocityColor)!,
+      curve,
+      elevation,
+    );
 
   @override
   Widget make({Key? key}) {
@@ -333,17 +341,20 @@ class VxBox extends VxWidgetBuilder<Widget>
               image: _bgImage,
             )
           : _decoration ??
-              BoxDecoration(
-                color: velocityColor,
-                borderRadius: _isCircleRounded || (roundedValue == null)
-                    ? null
-                    : (radiusGeometry ?? BorderRadius.circular(roundedValue!)),
-                shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-                boxShadow: velocityShadow ?? _boxShadow ?? [],
-                border: _border,
-                gradient: velocityGradient ?? _gradient,
-                image: _bgImage,
-              ),
+                BoxDecoration(
+                  color: velocityColor,
+                  borderRadius: _isCircleRounded || (roundedValue == null)
+                      ? null
+                      : (radiusGeometry ??
+                            BorderRadius.circular(roundedValue!)),
+                  shape: _isCircleRounded
+                      ? BoxShape.circle
+                      : BoxShape.rectangle,
+                  boxShadow: velocityShadow ?? _boxShadow ?? [],
+                  border: _border,
+                  gradient: velocityGradient ?? _gradient,
+                  image: _bgImage,
+                ),
       child: child,
     );
   }

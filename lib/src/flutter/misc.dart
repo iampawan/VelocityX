@@ -42,22 +42,21 @@ class VxStat extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
-          icon,
-          color: iconColor,
-        ),
+        Icon(icon, color: iconColor),
         const SizedBox(width: 8.0),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               label,
-              style: labelStyle?.merge(TextStyle(color: labelColor)) ??
+              style:
+                  labelStyle?.merge(TextStyle(color: labelColor)) ??
                   TextStyle(color: labelColor),
             ),
             Text(
               value,
-              style: valueStyle?.merge(TextStyle(color: valueColor)) ??
+              style:
+                  valueStyle?.merge(TextStyle(color: valueColor)) ??
                   TextStyle(color: valueColor),
             ),
           ],

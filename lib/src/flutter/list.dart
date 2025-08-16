@@ -68,8 +68,7 @@ class VxUnorderedList extends StatelessWidget {
       itemCount: _items.length,
       padding: padding,
       itemBuilder: (context, i) {
-        final mainChild = _items[i]
-            .selectableText
+        final mainChild = _items[i].selectableText
             .color(color)
             .size(fontSize)
             .make()
@@ -83,22 +82,13 @@ class VxUnorderedList extends StatelessWidget {
           10.widthBox,
           if (isExpandedChild) mainChild.expand() else mainChild,
         ];
-        return HStack(
-          children,
-          crossAlignment: CrossAxisAlignment.center,
-        ).p8();
+        return HStack(children, crossAlignment: CrossAxisAlignment.center).p8();
       },
     );
   }
 }
 
-enum VxListType {
-  decimal,
-  upperAlpha,
-  lowerAlpha,
-  upperRoman,
-  lowerRoman,
-}
+enum VxListType { decimal, upperAlpha, lowerAlpha, upperRoman, lowerRoman }
 
 class VxOrderedList extends StatelessWidget {
   /// Specify the list of items
@@ -158,16 +148,15 @@ class VxOrderedList extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = items[index];
         final formattedItem = _formatItem(index + 1);
-        final mainChild =
-            item.selectableText.color(color).size(fontSize).make();
-        return HStack(
-          [
-            formattedItem.text.color(color).size(fontSize).make(),
-            8.widthBox,
-            if (isExpandedChild) mainChild.expand() else mainChild,
-          ],
-          crossAlignment: CrossAxisAlignment.center,
-        ).p8();
+        final mainChild = item.selectableText
+            .color(color)
+            .size(fontSize)
+            .make();
+        return HStack([
+          formattedItem.text.color(color).size(fontSize).make(),
+          8.widthBox,
+          if (isExpandedChild) mainChild.expand() else mainChild,
+        ], crossAlignment: CrossAxisAlignment.center).p8();
       },
     );
   }

@@ -18,10 +18,12 @@ import 'package:velocity_x/velocity_x.dart';
 void main() {
   group("Group all container tests", () {
     testWidgets('box creates a Container', (WidgetTester tester) async {
-      await tester.pumpWidget(Directionality(
-        textDirection: TextDirection.ltr,
-        child: const Text('Velocity').box.make(),
-      ));
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: const Text('Velocity').box.make(),
+        ),
+      );
 
       expect(find.byType(Container), findsOneWidget);
     });
@@ -39,12 +41,15 @@ void main() {
       expect(find.byKey(key), findsOneWidget);
     });
 
-    testWidgets('VelocityBox reponds to height and width',
-        (WidgetTester tester) async {
+    testWidgets('VelocityBox reponds to height and width', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('Key');
-      await tester.pumpWidget(Material(
-        child: Center(child: VxBox().height(100).width(500).make(key: key)),
-      ));
+      await tester.pumpWidget(
+        Material(
+          child: Center(child: VxBox().height(100).width(500).make(key: key)),
+        ),
+      );
 
       final size = tester.getRect(find.byKey(key));
       expect(size.height, 100);
@@ -52,14 +57,16 @@ void main() {
     });
 
     testWidgets('VelocityBox reponds to padding', (WidgetTester tester) async {
-      await tester.pumpWidget(Directionality(
-        textDirection: TextDirection.ltr,
-        child: Material(
-          child: Center(
-            child: VxBox(child: const Text('VelocityX')).p16.make(),
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Material(
+            child: Center(
+              child: VxBox(child: const Text('VelocityX')).p16.make(),
+            ),
           ),
         ),
-      ));
+      );
 
       final containerRect = tester.getRect(find.byType(Container));
       final textRect = tester.getRect(find.byType(Text));
@@ -70,18 +77,21 @@ void main() {
       expect(containerRect.bottom, textRect.bottom + 16);
     });
 
-    testWidgets('VelocityBox reponds to custom padding',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(Directionality(
-        textDirection: TextDirection.ltr,
-        child: Material(
-          child: Center(
-            child: VxBox(child: const Text('VelocityX'))
-                .padding(const EdgeInsets.fromLTRB(16, 10, 5, 18))
-                .make(),
+    testWidgets('VelocityBox reponds to custom padding', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Material(
+            child: Center(
+              child: VxBox(
+                child: const Text('VelocityX'),
+              ).padding(const EdgeInsets.fromLTRB(16, 10, 5, 18)).make(),
+            ),
           ),
         ),
-      ));
+      );
 
       final containerRect = tester.getRect(find.byType(Container));
       final textRect = tester.getRect(find.byType(Text));
@@ -94,22 +104,25 @@ void main() {
     testWidgets('VelocityBox responds to color', (WidgetTester tester) async {
       await tester.pumpWidget(VxBox().height(50).width(50).red200.make());
 
-      final decoration = tester
-          .widget<Container>(find.byType(Container))
-          .decoration as BoxDecoration;
+      final decoration =
+          tester.widget<Container>(find.byType(Container)).decoration
+              as BoxDecoration;
       expect(decoration.color, Vx.red200);
     });
 
-    testWidgets('VelocityBox reponds to alignment',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(Directionality(
-        textDirection: TextDirection.ltr,
-        child: Material(
-          child: Center(
-            child: VxBox(child: const Text('VelocityX')).alignCenter.make(),
+    testWidgets('VelocityBox reponds to alignment', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Material(
+            child: Center(
+              child: VxBox(child: const Text('VelocityX')).alignCenter.make(),
+            ),
           ),
         ),
-      ));
+      );
 
       final containerRect = tester.getRect(find.byType(Container));
       final textRect = tester.getRect(find.byType(Text));
@@ -124,77 +137,90 @@ void main() {
       // box shadow defined for shadowLg
       final shadow = [
         const BoxShadow(
-            color: Color(0x33000000),
-            offset: Offset(0.0, 2.0),
-            blurRadius: 4.0,
-            spreadRadius: -1.0,
-            blurStyle: BlurStyle.normal),
+          color: Color(0x33000000),
+          offset: Offset(0.0, 2.0),
+          blurRadius: 4.0,
+          spreadRadius: -1.0,
+          blurStyle: BlurStyle.normal,
+        ),
         const BoxShadow(
-            color: Color(0x24000000),
-            offset: Offset(0.0, 4.0),
-            blurRadius: 5.0,
-            spreadRadius: 0.0,
-            blurStyle: BlurStyle.normal),
+          color: Color(0x24000000),
+          offset: Offset(0.0, 4.0),
+          blurRadius: 5.0,
+          spreadRadius: 0.0,
+          blurStyle: BlurStyle.normal,
+        ),
         const BoxShadow(
-            color: Color(0x1f000000),
-            offset: Offset(0.0, 1.0),
-            blurRadius: 10.0,
-            spreadRadius: 0.0,
-            blurStyle: BlurStyle.normal)
+          color: Color(0x1f000000),
+          offset: Offset(0.0, 1.0),
+          blurRadius: 10.0,
+          spreadRadius: 0.0,
+          blurStyle: BlurStyle.normal,
+        ),
       ];
 
-      final decoration = tester
-          .widget<Container>(find.byType(Container))
-          .decoration as BoxDecoration;
+      final decoration =
+          tester.widget<Container>(find.byType(Container)).decoration
+              as BoxDecoration;
       expect(decoration.boxShadow, shadow);
     });
 
-    testWidgets('VelocityBox responds to border radius',
-        (WidgetTester tester) async {
+    testWidgets('VelocityBox responds to border radius', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(VxBox().height(40).width(40).roundedFull.make());
 
-      final decoration = tester
-          .widget<Container>(find.byType(Container))
-          .decoration as BoxDecoration;
+      final decoration =
+          tester.widget<Container>(find.byType(Container)).decoration
+              as BoxDecoration;
       // when borderRadius is roundedFull, the shape is BoxShape.circle
       expect(decoration.shape, BoxShape.circle);
     });
 
-    testWidgets('VelocityBox responds to custom border radius',
-        (WidgetTester tester) async {
+    testWidgets('VelocityBox responds to custom border radius', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
-          VxBox().height(40).width(40).withRounded(value: 19).make());
+        VxBox().height(40).width(40).withRounded(value: 19).make(),
+      );
 
-      final decoration = tester
-          .widget<Container>(find.byType(Container))
-          .decoration as BoxDecoration;
+      final decoration =
+          tester.widget<Container>(find.byType(Container)).decoration
+              as BoxDecoration;
       expect(decoration.borderRadius, BorderRadius.circular(19));
     });
 
-    testWidgets('VelocityBox responds to gradient',
-        (WidgetTester tester) async {
-      await tester.pumpWidget(VxBox()
-          .height(40)
-          .width(40)
-          .linearGradient([Vx.red300, Vx.blue600]).make());
+    testWidgets('VelocityBox responds to gradient', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(
+        VxBox().height(40).width(40).linearGradient([
+          Vx.red300,
+          Vx.blue600,
+        ]).make(),
+      );
 
-      final decoration = tester
-          .widget<Container>(find.byType(Container))
-          .decoration as BoxDecoration;
-      expect(decoration.gradient,
-          const LinearGradient(colors: [Vx.red300, Vx.blue600]));
+      final decoration =
+          tester.widget<Container>(find.byType(Container)).decoration
+              as BoxDecoration;
+      expect(
+        decoration.gradient,
+        const LinearGradient(colors: [Vx.red300, Vx.blue600]),
+      );
     });
 
     testWidgets('VelocityBox responds to border', (WidgetTester tester) async {
-      await tester.pumpWidget(VxBox()
-          .width(100)
-          .height(100)
-          .border(color: Vx.green100, width: 3)
-          .make());
+      await tester.pumpWidget(
+        VxBox()
+            .width(100)
+            .height(100)
+            .border(color: Vx.green100, width: 3)
+            .make(),
+      );
 
-      final decoration = tester
-          .widget<Container>(find.byType(Container))
-          .decoration as BoxDecoration;
+      final decoration =
+          tester.widget<Container>(find.byType(Container)).decoration
+              as BoxDecoration;
       expect(decoration.border!.isUniform, true);
       expect(decoration.border!.top.width, 3);
       expect(decoration.border!.top.color, Vx.green100);

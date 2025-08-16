@@ -80,7 +80,8 @@ class VxCircle extends StatelessWidget with VxShadowMixin<VxCircle> {
       height: radius ?? MediaQuery.sizeOf(context).shortestSide / 2,
       width: radius ?? MediaQuery.sizeOf(context).shortestSide / 2,
       duration: kThemeChangeDuration,
-      decoration: customDecoration ??
+      decoration:
+          customDecoration ??
           BoxDecoration(
             border: border,
             color: effectiveBackgroundColor,
@@ -168,17 +169,20 @@ class VxCapsule extends StatelessWidget with VxShadowMixin<VxCapsule> {
       height: height ?? MediaQuery.sizeOf(context).shortestSide / 4,
       width: width ?? MediaQuery.sizeOf(context).shortestSide,
       duration: kThemeChangeDuration,
-      decoration: customDecoration ??
+      decoration:
+          customDecoration ??
           BoxDecoration(
-              border: border,
-              borderRadius: BorderRadius.circular(
-                  MediaQuery.sizeOf(context).shortestSide / 2),
-              color: effectiveBackgroundColor,
-              shape: BoxShape.rectangle,
-              gradient: gradient,
-              image: backgroundImage,
-              backgroundBlendMode: blendMode,
-              boxShadow: velocityShadow ?? shadows ?? kElevationToShadow[0]),
+            border: border,
+            borderRadius: BorderRadius.circular(
+              MediaQuery.sizeOf(context).shortestSide / 2,
+            ),
+            color: effectiveBackgroundColor,
+            shape: BoxShape.rectangle,
+            gradient: gradient,
+            image: backgroundImage,
+            backgroundBlendMode: blendMode,
+            boxShadow: velocityShadow ?? shadows ?? kElevationToShadow[0],
+          ),
       child: child,
     );
   }
@@ -259,7 +263,8 @@ class VxEllipse extends StatelessWidget with VxShadowMixin<VxEllipse> {
       height: height0,
       width: width0,
       duration: kThemeChangeDuration,
-      decoration: customDecoration ??
+      decoration:
+          customDecoration ??
           BoxDecoration(
             border: border,
             borderRadius: BorderRadius.all(Radius.elliptical(width0, height0)),
@@ -348,11 +353,10 @@ class VxBevel extends StatelessWidget with VxShadowMixin<VxBevel> {
       duration: kThemeChangeDuration,
       decoration: ShapeDecoration(
         shape: BeveledRectangleBorder(
-          side: borderSide ??
+          side:
+              borderSide ??
               const BorderSide(width: 0.0, color: Colors.transparent),
-          borderRadius: BorderRadius.circular(
-            radius ?? 10.0,
-          ),
+          borderRadius: BorderRadius.circular(radius ?? 10.0),
         ),
         shadows: velocityShadow ?? shadows ?? kElevationToShadow[0],
         color: effectiveBackgroundColor,
@@ -437,7 +441,8 @@ class VxContinuousRectangle extends StatelessWidget
       duration: kThemeChangeDuration,
       decoration: ShapeDecoration(
         shape: ContinuousRectangleBorder(
-          side: borderSide ??
+          side:
+              borderSide ??
               const BorderSide(width: 0.0, color: Colors.transparent),
           borderRadius: BorderRadius.circular(radius ?? 10.0),
         ),
@@ -505,8 +510,11 @@ class VxTriangle extends StatelessWidget {
       duration: kThemeChangeDuration,
       child: CustomPaint(
         size: Size(width0, height0),
-        painter: _VxTriangle(effectiveBackgroundColor,
-            strokeWidth: strokeWidth, isStroke: strokeWidth != null),
+        painter: _VxTriangle(
+          effectiveBackgroundColor,
+          strokeWidth: strokeWidth,
+          isStroke: strokeWidth != null,
+        ),
         child: child,
       ),
     );
@@ -565,8 +573,10 @@ class VxTicket extends StatelessWidget {
     }
 
     return ClipPath(
-      clipper:
-          _VxTicketClipper(isTwoSide: isTwoSided!, isHardEdge: isHardEdged!),
+      clipper: _VxTicketClipper(
+        isTwoSide: isTwoSided!,
+        isHardEdge: isHardEdged!,
+      ),
       child: AnimatedContainer(
         height: height0,
         width: width0,
@@ -584,11 +594,7 @@ class _VxTriangle extends CustomPainter {
 
   final bool isStroke;
 
-  _VxTriangle(
-    this.color, {
-    this.strokeWidth = 0.0,
-    this.isStroke = false,
-  });
+  _VxTriangle(this.color, {this.strokeWidth = 0.0, this.isStroke = false});
   @override
   void paint(Canvas canvas, Size size) {
     final path = Path();
@@ -633,7 +639,11 @@ class _VxTicketClipper extends CustomClipper<Path> {
         path.lineTo(x, y);
       } else {
         path.quadraticBezierTo(
-            x + increment / 2, yControlPoint, x + increment, y);
+          x + increment / 2,
+          yControlPoint,
+          x + increment,
+          y,
+        );
         x += increment;
       }
     }
@@ -646,7 +656,11 @@ class _VxTicketClipper extends CustomClipper<Path> {
           // path.lineTo(x, y);
         } else {
           path.quadraticBezierTo(
-              x - increment / 2, size.height * .15, x - increment, 0);
+            x - increment / 2,
+            size.height * .15,
+            x - increment,
+            0,
+          );
           x -= increment;
         }
       }
@@ -676,19 +690,18 @@ extension VxShapesExtension on Widget {
     BlendMode? blendMode,
     Gradient? gradient,
     List<BoxShadow>? shadows,
-  }) =>
-      VxCircle(
-        key: key,
-        backgroundColor: backgroundColor,
-        border: border,
-        customDecoration: customDecoration,
-        radius: radius,
-        backgroundImage: backgroundImage,
-        blendMode: blendMode,
-        gradient: gradient,
-        shadows: shadows,
-        child: this,
-      );
+  }) => VxCircle(
+    key: key,
+    backgroundColor: backgroundColor,
+    border: border,
+    customDecoration: customDecoration,
+    radius: radius,
+    backgroundImage: backgroundImage,
+    blendMode: blendMode,
+    gradient: gradient,
+    shadows: shadows,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [VxCapsule] with any widget without wrapping or with dot operator.
@@ -705,20 +718,19 @@ extension VxShapesExtension on Widget {
     BlendMode? blendMode,
     Gradient? gradient,
     List<BoxShadow>? shadows,
-  }) =>
-      VxCapsule(
-        key: key,
-        backgroundColor: backgroundColor,
-        border: border,
-        customDecoration: customDecoration,
-        width: width,
-        height: height,
-        backgroundImage: backgroundImage,
-        blendMode: blendMode,
-        gradient: gradient,
-        shadows: shadows,
-        child: this,
-      );
+  }) => VxCapsule(
+    key: key,
+    backgroundColor: backgroundColor,
+    border: border,
+    customDecoration: customDecoration,
+    width: width,
+    height: height,
+    backgroundImage: backgroundImage,
+    blendMode: blendMode,
+    gradient: gradient,
+    shadows: shadows,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [VxEllipse] with any widget without wrapping or with dot operator.
@@ -735,20 +747,19 @@ extension VxShapesExtension on Widget {
     BlendMode? blendMode,
     Gradient? gradient,
     List<BoxShadow>? shadows,
-  }) =>
-      VxEllipse(
-        key: key,
-        backgroundColor: backgroundColor,
-        border: border,
-        customDecoration: customDecoration,
-        width: width,
-        height: height,
-        backgroundImage: backgroundImage,
-        blendMode: blendMode,
-        gradient: gradient,
-        shadows: shadows,
-        child: this,
-      );
+  }) => VxEllipse(
+    key: key,
+    backgroundColor: backgroundColor,
+    border: border,
+    customDecoration: customDecoration,
+    width: width,
+    height: height,
+    backgroundImage: backgroundImage,
+    blendMode: blendMode,
+    gradient: gradient,
+    shadows: shadows,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [VxBevel] with any widget without wrapping or with dot operator.
@@ -764,19 +775,18 @@ extension VxShapesExtension on Widget {
     DecorationImage? backgroundImage,
     Gradient? gradient,
     List<BoxShadow>? shadows,
-  }) =>
-      VxBevel(
-        key: key,
-        backgroundColor: backgroundColor,
-        borderSide: borderSide,
-        radius: radius,
-        width: width,
-        height: height,
-        backgroundImage: backgroundImage,
-        gradient: gradient,
-        shadows: shadows,
-        child: this,
-      );
+  }) => VxBevel(
+    key: key,
+    backgroundColor: backgroundColor,
+    borderSide: borderSide,
+    radius: radius,
+    width: width,
+    height: height,
+    backgroundImage: backgroundImage,
+    gradient: gradient,
+    shadows: shadows,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [VxContinuousRectangle] with any widget without wrapping or with dot operator.
@@ -792,19 +802,18 @@ extension VxShapesExtension on Widget {
     DecorationImage? backgroundImage,
     Gradient? gradient,
     List<BoxShadow>? shadows,
-  }) =>
-      VxContinuousRectangle(
-        key: key,
-        backgroundColor: backgroundColor,
-        borderSide: borderSide,
-        radius: radius,
-        width: width,
-        height: height,
-        backgroundImage: backgroundImage,
-        gradient: gradient,
-        shadows: shadows,
-        child: this,
-      );
+  }) => VxContinuousRectangle(
+    key: key,
+    backgroundColor: backgroundColor,
+    borderSide: borderSide,
+    radius: radius,
+    width: width,
+    height: height,
+    backgroundImage: backgroundImage,
+    gradient: gradient,
+    shadows: shadows,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [VxTriangle] with any widget without wrapping or with dot operator.
@@ -816,15 +825,14 @@ extension VxShapesExtension on Widget {
     double? width,
     double? height,
     double? strokeWidth,
-  }) =>
-      VxTriangle(
-        key: key,
-        backgroundColor: backgroundColor,
-        width: width,
-        height: height,
-        strokeWidth: strokeWidth,
-        child: this,
-      );
+  }) => VxTriangle(
+    key: key,
+    backgroundColor: backgroundColor,
+    width: width,
+    height: height,
+    strokeWidth: strokeWidth,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [VxTicket] with any widget without wrapping or with dot operator.
@@ -837,14 +845,13 @@ extension VxShapesExtension on Widget {
     double? height,
     bool? isHardEdged,
     bool? isTwoSided,
-  }) =>
-      VxTicket(
-        key: key,
-        backgroundColor: backgroundColor,
-        width: width,
-        height: height,
-        isHardEdged: isHardEdged,
-        isTwoSided: isTwoSided,
-        child: this,
-      );
+  }) => VxTicket(
+    key: key,
+    backgroundColor: backgroundColor,
+    width: width,
+    height: height,
+    isHardEdged: isHardEdged,
+    isTwoSided: isTwoSided,
+    child: this,
+  );
 }

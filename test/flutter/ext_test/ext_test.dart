@@ -30,9 +30,7 @@ void main() {
     });
 
     test('toEther', () {
-      final value = VxWeb3.toEther(
-        fromWei: BigInt.from(1000000000000000),
-      );
+      final value = VxWeb3.toEther(fromWei: BigInt.from(1000000000000000));
       expect(0.001, value);
     });
 

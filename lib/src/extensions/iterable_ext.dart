@@ -202,8 +202,9 @@ extension IterableBasics2<T> on Iterable<T> {
       return 0;
     }
 
-    return map((element) => test!(element) ? 1 : 0)
-        .reduce((value, element) => value + element);
+    return map(
+      (element) => test!(element) ? 1 : 0,
+    ).reduce((value, element) => value + element);
   }
 
   /// Returns a new [Iterable] with all elements that satisfy the
@@ -331,8 +332,10 @@ extension IterableBasics2<T> on Iterable<T> {
   ///        valueTransform: (p) => p.name);
   /// // map = {'young': ['John', 'Carl'], 'old': ['Peter', 'Sarah']}
   /// ```
-  Map<K, List<V>> groupBy<K, V>(K Function(T element) keySelector,
-      {V Function(T element)? valueTransform}) {
+  Map<K, List<V>> groupBy<K, V>(
+    K Function(T element) keySelector, {
+    V Function(T element)? valueTransform,
+  }) {
     ArgumentError.checkNotNull(keySelector);
 
     valueTransform ??= (element) => element as V;
@@ -412,7 +415,8 @@ extension IterableBasics2<T> on Iterable<T> {
       return null;
     }
     return reduce(
-        (value, element) => comparator(value, element) < 0 ? value : element);
+      (value, element) => comparator(value, element) < 0 ? value : element,
+    );
   }
 
   /// Returns the maximum value based on the [comparator] function.
@@ -428,7 +432,8 @@ extension IterableBasics2<T> on Iterable<T> {
       return null;
     }
     return reduce(
-        (value, element) => comparator(value, element) > 0 ? value : element);
+      (value, element) => comparator(value, element) > 0 ? value : element,
+    );
   }
 
   /// Returns this as sorted list using the [comparator] function.
@@ -788,8 +793,10 @@ extension VxExtensionMap<K, V> on Map<K, V> {
   }
 
   /// update map and return new map
-  Map<K, V> updateAllT(V Function(K key, V value) update,
-      {bool isUpdate = true}) {
+  Map<K, V> updateAllT(
+    V Function(K key, V value) update, {
+    bool isUpdate = true,
+  }) {
     if (isUpdate) {
       updateAll(update);
     }
@@ -797,8 +804,12 @@ extension VxExtensionMap<K, V> on Map<K, V> {
   }
 
   /// update map and return new map
-  Map<K, V> updateT(K key, V Function(V value) update,
-      {V Function()? ifAbsent, bool isUpdate = true}) {
+  Map<K, V> updateT(
+    K key,
+    V Function(V value) update, {
+    V Function()? ifAbsent,
+    bool isUpdate = true,
+  }) {
     if (isUpdate) {
       this.update(key, update, ifAbsent: ifAbsent);
     }

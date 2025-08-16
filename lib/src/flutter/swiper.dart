@@ -18,65 +18,65 @@ import 'package:flutter/material.dart';
 
 /// Use this widget [VxSwiper] to give your list a swipeable effect with full customization.
 class VxSwiper extends StatefulWidget {
-  VxSwiper(
-      {super.key,
-      required List<Widget> this.items,
-      this.height,
-      this.aspectRatio = 16 / 9,
-      this.viewportFraction = 0.8,
-      this.initialPage = 0,
-      int realPage = 10000,
-      this.enableInfiniteScroll = true,
-      this.reverse = false,
-      this.autoPlay = false,
-      this.autoPlayInterval = const Duration(seconds: 5),
-      this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
-      this.autoPlayCurve = Curves.fastOutSlowIn,
-      this.pauseAutoPlayOnTouch,
-      this.enlargeCenterPage = false,
-      this.onPageChanged,
-      this.scrollPhysics,
-      this.isFastScrollingEnabled = false,
-      this.scrollDirection = Axis.horizontal})
-      : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
-        itemCount = items.length,
-        itemBuilder = null,
-        pageController = PageController(
-          viewportFraction: viewportFraction as double,
-          initialPage: enableInfiniteScroll
-              ? realPage + (initialPage as int)
-              : initialPage as int,
-        );
+  VxSwiper({
+    super.key,
+    required List<Widget> this.items,
+    this.height,
+    this.aspectRatio = 16 / 9,
+    this.viewportFraction = 0.8,
+    this.initialPage = 0,
+    int realPage = 10000,
+    this.enableInfiniteScroll = true,
+    this.reverse = false,
+    this.autoPlay = false,
+    this.autoPlayInterval = const Duration(seconds: 5),
+    this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
+    this.autoPlayCurve = Curves.fastOutSlowIn,
+    this.pauseAutoPlayOnTouch,
+    this.enlargeCenterPage = false,
+    this.onPageChanged,
+    this.scrollPhysics,
+    this.isFastScrollingEnabled = false,
+    this.scrollDirection = Axis.horizontal,
+  }) : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
+       itemCount = items.length,
+       itemBuilder = null,
+       pageController = PageController(
+         viewportFraction: viewportFraction as double,
+         initialPage: enableInfiniteScroll
+             ? realPage + (initialPage as int)
+             : initialPage as int,
+       );
 
-  VxSwiper.builder(
-      {super.key,
-      required this.itemCount,
-      required this.itemBuilder,
-      this.height,
-      this.aspectRatio = 16 / 9,
-      this.viewportFraction = 0.8,
-      this.initialPage = 0,
-      int realPage = 10000,
-      this.enableInfiniteScroll = true,
-      this.reverse = false,
-      this.autoPlay = false,
-      this.autoPlayInterval = const Duration(seconds: 5),
-      this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
-      this.autoPlayCurve = Curves.fastOutSlowIn,
-      this.pauseAutoPlayOnTouch,
-      this.enlargeCenterPage = false,
-      this.onPageChanged,
-      this.scrollPhysics,
-      this.isFastScrollingEnabled = false,
-      this.scrollDirection = Axis.horizontal})
-      : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
-        items = null,
-        pageController = PageController(
-          viewportFraction: viewportFraction as double,
-          initialPage: enableInfiniteScroll
-              ? realPage + (initialPage as int)
-              : initialPage as int,
-        );
+  VxSwiper.builder({
+    super.key,
+    required this.itemCount,
+    required this.itemBuilder,
+    this.height,
+    this.aspectRatio = 16 / 9,
+    this.viewportFraction = 0.8,
+    this.initialPage = 0,
+    int realPage = 10000,
+    this.enableInfiniteScroll = true,
+    this.reverse = false,
+    this.autoPlay = false,
+    this.autoPlayInterval = const Duration(seconds: 5),
+    this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
+    this.autoPlayCurve = Curves.fastOutSlowIn,
+    this.pauseAutoPlayOnTouch,
+    this.enlargeCenterPage = false,
+    this.onPageChanged,
+    this.scrollPhysics,
+    this.isFastScrollingEnabled = false,
+    this.scrollDirection = Axis.horizontal,
+  }) : realPage = enableInfiniteScroll ? realPage + initialPage : initialPage,
+       items = null,
+       pageController = PageController(
+         viewportFraction: viewportFraction as double,
+         initialPage: enableInfiniteScroll
+             ? realPage + (initialPage as int)
+             : initialPage as int,
+       );
 
   /// The widgets to be shown in the carousel of default constructor
   final List<Widget>? items;
@@ -195,8 +195,10 @@ class VxSwiper extends StatefulWidget {
   ///
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
-  Future<void> previousPage(
-      {required Duration duration, required Curve curve}) {
+  Future<void> previousPage({
+    required Duration duration,
+    required Curve curve,
+  }) {
     return pageController.previousPage(duration: duration, curve: curve);
   }
 
@@ -206,23 +208,34 @@ class VxSwiper extends StatefulWidget {
   /// without animation, and without checking if the new value is in range.
   void jumpToPage(int page) {
     final index = _getRealIndex(
-        pageController.page!.toInt(), realPage - initialPage as int, itemCount);
-    return pageController
-        .jumpToPage(pageController.page!.toInt() + page - index);
+      pageController.page!.toInt(),
+      realPage - initialPage as int,
+      itemCount,
+    );
+    return pageController.jumpToPage(
+      pageController.page!.toInt() + page - index,
+    );
   }
 
   /// Animates the controlled [VxSwiper] from the current page to the given page.
   ///
   /// The animation lasts for the given duration and follows the given curve.
   /// The returned [Future] resolves when the animation completes.
-  Future<void> animateToPage(int page,
-      {required Duration duration, required Curve curve}) {
+  Future<void> animateToPage(
+    int page, {
+    required Duration duration,
+    required Curve curve,
+  }) {
     final index = _getRealIndex(
-        pageController.page!.toInt(), realPage - initialPage as int, itemCount);
+      pageController.page!.toInt(),
+      realPage - initialPage as int,
+      itemCount,
+    );
     return pageController.animateToPage(
-        pageController.page!.toInt() + page - index,
-        duration: duration,
-        curve: curve);
+      pageController.page!.toInt() + page - index,
+      duration: duration,
+      curve: curve,
+    );
   }
 
   @override
@@ -242,8 +255,9 @@ class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
     return widget.autoPlay
         ? Timer.periodic(widget.autoPlayInterval, (_) {
             widget.pageController.nextPage(
-                duration: widget.autoPlayAnimationDuration,
-                curve: widget.autoPlayCurve);
+              duration: widget.autoPlayAnimationDuration,
+              curve: widget.autoPlayCurve,
+            );
           })
         : null;
   }
@@ -259,28 +273,31 @@ class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
     int? t; //Tid
     late double p; //Position
     return Listener(
-        onPointerMove: (pos) {
-          //Get pointer position when pointer moves
-          //If time since last scroll is undefined or over 100 milliseconds
-          if (t == null || DateTime.now().millisecondsSinceEpoch - t! > 100) {
-            t = DateTime.now().millisecondsSinceEpoch;
-            p = pos.position.dx; //x position
-          } else {
-            //Calculate velocity
-            final double v = (p - pos.position.dx) /
-                (DateTime.now().millisecondsSinceEpoch - t!);
-            if (v < -2 || v > 2) {
-              final vx = (v * 1.2).isFinite ? (v * 1.2).round() : 0;
-              //Don't run if velocity is to low
-              //Move to page based on velocity (increase velocity multiplier to scroll further)
-              widget.pageController.animateToPage(
-                  widget.pageController.page!.toInt() + vx,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeOutCubic);
-            }
+      onPointerMove: (pos) {
+        //Get pointer position when pointer moves
+        //If time since last scroll is undefined or over 100 milliseconds
+        if (t == null || DateTime.now().millisecondsSinceEpoch - t! > 100) {
+          t = DateTime.now().millisecondsSinceEpoch;
+          p = pos.position.dx; //x position
+        } else {
+          //Calculate velocity
+          final double v =
+              (p - pos.position.dx) /
+              (DateTime.now().millisecondsSinceEpoch - t!);
+          if (v < -2 || v > 2) {
+            final vx = (v * 1.2).isFinite ? (v * 1.2).round() : 0;
+            //Don't run if velocity is to low
+            //Move to page based on velocity (increase velocity multiplier to scroll further)
+            widget.pageController.animateToPage(
+              widget.pageController.page!.toInt() + vx,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeOutCubic,
+            );
           }
-        },
-        child: child);
+        }
+      },
+      child: child,
+    );
   }
 
   Widget getWrapper(Widget child) {
@@ -289,16 +306,18 @@ class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
       return widget.autoPlay && widget.pauseAutoPlayOnTouch != null
           ? addGestureDetection(wrapper)
           : (widget.isFastScrollingEnabled
-              ? fastScrollWidget(wrapper)
-              : wrapper);
+                ? fastScrollWidget(wrapper)
+                : wrapper);
     } else {
-      final Widget wrapper =
-          AspectRatio(aspectRatio: widget.aspectRatio, child: child);
+      final Widget wrapper = AspectRatio(
+        aspectRatio: widget.aspectRatio,
+        child: child,
+      );
       return widget.autoPlay && widget.pauseAutoPlayOnTouch != null
           ? addGestureDetection(wrapper)
           : (widget.isFastScrollingEnabled
-              ? fastScrollWidget(wrapper)
-              : wrapper);
+                ? fastScrollWidget(wrapper)
+                : wrapper);
     }
   }
 
@@ -313,76 +332,90 @@ class VxSwiperState extends State<VxSwiper> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return getWrapper(PageView.builder(
-      physics: widget.isFastScrollingEnabled
-          ? const ClampingScrollPhysics()
-          : widget.scrollPhysics,
-      scrollDirection: widget.scrollDirection,
-      controller: widget.pageController,
-      reverse: widget.reverse,
-      itemCount: widget.enableInfiniteScroll ? null : widget.itemCount,
-      onPageChanged: (int index) {
-        final int currentPage = _getRealIndex(
+    return getWrapper(
+      PageView.builder(
+        physics: widget.isFastScrollingEnabled
+            ? const ClampingScrollPhysics()
+            : widget.scrollPhysics,
+        scrollDirection: widget.scrollDirection,
+        controller: widget.pageController,
+        reverse: widget.reverse,
+        itemCount: widget.enableInfiniteScroll ? null : widget.itemCount,
+        onPageChanged: (int index) {
+          final int currentPage = _getRealIndex(
             index + (widget.initialPage as int),
             widget.realPage as int,
-            widget.itemCount);
-        if (widget.onPageChanged != null) {
-          widget.onPageChanged!(currentPage);
-        }
-      },
-      itemBuilder: (BuildContext context, int i) {
-        final int index = _getRealIndex(i + (widget.initialPage as int),
-            widget.realPage as int, widget.itemCount);
+            widget.itemCount,
+          );
+          if (widget.onPageChanged != null) {
+            widget.onPageChanged!(currentPage);
+          }
+        },
+        itemBuilder: (BuildContext context, int i) {
+          final int index = _getRealIndex(
+            i + (widget.initialPage as int),
+            widget.realPage as int,
+            widget.itemCount,
+          );
 
-        return AnimatedBuilder(
-          animation: widget.pageController,
-          child: (widget.items != null)
-              ? widget.items![index]
-              : widget.itemBuilder!(context, index),
-          builder: (BuildContext context, child) {
-            double? distortionValue = 1.0;
-            // if `enlargeCenterPage` is true, we must calculate the carousel item's height
-            // to display the visual effect
-            if (widget.enlargeCenterPage != null &&
-                widget.enlargeCenterPage == true) {
-              double itemOffset;
-              // pageController.page can only be accessed after the first build,
-              // so in the first build we calculate the itemoffset manually
-              try {
-                itemOffset = widget.pageController.page! - i;
-              } catch (e) {
-                final BuildContext storageContext =
-                    widget.pageController.position.context.storageContext;
-                final double? previousSavedPosition =
-                    PageStorage.of(storageContext).readState(storageContext)
-                        as double?;
-                if (previousSavedPosition != null) {
-                  itemOffset = previousSavedPosition - i.toDouble();
-                } else {
-                  itemOffset = widget.realPage.toDouble() - i.toDouble();
+          return AnimatedBuilder(
+            animation: widget.pageController,
+            child: (widget.items != null)
+                ? widget.items![index]
+                : widget.itemBuilder!(context, index),
+            builder: (BuildContext context, child) {
+              double? distortionValue = 1.0;
+              // if `enlargeCenterPage` is true, we must calculate the carousel item's height
+              // to display the visual effect
+              if (widget.enlargeCenterPage != null &&
+                  widget.enlargeCenterPage == true) {
+                double itemOffset;
+                // pageController.page can only be accessed after the first build,
+                // so in the first build we calculate the itemoffset manually
+                try {
+                  itemOffset = widget.pageController.page! - i;
+                } catch (e) {
+                  final BuildContext storageContext =
+                      widget.pageController.position.context.storageContext;
+                  final double? previousSavedPosition =
+                      PageStorage.of(storageContext).readState(storageContext)
+                          as double?;
+                  if (previousSavedPosition != null) {
+                    itemOffset = previousSavedPosition - i.toDouble();
+                  } else {
+                    itemOffset = widget.realPage.toDouble() - i.toDouble();
+                  }
                 }
+                final distortionRatio = (1 - (itemOffset.abs() * 0.3)).clamp(
+                  0.0,
+                  1.0,
+                );
+                distortionValue = Curves.easeOut.transform(distortionRatio);
               }
-              final distortionRatio =
-                  (1 - (itemOffset.abs() * 0.3)).clamp(0.0, 1.0);
-              distortionValue = Curves.easeOut.transform(distortionRatio);
-            }
-            final double height = widget.height ??
-                MediaQuery.sizeOf(context).width * (1 / widget.aspectRatio);
+              final double height =
+                  widget.height ??
+                  MediaQuery.sizeOf(context).width * (1 / widget.aspectRatio);
 
-            if (widget.scrollDirection == Axis.horizontal) {
-              return Center(
-                  child:
-                      SizedBox(height: distortionValue * height, child: child));
-            } else {
-              return Center(
+              if (widget.scrollDirection == Axis.horizontal) {
+                return Center(
                   child: SizedBox(
-                      width: distortionValue * MediaQuery.sizeOf(context).width,
-                      child: child));
-            }
-          },
-        );
-      },
-    ));
+                    height: distortionValue * height,
+                    child: child,
+                  ),
+                );
+              } else {
+                return Center(
+                  child: SizedBox(
+                    width: distortionValue * MediaQuery.sizeOf(context).width,
+                    child: child,
+                  ),
+                );
+              }
+            },
+          );
+        },
+      ),
+    );
   }
 }
 

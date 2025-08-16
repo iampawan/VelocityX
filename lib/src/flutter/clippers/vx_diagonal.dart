@@ -107,13 +107,14 @@ class VxDiagonalClipper extends CustomClipper<Path> {
 }
 
 class VxDiagonal extends StatelessWidget {
-  const VxDiagonal(
-      {super.key,
-      required this.child,
-      required this.clipHeight,
-      this.position = VxDiagonalPosition.bottomLeft,
-      this.axis = Axis.horizontal,
-      this.clipShadows = const []});
+  const VxDiagonal({
+    super.key,
+    required this.child,
+    required this.clipHeight,
+    this.position = VxDiagonalPosition.bottomLeft,
+    this.axis = Axis.horizontal,
+    this.clipShadows = const [],
+  });
 
   final Widget child;
 
@@ -134,10 +135,7 @@ class VxDiagonal extends StatelessWidget {
     final clipper = VxDiagonalClipper(clipHeight, position, axis);
     return CustomPaint(
       painter: VxClipShadowPainter(clipper, clipShadows),
-      child: ClipPath(
-        clipper: clipper,
-        child: child,
-      ),
+      child: ClipPath(clipper: clipper, child: child),
     );
   }
 }

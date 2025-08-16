@@ -20,19 +20,20 @@ import 'timeline_painter.dart';
 /// To show a timeline view with filled dot and title, subtitle.
 
 class VxTimelineView extends StatelessWidget {
-  const VxTimelineView(
-      {super.key,
-      required this.lineColor,
-      required this.backgroundColor,
-      required this.trailingColor,
-      required this.model,
-      this.firstElement = false,
-      this.lastElement = false,
-      this.controller,
-      this.headingColor,
-      this.descriptionColor,
-      this.hideLauncher = true,
-      this.trailing});
+  const VxTimelineView({
+    super.key,
+    required this.lineColor,
+    required this.backgroundColor,
+    required this.trailingColor,
+    required this.model,
+    this.firstElement = false,
+    this.lastElement = false,
+    this.controller,
+    this.headingColor,
+    this.descriptionColor,
+    this.hideLauncher = true,
+    this.trailing,
+  });
   final Color lineColor;
   final Color backgroundColor;
   final Color trailingColor;
@@ -50,12 +51,13 @@ class VxTimelineView extends StatelessWidget {
       width: 40.0,
       child: CustomPaint(
         painter: VxTimelinePainter(
-            lineColor: lineColor,
-            backgroundColor: backgroundColor,
-            trailingColor: trailingColor,
-            firstElement: firstElement,
-            lastElement: lastElement,
-            controller: controller!),
+          lineColor: lineColor,
+          backgroundColor: backgroundColor,
+          trailingColor: trailingColor,
+          firstElement: firstElement,
+          lastElement: lastElement,
+          controller: controller!,
+        ),
       ),
     );
   }
@@ -71,9 +73,7 @@ class VxTimelineView extends StatelessWidget {
             model.heading.length > 47
                 ? "${model.heading.substring(0, 47)}..."
                 : model.heading,
-            style: TextStyle(
-              color: headingColor ?? Colors.black,
-            ),
+            style: TextStyle(color: headingColor ?? Colors.black),
           ),
         ),
         Expanded(
@@ -81,13 +81,11 @@ class VxTimelineView extends StatelessWidget {
             model.description.length > 50
                 ? "${model.description.substring(0, 50)}..."
                 : model
-                    .description, // To prevent overflowing of text to the next element, the text is truncated if greater than 75 characters
-            style: TextStyle(
-              color: descriptionColor ?? Colors.black,
-            ),
+                      .description, // To prevent overflowing of text to the next element, the text is truncated if greater than 75 characters
+            style: TextStyle(color: descriptionColor ?? Colors.black),
             textScaler: const TextScaler.linear(1.25),
           ),
-        )
+        ),
       ],
     );
   }
@@ -98,25 +96,17 @@ class VxTimelineView extends StatelessWidget {
       color: backgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0),
       child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            AnimatedBuilder(
-              builder: _buildLine,
-              animation: controller!,
-            ),
-            Expanded(
-              child: _buildContentColumn(context),
-            ),
-            if (!hideLauncher)
-              if (trailing != null)
-                trailing!
-              else
-                Icon(
-                  Icons.open_in_new,
-                  color: trailingColor,
-                  size: 20,
-                )
-          ]),
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          AnimatedBuilder(builder: _buildLine, animation: controller!),
+          Expanded(child: _buildContentColumn(context)),
+          if (!hideLauncher)
+            if (trailing != null)
+              trailing!
+            else
+              Icon(Icons.open_in_new, color: trailingColor, size: 20),
+        ],
+      ),
     );
   }
 

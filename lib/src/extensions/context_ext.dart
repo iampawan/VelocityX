@@ -127,10 +127,11 @@ extension VxContextExtensions on BuildContext {
       (screenSize.width - ((screenSize.width / 100) * reducedBy)) / dividedBy;
 
   /// Divide the height proportionally by the given value
-  double ratio(
-          {double dividedBy = 1,
-          double reducedByW = 0.0,
-          double reducedByH = 0.0}) =>
+  double ratio({
+    double dividedBy = 1,
+    double reducedByW = 0.0,
+    double reducedByH = 0.0,
+  }) =>
       heightTransformer(dividedBy: dividedBy, reducedBy: reducedByH) /
       widthTransformer(dividedBy: dividedBy, reducedBy: reducedByW);
 
@@ -162,51 +163,36 @@ extension VxContextExtensions on BuildContext {
   TextStyle? get captionStyle => Theme.of(this).textTheme.bodySmall;
 
   ColorScheme get colors => theme.colorScheme;
-  TextStyle? get displayLarge => textTheme.displayLarge?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get displayMedium => textTheme.displayMedium?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get displaySmall => textTheme.displaySmall?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get headlineLarge => textTheme.headlineLarge?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get headlineMedium => textTheme.headlineMedium?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get headlineSmall => textTheme.headlineSmall?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get titleLarge => textTheme.titleLarge?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get titleMedium => textTheme.titleMedium?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get titleSmall => textTheme.titleSmall?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get labelLarge => textTheme.labelLarge?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get labelMedium => textTheme.labelMedium?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get labelSmall => textTheme.labelSmall?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get bodyLarge => textTheme.bodyLarge?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get bodyMedium => textTheme.bodyMedium?.copyWith(
-        color: colors.onSurface,
-      );
-  TextStyle? get bodySmall => textTheme.bodySmall?.copyWith(
-        color: colors.onSurface,
-      );
+  TextStyle? get displayLarge =>
+      textTheme.displayLarge?.copyWith(color: colors.onSurface);
+  TextStyle? get displayMedium =>
+      textTheme.displayMedium?.copyWith(color: colors.onSurface);
+  TextStyle? get displaySmall =>
+      textTheme.displaySmall?.copyWith(color: colors.onSurface);
+  TextStyle? get headlineLarge =>
+      textTheme.headlineLarge?.copyWith(color: colors.onSurface);
+  TextStyle? get headlineMedium =>
+      textTheme.headlineMedium?.copyWith(color: colors.onSurface);
+  TextStyle? get headlineSmall =>
+      textTheme.headlineSmall?.copyWith(color: colors.onSurface);
+  TextStyle? get titleLarge =>
+      textTheme.titleLarge?.copyWith(color: colors.onSurface);
+  TextStyle? get titleMedium =>
+      textTheme.titleMedium?.copyWith(color: colors.onSurface);
+  TextStyle? get titleSmall =>
+      textTheme.titleSmall?.copyWith(color: colors.onSurface);
+  TextStyle? get labelLarge =>
+      textTheme.labelLarge?.copyWith(color: colors.onSurface);
+  TextStyle? get labelMedium =>
+      textTheme.labelMedium?.copyWith(color: colors.onSurface);
+  TextStyle? get labelSmall =>
+      textTheme.labelSmall?.copyWith(color: colors.onSurface);
+  TextStyle? get bodyLarge =>
+      textTheme.bodyLarge?.copyWith(color: colors.onSurface);
+  TextStyle? get bodyMedium =>
+      textTheme.bodyMedium?.copyWith(color: colors.onSurface);
+  TextStyle? get bodySmall =>
+      textTheme.bodySmall?.copyWith(color: colors.onSurface);
 
   ///
   /// The foreground color for widgets (knobs, text, overscroll edge effect, etc).
@@ -259,7 +245,10 @@ extension VxContextExtensions on BuildContext {
   /// Pushes and replacing the built widget to the screen using the material fade in animation
   void nextReplacementPage(Widget page, {bool maintainState = true}) =>
       _nextReplacementPage(
-          context: this, page: page, maintainState: maintainState);
+        context: this,
+        page: page,
+        maintainState: maintainState,
+      );
 
   /// Removing all the widgets till defined rule, and pushes the built widget to the screen using the material fade in animation
   void nextAndRemoveUntilPage(Widget page) =>
@@ -302,27 +291,27 @@ extension VxContextExtensions on BuildContext {
   ScaffoldState get vxscaffold => Scaffold.of(this);
 }
 
-Future<void> _nextPage(
-        {required BuildContext context,
-        required Widget page,
-        bool maintainState = true}) async =>
-    await Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => page,
-          maintainState: maintainState,
-        ));
-Future<void> _nextReplacementPage(
-        {required BuildContext context,
-        required Widget page,
-        bool maintainState = true}) async =>
-    await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => page,
-          maintainState: maintainState,
-        ));
-Future<void> _nextAndRemoveUntilPage(
-        {required BuildContext context, required Widget page}) async =>
-    await Navigator.pushAndRemoveUntil(context,
-        MaterialPageRoute(builder: (context) => page), (route) => false);
+Future<void> _nextPage({
+  required BuildContext context,
+  required Widget page,
+  bool maintainState = true,
+}) async => await Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => page, maintainState: maintainState),
+);
+Future<void> _nextReplacementPage({
+  required BuildContext context,
+  required Widget page,
+  bool maintainState = true,
+}) async => await Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(builder: (context) => page, maintainState: maintainState),
+);
+Future<void> _nextAndRemoveUntilPage({
+  required BuildContext context,
+  required Widget page,
+}) async => await Navigator.pushAndRemoveUntil(
+  context,
+  MaterialPageRoute(builder: (context) => page),
+  (route) => false,
+);

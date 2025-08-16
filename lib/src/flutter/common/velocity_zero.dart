@@ -17,8 +17,11 @@ import 'package:velocity_x/src/extensions/context_ext.dart';
 ///
 /// [myBoxDesc] to reuse with [PKSkeleton]
 ///
-Decoration myBoxDec(Animation? animation,
-    {bool isCircle = false, bool isDark = false}) {
+Decoration myBoxDec(
+  Animation? animation, {
+  bool isCircle = false,
+  bool isDark = false,
+}) {
   return BoxDecoration(
     shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
     gradient: LinearGradient(
@@ -36,11 +39,7 @@ Decoration myBoxDec(Animation? animation,
               const Color(0xffe9ebee),
               const Color(0xfff6f7f9),
             ],
-      stops: [
-        animation?.value - 1,
-        animation?.value,
-        animation?.value + 1,
-      ],
+      stops: [animation?.value - 1, animation?.value, animation?.value + 1],
     ),
   );
 }
@@ -49,11 +48,12 @@ Decoration myBoxDec(Animation? animation,
 /// [VxZeroCard] can be used to provide a single loading card with PKSkeleton cool animation.
 ///
 class VxZeroCard extends StatefulWidget {
-  const VxZeroCard(
-      {super.key,
-      this.isCircularImage = true,
-      this.isBottomLinesActive = true,
-      this.isDark = false});
+  const VxZeroCard({
+    super.key,
+    this.isCircularImage = true,
+    this.isBottomLinesActive = true,
+    this.isDark = false,
+  });
 
   /// if the image should be circular? By default it is true
   final bool isCircularImage;
@@ -82,7 +82,8 @@ class VxZeroCardState extends State<VxZeroCard>
     );
 
     animation = Tween<double>(begin: -1.0, end: 2.0).animate(
-        CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller));
+      CurvedAnimation(curve: Curves.easeInOutSine, parent: _controller),
+    );
 
     animation!.addStatusListener((status) {
       if (status == AnimationStatus.completed ||
@@ -121,13 +122,13 @@ class VxZeroCardState extends State<VxZeroCard>
                     Container(
                       height: context.percentHeight * 10,
                       width: context.percentWidth * 10,
-                      decoration: myBoxDec(animation,
-                          isCircle: widget.isCircularImage,
-                          isDark: widget.isDark),
+                      decoration: myBoxDec(
+                        animation,
+                        isCircle: widget.isCircularImage,
+                        isDark: widget.isDark,
+                      ),
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
+                    const SizedBox(width: 20),
                     SizedBox(
                       height: context.percentWidth * 10,
                       child: Column(
@@ -157,22 +158,16 @@ class VxZeroCardState extends State<VxZeroCard>
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       _VxLine(70, 0.7, animation, widget.isDark),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       _VxLine(80, 0.7, animation, widget.isDark),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      const SizedBox(height: 10),
                       _VxLine(50, 0.7, animation, widget.isDark),
                     ],
                   )
                 else
-                  const Offstage()
+                  const Offstage(),
               ],
             ),
           ),
@@ -204,12 +199,13 @@ class _VxLine extends StatelessWidget {
 /// [VxZeroList] can be used to provide a list of loading cards with PKSkeleton cool animation.
 ///
 class VxZeroList extends StatelessWidget {
-  const VxZeroList(
-      {super.key,
-      this.isCircularImage = true,
-      this.length = 10,
-      this.isBottomLinesActive = true,
-      this.isDark = false});
+  const VxZeroList({
+    super.key,
+    this.isCircularImage = true,
+    this.length = 10,
+    this.isBottomLinesActive = true,
+    this.isDark = false,
+  });
 
   /// if the image should be circular? By default it is true
   final bool isCircularImage;

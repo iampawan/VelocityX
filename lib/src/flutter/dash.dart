@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 /// VelocityX widget to show Dashes with gaps if needed. It can be vertical or horizontal.
 ///
 class VxDash extends StatelessWidget {
-  const VxDash(
-      {super.key,
-      this.direction = Axis.horizontal,
-      this.dashColor = Colors.black,
-      this.length = 200,
-      this.dashGap = 3,
-      this.dashLength = 6,
-      this.dashThickness = 1,
-      this.dashBorderRadius = 0});
+  const VxDash({
+    super.key,
+    this.direction = Axis.horizontal,
+    this.dashColor = Colors.black,
+    this.length = 200,
+    this.dashGap = 3,
+    this.dashLength = 6,
+    this.dashThickness = 1,
+    this.dashBorderRadius = 0,
+  });
 
   /// Direction of the dash. Default is horizontal
   final Axis direction;
@@ -46,10 +47,9 @@ class VxDash extends StatelessWidget {
     }
     if (direction == Axis.horizontal) {
       return SizedBox(
-          width: length,
-          child: Row(
-            children: dashes,
-          ));
+        width: length,
+        child: Row(children: dashes),
+      );
     } else {
       return Column(children: dashes);
     }
@@ -59,20 +59,22 @@ class VxDash extends StatelessWidget {
   Widget step(int index, double newDashGap) {
     final bool isHorizontal = direction == Axis.horizontal;
     return Padding(
-        padding: EdgeInsets.fromLTRB(
-            0,
-            0,
-            isHorizontal && index != 1 ? newDashGap : 0,
-            isHorizontal || index == 1 ? 0 : newDashGap),
-        child: SizedBox(
-          width: isHorizontal ? dashLength : dashThickness,
-          height: isHorizontal ? dashThickness : dashLength,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                color: dashColor,
-                borderRadius:
-                    BorderRadius.all(Radius.circular(dashBorderRadius))),
+      padding: EdgeInsets.fromLTRB(
+        0,
+        0,
+        isHorizontal && index != 1 ? newDashGap : 0,
+        isHorizontal || index == 1 ? 0 : newDashGap,
+      ),
+      child: SizedBox(
+        width: isHorizontal ? dashLength : dashThickness,
+        height: isHorizontal ? dashThickness : dashLength,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: dashColor,
+            borderRadius: BorderRadius.all(Radius.circular(dashBorderRadius)),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -25,30 +25,31 @@ extension VxWidgetsExtension on Widget {
   Widget when(bool condition) => condition ? this : const VxNone();
 
   ///Tooltip as accessibility
-  Widget tooltip(String message,
-          {Key? key,
-          Decoration? decoration,
-          double? height,
-          BoxConstraints? constraints,
-          bool? preferBelow,
-          EdgeInsetsGeometry? padding,
-          TextStyle? textStyle,
-          Duration? waitDuration,
-          EdgeInsetsGeometry? margin}) =>
-      Tooltip(
-        key: key,
-        message: message,
-        decoration: decoration,
-        constraints: height != null
-            ? BoxConstraints.tightFor(height: height)
-            : constraints,
-        padding: padding,
-        preferBelow: preferBelow,
-        textStyle: textStyle,
-        waitDuration: waitDuration,
-        margin: margin,
-        child: this,
-      );
+  Widget tooltip(
+    String message, {
+    Key? key,
+    Decoration? decoration,
+    double? height,
+    BoxConstraints? constraints,
+    bool? preferBelow,
+    EdgeInsetsGeometry? padding,
+    TextStyle? textStyle,
+    Duration? waitDuration,
+    EdgeInsetsGeometry? margin,
+  }) => Tooltip(
+    key: key,
+    message: message,
+    decoration: decoration,
+    constraints: height != null
+        ? BoxConstraints.tightFor(height: height)
+        : constraints,
+    padding: padding,
+    preferBelow: preferBelow,
+    textStyle: textStyle,
+    waitDuration: waitDuration,
+    margin: margin,
+    child: this,
+  );
 
   ///Hides a widget
   Widget hide({Key? key, bool isVisible = false, bool maintainSize = false}) =>
@@ -73,51 +74,43 @@ extension VxWidgetsExtension on Widget {
     double verticalMargin = 10.0,
     bool showArrow = true,
     VxClickType clickType = VxClickType.singleClick,
-  }) =>
-      VxPopupMenu(
-        key: key,
-        clickType: clickType,
-        controller: controller,
-        arrowColor: arrowColor,
-        arrowSize: arrowSize,
-        barrierColor: barrierColor,
-        horizontalMargin: horizontalMargin,
-        showArrow: showArrow,
-        verticalMargin: verticalMargin,
-        menuBuilder: menuBuilder,
-        child: this,
-      );
+  }) => VxPopupMenu(
+    key: key,
+    clickType: clickType,
+    controller: controller,
+    arrowColor: arrowColor,
+    arrowSize: arrowSize,
+    barrierColor: barrierColor,
+    horizontalMargin: horizontalMargin,
+    showArrow: showArrow,
+    verticalMargin: verticalMargin,
+    menuBuilder: menuBuilder,
+    child: this,
+  );
 
   /// Widget to show exception
   Widget errorWidget(Object ex) => ErrorWidget(ex);
 
   /// Extension for [Expanded]
   Expanded expand({Key? key, int flex = 1}) {
-    return Expanded(
-      key: key,
-      flex: flex,
-      child: this,
-    );
+    return Expanded(key: key, flex: flex, child: this);
   }
 
   /// Extension for [Flexible]
   Flexible flexible({Key? key, int flex = 1}) {
-    return Flexible(
-      key: key,
-      flex: flex,
-      child: this,
-    );
+    return Flexible(key: key, flex: flex, child: this);
   }
 
   /// Extension for Stack [Positioned]
-  Widget positioned(
-      {double? top,
-      double? bottom,
-      double? left,
-      double? right,
-      double? height,
-      double? width,
-      bool isFilled = false}) {
+  Widget positioned({
+    double? top,
+    double? bottom,
+    double? left,
+    double? right,
+    double? height,
+    double? width,
+    bool isFilled = false,
+  }) {
     return isFilled
         ? Positioned.fill(
             key: key,
@@ -142,9 +135,7 @@ extension VxWidgetsExtension on Widget {
   /// Extension for coloring a widget with [DecoratedBox]
   DecoratedBox backgroundColor(Color? color) {
     return DecoratedBox(
-      decoration: BoxDecoration(
-        color: color,
-      ),
+      decoration: BoxDecoration(color: color),
       child: this,
     );
   }
@@ -162,18 +153,12 @@ extension VxWidgetsExtension on Widget {
 
   /// Extension for aspectRatio with [AspectRatio]
   AspectRatio aspectRatio(double aspectRatio) {
-    return AspectRatio(
-      aspectRatio: aspectRatio,
-      child: this,
-    );
+    return AspectRatio(aspectRatio: aspectRatio, child: this);
   }
 
   /// Extension for adding a corner radius a widget with [ClipRRect]
   ClipRRect cornerRadius(double radius) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(radius),
-      child: this,
-    );
+    return ClipRRect(borderRadius: BorderRadius.circular(radius), child: this);
   }
 
   /// Extension for creating a half shape using [VxHalfClipper]
@@ -187,8 +172,10 @@ extension VxWidgetsExtension on Widget {
   }
 
   /// Extension for creating a oval shape using [ClipOval]
-  Widget clipOval(
-      {Clip clipBehavior = Clip.antiAlias, CustomClipper<Rect>? clipper}) {
+  Widget clipOval({
+    Clip clipBehavior = Clip.antiAlias,
+    CustomClipper<Rect>? clipper,
+  }) {
     return ClipOval(
       key: key,
       clipBehavior: clipBehavior,
@@ -223,67 +210,65 @@ extension VxWidgetsExtension on Widget {
   }
 
   /// Extension method for [Material] Widget
-  Widget material(
-          {Key? key,
-          MaterialType type = MaterialType.canvas,
-          Duration animationDuration = kThemeAnimationDuration,
-          bool borderOnForeground = true,
-          BorderRadiusGeometry? borderRadius,
-          Clip clipBehavior = Clip.none,
-          Color? color,
-          double elevation = 0.0,
-          Color? shadowColor,
-          ShapeBorder? shape,
-          TextStyle? textStyle}) =>
-      Material(
-        key: key,
-        type: type,
-        animationDuration: animationDuration,
-        borderOnForeground: borderOnForeground,
-        borderRadius: borderRadius,
-        clipBehavior: clipBehavior,
-        color: color,
-        elevation: elevation,
-        shadowColor: shadowColor,
-        shape: shape,
-        textStyle: textStyle,
-        child: this,
-      );
+  Widget material({
+    Key? key,
+    MaterialType type = MaterialType.canvas,
+    Duration animationDuration = kThemeAnimationDuration,
+    bool borderOnForeground = true,
+    BorderRadiusGeometry? borderRadius,
+    Clip clipBehavior = Clip.none,
+    Color? color,
+    double elevation = 0.0,
+    Color? shadowColor,
+    ShapeBorder? shape,
+    TextStyle? textStyle,
+  }) => Material(
+    key: key,
+    type: type,
+    animationDuration: animationDuration,
+    borderOnForeground: borderOnForeground,
+    borderRadius: borderRadius,
+    clipBehavior: clipBehavior,
+    color: color,
+    elevation: elevation,
+    shadowColor: shadowColor,
+    shape: shape,
+    textStyle: textStyle,
+    child: this,
+  );
 
   /// Extension method for [SafeArea] Widget
-  Widget safeArea(
-          {Key? key,
-          EdgeInsets minimum = EdgeInsets.zero,
-          bool maintainBottomViewPadding = false,
-          bool top = true,
-          bool bottom = true,
-          bool left = true,
-          bool right = true}) =>
-      SafeArea(
-        key: key,
-        minimum: minimum,
-        maintainBottomViewPadding: maintainBottomViewPadding,
-        top: top,
-        bottom: bottom,
-        left: left,
-        right: right,
-        child: this,
-      );
+  Widget safeArea({
+    Key? key,
+    EdgeInsets minimum = EdgeInsets.zero,
+    bool maintainBottomViewPadding = false,
+    bool top = true,
+    bool bottom = true,
+    bool left = true,
+    bool right = true,
+  }) => SafeArea(
+    key: key,
+    minimum: minimum,
+    maintainBottomViewPadding: maintainBottomViewPadding,
+    top: top,
+    bottom: bottom,
+    left: left,
+    right: right,
+    child: this,
+  );
 
   /// Extension method for [ShaderMask] Widget
   Widget shaderMask({
     required Gradient gradient,
     Key? key,
     BlendMode blendMode = BlendMode.modulate,
-  }) =>
-      ShaderMask(
-        blendMode: blendMode,
-        key: key,
-        shaderCallback: (bounds) => gradient.createShader(
-          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-        ),
-        child: this,
-      );
+  }) => ShaderMask(
+    blendMode: blendMode,
+    key: key,
+    shaderCallback: (bounds) =>
+        gradient.createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
+    child: this,
+  );
 
   /// Extension method for [VxInnerShadow] Widget
   Widget innerShadow({
@@ -291,14 +276,13 @@ extension VxWidgetsExtension on Widget {
     double blur = 2.0,
     Color color = Colors.black38,
     Offset offset = const Offset(2, 2),
-  }) =>
-      VxInnerShadow(
-        key: key,
-        blur: blur,
-        color: color,
-        offset: offset,
-        child: this,
-      );
+  }) => VxInnerShadow(
+    key: key,
+    blur: blur,
+    color: color,
+    offset: offset,
+    child: this,
+  );
 
   /// Extension method for [SliverToBoxAdapter] Widget
   Widget toSliverBox({Key? key}) => SliverToBoxAdapter(key: key, child: this);
@@ -306,25 +290,29 @@ extension VxWidgetsExtension on Widget {
   SliverToBoxAdapter sliverToBoxAdapter({Key? key}) =>
       SliverToBoxAdapter(key: key, child: this);
 
-  BackdropFilter backdropFilter(
-          {Key? key, ImageFilter? filter, double fuzzyDegree = 4}) =>
-      BackdropFilter(
-          key: key,
-          filter: filter ??
-              ImageFilter.blur(sigmaX: fuzzyDegree, sigmaY: fuzzyDegree),
-          child: this);
+  BackdropFilter backdropFilter({
+    Key? key,
+    ImageFilter? filter,
+    double fuzzyDegree = 4,
+  }) => BackdropFilter(
+    key: key,
+    filter:
+        filter ?? ImageFilter.blur(sigmaX: fuzzyDegree, sigmaY: fuzzyDegree),
+    child: this,
+  );
 
-  FittedBox fittedBox(
-          {Key? key,
-          BoxFit fit = BoxFit.contain,
-          AlignmentGeometry alignment = Alignment.center,
-          Clip clipBehavior = Clip.none}) =>
-      FittedBox(
-          key: key,
-          fit: fit,
-          alignment: alignment,
-          clipBehavior: clipBehavior,
-          child: this);
+  FittedBox fittedBox({
+    Key? key,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    Clip clipBehavior = Clip.none,
+  }) => FittedBox(
+    key: key,
+    fit: fit,
+    alignment: alignment,
+    clipBehavior: clipBehavior,
+    child: this,
+  );
 
   /// Wrap widget with [ColoredBox]
   ColoredBox color(Color color, {Key? key}) =>
@@ -344,51 +332,49 @@ extension VxWidgetsExtension on Widget {
     HeroFlightShuttleBuilder? flightShuttleBuilder,
     HeroPlaceholderBuilder? placeholderBuilder,
     bool transitionOnUserGestures = false,
-  }) =>
-      Hero(
-          key: key,
-          createRectTween: createRectTween,
-          flightShuttleBuilder: flightShuttleBuilder,
-          placeholderBuilder: placeholderBuilder,
-          transitionOnUserGestures: transitionOnUserGestures,
-          tag: tag,
-          child: this);
+  }) => Hero(
+    key: key,
+    createRectTween: createRectTween,
+    flightShuttleBuilder: flightShuttleBuilder,
+    placeholderBuilder: placeholderBuilder,
+    transitionOnUserGestures: transitionOnUserGestures,
+    tag: tag,
+    child: this,
+  );
 
   List<Widget> asList() => <Widget>[this];
 }
 
 extension StringWidgetsExtension on String {
-  Widget circularAssetImage(
-          {Key? key,
-          double radius = 35.0,
-          Color bgColor = Colors.white,
-          Color? fgColor,
-          Widget? child}) =>
-      CircleAvatar(
-        key: key,
-        radius: radius,
-        backgroundColor: bgColor,
-        foregroundColor: fgColor,
-        backgroundImage: AssetImage(this),
-        child: child,
-      );
+  Widget circularAssetImage({
+    Key? key,
+    double radius = 35.0,
+    Color bgColor = Colors.white,
+    Color? fgColor,
+    Widget? child,
+  }) => CircleAvatar(
+    key: key,
+    radius: radius,
+    backgroundColor: bgColor,
+    foregroundColor: fgColor,
+    backgroundImage: AssetImage(this),
+    child: child,
+  );
 
-  Widget circularNetworkImage(
-          {Key? key,
-          double radius = 65.0,
-          Color bgColor = Colors.white,
-          Color? fgColor,
-          Widget? child}) =>
-      CircleAvatar(
-        key: key,
-        radius: radius,
-        backgroundColor: bgColor,
-        foregroundColor: fgColor,
-        backgroundImage: NetworkImage(
-          this,
-        ),
-        child: child,
-      );
+  Widget circularNetworkImage({
+    Key? key,
+    double radius = 65.0,
+    Color bgColor = Colors.white,
+    Color? fgColor,
+    Widget? child,
+  }) => CircleAvatar(
+    key: key,
+    radius: radius,
+    backgroundColor: bgColor,
+    foregroundColor: fgColor,
+    backgroundImage: NetworkImage(this),
+    child: child,
+  );
 
   Widget circularAssetShadowImage({
     Key? key,
@@ -398,30 +384,26 @@ extension StringWidgetsExtension on String {
     double height = 40.0,
     double blurRadius = 3.0,
     double borderRadius = 50.0,
-  }) =>
-      Container(
-        key: key,
-        margin: margin,
-        padding: padding,
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.rectangle,
-          image: DecorationImage(image: AssetImage(this)),
-          borderRadius: BorderRadius.circular(borderRadius),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              blurRadius: blurRadius,
-              offset: const Offset(
-                0.0,
-                0.0,
-              ),
-            )
-          ],
+  }) => Container(
+    key: key,
+    margin: margin,
+    padding: padding,
+    width: width,
+    height: height,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      shape: BoxShape.rectangle,
+      image: DecorationImage(image: AssetImage(this)),
+      borderRadius: BorderRadius.circular(borderRadius),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black,
+          blurRadius: blurRadius,
+          offset: const Offset(0.0, 0.0),
         ),
-      );
+      ],
+    ),
+  );
 }
 
 class _KeepAliveWidget extends StatefulWidget {
@@ -445,18 +427,19 @@ class _KeepAliveState extends State<_KeepAliveWidget>
   }
 }
 
-typedef AnimationUpdateCallBack<T> = Function(
-    T animationVal, double controllerVal);
+typedef AnimationUpdateCallBack<T> =
+    Function(T animationVal, double controllerVal);
 
 /// To perform forward animation in a simpler way
-AnimationController withAnimation<T>(
-    {required TickerProvider vsync,
-    required Tween<T> tween,
-    required AnimationUpdateCallBack<T?> callBack,
-    Duration duration = const Duration(seconds: 1),
-    double initialValue = 0.0,
-    Curve curve = Curves.linear,
-    Animation? customAnimation}) {
+AnimationController withAnimation<T>({
+  required TickerProvider vsync,
+  required Tween<T> tween,
+  required AnimationUpdateCallBack<T?> callBack,
+  Duration duration = const Duration(seconds: 1),
+  double initialValue = 0.0,
+  Curve curve = Curves.linear,
+  Animation? customAnimation,
+}) {
   final AnimationController controller = AnimationController(
     vsync: vsync,
     duration: duration,
@@ -476,20 +459,24 @@ AnimationController withAnimation<T>(
 }
 
 /// To perform repeat animation in a simpler way
-AnimationController withRepeatAnimation<T>(
-    {required TickerProvider vsync,
-    required Tween<T> tween,
-    required AnimationUpdateCallBack<T?> callBack,
-    Duration duration = const Duration(seconds: 1),
-    double initialValue = 0.0,
-    Curve curve = Curves.linear,
-    double? lowerBound,
-    double? upperBound,
-    bool isRepeatReversed = false,
-    Duration? repeatPeriod,
-    Animation? customAnimation}) {
+AnimationController withRepeatAnimation<T>({
+  required TickerProvider vsync,
+  required Tween<T> tween,
+  required AnimationUpdateCallBack<T?> callBack,
+  Duration duration = const Duration(seconds: 1),
+  double initialValue = 0.0,
+  Curve curve = Curves.linear,
+  double? lowerBound,
+  double? upperBound,
+  bool isRepeatReversed = false,
+  Duration? repeatPeriod,
+  Animation? customAnimation,
+}) {
   final AnimationController controller = AnimationController(
-      vsync: vsync, duration: duration, value: initialValue);
+    vsync: vsync,
+    duration: duration,
+    value: initialValue,
+  );
   final curveAnimation = CurvedAnimation(parent: controller, curve: curve);
   final Animation animation = customAnimation ?? tween.animate(curveAnimation);
   animation.addListener(() {
@@ -498,13 +485,14 @@ AnimationController withRepeatAnimation<T>(
 
   controller
       .repeat(
-          min: lowerBound,
-          max: upperBound,
-          period: repeatPeriod,
-          reverse: isRepeatReversed)
+        min: lowerBound,
+        max: upperBound,
+        period: repeatPeriod,
+        reverse: isRepeatReversed,
+      )
       .whenCompleteOrCancel(() {
-    controller.dispose();
-  });
+        controller.dispose();
+      });
 
   return controller;
 }
@@ -531,7 +519,9 @@ class VxInnerShadow extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, RenderInnerShadow renderObject) {
+    BuildContext context,
+    RenderInnerShadow renderObject,
+  ) {
     renderObject
       ..color = color
       ..blur = blur

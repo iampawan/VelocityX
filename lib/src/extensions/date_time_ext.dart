@@ -18,8 +18,11 @@ extension VxDateTimeExtension on DateTime {
   ///
   ///Helps in converting the [DateTime] to readable Time Ago format of String.
   ///
-  String timeAgo(
-      {DateTime? clock, bool? enableFromNow, bool useShortForm = false}) {
+  String timeAgo({
+    DateTime? clock,
+    bool? enableFromNow,
+    bool useShortForm = false,
+  }) {
     final mIsFromNowEnabled = enableFromNow ?? false;
     final mLanguage = English(shortForm: useShortForm);
     final mClock = clock ?? DateTime.now();
@@ -67,9 +70,11 @@ extension VxDateTimeExtension on DateTime {
     } else {
       res = mLanguage.years(years.round());
     }
-    return [pfx, res, sfx]
-        .where((s) => s.isNotEmpty)
-        .join(mLanguage.delimiter());
+    return [
+      pfx,
+      res,
+      sfx,
+    ].where((s) => s.isNotEmpty).join(mLanguage.delimiter());
   }
 }
 

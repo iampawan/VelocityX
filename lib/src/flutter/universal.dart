@@ -596,10 +596,11 @@ class VxUniversal extends StatelessWidget {
 
     if (alignment != null) {
       current = Align(
-          alignment: alignment!,
-          widthFactor: widthFactor,
-          heightFactor: heightFactor,
-          child: current);
+        alignment: alignment!,
+        widthFactor: widthFactor,
+        heightFactor: heightFactor,
+        child: current,
+      );
     }
     if (intrinsicWidth) {
       current = IntrinsicWidth(child: current);
@@ -615,30 +616,38 @@ class VxUniversal extends StatelessWidget {
     if (decoration != null &&
         clipBehavior != null &&
         clipBehavior != Clip.none) {
-      current = clipWidget(current,
-          clipper: _DecorationClipper(
-              textDirection: Directionality.of(context),
-              decoration: decoration!));
+      current = clipWidget(
+        current,
+        clipper: _DecorationClipper(
+          textDirection: Directionality.of(context),
+          decoration: decoration!,
+        ),
+      );
     }
     if (decoration != null && !addInkWell) {
       current = DecoratedBox(decoration: decoration!, child: current);
     }
     if (foregroundDecoration != null) {
       current = DecoratedBox(
-          decoration: foregroundDecoration!,
-          position: DecorationPosition.foreground,
-          child: current);
+        decoration: foregroundDecoration!,
+        position: DecorationPosition.foreground,
+        child: current,
+      );
     }
     if (transform != null) {
-      current =
-          Transform(transform: transform!, origin: origin, child: current);
+      current = Transform(
+        transform: transform!,
+        origin: origin,
+        child: current,
+      );
     }
     if (enabled ||
         onTap != null ||
         onDoubleTap != null ||
         onLongPress != null) {
-      current =
-          addInkWell ? inkWellWidget(current) : gestureDetectorWidget(current);
+      current = addInkWell
+          ? inkWellWidget(current)
+          : gestureDetectorWidget(current);
     }
     if (shrink) {
       current = SizedBox.shrink(child: current);
@@ -678,7 +687,12 @@ class VxUniversal extends StatelessWidget {
     }
     if (left != null || top != null || right != null || bottom != null) {
       current = Positioned(
-          left: left, top: top, right: right, bottom: bottom, child: current);
+        left: left,
+        top: top,
+        right: right,
+        bottom: bottom,
+        child: current,
+      );
     }
     if (gaussian) {
       backdropFilter(current);
@@ -700,24 +714,29 @@ class VxUniversal extends StatelessWidget {
     }
     if (safeLeft || safeTop || safeRight || safeBottom) {
       current = SafeArea(
-          left: safeLeft,
-          top: safeTop,
-          right: safeRight,
-          bottom: safeBottom,
-          child: current);
+        left: safeLeft,
+        top: safeTop,
+        right: safeRight,
+        bottom: safeBottom,
+        child: current,
+      );
     }
     return current;
   }
 
   Widget annotatedRegionWidget(Widget current) =>
       AnnotatedRegion<SystemUiOverlayStyle>(
-          sized: sized, value: systemOverlayStyle!, child: current);
+        sized: sized,
+        value: systemOverlayStyle!,
+        child: current,
+      );
 
   Widget fittedBox(Widget current) => FittedBox(
-      fit: fit!,
-      alignment: alignment ?? Alignment.center,
-      clipBehavior: clipBehavior ?? Clip.none,
-      child: current);
+    fit: fit!,
+    alignment: alignment ?? Alignment.center,
+    clipBehavior: clipBehavior ?? Clip.none,
+    child: current,
+  );
 
   Widget builderWidget(Widget current) {
     if (builder is StatefulWidgetBuilder) {
@@ -735,9 +754,10 @@ class VxUniversal extends StatelessWidget {
       : Padding(padding: _paddingIncludingDecoration!, child: current);
 
   Widget backdropFilter(Widget current) => BackdropFilter(
-      filter:
-          filter ?? ImageFilter.blur(sigmaX: fuzzyDegree, sigmaY: fuzzyDegree),
-      child: current);
+    filter:
+        filter ?? ImageFilter.blur(sigmaX: fuzzyDegree, sigmaY: fuzzyDegree),
+    child: current,
+  );
 
   Widget offstageWidget(Widget current) =>
       Offstage(offstage: offstage, child: current);
@@ -746,238 +766,261 @@ class VxUniversal extends StatelessWidget {
   Widget clipWidget(Widget current, {CustomClipper<dynamic>? clipper}) {
     if (isOval) {
       return ClipOval(
-          clipBehavior: clipBehavior ?? Clip.antiAlias, child: current);
+        clipBehavior: clipBehavior ?? Clip.antiAlias,
+        child: current,
+      );
     } else if (clipper is CustomClipper<Rect> || isClipRect) {
       return ClipRect(
-          clipper: clipper is CustomClipper<Rect> ? clipper : null,
-          clipBehavior: clipBehavior ?? Clip.hardEdge,
-          child: current);
+        clipper: clipper is CustomClipper<Rect> ? clipper : null,
+        clipBehavior: clipBehavior ?? Clip.hardEdge,
+        child: current,
+      );
     } else if (clipper is CustomClipper<Path>) {
       return ClipPath(
-          clipper: clipper,
-          clipBehavior: clipBehavior ?? Clip.antiAlias,
-          child: current);
+        clipper: clipper,
+        clipBehavior: clipBehavior ?? Clip.antiAlias,
+        child: current,
+      );
     } else if (clipper is CustomClipper<RRect> || isClipRRect) {
       return ClipRRect(
-          borderRadius: borderRadius,
-          clipper: clipper is CustomClipper<RRect> ? clipper : null,
-          clipBehavior: clipBehavior ?? Clip.antiAlias,
-          child: current);
+        borderRadius: borderRadius,
+        clipper: clipper is CustomClipper<RRect> ? clipper : null,
+        clipBehavior: clipBehavior ?? Clip.antiAlias,
+        child: current,
+      );
     }
     return current;
   }
 
   Widget circleAvatarWidget(Widget current) => CircleAvatar(
-      backgroundColor: color,
-      backgroundImage: backgroundImage,
-      onBackgroundImageError: onBackgroundImageError,
-      foregroundColor: foregroundColor,
-      radius: radius,
-      minRadius: minRadius,
-      maxRadius: maxRadius,
-      child: current);
+    backgroundColor: color,
+    backgroundImage: backgroundImage,
+    onBackgroundImageError: onBackgroundImageError,
+    foregroundColor: foregroundColor,
+    radius: radius,
+    minRadius: minRadius,
+    maxRadius: maxRadius,
+    child: current,
+  );
 
   Widget heroWidget(Widget current) => Hero(
-      tag: heroTag!,
-      createRectTween: createRectTween,
-      flightShuttleBuilder: flightShuttleBuilder,
-      placeholderBuilder: placeholderBuilder,
-      transitionOnUserGestures: transitionOnUserGestures,
-      child: current);
+    tag: heroTag!,
+    createRectTween: createRectTween,
+    flightShuttleBuilder: flightShuttleBuilder,
+    placeholderBuilder: placeholderBuilder,
+    transitionOnUserGestures: transitionOnUserGestures,
+    child: current,
+  );
 
   Widget visibilityWidget(Widget current) => Visibility(
-      replacement: replacement,
-      visible: visible,
-      maintainState: maintainState,
-      maintainAnimation: maintainAnimation,
-      maintainSize: maintainSize,
-      maintainSemantics: maintainSemantics,
-      maintainInteractivity: maintainInteractivity,
-      child: current);
+    replacement: replacement,
+    visible: visible,
+    maintainState: maintainState,
+    maintainAnimation: maintainAnimation,
+    maintainSize: maintainSize,
+    maintainSemantics: maintainSemantics,
+    maintainInteractivity: maintainInteractivity,
+    child: current,
+  );
 
   Widget flexibleWidget(Widget current) => Flexible(
-      flex: flex ?? 1,
-      fit: expanded ? FlexFit.tight : FlexFit.loose,
-      child: current);
+    flex: flex ?? 1,
+    fit: expanded ? FlexFit.tight : FlexFit.loose,
+    child: current,
+  );
 
   Widget cardWidget(Widget current, BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final CardThemeData cardTheme = CardTheme.of(context);
-    return material(current,
-        mType: MaterialType.card,
-        mShadowColor: shadowColor ?? cardTheme.shadowColor ?? theme.shadowColor,
-        mColor: color ?? cardTheme.color ?? theme.cardColor,
-        mElevation: elevation ?? cardTheme.elevation ?? 10,
-        mShape: shape ??
-            cardTheme.shape ??
-            RoundedRectangleBorder(
-                borderRadius: borderRadius == BorderRadius.zero
-                    ? BorderRadius.circular(4)
-                    : borderRadius),
-        mClipBehavior: clipBehavior ?? cardTheme.clipBehavior ?? Clip.none,
-        mBorderOnForeground: true);
+    return material(
+      current,
+      mType: MaterialType.card,
+      mShadowColor: shadowColor ?? cardTheme.shadowColor ?? theme.shadowColor,
+      mColor: color ?? cardTheme.color ?? theme.cardColor,
+      mElevation: elevation ?? cardTheme.elevation ?? 10,
+      mShape:
+          shape ??
+          cardTheme.shape ??
+          RoundedRectangleBorder(
+            borderRadius: borderRadius == BorderRadius.zero
+                ? BorderRadius.circular(4)
+                : borderRadius,
+          ),
+      mClipBehavior: clipBehavior ?? cardTheme.clipBehavior ?? Clip.none,
+      mBorderOnForeground: true,
+    );
   }
 
-  Material material(Widget current,
-          {required MaterialType mType,
-          Color? mShadowColor,
-          Color? mColor,
-          TextStyle? mTextStyle,
-          required double mElevation,
-          BorderRadiusGeometry? mBorderRadius,
-          ShapeBorder? mShape,
-          required bool mBorderOnForeground,
-          required Clip mClipBehavior}) =>
-      Material(
-          color: mColor,
-          type: mType,
-          elevation: mElevation,
-          shadowColor: mShadowColor,
-          textStyle: mTextStyle,
-          borderRadius: (mShape != null || shape != null) ? null : borderRadius,
-          shape: mShape ?? shape,
-          borderOnForeground: mBorderOnForeground,
-          clipBehavior: mClipBehavior,
-          child: current);
+  Material material(
+    Widget current, {
+    required MaterialType mType,
+    Color? mShadowColor,
+    Color? mColor,
+    TextStyle? mTextStyle,
+    required double mElevation,
+    BorderRadiusGeometry? mBorderRadius,
+    ShapeBorder? mShape,
+    required bool mBorderOnForeground,
+    required Clip mClipBehavior,
+  }) => Material(
+    color: mColor,
+    type: mType,
+    elevation: mElevation,
+    shadowColor: mShadowColor,
+    textStyle: mTextStyle,
+    borderRadius: (mShape != null || shape != null) ? null : borderRadius,
+    shape: mShape ?? shape,
+    borderOnForeground: mBorderOnForeground,
+    clipBehavior: mClipBehavior,
+    child: current,
+  );
 
   Widget inkWellWidget(Widget current) => Ink(
-      decoration: decoration,
-      child: InkWell(
-          onTap: onTap,
-          onLongPress: onLongPress,
-          onDoubleTap: onDoubleTap,
-          onTapDown: onTapDown,
-          onTapCancel: onTapCancel,
-          onHighlightChanged: onHighlightChanged,
-          onHover: onHover,
-          focusColor: focusColor,
-          hoverColor: hoverColor,
-          highlightColor: highlightColor,
-          splashColor: splashColor,
-          splashFactory: splashFactory,
-          radius: radius,
-          borderRadius: borderRadius,
-          customBorder: customBorder,
-          enableFeedback: enableFeedback ?? false,
-          excludeFromSemantics: excludeFromSemantics,
-          focusNode: focusNode,
-          canRequestFocus: canRequestFocus,
-          onFocusChange: onFocusChange,
-          autofocus: autoFocus,
-          child: current));
+    decoration: decoration,
+    child: InkWell(
+      onTap: onTap,
+      onLongPress: onLongPress,
+      onDoubleTap: onDoubleTap,
+      onTapDown: onTapDown,
+      onTapCancel: onTapCancel,
+      onHighlightChanged: onHighlightChanged,
+      onHover: onHover,
+      focusColor: focusColor,
+      hoverColor: hoverColor,
+      highlightColor: highlightColor,
+      splashColor: splashColor,
+      splashFactory: splashFactory,
+      radius: radius,
+      borderRadius: borderRadius,
+      customBorder: customBorder,
+      enableFeedback: enableFeedback ?? false,
+      excludeFromSemantics: excludeFromSemantics,
+      focusNode: focusNode,
+      canRequestFocus: canRequestFocus,
+      onFocusChange: onFocusChange,
+      autofocus: autoFocus,
+      child: current,
+    ),
+  );
 
   Widget singleChildScrollViewWidget(Widget current) => SingleChildScrollView(
-      physics: physics,
-      reverse: reverse,
-      primary: primary,
-      dragStartBehavior: dragStartBehavior,
-      controller: scrollController,
-      scrollDirection: scrollDirection ?? direction,
-      clipBehavior: clipBehavior ?? Clip.hardEdge,
-      child: current);
+    physics: physics,
+    reverse: reverse,
+    primary: primary,
+    dragStartBehavior: dragStartBehavior,
+    controller: scrollController,
+    scrollDirection: scrollDirection ?? direction,
+    clipBehavior: clipBehavior ?? Clip.hardEdge,
+    child: current,
+  );
 
   Widget flexWidget(List<Widget> children) => Flex(
-      mainAxisAlignment: mainAxisAlignment,
-      crossAxisAlignment: crossAxisAlignment,
-      direction: direction,
-      textBaseline: textBaseline,
-      verticalDirection: verticalDirection,
-      textDirection: textDirection,
-      mainAxisSize: mainAxisSize,
-      children: children);
+    mainAxisAlignment: mainAxisAlignment,
+    crossAxisAlignment: crossAxisAlignment,
+    direction: direction,
+    textBaseline: textBaseline,
+    verticalDirection: verticalDirection,
+    textDirection: textDirection,
+    mainAxisSize: mainAxisSize,
+    children: children,
+  );
 
   Widget wrapWidget(List<Widget> children) => Wrap(
-      direction: direction,
-      alignment: wrapAlignment,
-      spacing: wrapSpacing,
-      runAlignment: runAlignment,
-      runSpacing: runSpacing,
-      crossAxisAlignment: wrapCrossAlignment,
-      clipBehavior: clipBehavior ?? Clip.none,
-      verticalDirection: verticalDirection,
-      textDirection: textDirection,
-      children: children);
+    direction: direction,
+    alignment: wrapAlignment,
+    spacing: wrapSpacing,
+    runAlignment: runAlignment,
+    runSpacing: runSpacing,
+    crossAxisAlignment: wrapCrossAlignment,
+    clipBehavior: clipBehavior ?? Clip.none,
+    verticalDirection: verticalDirection,
+    textDirection: textDirection,
+    children: children,
+  );
 
   Widget stackWidget(List<Widget> children) => Stack(
-      alignment: alignment ?? AlignmentDirectional.topStart,
-      textDirection: textDirection,
-      fit: stackFit,
-      clipBehavior: clipBehavior ?? Clip.hardEdge,
-      children: children);
+    alignment: alignment ?? AlignmentDirectional.topStart,
+    textDirection: textDirection,
+    fit: stackFit,
+    clipBehavior: clipBehavior ?? Clip.hardEdge,
+    children: children,
+  );
 
   Widget gestureDetectorWidget(Widget current) => GestureDetector(
-      onTapDown: onTapDown,
-      onTapUp: onTapUp,
-      onTap: onTap,
-      onTapCancel: onTapCancel,
-      onSecondaryTapDown: onSecondaryTapDown,
-      onSecondaryTapUp: onSecondaryTapUp,
-      onSecondaryTapCancel: onSecondaryTapCancel,
-      onDoubleTap: onDoubleTap,
-      onSecondaryTap: onSecondaryTap,
-      onSecondaryLongPressMoveUpdate: onSecondaryLongPressMoveUpdate,
-      onSecondaryLongPressUp: onSecondaryLongPressUp,
-      onSecondaryLongPress: onSecondaryLongPress,
-      onSecondaryLongPressEnd: onSecondaryLongPressEnd,
-      onSecondaryLongPressStart: onSecondaryLongPressStart,
-      onLongPress: onLongPress,
-      onLongPressStart: onLongPressStart,
-      onLongPressMoveUpdate: onLongPressMoveUpdate,
-      onLongPressUp: onLongPressUp,
-      onLongPressEnd: onLongPressEnd,
-      onVerticalDragDown: onVerticalDragDown,
-      onVerticalDragStart: onVerticalDragStart,
-      onVerticalDragUpdate: onVerticalDragUpdate,
-      onVerticalDragEnd: onVerticalDragEnd,
-      onVerticalDragCancel: onVerticalDragCancel,
-      onHorizontalDragDown: onHorizontalDragDown,
-      onHorizontalDragStart: onHorizontalDragStart,
-      onHorizontalDragUpdate: onHorizontalDragUpdate,
-      onHorizontalDragEnd: onHorizontalDragEnd,
-      onHorizontalDragCancel: onHorizontalDragCancel,
-      onForcePressStart: onForcePressStart,
-      onForcePressPeak: onForcePressPeak,
-      onForcePressUpdate: onForcePressUpdate,
-      onForcePressEnd: onForcePressEnd,
-      onPanDown: onPanDown,
-      onPanStart: onPanStart,
-      onPanUpdate: onPanUpdate,
-      onPanEnd: onPanEnd,
-      onPanCancel: onPanCancel,
-      onScaleStart: onScaleStart,
-      onScaleUpdate: onScaleUpdate,
-      onScaleEnd: onScaleEnd,
-      behavior: behavior,
-      excludeFromSemantics: excludeFromSemantics,
-      dragStartBehavior: dragStartBehavior,
-      child: current);
+    onTapDown: onTapDown,
+    onTapUp: onTapUp,
+    onTap: onTap,
+    onTapCancel: onTapCancel,
+    onSecondaryTapDown: onSecondaryTapDown,
+    onSecondaryTapUp: onSecondaryTapUp,
+    onSecondaryTapCancel: onSecondaryTapCancel,
+    onDoubleTap: onDoubleTap,
+    onSecondaryTap: onSecondaryTap,
+    onSecondaryLongPressMoveUpdate: onSecondaryLongPressMoveUpdate,
+    onSecondaryLongPressUp: onSecondaryLongPressUp,
+    onSecondaryLongPress: onSecondaryLongPress,
+    onSecondaryLongPressEnd: onSecondaryLongPressEnd,
+    onSecondaryLongPressStart: onSecondaryLongPressStart,
+    onLongPress: onLongPress,
+    onLongPressStart: onLongPressStart,
+    onLongPressMoveUpdate: onLongPressMoveUpdate,
+    onLongPressUp: onLongPressUp,
+    onLongPressEnd: onLongPressEnd,
+    onVerticalDragDown: onVerticalDragDown,
+    onVerticalDragStart: onVerticalDragStart,
+    onVerticalDragUpdate: onVerticalDragUpdate,
+    onVerticalDragEnd: onVerticalDragEnd,
+    onVerticalDragCancel: onVerticalDragCancel,
+    onHorizontalDragDown: onHorizontalDragDown,
+    onHorizontalDragStart: onHorizontalDragStart,
+    onHorizontalDragUpdate: onHorizontalDragUpdate,
+    onHorizontalDragEnd: onHorizontalDragEnd,
+    onHorizontalDragCancel: onHorizontalDragCancel,
+    onForcePressStart: onForcePressStart,
+    onForcePressPeak: onForcePressPeak,
+    onForcePressUpdate: onForcePressUpdate,
+    onForcePressEnd: onForcePressEnd,
+    onPanDown: onPanDown,
+    onPanStart: onPanStart,
+    onPanUpdate: onPanUpdate,
+    onPanEnd: onPanEnd,
+    onPanCancel: onPanCancel,
+    onScaleStart: onScaleStart,
+    onScaleUpdate: onScaleUpdate,
+    onScaleEnd: onScaleEnd,
+    behavior: behavior,
+    excludeFromSemantics: excludeFromSemantics,
+    dragStartBehavior: dragStartBehavior,
+    child: current,
+  );
 
   Widget universal(Widget current, {GestureTapCallback? onTap}) => VxUniversal(
-      heroTag: heroTag,
-      visible: visible,
-      constraints: constraints,
-      addInkWell: onTap != null && addInkWell,
-      borderRadius: borderRadius,
-      highlightColor: highlightColor,
-      hoverColor: hoverColor,
-      splashColor: splashColor,
-      focusColor: focusColor,
-      mainAxisSize: MainAxisSize.min,
-      onTap: onTap,
-      width: width,
-      height: height,
-      margin: margin,
-      color: color,
-      decoration: decoration,
-      padding: padding,
-      alignment: alignment,
-      child: current);
+    heroTag: heroTag,
+    visible: visible,
+    constraints: constraints,
+    addInkWell: onTap != null && addInkWell,
+    borderRadius: borderRadius,
+    highlightColor: highlightColor,
+    hoverColor: hoverColor,
+    splashColor: splashColor,
+    focusColor: focusColor,
+    mainAxisSize: MainAxisSize.min,
+    onTap: onTap,
+    width: width,
+    height: height,
+    margin: margin,
+    color: color,
+    decoration: decoration,
+    padding: padding,
+    alignment: alignment,
+    child: current,
+  );
 }
 
 /// A clipper that uses [Decoration.getClipPath] to clip.
 class _DecorationClipper extends CustomClipper<Path> {
   _DecorationClipper({TextDirection? textDirection, required this.decoration})
-      : textDirection = textDirection ?? TextDirection.ltr;
+    : textDirection = textDirection ?? TextDirection.ltr;
 
   final TextDirection textDirection;
   final Decoration decoration;

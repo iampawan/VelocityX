@@ -18,16 +18,9 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/extensions/context_ext.dart';
 
 /// Toast position
-enum VxToastPosition {
-  top,
-  center,
-  bottom,
-}
+enum VxToastPosition { top, center, bottom }
 
-enum VxToastType {
-  text,
-  loading,
-}
+enum VxToastType { text, loading }
 
 mixin VxToast {
   static void show(
@@ -97,17 +90,18 @@ Function _showToast(
   final GlobalKey<_VxToastViewState> key = GlobalKey();
 
   final OverlayEntry overlayEntry = OverlayEntry(
-      builder: (BuildContext context) => _VxToastView(
-            msg,
-            key: key,
-            bgColor: bgColor,
-            textColor: textColor,
-            textSize: textSize,
-            toastPosition: position,
-            pdHorizontal: pdHorizontal,
-            pdVertical: pdVertical,
-            type: type,
-          ));
+    builder: (BuildContext context) => _VxToastView(
+      msg,
+      key: key,
+      bgColor: bgColor,
+      textColor: textColor,
+      textSize: textSize,
+      toastPosition: position,
+      pdHorizontal: pdHorizontal,
+      pdVertical: pdVertical,
+      type: type,
+    ),
+  );
 
   /// Inserting the overlay entry to the state
   overlayState.insert(overlayEntry);
@@ -198,10 +192,7 @@ class _VxToastViewState extends State<_VxToastView>
         widget.type == VxToastType.loading) {
       return toastView;
     }
-    return Positioned(
-      top: buildToastPosition(context),
-      child: toastView,
-    );
+    return Positioned(top: buildToastPosition(context), child: toastView);
   }
 
   /// Building the toast widget
@@ -252,7 +243,7 @@ class _VxToastViewState extends State<_VxToastView>
                     color:
                         widget.textColor ?? context.textTheme.bodyLarge!.color,
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -309,16 +300,17 @@ extension VxToastExtension on BuildContext {
     VxToastPosition position = VxToastPosition.bottom,
     double pdHorizontal = 20,
     double pdVertical = 10,
-  }) =>
-      VxToast.show(this,
-          msg: msg,
-          bgColor: bgColor,
-          pdHorizontal: pdHorizontal,
-          pdVertical: pdVertical,
-          position: position,
-          showTime: showTime,
-          textColor: textColor,
-          textSize: textSize);
+  }) => VxToast.show(
+    this,
+    msg: msg,
+    bgColor: bgColor,
+    pdHorizontal: pdHorizontal,
+    pdVertical: pdVertical,
+    position: position,
+    showTime: showTime,
+    textColor: textColor,
+    textSize: textSize,
+  );
 
   /// Show loading dialog
   Function showLoading({
@@ -328,12 +320,13 @@ extension VxToastExtension on BuildContext {
     double textSize = 14,
     double pdHorizontal = 20,
     double pdVertical = 10,
-  }) =>
-      VxToast.showLoading(this,
-          msg: msg,
-          bgColor: bgColor,
-          pdHorizontal: pdHorizontal,
-          pdVertical: pdVertical,
-          textColor: textColor,
-          textSize: textSize);
+  }) => VxToast.showLoading(
+    this,
+    msg: msg,
+    bgColor: bgColor,
+    pdHorizontal: pdHorizontal,
+    pdVertical: pdVertical,
+    textColor: textColor,
+    textSize: textSize,
+  );
 }

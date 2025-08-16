@@ -11,13 +11,9 @@ import 'package:velocity_x/src/velocity_xx.dart';
 
 /// [VxJson] can be used to show json in tree view of widgets
 class VxJson extends StatefulWidget {
-  VxJson(this.json, {super.key})
-      : list = <dynamic>[],
-        isList = false;
+  VxJson(this.json, {super.key}) : list = <dynamic>[], isList = false;
 
-  VxJson.list(this.list, {super.key})
-      : json = list.asMap(),
-        isList = true;
+  VxJson.list(this.list, {super.key}) : json = list.asMap(), isList = true;
 
   final Map<dynamic, dynamic> json;
   final List<dynamic> list;
@@ -32,9 +28,10 @@ class _VxJsonState extends State<VxJson> {
 
   @override
   Widget build(BuildContext context) => VxUniversal(
-      margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: children);
+    margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: children,
+  );
 
   List<Widget> get children {
     final List<Widget> list = <Widget>[];
@@ -43,11 +40,14 @@ class _VxJsonState extends State<VxJson> {
       final dynamic content = entry.value;
       final List<Widget> row = <Widget>[];
       if (isTap(content)) {
-        row.add(VxToggleRotate(
+        row.add(
+          VxToggleRotate(
             rad: pi / 2,
             clockwise: true,
             isRotate: (mapFlag[key.toString()]) ?? false,
-            child: const Icon(Icons.arrow_right_rounded, size: 18)));
+            child: const Icon(Icons.arrow_right_rounded, size: 18),
+          ),
+        );
       } else {
         row.add(const SizedBox(width: 14));
       }
@@ -59,13 +59,14 @@ class _VxJsonState extends State<VxJson> {
             .color(content == null ? Vx.zinc500 : Vx.pink500)
             .make()
             .onDoubleTap(() {
-          Vx.toClipboard(key.toString());
-          VxToast.show(context, msg: 'Copied $key');
-        }),
+              Vx.toClipboard(key.toString());
+              VxToast.show(context, msg: 'Copied $key');
+            }),
         const SizedBox(width: 4),
-        getValueWidget(content)
+        getValueWidget(content),
       ]);
-      list.add(VxUniversal(
+      list.add(
+        VxUniversal(
           direction: Axis.horizontal,
           addInkWell: true,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,7 +76,9 @@ class _VxJsonState extends State<VxJson> {
                   mapFlag[key.toString()] = !(mapFlag[key.toString()] ?? false);
                   setState(() {});
                 },
-          children: row));
+          children: row,
+        ),
+      );
       list.add(const SizedBox(height: 4));
       if ((mapFlag[key.toString()]) ?? false) {
         list.add(getContentWidget(content));
@@ -87,8 +90,8 @@ class _VxJsonState extends State<VxJson> {
   Widget getContentWidget(dynamic content) => content is List
       ? VxJson.list(content)
       : content is Map<String, dynamic>
-          ? VxJson(content)
-          : VxJson({content.runtimeType: content.toString()});
+      ? VxJson(content)
+      : VxJson({content.runtimeType: content.toString()});
 
   Widget getValueWidget(dynamic content) {
     String text = '';
@@ -132,10 +135,11 @@ class _VxJsonState extends State<VxJson> {
     );
   }
 
-  bool isTap(dynamic content) => !(content == null ||
-      content is int ||
-      content is String ||
-      content is bool ||
-      content is double ||
-      (content is List && content.isEmpty));
+  bool isTap(dynamic content) =>
+      !(content == null ||
+          content is int ||
+          content is String ||
+          content is bool ||
+          content is double ||
+          (content is List && content.isEmpty));
 }

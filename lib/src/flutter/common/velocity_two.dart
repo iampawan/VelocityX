@@ -90,7 +90,7 @@ class VxTwo extends StatelessWidget {
           textBaseline: TextBaseline.alphabetic,
           color: subtitleColor,
         ),
-      )
+      ),
     ];
     if (isHorizontal) {
       return Row(
@@ -126,11 +126,7 @@ class VxTwoColumn extends StatelessWidget {
     return Column(
       key: key,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        top,
-        10.heightBox,
-        bottom,
-      ],
+      children: <Widget>[top, 10.heightBox, bottom],
     );
   }
 }
@@ -150,11 +146,7 @@ class VxTwoRow extends StatelessWidget {
       key: key,
       direction: Axis.horizontal,
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        left,
-        10.widthBox,
-        right,
-      ],
+      children: <Widget>[left, 10.widthBox, right],
     );
   }
 }

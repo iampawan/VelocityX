@@ -20,8 +20,10 @@ T? guard<T>(T Function() callback, [T? defaultValue]) {
 ///default value if error was raised or return value is null
 ///Originally available at https://pub.dev/packages/guard
 
-Future<T?> asyncGuard<T>(Future<T> Function() callback,
-    [T? defaultValue]) async {
+Future<T?> asyncGuard<T>(
+  Future<T> Function() callback, [
+  T? defaultValue,
+]) async {
   T? result;
 
   try {

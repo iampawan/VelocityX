@@ -603,35 +603,34 @@ mixin Vx {
     double top,
     double right,
     double bottom,
-  ) =>
-      EdgeInsets.fromLTRB(left, top, right, bottom);
+  ) => EdgeInsets.fromLTRB(left, top, right, bottom);
 
   /// [EdgeInsets] with custom symmetric [v] for vertical and [h] for horizontal value
   static EdgeInsets mSymmetric({double v = 0.0, double h = 0.0}) =>
-      EdgeInsets.symmetric(
-        vertical: v,
-        horizontal: h,
-      );
+      EdgeInsets.symmetric(vertical: v, horizontal: h);
 
   /// [EdgeInsets] with custom [left], [right], [top] & [bottom] values
-  static EdgeInsets mOnly(
-          {double left = 0.0,
-          double right = 0.0,
-          double top = 0.0,
-          double bottom = 0.0}) =>
-      EdgeInsets.only(left: left, right: right, top: top, bottom: bottom);
+  static EdgeInsets mOnly({
+    double left = 0.0,
+    double right = 0.0,
+    double top = 0.0,
+    double bottom = 0.0,
+  }) => EdgeInsets.only(left: left, right: right, top: top, bottom: bottom);
 
   /// [ShapeBorder] with border radius 7.5
-  static ShapeBorder roundedSm =
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.5));
+  static ShapeBorder roundedSm = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(7.5),
+  );
 
   /// [ShapeBorder] with border radius 15
-  static ShapeBorder rounded =
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(15));
+  static ShapeBorder rounded = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(15),
+  );
 
   /// [ShapeBorder] with border radius 30
-  static ShapeBorder roundedLg =
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(30));
+  static ShapeBorder roundedLg = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(30),
+  );
 
   /// [ShapeBorder] with custom border [radius]
   static ShapeBorder withRounded(double radius) =>
@@ -660,7 +659,8 @@ mixin Vx {
     final String message = msg.toString();
     if (hasDottedLine) {
       debugPrint(
-          '👇🏻┌------------------------------------------------------------------------------👨🏻‍💻');
+        '👇🏻┌------------------------------------------------------------------------------👨🏻‍💻',
+      );
     }
     const int limitLength = 800;
     if (message.length < limitLength) {
@@ -674,8 +674,10 @@ mixin Vx {
           outStr.clear();
           final int lastIndex = index + 1;
           if (message.length - lastIndex < limitLength) {
-            final String remainderStr =
-                message.substring(lastIndex, message.length);
+            final String remainderStr = message.substring(
+              lastIndex,
+              message.length,
+            );
             debugPrint(remainderStr);
             break;
           }
@@ -684,7 +686,8 @@ mixin Vx {
     }
     if (hasDottedLine) {
       debugPrint(
-          '👆🏻└------------------------------------------------------------------------------👨🏻‍💻');
+        '👆🏻└------------------------------------------------------------------------------👨🏻‍💻',
+      );
     }
   }
 
@@ -745,8 +748,10 @@ mixin Vx {
     for (int i = 0; i < hex.length; i = i + 2) {
       splitted.add(hex.substring(i, i + 2));
     }
-    final String asciiText = List.generate(splitted.length,
-        (i) => String.fromCharCode(int.parse(splitted[i], radix: 16))).join();
+    final String asciiText = List.generate(
+      splitted.length,
+      (i) => String.fromCharCode(int.parse(splitted[i], radix: 16)),
+    ).join();
     return asciiText;
   }
 
@@ -805,7 +810,11 @@ mixin Vx {
 
   /// Get Random Non-Primary Color
   static Color get randomColor => Color.fromARGB(
-      100, Random().nextInt(255), Random().nextInt(255), Random().nextInt(255));
+    100,
+    Random().nextInt(255),
+    Random().nextInt(255),
+    Random().nextInt(255),
+  );
 
   /// Uses [PathUrlStrategy] on the web, which removes hashes from URLs. This
   /// must be called at app startup, before `runApp` is called.
@@ -846,11 +855,12 @@ class VxAppData {
 
 /// Wrap your app with [VxApp] to use [VxState] and [VxStore].
 class VxApp extends StatefulWidget {
-  const VxApp(
-      {super.key,
-      required this.builder,
-      required this.store,
-      this.interceptors = const []});
+  const VxApp({
+    super.key,
+    required this.builder,
+    required this.store,
+    this.interceptors = const [],
+  });
   final VxAppBuilder? builder;
   final VxStore store;
   final List<VxInterceptor>? interceptors;
@@ -867,8 +877,9 @@ class _VxAppState<T> extends State<VxApp> {
       store: widget.store,
       interceptors: widget.interceptors!,
       child: VxConsumer(
-          mutations: const {VxDarkModeMutation},
-          builder: (context, _, status) => widget.builder!(context, appData)),
+        mutations: const {VxDarkModeMutation},
+        builder: (context, _, status) => widget.builder!(context, appData),
+      ),
     );
   }
 }

@@ -38,14 +38,10 @@ class _HoverToggleState extends State<VxHoverToggle> with MaterialStateMixin {
   }
 
   Widget _buildChildrenStack() {
-    final Widget child =
-        isHovered ? Opacity(opacity: 0.2, child: widget.child) : widget.child;
-    return Stack(
-      children: <Widget>[
-        child,
-        if (isHovered) widget.hoverChild,
-      ],
-    );
+    final Widget child = isHovered
+        ? Opacity(opacity: 0.2, child: widget.child)
+        : widget.child;
+    return Stack(children: <Widget>[child, if (isHovered) widget.hoverChild]);
   }
 
   Widget _buildReplaceableChildren() =>

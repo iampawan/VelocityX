@@ -23,20 +23,20 @@ class VxTimelinePainter extends CustomPainter {
   final Animation<double> controller;
   final Animation<double> height;
 
-  VxTimelinePainter(
-      {required this.lineColor,
-      required this.backgroundColor,
-      required this.trailingColor,
-      this.firstElement = false,
-      this.lastElement = false,
-      required this.controller})
-      : height = Tween(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: const Interval(0.45, 1.0, curve: Curves.ease),
-          ),
-        ),
-        super(repaint: controller);
+  VxTimelinePainter({
+    required this.lineColor,
+    required this.backgroundColor,
+    required this.trailingColor,
+    this.firstElement = false,
+    this.lastElement = false,
+    required this.controller,
+  }) : height = Tween(begin: 0.0, end: 1.0).animate(
+         CurvedAnimation(
+           parent: controller,
+           curve: const Interval(0.45, 1.0, curve: Curves.ease),
+         ),
+       ),
+       super(repaint: controller);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -55,19 +55,25 @@ class VxTimelinePainter extends CustomPainter {
       final Offset offsetCenter = size.center(const Offset(0.0, -4.0));
       final Offset offsetBottom = size.bottomCenter(const Offset(0.0, 0.0));
       final Offset renderOffset = Offset(
-          offsetBottom.dx, offsetBottom.dy * (0.5 + (controller.value / 2)));
+        offsetBottom.dx,
+        offsetBottom.dy * (0.5 + (controller.value / 2)),
+      );
       canvas.drawLine(offsetCenter, renderOffset, lineStroke);
     } else if (lastElement) {
       final Offset offsetTopCenter = size.topCenter(const Offset(0.0, 0.0));
       final Offset offsetCenter = size.center(const Offset(0.0, -4.0));
-      final Offset renderOffset =
-          Offset(offsetCenter.dx, offsetCenter.dy * controller.value);
+      final Offset renderOffset = Offset(
+        offsetCenter.dx,
+        offsetCenter.dy * controller.value,
+      );
       canvas.drawLine(offsetTopCenter, renderOffset, lineStroke);
     } else {
       final Offset offsetTopCenter = size.topCenter(const Offset(0.0, 0.0));
       final Offset offsetBottom = size.bottomCenter(const Offset(0.0, 0.0));
-      final Offset renderOffset =
-          Offset(offsetBottom.dx, offsetBottom.dy * controller.value);
+      final Offset renderOffset = Offset(
+        offsetBottom.dx,
+        offsetBottom.dy * controller.value,
+      );
       canvas.drawLine(offsetTopCenter, renderOffset, lineStroke);
     }
 

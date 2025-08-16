@@ -19,10 +19,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 void main() {
   Directionality getDirectionalityWidget({required Widget child}) =>
-      Directionality(
-        textDirection: TextDirection.ltr,
-        child: child,
-      );
+      Directionality(textDirection: TextDirection.ltr, child: child);
 
   group("New features from Delikin", () {
     test("String to DateString", () async {
@@ -53,9 +50,7 @@ void main() {
   group("Group all text tests", () {
     testWidgets('text used on String creates a Text Widget', (tester) async {
       await tester.pumpWidget(
-        getDirectionalityWidget(
-          child: 'VelocityX'.text.make(),
-        ),
+        getDirectionalityWidget(child: 'VelocityX'.text.make()),
       );
 
       expect(
@@ -66,9 +61,7 @@ void main() {
 
     testWidgets('Text widget responds to Font Scale', (tester) async {
       await tester.pumpWidget(
-        getDirectionalityWidget(
-          child: 'VelocityX'.text.xs.make(),
-        ),
+        getDirectionalityWidget(child: 'VelocityX'.text.xs.make()),
       );
 
       // Scale Factor for xs is 0.75
@@ -80,9 +73,7 @@ void main() {
 
     testWidgets('Text widget responds to fontSize', (tester) async {
       await tester.pumpWidget(
-        getDirectionalityWidget(
-          child: "VelocityX".text.size(24).make(),
-        ),
+        getDirectionalityWidget(child: "VelocityX".text.size(24).make()),
       );
 
       expect(
@@ -93,9 +84,7 @@ void main() {
 
     testWidgets('Text widget responds to FontWeight', (tester) async {
       await tester.pumpWidget(
-        getDirectionalityWidget(
-          child: 'VelocityX'.text.medium.make(),
-        ),
+        getDirectionalityWidget(child: 'VelocityX'.text.medium.make()),
       );
 
       // Font Weight for medium is 500
@@ -110,7 +99,8 @@ void main() {
 
     testWidgets('Text widget responds to FontStyle', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.italic.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.italic.make()),
+      );
 
       expect(
         tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.fontStyle,
@@ -120,82 +110,106 @@ void main() {
 
     testWidgets('Text widget responds to alignment', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.start.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.start.make()),
+      );
 
-      expect(tester.widget<AutoSizeText>(find.byType(AutoSizeText)).textAlign,
-          TextAlign.start);
+      expect(
+        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).textAlign,
+        TextAlign.start,
+      );
     });
 
     testWidgets('Text widget responds to letter spacing', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.tightest.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.tightest.make()),
+      );
 
       expect(
-          tester
-              .widget<AutoSizeText>(find.byType(AutoSizeText))
-              .style!
-              .letterSpacing,
-          -3.0);
+        tester
+            .widget<AutoSizeText>(find.byType(AutoSizeText))
+            .style!
+            .letterSpacing,
+        -3.0,
+      );
     });
 
-    testWidgets('Text widget responds to custom letter spacing',
-        (tester) async {
-      await tester.pumpWidget(getDirectionalityWidget(
-          child: 'VelocityX'.text.letterSpacing(4.0).make()));
+    testWidgets('Text widget responds to custom letter spacing', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        getDirectionalityWidget(
+          child: 'VelocityX'.text.letterSpacing(4.0).make(),
+        ),
+      );
 
       expect(
-          tester
-              .widget<AutoSizeText>(find.byType(AutoSizeText))
-              .style!
-              .letterSpacing,
-          4.0);
+        tester
+            .widget<AutoSizeText>(find.byType(AutoSizeText))
+            .style!
+            .letterSpacing,
+        4.0,
+      );
     });
 
     testWidgets('Text widget responds to TextDecoration', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.underline.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.underline.make()),
+      );
 
       expect(
-          tester
-              .widget<AutoSizeText>(find.byType(AutoSizeText))
-              .style!
-              .decoration,
-          TextDecoration.underline);
+        tester
+            .widget<AutoSizeText>(find.byType(AutoSizeText))
+            .style!
+            .decoration,
+        TextDecoration.underline,
+      );
     });
 
     testWidgets('Text widget responds to line height', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.heightSnug.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.heightSnug.make()),
+      );
 
       // Line Height or heightSnug is 0.875
       expect(
-          tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.height,
-          0.875);
+        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.height,
+        0.875,
+      );
     });
 
     testWidgets('Text widget responds to text utilities', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.uppercase.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.uppercase.make()),
+      );
 
-      expect(tester.widget<AutoSizeText>(find.byType(AutoSizeText)).data,
-          'VELOCITYX');
+      expect(
+        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).data,
+        'VELOCITYX',
+      );
     });
 
     testWidgets('key is properly assigned', (tester) async {
-      await tester.pumpWidget(getDirectionalityWidget(
-          child: 'VelocityX'.text.uppercase.make(key: const Key("key"))));
+      await tester.pumpWidget(
+        getDirectionalityWidget(
+          child: 'VelocityX'.text.uppercase.make(key: const Key("key")),
+        ),
+      );
 
-      expect(tester.widget(find.byKey(const Key('key'))).runtimeType,
-          AutoSizeText);
+      expect(
+        tester.widget(find.byKey(const Key('key'))).runtimeType,
+        AutoSizeText,
+      );
     });
 
     testWidgets('Text widget responds to color', (tester) async {
       await tester.pumpWidget(
-          getDirectionalityWidget(child: 'VelocityX'.text.red300.make()));
+        getDirectionalityWidget(child: 'VelocityX'.text.red300.make()),
+      );
 
       expect(
-          tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.color,
-          Vx.red300);
+        tester.widget<AutoSizeText>(find.byType(AutoSizeText)).style!.color,
+        Vx.red300,
+      );
     });
   });
 }

@@ -331,8 +331,10 @@ class VxRichText extends VxWidgetBuilder<Widget>
   VxRichText scale(double value) =>
       _fontSizedText(child: this, scaleFactor: value);
 
-  VxRichText _fontSizedText(
-      {required double scaleFactor, required VxRichText child}) {
+  VxRichText _fontSizedText({
+    required double scaleFactor,
+    required VxRichText child,
+  }) {
     _scaleFactor = scaleFactor;
     return this;
   }
@@ -379,8 +381,10 @@ class VxRichText extends VxWidgetBuilder<Widget>
   VxRichText get extraBlack =>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
-  VxRichText _fontWeightedText(
-      {required FontWeight weight, required VxRichText child}) {
+  VxRichText _fontWeightedText({
+    required FontWeight weight,
+    required VxRichText child,
+  }) {
     _fontWeight = weight;
     return this;
   }
@@ -472,8 +476,9 @@ class VxRichText extends VxWidgetBuilder<Widget>
             key: key,
             textAlign: _textAlign,
             maxLines: _maxLines,
-            textScaler:
-                _scaleFactor == null ? null : TextScaler.linear(_scaleFactor!),
+            textScaler: _scaleFactor == null
+                ? null
+                : TextScaler.linear(_scaleFactor!),
             softWrap: _softWrap ?? true,
             overflow: _overflow ?? TextOverflow.clip,
             strutStyle: _strutStyle,
@@ -701,8 +706,10 @@ class VelocityXTextSpan extends VxTextSpanBuilder
   VelocityXTextSpan get extraBlack =>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
-  VelocityXTextSpan _fontWeightedText(
-      {required FontWeight weight, required VelocityXTextSpan child}) {
+  VelocityXTextSpan _fontWeightedText({
+    required FontWeight weight,
+    required VelocityXTextSpan child,
+  }) {
     _fontWeight = weight;
     return this;
   }

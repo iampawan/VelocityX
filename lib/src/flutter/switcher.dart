@@ -90,11 +90,12 @@ class VxStateSwitcherState extends State<VxStateSwitcher> {
         }
         return getStatePage(
           placeholder: ElevatedButton(
-              onPressed: () {
-                setState(() => _pageState = VxPageState.loading);
-                widget.onRetry?.call();
-              },
-              child: const Text("Retry")),
+            onPressed: () {
+              setState(() => _pageState = VxPageState.loading);
+              widget.onRetry?.call();
+            },
+            child: const Text("Retry"),
+          ),
           text: "Nothing to show",
         );
 
@@ -106,11 +107,12 @@ class VxStateSwitcherState extends State<VxStateSwitcher> {
         return getStatePage(
           text: "Some error occured, please try again",
           placeholder: ElevatedButton(
-              onPressed: () {
-                setState(() => _pageState = VxPageState.loading);
-                widget.onRetry?.call();
-              },
-              child: const Text("Retry")),
+            onPressed: () {
+              setState(() => _pageState = VxPageState.loading);
+              widget.onRetry?.call();
+            },
+            child: const Text("Retry"),
+          ),
         );
 
       /// Normal content page
@@ -122,10 +124,7 @@ class VxStateSwitcherState extends State<VxStateSwitcher> {
   /// Loading
   Widget _getIndicator(BuildContext context) {
     return Theme.of(context).platform == TargetPlatform.iOS
-        ? const CupertinoActivityIndicator(
-            animating: true,
-            radius: 16.0,
-          )
+        ? const CupertinoActivityIndicator(animating: true, radius: 16.0)
         : CircularProgressIndicator(
             strokeWidth: 2.0,
             valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor),
@@ -138,10 +137,7 @@ class VxStateSwitcherState extends State<VxStateSwitcher> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            text,
-            style: const TextStyle(fontSize: 16),
-          ),
+          Text(text, style: const TextStyle(fontSize: 16)),
           const SizedBox(height: 15),
           placeholder!,
         ],
@@ -154,10 +150,7 @@ class VxStateSwitcherState extends State<VxStateSwitcher> {
 class VxSwitcher extends StatelessWidget {
   final Widget child;
 
-  const VxSwitcher({
-    super.key,
-    required this.child,
-  });
+  const VxSwitcher({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

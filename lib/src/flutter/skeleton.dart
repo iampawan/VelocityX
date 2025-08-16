@@ -16,10 +16,7 @@ import 'package:flutter/material.dart';
 
 const int _kDefaultMS = 1000;
 
-enum VxSkeletonAnimationType {
-  shimmer,
-  stretch,
-}
+enum VxSkeletonAnimationType { shimmer, stretch }
 
 /// To show skeleton with any widget.
 class VxSkeleton extends StatefulWidget {
@@ -41,21 +38,22 @@ class VxSkeleton extends StatefulWidget {
   /// Required for stretch
   final double? stretchWidth;
 
-  const VxSkeleton(
-      {super.key,
-      this.shape,
-      this.padding,
-      this.color,
-      this.shimmerColor,
-      this.gradient,
-      this.width,
-      this.height,
-      this.margin,
-      this.borderRadius,
-      this.duration,
-      this.active = true,
-      this.type = VxSkeletonAnimationType.shimmer,
-      this.stretchWidth});
+  const VxSkeleton({
+    super.key,
+    this.shape,
+    this.padding,
+    this.color,
+    this.shimmerColor,
+    this.gradient,
+    this.width,
+    this.height,
+    this.margin,
+    this.borderRadius,
+    this.duration,
+    this.active = true,
+    this.type = VxSkeletonAnimationType.shimmer,
+    this.stretchWidth,
+  });
 
   @override
   VxSkeletonState createState() => VxSkeletonState();
@@ -71,10 +69,7 @@ class VxSkeletonState extends State<VxSkeleton>
     super.initState();
     final Duration duration =
         widget.duration ?? const Duration(milliseconds: _kDefaultMS);
-    _controller = AnimationController(
-      vsync: this,
-      duration: duration,
-    );
+    _controller = AnimationController(vsync: this, duration: duration);
     _setupAnimationAndStart();
   }
 
@@ -86,10 +81,7 @@ class VxSkeletonState extends State<VxSkeleton>
 
   void _setupAnimationAndStart() {
     _animation = _genTween().animate(
-      CurvedAnimation(
-        curve: Curves.linear,
-        parent: _controller,
-      ),
+      CurvedAnimation(curve: Curves.linear, parent: _controller),
     );
 
     if (widget.type == VxSkeletonAnimationType.shimmer) {
@@ -104,10 +96,7 @@ class VxSkeletonState extends State<VxSkeleton>
   Tween<double> _genTween() {
     return (widget.type == VxSkeletonAnimationType.shimmer)
         ? Tween<double>(begin: -1.0, end: 2.0)
-        : Tween<double>(
-            begin: widget.width,
-            end: widget.stretchWidth,
-          );
+        : Tween<double>(begin: widget.width, end: widget.stretchWidth);
   }
 
   void _handleShimmerAnimationStatus(AnimationStatus status) {
@@ -146,48 +135,48 @@ class VxSkeletonState extends State<VxSkeleton>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: _animation,
-        builder: (context, child) {
-          final BoxShape shape = widget.shape ?? BoxShape.rectangle;
-          final Color color = widget.color ?? const Color(0xFFE8E8E8);
-          final Color shimmerColor =
-              widget.shimmerColor ?? const Color(0xFFEDEDED);
-          final Gradient? gradient = widget.gradient ??
-              (widget.type == VxSkeletonAnimationType.shimmer
-                  ? LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                          color,
-                          shimmerColor.withAlpha(200),
-                          color
-                        ],
-                      stops: [
-                          _animation.value - 0.4,
-                          _animation.value,
-                          _animation.value + 0.4
-                        ])
-                  : null);
+      animation: _animation,
+      builder: (context, child) {
+        final BoxShape shape = widget.shape ?? BoxShape.rectangle;
+        final Color color = widget.color ?? const Color(0xFFE8E8E8);
+        final Color shimmerColor =
+            widget.shimmerColor ?? const Color(0xFFEDEDED);
+        final Gradient? gradient =
+            widget.gradient ??
+            (widget.type == VxSkeletonAnimationType.shimmer
+                ? LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [color, shimmerColor.withAlpha(200), color],
+                    stops: [
+                      _animation.value - 0.4,
+                      _animation.value,
+                      _animation.value + 0.4,
+                    ],
+                  )
+                : null);
 
-          final double? width = widget.type == VxSkeletonAnimationType.shimmer
-              ? widget.width
-              : _animation.value;
-          final decColor =
-              widget.type == VxSkeletonAnimationType.stretch ? color : null;
+        final double? width = widget.type == VxSkeletonAnimationType.shimmer
+            ? widget.width
+            : _animation.value;
+        final decColor = widget.type == VxSkeletonAnimationType.stretch
+            ? color
+            : null;
 
-          return Container(
-            decoration: BoxDecoration(
-              shape: shape,
-              borderRadius: widget.borderRadius,
-              color: decColor,
-              gradient: gradient,
-            ),
-            padding: widget.padding,
-            width: width,
-            height: widget.height,
-            margin: widget.margin,
-          );
-        });
+        return Container(
+          decoration: BoxDecoration(
+            shape: shape,
+            borderRadius: widget.borderRadius,
+            color: decColor,
+            gradient: gradient,
+          ),
+          padding: widget.padding,
+          width: width,
+          height: widget.height,
+          margin: widget.margin,
+        );
+      },
+    );
   }
 
   @override
@@ -202,35 +191,35 @@ extension VxSkeletonExtension on Widget {
   /// Extension method to directly access [VxSkeleton] with any widget without wrapping or with dot operator.
   ///
   /// show skeleton extension
-  Widget skeleton(
-          {Key? key,
-          BoxShape? shape,
-          EdgeInsetsGeometry? padding,
-          Color? color,
-          Color? shimmerColor,
-          Gradient? gradient,
-          double? width,
-          double? height,
-          EdgeInsetsGeometry? margin,
-          BorderRadiusGeometry? borderRadius,
-          Duration? duration,
-          bool active = true,
-          VxSkeletonAnimationType type = VxSkeletonAnimationType.shimmer,
-          double? stretchWidth}) =>
-      VxSkeleton(
-        key: key,
-        active: active,
-        color: color,
-        gradient: gradient,
-        borderRadius: borderRadius,
-        duration: duration,
-        height: height,
-        margin: margin,
-        padding: padding,
-        shape: shape,
-        shimmerColor: shimmerColor,
-        stretchWidth: stretchWidth,
-        type: type,
-        width: width,
-      );
+  Widget skeleton({
+    Key? key,
+    BoxShape? shape,
+    EdgeInsetsGeometry? padding,
+    Color? color,
+    Color? shimmerColor,
+    Gradient? gradient,
+    double? width,
+    double? height,
+    EdgeInsetsGeometry? margin,
+    BorderRadiusGeometry? borderRadius,
+    Duration? duration,
+    bool active = true,
+    VxSkeletonAnimationType type = VxSkeletonAnimationType.shimmer,
+    double? stretchWidth,
+  }) => VxSkeleton(
+    key: key,
+    active: active,
+    color: color,
+    gradient: gradient,
+    borderRadius: borderRadius,
+    duration: duration,
+    height: height,
+    margin: margin,
+    padding: padding,
+    shape: shape,
+    shimmerColor: shimmerColor,
+    stretchWidth: stretchWidth,
+    type: type,
+    width: width,
+  );
 }

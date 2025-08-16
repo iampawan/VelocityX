@@ -27,7 +27,7 @@ enum VxColorFilter {
   blue,
   milk,
   sepia,
-  polaroid
+  polaroid,
 }
 
 /// [VxFilter] is used to apply different color filters to the child widget.
@@ -60,7 +60,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _noFilter = [
@@ -83,7 +83,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _blue = [
@@ -106,7 +106,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     1.7,
     1,
-    0
+    0,
   ];
 
   final List<double> _yellow = [
@@ -129,7 +129,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _pink = [
@@ -152,7 +152,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0.2
+    0.2,
   ];
   final List<double> _blackAndWhite = [
     0,
@@ -174,7 +174,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     1,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _oldTimes = [
@@ -197,7 +197,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _coldLife = [
@@ -220,7 +220,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _purple = [
@@ -243,7 +243,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _milk = [
@@ -266,7 +266,7 @@ class VxFilter extends VxWidgetBuilder<Widget> {
     0,
     0,
     1,
-    0
+    0,
   ];
 
   final List<double> _sepia = [
@@ -458,7 +458,6 @@ class VxFilter extends VxWidgetBuilder<Widget> {
 /// This extension will help to provide different filters to the widget.
 extension FilterExtension on Widget {
   /// Filters the widget with a color filter.
-  Widget filter({VxColorFilter filter = VxColorFilter.noFilter}) => VxFilter(
-        child: this,
-      ).setFilter(filter).make();
+  Widget filter({VxColorFilter filter = VxColorFilter.noFilter}) =>
+      VxFilter(child: this).setFilter(filter).make();
 }

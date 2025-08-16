@@ -20,18 +20,19 @@ class VxTimeline extends StatefulWidget {
   final bool showTrailing;
   final Widget? customTrailing;
 
-  const VxTimeline(
-      {super.key,
-      required this.timelineList,
-      this.lineColor,
-      this.backgroundColor,
-      this.trailingColor,
-      this.headingColor,
-      this.descriptionColor,
-      this.onItemTap,
-      this.animationDuration,
-      this.showTrailing = false,
-      this.customTrailing});
+  const VxTimeline({
+    super.key,
+    required this.timelineList,
+    this.lineColor,
+    this.backgroundColor,
+    this.trailingColor,
+    this.headingColor,
+    this.descriptionColor,
+    this.onItemTap,
+    this.animationDuration,
+    this.showTrailing = false,
+    this.customTrailing,
+  });
 
   @override
   VxTimelineState createState() {
@@ -49,9 +50,9 @@ class VxTimelineState extends State<VxTimeline>
   void initState() {
     super.initState();
     controller = AnimationController(
-        duration:
-            widget.animationDuration ?? const Duration(milliseconds: 1000),
-        vsync: this);
+      duration: widget.animationDuration ?? const Duration(milliseconds: 1000),
+      vsync: this,
+    );
     controller!.forward();
   }
 
@@ -67,7 +68,8 @@ class VxTimelineState extends State<VxTimeline>
           child: VxTimelineView(
             lineColor:
                 widget.lineColor ?? Theme.of(context).colorScheme.secondary,
-            backgroundColor: widget.backgroundColor ??
+            backgroundColor:
+                widget.backgroundColor ??
                 Theme.of(context).scaffoldBackgroundColor,
             trailingColor:
                 widget.trailingColor ?? Theme.of(context).colorScheme.secondary,
@@ -77,7 +79,8 @@ class VxTimelineState extends State<VxTimeline>
             controller: controller,
             headingColor:
                 widget.headingColor ?? Theme.of(context).colorScheme.onSurface,
-            descriptionColor: widget.descriptionColor ??
+            descriptionColor:
+                widget.descriptionColor ??
                 Theme.of(context).colorScheme.onSurface,
             hideLauncher: !widget.showTrailing,
             trailing: widget.customTrailing,

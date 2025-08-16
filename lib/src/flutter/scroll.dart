@@ -20,44 +20,51 @@ extension ScrollExtension on Widget {
   ///
   /// Extension method to directly access [SingleChildScrollView] vertically with any widget without wrapping or with dot operator.
   ///
-  Widget scrollVertical(
-          {Key? key,
-          ScrollController? controller,
-          ScrollPhysics? physics,
-          EdgeInsetsGeometry? padding}) =>
-      SingleChildScrollView(
-          key: key,
-          scrollDirection: Axis.vertical,
-          controller: controller,
-          physics: physics,
-          padding: padding,
-          child: this);
+  Widget scrollVertical({
+    Key? key,
+    ScrollController? controller,
+    ScrollPhysics? physics,
+    EdgeInsetsGeometry? padding,
+  }) => SingleChildScrollView(
+    key: key,
+    scrollDirection: Axis.vertical,
+    controller: controller,
+    physics: physics,
+    padding: padding,
+    child: this,
+  );
 
   ///
   /// Extension method to directly access [SingleChildScrollView] horizontally with any widget without wrapping or with dot operator.
   ///
-  Widget scrollHorizontal(
-          {Key? key,
-          ScrollController? controller,
-          ScrollPhysics? physics,
-          EdgeInsetsGeometry? padding}) =>
-      SingleChildScrollView(
-        key: key,
-        scrollDirection: Axis.horizontal,
-        child: this,
-      );
+  Widget scrollHorizontal({
+    Key? key,
+    ScrollController? controller,
+    ScrollPhysics? physics,
+    EdgeInsetsGeometry? padding,
+  }) => SingleChildScrollView(
+    key: key,
+    scrollDirection: Axis.horizontal,
+    child: this,
+  );
 }
 
 /// Extensions for ScrollController
 extension VxScrollControllerExtension on ScrollController {
   void animToTop() {
-    animateTo(0,
-        duration: const Duration(milliseconds: 300), curve: Curves.decelerate);
+    animateTo(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.decelerate,
+    );
   }
 
   void animToBottom() {
-    animateTo(position.maxScrollExtent,
-        duration: const Duration(milliseconds: 300), curve: Curves.decelerate);
+    animateTo(
+      position.maxScrollExtent,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.decelerate,
+    );
   }
 
   void jumpToTop() {

@@ -212,8 +212,10 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   VxSelectableTextBuilder get xl6 =>
       _fontSizedText(child: this, scaleFactor: 4);
 
-  VxSelectableTextBuilder _fontSizedText(
-      {required double scaleFactor, required VxSelectableTextBuilder child}) {
+  VxSelectableTextBuilder _fontSizedText({
+    required double scaleFactor,
+    required VxSelectableTextBuilder child,
+  }) {
     _scaleFactor = scaleFactor;
     return this;
   }
@@ -254,8 +256,10 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
   VxSelectableTextBuilder get extraBlack =>
       _fontWeightedText(child: this, weight: FontWeight.w900);
 
-  VxSelectableTextBuilder _fontWeightedText(
-      {required FontWeight weight, required VxSelectableTextBuilder child}) {
+  VxSelectableTextBuilder _fontWeightedText({
+    required FontWeight weight,
+    required VxSelectableTextBuilder child,
+  }) {
     _fontWeight = weight;
     return this;
   }
@@ -344,8 +348,8 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
 
   //Added context menu builder
   VxSelectableTextBuilder contextMenuBuilder(
-          Widget Function(BuildContext, EditableTextState) menuBuilder) =>
-      this.._contextMenuBuilder = menuBuilder;
+    Widget Function(BuildContext, EditableTextState) menuBuilder,
+  ) => this.._contextMenuBuilder = menuBuilder;
 
   @override
   SelectableText make({Key? key}) {
@@ -369,8 +373,9 @@ class VxSelectableTextBuilder extends VxWidgetBuilder<SelectableText>
       onTap: _onTap as void Function()?,
       enableInteractiveSelection: true,
       showCursor: _showCursor ?? false,
-      textScaler:
-          _scaleFactor == null ? null : TextScaler.linear(_scaleFactor!),
+      textScaler: _scaleFactor == null
+          ? null
+          : TextScaler.linear(_scaleFactor!),
       style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
       strutStyle: _strutStyle,
       contextMenuBuilder: _contextMenuBuilder,

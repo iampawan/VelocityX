@@ -200,14 +200,12 @@ class VxTextFieldState extends State<VxTextField> {
 
     // Clear Button
     if (widget.clear && focusNode!.hasFocus && (tempValue.isNotEmpty)) {
-      children.add(GestureDetector(
-        onTap: clear,
-        child: Icon(
-          Icons.clear,
-          size: tempSize,
-          color: tempColor,
+      children.add(
+        GestureDetector(
+          onTap: clear,
+          child: Icon(Icons.clear, size: tempSize, color: tempColor),
         ),
-      ));
+      );
     }
 
     // Password Button
@@ -215,14 +213,16 @@ class VxTextFieldState extends State<VxTextField> {
       if (children.isNotEmpty) {
         children.add(const SizedBox(width: 8));
       }
-      children.add(GestureDetector(
-        onTap: togglePwd,
-        child: Icon(
-          obscureText ? Icons.visibility : Icons.visibility_off,
-          size: tempSize,
-          color: tempColor,
+      children.add(
+        GestureDetector(
+          onTap: togglePwd,
+          child: Icon(
+            obscureText ? Icons.visibility : Icons.visibility_off,
+            size: tempSize,
+            color: tempColor,
+          ),
         ),
-      ));
+      );
     }
 
     if (children.isNotEmpty) {
@@ -284,7 +284,8 @@ class VxTextFieldState extends State<VxTextField> {
       }
     } else if (widget.borderType == VxTextFieldBorderType.underLine) {
       return UnderlineInputBorder(
-          borderSide: BorderSide(color: tempColor, width: 1));
+        borderSide: BorderSide(color: tempColor, width: 1),
+      );
     }
     return null;
   }

@@ -7,10 +7,11 @@ extension VxRoutesWidgetsExtension on Widget {
     /// Navigator.push(context, YourPage().cupertinoRoute());
     ///
     return CupertinoPageRoute(
-        fullscreenDialog: fullscreenDialog,
-        builder: (ctx) {
-          return this;
-        });
+      fullscreenDialog: fullscreenDialog,
+      builder: (ctx) {
+        return this;
+      },
+    );
   }
 
   /// Example:
@@ -18,10 +19,11 @@ extension VxRoutesWidgetsExtension on Widget {
   ///
   MaterialPageRoute materialRoute({bool fullscreenDialog = false}) {
     return MaterialPageRoute(
-        fullscreenDialog: fullscreenDialog,
-        builder: (ctx) {
-          return this;
-        });
+      fullscreenDialog: fullscreenDialog,
+      builder: (ctx) {
+        return this;
+      },
+    );
   }
 
   /// Best for showing zoomed/version of widgets like images
@@ -34,14 +36,12 @@ extension VxRoutesWidgetsExtension on Widget {
         return this;
       },
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        final rectAnimation = _createTween(parentContext)
-            .chain(CurveTween(curve: Curves.ease))
-            .animate(animation);
+        final rectAnimation = _createTween(
+          parentContext,
+        ).chain(CurveTween(curve: Curves.ease)).animate(animation);
 
         return Stack(
-          children: [
-            PositionedTransition(rect: rectAnimation, child: child),
-          ],
+          children: [PositionedTransition(rect: rectAnimation, child: child)],
         );
       },
     );
@@ -53,9 +53,6 @@ extension VxRoutesWidgetsExtension on Widget {
     final rect = box.localToGlobal(Offset.zero) & box.size;
     final relativeRect = RelativeRect.fromSize(rect, windowSize);
 
-    return RelativeRectTween(
-      begin: relativeRect,
-      end: RelativeRect.fill,
-    );
+    return RelativeRectTween(begin: relativeRect, end: RelativeRect.fill);
   }
 }

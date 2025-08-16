@@ -66,9 +66,9 @@ extension VxWeb3Extension on String {
   /// Takes Ethereum BigDecimal value in String and convert it
   double get getEtherValue {
     final weiBigInt = BigInt.parse(this);
-// Ether has 18 decimals
+    // Ether has 18 decimals
     final factor = BigInt.from(10).pow(18);
-// 1 ether is 10^18 wei
+    // 1 ether is 10^18 wei
     final value = weiBigInt ~/ factor;
     final remainder = weiBigInt.remainder(factor);
     return value.toInt() + (remainder.toInt() / factor.toInt());

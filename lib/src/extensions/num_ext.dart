@@ -60,10 +60,14 @@ extension VxNumExtension on num {
   }
 
   /// Create a List of the specified length
-  List<T> generate<T>(T Function(int index) generator,
-          {bool growable = true}) =>
-      List<T>.generate(toInt(), (int index) => generator(index),
-          growable: growable);
+  List<T> generate<T>(
+    T Function(int index) generator, {
+    bool growable = true,
+  }) => List<T>.generate(
+    toInt(),
+    (int index) => generator(index),
+    growable: growable,
+  );
 
   String padLeft(int width, [String padding = ' ']) =>
       toString().padLeft(width, padding);
@@ -104,33 +108,24 @@ extension VxNumExtension on num {
 
   /// Format numeric currency with provided locale
   String numCurrencyWithLocale({String locale = "en_US"}) =>
-      intl.NumberFormat.currency(
-        locale: locale,
-      ).format(this);
+      intl.NumberFormat.currency(locale: locale).format(this);
 
   ///Widgets
 
   ///
   ///Converts the number into a [SizedBox] with the width as that number.
   ///
-  Widget get widthBox => SizedBox(
-        width: toDouble(),
-      );
+  Widget get widthBox => SizedBox(width: toDouble());
 
   ///
   ///Converts the number into a [SizedBox] with the height as that number.
   ///
-  Widget get heightBox => SizedBox(
-        height: toDouble(),
-      );
+  Widget get heightBox => SizedBox(height: toDouble());
 
   ///
   ///Converts the number into a [SizedBox] with the width & height as that number.
   ///
-  Widget get squareBox => SizedBox(
-        height: toDouble(),
-        width: toDouble(),
-      );
+  Widget get squareBox => SizedBox(height: toDouble(), width: toDouble());
 
   /// get file size for a number
   String toFileSize() {
@@ -197,7 +192,8 @@ extension VxIntExtension on int {
   Iterable<int> to(int end, {int by = 1}) {
     if (by < 1) {
       throw ArgumentError(
-          'Invalid step size: $by. Step size must be greater than 0');
+        'Invalid step size: $by. Step size must be greater than 0',
+      );
     }
     final count = ((end - this).abs() / by).ceil();
     // Explicit type declaration required for function argument.

@@ -13,14 +13,14 @@ class VxAnimatedHeightView<T extends Widget> extends StatefulWidget {
 
   final int? currentPageIndex;
 
-  const VxAnimatedHeightView(
-      {super.key,
-      required this.pageViewChild,
-      required this.computeAspectRadio,
-      this.notifyScroll,
-      required this.itemCount,
-      this.currentPageIndex})
-      : assert(itemCount > 0);
+  const VxAnimatedHeightView({
+    super.key,
+    required this.pageViewChild,
+    required this.computeAspectRadio,
+    this.notifyScroll,
+    required this.itemCount,
+    this.currentPageIndex,
+  }) : assert(itemCount > 0);
 
   @override
   State<StatefulWidget> createState() {
@@ -78,7 +78,7 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
       child: child,
       onPointerDown: (event) {
         _currentIndex = widget.currentPageIndex;
-//          print("_currentIndex is $_currentIndex");
+        //          print("_currentIndex is $_currentIndex");
       },
     );
   }
@@ -102,24 +102,25 @@ class _VxAnimatedHeightViewState extends State<VxAnimatedHeightView> {
     }
     nextIndex = nextIndex.clamp(0, widget.itemCount - 1);
 
-//    print(
-//        "compute ,beforeIndex is $beforeIndex , nextIndex is $nextIndex");
+    //    print(
+    //        "compute ,beforeIndex is $beforeIndex , nextIndex is $nextIndex");
 
     final double beforeRadio = getRadio(beforeIndex);
     final double nextRadio = getRadio(nextIndex);
 
-    final double animationValue = beforeRadio +
+    final double animationValue =
+        beforeRadio +
         (nextRadio - beforeRadio) *
             ((scroll.metrics.pixels -
                         beforeIndex * scroll.metrics.viewportDimension)
                     .abs() /
                 scroll.metrics.viewportDimension);
-//    print(
-//        "compute currentRadio is ${beforeRadio},nextRadio is ${nextRadio}  new radio is $animationValue，scroll.metrics.pixels is ${scroll.metrics.pixels} ,"
-//            "beforeIndex is $beforeIndex,nextIndex is $nextIndex, animation is ${((scroll.metrics.pixels -
-//            beforeIndex * scroll.metrics.viewportDimension)
-//            .abs() /
-//            scroll.metrics.viewportDimension)}");
+    //    print(
+    //        "compute currentRadio is ${beforeRadio},nextRadio is ${nextRadio}  new radio is $animationValue，scroll.metrics.pixels is ${scroll.metrics.pixels} ,"
+    //            "beforeIndex is $beforeIndex,nextIndex is $nextIndex, animation is ${((scroll.metrics.pixels -
+    //            beforeIndex * scroll.metrics.viewportDimension)
+    //            .abs() /
+    //            scroll.metrics.viewportDimension)}");
     _streamController!.add(animationValue);
   }
 

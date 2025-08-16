@@ -14,11 +14,12 @@ class VxDarkModeMutation extends VxMutation {
 }
 
 class VxDarkModeButton extends StatelessWidget {
-  const VxDarkModeButton(
-      {super.key,
-      this.style,
-      this.showSelectedIcon = false,
-      this.showSingleIcon = false});
+  const VxDarkModeButton({
+    super.key,
+    this.style,
+    this.showSelectedIcon = false,
+    this.showSingleIcon = false,
+  });
 
   final ButtonStyle? style;
   final bool showSelectedIcon;
@@ -26,8 +27,9 @@ class VxDarkModeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VxThemeMode theme =
-        VxAppData().isDarkMode ? VxThemeMode.dark : VxThemeMode.light;
+    VxThemeMode theme = VxAppData().isDarkMode
+        ? VxThemeMode.dark
+        : VxThemeMode.light;
     VxState.watch(context, on: [VxDarkModeMutation]);
     return showSingleIcon
         ? IconButton(
@@ -48,9 +50,13 @@ class VxDarkModeButton extends StatelessWidget {
             showSelectedIcon: showSelectedIcon,
             segments: const [
               ButtonSegment(
-                  value: VxThemeMode.light, icon: Icon(Icons.light_mode)),
+                value: VxThemeMode.light,
+                icon: Icon(Icons.light_mode),
+              ),
               ButtonSegment(
-                  value: VxThemeMode.dark, icon: Icon(Icons.dark_mode))
+                value: VxThemeMode.dark,
+                icon: Icon(Icons.dark_mode),
+              ),
             ],
           );
   }

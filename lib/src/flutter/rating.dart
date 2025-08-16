@@ -118,7 +118,8 @@ class VxRatingState extends State<VxRating> {
           break;
         } else if (dx > widget.size * (i - 1) + widget.padding * (i - 1) &&
             dx < widget.size * i + widget.padding * i) {
-          value = (dx - widget.padding * (i - 1)) /
+          value =
+              (dx - widget.padding * (i - 1)) /
               (widget.size * widget.count) *
               widget.maxRating;
           break;
@@ -142,7 +143,8 @@ class VxRatingState extends State<VxRating> {
       if (widget.count / fullStars() == widget.maxRating / value!) {
         return 0;
       }
-      final num temp = (value! % (widget.maxRating / widget.count)) /
+      final num temp =
+          (value! % (widget.maxRating / widget.count)) /
           (widget.maxRating / widget.count);
       if (widget.stepInt) {
         return temp.ceil();
@@ -156,28 +158,18 @@ class VxRatingState extends State<VxRating> {
     final int full = fullStars();
     final List<Widget> children = [];
     for (int i = 0; i < full; i++) {
-      children.add(getStarItemView(
-        widget.selectImage,
-        widget.selectionColor,
-      ));
+      children.add(getStarItemView(widget.selectImage, widget.selectionColor));
       if (i < widget.count - 1) {
-        children.add(
-          SizedBox(
-            width: widget.padding,
-          ),
-        );
+        children.add(SizedBox(width: widget.padding));
       }
     }
     if (full < widget.count) {
-      children.add(ClipRect(
-        clipper: _VxClipper(
-          rating: star() * widget.size,
+      children.add(
+        ClipRect(
+          clipper: _VxClipper(rating: star() * widget.size),
+          child: getStarItemView(widget.selectImage, widget.selectionColor),
         ),
-        child: getStarItemView(
-          widget.selectImage,
-          widget.selectionColor,
-        ),
-      ));
+      );
     }
 
     return children;
@@ -185,11 +177,7 @@ class VxRatingState extends State<VxRating> {
 
   Widget getStarItemView(dynamic path, Color color) {
     if (path is IconData) {
-      return Icon(
-        path,
-        size: widget.size,
-        color: color,
-      );
+      return Icon(path, size: widget.size, color: color);
     } else if (path is String) {
       return Image.asset(
         path,
@@ -198,28 +186,15 @@ class VxRatingState extends State<VxRating> {
         color: color,
       );
     }
-    return Icon(
-      Icons.star,
-      size: widget.size,
-      color: color,
-    );
+    return Icon(Icons.star, size: widget.size, color: color);
   }
 
   List<Widget> buildNormalRow() {
     final List<Widget> children = [];
     for (int i = 0; i < widget.count; i++) {
-      children.add(
-        getStarItemView(
-          widget.normalImage,
-          widget.normalColor,
-        ),
-      );
+      children.add(getStarItemView(widget.normalImage, widget.normalColor));
       if (i < widget.count - 1) {
-        children.add(
-          SizedBox(
-            width: widget.padding,
-          ),
-        );
+        children.add(SizedBox(width: widget.padding));
       }
     }
     return children;
@@ -227,21 +202,11 @@ class VxRatingState extends State<VxRating> {
 
   Widget buildRowRating() {
     final List<Widget> children = [];
-    children.add(
-      Row(
-        children: buildNormalRow(),
-      ),
-    );
-    children.add(
-      Row(
-        children: buildRow(),
-      ),
-    );
+    children.add(Row(children: buildNormalRow()));
+    children.add(Row(children: buildRow()));
     return SizedBox(
       width: widget.count * widget.size + (widget.count - 1) * widget.padding,
-      child: Stack(
-        children: children,
-      ),
+      child: Stack(children: children),
     );
   }
 }
@@ -253,12 +218,7 @@ class _VxClipper extends CustomClipper<Rect> {
 
   @override
   Rect getClip(Size size) {
-    return Rect.fromLTRB(
-      0.0,
-      0.0,
-      rating,
-      size.height,
-    );
+    return Rect.fromLTRB(0.0, 0.0, rating, size.height);
   }
 
   @override

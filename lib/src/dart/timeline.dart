@@ -4,9 +4,10 @@ class VxTimelineModel {
   final String description;
   final String? actionUrl;
 
-  const VxTimelineModel(
-      {required this.id,
-      required this.heading,
-      required this.description,
-      this.actionUrl});
+  const VxTimelineModel({
+    required this.id,
+    required this.heading,
+    required this.description,
+    this.actionUrl,
+  });
 }

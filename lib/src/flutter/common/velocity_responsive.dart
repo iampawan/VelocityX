@@ -62,14 +62,15 @@ class VxResponsive extends StatelessWidget {
   ///
   final Widget? fallback;
 
-  const VxResponsive(
-      {super.key,
-      this.xsmall,
-      this.small,
-      this.medium,
-      this.large,
-      this.xlarge,
-      this.fallback});
+  const VxResponsive({
+    super.key,
+    this.xsmall,
+    this.small,
+    this.medium,
+    this.large,
+    this.xlarge,
+    this.fallback,
+  });
   @override
   Widget build(BuildContext context) {
     return VxConditionalSwitch.single(
@@ -99,35 +100,34 @@ class VxLayout extends StatelessWidget {
     BuildContext context,
     VxWindowSize window,
     BoxConstraints constraints,
-  ) builder;
+  )
+  builder;
 
   final VxSizeConfig? sizeConfig;
 
-  const VxLayout({
-    super.key,
-    required this.builder,
-    this.sizeConfig,
-  });
+  const VxLayout({super.key, required this.builder, this.sizeConfig});
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, boxConstraints) {
-      VxWindowSize windowSize = VxWindowSize.small;
-      if (boxConstraints.maxWidth < (sizeConfig?.xsmall ?? 600)) {
-        windowSize = VxWindowSize.xsmall;
-      } else if (boxConstraints.maxWidth < (sizeConfig?.small ?? 1024)) {
-        windowSize = VxWindowSize.small;
-      } else if (boxConstraints.maxWidth < (sizeConfig?.medium ?? 1440)) {
-        windowSize = VxWindowSize.medium;
-      } else if (boxConstraints.maxWidth < (sizeConfig?.large ?? 1920)) {
-        windowSize = VxWindowSize.large;
-      } else if (boxConstraints.maxWidth < (sizeConfig?.xlarge ?? 4096)) {
-        windowSize = VxWindowSize.xlarge;
-      } else {
-        windowSize = VxWindowSize.xlarge;
-      }
-      return builder(context, windowSize, boxConstraints);
-    });
+    return LayoutBuilder(
+      builder: (context, boxConstraints) {
+        VxWindowSize windowSize = VxWindowSize.small;
+        if (boxConstraints.maxWidth < (sizeConfig?.xsmall ?? 600)) {
+          windowSize = VxWindowSize.xsmall;
+        } else if (boxConstraints.maxWidth < (sizeConfig?.small ?? 1024)) {
+          windowSize = VxWindowSize.small;
+        } else if (boxConstraints.maxWidth < (sizeConfig?.medium ?? 1440)) {
+          windowSize = VxWindowSize.medium;
+        } else if (boxConstraints.maxWidth < (sizeConfig?.large ?? 1920)) {
+          windowSize = VxWindowSize.large;
+        } else if (boxConstraints.maxWidth < (sizeConfig?.xlarge ?? 4096)) {
+          windowSize = VxWindowSize.xlarge;
+        } else {
+          windowSize = VxWindowSize.xlarge;
+        }
+        return builder(context, windowSize, boxConstraints);
+      },
+    );
   }
 }
 
@@ -142,8 +142,8 @@ class VxSizeConfig {
 }
 
 /// A typedef representing a callback function used to build the UI based on the current screen adaptation settings.
-typedef VxAdaptiveChildBuilder = Widget Function(
-    BuildContext context, bool scaled);
+typedef VxAdaptiveChildBuilder =
+    Widget Function(BuildContext context, bool scaled);
 
 /// Defines the different scaling options for screen adaptation.
 enum VxAdaptiveScaleType {

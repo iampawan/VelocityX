@@ -104,33 +104,28 @@ class VxShimmerState extends State<VxShimmer>
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: _controller,
-        child: widget.child,
-        builder: (BuildContext context, Widget? child) => _VxShimmer(
-          gradient: widget.showGradient
-              ? widget.gradient
-              : LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.centerRight,
-                  colors: <Color>[
-                      widget.primaryColor,
-                      widget.primaryColor,
-                      widget.secondaryColor ?? Vx.gray200,
-                      widget.primaryColor,
-                      widget.primaryColor
-                    ],
-                  stops: const <double>[
-                      0,
-                      0.3,
-                      0.5,
-                      0.7,
-                      1
-                    ]),
-          controllerValue: _controller.value,
-          showShimmerEffect: widget.showAnimation,
-          child: child,
-        ),
-      );
+    animation: _controller,
+    child: widget.child,
+    builder: (BuildContext context, Widget? child) => _VxShimmer(
+      gradient: widget.showGradient
+          ? widget.gradient
+          : LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                widget.primaryColor,
+                widget.primaryColor,
+                widget.secondaryColor ?? Vx.gray200,
+                widget.primaryColor,
+                widget.primaryColor,
+              ],
+              stops: const <double>[0, 0.3, 0.5, 0.7, 1],
+            ),
+      controllerValue: _controller.value,
+      showShimmerEffect: widget.showAnimation,
+      child: child,
+    ),
+  );
 
   @override
   void dispose() {
@@ -159,9 +154,10 @@ class _VxShimmer extends SingleChildRenderObjectWidget {
 
   @override
   _VxShimmerFilter createRenderObject(BuildContext context) => _VxShimmerFilter(
-      value: controllerValue,
-      gradient: gradient,
-      showAnimation: showShimmerEffect);
+    value: controllerValue,
+    gradient: gradient,
+    showAnimation: showShimmerEffect,
+  );
 
   @override
   void updateRenderObject(BuildContext context, _VxShimmerFilter shimmer) {
@@ -172,7 +168,7 @@ class _VxShimmer extends SingleChildRenderObjectWidget {
 
 class _VxShimmerFilter extends RenderProxyBox {
   _VxShimmerFilter({this.value, this.gradient, this.showAnimation})
-      : gradientPaint = Paint()..blendMode = BlendMode.srcIn;
+    : gradientPaint = Paint()..blendMode = BlendMode.srcIn;
 
   /// Constructs an empty [Paint] object with all fields initialized to their defaults.
   final Paint initialPaint = Paint();
@@ -249,16 +245,15 @@ extension VxShimmerExtension on Widget {
     bool showGradient = false,
     Color primaryColor = Colors.grey,
     Color? secondaryColor,
-  }) =>
-      VxShimmer(
-        key: key,
-        count: count,
-        duration: duration,
-        gradient: gradient,
-        primaryColor: primaryColor,
-        secondaryColor: secondaryColor,
-        showAnimation: showAnimation,
-        showGradient: showGradient,
-        child: this,
-      );
+  }) => VxShimmer(
+    key: key,
+    count: count,
+    duration: duration,
+    gradient: gradient,
+    primaryColor: primaryColor,
+    secondaryColor: secondaryColor,
+    showAnimation: showAnimation,
+    showGradient: showGradient,
+    child: this,
+  );
 }

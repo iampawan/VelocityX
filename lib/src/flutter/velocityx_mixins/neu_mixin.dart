@@ -39,7 +39,7 @@ mixin VxNeuMixin {
         color: _getNeuColor(color0, emboss ? elevation : 0 - elevation),
         offset: Offset(elevation, elevation),
         blurRadius: elevation,
-      )
+      ),
     ];
 
     if (emboss) {
@@ -70,20 +70,14 @@ mixin VxNeuMixin {
         _gradient = _getFlatGradients(colorValue, elevation);
         break;
     }
-    return VxNeumorph(
-      shadowList,
-      _gradient,
-    );
+    return VxNeumorph(shadowList, _gradient);
   }
 
   Gradient _getFlatGradients(Color baseColor, double depth) => LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          baseColor,
-          baseColor,
-        ],
-      );
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [baseColor, baseColor],
+  );
 
   Gradient _getConcaveGradients(Color baseColor, double depth) =>
       LinearGradient(
@@ -96,19 +90,19 @@ mixin VxNeuMixin {
       );
 
   Gradient _getConvexGradients(Color baseColor, double depth) => LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          _getNeuColor(baseColor, depth),
-          _getNeuColor(baseColor, 0 - depth),
-        ],
-      );
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      _getNeuColor(baseColor, depth),
+      _getNeuColor(baseColor, 0 - depth),
+    ],
+  );
 
   Color _getNeuColor(Color baseColor, double amount) {
     Map<String, int> colors = {
       'r': baseColor.r.toInt(),
       'g': baseColor.g.toInt(),
-      'b': baseColor.b.toInt()
+      'b': baseColor.b.toInt(),
     };
 
     colors = colors.map((key, value) {

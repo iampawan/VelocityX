@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/src/flutter/divider.dart';
 
 mixin VxBottomSheet {
-  static Future bottomSheetOptions(BuildContext context,
-      {List<String>? option,
-      String? defaultData,
-      double maxHeight = 0.8,
-      double minHeight = 0.1,
-      Function(int index, String value)? onSelect,
-      bool roundedFromTop = false,
-      bool isDismissible = true,
-      bool showItemDivider = false,
-      bool enableDrag = true,
-      Color? barrierColor,
-      Color? backgroundColor,
-      double? elevation,
-      Clip? clipBehavior,
-      bool isSafeAreaFromBottom = false}) async {
+  static Future bottomSheetOptions(
+    BuildContext context, {
+    List<String>? option,
+    String? defaultData,
+    double maxHeight = 0.8,
+    double minHeight = 0.1,
+    Function(int index, String value)? onSelect,
+    bool roundedFromTop = false,
+    bool isDismissible = true,
+    bool showItemDivider = false,
+    bool enableDrag = true,
+    Color? barrierColor,
+    Color? backgroundColor,
+    double? elevation,
+    Clip? clipBehavior,
+    bool isSafeAreaFromBottom = false,
+  }) async {
     final result = await showModalBottomSheet(
       context: context,
       barrierColor: barrierColor,
@@ -25,7 +27,8 @@ mixin VxBottomSheet {
       enableDrag: enableDrag,
       shape: roundedFromTop
           ? const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)))
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+            )
           : null,
       isScrollControlled: true,
       isDismissible: isDismissible,
@@ -54,18 +57,20 @@ mixin VxBottomSheet {
     return result;
   }
 
-  static Future bottomSheetView(BuildContext context,
-      {required Widget child,
-      double maxHeight = 0.8,
-      double minHeight = 0.1,
-      bool roundedFromTop = false,
-      bool isDismissible = true,
-      bool enableDrag = true,
-      Color? barrierColor,
-      Color? backgroundColor,
-      double? elevation,
-      Clip? clipBehavior,
-      bool isSafeAreaFromBottom = false}) {
+  static Future bottomSheetView(
+    BuildContext context, {
+    required Widget child,
+    double maxHeight = 0.8,
+    double minHeight = 0.1,
+    bool roundedFromTop = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    Color? barrierColor,
+    Color? backgroundColor,
+    double? elevation,
+    Clip? clipBehavior,
+    bool isSafeAreaFromBottom = false,
+  }) {
     return showModalBottomSheet(
       context: context,
       barrierColor: barrierColor,
@@ -74,7 +79,8 @@ mixin VxBottomSheet {
       enableDrag: enableDrag,
       shape: roundedFromTop
           ? const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)))
+              borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+            )
           : null,
       isScrollControlled: true,
       isDismissible: isDismissible,
@@ -126,16 +132,16 @@ class _VxBottomSheetOptions extends StatelessWidget {
 
     for (int i = 0; i < list!.length; i++) {
       if (children.isNotEmpty && showItemDivider!) {
-        children.add(const VxDivider(
-          width: 0.1,
-        ));
+        children.add(const VxDivider(width: 0.1));
       }
       final String it = list![i];
-      children.add(ListTile(
-        onTap: () => itemClick(context, i, it),
-        title: Text(it, textAlign: TextAlign.center),
-        selected: it == initData,
-      ));
+      children.add(
+        ListTile(
+          onTap: () => itemClick(context, i, it),
+          title: Text(it, textAlign: TextAlign.center),
+          selected: it == initData,
+        ),
+      );
     }
 
     return Container(
@@ -143,9 +149,7 @@ class _VxBottomSheetOptions extends StatelessWidget {
         maxHeight: MediaQuery.sizeOf(context).height * (maxHeight ?? 0.8),
         minHeight: MediaQuery.sizeOf(context).height * (minHeight ?? 0.1),
       ),
-      child: SingleChildScrollView(
-        child: Column(children: children),
-      ),
+      child: SingleChildScrollView(child: Column(children: children)),
     );
   }
 
@@ -156,14 +160,16 @@ class _VxBottomSheetOptions extends StatelessWidget {
         DividerTheme.of(context).color ?? Theme.of(context).dividerColor;
     children.add(Container(height: 16, color: effectiveColor));
 
-    children.add(InkWell(
-      onTap: () => close(context),
-      child: Container(
-        height: 42,
-        alignment: Alignment.center,
-        child: const Text('Close'),
+    children.add(
+      InkWell(
+        onTap: () => close(context),
+        child: Container(
+          height: 42,
+          alignment: Alignment.center,
+          child: const Text('Close'),
+        ),
       ),
-    ));
+    );
 
     return Column(children: children);
   }
@@ -182,11 +188,7 @@ class _VxBottomSheetView extends StatelessWidget {
   final double? maxHeight;
   final double? minHeight;
 
-  const _VxBottomSheetView({
-    this.child,
-    this.maxHeight,
-    this.minHeight,
-  });
+  const _VxBottomSheetView({this.child, this.maxHeight, this.minHeight});
 
   @override
   Widget build(BuildContext context) {

@@ -2,10 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-enum VxPinBorderType {
-  underline,
-  round,
-}
+enum VxPinBorderType { underline, round }
 
 /// VxPinView to give a widget where OTP or Pin screen can be created easily
 class VxPinView extends StatefulWidget {
@@ -88,7 +85,8 @@ class VxPinViewState extends State<VxPinView> {
     return CustomPaint(
       foregroundPainter: VxPasswordPainter(
         color: widget.color ?? Theme.of(context).textTheme.titleLarge?.color,
-        contentColor: widget.contentColor ??
+        contentColor:
+            widget.contentColor ??
             Theme.of(context).textTheme.titleLarge?.color,
         radius: widget.radius,
         type: widget.type,
@@ -107,10 +105,7 @@ class VxPinViewState extends State<VxPinView> {
             border: InputBorder.none,
             counterText: '',
           ),
-          style: const TextStyle(
-            color: Colors.transparent,
-            fontSize: 1,
-          ),
+          style: const TextStyle(color: Colors.transparent, fontSize: 1),
           keyboardType: widget.keyboardType,
           textInputAction: widget.textInputAction,
           focusNode: widget.focusNode,
@@ -186,32 +181,16 @@ class VxPasswordPainter extends CustomPainter {
         (2 * index + 1) * mSize / 2 + index * space,
         mSize / 2,
       );
-      final Rect rect = Rect.fromCircle(
-        center: offset,
-        radius: mSize / 2,
-      );
+      final Rect rect = Rect.fromCircle(center: offset, radius: mSize / 2);
       final RRect rRect = RRect.fromRectAndRadius(
         rect,
         Radius.circular(radius),
       );
-      canvas.drawRRect(
-        rRect,
-        paint,
-      );
+      canvas.drawRRect(rRect, paint);
     } else {
-      final Offset offset1 = Offset(
-        index * mSize + index * space,
-        mSize,
-      );
-      final Offset offset2 = Offset(
-        (index + 1) * mSize + index * space,
-        mSize,
-      );
-      canvas.drawLine(
-        offset1,
-        offset2,
-        paint,
-      );
+      final Offset offset1 = Offset(index * mSize + index * space, mSize);
+      final Offset offset2 = Offset((index + 1) * mSize + index * space, mSize);
+      canvas.drawLine(offset1, offset2, paint);
     }
   }
 
@@ -226,10 +205,7 @@ class VxPasswordPainter extends CustomPainter {
         (2 * index + 1) * mSize / 2 + index * space,
         mSize / 2,
       );
-      final Rect rect = Rect.fromCircle(
-        center: offset,
-        radius: mSize / 8,
-      );
+      final Rect rect = Rect.fromCircle(center: offset, radius: mSize / 8);
       final RRect rRect = RRect.fromRectAndRadius(
         rect,
         Radius.circular(mSize / 8),
@@ -247,17 +223,15 @@ class VxPasswordPainter extends CustomPainter {
       pb.pushStyle(ui.TextStyle(color: contentColor));
       pb.addText(tempValue);
 
-      final ui.ParagraphConstraints pc =
-          ui.ParagraphConstraints(width: mSize / 2);
+      final ui.ParagraphConstraints pc = ui.ParagraphConstraints(
+        width: mSize / 2,
+      );
       final ui.Paragraph paragraph = pb.build()..layout(pc);
       final Offset offset = Offset(
         (2 * index + 1) * mSize / 2 + index * space - paragraph.width / 2,
         mSize / 2 - paragraph.height / 2,
       );
-      canvas.drawParagraph(
-        paragraph,
-        offset,
-      );
+      canvas.drawParagraph(paragraph, offset);
     }
   }
 

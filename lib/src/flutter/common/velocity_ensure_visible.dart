@@ -110,7 +110,7 @@ class VxEnsureVisibleWhenFocusedState extends State<VxEnsureVisibleWhenFocused>
     // Wait for the keyboard to come into view
     await Future.any([
       Future.delayed(const Duration(milliseconds: 300)),
-      _keyboardToggled()
+      _keyboardToggled(),
     ]);
 
     // No need to go any further if the node has not the focus

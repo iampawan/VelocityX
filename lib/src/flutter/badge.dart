@@ -73,32 +73,20 @@ class VxBadge extends StatelessWidget {
   /// Get the Vx Round type whether [VxBadgeType.point] or [VxBadgeType.ellipse] or [VxBadgeType.round]
   Widget getVxRound() {
     if (type == VxBadgeType.point) {
-      return VxRound(
-        type: VxRoundType.point,
-        size: size,
-        color: color,
-      );
+      return VxRound(type: VxRoundType.point, size: size, color: color);
     } else if (type == VxBadgeType.round) {
       return VxRound(
         type: VxRoundType.round,
         color: color,
         size: size,
-        child: optionalWidget ??
-            Text(
-              getNumber(),
-              style: getTextStyle(),
-            ),
+        child: optionalWidget ?? Text(getNumber(), style: getTextStyle()),
       );
     } else {
       return VxRound(
         type: VxRoundType.ellipse,
         color: color,
         size: size,
-        child: optionalWidget ??
-            Text(
-              getNumber(),
-              style: getTextStyle(),
-            ),
+        child: optionalWidget ?? Text(getNumber(), style: getTextStyle()),
       );
     }
   }
@@ -112,29 +100,13 @@ class VxBadge extends StatelessWidget {
     } else if (position == VxBadgePosition.right) {
       children.add(getVxRound());
     } else if (position == VxBadgePosition.leftTop) {
-      children.add(Positioned(
-        top: 0,
-        left: 0,
-        child: getVxRound(),
-      ));
+      children.add(Positioned(top: 0, left: 0, child: getVxRound()));
     } else if (position == VxBadgePosition.rightTop) {
-      children.add(Positioned(
-        top: 0,
-        right: 0,
-        child: getVxRound(),
-      ));
+      children.add(Positioned(top: 0, right: 0, child: getVxRound()));
     } else if (position == VxBadgePosition.leftBottom) {
-      children.add(Positioned(
-        bottom: 0,
-        left: 0,
-        child: getVxRound(),
-      ));
+      children.add(Positioned(bottom: 0, left: 0, child: getVxRound()));
     } else if (position == VxBadgePosition.rightBottom) {
-      children.add(Positioned(
-        bottom: 0,
-        right: 0,
-        child: getVxRound(),
-      ));
+      children.add(Positioned(bottom: 0, right: 0, child: getVxRound()));
     }
 
     if (position == VxBadgePosition.left || position == VxBadgePosition.right) {
@@ -144,9 +116,7 @@ class VxBadge extends StatelessWidget {
         children: children,
       );
     } else {
-      return Stack(
-        children: children,
-      );
+      return Stack(children: children);
     }
   }
 }
@@ -166,16 +136,15 @@ extension VxBadgeExtension on Widget {
     double? size,
     Widget? optionalWidget,
     VxBadgePosition position = VxBadgePosition.rightTop,
-  }) =>
-      VxBadge(
-        textStyle: textStyle,
-        color: color,
-        limit: limit,
-        count: count,
-        position: position,
-        size: size,
-        type: type,
-        optionalWidget: optionalWidget,
-        child: this,
-      );
+  }) => VxBadge(
+    textStyle: textStyle,
+    color: color,
+    limit: limit,
+    count: count,
+    position: position,
+    size: size,
+    type: type,
+    optionalWidget: optionalWidget,
+    child: this,
+  );
 }

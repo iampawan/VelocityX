@@ -103,13 +103,13 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   ///
   /// Sets the size (width & height in percentage) property of the box.
   ///
-  VxAnimatedBox sizePCT(
-          {required BuildContext context,
-          required double widthPCT,
-          required double heightPCT}) =>
-      this
-        .._width = context.percentWidth * widthPCT
-        .._height = context.percentHeight * heightPCT;
+  VxAnimatedBox sizePCT({
+    required BuildContext context,
+    required double widthPCT,
+    required double heightPCT,
+  }) => this
+    .._width = context.percentWidth * widthPCT
+    .._height = context.percentHeight * heightPCT;
 
   ///
   /// Sets the height and width as square of the box.
@@ -127,10 +127,11 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   ///
   /// Sets the border of the Box.
   ///
-  VxAnimatedBox border(
-      {Color color = Colors.black,
-      double width = 1.0,
-      BorderStyle style = BorderStyle.solid}) {
+  VxAnimatedBox border({
+    Color color = Colors.black,
+    double width = 1.0,
+    BorderStyle style = BorderStyle.solid,
+  }) {
     _border = Border.all(color: color, width: width, style: style);
     return this;
   }
@@ -201,7 +202,8 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   VxAnimatedBox shadowOutline({Color? outlineColor}) {
     _boxShadow = [
       BoxShadow(
-        color: outlineColor?.withValues(alpha: 0.5) ??
+        color:
+            outlineColor?.withValues(alpha: 0.5) ??
             const Color.fromRGBO(66, 153, 225, 0.5),
         blurRadius: 0.0,
         spreadRadius: 3.0,
@@ -215,52 +217,57 @@ class VxAnimatedBox extends VxWidgetBuilder<Widget>
   ///
   /// Use this to convert your box to the neumorphic design. Use it wisely.
   ///
-  VxAnimatedBox neumorphic(
-          {Color? color,
-          VxCurve curve = VxCurve.concave,
-          double elevation = 12.0}) =>
-      this
-        .._velocityNeumorph =
-            velocityDecoration((color ?? velocityColor)!, curve, elevation);
+  VxAnimatedBox neumorphic({
+    Color? color,
+    VxCurve curve = VxCurve.concave,
+    double elevation = 12.0,
+  }) => this
+    .._velocityNeumorph = velocityDecoration(
+      (color ?? velocityColor)!,
+      curve,
+      elevation,
+    );
 
   @override
   Widget make({Key? key}) {
     if (!willRender) return const VxNone();
     return AnimatedContainer(
-        curve: velocityCurve ?? Curves.linear,
-        duration: velocityDuration ?? const Duration(seconds: 100),
-        height: _height,
-        width: _width,
-        padding: velocityPadding,
-        margin: _margin,
-        alignment: velocityAlignment,
-        transform: _transform,
-        decoration: _velocityNeumorph != null
-            ? BoxDecoration(
-                borderRadius: _isCircleRounded || (roundedValue == null)
-                    ? null
-                    : (radiusGeometry ?? BorderRadius.circular(roundedValue!)),
-                shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
-                boxShadow: _velocityNeumorph!.shadows,
-                border: _border,
-                gradient: velocityGradient ?? _velocityNeumorph!.gradient,
-                image: _bgImage,
-              )
-            : _decoration ??
+      curve: velocityCurve ?? Curves.linear,
+      duration: velocityDuration ?? const Duration(seconds: 100),
+      height: _height,
+      width: _width,
+      padding: velocityPadding,
+      margin: _margin,
+      alignment: velocityAlignment,
+      transform: _transform,
+      decoration: _velocityNeumorph != null
+          ? BoxDecoration(
+              borderRadius: _isCircleRounded || (roundedValue == null)
+                  ? null
+                  : (radiusGeometry ?? BorderRadius.circular(roundedValue!)),
+              shape: _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+              boxShadow: _velocityNeumorph!.shadows,
+              border: _border,
+              gradient: velocityGradient ?? _velocityNeumorph!.gradient,
+              image: _bgImage,
+            )
+          : _decoration ??
                 BoxDecoration(
                   color: velocityColor,
                   borderRadius: _isCircleRounded || (roundedValue == null)
                       ? null
                       : (radiusGeometry ??
-                          BorderRadius.circular(roundedValue!)),
-                  shape:
-                      _isCircleRounded ? BoxShape.circle : BoxShape.rectangle,
+                            BorderRadius.circular(roundedValue!)),
+                  shape: _isCircleRounded
+                      ? BoxShape.circle
+                      : BoxShape.rectangle,
                   boxShadow: velocityShadow ?? _boxShadow ?? [],
                   border: _border,
                   gradient: velocityGradient ?? _gradient,
                   image: _bgImage,
                 ),
-        child: child);
+      child: child,
+    );
   }
 }
 

@@ -131,8 +131,8 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
 
   VxTextDropDown focusColor(Color color) => this.._focusColor = color;
 
-//  VxTextDropDown onChange(ValueChanged<String> function) =>
-//      this..onChanged = function;
+  //  VxTextDropDown onChange(ValueChanged<String> function) =>
+  //      this..onChanged = function;
 
   @override
   StatefulBuilder make({Key? key}) {
@@ -153,10 +153,12 @@ class VxTextDropDown extends VxWidgetBuilder<StatefulBuilder> {
           focusColor: _focusColor,
           isDense: _isDense,
           items: _items
-              .map<DropdownMenuItem<String>>((item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: item.text.make(),
-                  ))
+              .map<DropdownMenuItem<String>>(
+                (item) => DropdownMenuItem<String>(
+                  value: item,
+                  child: item.text.make(),
+                ),
+              )
               .toList(),
           onChanged: (String? value) {
             setState(() {
@@ -175,8 +177,9 @@ extension VxDropDownExtension on List<String> {
   /// Extension method to directly access [VxTextDropDown] with any widget without wrapping or with dot operator.
   ///
   /// The [selectedValue] should be a part of the list of strings.
-  VxTextDropDown textDropDown(
-          {required String selectedValue,
-          required ValueChanged<String?> onChanged}) =>
+  VxTextDropDown textDropDown({
+    required String selectedValue,
+    required ValueChanged<String?> onChanged,
+  }) =>
       VxTextDropDown(this, selectedValue: selectedValue, onChanged: onChanged);
 }

@@ -27,27 +27,33 @@ mixin VxGradientMixin<T> {
   }
 
   T gradientFrom({required Color from, List<double>? stops}) => _gradientIt(
-      child: _childToGradient,
-      gradient: LinearGradient(colors: [from, Vx.gray100], stops: stops));
+    child: _childToGradient,
+    gradient: LinearGradient(colors: [from, Vx.gray100], stops: stops),
+  );
 
-  T gradientVia(
-          {required Color from,
-          required Color via,
-          required Color to,
-          List<double>? stops}) =>
-      _gradientIt(
-          child: _childToGradient,
-          gradient: LinearGradient(colors: [from, via, to], stops: stops));
+  T gradientVia({
+    required Color from,
+    required Color via,
+    required Color to,
+    List<double>? stops,
+  }) => _gradientIt(
+    child: _childToGradient,
+    gradient: LinearGradient(colors: [from, via, to], stops: stops),
+  );
 
-  T gradientFromTo(
-          {required Color from, required Color to, List<double>? stops}) =>
-      _gradientIt(
-          child: _childToGradient,
-          gradient: LinearGradient(colors: [from, to], stops: stops));
+  T gradientFromTo({
+    required Color from,
+    required Color to,
+    List<double>? stops,
+  }) => _gradientIt(
+    child: _childToGradient,
+    gradient: LinearGradient(colors: [from, to], stops: stops),
+  );
 
   T gradientTo({required Color to, List<double>? stops}) => _gradientIt(
-      child: _childToGradient,
-      gradient: LinearGradient(colors: [Vx.gray100, to], stops: stops));
+    child: _childToGradient,
+    gradient: LinearGradient(colors: [Vx.gray100, to], stops: stops),
+  );
 
   T _gradientIt({required Gradient gradient, required T child}) {
     velocityGradient = gradient;

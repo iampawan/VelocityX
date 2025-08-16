@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum VxDividerType {
-  horizontal,
-  vertical,
-}
+enum VxDividerType { horizontal, vertical }
 
 class VxDivider extends StatelessWidget {
   final VxDividerType type;
@@ -33,19 +30,13 @@ class VxDivider extends StatelessWidget {
     if (type == VxDividerType.horizontal) {
       return Container(
         height: width,
-        margin: EdgeInsetsDirectional.only(
-          start: indent,
-          end: endIndent,
-        ),
+        margin: EdgeInsetsDirectional.only(start: indent, end: endIndent),
         color: effectiveColor,
       );
     } else {
       return Container(
         width: width,
-        margin: EdgeInsetsDirectional.only(
-          top: indent,
-          bottom: endIndent,
-        ),
+        margin: EdgeInsetsDirectional.only(top: indent, bottom: endIndent),
         color: effectiveColor,
       );
     }

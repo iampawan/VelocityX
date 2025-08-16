@@ -80,8 +80,8 @@ abstract class MobileDeviceInfo {
 
   factory MobileDeviceInfo(MediaQueryData data) =>
       data.orientation == Orientation.portrait
-          ? _PortraitDeviceInfo(data.size.width)
-          : _LandscapeDeviceInfo(data.size.width);
+      ? _PortraitDeviceInfo(data.size.width)
+      : _LandscapeDeviceInfo(data.size.width);
 
   MobileDeviceInfo._(this._width);
 

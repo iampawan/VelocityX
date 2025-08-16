@@ -25,108 +25,98 @@ extension VxListWidgetExtension on List<Widget> {
   ///
   /// Extension for using [VStack] directly with list of widgets
   ///
-  Widget vStack(
-          {Key? key,
-          MainAxisAlignment? alignment,
-          CrossAxisAlignment? crossAlignment,
-          MainAxisSize? axisSize}) =>
-      VStack(
-        this,
-        key: key,
-        alignment: alignment,
-        axisSize: axisSize,
-        crossAlignment: crossAlignment,
-      );
+  Widget vStack({
+    Key? key,
+    MainAxisAlignment? alignment,
+    CrossAxisAlignment? crossAlignment,
+    MainAxisSize? axisSize,
+  }) => VStack(
+    this,
+    key: key,
+    alignment: alignment,
+    axisSize: axisSize,
+    crossAlignment: crossAlignment,
+  );
 
   ///
   /// Extension for using [HStack] directly with list of widgets
   ///
-  Widget hStack(
-          {Key? key,
-          MainAxisAlignment? alignment,
-          CrossAxisAlignment? crossAlignment,
-          MainAxisSize? axisSize}) =>
-      HStack(
-        this,
-        key: key,
-        alignment: alignment,
-        axisSize: axisSize,
-        crossAlignment: crossAlignment,
-      );
+  Widget hStack({
+    Key? key,
+    MainAxisAlignment? alignment,
+    CrossAxisAlignment? crossAlignment,
+    MainAxisSize? axisSize,
+  }) => HStack(
+    this,
+    key: key,
+    alignment: alignment,
+    axisSize: axisSize,
+    crossAlignment: crossAlignment,
+  );
 
   ///
   /// Extension for using [ZStack] directly with list of widgets
   ///
-  Widget zStack(
-          {Key? key,
-          AlignmentGeometry? alignment,
-          StackFit? fit,
-          Clip? clip}) =>
-      ZStack(
-        this,
-        key: key,
-        alignment: alignment,
-        fit: fit,
-        clip: clip,
-      );
+  Widget zStack({
+    Key? key,
+    AlignmentGeometry? alignment,
+    StackFit? fit,
+    Clip? clip,
+  }) => ZStack(this, key: key, alignment: alignment, fit: fit, clip: clip);
 
   //
   /// Extension for using [OverflowBar] directly with list of widgets
   ///
-  Widget aStack(
-          {Key? key,
-          OverflowBarAlignment overflowAlignment = OverflowBarAlignment.start,
-          VerticalDirection overflowDirection = VerticalDirection.down,
-          double overflowSpacing = 0.0,
-          double spacing = 0.0,
-          TextDirection? textDirection}) =>
-      AStack(
-        key: key,
-        overflowAlignment: overflowAlignment,
-        overflowDirection: overflowDirection,
-        overflowSpacing: overflowSpacing,
-        spacing: spacing,
-        textDirection: textDirection,
-        children: this,
-      );
+  Widget aStack({
+    Key? key,
+    OverflowBarAlignment overflowAlignment = OverflowBarAlignment.start,
+    VerticalDirection overflowDirection = VerticalDirection.down,
+    double overflowSpacing = 0.0,
+    double spacing = 0.0,
+    TextDirection? textDirection,
+  }) => AStack(
+    key: key,
+    overflowAlignment: overflowAlignment,
+    overflowDirection: overflowDirection,
+    overflowSpacing: overflowSpacing,
+    spacing: spacing,
+    textDirection: textDirection,
+    children: this,
+  );
 
   /// Same as [hStack]. Added just for ease who are familiar with Flutter widgets.
-  Widget row(
-          {Key? key,
-          MainAxisAlignment? alignment,
-          CrossAxisAlignment? crossAlignment,
-          MainAxisSize? axisSize}) =>
-      hStack(
-          key: key,
-          alignment: alignment,
-          axisSize: axisSize,
-          crossAlignment: crossAlignment);
+  Widget row({
+    Key? key,
+    MainAxisAlignment? alignment,
+    CrossAxisAlignment? crossAlignment,
+    MainAxisSize? axisSize,
+  }) => hStack(
+    key: key,
+    alignment: alignment,
+    axisSize: axisSize,
+    crossAlignment: crossAlignment,
+  );
 
   /// Same as [vStack]. Added just for ease who are familiar with Flutter widgets.
-  Widget column(
-          {Key? key,
-          MainAxisAlignment? alignment,
-          CrossAxisAlignment? crossAlignment,
-          MainAxisSize? axisSize}) =>
-      vStack(
-          key: key,
-          alignment: alignment,
-          axisSize: axisSize,
-          crossAlignment: crossAlignment);
+  Widget column({
+    Key? key,
+    MainAxisAlignment? alignment,
+    CrossAxisAlignment? crossAlignment,
+    MainAxisSize? axisSize,
+  }) => vStack(
+    key: key,
+    alignment: alignment,
+    axisSize: axisSize,
+    crossAlignment: crossAlignment,
+  );
 
   /// Same as [zStack]. Added just for ease who are familiar with Flutter widgets.
-  Widget stack(
-          {Key? key,
-          AlignmentGeometry? alignment,
-          StackFit? fit,
-          Clip? clip}) =>
-      ZStack(
-        this,
-        key: key,
-        alignment: alignment,
-        fit: fit,
-        clip: clip,
-      );
+  Widget stack({
+    Key? key,
+    AlignmentGeometry? alignment,
+    StackFit? fit,
+    Clip? clip,
+  }) => ZStack(this, key: key, alignment: alignment, fit: fit, clip: clip);
 
   ///
   /// Extension for using [VxSwiper] vertically directly with list of widgets
@@ -140,61 +130,59 @@ extension VxListWidgetExtension on List<Widget> {
     Function(int index)? onPageChanged,
     ScrollPhysics? scrollPhysics,
     Axis scrollDirection = Axis.vertical,
-  }) =>
-      VxSwiper(
-        items: this,
-        height: height,
-        aspectRatio: aspectRatio,
-        enableInfiniteScroll: enableInfiniteScroll,
-        enlargeCenterPage: enlargeCenterPage,
-        onPageChanged: onPageChanged,
-        scrollPhysics: scrollPhysics,
-        scrollDirection: scrollDirection,
-      );
+  }) => VxSwiper(
+    items: this,
+    height: height,
+    aspectRatio: aspectRatio,
+    enableInfiniteScroll: enableInfiniteScroll,
+    enlargeCenterPage: enlargeCenterPage,
+    onPageChanged: onPageChanged,
+    scrollPhysics: scrollPhysics,
+    scrollDirection: scrollDirection,
+  );
 
   ///
   /// Extension for using [VxSwiper] directly with list of widgets
   ///
-  Widget swiper(
-          {Key? key,
-          double? height,
-          double aspectRatio = 16 / 9,
-          bool enableInfiniteScroll = true,
-          bool enlargeCenterPage = false,
-          Function(int index)? onPageChanged,
-          ScrollPhysics? scrollPhysics,
-          Axis scrollDirection = Axis.horizontal,
-          num viewportFraction = 0.8,
-          bool autoPlay = false,
-          bool reverse = false,
-          Duration? pauseAutoPlayOnTouch,
-          Duration autoPlayAnimationDuration =
-              const Duration(milliseconds: 800),
-          Duration autoPlayInterval = const Duration(seconds: 5),
-          Curve autoPlayCurve = Curves.fastOutSlowIn,
-          num initialPage = 0,
-          int realPage = 10000,
-          bool isFastScrollingEnabled = false}) =>
-      VxSwiper(
-        items: this,
-        height: height,
-        aspectRatio: aspectRatio,
-        enableInfiniteScroll: enableInfiniteScroll,
-        enlargeCenterPage: enlargeCenterPage,
-        onPageChanged: onPageChanged,
-        scrollPhysics: scrollPhysics,
-        scrollDirection: scrollDirection,
-        viewportFraction: viewportFraction,
-        autoPlay: autoPlay,
-        pauseAutoPlayOnTouch: pauseAutoPlayOnTouch,
-        reverse: reverse,
-        autoPlayAnimationDuration: autoPlayAnimationDuration,
-        autoPlayCurve: autoPlayCurve,
-        autoPlayInterval: autoPlayInterval,
-        initialPage: initialPage,
-        realPage: realPage,
-        isFastScrollingEnabled: isFastScrollingEnabled,
-      );
+  Widget swiper({
+    Key? key,
+    double? height,
+    double aspectRatio = 16 / 9,
+    bool enableInfiniteScroll = true,
+    bool enlargeCenterPage = false,
+    Function(int index)? onPageChanged,
+    ScrollPhysics? scrollPhysics,
+    Axis scrollDirection = Axis.horizontal,
+    num viewportFraction = 0.8,
+    bool autoPlay = false,
+    bool reverse = false,
+    Duration? pauseAutoPlayOnTouch,
+    Duration autoPlayAnimationDuration = const Duration(milliseconds: 800),
+    Duration autoPlayInterval = const Duration(seconds: 5),
+    Curve autoPlayCurve = Curves.fastOutSlowIn,
+    num initialPage = 0,
+    int realPage = 10000,
+    bool isFastScrollingEnabled = false,
+  }) => VxSwiper(
+    items: this,
+    height: height,
+    aspectRatio: aspectRatio,
+    enableInfiniteScroll: enableInfiniteScroll,
+    enlargeCenterPage: enlargeCenterPage,
+    onPageChanged: onPageChanged,
+    scrollPhysics: scrollPhysics,
+    scrollDirection: scrollDirection,
+    viewportFraction: viewportFraction,
+    autoPlay: autoPlay,
+    pauseAutoPlayOnTouch: pauseAutoPlayOnTouch,
+    reverse: reverse,
+    autoPlayAnimationDuration: autoPlayAnimationDuration,
+    autoPlayCurve: autoPlayCurve,
+    autoPlayInterval: autoPlayInterval,
+    initialPage: initialPage,
+    realPage: realPage,
+    isFastScrollingEnabled: isFastScrollingEnabled,
+  );
 }
 
 extension VxListStringExtension on List<String> {
@@ -209,17 +197,16 @@ extension VxListStringExtension on List<String> {
     ScrollPhysics? physics,
     bool? primary,
     bool shrinkWrap = true,
-  }) =>
-      VxUnorderedList(
-        this,
-        key: key,
-        padding: padding,
-        fontSize: fontSize,
-        color: color,
-        physics: physics,
-        primary: primary,
-        shrinkWrap: shrinkWrap,
-      );
+  }) => VxUnorderedList(
+    this,
+    key: key,
+    padding: padding,
+    fontSize: fontSize,
+    color: color,
+    physics: physics,
+    primary: primary,
+    shrinkWrap: shrinkWrap,
+  );
 
   ///
   /// Extension for using [VxOrderedList] directly with list of strings.
@@ -233,26 +220,26 @@ extension VxListStringExtension on List<String> {
     bool? primary,
     bool shrinkWrap = true,
     VxListType type = VxListType.decimal,
-  }) =>
-      VxOrderedList(
-        this,
-        key: key,
-        padding: padding,
-        fontSize: fontSize,
-        color: color,
-        physics: physics,
-        primary: primary,
-        shrinkWrap: shrinkWrap,
-        type: type,
-      );
+  }) => VxOrderedList(
+    this,
+    key: key,
+    padding: padding,
+    fontSize: fontSize,
+    color: color,
+    physics: physics,
+    primary: primary,
+    shrinkWrap: shrinkWrap,
+    type: type,
+  );
 }
 
 extension ExtensionUint8List on Uint8List {
   List<int> bit32ListFromUInt8List() {
     final Uint8List bytes = this;
     final int additionalLength = bytes.length % 4 > 0 ? 4 : 0;
-    final List<int> result =
-        (bytes.length ~/ 4 + additionalLength).generate((_) => 0);
+    final List<int> result = (bytes.length ~/ 4 + additionalLength).generate(
+      (_) => 0,
+    );
     for (int i = 0; i < bytes.length; i++) {
       final int resultIdx = i ~/ 4;
       final int bitShiftAmount = (3 - i % 4).toInt();
@@ -321,9 +308,10 @@ extension VxExtensionList<T> on List<T> {
   List<E> builder<E>(E Function(T) builder) =>
       map<E>((T e) => builder(e)).toList();
 
-  List<E> generate<E>(E Function(int index) generator,
-          {bool growable = true}) =>
-      length.generate<E>((int index) => generator(index), growable: growable);
+  List<E> generate<E>(
+    E Function(int index) generator, {
+    bool growable = true,
+  }) => length.generate<E>((int index) => generator(index), growable: growable);
 
   /// list.asMap().entries.map.toList()
   List<E> builderEntry<E>(E Function(MapEntry<int, T>) builder) =>
@@ -362,8 +350,12 @@ extension VxExtensionList<T> on List<T> {
   }
 
   /// Replace the specified area and return a new array
-  List<T> replaceRangeT(int start, int end, Iterable<T> replacement,
-      {bool isReplace = true}) {
+  List<T> replaceRangeT(
+    int start,
+    int end,
+    Iterable<T> replacement, {
+    bool isReplace = true,
+  }) {
     if (isReplace) {
       replaceRange(start, end, replacement);
     }

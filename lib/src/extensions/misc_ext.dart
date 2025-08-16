@@ -10,16 +10,24 @@ extension VxGlobalKeyExtension on GlobalKey {
   /// screenshot
   /// format image format
   /// pixelRatio screenshot resolution ratio
-  Future<ByteData?> screenshots(
-      {ui.ImageByteFormat? format, double? pixelRatio}) async {
+  Future<ByteData?> screenshots({
+    ui.ImageByteFormat? format,
+    double? pixelRatio,
+  }) async {
     final RenderRepaintBoundary boundary =
         currentContext!.findRenderObject() as RenderRepaintBoundary;
     final ui.Image image = await boundary.toImage(
-        pixelRatio: pixelRatio ??
-            WidgetsBinding
-                .instance.platformDispatcher.implicitView!.devicePixelRatio);
-    final ByteData? byteData =
-        await image.toByteData(format: format ?? ui.ImageByteFormat.rawRgba);
+      pixelRatio:
+          pixelRatio ??
+          WidgetsBinding
+              .instance
+              .platformDispatcher
+              .implicitView!
+              .devicePixelRatio,
+    );
+    final ByteData? byteData = await image.toByteData(
+      format: format ?? ui.ImageByteFormat.rawRgba,
+    );
 
     /// Uint8List uint8list = byteData.buffer.asUint8List();
     return byteData;
@@ -36,11 +44,14 @@ extension VxFutureFunctionExtension on Future Function() {
     void func() {
       if (enable) {
         _vxfuncThrottle[hashCode] = false;
-        this.call().then((_) {
-          _vxfuncThrottle[hashCode] = false;
-        }).whenComplete(() {
-          _vxfuncThrottle.remove(hashCode);
-        });
+        this
+            .call()
+            .then((_) {
+              _vxfuncThrottle[hashCode] = false;
+            })
+            .whenComplete(() {
+              _vxfuncThrottle.remove(hashCode);
+            });
       }
     }
 
@@ -115,29 +126,31 @@ extension VxColorExtension on Color {
 
   /// Get the swatch of the color
   MaterialColor get swatch => Colors.primaries.firstWhere(
-      (Color c) => c.r == r && c.g == g && c.b == b && c.a == a,
-      orElse: () => MaterialColor(
-          (a.toInt() << 24) | (r.toInt() << 16) | (g.toInt() << 8) | b.toInt(),
-          getMaterialColorValues));
+    (Color c) => c.r == r && c.g == g && c.b == b && c.a == a,
+    orElse: () => MaterialColor(
+      (a.toInt() << 24) | (r.toInt() << 16) | (g.toInt() << 8) | b.toInt(),
+      getMaterialColorValues,
+    ),
+  );
 
   /// Get MaterialColor values from the current color
   Map<int, Color> get getMaterialColorValues => {
-        50: _swatchShade(50),
-        100: _swatchShade(100),
-        200: _swatchShade(200),
-        300: _swatchShade(300),
-        400: _swatchShade(400),
-        500: _swatchShade(500),
-        600: _swatchShade(600),
-        700: _swatchShade(700),
-        800: _swatchShade(800),
-        900: _swatchShade(900),
-      };
+    50: _swatchShade(50),
+    100: _swatchShade(100),
+    200: _swatchShade(200),
+    300: _swatchShade(300),
+    400: _swatchShade(400),
+    500: _swatchShade(500),
+    600: _swatchShade(600),
+    700: _swatchShade(700),
+    800: _swatchShade(800),
+    900: _swatchShade(900),
+  };
 
   /// Get the shade of the color
-  Color _swatchShade(int swatchValue) => HSLColor.fromColor(this)
-      .withLightness(1 - (swatchValue / 1000))
-      .toColor();
+  Color _swatchShade(int swatchValue) => HSLColor.fromColor(
+    this,
+  ).withLightness(1 - (swatchValue / 1000)).toColor();
 
   /// Get the color with brightness of the current color
   Color get withBrightness {
@@ -151,7 +164,8 @@ extension VxColorExtension on Color {
   }
 
   /// Prefixes a hash sign if [leadingHashSign] is set to `true` and returns the hexadecimal string value of the color.
-  String toHex({bool leadingHashSign = true}) => '${leadingHashSign ? '#' : ''}'
+  String toHex({bool leadingHashSign = true}) =>
+      '${leadingHashSign ? '#' : ''}'
       '${a.round().toRadixString(16).padLeft(2, '0')}'
       '${r.round().toRadixString(16).padLeft(2, '0')}'
       '${g.round().toRadixString(16).padLeft(2, '0')}'

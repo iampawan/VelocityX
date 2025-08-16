@@ -46,10 +46,12 @@ class VxAdaptiveNavigation extends StatelessWidget {
                   extended: dimens.maxWidth >= 800,
                   minExtendedWidth: 180,
                   destinations: destinations
-                      .map((e) => NavigationRailDestination(
-                            icon: e.icon,
-                            label: Text(e.label),
-                          ))
+                      .map(
+                        (e) => NavigationRailDestination(
+                          icon: e.icon,
+                          label: Text(e.label),
+                        ),
+                      )
                       .toList(),
                   selectedIndex: selectedIndex,
                   onDestinationSelected: onDestinationSelected,

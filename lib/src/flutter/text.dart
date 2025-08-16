@@ -373,8 +373,10 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
   VxTextBuilder scale(double value) =>
       _fontSizedText(child: this, scaleFactor: value);
 
-  VxTextBuilder _fontSizedText(
-      {required double scaleFactor, required VxTextBuilder child}) {
+  VxTextBuilder _fontSizedText({
+    required double scaleFactor,
+    required VxTextBuilder child,
+  }) {
     _fontSize = _fontSize ?? 14.0;
     _scaleFactor = scaleFactor;
     return this;
@@ -476,11 +478,14 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
 
   /// Sets [Shadow] as specified in request *#127*
   VxTextBuilder shadow(
-          double offsetX, double offsetY, double blurRadius, Color color) =>
-      this
-        .._shadowBlur = blurRadius
-        .._shadowColor = color
-        .._shadowOffset = Offset(offsetX, offsetY);
+    double offsetX,
+    double offsetY,
+    double blurRadius,
+    Color color,
+  ) => this
+    .._shadowBlur = blurRadius
+    .._shadowColor = color
+    .._shadowOffset = Offset(offsetX, offsetY);
 
   /// Sets [Shadow] blur
   VxTextBuilder shadowBlur(double blur) => this.._shadowBlur = blur;
@@ -499,21 +504,25 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
     }
     final sdw = [
       Shadow(
-          blurRadius: _shadowBlur, color: _shadowColor, offset: _shadowOffset)
+        blurRadius: _shadowBlur,
+        color: _shadowColor,
+        offset: _shadowOffset,
+      ),
     ];
 
     final ts = TextStyle(
-        color: velocityColor,
-        fontSize: _fontSize,
-        fontStyle: _fontStyle,
-        fontFamily: _fontFamily,
-        fontWeight: _fontWeight,
-        letterSpacing: _letterSpacing,
-        decoration: _decoration,
-        height: _lineHeight,
-        textBaseline: _textBaseline ?? TextBaseline.alphabetic,
-        wordSpacing: _wordSpacing,
-        shadows: _shadowBlur > 0 ? sdw : null);
+      color: velocityColor,
+      fontSize: _fontSize,
+      fontStyle: _fontStyle,
+      fontFamily: _fontFamily,
+      fontWeight: _fontWeight,
+      letterSpacing: _letterSpacing,
+      decoration: _decoration,
+      height: _lineHeight,
+      textBaseline: _textBaseline ?? TextBaseline.alphabetic,
+      wordSpacing: _wordSpacing,
+      shadows: _shadowBlur > 0 ? sdw : null,
+    );
 
     final textWidget = _isIntrinsic
         ? Text(
@@ -521,8 +530,9 @@ class VxTextBuilder extends VxWidgetBuilder<Widget>
             key: key,
             textAlign: _textAlign,
             maxLines: _maxLines,
-            textScaler:
-                _scaleFactor == null ? null : TextScaler.linear(_scaleFactor!),
+            textScaler: _scaleFactor == null
+                ? null
+                : TextScaler.linear(_scaleFactor!),
             style: _themedStyle?.merge(ts) ?? _textStyle?.merge(ts) ?? ts,
             softWrap: _softWrap ?? true,
             overflow: _overflow ?? TextOverflow.clip,

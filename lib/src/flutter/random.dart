@@ -19,12 +19,13 @@ class VxRandomBox extends StatefulWidget {
   final Widget? child;
   final bool changeOnRedraw;
 
-  const VxRandomBox(
-      {super.key,
-      this.width,
-      this.height,
-      this.child,
-      this.changeOnRedraw = true});
+  const VxRandomBox({
+    super.key,
+    this.width,
+    this.height,
+    this.child,
+    this.changeOnRedraw = true,
+  });
 
   @override
   VxRandomBoxState createState() => VxRandomBoxState();
@@ -52,12 +53,14 @@ class VxRandomBoxState extends State<VxRandomBox> {
 
 ///Random Color box extension method
 extension VxRandomContainerWidgetExtension on Widget {
-  VxRandomBox randomBox(
-          {double? width, double? height, bool changeOnRedraw = true}) =>
-      VxRandomBox(
-        height: height,
-        width: width,
-        changeOnRedraw: changeOnRedraw,
-        child: this,
-      );
+  VxRandomBox randomBox({
+    double? width,
+    double? height,
+    bool changeOnRedraw = true,
+  }) => VxRandomBox(
+    height: height,
+    width: width,
+    changeOnRedraw: changeOnRedraw,
+    child: this,
+  );
 }

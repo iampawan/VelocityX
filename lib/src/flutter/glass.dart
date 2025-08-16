@@ -63,17 +63,18 @@ class VxGlassmorphic extends StatelessWidget {
   ///default is same as above example\n
   final BoxBorder? border;
 
-  const VxGlassmorphic(
-      {super.key,
-      this.opacity = 0.05,
-      this.child,
-      this.blur = 5,
-      this.border,
-      this.height,
-      this.width,
-      this.borderRadius,
-      this.circularRadius = 10.0,
-      this.shadowStrength = 4});
+  const VxGlassmorphic({
+    super.key,
+    this.opacity = 0.05,
+    this.child,
+    this.blur = 5,
+    this.border,
+    this.height,
+    this.width,
+    this.borderRadius,
+    this.circularRadius = 10.0,
+    this.shadowStrength = 4,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -83,20 +84,19 @@ class VxGlassmorphic extends StatelessWidget {
         height: height,
         foregroundDecoration: BoxDecoration(
           borderRadius: borderRadius ?? BorderRadius.circular(circularRadius!),
-          border: border ??
+          border:
+              border ??
               Border.all(
-                  color: Colors.white.withValues(alpha: 0.3),
-                  width: 0.3,
-                  style: BorderStyle.solid),
+                color: Colors.white.withValues(alpha: 0.3),
+                width: 0.3,
+                style: BorderStyle.solid,
+              ),
         ),
         width: width,
         child: ClipRRect(
           borderRadius: borderRadius ?? BorderRadius.circular(circularRadius!),
           child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: blur!,
-              sigmaY: blur!,
-            ),
+            filter: ImageFilter.blur(sigmaX: blur!, sigmaY: blur!),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius:
@@ -113,9 +113,7 @@ class VxGlassmorphic extends StatelessWidget {
 }
 
 class _PaintShadow extends CustomPainter {
-  _PaintShadow({
-    this.shadowStrength = 1,
-  });
+  _PaintShadow({this.shadowStrength = 1});
 
   final double? shadowStrength;
 
@@ -123,20 +121,19 @@ class _PaintShadow extends CustomPainter {
     return radius * 0.57735 + 0.5;
   }
 
-  Paint customPainter(
-      {double? blurStrength,
-      Color? color,
-      double? opacity,
-      double? strokeWidth}) {
+  Paint customPainter({
+    double? blurStrength,
+    Color? color,
+    double? opacity,
+    double? strokeWidth,
+  }) {
     return Paint()
       ..style = PaintingStyle.stroke
       ..color = color!.withValues(alpha: 0.24)
       ..strokeWidth = strokeWidth!
       ..maskFilter = MaskFilter.blur(
         BlurStyle.normal,
-        convertRadiusToSigma(
-          blurStrength!,
-        ),
+        convertRadiusToSigma(blurStrength!),
       );
   }
 
@@ -146,14 +143,15 @@ class _PaintShadow extends CustomPainter {
       return;
     }
     final RRect rect = RRect.fromRectAndRadius(
-        Rect.fromPoints(
-          Offset(-shadowStrength! / 2, -shadowStrength! / 2),
-          Offset(
-            size.width + shadowStrength! / 2,
-            size.height + shadowStrength! / 2,
-          ),
+      Rect.fromPoints(
+        Offset(-shadowStrength! / 2, -shadowStrength! / 2),
+        Offset(
+          size.width + shadowStrength! / 2,
+          size.height + shadowStrength! / 2,
         ),
-        const Radius.circular(10));
+      ),
+      const Radius.circular(10),
+    );
     canvas.drawRRect(
       rect,
       customPainter(
@@ -183,17 +181,16 @@ extension VxGlassWidgetExtension on Widget {
     double? shadowStrength = 4,
     double? circularRadius = 10,
     double? blur = 5,
-  }) =>
-      VxGlassmorphic(
-        blur: blur,
-        border: border,
-        borderRadius: borderRadius,
-        width: width,
-        height: height,
-        key: key,
-        opacity: opacity,
-        shadowStrength: shadowStrength,
-        circularRadius: circularRadius,
-        child: this,
-      );
+  }) => VxGlassmorphic(
+    blur: blur,
+    border: border,
+    borderRadius: borderRadius,
+    width: width,
+    height: height,
+    key: key,
+    opacity: opacity,
+    shadowStrength: shadowStrength,
+    circularRadius: circularRadius,
+    child: this,
+  );
 }

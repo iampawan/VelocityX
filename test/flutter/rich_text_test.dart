@@ -18,31 +18,36 @@ import 'package:velocity_x/velocity_x.dart';
 
 void main() {
   Directionality directionalityWidget({required Widget child}) =>
-      Directionality(
-        textDirection: TextDirection.ltr,
-        child: child,
-      );
+      Directionality(textDirection: TextDirection.ltr, child: child);
   group("Group all rich text tests", () {
-    testWidgets('richText creates RichText Widget',
-        (WidgetTester tester) async {
+    testWidgets('richText creates RichText Widget', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
       await tester.pumpWidget(
-          directionalityWidget(child: 'VelocityX'.richText.make(key: key)));
+        directionalityWidget(child: 'VelocityX'.richText.make(key: key)),
+      );
 
       expect(find.byKey(key), findsOneWidget);
       // The rich text is type of AutoSizeText const
       expect(tester.widget(find.byKey(key)).runtimeType, AutoSizeText);
-      expect(tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.text,
-          'VelocityX');
+      expect(
+        tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.text,
+        'VelocityX',
+      );
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to children',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to children', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'
-              .richText
-              .withTextSpanChildren([' Hey '.textSpan.make()]).make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText
+              .withTextSpanChildren([' Hey '.textSpan.make()])
+              .make(key: key),
+        ),
+      );
 
       final AutoSizeText autoSizeText = tester.widget(find.byKey(key));
       // expect(
@@ -53,8 +58,9 @@ void main() {
       expect(autoSizeText.textSpan!.children!.length, 1);
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to onTap',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to onTap', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
       bool didTap = false;
       await tester.pumpWidget(
@@ -69,15 +75,18 @@ void main() {
       expect(didTap, isTrue);
     });
 
-    testWidgets('VelocityXRichTextBuilder children responds to onTap',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder children responds to onTap', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
       bool didTap = false;
       await tester.pumpWidget(
         directionalityWidget(
-          child: 'VelocityX'.richText.withTextSpanChildren([
-            ' Hey '.textSpan.tap(() => didTap = true).make()
-          ]).make(key: key),
+          child: 'VelocityX'.richText
+              .withTextSpanChildren([
+                ' Hey '.textSpan.tap(() => didTap = true).make(),
+              ])
+              .make(key: key),
         ),
       );
 
@@ -86,83 +95,109 @@ void main() {
       expect(didTap, isTrue);
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to decoration',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to decoration', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'.richText.underline.make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText.underline.make(key: key),
+        ),
+      );
 
       expect(
-          tester
-              .widget<AutoSizeText>(find.byKey(key))
-              .textSpan!
-              .style!
-              .decoration,
-          TextDecoration.underline);
+        tester
+            .widget<AutoSizeText>(find.byKey(key))
+            .textSpan!
+            .style!
+            .decoration,
+        TextDecoration.underline,
+      );
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to color',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to color', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'.richText.green100.make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText.green100.make(key: key),
+        ),
+      );
 
       expect(
-          tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.color,
-          Vx.green100);
+        tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.color,
+        Vx.green100,
+      );
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to color',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to color', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'.richText.green100.make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText.green100.make(key: key),
+        ),
+      );
 
       expect(
-          tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.color,
-          Vx.green100);
+        tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.color,
+        Vx.green100,
+      );
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to fontSize',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to fontSize', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'.richText.size(20).make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText.size(20).make(key: key),
+        ),
+      );
 
       expect(
-          tester
-              .widget<AutoSizeText>(find.byKey(key))
-              .textSpan!
-              .style!
-              .fontSize,
-          20);
+        tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.fontSize,
+        20,
+      );
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to letterSpacing',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to letterSpacing', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'.richText.letterSpacing(4).make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText.letterSpacing(4).make(key: key),
+        ),
+      );
 
       expect(
-          tester
-              .widget<AutoSizeText>(find.byKey(key))
-              .textSpan!
-              .style!
-              .letterSpacing,
-          4);
+        tester
+            .widget<AutoSizeText>(find.byKey(key))
+            .textSpan!
+            .style!
+            .letterSpacing,
+        4,
+      );
     });
 
-    testWidgets('VelocityXRichTextBuilder responds to lineHeight',
-        (WidgetTester tester) async {
+    testWidgets('VelocityXRichTextBuilder responds to lineHeight', (
+      WidgetTester tester,
+    ) async {
       const Key key = Key('key');
-      await tester.pumpWidget(directionalityWidget(
-          child: 'VelocityX'.richText.heightSnug.make(key: key)));
+      await tester.pumpWidget(
+        directionalityWidget(
+          child: 'VelocityX'.richText.heightSnug.make(key: key),
+        ),
+      );
 
       // The value of heightSnug is 0.875
       expect(
-          tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.height,
-          0.875);
+        tester.widget<AutoSizeText>(find.byKey(key)).textSpan!.style!.height,
+        0.875,
+      );
     });
   });
 }

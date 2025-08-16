@@ -61,24 +61,12 @@ class VxShifter extends StatelessWidget {
 
     return Align(
       alignment: alignment,
-      child: Transform.translate(
-        offset: Offset(x, y),
-        child: child,
-      ),
+      child: Transform.translate(offset: Offset(x, y), child: child),
     );
   }
 }
 
 extension VxShiftWidgetExt on Widget {
-  Widget shift(
-    double shift, {
-    Key? key,
-    required Alignment alignment,
-  }) =>
-      VxShifter(
-        key: key,
-        alignment: alignment,
-        shift: shift,
-        child: this,
-      );
+  Widget shift(double shift, {Key? key, required Alignment alignment}) =>
+      VxShifter(key: key, alignment: alignment, shift: shift, child: this);
 }

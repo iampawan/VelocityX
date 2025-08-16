@@ -23,36 +23,41 @@ mixin VxRoundMixin<T> {
 
   T topRightRounded({double? value}) {
     roundedValue = value ?? 15.0;
-    radiusGeometry =
-        BorderRadius.only(topRight: Radius.circular(roundedValue!));
+    radiusGeometry = BorderRadius.only(
+      topRight: Radius.circular(roundedValue!),
+    );
     return _childToRound;
   }
 
   T bottomLeftRounded({double? value}) {
     roundedValue = value ?? 15.0;
-    radiusGeometry =
-        BorderRadius.only(bottomLeft: Radius.circular(roundedValue!));
+    radiusGeometry = BorderRadius.only(
+      bottomLeft: Radius.circular(roundedValue!),
+    );
     return _childToRound;
   }
 
   T bottomRightRounded({double? value}) {
     roundedValue = value ?? 15.0;
-    radiusGeometry =
-        BorderRadius.only(bottomRight: Radius.circular(roundedValue!));
+    radiusGeometry = BorderRadius.only(
+      bottomRight: Radius.circular(roundedValue!),
+    );
     return _childToRound;
   }
 
   T leftRounded({double? value}) {
     roundedValue = value ?? 15.0;
-    radiusGeometry =
-        BorderRadius.horizontal(left: Radius.circular(roundedValue!));
+    radiusGeometry = BorderRadius.horizontal(
+      left: Radius.circular(roundedValue!),
+    );
     return _childToRound;
   }
 
   T rightRounded({double? value}) {
     roundedValue = value ?? 15.0;
-    radiusGeometry =
-        BorderRadius.horizontal(right: Radius.circular(roundedValue!));
+    radiusGeometry = BorderRadius.horizontal(
+      right: Radius.circular(roundedValue!),
+    );
     return _childToRound;
   }
 
@@ -64,8 +69,9 @@ mixin VxRoundMixin<T> {
 
   T bottomRounded({double? value}) {
     roundedValue = value ?? 15.0;
-    radiusGeometry =
-        BorderRadius.vertical(bottom: Radius.circular(roundedValue!));
+    radiusGeometry = BorderRadius.vertical(
+      bottom: Radius.circular(roundedValue!),
+    );
     return _childToRound;
   }
 
