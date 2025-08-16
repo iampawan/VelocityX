@@ -1,3 +1,19 @@
+
+
+
+## [4.4.0] -
+- **BREAKING CHANGE**: Minimum supported Flutter version is now 3.0.0.
+- feat(core): Enhanced code formatting with a wider page width and preserved trailing commas for better readability.
+- chore: Updated various dependencies.
+- chore(deps): Updated Dart SDK constraint to `>=3.9.0 <4.0.0`.
+- fix(dependencies): Updated various dependencies for improved stability and compatibility.
+- fix(flutter): Fixed null safety issue in skeleton animation.
+- fix(flutter): Resolved `BuildContext` type issue in toast positioning.
+- fix(flutter): Added `BoxConstraints` to fix height issue in tooltips.
+- fix(drawer): Replaced deprecated `onPopInvokedWithResult` with `onPopInvoked` to resolve warning.
+- fix(flutter): Addressed null safety issues in viewport finding by handling potential null `RenderObject`.
+- chore: General code quality improvements including formatting, refactoring, and standardization of `const` constructors.
+
 ## [4.3.1] -
 - Fix enableFeedback default value in VxUniversal in Flutter 3.29
 - Fix clipBehavior for aStack
