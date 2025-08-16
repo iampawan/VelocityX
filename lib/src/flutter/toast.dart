@@ -263,7 +263,7 @@ class _VxToastViewState extends State<_VxToastView>
   }
 
   /// Set the toast position
-  dynamic buildToastPosition(context) {
+  dynamic buildToastPosition(BuildContext context) {
     dynamic backResult;
     if (widget.toastPosition == VxToastPosition.top) {
       backResult = MediaQuery.sizeOf(context).height * 1 / 6;

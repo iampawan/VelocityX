@@ -17,7 +17,8 @@ import 'package:velocity_x/src/extensions/context_ext.dart';
 ///
 /// [myBoxDesc] to reuse with [PKSkeleton]
 ///
-Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
+Decoration myBoxDec(Animation? animation,
+    {bool isCircle = false, bool isDark = false}) {
   return BoxDecoration(
     shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
     gradient: LinearGradient(
@@ -36,9 +37,9 @@ Decoration myBoxDec(animation, {isCircle = false, isDark = false}) {
               const Color(0xfff6f7f9),
             ],
       stops: [
-        animation.value - 1,
-        animation.value,
-        animation.value + 1,
+        animation?.value - 1,
+        animation?.value,
+        animation?.value + 1,
       ],
     ),
   );

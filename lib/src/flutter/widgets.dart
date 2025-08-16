@@ -29,6 +29,7 @@ extension VxWidgetsExtension on Widget {
           {Key? key,
           Decoration? decoration,
           double? height,
+          BoxConstraints? constraints,
           bool? preferBelow,
           EdgeInsetsGeometry? padding,
           TextStyle? textStyle,
@@ -38,7 +39,9 @@ extension VxWidgetsExtension on Widget {
         key: key,
         message: message,
         decoration: decoration,
-        height: height,
+        constraints: height != null
+            ? BoxConstraints.tightFor(height: height)
+            : constraints,
         padding: padding,
         preferBelow: preferBelow,
         textStyle: textStyle,
