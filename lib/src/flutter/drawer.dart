@@ -83,7 +83,7 @@ mixin VxDrawer {
 
     overlayEntry = OverlayEntry(
       builder: (BuildContext context) => PopScope(
-        onPopInvokedWithResult: (_, __) => backClose,
+        onPopInvokedWithResult: (_, _) => backClose,
         child: _VxDrawer(
           key: key,
           type: type,
