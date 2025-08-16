@@ -15,9 +15,9 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  intl: ^0.20.1
+  intl: ^0.20.2
   vxstate: ^2.3.0
-  vector_math: ^2.1.4
+  vector_math: ^2.2.0
 
 dev_dependencies:
   flutter_test:
