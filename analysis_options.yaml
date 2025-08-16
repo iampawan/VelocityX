@@ -19,3 +19,6 @@ linter:
     - unnecessary_statements
     - unsafe_html
     - use_super_parameters
+formatter:
+  trailing_commas: preserve
+  page_width: 260
